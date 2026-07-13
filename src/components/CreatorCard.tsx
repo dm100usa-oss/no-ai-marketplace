@@ -1,22 +1,26 @@
-import Link from "next/link";
+import { LocaleLink } from "./LocaleLink";
 import type { Profile } from "@/lib/types";
 import { VerifiedBadge, FeaturedBadge } from "./Badges";
 import { ExternalLink } from "./icons";
+import type { Dictionary } from "@/i18n/types";
+import type { Locale } from "@/i18n/config";
 
 /**
- * Creator card (TZ 5.5): work image on top, author row (avatar, name bold,
+ * Creator card: work image on top, author row (avatar, name bold,
  * category regular, status badge right), one-two line description, tags
  * (country + a keyword or two), external "Visit" button — a jump to the
  * creator's own platform, not a purchase on the site.
- *
- * `categoryName` is passed in resolved (stage 2 wires real category data).
  */
 export function CreatorCard({
+  lang,
+  dict,
   profile,
   categoryName,
   visitLabel,
   visitHref,
 }: {
+  lang: Locale;
+  dict: Dictionary;
   profile: Profile;
   categoryName: string;
   /** Visit label + href resolved by caller (portfolio vs website). */
@@ -37,29 +41,31 @@ export function CreatorCard({
     profile.socialLinks.portfolio ??
     profile.socialLinks.website ??
     "#";
-  const label = visitLabel ?? (profile.socialLinks.portfolio ? "Visit portfolio" : "Visit website");
+  const label =
+    visitLabel ??
+    (profile.socialLinks.portfolio ? dict.profile.visitPortfolio : dict.profile.visitWebsite);
 
   return (
     <article className="card card-hover flex flex-col">
       {/* Work image */}
-      <Link href={profileHref} className="relative block aspect-[4/3] overflow-hidden" style={{ background: "var(--color-brand-soft)" }}>
+      <LocaleLink lang={lang} href={profileHref} className="relative block aspect-[4/3] overflow-hidden" style={{ background: "var(--color-brand-soft)" }}>
         {profile.mainImage ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={profile.mainImage} alt={`Work by ${profile.name}`} className="h-full w-full object-cover" loading="lazy" />
+          <img src={profile.mainImage} alt={`${dict.common.humanMadeWork} — ${profile.name}`} className="h-full w-full object-cover" loading="lazy" />
         ) : (
-          <PlaceholderArt seed={profile.slug} />
+          <PlaceholderArt seed={profile.slug} label={dict.common.humanMadeWork} />
         )}
-      </Link>
+      </LocaleLink>
 
       <div className="flex flex-1 flex-col gap-3 p-4">
         {/* Author row */}
         <div className="flex items-start justify-between gap-2">
-          <Link href={profileHref} className="flex min-w-0 items-center gap-2.5">
+          <LocaleLink lang={lang} href={profileHref} className="flex min-w-0 items-center gap-2.5">
             {profile.avatar ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={profile.avatar}
-                alt={`Portrait of ${profile.name}`}
+                alt={profile.name}
                 loading="lazy"
                 className="h-9 w-9 shrink-0 rounded-full object-cover"
               />
@@ -80,10 +86,10 @@ export function CreatorCard({
                 {categoryName}
               </span>
             </span>
-          </Link>
+          </LocaleLink>
           <div className="flex shrink-0 flex-col items-end gap-1">
-            <FeaturedBadge status={profile.status} />
-            <VerifiedBadge status={profile.verificationStatus} />
+            <FeaturedBadge status={profile.status} dict={dict} />
+            <VerifiedBadge status={profile.verificationStatus} dict={dict} />
           </div>
         </div>
 
@@ -118,7 +124,7 @@ export function CreatorCard({
 }
 
 /** Deterministic soft placeholder when a card has no image yet. */
-function PlaceholderArt({ seed }: { seed: string }) {
+function PlaceholderArt({ seed, label }: { seed: string; label: string }) {
   const hues = ["#e3ecfb", "#dff1e9", "#eae4fa", "#fbeedb", "#fbe4e9", "#fce7dc", "#ddf0f2"];
   let h = 0;
   for (const c of seed) h = (h + c.charCodeAt(0)) % hues.length;
@@ -127,7 +133,7 @@ function PlaceholderArt({ seed }: { seed: string }) {
   return (
     <div className="grid h-full w-full place-items-center" style={{ background: `linear-gradient(135deg, ${bg}, ${bg2})` }}>
       <span className="text-[0.78rem] font-medium tracking-wide" style={{ color: "var(--color-muted-soft)" }}>
-        Human-made work
+        {label}
       </span>
     </div>
   );

@@ -1,24 +1,23 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/lib/config";
-import {
-  getAllDirections,
-  getAllCategories,
-  getAllProfiles,
-} from "@/lib/data";
+import { getAllDirections, getAllCategories, getAllProfiles } from "@/lib/data";
+import { LOCALES, localizedPath } from "@/i18n/config";
 
 /**
- * Auto-generated sitemap (TZ 5.3 / stage 6). Everything indexable is
- * listed: static pages plus every direction, category and profile built
- * from data. Adding a profile or category regenerates the sitemap on the
- * next build — no manual edit.
+ * Auto-generated sitemap. Every indexable page is emitted once per
+ * language (English at the clean root, Russian under /ru), and each entry
+ * carries hreflang alternates so search and AI engines see the language
+ * pairing. Adding a profile, category or language regenerates the sitemap
+ * on the next build with no manual edit.
  *
- * Payment / status pages are intentionally left out (they carry
- * robots: noindex) and so is the raw /directory search view.
+ * Payment / status pages are left out (they are noindex) and so is the raw
+ * /directory search view beyond its landing page.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = site.url.replace(/\/$/, "");
   const now = new Date();
 
+  // Canonical (unprefixed) paths with a priority and change frequency.
   const staticPaths: { path: string; priority: number }[] = [
     { path: "/", priority: 1 },
     { path: "/directory", priority: 0.9 },
@@ -39,43 +38,55 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/copyright-complaint", priority: 0.3 },
   ];
 
-  const staticEntries: MetadataRoute.Sitemap = staticPaths.map((s) => ({
-    url: `${base}${s.path}`,
-    lastModified: now,
-    changeFrequency: "weekly",
-    priority: s.priority,
-  }));
-
-  const directionEntries: MetadataRoute.Sitemap = getAllDirections()
+  const directionPaths = getAllDirections()
     .filter((d) => d.active)
-    .map((d) => ({
-      url: `${base}/directions/${d.slug}`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    }));
+    .map((d) => ({ path: `/directions/${d.slug}`, priority: 0.7 }));
 
-  const categoryEntries: MetadataRoute.Sitemap = getAllCategories().map((c) => ({
-    url: `${base}/categories/${c.slug}`,
-    lastModified: now,
-    changeFrequency: "weekly",
+  const categoryPaths = getAllCategories().map((c) => ({
+    path: `/categories/${c.slug}`,
     priority: 0.7,
   }));
 
-  const profileEntries: MetadataRoute.Sitemap = getAllProfiles().map((p) => {
+  const profileEntries = getAllProfiles().map((p) => {
     const seg = p.profileType === "company" ? "companies" : "creators";
     return {
-      url: `${base}/${seg}/${p.slug}`,
+      path: `/${seg}/${p.slug}`,
+      priority: 0.6,
       lastModified: p.dateUpdated ? new Date(p.dateUpdated) : new Date(p.dateCreated),
       changeFrequency: "monthly" as const,
-      priority: 0.6,
     };
   });
 
-  return [
-    ...staticEntries,
-    ...directionEntries,
-    ...categoryEntries,
-    ...profileEntries,
+  // Build hreflang alternates for a canonical path.
+  const alternatesFor = (path: string) => {
+    const languages: Record<string, string> = {};
+    for (const l of LOCALES) {
+      languages[l] = `${base}${localizedPath(l, path)}`;
+    }
+    return { languages };
+  };
+
+  // Emit one entry per language for a canonical path.
+  const expand = (
+    path: string,
+    priority: number,
+    changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"],
+    lastModified: Date,
+  ): MetadataRoute.Sitemap =>
+    LOCALES.map((l) => ({
+      url: `${base}${localizedPath(l, path)}`,
+      lastModified,
+      changeFrequency,
+      priority,
+      alternates: alternatesFor(path),
+    }));
+
+  const entries: MetadataRoute.Sitemap = [
+    ...staticPaths.flatMap((s) => expand(s.path, s.priority, "weekly", now)),
+    ...directionPaths.flatMap((s) => expand(s.path, s.priority, "weekly", now)),
+    ...categoryPaths.flatMap((s) => expand(s.path, s.priority, "weekly", now)),
+    ...profileEntries.flatMap((s) => expand(s.path, s.priority, s.changeFrequency, s.lastModified)),
   ];
+
+  return entries;
 }

@@ -1,20 +1,28 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Logo } from "./Logo";
-import { primaryNav, footerNav } from "@/lib/config";
+import { LocaleLink } from "./LocaleLink";
 import { trackEvent } from "@/lib/analytics";
 import { SearchIcon, MenuIcon, CloseIcon, ChevronDown } from "./icons";
+import type { Dictionary } from "@/i18n/types";
+import type { Locale } from "@/i18n/config";
+import { LOCALES, DEFAULT_LOCALE, LOCALE_NAMES, localizedPath } from "@/i18n/config";
+import { primaryNav, footerNav, type NavGroup } from "@/i18n/nav";
+import { localizeHref } from "./LocaleLink";
 
 /**
- * Header (TZ Etap 1 + 5.5 home layout):
- * hamburger left, logo centred, highlighted Add profile right,
- * full-width search below. On mobile the menu opens as an accordion
- * from the top; on desktop the primary nav is inline.
+ * Header: hamburger left, logo centred, highlighted Add profile right,
+ * full-width search below. On mobile the menu opens as an accordion from
+ * the top and now also carries the language switcher; on desktop the
+ * primary nav is inline.
  */
-export function Header() {
+export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const nav = primaryNav(dict);
+  const searchAction = localizeHref(lang, "/directory");
 
   return (
     <header className="sticky top-0 z-40 border-b bg-white/95 backdrop-blur" style={{ borderColor: "var(--color-line)" }}>
@@ -27,7 +35,7 @@ export function Header() {
             <button
               type="button"
               onClick={() => setMenuOpen((v) => !v)}
-              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-label={menuOpen ? dict.header.closeMenu : dict.header.openMenu}
               aria-expanded={menuOpen}
               className="grid h-10 w-10 place-items-center rounded-lg md:hidden"
               style={{ color: "var(--color-ink)" }}
@@ -37,42 +45,49 @@ export function Header() {
 
             {/* Logo — desktop only in left cluster */}
             <div className="hidden md:block md:mr-3">
-              <Logo />
+              <Logo lang={lang} ariaLabel={`${dict.site.name} — ${dict.common.home}`} />
             </div>
 
             {/* Primary nav — desktop only */}
             <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
-              {primaryNav.map((item) => (
-                <Link
+              {nav.map((item) => (
+                <LocaleLink
                   key={item.href}
+                  lang={lang}
                   href={item.href}
                   className="rounded-lg px-3 py-2 text-[0.95rem] font-medium transition-colors hover:bg-[var(--color-brand-soft)]"
                   style={{ color: "var(--color-muted)" }}
                 >
                   {item.label}
-                </Link>
+                </LocaleLink>
               ))}
             </nav>
           </div>
 
           {/* Centre: logo — mobile only */}
           <div className="md:hidden">
-            <Logo />
+            <Logo lang={lang} ariaLabel={`${dict.site.name} — ${dict.common.home}`} />
           </div>
 
-          {/* Right: Add profile (highlighted) */}
-          <Link
-            href="/join"
-            onClick={() => trackEvent("join_click", { source: "header" })}
-            className="btn btn-ink shrink-0 !px-4 !py-2.5 text-[0.95rem]"
-          >
-            Add profile
-          </Link>
+          {/* Right: language (desktop) + Add profile (highlighted) */}
+          <div className="flex items-center gap-2">
+            <div className="hidden md:block">
+              <LanguageSwitcher lang={lang} dict={dict} />
+            </div>
+            <LocaleLink
+              lang={lang}
+              href="/join"
+              onClick={() => trackEvent("join_click", { source: "header" })}
+              className="btn btn-ink shrink-0 !px-4 !py-2.5 text-[0.95rem]"
+            >
+              {dict.header.addProfile}
+            </LocaleLink>
+          </div>
         </div>
 
         {/* Full-width search row */}
         <div className="pb-3">
-          <form action="/directory" className="flex items-stretch gap-2" role="search">
+          <form action={searchAction} className="flex items-stretch gap-2" role="search">
             <div className="relative flex-1">
               <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2" style={{ color: "var(--color-muted-soft)" }}>
                 <SearchIcon size={18} />
@@ -80,15 +95,15 @@ export function Header() {
               <input
                 type="search"
                 name="q"
-                placeholder="Search creators, categories, products…"
-                aria-label="Search"
+                placeholder={dict.header.searchPlaceholder}
+                aria-label={dict.header.searchAria}
                 className="h-11 w-full rounded-xl border pl-10 pr-3 text-[0.95rem] outline-none transition-colors focus:border-[var(--color-accent)]"
                 style={{ borderColor: "var(--color-line)", background: "#fff" }}
               />
             </div>
-            <button type="submit" className="btn btn-accent !px-5" aria-label="Search">
+            <button type="submit" className="btn btn-accent !px-5" aria-label={dict.header.searchAria}>
               <SearchIcon size={18} />
-              <span className="hidden sm:inline">Search</span>
+              <span className="hidden sm:inline">{dict.header.search}</span>
             </button>
           </form>
         </div>
@@ -97,41 +112,120 @@ export function Header() {
       {/* Mobile accordion menu */}
       {menuOpen && (
         <div className="border-t md:hidden" style={{ borderColor: "var(--color-line)" }}>
-          <MobileMenu onNavigate={() => setMenuOpen(false)} />
+          <MobileMenu lang={lang} dict={dict} onNavigate={() => setMenuOpen(false)} />
         </div>
       )}
     </header>
   );
 }
 
-function MobileMenu({ onNavigate }: { onNavigate: () => void }) {
+/** Language switcher: links to the same page in the other language(s). */
+function LanguageSwitcher({
+  lang,
+  dict,
+  block = false,
+}: {
+  lang: Locale;
+  dict: Dictionary;
+  block?: boolean;
+}) {
+  const pathname = usePathname() || "/";
+
+  // Strip the current locale prefix to get the canonical path, then
+  // re-localize into each target language.
+  const canonical = stripLocale(pathname);
+
+  return (
+    <div
+      className={block ? "flex flex-wrap gap-2" : "flex items-center gap-1"}
+      role="group"
+      aria-label={dict.languageSwitcher.label}
+    >
+      {LOCALES.map((l) => {
+        const active = l === lang;
+        const href = localizedPath(l, canonical);
+        return (
+          <Link
+            key={l}
+            href={href}
+            hrefLang={l}
+            aria-current={active ? "true" : undefined}
+            className="rounded-lg border px-3 py-1.5 text-[0.85rem] font-semibold transition-colors"
+            style={{
+              borderColor: active ? "var(--color-accent)" : "var(--color-line)",
+              background: active ? "var(--color-brand-soft)" : "#fff",
+              color: active ? "var(--color-accent)" : "var(--color-muted)",
+            }}
+          >
+            {LOCALE_NAMES[l]}
+          </Link>
+        );
+      })}
+    </div>
+  );
+}
+
+/** Remove a leading /ru (or any non-default locale) from a pathname. */
+function stripLocale(pathname: string): string {
+  for (const l of LOCALES) {
+    if (l === DEFAULT_LOCALE) continue;
+    if (pathname === `/${l}`) return "/";
+    if (pathname.startsWith(`/${l}/`)) return pathname.slice(l.length + 1);
+  }
+  return pathname;
+}
+
+function MobileMenu({
+  lang,
+  dict,
+  onNavigate,
+}: {
+  lang: Locale;
+  dict: Dictionary;
+  onNavigate: () => void;
+}) {
+  const nav = primaryNav(dict);
+  const groups = footerNav(dict);
+
   return (
     <div className="container-page py-2">
       {/* Flat primary links */}
       <ul className="py-1">
-        {primaryNav.map((item) => (
+        {nav.map((item) => (
           <li key={item.href}>
-            <Link
+            <LocaleLink
+              lang={lang}
               href={item.href}
               onClick={onNavigate}
               className="block rounded-lg px-2 py-3 text-[1.05rem] font-semibold"
               style={{ color: "var(--color-ink)" }}
             >
               {item.label}
-            </Link>
+            </LocaleLink>
           </li>
         ))}
       </ul>
 
       {/* Grouped accordion sections (mirrors footer groups) */}
       <div className="border-t pt-1" style={{ borderColor: "var(--color-line)" }}>
-        {footerNav.map((group) => (
-          <AccordionGroup key={group.title} title={group.title} links={group.links} onNavigate={onNavigate} />
+        {groups.map((group) => (
+          <AccordionGroup key={group.title} lang={lang} group={group} onNavigate={onNavigate} />
         ))}
       </div>
 
-      <div className="py-3">
-        <Link
+      {/* Language switcher inside the menu */}
+      <div className="border-t py-4" style={{ borderColor: "var(--color-line)" }}>
+        <p className="mb-2 px-2 text-[0.8rem] font-semibold uppercase tracking-wide" style={{ color: "var(--color-muted-soft)" }}>
+          {dict.languageSwitcher.label}
+        </p>
+        <div className="px-2">
+          <LanguageSwitcher lang={lang} dict={dict} block />
+        </div>
+      </div>
+
+      <div className="pb-3">
+        <LocaleLink
+          lang={lang}
           href="/join"
           onClick={() => {
             trackEvent("join_click", { source: "mobile-menu" });
@@ -139,20 +233,20 @@ function MobileMenu({ onNavigate }: { onNavigate: () => void }) {
           }}
           className="btn btn-ink btn-full"
         >
-          Add your profile — first 100 free
-        </Link>
+          {dict.header.addProfileFree}
+        </LocaleLink>
       </div>
     </div>
   );
 }
 
 function AccordionGroup({
-  title,
-  links,
+  lang,
+  group,
   onNavigate,
 }: {
-  title: string;
-  links: readonly { label: string; href: string }[];
+  lang: Locale;
+  group: NavGroup;
   onNavigate: () => void;
 }) {
   const [open, setOpen] = useState(false);
@@ -165,22 +259,23 @@ function AccordionGroup({
         className="flex w-full items-center justify-between px-2 py-3 text-left"
       >
         <span className="text-[0.8rem] font-semibold uppercase tracking-wide" style={{ color: "var(--color-muted-soft)" }}>
-          {title}
+          {group.title}
         </span>
         <ChevronDown className={`transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
       {open && (
         <ul className="pb-2">
-          {links.map((l) => (
+          {group.links.map((l) => (
             <li key={l.href}>
-              <Link
+              <LocaleLink
+                lang={lang}
                 href={l.href}
                 onClick={onNavigate}
                 className="block rounded-lg px-2 py-2.5 text-[0.98rem]"
                 style={{ color: "var(--color-muted)" }}
               >
                 {l.label}
-              </Link>
+              </LocaleLink>
             </li>
           ))}
         </ul>

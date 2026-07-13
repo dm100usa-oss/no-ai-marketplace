@@ -1,28 +1,27 @@
 "use client";
 
 import { useEffect } from "react";
-import Link from "next/link";
-import { integrations, site } from "@/lib/config";
+import { LocaleLink } from "./LocaleLink";
+import { integrations } from "@/lib/config";
+import type { Dictionary } from "@/i18n/types";
+import type { Locale } from "@/i18n/config";
 
 /**
- * Embeds the Tally submission form (TZ 2.3, stage 5).
+ * Embeds the Tally submission form. The form lives on tally.so and carries
+ * its own "limit responses" setting (100). Once the limit is reached Tally
+ * closes the free form and shows the paid step, so the count, the threshold
+ * and the switch to payment all happen without the owner.
  *
- * The form lives on tally.so and carries its own "limit responses"
- * setting (set to site.freeSlots = 100). Once the limit is reached Tally
- * closes the free form and shows the paid step, so the count, the
- * threshold and the switch to payment all happen without the owner.
- *
- * If no form id is configured yet, we render a short notice instead of
- * an empty box, so the page always makes sense.
+ * If no form id is configured yet, we render a short notice instead of an
+ * empty box, so the page always makes sense.
  */
-export function TallyForm() {
+export function TallyForm({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const formId = integrations.tallyFormId;
 
   useEffect(() => {
     if (!formId) return;
 
     const SRC = "https://tally.so/widgets/embed.js";
-    // Ask an already-loaded Tally script to (re)size the iframe.
     const run = () => {
       const w = window as unknown as { Tally?: { loadEmbeds: () => void } };
       if (w.Tally) w.Tally.loadEmbeds();
@@ -46,21 +45,19 @@ export function TallyForm() {
         style={{ borderColor: "var(--color-line)", background: "#fff" }}
       >
         <p className="text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
-          The submission form is powered by Tally and includes a built-in
-          limit of {site.freeSlots} free places. Once that limit is reached,
-          the form automatically switches to the paid step and takes payment
-          through Stripe.
+          {dict.tally.notice1}
         </p>
         <p className="mt-3 text-[0.9rem]" style={{ color: "var(--color-muted-soft)" }}>
-          The form is being connected. In the meantime, please{" "}
-          <Link
+          {dict.tally.notice2a}
+          <LocaleLink
+            lang={lang}
             href="/contact"
             className="font-semibold"
             style={{ color: "var(--color-accent)" }}
           >
-            get in touch
-          </Link>{" "}
-          to be added.
+            {dict.tally.getInTouch}
+          </LocaleLink>
+          {dict.tally.notice2b}
         </p>
       </div>
     );
@@ -76,7 +73,7 @@ export function TallyForm() {
         loading="lazy"
         width="100%"
         height={500}
-        title="Add your profile"
+        title={dict.tally.iframeTitle}
         style={{ border: 0, display: "block" }}
       />
     </div>

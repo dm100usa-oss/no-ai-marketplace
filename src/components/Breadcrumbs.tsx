@@ -1,16 +1,19 @@
-import Link from "next/link";
+import { LocaleLink } from "./LocaleLink";
 import { site } from "@/lib/config";
+import { localizedPath } from "@/i18n/config";
+import type { Locale } from "@/i18n/config";
 
 export interface Crumb {
   label: string;
-  href?: string; // last crumb usually has no href
+  href?: string; // canonical, unprefixed; last crumb usually has no href
 }
 
 /**
- * Breadcrumbs (TZ 5.3) with BreadcrumbList JSON-LD. Visible trail plus
- * structured data so search engines and AI see the hierarchy.
+ * Breadcrumbs with BreadcrumbList JSON-LD. Visible trail plus structured
+ * data so search engines and AI see the hierarchy. Hrefs are canonical
+ * paths; the visible links and the JSON-LD are localized per language.
  */
-export function Breadcrumbs({ items }: { items: Crumb[] }) {
+export function Breadcrumbs({ lang, items }: { lang: Locale; items: Crumb[] }) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -18,7 +21,7 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
       "@type": "ListItem",
       position: i + 1,
       name: c.label,
-      ...(c.href ? { item: `${site.url}${c.href}` } : {}),
+      ...(c.href ? { item: `${site.url}${localizedPath(lang, c.href)}` } : {}),
     })),
   };
 
@@ -33,9 +36,9 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
         {items.map((c, i) => (
           <li key={i} className="flex items-center gap-1.5">
             {c.href ? (
-              <Link href={c.href} className="transition-colors hover:text-[var(--color-accent)]">
+              <LocaleLink lang={lang} href={c.href} className="transition-colors hover:text-[var(--color-accent)]">
                 {c.label}
-              </Link>
+              </LocaleLink>
             ) : (
               <span style={{ color: "var(--color-muted)" }}>{c.label}</span>
             )}

@@ -14,14 +14,19 @@ import {
 } from "@/lib/search";
 import { ProfileGrid } from "./ProfileGrid";
 import { FilterIcon, CloseIcon, SearchIcon } from "./icons";
+import type { Dictionary } from "@/i18n/types";
+import type { Locale } from "@/i18n/config";
+import { localizedPath } from "@/i18n/config";
 
 /**
- * Interactive directory (TZ 3.1 + 3.5): full-catalogue search + filters +
- * sort in a single place. Search runs client-side via Fuse.js on a
- * prebuilt index (TZ 5.2). Filters open in a side panel on mobile
- * (TZ 5.4 mobile filters as separate panel).
+ * Interactive directory: full-catalogue search + filters + sort in a
+ * single place. Search runs client-side via Fuse.js on a prebuilt index
+ * (localized), so Russian queries match Russian text. Filters open in a
+ * side panel on mobile.
  */
 export function DirectoryClient({
+  lang,
+  dict,
   profiles,
   docs,
   directions,
@@ -29,6 +34,8 @@ export function DirectoryClient({
   countries,
   initial,
 }: {
+  lang: Locale;
+  dict: Dictionary;
   profiles: Profile[];
   docs: SearchDoc[];
   directions: Direction[];
@@ -39,33 +46,29 @@ export function DirectoryClient({
   const [filters, setFilters] = useState<FilterState>(initial);
   const [panelOpen, setPanelOpen] = useState(false);
 
-  // Fuse index is stable across renders — rebuild only if docs identity changes.
   const fuse = useMemo(
     () => new Fuse(docs, { keys: fuseKeys, threshold: 0.38, ignoreLocation: true, includeScore: false }),
     [docs],
   );
 
-  // Fast lookup slug -> profile so a Fuse hit maps back to the full Profile.
   const bySlug = useMemo(() => {
     const m = new Map<string, Profile>();
     for (const p of profiles) m.set(p.slug, p);
     return m;
   }, [profiles]);
 
-  // Keep the URL in sync so results are shareable and browser back works.
+  // Keep the URL in sync (locale-aware) so results are shareable.
   useEffect(() => {
     const q = filtersToQuery(filters);
-    const url = `/directory${q}`;
+    const url = `${localizedPath(lang, "/directory")}${q}`;
     window.history.replaceState(null, "", url);
-  }, [filters]);
+  }, [filters, lang]);
 
-  // Categories dependent on the selected direction (empty = all).
   const categoriesForFilter = useMemo(() => {
     if (!filters.direction) return categories;
     return categories.filter((c) => c.direction === filters.direction);
   }, [categories, filters.direction]);
 
-  // Compute the visible list: search → filter → sort.
   const results = useMemo(() => {
     let list: Profile[];
     if (filters.q.trim().length > 0) {
@@ -90,7 +93,6 @@ export function DirectoryClient({
   const update = <K extends keyof FilterState>(k: K, v: FilterState[K]) => {
     setFilters((prev) => {
       const next = { ...prev, [k]: v };
-      // Clear category if direction changed and category no longer belongs to it.
       if (k === "direction" && next.category) {
         const c = categories.find((x) => x.slug === next.category);
         if (c && v && c.direction !== v) next.category = "";
@@ -103,7 +105,7 @@ export function DirectoryClient({
 
   return (
     <div className="mt-6">
-      {/* --- Search bar (works on top of any active filters) --- */}
+      {/* --- Search bar --- */}
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
         <div className="relative flex-1">
           <span
@@ -116,8 +118,8 @@ export function DirectoryClient({
             type="search"
             value={filters.q}
             onChange={(e) => update("q", e.target.value)}
-            placeholder="Search creators, categories, products…"
-            aria-label="Search creators"
+            placeholder={dict.directory.searchPlaceholder}
+            aria-label={dict.directory.searchAria}
             className="h-11 w-full rounded-xl border pl-10 pr-3 text-[0.95rem] outline-none transition-colors focus:border-[var(--color-accent)]"
             style={{ borderColor: "var(--color-line)", background: "#fff" }}
           />
@@ -126,10 +128,10 @@ export function DirectoryClient({
           type="button"
           onClick={() => setPanelOpen(true)}
           className="btn btn-quiet !h-11 !py-0 !px-4 md:hidden"
-          aria-label="Open filters"
+          aria-label={dict.directory.filters}
         >
           <FilterIcon size={18} />
-          Filters
+          {dict.directory.filters}
           {activeFilterCount > 0 && (
             <span
               className="ml-1 grid h-5 min-w-5 place-items-center rounded-full px-1 text-[0.7rem] font-bold text-white"
@@ -141,11 +143,11 @@ export function DirectoryClient({
         </button>
       </div>
 
-      {/* --- Two columns on desktop: sidebar filters + results --- */}
+      {/* --- Two columns on desktop --- */}
       <div className="mt-5 grid gap-6 md:grid-cols-[260px_1fr]">
-        {/* Desktop sidebar */}
         <aside className="hidden md:block">
           <FiltersPanel
+            dict={dict}
             filters={filters}
             update={update}
             clearAll={clearAll}
@@ -155,9 +157,9 @@ export function DirectoryClient({
           />
         </aside>
 
-        {/* Results column */}
         <div>
           <ResultsHeader
+            dict={dict}
             count={results.length}
             filters={filters}
             update={update}
@@ -168,17 +170,23 @@ export function DirectoryClient({
           />
           <div className="mt-4">
             <ProfileGrid
+              lang={lang}
+              dict={dict}
               profiles={results}
-              emptyTitle={filters.q ? `No matches for “${filters.q}”` : "No profiles match these filters"}
-              emptyMessage="Try a broader search or clear a filter."
+              emptyTitle={
+                filters.q
+                  ? `${dict.directory.noMatchesFor} “${filters.q}”`
+                  : dict.directory.noMatchesFilters
+              }
+              emptyMessage={dict.directory.noMatchesHint}
             />
           </div>
         </div>
       </div>
 
-      {/* --- Mobile filter panel (slides in from the right) --- */}
+      {/* --- Mobile filter panel --- */}
       {panelOpen && (
-        <div className="fixed inset-0 z-50 md:hidden" role="dialog" aria-modal="true" aria-label="Filters">
+        <div className="fixed inset-0 z-50 md:hidden" role="dialog" aria-modal="true" aria-label={dict.directory.filtersTitle}>
           <div
             className="absolute inset-0 bg-black/40"
             onClick={() => setPanelOpen(false)}
@@ -190,13 +198,13 @@ export function DirectoryClient({
               style={{ borderColor: "var(--color-line)" }}
             >
               <span className="font-semibold" style={{ fontFamily: "var(--font-display)" }}>
-                Filters
+                {dict.directory.filtersTitle}
               </span>
               <button
                 type="button"
                 onClick={() => setPanelOpen(false)}
                 className="grid h-10 w-10 place-items-center rounded-lg"
-                aria-label="Close filters"
+                aria-label={dict.header.closeMenu}
               >
                 <CloseIcon />
               </button>
@@ -204,6 +212,7 @@ export function DirectoryClient({
 
             <div className="flex-1 overflow-y-auto p-4">
               <FiltersPanel
+                dict={dict}
                 filters={filters}
                 update={update}
                 clearAll={clearAll}
@@ -218,14 +227,14 @@ export function DirectoryClient({
               style={{ borderColor: "var(--color-line)" }}
             >
               <button type="button" onClick={clearAll} className="btn btn-quiet">
-                Clear all
+                {dict.directory.clearAll}
               </button>
               <button
                 type="button"
                 onClick={() => setPanelOpen(false)}
                 className="btn btn-ink"
               >
-                Show {results.length}
+                {dict.directory.show} {results.length}
               </button>
             </div>
           </div>
@@ -235,9 +244,8 @@ export function DirectoryClient({
   );
 }
 
-/* ---------------- Filters panel (shared: sidebar + mobile) ---------------- */
-
 function FiltersPanel({
+  dict,
   filters,
   update,
   clearAll,
@@ -245,6 +253,7 @@ function FiltersPanel({
   categoriesForFilter,
   countries,
 }: {
+  dict: Dictionary;
   filters: FilterState;
   update: <K extends keyof FilterState>(k: K, v: FilterState[K]) => void;
   clearAll: () => void;
@@ -254,13 +263,13 @@ function FiltersPanel({
 }) {
   return (
     <div className="flex flex-col gap-5">
-      <FilterGroup label="Direction">
+      <FilterGroup label={dict.directory.direction}>
         <select
           value={filters.direction}
           onChange={(e) => update("direction", e.target.value)}
           className="select"
         >
-          <option value="">All directions</option>
+          <option value="">{dict.directory.allDirections}</option>
           {directions.map((d) => (
             <option key={d.slug} value={d.slug}>
               {d.name}
@@ -269,13 +278,13 @@ function FiltersPanel({
         </select>
       </FilterGroup>
 
-      <FilterGroup label="Category">
+      <FilterGroup label={dict.directory.category}>
         <select
           value={filters.category}
           onChange={(e) => update("category", e.target.value)}
           className="select"
         >
-          <option value="">All categories</option>
+          <option value="">{dict.directory.allCategories}</option>
           {categoriesForFilter.map((c) => (
             <option key={c.slug} value={c.slug}>
               {c.name}
@@ -284,13 +293,13 @@ function FiltersPanel({
         </select>
       </FilterGroup>
 
-      <FilterGroup label="Country">
+      <FilterGroup label={dict.directory.country}>
         <select
           value={filters.country}
           onChange={(e) => update("country", e.target.value)}
           className="select"
         >
-          <option value="">Any country</option>
+          <option value="">{dict.directory.anyCountry}</option>
           {countries.map((c) => (
             <option key={c} value={c}>
               {c}
@@ -299,30 +308,30 @@ function FiltersPanel({
         </select>
       </FilterGroup>
 
-      <FilterGroup label="Verification">
+      <FilterGroup label={dict.directory.verification}>
         <div className="flex gap-2">
           <ChoiceChip
             active={filters.verified === "any"}
             onClick={() => update("verified", "any")}
-            label="Any"
+            label={dict.directory.any}
           />
           <ChoiceChip
             active={filters.verified === "verified"}
             onClick={() => update("verified", "verified")}
-            label="Verified only"
+            label={dict.directory.verifiedOnly}
           />
         </div>
       </FilterGroup>
 
-      <FilterGroup label="Sort by">
+      <FilterGroup label={dict.directory.sortBy}>
         <select
           value={filters.sort}
           onChange={(e) => update("sort", e.target.value as FilterState["sort"])}
           className="select"
         >
-          <option value="newest">Newest first</option>
-          <option value="featured">Featured first</option>
-          <option value="az">A to Z</option>
+          <option value="newest">{dict.directory.newestFirst}</option>
+          <option value="featured">{dict.directory.featuredFirst}</option>
+          <option value="az">{dict.directory.aToZ}</option>
         </select>
       </FilterGroup>
 
@@ -332,7 +341,7 @@ function FiltersPanel({
         className="mt-1 text-left text-[0.9rem] font-medium"
         style={{ color: "var(--color-accent)" }}
       >
-        Clear all filters
+        {dict.directory.clearAllFilters}
       </button>
     </div>
   );
@@ -378,9 +387,8 @@ function ChoiceChip({
   );
 }
 
-/* ---------------- Results header: count + active chips ---------------- */
-
 function ResultsHeader({
+  dict,
   count,
   filters,
   update,
@@ -389,6 +397,7 @@ function ResultsHeader({
   categories,
   activeFilterCount,
 }: {
+  dict: Dictionary;
   count: number;
   filters: FilterState;
   update: <K extends keyof FilterState>(k: K, v: FilterState[K]) => void;
@@ -404,11 +413,11 @@ function ResultsHeader({
     <div className="flex flex-col gap-3">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <p className="text-[0.9rem]" style={{ color: "var(--color-muted-soft)" }}>
-          {count} {count === 1 ? "profile" : "profiles"}
+          {count} {count === 1 ? dict.common.profile : dict.common.profiles}
           {filters.q && (
             <>
               {" "}
-              for <span style={{ color: "var(--color-ink)" }}>“{filters.q}”</span>
+              {dict.directory.forQuery} <span style={{ color: "var(--color-ink)" }}>“{filters.q}”</span>
             </>
           )}
         </p>
@@ -419,7 +428,7 @@ function ResultsHeader({
             className="text-[0.85rem] font-medium"
             style={{ color: "var(--color-accent)" }}
           >
-            Clear all
+            {dict.directory.clearAll}
           </button>
         )}
       </div>
@@ -427,20 +436,21 @@ function ResultsHeader({
       {activeFilterCount > 0 && (
         <div className="flex flex-wrap gap-1.5">
           {filters.direction && (
-            <ActiveChip label={dirName(filters.direction)} onRemove={() => update("direction", "")} />
+            <ActiveChip dict={dict} label={dirName(filters.direction)} onRemove={() => update("direction", "")} />
           )}
           {filters.category && (
-            <ActiveChip label={catName(filters.category)} onRemove={() => update("category", "")} />
+            <ActiveChip dict={dict} label={catName(filters.category)} onRemove={() => update("category", "")} />
           )}
           {filters.country && (
-            <ActiveChip label={filters.country} onRemove={() => update("country", "")} />
+            <ActiveChip dict={dict} label={filters.country} onRemove={() => update("country", "")} />
           )}
           {filters.verified === "verified" && (
-            <ActiveChip label="Verified only" onRemove={() => update("verified", "any")} />
+            <ActiveChip dict={dict} label={dict.directory.verifiedOnly} onRemove={() => update("verified", "any")} />
           )}
           {filters.sort !== "newest" && (
             <ActiveChip
-              label={`Sort: ${filters.sort === "featured" ? "featured first" : "A→Z"}`}
+              dict={dict}
+              label={filters.sort === "featured" ? dict.directory.sortLabelFeatured : dict.directory.sortLabelAz}
               onRemove={() => update("sort", "newest")}
             />
           )}
@@ -450,7 +460,7 @@ function ResultsHeader({
   );
 }
 
-function ActiveChip({ label, onRemove }: { label: string; onRemove: () => void }) {
+function ActiveChip({ dict, label, onRemove }: { dict: Dictionary; label: string; onRemove: () => void }) {
   return (
     <span
       className="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[0.82rem]"
@@ -464,7 +474,7 @@ function ActiveChip({ label, onRemove }: { label: string; onRemove: () => void }
       <button
         type="button"
         onClick={onRemove}
-        aria-label={`Remove ${label}`}
+        aria-label={`${dict.directory.removePrefix} ${label}`}
         className="grid h-4 w-4 place-items-center rounded-full"
       >
         <CloseIcon size={12} strokeWidth={2.6} />

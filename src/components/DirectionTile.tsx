@@ -1,6 +1,7 @@
-import Link from "next/link";
+import { LocaleLink } from "./LocaleLink";
 import type { DirectionColor } from "@/lib/types";
 import { DirectionIcon } from "./DirectionIcon";
+import type { Locale } from "@/i18n/config";
 
 const bgVar: Record<DirectionColor | "all", string> = {
   art: "var(--color-dir-art-bg)",
@@ -31,18 +32,20 @@ const inkVar: Record<DirectionColor | "all", string> = {
  * own colour embedded straight into the tile (no separate circle behind it).
  */
 export function DirectionTile({
+  lang,
   href,
   title,
   color,
   subtitle,
 }: {
+  lang: Locale;
   href: string;
   title: string;
   color: DirectionColor | "all";
   subtitle?: string;
 }) {
   return (
-    <Link href={href} className="tile" style={{ background: bgVar[color] }}>
+    <LocaleLink lang={lang} href={href} className="tile" style={{ background: bgVar[color] }}>
       <span style={{ color: inkVar[color] }}>
         <DirectionIcon color={color} size={40} />
       </span>
@@ -54,6 +57,6 @@ export function DirectionTile({
           </span>
         )}
       </span>
-    </Link>
+    </LocaleLink>
   );
 }

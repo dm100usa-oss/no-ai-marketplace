@@ -3,18 +3,22 @@
 import Link from "next/link";
 import { isExternalCheckout } from "@/lib/config";
 import { trackEvent } from "@/lib/analytics";
+import { localizeHref } from "./LocaleLink";
+import type { Locale } from "@/i18n/config";
 
 /**
- * Plan call-to-action button (stage 5 + 6). Sends a checkout_click event
- * (TZ 5.6), then either opens the external Stripe link in a new tab with
- * safe attributes or navigates to the join form client-side.
+ * Plan call-to-action button. Sends a checkout_click event, then either
+ * opens the external Stripe link in a new tab with safe attributes or
+ * navigates to the (localized) join form client-side.
  */
 export function CheckoutButton({
+  lang,
   href,
   label,
   plan,
   className,
 }: {
+  lang: Locale;
   href: string;
   label: string;
   plan: "free" | "monthly" | "yearly";
@@ -43,7 +47,7 @@ export function CheckoutButton({
   }
 
   return (
-    <Link href={href} onClick={onClick} className={className}>
+    <Link href={localizeHref(lang, href)} onClick={onClick} className={className}>
       {label}
     </Link>
   );

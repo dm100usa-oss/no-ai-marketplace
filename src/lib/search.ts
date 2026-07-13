@@ -132,6 +132,17 @@ export function applySort(profiles: Profile[], sort: FilterState["sort"]): Profi
   });
 }
 
+/** Build the searchable documents from localized data, so Russian search
+ *  matches Russian text. Categories/directions arrays should already be
+ *  localized by the caller. */
+export function buildSearchDocsLocalized(
+  profiles: Profile[],
+  categories: Category[],
+  directions: Direction[],
+): SearchDoc[] {
+  return buildSearchDocs(profiles, categories, directions);
+}
+
 /** Serialise filter state to a URL query string, omitting defaults so
  *  shareable links stay short. */
 export function filtersToQuery(f: FilterState): string {

@@ -1,17 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import type { Dictionary } from "@/i18n/types";
 
 /**
- * Report form (TZ Etap 4). Kept intentionally simple: no backend on early
- * stages — the details go through a mailto so the owner can act on them,
- * with a graceful fallback if the browser can't open the mail client.
- * When wiring to a real endpoint later, only the submit handler changes.
+ * Report form. Kept intentionally simple: no backend — the details go
+ * through a mailto so the owner can act on them. When wiring to a real
+ * endpoint later, only the submit handler changes.
  */
 export function ReportForm({
+  dict,
   profileName,
   profileSlug,
 }: {
+  dict: Dictionary;
   profileName: string;
   profileSlug: string;
 }) {
@@ -26,7 +28,6 @@ export function ReportForm({
     const body = encodeURIComponent(
       `Reported profile: ${profileName}\nProfile URL: ${profileSlug}\n\nReason: ${reason}\n\nDetails:\n${details.trim() || "(none)"}\n`,
     );
-    // Open the user's mail client; no data leaves the browser otherwise.
     window.location.href = `mailto:hello@no-ai-marketplace.example?subject=${subject}&body=${body}`;
     setStatus("sent");
   };
@@ -37,14 +38,14 @@ export function ReportForm({
         className="rounded-xl border p-4 text-[0.9rem]"
         style={{ borderColor: "var(--color-line)", color: "var(--color-muted)" }}
       >
-        Something wrong with this profile?{" "}
+        {dict.report.prompt}{" "}
         <button
           type="button"
           onClick={() => setOpen(true)}
           className="font-semibold"
           style={{ color: "var(--color-accent)" }}
         >
-          Report a problem
+          {dict.report.reportProblem}
         </button>
       </div>
     );
@@ -56,8 +57,7 @@ export function ReportForm({
         className="rounded-xl border p-4 text-[0.95rem]"
         style={{ borderColor: "var(--color-line)", background: "var(--color-brand-soft)", color: "var(--color-muted)" }}
       >
-        Thanks — your mail client should have opened with the report ready to send.
-        We review every report by hand.
+        {dict.report.sentThanks}
       </div>
     );
   }
@@ -68,34 +68,34 @@ export function ReportForm({
       className="rounded-xl border p-5"
       style={{ borderColor: "var(--color-line)" }}
     >
-      <h3 className="text-[1.05rem]">Report a problem</h3>
+      <h3 className="text-[1.05rem]">{dict.report.title}</h3>
       <p className="mt-1 text-[0.9rem]" style={{ color: "var(--color-muted-soft)" }}>
-        Tell us what looks wrong. We read every report and act by hand.
+        {dict.report.subtitle}
       </p>
 
       <label className="mt-4 block text-[0.85rem] font-semibold" style={{ color: "var(--color-muted)" }}>
-        Reason
+        {dict.report.reason}
         <select
           value={reason}
           onChange={(e) => setReason(e.target.value)}
           className="select mt-1.5"
         >
-          <option value="misuse-of-ai">Suspected misuse of AI</option>
-          <option value="wrong-info">Wrong information on the profile</option>
-          <option value="impersonation">Impersonation or stolen identity</option>
-          <option value="broken-links">Broken or misleading links</option>
-          <option value="copyright">Copyright complaint</option>
-          <option value="other">Other</option>
+          <option value="misuse-of-ai">{dict.report.reasonMisuse}</option>
+          <option value="wrong-info">{dict.report.reasonWrongInfo}</option>
+          <option value="impersonation">{dict.report.reasonImpersonation}</option>
+          <option value="broken-links">{dict.report.reasonBrokenLinks}</option>
+          <option value="copyright">{dict.report.reasonCopyright}</option>
+          <option value="other">{dict.report.reasonOther}</option>
         </select>
       </label>
 
       <label className="mt-4 block text-[0.85rem] font-semibold" style={{ color: "var(--color-muted)" }}>
-        Details
+        {dict.report.details}
         <textarea
           value={details}
           onChange={(e) => setDetails(e.target.value)}
           rows={4}
-          placeholder="What did you notice? Any evidence we should look at?"
+          placeholder={dict.report.detailsPlaceholder}
           className="mt-1.5 w-full rounded-lg border px-3 py-2 text-[0.95rem] outline-none focus:border-[var(--color-accent)]"
           style={{ borderColor: "var(--color-line)" }}
         />
@@ -103,18 +103,18 @@ export function ReportForm({
 
       <div className="mt-4 flex flex-wrap gap-2">
         <button type="submit" className="btn btn-ink">
-          Send report
+          {dict.report.sendReport}
         </button>
         <button
           type="button"
           onClick={() => setOpen(false)}
           className="btn btn-quiet"
         >
-          Cancel
+          {dict.report.cancel}
         </button>
       </div>
       <p className="mt-3 text-[0.8rem]" style={{ color: "var(--color-muted-soft)" }}>
-        Your mail client opens with the report ready to send. We do not track submissions inside this form.
+        {dict.report.footNote}
       </p>
     </form>
   );

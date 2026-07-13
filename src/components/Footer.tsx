@@ -1,17 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import { site, footerNav, socialLinks } from "@/lib/config";
+import { LocaleLink } from "./LocaleLink";
+import { socialLinks } from "@/lib/config";
 import { ChevronDown } from "./icons";
+import type { Dictionary } from "@/i18n/types";
+import type { Locale } from "@/i18n/config";
+import { footerNav, type NavGroup } from "@/i18n/nav";
 
 /**
- * Footer (TZ Etap 1): logo, description, link groups, social, copyright.
+ * Footer: logo, description, link groups, social, copyright.
  * On mobile each group is an accordion (same device as the mobile menu).
  * On desktop all groups are open columns.
  */
-export function Footer() {
+export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const year = new Date().getFullYear();
+  const groups = footerNav(dict);
 
   return (
     <footer className="section-dark mt-auto">
@@ -33,16 +37,16 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-3 text-[0.92rem] leading-relaxed text-white/70">
-              {site.description}
+              {dict.site.description}
             </p>
             <p className="mt-3 text-[0.92rem] font-semibold text-white/90" style={{ fontFamily: "var(--font-display)" }}>
-              {site.slogan}
+              {dict.site.slogan}
             </p>
           </div>
 
           {/* Link groups — desktop columns */}
           <div className="hidden md:contents">
-            {footerNav.map((group) => (
+            {groups.map((group) => (
               <div key={group.title}>
                 <h3 className="text-[0.78rem] font-semibold uppercase tracking-wide text-white/50">
                   {group.title}
@@ -50,9 +54,9 @@ export function Footer() {
                 <ul className="mt-3 space-y-2.5">
                   {group.links.map((l) => (
                     <li key={l.href}>
-                      <Link href={l.href} className="text-[0.92rem] text-white/75 transition-colors hover:text-white">
+                      <LocaleLink lang={lang} href={l.href} className="text-[0.92rem] text-white/75 transition-colors hover:text-white">
                         {l.label}
-                      </Link>
+                      </LocaleLink>
                     </li>
                   ))}
                 </ul>
@@ -62,8 +66,8 @@ export function Footer() {
 
           {/* Link groups — mobile accordion */}
           <div className="md:hidden">
-            {footerNav.map((group) => (
-              <FooterAccordion key={group.title} title={group.title} links={group.links} />
+            {groups.map((group) => (
+              <FooterAccordion key={group.title} lang={lang} group={group} />
             ))}
           </div>
         </div>
@@ -71,7 +75,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-[0.85rem] text-white/55">
-            © {year} {site.name}. Human-made creations.
+            © {year} {dict.site.name}. {dict.site.footerNote}
           </p>
           <ul className="flex gap-4">
             {socialLinks.map((s) => (
@@ -92,13 +96,7 @@ export function Footer() {
   );
 }
 
-function FooterAccordion({
-  title,
-  links,
-}: {
-  title: string;
-  links: readonly { label: string; href: string }[];
-}) {
+function FooterAccordion({ lang, group }: { lang: Locale; group: NavGroup }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="border-t border-white/10">
@@ -108,16 +106,16 @@ function FooterAccordion({
         aria-expanded={open}
         className="flex w-full items-center justify-between py-3.5 text-left"
       >
-        <span className="text-[0.82rem] font-semibold uppercase tracking-wide text-white/70">{title}</span>
+        <span className="text-[0.82rem] font-semibold uppercase tracking-wide text-white/70">{group.title}</span>
         <ChevronDown className={`text-white/60 transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
       {open && (
         <ul className="pb-3 space-y-2.5">
-          {links.map((l) => (
+          {group.links.map((l) => (
             <li key={l.href}>
-              <Link href={l.href} className="text-[0.92rem] text-white/75">
+              <LocaleLink lang={lang} href={l.href} className="text-[0.92rem] text-white/75">
                 {l.label}
-              </Link>
+              </LocaleLink>
             </li>
           ))}
         </ul>

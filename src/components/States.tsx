@@ -1,13 +1,16 @@
-import Link from "next/link";
+import { LocaleLink } from "./LocaleLink";
 import type { ReactNode } from "react";
+import type { Locale } from "@/i18n/config";
 
-/** Empty state — an invitation to act, not a dead end (design guidance). */
+/** Empty state — an invitation to act, not a dead end. All strings passed in. */
 export function EmptyState({
+  lang,
   title,
   message,
   actionHref,
   actionLabel,
 }: {
+  lang: Locale;
   title: string;
   message: string;
   actionHref?: string;
@@ -27,23 +30,34 @@ export function EmptyState({
       <h3 className="text-[1.1rem]">{title}</h3>
       <p className="mt-2 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>{message}</p>
       {actionHref && actionLabel && (
-        <Link href={actionHref} className="btn btn-accent mt-5">{actionLabel}</Link>
+        <LocaleLink lang={lang} href={actionHref} className="btn btn-accent mt-5">{actionLabel}</LocaleLink>
       )}
     </div>
   );
 }
 
-/** Error state — explains what happened and how to fix it, in the
- *  interface's voice. Errors don't apologize. */
-export function ErrorState({ message, retryHref }: { message?: string; retryHref?: string }) {
+/** Error state — explains what happened and how to fix it. Strings passed in. */
+export function ErrorState({
+  lang,
+  title,
+  message,
+  retryHref,
+  retryLabel,
+}: {
+  lang: Locale;
+  title: string;
+  message: string;
+  retryHref?: string;
+  retryLabel?: string;
+}) {
   return (
     <div className="mx-auto max-w-md py-16 text-center">
-      <h3 className="text-[1.1rem]">Something didn&apos;t load</h3>
+      <h3 className="text-[1.1rem]">{title}</h3>
       <p className="mt-2 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
-        {message ?? "This page couldn't be shown. Refresh to try again."}
+        {message}
       </p>
-      {retryHref && (
-        <Link href={retryHref} className="btn btn-quiet mt-5">Back to directory</Link>
+      {retryHref && retryLabel && (
+        <LocaleLink lang={lang} href={retryHref} className="btn btn-quiet mt-5">{retryLabel}</LocaleLink>
       )}
     </div>
   );
@@ -82,10 +96,12 @@ export function CardSkeleton() {
 
 /** Section heading with optional "view all" link. */
 export function SectionHeading({
+  lang,
   title,
   action,
   children,
 }: {
+  lang: Locale;
   title: string;
   action?: { href: string; label: string };
   children?: ReactNode;
@@ -97,9 +113,9 @@ export function SectionHeading({
         {children && <p className="lead mt-1.5">{children}</p>}
       </div>
       {action && (
-        <Link href={action.href} className="shrink-0 text-[0.92rem] font-semibold" style={{ color: "var(--color-accent)" }}>
+        <LocaleLink lang={lang} href={action.href} className="shrink-0 text-[0.92rem] font-semibold" style={{ color: "var(--color-accent)" }}>
           {action.label} →
-        </Link>
+        </LocaleLink>
       )}
     </div>
   );

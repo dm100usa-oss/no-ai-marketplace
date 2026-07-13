@@ -1,11 +1,21 @@
-import Link from "next/link";
+import { LocaleLink } from "./LocaleLink";
+import type { Locale } from "@/i18n/config";
 
 /** Wordmark logo. "No AI" carries the accent, "Marketplace" quieter. */
-export function Logo({ className = "" }: { className?: string }) {
+export function Logo({
+  lang,
+  ariaLabel,
+  className = "",
+}: {
+  lang: Locale;
+  ariaLabel: string;
+  className?: string;
+}) {
   return (
-    <Link
+    <LocaleLink
+      lang={lang}
       href="/"
-      aria-label="No AI Marketplace — home"
+      aria-label={ariaLabel}
       className={`inline-flex items-baseline gap-1.5 ${className}`}
       style={{ fontFamily: "var(--font-display)" }}
     >
@@ -21,6 +31,6 @@ export function Logo({ className = "" }: { className?: string }) {
           AI Marketplace
         </span>
       </span>
-    </Link>
+    </LocaleLink>
   );
 }

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { LocaleLink } from "@/components/LocaleLink";
 import type { Profile } from "@/lib/types";
 import { site } from "@/lib/config";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -7,26 +7,41 @@ import { CreatorCard } from "@/components/CreatorCard";
 import { GalleryLightbox } from "@/components/GalleryLightbox";
 import { ReportForm } from "@/components/ReportForm";
 import { ExternalLink, ArrowRight, CheckShield } from "@/components/icons";
+import { localizedPath } from "@/i18n/config";
+import type { Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/types";
 import {
-  categoryName,
-  getAllProfiles,
-  getCategory,
-  directionOfCategory,
-  resolveVisit,
-} from "@/lib/data";
+  categoryNameL,
+  getAllProfilesL,
+  getCategoryL,
+  directionOfCategoryL,
+  resolveVisitL,
+} from "@/lib/localized-data";
 
 /**
- * Full profile view (TZ Etap 4). Covers every field on the profile:
- * identity, category, country, description, services and products,
- * portfolio and gallery, video, languages, working process, AI statement,
- * verification detail, all external links, Visit buttons, related profiles
- * in the same category, and a report form. Same component powers both
- * creator and company pages — profileType only changes JSON-LD.
+ * Full profile view. Covers every field on the profile: identity,
+ * category, country, description, services and products, portfolio and
+ * gallery, video, languages, working process, AI statement, verification
+ * detail, all external links, Visit buttons, related profiles in the same
+ * category, and a report form. Same component powers both creator and
+ * company pages — profileType only changes JSON-LD.
  */
-export function ProfileView({ profile: p }: { profile: Profile }) {
-  const dir = directionOfCategory(p.mainCategory);
-  const cat = getCategory(p.mainCategory);
-  const visit = resolveVisit(p);
+export function ProfileView({
+  lang,
+  dict,
+  profile: p,
+}: {
+  lang: Locale;
+  dict: Dictionary;
+  profile: Profile;
+}) {
+  const dir = directionOfCategoryL(p.mainCategory, lang);
+  const cat = getCategoryL(p.mainCategory, lang);
+  const visit = resolveVisitL(p, {
+    portfolio: dict.profile.visitPortfolio,
+    website: dict.profile.visitWebsite,
+    visit: dict.profile.visit,
+  });
   const basePath = p.profileType === "company" ? "/companies" : "/creators";
 
   const initials = p.name
@@ -36,22 +51,23 @@ export function ProfileView({ profile: p }: { profile: Profile }) {
     .join("")
     .toUpperCase();
 
-  // Person / Organization + ProfilePage (TZ 5.3)
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
+    inLanguage: lang,
     mainEntity: {
       "@type": p.profileType === "company" ? "Organization" : "Person",
       name: p.name,
       description: p.shortDescription,
       address: { "@type": "PostalAddress", addressCountry: p.country, addressLocality: p.city },
-      url: `${site.url}${basePath}/${p.slug}`,
+      url: `${site.url}${localizedPath(lang, `${basePath}/${p.slug}`)}`,
     },
   };
 
-  const externalLinks = collectLinks(p);
-  const relatedProfiles = getRelatedProfiles(p, 3);
-  const workingProcess = deriveWorkingProcess(p);
+  const externalLinks = collectLinks(p, dict);
+  const relatedProfiles = getRelatedProfiles(p, 3, lang);
+  const workingProcess = deriveWorkingProcess(p, dict);
+  const kindWord = p.profileType === "company" ? dict.profile.kindStudio : dict.profile.kindCreator;
 
   return (
     <div className="container-page section">
@@ -62,8 +78,9 @@ export function ProfileView({ profile: p }: { profile: Profile }) {
       />
 
       <Breadcrumbs
+        lang={lang}
         items={[
-          { label: "Home", href: "/" },
+          { label: dict.common.home, href: "/" },
           ...(dir ? [{ label: dir.name, href: `/directions/${dir.slug}` }] : []),
           ...(cat ? [{ label: cat.name, href: `/categories/${cat.slug}` }] : []),
           { label: p.name },
@@ -79,7 +96,7 @@ export function ProfileView({ profile: p }: { profile: Profile }) {
               // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={p.avatar}
-                alt={`Portrait of ${p.name}`}
+                alt={p.name}
                 className="h-16 w-16 shrink-0 rounded-2xl object-cover"
               />
             ) : (
@@ -94,11 +111,11 @@ export function ProfileView({ profile: p }: { profile: Profile }) {
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-2">
                 <h1 className="text-[1.75rem] leading-tight">{p.name}</h1>
-                <FeaturedBadge status={p.status} />
-                <VerifiedBadge status={p.verificationStatus} />
+                <FeaturedBadge status={p.status} dict={dict} />
+                <VerifiedBadge status={p.verificationStatus} dict={dict} />
               </div>
               <p className="mt-1 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
-                {cat ? cat.name : categoryName(p.mainCategory)}
+                {cat ? cat.name : categoryNameL(p.mainCategory, lang)}
                 {" · "}
                 {p.city ? `${p.city}, ` : ""}
                 {p.country}
@@ -120,10 +137,10 @@ export function ProfileView({ profile: p }: { profile: Profile }) {
                 }
                 name={p.name}
                 variant="hero"
-                heroAlt={`Featured work by ${p.name}`}
+                heroAlt={p.name}
               />
             ) : (
-              <span className="text-[0.85rem]">Human-made work</span>
+              <span className="text-[0.85rem]">{dict.common.humanMadeWork}</span>
             )}
           </div>
 
@@ -144,7 +161,7 @@ export function ProfileView({ profile: p }: { profile: Profile }) {
             <div className="mt-8 grid gap-6 sm:grid-cols-2">
               {p.services?.length ? (
                 <div>
-                  <h3 className="mb-2">Services</h3>
+                  <h3 className="mb-2">{dict.profile.services}</h3>
                   <ul className="space-y-1.5">
                     {p.services.map((s) => (
                       <li key={s} className="flex gap-2 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
@@ -157,7 +174,7 @@ export function ProfileView({ profile: p }: { profile: Profile }) {
               ) : null}
               {p.products?.length ? (
                 <div>
-                  <h3 className="mb-2">Products</h3>
+                  <h3 className="mb-2">{dict.profile.products}</h3>
                   <ul className="space-y-1.5">
                     {p.products.map((s) => (
                       <li key={s} className="flex gap-2 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
@@ -174,9 +191,9 @@ export function ProfileView({ profile: p }: { profile: Profile }) {
           {/* Portfolio / gallery */}
           {p.gallery?.length ? (
             <div className="mt-10">
-              <h2 className="!text-[1.35rem]">Portfolio</h2>
+              <h2 className="!text-[1.35rem]">{dict.profile.portfolio}</h2>
               <p className="mt-1 text-[0.92rem]" style={{ color: "var(--color-muted-soft)" }}>
-                A selection of recent work. Tap any piece to view it full screen.
+                {dict.profile.portfolioHint}
               </p>
               <GalleryLightbox images={p.gallery} name={p.name} />
             </div>
@@ -185,7 +202,7 @@ export function ProfileView({ profile: p }: { profile: Profile }) {
           {/* Video links */}
           {p.videoLinks?.length ? (
             <div className="mt-10">
-              <h2 className="!text-[1.35rem]">Video</h2>
+              <h2 className="!text-[1.35rem]">{dict.profile.video}</h2>
               <ul className="mt-3 space-y-2">
                 {p.videoLinks.map((url) => (
                   <li key={url}>
@@ -196,7 +213,7 @@ export function ProfileView({ profile: p }: { profile: Profile }) {
                       className="inline-flex items-center gap-2 text-[0.95rem] font-semibold"
                       style={{ color: "var(--color-accent)" }}
                     >
-                      Watch on external platform
+                      {dict.profile.watchExternal}
                       <ExternalLink size={15} />
                     </a>
                   </li>
@@ -208,9 +225,11 @@ export function ProfileView({ profile: p }: { profile: Profile }) {
           {/* Working process */}
           {workingProcess.length > 0 && (
             <div className="mt-10">
-              <h2 className="!text-[1.35rem]">Working process</h2>
+              <h2 className="!text-[1.35rem]">{dict.profile.workingProcess}</h2>
               <p className="mt-1 text-[0.92rem]" style={{ color: "var(--color-muted-soft)" }}>
-                How {p.profileType === "company" ? "the studio" : "the creator"} typically works with clients.
+                {p.profileType === "company"
+                  ? dict.profile.workingProcessHintStudio
+                  : dict.profile.workingProcessHintCreator}
               </p>
               <ol className="mt-4 space-y-3">
                 {workingProcess.map((step, i) => (
@@ -236,7 +255,7 @@ export function ProfileView({ profile: p }: { profile: Profile }) {
               className="mt-10 rounded-xl border p-4"
               style={{ borderColor: "var(--color-line)", background: "var(--color-brand-soft)" }}
             >
-              <h3 className="mb-1 text-[1rem]">On the use of AI</h3>
+              <h3 className="mb-1 text-[1rem]">{dict.profile.onAiTitle}</h3>
               <p className="text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
                 {p.aiUsageStatement}
               </p>
@@ -247,9 +266,9 @@ export function ProfileView({ profile: p }: { profile: Profile }) {
           {p.verificationStatus !== "none" && (
             <div className="mt-4 rounded-xl border p-4" style={{ borderColor: "var(--color-line)" }}>
               <div className="mb-2 flex items-center gap-2">
-                <VerifiedBadge status={p.verificationStatus} />
+                <VerifiedBadge status={p.verificationStatus} dict={dict} />
                 <span className="text-[0.85rem]" style={{ color: "var(--color-muted-soft)" }}>
-                  Reviewed by hand
+                  {dict.profile.reviewedByHand}
                 </span>
               </div>
               {p.verificationDescription && (
@@ -257,13 +276,14 @@ export function ProfileView({ profile: p }: { profile: Profile }) {
                   {p.verificationDescription}
                 </p>
               )}
-              <Link
+              <LocaleLink
+                lang={lang}
                 href="/verified"
                 className="mt-2 inline-flex items-center gap-1 text-[0.9rem] font-semibold"
                 style={{ color: "var(--color-accent)" }}
               >
-                How verification works <ArrowRight size={14} />
-              </Link>
+                {dict.profile.howVerificationWorks} <ArrowRight size={14} />
+              </LocaleLink>
             </div>
           )}
 
@@ -272,24 +292,27 @@ export function ProfileView({ profile: p }: { profile: Profile }) {
             <div className="mt-12">
               <div className="mb-4 flex items-baseline justify-between gap-3">
                 <h2 className="!text-[1.35rem]">
-                  More in {cat ? cat.name.toLowerCase() : "this category"}
+                  {dict.profile.moreInPrefix} {cat ? cat.name.toLowerCase() : dict.profile.moreInFallback}
                 </h2>
                 {cat && (
-                  <Link
+                  <LocaleLink
+                    lang={lang}
                     href={`/categories/${cat.slug}`}
                     className="text-[0.9rem] font-semibold"
                     style={{ color: "var(--color-accent)" }}
                   >
-                    See all →
-                  </Link>
+                    {dict.profile.seeAll}
+                  </LocaleLink>
                 )}
               </div>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {relatedProfiles.map((rp) => (
                   <CreatorCard
                     key={rp.slug}
+                    lang={lang}
+                    dict={dict}
                     profile={rp}
-                    categoryName={categoryName(rp.mainCategory)}
+                    categoryName={categoryNameL(rp.mainCategory, lang)}
                   />
                 ))}
               </div>
@@ -298,7 +321,7 @@ export function ProfileView({ profile: p }: { profile: Profile }) {
 
           {/* Report a problem */}
           <div className="mt-12">
-            <ReportForm profileName={p.name} profileSlug={`${basePath}/${p.slug}`} />
+            <ReportForm dict={dict} profileName={p.name} profileSlug={`${basePath}/${p.slug}`} />
           </div>
         </div>
 
@@ -318,7 +341,9 @@ export function ProfileView({ profile: p }: { profile: Profile }) {
             {externalLinks.length > 1 ? (
               <div className="mt-4 space-y-2 border-t pt-4" style={{ borderColor: "var(--color-line)" }}>
                 <p className="mb-1 text-[0.78rem] font-semibold uppercase tracking-wide" style={{ color: "var(--color-muted-soft)" }}>
-                  Where to find {p.profileType === "company" ? "them" : p.name.split(" ")[0]}
+                  {p.profileType === "company"
+                    ? dict.profile.whereToFindThem
+                    : `${dict.profile.whereToFind} ${p.name.split(" ")[0]}`}
                 </p>
                 {externalLinks.map((l) => (
                   <a
@@ -339,7 +364,7 @@ export function ProfileView({ profile: p }: { profile: Profile }) {
             {p.languages?.length ? (
               <div className="mt-4 border-t pt-4" style={{ borderColor: "var(--color-line)" }}>
                 <p className="mb-1 text-[0.78rem] font-semibold uppercase tracking-wide" style={{ color: "var(--color-muted-soft)" }}>
-                  Languages
+                  {dict.profile.languages}
                 </p>
                 <p className="text-[0.92rem]" style={{ color: "var(--color-muted)" }}>
                   {p.languages.join(", ")}
@@ -361,7 +386,7 @@ export function ProfileView({ profile: p }: { profile: Profile }) {
               style={{ color: "var(--color-muted-soft)", borderColor: "var(--color-line)" }}
             >
               <CheckShield size={14} className="mt-0.5 shrink-0" />
-              Purchases and enquiries happen on the creator&apos;s own platform, not here.
+              {dict.profile.purchaseNote}
             </p>
           </div>
         </aside>
@@ -372,25 +397,25 @@ export function ProfileView({ profile: p }: { profile: Profile }) {
 
 /* ------------------------- helpers ------------------------- */
 
-function collectLinks(p: Profile): { label: string; href: string }[] {
+function collectLinks(p: Profile, dict: Dictionary): { label: string; href: string }[] {
   const s = p.socialLinks;
   const out: { label: string; href: string }[] = [];
-  if (s.website) out.push({ label: "Website", href: s.website });
-  if (s.portfolio) out.push({ label: "Portfolio", href: s.portfolio });
-  if (s.etsy) out.push({ label: "Etsy shop", href: s.etsy });
-  if (s.amazon) out.push({ label: "Amazon", href: s.amazon });
-  if (s.behance) out.push({ label: "Behance", href: s.behance });
-  if (s.dribbble) out.push({ label: "Dribbble", href: s.dribbble });
-  if (s.linkedin) out.push({ label: "LinkedIn", href: s.linkedin });
-  if (s.instagram) out.push({ label: "Instagram", href: s.instagram });
-  if (s.youtube) out.push({ label: "YouTube", href: s.youtube });
+  if (s.website) out.push({ label: dict.profile.linkWebsite, href: s.website });
+  if (s.portfolio) out.push({ label: dict.profile.linkPortfolio, href: s.portfolio });
+  if (s.etsy) out.push({ label: dict.profile.linkEtsy, href: s.etsy });
+  if (s.amazon) out.push({ label: dict.profile.linkAmazon, href: s.amazon });
+  if (s.behance) out.push({ label: dict.profile.linkBehance, href: s.behance });
+  if (s.dribbble) out.push({ label: dict.profile.linkDribbble, href: s.dribbble });
+  if (s.linkedin) out.push({ label: dict.profile.linkLinkedin, href: s.linkedin });
+  if (s.instagram) out.push({ label: dict.profile.linkInstagram, href: s.instagram });
+  if (s.youtube) out.push({ label: dict.profile.linkYoutube, href: s.youtube });
   (s.other ?? []).forEach((o) => out.push({ label: o.label, href: o.url }));
   return out;
 }
 
 /** Same-category profiles excluding the current one, capped to `limit`. */
-function getRelatedProfiles(p: Profile, limit: number): Profile[] {
-  return getAllProfiles()
+function getRelatedProfiles(p: Profile, limit: number, lang: Locale): Profile[] {
+  return getAllProfilesL(lang)
     .filter(
       (x) =>
         x.slug !== p.slug &&
@@ -400,14 +425,17 @@ function getRelatedProfiles(p: Profile, limit: number): Profile[] {
     .slice(0, limit);
 }
 
-/** A short working-process outline derived from the profile. Falls back to a
- *  sensible generic sequence when the profile hasn't declared its own. */
-function deriveWorkingProcess(p: Profile): string[] {
-  const kind = p.profileType === "company" ? "the studio" : "the creator";
+/** A short working-process outline derived from the profile, localized. */
+function deriveWorkingProcess(p: Profile, dict: Dictionary): string[] {
+  const kind = p.profileType === "company" ? dict.profile.kindStudio : dict.profile.kindCreator;
+  const step3 =
+    p.profileType === "company"
+      ? dict.profile.processStep3Company
+      : dict.profile.processStep3Creator;
   return [
-    `You reach out on ${kind}'s own site or shop, using the links on this page.`,
-    `You describe the project — goals, materials, timing — and get a scope and quote.`,
-    `Work is done by hand, ${p.profileType === "company" ? "by the team" : "personally"}; process updates and drafts are shared as agreed.`,
-    `Payment, delivery and revisions happen directly with ${kind}, not on No AI Marketplace.`,
+    dict.profile.processStep1.replace("{kind}", kind),
+    dict.profile.processStep2,
+    step3,
+    dict.profile.processStep4.replace("{kind}", kind),
   ];
 }

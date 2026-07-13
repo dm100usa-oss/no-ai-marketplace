@@ -10,7 +10,7 @@ import { site } from "@/lib/config";
 export default function robots(): MetadataRoute.Robots {
   const base = site.url.replace(/\/$/, "");
 
-  const disallow = [
+  const noindexPaths = [
     "/payment-success",
     "/payment-cancelled",
     "/thank-you",
@@ -18,6 +18,9 @@ export default function robots(): MetadataRoute.Robots {
     "/profile-suspended",
     "/profile-not-available",
   ];
+
+  // Disallow both the English (clean) and Russian (/ru) variants.
+  const disallow = [...noindexPaths, ...noindexPaths.map((p) => `/ru${p}`)];
 
   // Major AI answer engines and their crawlers (TZ 1.5: ChatGPT, Claude,
   // Perplexity, Gemini) plus classic search bots.

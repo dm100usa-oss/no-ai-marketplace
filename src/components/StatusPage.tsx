@@ -1,4 +1,5 @@
-import Link from "next/link";
+import { LocaleLink } from "@/components/LocaleLink";
+import type { Locale } from "@/i18n/config";
 
 export type StatusKind = "success" | "info" | "warn" | "error";
 
@@ -6,16 +7,17 @@ export type StatusKind = "success" | "info" | "warn" | "error";
  * Result / status page used for Thank You, Payment Success, Payment
  * Cancelled, Profile Submitted, Profile Suspended and Profile Not Available.
  * Standalone layout — no breadcrumbs — because these pages are dead ends of
- * a flow (submitted, paid, cancelled) and the user's next action is a fresh
- * jump elsewhere.
+ * a flow and the user's next action is a fresh jump elsewhere.
  */
 export function StatusPage({
+  lang,
   kind,
   title,
   description,
   primary,
   secondary,
 }: {
+  lang: Locale;
   kind: StatusKind;
   title: string;
   description: string;
@@ -39,14 +41,14 @@ export function StatusPage({
 
         <div className="mt-8 flex flex-col justify-center gap-2 sm:flex-row">
           {primary && (
-            <Link href={primary.href} className="btn btn-ink">
+            <LocaleLink lang={lang} href={primary.href} className="btn btn-ink">
               {primary.label}
-            </Link>
+            </LocaleLink>
           )}
           {secondary && (
-            <Link href={secondary.href} className="btn btn-quiet">
+            <LocaleLink lang={lang} href={secondary.href} className="btn btn-quiet">
               {secondary.label}
-            </Link>
+            </LocaleLink>
           )}
         </div>
       </div>
@@ -85,7 +87,6 @@ function Glyph({ kind }: { kind: StatusKind }) {
       </svg>
     );
   }
-  // info
   return (
     <svg width={30} height={30} viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2.4" />
