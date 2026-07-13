@@ -61,3 +61,44 @@ export const StarIcon = ({ size = 16, className = "" }: P) => (
     <path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8L6.6 19.6l1-6L3.3 9.4l6-.9L12 3Z" fill="currentColor" />
   </svg>
 );
+
+export const FilterIcon = ({ size = 18, className = "", strokeWidth = 2.2 }: P) => (
+  <svg {...base(size)} className={className}>
+    <path d="M4 6h16M7 12h10M10 18h4" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" />
+  </svg>
+);
+
+export const PlusIcon = ({ size = 20, className = "", strokeWidth = 2.2 }: P) => (
+  <svg {...base(size)} className={className}>
+    <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" />
+  </svg>
+);
+
+export const MinusIcon = ({ size = 20, className = "", strokeWidth = 2.2 }: P) => (
+  <svg {...base(size)} className={className}>
+    <path d="M5 12h14" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" />
+  </svg>
+);
+
+export const UsersIcon = ({ size = 22, className = "", strokeWidth = 2 }: P) => (
+  <svg {...base(size)} className={className}>
+    <circle cx="9" cy="8" r="3.5" stroke="currentColor" strokeWidth={strokeWidth} />
+    <path d="M2.5 19c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" />
+    <circle cx="17" cy="9" r="2.7" stroke="currentColor" strokeWidth={strokeWidth} />
+    <path d="M17 14c2.8 0 5 2 5 5" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" />
+  </svg>
+);
+
+export const HandshakeIcon = ({ size = 22, className = "", strokeWidth = 2 }: P) => (
+  <svg {...base(size)} className={className}>
+    <path d="M3 12l4-4 3 3 4-4 4 4-4 4-3-3-4 4-4-4Z" stroke="currentColor" strokeWidth={strokeWidth} strokeLinejoin="round" />
+    <path d="M13 11l3 3" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" />
+  </svg>
+);
+
+export const SparkIcon = ({ size = 22, className = "", strokeWidth = 2 }: P) => (
+  <svg {...base(size)} className={className}>
+    <path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M6 18l2.5-2.5M15.5 8.5L18 6" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" />
+    <circle cx="12" cy="12" r="2.5" fill="currentColor" />
+  </svg>
+);

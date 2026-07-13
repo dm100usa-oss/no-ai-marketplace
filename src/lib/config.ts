@@ -102,7 +102,10 @@ export const footerNav = [
       { label: "Privacy Policy", href: "/privacy" },
       { label: "Terms of Use", href: "/terms" },
       { label: "Listing Policy", href: "/listing-policy" },
+      { label: "Verification Policy", href: "/verification-policy" },
+      { label: "Refund Policy", href: "/refund-policy" },
       { label: "Content Removal", href: "/content-removal" },
+      { label: "Copyright Complaint", href: "/copyright-complaint" },
     ],
   },
 ] as const;

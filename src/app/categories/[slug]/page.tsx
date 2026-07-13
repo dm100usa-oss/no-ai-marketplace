@@ -46,6 +46,9 @@ export default async function CategoryPage({
 
   const dir = directionOfCategory(cat.slug);
   const list = getProfilesByCategory(cat.slug);
+  const featured = list.filter((p) => p.status === "featured" || p.featured);
+  const featuredSlugs = new Set(featured.map((p) => p.slug));
+  const rest = list.filter((p) => !featuredSlugs.has(p.slug));
 
   // CollectionPage + ItemList (TZ 5.3)
   const jsonLd = {
@@ -85,12 +88,26 @@ export default async function CategoryPage({
       <h1>{cat.name}</h1>
       {cat.seoText && <p className="lead mt-3 max-w-3xl">{cat.seoText}</p>}
 
-      <div className="mt-8">
-        <p className="mb-5 text-[0.9rem]" style={{ color: "var(--color-muted-soft)" }}>
-          {list.length} {list.length === 1 ? "profile" : "profiles"}
+      {/* Featured leaders inside this category (TZ 3.4). */}
+      {featured.length > 0 && (
+        <div className="mt-10">
+          <div className="mb-4 flex items-baseline justify-between gap-3">
+            <h2 className="!text-[1.35rem]">Featured in {cat.name.toLowerCase()}</h2>
+            <span className="text-[0.85rem]" style={{ color: "var(--color-muted-soft)" }}>
+              Leaders picked by hand
+            </span>
+          </div>
+          <ProfileGrid profiles={featured} />
+        </div>
+      )}
+
+      <div className="mt-10">
+        <h2 className="!text-[1.35rem]">All profiles in this category</h2>
+        <p className="mb-5 mt-2 text-[0.9rem]" style={{ color: "var(--color-muted-soft)" }}>
+          {rest.length} {rest.length === 1 ? "profile" : "profiles"}
         </p>
         <ProfileGrid
-          profiles={list}
+          profiles={rest}
           emptyTitle={`No ${cat.name.toLowerCase()} yet`}
           emptyMessage="This category is ready and waiting for its first profiles. Add yours."
         />
