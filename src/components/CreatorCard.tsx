@@ -23,7 +23,8 @@ export function CreatorCard({
   visitLabel?: string;
   visitHref?: string;
 }) {
-  const profileHref = `/creators/${profile.slug}`;
+  const basePath = profile.profileType === "company" ? "/companies" : "/creators";
+  const profileHref = `${basePath}/${profile.slug}`;
   const initials = profile.name
     .split(" ")
     .map((w) => w[0])

@@ -1,83 +1,43 @@
 import Link from "next/link";
 import { site } from "@/lib/config";
 import { DirectionTile } from "@/components/DirectionTile";
-import { CreatorCard } from "@/components/CreatorCard";
+import { ProfileGrid } from "@/components/ProfileGrid";
 import { SectionHeading } from "@/components/States";
 import { SearchIcon, ArrowRight } from "@/components/icons";
-import type { Profile } from "@/lib/types";
+import {
+  getActiveDirections,
+  getCategoriesByDirection,
+  getFeaturedProfiles,
+  getNewestProfiles,
+} from "@/lib/data";
 
 /**
- * Stage 1 home = a live shell, not the full home (that is stage 3).
- * Its job here: render the semantic core in static HTML (TZ Part I,
- * critical for SEO/GEO) and put the whole design system on screen so
- * the owner can approve colours and sizing visually.
- *
- * The demo directions and cards below are placeholders for stage 1
- * approval only; stage 2 replaces them with data-driven content.
+ * Home. Semantic core in static HTML (TZ Part I) plus data-driven blocks:
+ * directions, featured and newest profiles. The full home build (FAQ,
+ * buyer/creator blocks, richer sections) lands on stage 3.
  */
-
-const demoDirections = [
-  { slug: "art-and-illustration", title: "Art & Illustration", color: "art" as const, subtitle: "Illustrators, fine artists" },
-  { slug: "writing-and-publishing", title: "Writing & Publishing", color: "writing" as const, subtitle: "Writers, editors" },
-  { slug: "design-and-branding", title: "Design & Branding", color: "design" as const, subtitle: "Logo & graphic design" },
-  { slug: "photography-and-video", title: "Photography & Video", color: "photo" as const, subtitle: "Photographers, video" },
-];
-
-const demoCard: Profile = {
-  id: "demo-1",
-  slug: "demo-creator",
-  name: "Sample Creator",
-  profileType: "creator",
-  status: "featured",
-  verificationStatus: "verified-creator",
-  mainCategory: "illustrators",
-  direction: "art-and-illustration",
-  country: "United States",
-  city: "Portland",
-  shortDescription:
-    "Hand-drawn children's book illustration in watercolour and ink. Every piece drawn by hand, no AI.",
-  tags: ["Watercolour", "Children's books"],
-  socialLinks: { portfolio: "#" },
-  featured: true,
-  dateCreated: "2025-01-01",
-};
-
-const demoCard2: Profile = {
-  ...demoCard,
-  id: "demo-2",
-  slug: "demo-creator-2",
-  name: "Human Design Studio",
-  profileType: "company",
-  status: "paid",
-  verificationStatus: "verified-business",
-  mainCategory: "graphic-designers",
-  direction: "design-and-branding",
-  country: "Portugal",
-  shortDescription: "Brand identity and packaging designed entirely by people. Sketches available on request.",
-  tags: ["Branding", "Packaging"],
-  socialLinks: { website: "#" },
-  featured: false,
-};
-
 export default function HomePage() {
+  const dirs = getActiveDirections();
+  const featured = getFeaturedProfiles().slice(0, 6);
+  const newest = getNewestProfiles(6);
+
   return (
     <>
       {/* ---- Hero: semantic core in static HTML (TZ Part I) ---- */}
       <section className="section-brand">
         <div className="container-page py-14 md:py-20">
           <div className="mx-auto max-w-2xl text-center">
-            {/* The three lines — central block of the first screen */}
-            <h1 className="text-balance">
-              {site.name}
-            </h1>
-            <p className="mt-3 text-[1.35rem] font-bold md:text-[1.6rem]" style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}>
+            <h1 className="text-balance">{site.name}</h1>
+            <p
+              className="mt-3 text-[1.35rem] font-bold md:text-[1.6rem]"
+              style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+            >
               {site.tagline}
             </p>
             <p className="mt-1 text-[1.05rem] italic" style={{ color: "var(--color-muted)" }}>
               {site.slogan}
             </p>
 
-            {/* Search + primary actions, visible without scroll */}
             <form action="/directory" role="search" className="mx-auto mt-8 flex max-w-xl items-stretch gap-2">
               <div className="relative flex-1">
                 <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2" style={{ color: "var(--color-muted-soft)" }}>
@@ -111,10 +71,19 @@ export default function HomePage() {
           <SectionHeading title="Explore directions" action={{ href: "/directions", label: "All directions" }}>
             Find people, studios and companies who create without AI.
           </SectionHeading>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {demoDirections.map((d) => (
-              <DirectionTile key={d.slug} href={`/directions/${d.slug}`} title={d.title} color={d.color} subtitle={d.subtitle} />
-            ))}
+          <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+            {dirs.map((d) => {
+              const count = getCategoriesByDirection(d.slug).length;
+              return (
+                <DirectionTile
+                  key={d.slug}
+                  href={`/directions/${d.slug}`}
+                  title={d.name}
+                  color={d.color}
+                  subtitle={`${count} ${count === 1 ? "category" : "categories"}`}
+                />
+              );
+            })}
           </div>
         </div>
       </section>
@@ -146,19 +115,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---- Featured creators (design-system demo cards) ---- */}
+      {/* ---- Featured creators ---- */}
       <section className="section">
         <div className="container-page">
           <SectionHeading title="Featured creators" action={{ href: "/directory", label: "See all" }}>
             Leaders are picked by hand and rise to the top.
           </SectionHeading>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <CreatorCard profile={demoCard} categoryName="Children's Book Illustrator" />
-            <CreatorCard profile={demoCard2} categoryName="Graphic Designer" />
-          </div>
-          <p className="mt-6 text-center text-[0.85rem]" style={{ color: "var(--color-muted-soft)" }}>
-            Preview content for design approval. Real profiles are added on stage 2.
-          </p>
+          <ProfileGrid profiles={featured} />
+        </div>
+      </section>
+
+      {/* ---- New profiles ---- */}
+      <section className="section-brand section">
+        <div className="container-page">
+          <SectionHeading title="New profiles" action={{ href: "/directory", label: "Browse all" }}>
+            Recently added human creators and companies.
+          </SectionHeading>
+          <ProfileGrid profiles={newest} />
         </div>
       </section>
 
