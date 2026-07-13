@@ -102,14 +102,6 @@ export default function HomePage() {
               backdropFilter: "blur(2px)",
             }}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/logo.webp"
-              alt="No AI Marketplace logo"
-              width={64}
-              height={64}
-              className="mx-auto mb-4 h-16 w-16 rounded-2xl"
-            />
             <h1 className="text-balance">{site.name}</h1>
             <p
               className="mt-3 text-[1.35rem] font-bold md:text-[1.6rem]"

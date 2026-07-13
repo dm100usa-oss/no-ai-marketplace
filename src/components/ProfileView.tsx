@@ -4,6 +4,7 @@ import { site } from "@/lib/config";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { VerifiedBadge, FeaturedBadge } from "@/components/Badges";
 import { CreatorCard } from "@/components/CreatorCard";
+import { GalleryLightbox } from "@/components/GalleryLightbox";
 import { ReportForm } from "@/components/ReportForm";
 import { ExternalLink, ArrowRight, CheckShield } from "@/components/icons";
 import {
@@ -111,8 +112,16 @@ export function ProfileView({ profile: p }: { profile: Profile }) {
             style={{ background: "var(--color-brand-soft)", color: "var(--color-muted-soft)" }}
           >
             {p.mainImage ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={p.mainImage} alt={`Featured work by ${p.name}`} className="h-full w-full object-cover" />
+              <GalleryLightbox
+                images={
+                  p.gallery?.length
+                    ? Array.from(new Set([p.mainImage, ...p.gallery]))
+                    : [p.mainImage]
+                }
+                name={p.name}
+                variant="hero"
+                heroAlt={`Featured work by ${p.name}`}
+              />
             ) : (
               <span className="text-[0.85rem]">Human-made work</span>
             )}
@@ -167,20 +176,9 @@ export function ProfileView({ profile: p }: { profile: Profile }) {
             <div className="mt-10">
               <h2 className="!text-[1.35rem]">Portfolio</h2>
               <p className="mt-1 text-[0.92rem]" style={{ color: "var(--color-muted-soft)" }}>
-                A selection of recent work.
+                A selection of recent work. Tap any piece to view it full screen.
               </p>
-              <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
-                {p.gallery.map((src, i) => (
-                  <div
-                    key={i}
-                    className="aspect-square overflow-hidden rounded-xl"
-                    style={{ background: "var(--color-brand-soft)" }}
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={src} alt={`Work ${i + 1} by ${p.name}`} className="h-full w-full object-cover" loading="lazy" />
-                  </div>
-                ))}
-              </div>
+              <GalleryLightbox images={p.gallery} name={p.name} />
             </div>
           ) : null}
 
