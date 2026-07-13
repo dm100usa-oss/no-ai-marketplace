@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Logo } from "./Logo";
 import { primaryNav, footerNav } from "@/lib/config";
+import { trackEvent } from "@/lib/analytics";
 import { SearchIcon, MenuIcon, CloseIcon, ChevronDown } from "./icons";
 
 /**
@@ -60,7 +61,11 @@ export function Header() {
           </div>
 
           {/* Right: Add profile (highlighted) */}
-          <Link href="/join" className="btn btn-ink shrink-0 !px-4 !py-2.5 text-[0.95rem]">
+          <Link
+            href="/join"
+            onClick={() => trackEvent("join_click", { source: "header" })}
+            className="btn btn-ink shrink-0 !px-4 !py-2.5 text-[0.95rem]"
+          >
             Add profile
           </Link>
         </div>
@@ -126,7 +131,14 @@ function MobileMenu({ onNavigate }: { onNavigate: () => void }) {
       </div>
 
       <div className="py-3">
-        <Link href="/join" onClick={onNavigate} className="btn btn-ink btn-full">
+        <Link
+          href="/join"
+          onClick={() => {
+            trackEvent("join_click", { source: "mobile-menu" });
+            onNavigate();
+          }}
+          className="btn btn-ink btn-full"
+        >
           Add your profile — first 100 free
         </Link>
       </div>

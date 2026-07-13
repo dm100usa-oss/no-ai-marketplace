@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { site, pricing } from "@/lib/config";
 import { FAQ, type FAQItem } from "@/components/FAQ";
+import { TallyForm } from "@/components/TallyForm";
 import { CheckShield, ArrowRight, SparkIcon } from "@/components/icons";
 
 export const metadata: Metadata = {
@@ -172,28 +173,16 @@ export default function JoinPage() {
           ))}
         </ol>
 
-        {/* Form placeholder for stage 5 wiring */}
+        {/* Submission form (Tally embed, stage 5) */}
         <div id="form" className="mt-12 scroll-mt-32">
           <h2>The form</h2>
-          <div
-            className="mt-4 rounded-2xl border p-6"
-            style={{ borderColor: "var(--color-line)", background: "#fff" }}
-          >
-            <p className="text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
-              The submission form is powered by Tally and includes a built-in
-              limit of {site.freeSlots} free places. Once that limit is reached,
-              the form automatically switches to the paid step and takes
-              payment through Stripe.
-            </p>
-            <p className="mt-3 text-[0.9rem]" style={{ color: "var(--color-muted-soft)" }}>
-              The form itself is connected on stage 5 of the build. Until then
-              this page describes what to expect. If you would like to be added
-              in the meantime, please{" "}
-              <Link href="/contact" className="font-semibold" style={{ color: "var(--color-accent)" }}>
-                get in touch
-              </Link>
-              .
-            </p>
+          <p className="mt-3 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
+            Fill in the form below. The first {site.freeSlots} profiles are
+            free; after that the form moves to the paid step and takes payment
+            through Stripe.
+          </p>
+          <div className="mt-4">
+            <TallyForm />
           </div>
         </div>
 

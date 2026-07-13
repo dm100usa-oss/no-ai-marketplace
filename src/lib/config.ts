@@ -59,6 +59,34 @@ export const pricing = {
   },
 } as const;
 
+/**
+ * External integrations (TZ 2.3, stage 5). Fill these in one place.
+ *
+ * HOW TO GET EACH VALUE — see the owner guide in README (section
+ * "Stage 5: registration and payment"). Short version:
+ *
+ * 1. tallyFormId — create a form on tally.so, open it, the id is the
+ *    code in the share URL tally.so/r/XXXXXXX (that XXXXXXX). In the
+ *    form's settings turn on "Limit responses" and set it to
+ *    site.freeSlots (100). Tally then closes the free form on its own.
+ *
+ * 2. stripeMonthly / stripeYearly — in the Stripe dashboard create two
+ *    Payment Links (one for $5.99/month, one for $49/year) and paste the
+ *    full https://buy.stripe.com/... links here. In each Payment Link,
+ *    set the success URL to  <site>/payment-success  and the cancel /
+ *    "back" URL to  <site>/payment-cancelled .
+ *
+ * Leave a value as an empty string until you have it: the site stays
+ * fully working. Empty Stripe links simply send the visitor to the join
+ * form instead of straight to checkout; an empty Tally id shows a short
+ * "form is being connected" notice in place of the embedded form.
+ */
+export const integrations = {
+  tallyFormId: "", // e.g. "wgABCD" from tally.so/r/wgABCD
+  stripeMonthly: "", // e.g. "https://buy.stripe.com/xxxxxxxxxxxx"
+  stripeYearly: "", // e.g. "https://buy.stripe.com/yyyyyyyyyyyy"
+} as const;
+
 /** Primary navigation (TZ Etap 1: Directory, Categories, Verified,
  *  About, Pricing, Join). Join is visually highlighted. */
 export const primaryNav = [
@@ -115,3 +143,25 @@ export const socialLinks = [
   { label: "LinkedIn", href: "#" },
   { label: "YouTube", href: "#" },
 ] as const;
+
+/**
+ * Where a paid-plan button should send the visitor.
+ * If the matching Stripe Payment Link is set, go straight to checkout;
+ * otherwise fall back to the join form (TZ 2.3: the Tally form itself
+ * switches to the paid step after the first 100 free places).
+ */
+export function planCheckoutHref(plan: "free" | "monthly" | "yearly"): string {
+  if (plan === "monthly" && integrations.stripeMonthly) {
+    return integrations.stripeMonthly;
+  }
+  if (plan === "yearly" && integrations.stripeYearly) {
+    return integrations.stripeYearly;
+  }
+  return "/join#form";
+}
+
+/** True when a href points to an external Stripe checkout (needs a real
+ *  <a> with target/rel rather than a client-side <Link>). */
+export function isExternalCheckout(href: string): boolean {
+  return href.startsWith("http");
+}

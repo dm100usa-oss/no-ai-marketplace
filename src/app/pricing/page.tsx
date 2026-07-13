@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { pricing, site } from "@/lib/config";
+import { pricing, site, planCheckoutHref } from "@/lib/config";
+import { CheckoutButton } from "@/components/CheckoutButton";
 import { CheckShield, ArrowRight } from "@/components/icons";
 
 export const metadata: Metadata = {
@@ -26,6 +27,7 @@ export default function PricingPage() {
 
         <div className="mt-10 grid gap-4 md:grid-cols-3">
           <PlanCard
+            plan="free"
             title={pricing.free.name}
             price={pricing.free.priceLabel}
             period={pricing.free.period}
@@ -33,6 +35,7 @@ export default function PricingPage() {
             highlight={false}
           />
           <PlanCard
+            plan="monthly"
             title={pricing.monthly.name}
             price={pricing.monthly.priceLabel}
             period={pricing.monthly.period}
@@ -40,6 +43,7 @@ export default function PricingPage() {
             highlight={false}
           />
           <PlanCard
+            plan="yearly"
             title={pricing.yearly.name}
             price={pricing.yearly.priceLabel}
             period={pricing.yearly.period}
@@ -109,6 +113,7 @@ export default function PricingPage() {
 }
 
 function PlanCard({
+  plan,
   title,
   price,
   period,
@@ -116,6 +121,7 @@ function PlanCard({
   features,
   highlight,
 }: {
+  plan: "free" | "monthly" | "yearly";
   title: string;
   price: string;
   period: string;
@@ -123,6 +129,10 @@ function PlanCard({
   features: string[];
   highlight: boolean;
 }) {
+  const href = plan === "free" ? "/join#form" : planCheckoutHref(plan);
+  const label = plan === "free" ? "Claim a free spot" : "Get started";
+  const btnClass = `btn mt-6 ${highlight ? "btn-ink" : "btn-quiet"}`;
+
   return (
     <div
       className="flex flex-col rounded-2xl border p-6"
@@ -161,12 +171,7 @@ function PlanCard({
         ))}
       </ul>
 
-      <Link
-        href="/join"
-        className={`btn mt-6 ${highlight ? "btn-ink" : "btn-quiet"}`}
-      >
-        {title === pricing.free.name ? "Claim a free spot" : "Get started"}
-      </Link>
+      <CheckoutButton plan={plan} href={href} label={label} className={btnClass} />
     </div>
   );
 }
