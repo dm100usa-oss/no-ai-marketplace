@@ -87,9 +87,21 @@ export default function HomePage() {
       />
 
       {/* ---------- Hero: semantic core in static HTML (TZ Part I) ---------- */}
-      <section className="section-brand">
+      <section
+        className="section-brand relative bg-cover bg-center"
+        style={{ backgroundImage: "url('/images/hero.webp')" }}
+      >
         <div className="container-page py-14 md:py-20">
-          <div className="mx-auto max-w-2xl text-center">
+          <div
+            className="mx-auto max-w-2xl rounded-3xl px-4 py-6 text-center md:px-8 md:py-8"
+            style={{
+              // soft translucent panel behind the text so the three lines
+              // stay perfectly readable over the photo on every screen size;
+              // the picture's calm centre means the panel is barely visible.
+              background: "rgba(219,233,255,0.60)",
+              backdropFilter: "blur(2px)",
+            }}
+          >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/logo.webp"
