@@ -117,8 +117,16 @@ export const profiles: Profile[] = [
     city: "Santa Fe",
     languages: ["English"],
     shortDescription: "Oil painter of large-scale landscapes. Originals and prints.",
+    fullDescription:
+      "Gregory Fenn paints large-scale abstract landscapes in oil, building surfaces layer by layer with a palette knife. Each canvas starts from studies made on location and takes several weeks to finish. Originals and hand-checked prints are available directly through his studio.",
     services: ["Original paintings", "Commissions", "Prints"],
     tags: ["Oil", "Landscape"],
+    avatar: "/images/gregory-fenn-avatar.webp",
+    mainImage: "/images/gregory-fenn-work-1.webp",
+    gallery: [
+      "/images/gregory-fenn-work-1.webp",
+      "/images/gregory-fenn-work-2.webp",
+    ],
     socialLinks: { website: "#" },
     aiUsageStatement: "Paintings are made with oil on canvas. No AI.",
     verificationDescription: "Studio and work-in-progress photos reviewed.",
@@ -137,9 +145,50 @@ export const profiles: Profile[] = [
     city: "Lagos",
     languages: ["English"],
     shortDescription: "Mixed-media portrait artist working in acrylic and collage.",
+    fullDescription:
+      "Amara Okoye works in acrylic and paper collage, layering soft organic shapes and warm earth tones. Her recent series explores calm and balance through flowing, textured forms. Originals and commissions are arranged directly with the artist.",
+    services: ["Original paintings", "Commissions"],
     tags: ["Acrylic", "Portrait"],
+    avatar: "/images/amara-okoye-avatar.webp",
+    mainImage: "/images/amara-okoye-work-1.webp",
+    gallery: [
+      "/images/amara-okoye-work-1.webp",
+      "/images/amara-okoye-work-2.webp",
+    ],
     socialLinks: { portfolio: "#", instagram: "#" },
+    aiUsageStatement: "All work is painted and assembled by hand. No AI.",
     dateCreated: "2025-04-18",
+  },
+  {
+    id: "p06b",
+    slug: "matteo-ferri",
+    name: "Matteo Ferri",
+    profileType: "creator",
+    status: "featured",
+    verificationStatus: "verified-creator",
+    mainCategory: "fine-artists",
+    direction: "art-and-illustration",
+    country: "Italy",
+    city: "Carrara",
+    languages: ["Italian", "English"],
+    shortDescription: "Stone sculptor carving smooth organic forms by hand.",
+    fullDescription:
+      "Matteo Ferri carves abstract sculptures from limestone and marble in his Carrara studio. Working entirely by hand with chisel and rasp, he shapes flowing, rounded forms that play with light and shadow. Each piece is one of a kind; commissions are welcome.",
+    services: ["Original sculptures", "Commissions"],
+    tags: ["Stone", "Marble", "Sculpture"],
+    featured: true,
+    avatar: "/images/sculptor-avatar.webp",
+    mainImage: "/images/sculptor-work-1.webp",
+    gallery: [
+      "/images/sculptor-work-1.webp",
+      "/images/sculptor-work-2.webp",
+    ],
+    socialLinks: { website: "#", instagram: "#" },
+    aiUsageStatement:
+      "Every sculpture is carved by hand from natural stone. No AI, no machine reproduction.",
+    verificationDescription:
+      "Studio, tools and work-in-progress photos reviewed.",
+    dateCreated: "2025-05-06",
   },
 
   // ---------- Writers ----------

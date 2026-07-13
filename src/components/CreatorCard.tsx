@@ -55,13 +55,23 @@ export function CreatorCard({
         {/* Author row */}
         <div className="flex items-start justify-between gap-2">
           <Link href={profileHref} className="flex min-w-0 items-center gap-2.5">
-            <span
-              aria-hidden
-              className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-[0.8rem] font-bold text-white"
-              style={{ background: "var(--color-ink)", fontFamily: "var(--font-display)" }}
-            >
-              {initials}
-            </span>
+            {profile.avatar ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={profile.avatar}
+                alt={`Portrait of ${profile.name}`}
+                loading="lazy"
+                className="h-9 w-9 shrink-0 rounded-full object-cover"
+              />
+            ) : (
+              <span
+                aria-hidden
+                className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-[0.8rem] font-bold text-white"
+                style={{ background: "var(--color-ink)", fontFamily: "var(--font-display)" }}
+              >
+                {initials}
+              </span>
+            )}
             <span className="min-w-0">
               <span className="block truncate font-semibold leading-tight" style={{ fontFamily: "var(--font-display)" }}>
                 {profile.name}

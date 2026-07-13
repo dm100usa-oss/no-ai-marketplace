@@ -74,13 +74,22 @@ export function ProfileView({ profile: p }: { profile: Profile }) {
         <div>
           {/* Header */}
           <div className="flex items-start gap-4">
-            <span
-              aria-hidden
-              className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl text-[1.3rem] font-bold text-white"
-              style={{ background: "var(--color-ink)", fontFamily: "var(--font-display)" }}
-            >
-              {initials}
-            </span>
+            {p.avatar ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={p.avatar}
+                alt={`Portrait of ${p.name}`}
+                className="h-16 w-16 shrink-0 rounded-2xl object-cover"
+              />
+            ) : (
+              <span
+                aria-hidden
+                className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl text-[1.3rem] font-bold text-white"
+                style={{ background: "var(--color-ink)", fontFamily: "var(--font-display)" }}
+              >
+                {initials}
+              </span>
+            )}
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-2">
                 <h1 className="text-[1.75rem] leading-tight">{p.name}</h1>

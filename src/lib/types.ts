@@ -68,6 +68,9 @@ export interface Profile extends ReservedRating {
   mainImage?: string;
   gallery?: string[];
   videoLinks?: string[];
+  /** Author/company portrait shown in the card and profile header.
+   *  Falls back to initials when absent. */
+  avatar?: string;
 
   /** Statement about use / non-use of AI (TZ 4.1). */
   aiUsageStatement?: string;

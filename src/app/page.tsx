@@ -90,6 +90,14 @@ export default function HomePage() {
       <section className="section-brand">
         <div className="container-page py-14 md:py-20">
           <div className="mx-auto max-w-2xl text-center">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/logo.webp"
+              alt="No AI Marketplace logo"
+              width={64}
+              height={64}
+              className="mx-auto mb-4 h-16 w-16 rounded-2xl"
+            />
             <h1 className="text-balance">{site.name}</h1>
             <p
               className="mt-3 text-[1.35rem] font-bold md:text-[1.6rem]"
