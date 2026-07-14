@@ -8,8 +8,8 @@ import type { Dictionary } from "@/i18n/types";
 export const ru: Dictionary = {
   site: {
     name: "No AI Marketplace",
-    tagline: "Работы, созданные людьми.",
-    slogan: "Настоящие люди. Без ИИ.",
+    tagline: "Находите талантливых авторов",
+    slogan: "знакомьтесь с творчеством и связывайтесь напрямую",
     description:
       "Международный каталог специалистов, создающих профессиональные услуги и работы без использования генеративного ИИ.",
     footerNote: "Работы, созданные людьми.",
@@ -89,6 +89,8 @@ export const ru: Dictionary = {
   home: {
     heroSearchPlaceholder: "Поиск авторов, категорий, товаров...",
     heroSearchAria: "Поиск авторов",
+    findAuthor: "Найти автора",
+    findAuthorHint: "Выберите, кто вам нужен",
     browseCatalog: "Открыть каталог",
     addProfile: "Добавить профиль",
     exploreDirections: "Направления",

@@ -123,4 +123,30 @@ export const categories: Category[] = [
     seoDescription:
       "Directory of videographers who film real footage, without AI. Find human-made video and book each creator directly.",
   },
+
+  // ---- Music & Audio ----
+  {
+    slug: "musicians",
+    name: "Musicians",
+    direction: "music-and-audio",
+    shortDescription: "Musicians and composers creating original music.",
+    seoText:
+      "Musicians on No AI Marketplace compose, perform and record original music by hand, without AI generation. This category covers composition, live performance, session work and audio production from independent musicians and small studios. Each profile links to the musician's own site or channel for direct booking or commission.",
+    seoTitle: "Musicians — original human-made music without AI",
+    seoDescription:
+      "Find musicians who compose and perform original music, without AI. Browse human-made music and book each artist directly.",
+  },
+
+  // ---- Handmade & Craft ----
+  {
+    slug: "craft-makers",
+    name: "Craft Makers",
+    direction: "handmade-and-craft",
+    shortDescription: "Makers producing handmade objects and craft.",
+    seoText:
+      "Craft makers on No AI Marketplace create handmade objects by hand, without AI. This category covers ceramics, textiles, woodwork, jewellery and small-batch craft from independent makers. Each profile links to the maker's own shop or portfolio, where you can buy or commission a piece directly.",
+    seoTitle: "Craft Makers — handmade objects and craft",
+    seoDescription:
+      "Find craft makers who create handmade objects by hand, without AI. Browse human-made craft and buy from each maker directly.",
+  },
 ];

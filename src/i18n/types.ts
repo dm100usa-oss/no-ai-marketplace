@@ -103,6 +103,8 @@ export interface Dictionary {
   home: {
     heroSearchPlaceholder: string;
     heroSearchAria: string;
+    findAuthor: string;
+    findAuthorHint: string;
     browseCatalog: string;
     addProfile: string;
     exploreDirections: string;

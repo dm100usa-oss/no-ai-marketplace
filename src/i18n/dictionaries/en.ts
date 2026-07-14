@@ -7,8 +7,8 @@ import type { Dictionary } from "@/i18n/types";
 export const en: Dictionary = {
   site: {
     name: "No AI Marketplace",
-    tagline: "Human-made creations.",
-    slogan: "Real People. No AI.",
+    tagline: "Discover talented creators",
+    slogan: "explore their work, and connect directly",
     description:
       "An international directory of professionals who create professional work and services without the use of generative AI.",
     footerNote: "Human-made creations.",
@@ -88,6 +88,8 @@ export const en: Dictionary = {
   home: {
     heroSearchPlaceholder: "Search creators, categories, products…",
     heroSearchAria: "Search creators",
+    findAuthor: "Find a creator",
+    findAuthorHint: "Choose who you need",
     browseCatalog: "Browse catalog",
     addProfile: "Add profile",
     exploreDirections: "Explore directions",

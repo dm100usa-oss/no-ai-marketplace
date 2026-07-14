@@ -1,6 +1,7 @@
 import { LocaleLink } from "@/components/LocaleLink";
 import { localizeHref } from "@/components/LocaleLink";
 import { DirectionTile } from "@/components/DirectionTile";
+import { FindAuthor } from "@/components/FindAuthor";
 import { ProfileGrid } from "@/components/ProfileGrid";
 import { SectionHeading } from "@/components/States";
 import { FAQ } from "@/components/FAQ";
@@ -43,6 +44,25 @@ export default async function HomePage({
     ...c,
     direction: directionOfCategoryL(c.slug, locale),
   }));
+
+  const findAuthorSlugs = [
+    "fine-artists",
+    "illustrators",
+    "photographers",
+    "graphic-designers",
+    "writers",
+    "copywriters",
+    "videographers",
+    "musicians",
+    "craft-makers",
+  ];
+  const allCats = getAllCategoriesL(locale);
+  const findAuthorCategories = findAuthorSlugs
+    .map((slug) => {
+      const cat = allCats.find((c) => c.slug === slug);
+      return cat ? { slug, name: cat.name } : null;
+    })
+    .filter((c): c is { slug: string; name: string } => c !== null);
 
   const faqItems = dict.home.faq;
 
@@ -91,7 +111,20 @@ export default async function HomePage({
               {dict.site.slogan}
             </p>
 
-            <form action={searchAction} role="search" className="mx-auto mt-8 flex max-w-xl items-stretch gap-2">
+            <FindAuthor
+              lang={locale}
+              label={dict.home.findAuthor}
+              hint={dict.home.findAuthorHint}
+              categories={findAuthorCategories}
+            />
+          </div>
+
+          {/* Secondary block: search + browse + join (to be revisited) */}
+          <div
+            className="mx-auto mt-6 max-w-2xl rounded-3xl px-4 py-6 text-center md:px-8"
+            style={{ background: "rgba(219,233,255,0.45)", backdropFilter: "blur(2px)" }}
+          >
+            <form action={searchAction} role="search" className="mx-auto flex max-w-xl items-stretch gap-2">
               <div className="relative flex-1">
                 <input
                   type="search"
@@ -107,7 +140,7 @@ export default async function HomePage({
               </button>
             </form>
 
-            <div className="mx-auto mt-8 flex max-w-xl flex-col gap-2.5 sm:flex-row">
+            <div className="mx-auto mt-4 flex max-w-xl flex-col gap-2.5 sm:flex-row">
               <LocaleLink lang={locale} href="/directory" className="btn btn-quiet btn-full">
                 {dict.home.browseCatalog}
               </LocaleLink>
