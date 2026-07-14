@@ -35,11 +35,14 @@ export function FindAccordion({
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-controls="find-panel"
-        className="tile relative w-full flex-row items-center justify-center px-6 py-4"
+        className="relative flex w-full items-center justify-center rounded-2xl border px-6 py-4 transition-transform duration-150 hover:-translate-y-0.5 active:translate-y-px"
         style={{
           background:
-            "linear-gradient(180deg, #eaf2ff 0%, #dbe9ff 50%, #cddff8 100%)",
+            "linear-gradient(180deg, #b0bfd4 0%, #cfdcee 50%, #b0bfd4 100%)",
+          borderColor: "rgba(22,35,58,0.06)",
           color: "var(--color-ink)",
+          boxShadow:
+            "inset 0 1px 0 rgba(255,255,255,0.55), 0 2px 5px rgba(22,35,58,0.10)",
         }}
       >
         <span
@@ -48,7 +51,11 @@ export function FindAccordion({
         >
           {label}
         </span>
-        <span className="absolute right-6 flex items-center" style={{ color: "var(--color-accent)" }} aria-hidden>
+        <span
+          className="absolute right-6 flex items-center"
+          style={{ color: "var(--color-ink)" }}
+          aria-hidden
+        >
           <SearchIcon size={22} />
         </span>
       </button>
@@ -63,16 +70,19 @@ export function FindAccordion({
       >
         <div className="overflow-hidden">
           <div className="mt-3 grid max-w-3xl gap-3 sm:grid-cols-3">
-            {actions.map((action, i) => (
+            {actions.map((action) => (
               <LocaleLink
                 key={action.label}
                 lang={lang}
                 href={action.href}
                 tabIndex={open ? undefined : -1}
                 aria-hidden={open ? undefined : true}
-                className="tile items-center px-4 py-4 text-center"
+                className="flex flex-col items-center justify-center rounded-2xl border px-4 py-4 text-center transition-transform duration-150 hover:-translate-y-0.5 active:translate-y-px"
                 style={{
-                  background: i === 0 ? "var(--color-brand-soft)" : i === 1 ? "#eef4ff" : "#fff",
+                  background: "var(--color-brand-soft)",
+                  borderColor: "rgba(22,35,58,0.06)",
+                  boxShadow:
+                    "inset 0 1px 0 rgba(255,255,255,0.55), 0 2px 5px rgba(22,35,58,0.10)",
                 }}
               >
                 <span className="text-[0.85rem]" style={{ color: "var(--color-muted)" }}>
