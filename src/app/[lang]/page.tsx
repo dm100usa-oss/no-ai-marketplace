@@ -70,10 +70,11 @@ export default async function HomePage({
           src="/images/hero.webp"
           alt=""
           className="absolute inset-0 h-full w-full object-cover"
+          style={{ objectPosition: "18% center" }}
         />
         <div className="relative flex w-full items-center justify-center px-4">
           <div
-            className="mx-auto w-[85%] max-w-md rounded-2xl px-6 py-7 text-center sm:w-[70%] sm:px-10 sm:py-10"
+            className="mx-auto w-[92%] max-w-2xl rounded-2xl px-6 py-7 text-center sm:w-[80%] sm:px-10 sm:py-10"
             style={{ background: "rgba(219,233,255,0.61)", backdropFilter: "blur(2px)" }}
           >
             <h1 className="text-balance text-[0.95rem] sm:text-[1.35rem] md:text-[1.7rem]" style={{ marginTop: "0" }}>{dict.site.name}</h1>
