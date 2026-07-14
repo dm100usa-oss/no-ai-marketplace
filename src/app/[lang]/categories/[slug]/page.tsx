@@ -12,6 +12,7 @@ import { ProfileGrid } from "@/components/ProfileGrid";
 import { getDictionary } from "@/i18n";
 import { DEFAULT_LOCALE, isLocale, localizedPath, LOCALES } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
+import type { ProfileType as ParticipantType } from "@/lib/types";
 
 /** One static page per category per language. */
 export function generateStaticParams() {
@@ -45,8 +46,10 @@ export async function generateMetadata({
 
 export default async function CategoryPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ lang: string; slug: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { lang, slug } = await params;
   const locale: Locale = isLocale(lang) ? lang : DEFAULT_LOCALE;
@@ -55,8 +58,16 @@ export default async function CategoryPage({
   const cat = getCategoryL(slug, locale);
   if (!cat) notFound();
 
+  const sp = await searchParams;
+  const raw = Array.isArray(sp.type) ? sp.type[0] : sp.type;
+  const type: ParticipantType | "" =
+    raw === "creator" || raw === "team" || raw === "company" ? raw : "";
+  const suffix = type ? `?type=${type}` : "";
+
   const dir = directionOfCategoryL(cat.slug, locale);
-  const list = getProfilesByCategoryL(cat.slug, locale);
+  const list = getProfilesByCategoryL(cat.slug, locale).filter(
+    (p) => !type || p.profileType === type,
+  );
   const featured = list.filter((p) => p.status === "featured" || p.featured);
   const featuredSlugs = new Set(featured.map((p) => p.slug));
   const rest = list.filter((p) => !featuredSlugs.has(p.slug));
@@ -91,8 +102,11 @@ export default async function CategoryPage({
         lang={locale}
         items={[
           { label: dict.common.home, href: "/" },
-          { label: dict.categoriesPage.title, href: "/categories" },
-          ...(dir ? [{ label: dir.name, href: `/directions/${dir.slug}` }] : []),
+          {
+            label: type ? dict.directionsPage.byType[type] : dict.categoriesPage.title,
+            href: type ? `/directions${suffix}` : "/categories",
+          },
+          ...(dir ? [{ label: dir.name, href: `/directions/${dir.slug}${suffix}` }] : []),
           { label: cat.name },
         ]}
       />

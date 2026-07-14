@@ -14,7 +14,7 @@ export type VerificationStatus =
   | "verified-creator" // Verified Human Creator
   | "verified-business"; // Verified Human-Made Business
 
-export type ProfileType = "creator" | "company";
+export type ProfileType = "creator" | "team" | "company";
 
 /** External platform links (TZ 4.1: Etsy, Behance, Dribbble, LinkedIn,
  *  Instagram, YouTube, Amazon and others). All optional. */

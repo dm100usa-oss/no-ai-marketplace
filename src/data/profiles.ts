@@ -444,4 +444,207 @@ export const profiles: Profile[] = [
     socialLinks: { portfolio: "#" },
     dateCreated: "2025-05-10",
   },
+
+  // ---------- Teams ----------
+  {
+    id: "p19",
+    slug: "atelier-nord",
+    name: "Atelier Nord",
+    profileType: "team",
+    status: "paid",
+    verificationStatus: "verified-creator",
+    mainCategory: "illustrators",
+    additionalCategories: ["concept-artists"],
+    direction: "art",
+    country: "Sweden",
+    city: "Gothenburg",
+    languages: ["Swedish", "English"],
+    shortDescription:
+      "Three illustrators who take on book and campaign work together.",
+    fullDescription:
+      "Atelier Nord is three illustrators who met at art school and now take larger commissions as one team: picture books, campaigns, long series. Each member draws by hand and signs their own pages. Sketches and process are shared with the client throughout.",
+    services: ["Book illustration", "Campaign artwork", "Series work"],
+    tags: ["Ink", "Watercolour", "Books"],
+    socialLinks: { portfolio: "#", instagram: "#" },
+    aiUsageStatement:
+      "Every page is drawn by hand by a named member of the team. No AI generation is used.",
+    verificationDescription: "Process photos and original sketches from all three members reviewed.",
+    dateCreated: "2025-05-14",
+  },
+  {
+    id: "p20",
+    slug: "signal-and-noise",
+    name: "Signal & Noise",
+    profileType: "team",
+    status: "paid",
+    verificationStatus: "verified-creator",
+    mainCategory: "video-editors",
+    additionalCategories: ["colourists", "motion-designers"],
+    direction: "photo-and-video",
+    country: "Germany",
+    city: "Berlin",
+    languages: ["German", "English"],
+    shortDescription:
+      "Editor, colourist and motion designer who work as one crew.",
+    fullDescription:
+      "Signal & Noise is three people who cover a full post-production chain: edit, grade, motion. They came together after years of freelancing separately on the same projects. Real footage, real timeline, project files handed over at the end.",
+    services: ["Post-production", "Colour grading", "Motion graphics"],
+    tags: ["Post", "Grading", "Motion"],
+    socialLinks: { portfolio: "#" },
+    aiUsageStatement:
+      "We cut and grade real footage. No generated frames, no synthetic voices.",
+    verificationDescription: "Project files and raw footage from past work reviewed.",
+    dateCreated: "2025-06-02",
+  },
+  {
+    id: "p21",
+    slug: "greenfield-devs",
+    name: "Greenfield Devs",
+    profileType: "team",
+    status: "paid",
+    verificationStatus: "verified-creator",
+    mainCategory: "web-developers",
+    additionalCategories: ["code-auditors"],
+    direction: "development-and-it",
+    country: "Poland",
+    city: "Krakow",
+    languages: ["Polish", "English"],
+    shortDescription:
+      "Two developers who build web projects and rescue broken ones.",
+    fullDescription:
+      "Greenfield is two developers who design the architecture themselves and can walk you through every decision. Half their work is new builds, the other half is picking up projects that stopped working after someone shipped code nobody could explain.",
+    services: ["Web applications", "Code rescue", "Architecture review"],
+    tags: ["TypeScript", "Rescue", "Architecture"],
+    socialLinks: { website: "#" },
+    aiUsageStatement:
+      "We design and write our own code, understand every line we ship and support what we build.",
+    verificationDescription: "Commit history and architecture decisions reviewed.",
+    dateCreated: "2025-06-18",
+  },
+
+  // ---------- Literature ----------
+  {
+    id: "p22",
+    slug: "marta-ilves",
+    name: "Marta Ilves",
+    profileType: "creator",
+    status: "featured",
+    verificationStatus: "verified-creator",
+    mainCategory: "fiction-authors",
+    direction: "literature",
+    country: "Estonia",
+    city: "Tartu",
+    languages: ["Estonian", "English"],
+    shortDescription:
+      "Novelist writing literary fiction. Four books, all written by hand.",
+    fullDescription:
+      "Marta writes literary fiction and short stories, published in Estonia and translated into three languages. She writes first drafts longhand and keeps every notebook. Manuscripts and drafts available on request.",
+    products: ["Novels", "Short story collections"],
+    tags: ["Literary fiction", "Short stories"],
+    socialLinks: { website: "#" },
+    aiUsageStatement: "Every manuscript is written by me. No AI generation at any stage.",
+    verificationDescription: "Handwritten drafts and notebooks reviewed.",
+    featured: true,
+    dateCreated: "2025-04-08",
+  },
+  {
+    id: "p23",
+    slug: "david-oyelaran",
+    name: "David Oyelaran",
+    profileType: "creator",
+    status: "paid",
+    verificationStatus: "verified-creator",
+    mainCategory: "non-fiction-authors",
+    direction: "literature",
+    country: "United Kingdom",
+    city: "Manchester",
+    languages: ["English"],
+    shortDescription:
+      "Historian writing narrative non-fiction with sourced research.",
+    fullDescription:
+      "David writes narrative history for a general reader. Every claim in his books is sourced and he can point to the archive it came from. Two books published, a third in progress.",
+    products: ["History books", "Long-form essays"],
+    tags: ["History", "Research"],
+    socialLinks: { website: "#" },
+    aiUsageStatement: "I research and write everything myself and can source every claim.",
+    verificationDescription: "Research notes and archive references reviewed.",
+    dateCreated: "2025-05-21",
+  },
+
+  // ---------- Music & Audio ----------
+  {
+    id: "p24",
+    slug: "nora-vance",
+    name: "Nora Vance",
+    profileType: "creator",
+    status: "paid",
+    verificationStatus: "verified-creator",
+    mainCategory: "voice-actors",
+    direction: "music-and-audio",
+    country: "Canada",
+    city: "Toronto",
+    languages: ["English", "French"],
+    shortDescription:
+      "Voice actor recording commercials, audiobooks and character work.",
+    fullDescription:
+      "Nora records in her own treated booth: commercial voice-over, audiobook narration and character work. Live direction available over session link. Raw takes provided with every delivery.",
+    services: ["Commercial voice-over", "Audiobook narration", "Character voices"],
+    tags: ["Voice-over", "Audiobooks"],
+    socialLinks: { portfolio: "#" },
+    aiUsageStatement: "Every take is my own voice, recorded live. No synthetic voice, no cloning.",
+    verificationDescription: "Live session and raw takes reviewed.",
+    dateCreated: "2025-06-09",
+  },
+
+  // ---------- Development & IT ----------
+  {
+    id: "p25",
+    slug: "ilya-fedin",
+    name: "Ilya Fedin",
+    profileType: "creator",
+    status: "paid",
+    verificationStatus: "verified-creator",
+    mainCategory: "code-auditors",
+    direction: "development-and-it",
+    country: "Georgia",
+    city: "Tbilisi",
+    languages: ["Russian", "English"],
+    shortDescription:
+      "Reads other people's code and explains what is actually broken.",
+    fullDescription:
+      "Ilya audits codebases line by line: bugs, security holes, and projects that stopped working with nobody left who understands them. Every finding comes with a plain explanation of why it breaks and what it costs to fix.",
+    services: ["Code audit", "Security review", "Project rescue"],
+    tags: ["Audit", "Security", "Rescue"],
+    socialLinks: { website: "#" },
+    aiUsageStatement:
+      "I read and reason about code myself. Every finding I report I can defend line by line.",
+    verificationDescription: "Past audit reports and client references reviewed.",
+    dateCreated: "2025-06-25",
+  },
+
+  // ---------- Architecture & Interiors ----------
+  {
+    id: "p26",
+    slug: "casa-serena",
+    name: "Casa Serena",
+    profileType: "company",
+    status: "paid",
+    verificationStatus: "verified-business",
+    mainCategory: "interior-designers",
+    direction: "architecture-and-interiors",
+    country: "Spain",
+    city: "Valencia",
+    languages: ["Spanish", "English"],
+    shortDescription:
+      "Interior studio producing real drawings for real apartments.",
+    fullDescription:
+      "Casa Serena is a small interior studio: layouts, technical drawings, material selection and site supervision. Every plan accounts for the actual building, the actual budget and what the builders can actually do.",
+    services: ["Layouts", "Technical drawings", "Material selection"],
+    tags: ["Interiors", "Drawings"],
+    socialLinks: { website: "#" },
+    aiUsageStatement:
+      "Our designers draw every plan themselves and stand behind it on site.",
+    verificationDescription: "Studio registration and completed project drawings reviewed.",
+    dateCreated: "2025-05-30",
+  },
 ];

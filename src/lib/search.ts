@@ -78,6 +78,8 @@ export const fuseKeys = [
 /** Filter state used by the directory page. All optional. */
 export interface FilterState {
   q: string;
+  /** Participant type: a single creator, a team, or a company. "" = any. */
+  type: "" | "creator" | "team" | "company";
   direction: string; // slug or ""
   category: string; // slug or ""
   country: string; // human name or ""
@@ -87,6 +89,7 @@ export interface FilterState {
 
 export const emptyFilters: FilterState = {
   q: "",
+  type: "",
   direction: "",
   category: "",
   country: "",
@@ -98,6 +101,7 @@ export const emptyFilters: FilterState = {
  *  to a list of profiles. Search is done separately by Fuse. */
 export function applyFilters(profiles: Profile[], f: FilterState): Profile[] {
   return profiles.filter((p) => {
+    if (f.type && p.profileType !== f.type) return false;
     if (f.direction && p.direction !== f.direction) return false;
     if (
       f.category &&
@@ -168,9 +172,15 @@ export function filtersFromParams(
   const sortRaw = get("sort");
   const sort: FilterState["sort"] =
     sortRaw === "featured" || sortRaw === "az" ? sortRaw : "newest";
+  const typeRaw = get("type");
+  const type: FilterState["type"] =
+    typeRaw === "creator" || typeRaw === "team" || typeRaw === "company"
+      ? typeRaw
+      : "";
 
   return {
     q: get("q"),
+    type,
     direction: get("direction"),
     category: get("category"),
     country: get("country"),

@@ -16,6 +16,7 @@ import { ArrowRight } from "@/components/icons";
 import { getDictionary } from "@/i18n";
 import { DEFAULT_LOCALE, isLocale, localizedPath, LOCALES } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
+import type { ProfileType as ParticipantType } from "@/lib/types";
 
 /** One static page per active direction per language. */
 export function generateStaticParams() {
@@ -48,8 +49,10 @@ export async function generateMetadata({
 
 export default async function DirectionPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ lang: string; slug: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { lang, slug } = await params;
   const locale: Locale = isLocale(lang) ? lang : DEFAULT_LOCALE;
@@ -58,10 +61,18 @@ export default async function DirectionPage({
   const dir = getDirectionL(slug, locale);
   if (!dir || !dir.active) notFound();
 
+  const sp = await searchParams;
+  const raw = Array.isArray(sp.type) ? sp.type[0] : sp.type;
+  const type: ParticipantType | "" =
+    raw === "creator" || raw === "team" || raw === "company" ? raw : "";
+  const suffix = type ? `?type=${type}` : "";
+  const ofType = (p: { profileType: ParticipantType }) =>
+    !type || p.profileType === type;
+
   const cats = getCategoriesByDirectionL(dir.slug, locale);
-  const featured = getProfilesByDirectionL(dir.slug, locale).filter(
-    (p) => p.status === "featured" || p.featured,
-  );
+  const featured = getProfilesByDirectionL(dir.slug, locale)
+    .filter(ofType)
+    .filter((p) => p.status === "featured" || p.featured);
 
   return (
     <div className="container-page section">
@@ -69,7 +80,10 @@ export default async function DirectionPage({
         lang={locale}
         items={[
           { label: dict.common.home, href: "/" },
-          { label: dict.directionsPage.title, href: "/directions" },
+          {
+            label: type ? dict.directionsPage.byType[type] : dict.directionsPage.title,
+            href: `/directions${suffix}`,
+          },
           { label: dir.name },
         ]}
       />
@@ -82,12 +96,12 @@ export default async function DirectionPage({
         <SectionHeading lang={locale} title={dict.directionDetail.categories} />
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {cats.map((c) => {
-            const n = getProfilesByCategoryL(c.slug, locale).length;
+            const n = getProfilesByCategoryL(c.slug, locale).filter(ofType).length;
             return (
               <LocaleLink
                 key={c.slug}
                 lang={locale}
-                href={`/categories/${c.slug}`}
+                href={`/categories/${c.slug}${suffix}`}
                 className="card card-hover flex items-center justify-between p-4"
               >
                 <span>

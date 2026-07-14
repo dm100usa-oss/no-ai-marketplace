@@ -115,9 +115,9 @@ export const en: Dictionary = {
     ],
     heroFindButton: "Find",
     heroActions: [
-      { hint: "A creator", label: "for a specific task", href: "/directory" },
-      { hint: "A team", label: "for your project", href: "/teams" },
-      { hint: "A company", label: "for larger work", href: "/directory?type=company" },
+      { hint: "A creator", label: "for a specific task", href: "/directions?type=creator" },
+      { hint: "A team", label: "for your project", href: "/directions?type=team" },
+      { hint: "A company", label: "for larger work", href: "/directions?type=company" },
     ],
     heroSearchPlaceholder: "Search creators, categories, products…",
     heroSearchAria: "Search creators",
@@ -479,10 +479,22 @@ export const en: Dictionary = {
   directionsPage: {
     metaTitle: "Directions",
     metaDescription:
-      "Browse the major directions of No AI Marketplace: art, writing, design, photography — people and studios who create without AI.",
+      "Browse the major directions of No AI Marketplace: art, literature, design, photo and video, writing, music, development, architecture and craft. People and studios who create without AI.",
     title: "Directions",
     intro:
-      "The major directions of the catalog. Each one opens into its categories, where you find people and studios who create without AI.",
+      "The major directions of the catalog. Each one opens into its professions, where you find people and studios who create without AI.",
+    byType: {
+      creator: "Choose a direction",
+      team: "Choose a direction",
+      company: "Choose a direction",
+    },
+    byTypeIntro: {
+      creator:
+        "A creator works alone and answers for the result personally. Pick a direction, then a profession, then a person.",
+      team: "A team comes together for a project that needs several specialists at once. Pick a direction, then a profession, then a team.",
+      company:
+        "A company or studio takes on larger work with its own staff. Pick a direction, then a profession, then a company.",
+    },
   },
 
   categoryDetail: {
@@ -757,6 +769,7 @@ export const en: Dictionary = {
     processStep4:
       "Payment, delivery and revisions happen directly with {kind}, not on No AI Marketplace.",
     kindStudio: "the studio",
+    kindTeam: "the team",
     kindCreator: "the creator",
     linkWebsite: "Website",
     linkPortfolio: "Portfolio",

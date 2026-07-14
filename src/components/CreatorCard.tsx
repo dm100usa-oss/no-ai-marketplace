@@ -2,6 +2,7 @@ import { LocaleLink } from "./LocaleLink";
 import type { Profile } from "@/lib/types";
 import { VerifiedBadge, FeaturedBadge } from "./Badges";
 import { ExternalLink } from "./icons";
+import { profileBasePath } from "@/lib/profile-path";
 import type { Dictionary } from "@/i18n/types";
 import type { Locale } from "@/i18n/config";
 
@@ -27,7 +28,7 @@ export function CreatorCard({
   visitLabel?: string;
   visitHref?: string;
 }) {
-  const basePath = profile.profileType === "company" ? "/companies" : "/creators";
+  const basePath = profileBasePath(profile.profileType);
   const profileHref = `${basePath}/${profile.slug}`;
   const initials = profile.name
     .split(" ")

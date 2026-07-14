@@ -315,6 +315,9 @@ export interface Dictionary {
     metaDescription: string;
     title: string;
     intro: string;
+    /** Heading shown when the list is filtered by participant type. */
+    byType: { creator: string; team: string; company: string };
+    byTypeIntro: { creator: string; team: string; company: string };
   };
 
   categoryDetail: {
@@ -428,6 +431,7 @@ export interface Dictionary {
     processStep3Creator: string;
     processStep4: string; // uses {kind}
     kindStudio: string;
+    kindTeam: string;
     kindCreator: string;
     linkWebsite: string;
     linkPortfolio: string;

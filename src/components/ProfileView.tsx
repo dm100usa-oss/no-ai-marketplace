@@ -1,4 +1,5 @@
 import { LocaleLink } from "@/components/LocaleLink";
+import { profileBasePath } from "@/lib/profile-path";
 import type { Profile } from "@/lib/types";
 import { site } from "@/lib/config";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -42,7 +43,7 @@ export function ProfileView({
     website: dict.profile.visitWebsite,
     visit: dict.profile.visit,
   });
-  const basePath = p.profileType === "company" ? "/companies" : "/creators";
+  const basePath = profileBasePath(p.profileType);
 
   const initials = p.name
     .split(" ")
@@ -56,7 +57,7 @@ export function ProfileView({
     "@type": "ProfilePage",
     inLanguage: lang,
     mainEntity: {
-      "@type": p.profileType === "company" ? "Organization" : "Person",
+      "@type": p.profileType === "creator" ? "Person" : "Organization",
       name: p.name,
       description: p.shortDescription,
       address: { "@type": "PostalAddress", addressCountry: p.country, addressLocality: p.city },
@@ -67,7 +68,7 @@ export function ProfileView({
   const externalLinks = collectLinks(p, dict);
   const relatedProfiles = getRelatedProfiles(p, 3, lang);
   const workingProcess = deriveWorkingProcess(p, dict);
-  const kindWord = p.profileType === "company" ? dict.profile.kindStudio : dict.profile.kindCreator;
+  const kindWord = kindWordFor(p.profileType, dict);
 
   return (
     <div className="container-page section">
@@ -227,9 +228,9 @@ export function ProfileView({
             <div className="mt-10">
               <h2 className="!text-[1.35rem]">{dict.profile.workingProcess}</h2>
               <p className="mt-1 text-[0.92rem]" style={{ color: "var(--color-muted-soft)" }}>
-                {p.profileType === "company"
-                  ? dict.profile.workingProcessHintStudio
-                  : dict.profile.workingProcessHintCreator}
+                {p.profileType === "creator"
+                  ? dict.profile.workingProcessHintCreator
+                  : dict.profile.workingProcessHintStudio}
               </p>
               <ol className="mt-4 space-y-3">
                 {workingProcess.map((step, i) => (
@@ -341,9 +342,9 @@ export function ProfileView({
             {externalLinks.length > 1 ? (
               <div className="mt-4 space-y-2 border-t pt-4" style={{ borderColor: "var(--color-line)" }}>
                 <p className="mb-1 text-[0.78rem] font-semibold uppercase tracking-wide" style={{ color: "var(--color-muted-soft)" }}>
-                  {p.profileType === "company"
-                    ? dict.profile.whereToFindThem
-                    : `${dict.profile.whereToFind} ${p.name.split(" ")[0]}`}
+                  {p.profileType === "creator"
+                    ? `${dict.profile.whereToFind} ${p.name.split(" ")[0]}`
+                    : dict.profile.whereToFindThem}
                 </p>
                 {externalLinks.map((l) => (
                   <a
@@ -425,13 +426,20 @@ function getRelatedProfiles(p: Profile, limit: number, lang: Locale): Profile[] 
     .slice(0, limit);
 }
 
+/** The word used for this participant: creator, team or studio. */
+function kindWordFor(type: Profile["profileType"], dict: Dictionary): string {
+  if (type === "company") return dict.profile.kindStudio;
+  if (type === "team") return dict.profile.kindTeam;
+  return dict.profile.kindCreator;
+}
+
 /** A short working-process outline derived from the profile, localized. */
 function deriveWorkingProcess(p: Profile, dict: Dictionary): string[] {
-  const kind = p.profileType === "company" ? dict.profile.kindStudio : dict.profile.kindCreator;
+  const kind = kindWordFor(p.profileType, dict);
   const step3 =
-    p.profileType === "company"
-      ? dict.profile.processStep3Company
-      : dict.profile.processStep3Creator;
+    p.profileType === "creator"
+      ? dict.profile.processStep3Creator
+      : dict.profile.processStep3Company;
   return [
     dict.profile.processStep1.replace("{kind}", kind),
     dict.profile.processStep2,

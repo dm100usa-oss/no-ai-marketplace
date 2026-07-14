@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { profileBasePath } from "@/lib/profile-path";
 import { site } from "@/lib/config";
 import { getAllDirections, getAllCategories, getAllProfiles } from "@/lib/data";
 import { LOCALES, localizedPath } from "@/i18n/config";
@@ -50,7 +51,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const profileEntries = getAllProfiles().map((p) => {
-    const seg = p.profileType === "company" ? "companies" : "creators";
+    const seg = profileBasePath(p.profileType).slice(1);
     return {
       path: `/${seg}/${p.slug}`,
       priority: 0.6,
