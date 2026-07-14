@@ -35,11 +35,22 @@ export function FindAccordion({
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-controls="find-panel"
-        className="btn btn-accent inline-flex items-center gap-2.5 px-7 py-3.5 text-[1.05rem] font-bold"
-        style={{ fontFamily: "var(--font-display)" }}
+        className="tile relative w-full flex-row items-center justify-center px-6 py-4"
+        style={{
+          background:
+            "linear-gradient(180deg, #4a74bd 0%, #3d66ab 45%, #2f5697 100%)",
+          color: "#fff",
+        }}
       >
-        <SearchIcon size={20} />
-        {label}
+        <span
+          className="text-[1.15rem] font-bold"
+          style={{ fontFamily: "var(--font-display)" }}
+        >
+          {label}
+        </span>
+        <span className="absolute right-6 flex items-center" aria-hidden>
+          <SearchIcon size={22} />
+        </span>
       </button>
 
       <div
