@@ -114,6 +114,7 @@ export const ru: Dictionary = {
       "Обращение напрямую",
       "Конфиденциальность",
     ],
+    heroFindButton: "Найти",
     heroActions: [
       { hint: "Специалист для конкретной задачи", label: "Найти автора", href: "/directory" },
       { hint: "Команда для вашего проекта", label: "Собрать команду", href: "/teams" },

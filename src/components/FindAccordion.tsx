@@ -1,0 +1,84 @@
+"use client";
+
+import { useState } from "react";
+import { LocaleLink } from "./LocaleLink";
+import { SearchIcon } from "./icons";
+import type { Locale } from "@/i18n/config";
+
+export interface FindAction {
+  hint: string;
+  label: string;
+  href: string;
+}
+
+/**
+ * "Find" button that reveals the three entry points (creator / team /
+ * company) right below it. The panel is always present in the HTML and
+ * only collapsed with CSS, so search engines and AI answer engines read
+ * the full semantic core without needing to run the click.
+ */
+export function FindAccordion({
+  lang,
+  label,
+  actions,
+}: {
+  lang: Locale;
+  label: string;
+  actions: FindAction[];
+}) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="mt-6">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-controls="find-panel"
+        className="btn btn-accent inline-flex items-center gap-2.5 px-7 py-3.5 text-[1.05rem] font-bold"
+        style={{ fontFamily: "var(--font-display)" }}
+      >
+        <SearchIcon size={20} />
+        {label}
+      </button>
+
+      <div
+        id="find-panel"
+        className="grid transition-[grid-template-rows,opacity] duration-300 ease-out"
+        style={{
+          gridTemplateRows: open ? "1fr" : "0fr",
+          opacity: open ? 1 : 0,
+        }}
+      >
+        <div className="overflow-hidden">
+          <div className="mt-4 grid max-w-3xl gap-3 sm:grid-cols-3">
+            {actions.map((action, i) => (
+              <LocaleLink
+                key={action.label}
+                lang={lang}
+                href={action.href}
+                tabIndex={open ? undefined : -1}
+                aria-hidden={open ? undefined : true}
+                className="flex flex-col items-center rounded-2xl border px-4 py-4 text-center transition-colors hover:border-[var(--color-accent)] active:scale-[0.98]"
+                style={{
+                  borderColor: "var(--color-line)",
+                  background: i === 0 ? "var(--color-brand-soft)" : i === 1 ? "#eef4ff" : "#fff",
+                }}
+              >
+                <span className="text-[0.85rem]" style={{ color: "var(--color-muted)" }}>
+                  {action.hint}
+                </span>
+                <span
+                  className="mt-1.5 text-[1.05rem] font-bold"
+                  style={{ fontFamily: "var(--font-display)", color: "var(--color-accent)" }}
+                >
+                  {action.label}
+                </span>
+              </LocaleLink>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

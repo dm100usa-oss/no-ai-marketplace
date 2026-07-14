@@ -110,6 +110,7 @@ export interface Dictionary {
     heroPrinciplesTitle: string;
     heroPrinciples: string[];
     heroNoAi: string[];
+    heroFindButton: string;
     heroActions: { hint: string; label: string; href: string }[];
     heroSearchPlaceholder: string;
     heroSearchAria: string;

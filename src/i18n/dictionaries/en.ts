@@ -113,6 +113,7 @@ export const en: Dictionary = {
       "Direct contact",
       "Privacy",
     ],
+    heroFindButton: "Find",
     heroActions: [
       { hint: "A specialist for a specific task", label: "Find a creator", href: "/directory" },
       { hint: "A team for your project", label: "Build a team", href: "/teams" },

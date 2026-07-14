@@ -3,6 +3,7 @@ import { DirectionTile } from "@/components/DirectionTile";
 import { ProfileGrid } from "@/components/ProfileGrid";
 import { SectionHeading } from "@/components/States";
 import { FAQ } from "@/components/FAQ";
+import { FindAccordion } from "@/components/FindAccordion";
 import {
   SearchIcon,
   ArrowRight,
@@ -129,6 +130,12 @@ export default async function HomePage({
             </ul>
           </div>
 
+          <FindAccordion
+            lang={locale}
+            label={dict.home.heroFindButton}
+            actions={dict.home.heroActions}
+          />
+
           {/* Advantages — same heading style and bullets as the options list */}
           <p
             className="mt-10 text-left text-[1.35rem] font-bold md:text-[1.6rem]"
@@ -198,31 +205,6 @@ export default async function HomePage({
             </ul>
           </div>
 
-          {/* Three action buttons with hints */}
-          <div className="mx-auto mt-10 grid max-w-3xl gap-3 sm:grid-cols-3">
-            {dict.home.heroActions.map((action, i) => (
-              <LocaleLink
-                key={action.label}
-                lang={locale}
-                href={action.href}
-                className="flex flex-col items-center rounded-2xl border px-4 py-4 text-center transition-colors hover:border-[var(--color-accent)]"
-                style={{
-                  borderColor: "var(--color-line)",
-                  background: i === 0 ? "var(--color-brand-soft)" : i === 1 ? "#eef4ff" : "#fff",
-                }}
-              >
-                <span className="text-[0.85rem]" style={{ color: "var(--color-muted)" }}>
-                  {action.hint}
-                </span>
-                <span
-                  className="mt-1.5 text-[1.05rem] font-bold"
-                  style={{ fontFamily: "var(--font-display)", color: "var(--color-accent)" }}
-                >
-                  {action.label}
-                </span>
-              </LocaleLink>
-            ))}
-          </div>
         </div>
       </section>
 
