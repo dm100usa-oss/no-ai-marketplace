@@ -6,12 +6,11 @@ import Link from "next/link";
 import { Logo } from "./Logo";
 import { LocaleLink } from "./LocaleLink";
 import { trackEvent } from "@/lib/analytics";
-import { SearchIcon, MenuIcon, CloseIcon, ChevronDown } from "./icons";
+import { MenuIcon, CloseIcon, ChevronDown } from "./icons";
 import type { Dictionary } from "@/i18n/types";
 import type { Locale } from "@/i18n/config";
 import { LOCALES, DEFAULT_LOCALE, LOCALE_NAMES, localizedPath } from "@/i18n/config";
 import { primaryNav, footerNav, type NavGroup } from "@/i18n/nav";
-import { localizeHref } from "./LocaleLink";
 
 /**
  * Header: hamburger left, logo centred, highlighted Add profile right,
@@ -22,7 +21,6 @@ import { localizeHref } from "./LocaleLink";
 export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const nav = primaryNav(dict);
-  const searchAction = localizeHref(lang, "/directory");
 
   return (
     <header className="sticky top-0 z-40 border-b bg-white/95 backdrop-blur" style={{ borderColor: "var(--color-line)" }}>
@@ -76,29 +74,6 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             </div>
             <span className="h-10 w-10 md:hidden" aria-hidden="true" />
           </div>
-        </div>
-
-        {/* Full-width search row */}
-        <div className="pb-3">
-          <form action={searchAction} className="flex items-stretch gap-2" role="search">
-            <div className="relative flex-1">
-              <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2" style={{ color: "var(--color-muted-soft)" }}>
-                <SearchIcon size={18} />
-              </span>
-              <input
-                type="search"
-                name="q"
-                placeholder={dict.header.searchPlaceholder}
-                aria-label={dict.header.searchAria}
-                className="h-11 w-full rounded-xl border pl-10 pr-3 text-[0.95rem] outline-none transition-colors focus:border-[var(--color-accent)]"
-                style={{ borderColor: "var(--color-line)", background: "#fff" }}
-              />
-            </div>
-            <button type="submit" className="btn btn-accent !px-5" aria-label={dict.header.searchAria}>
-              <SearchIcon size={18} />
-              <span className="hidden sm:inline">{dict.header.search}</span>
-            </button>
-          </form>
         </div>
       </div>
 
