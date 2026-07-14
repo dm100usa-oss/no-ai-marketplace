@@ -102,14 +102,14 @@ export default async function HomePage({
         <div className="container-page">
           {/* Intro line — same display font as tagline */}
           <p
-            className="mx-auto max-w-2xl text-center text-[1.35rem] font-bold md:text-[1.6rem]"
+            className="text-left text-[1.35rem] font-bold md:text-[1.6rem]"
             style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
           >
             {dict.home.heroIntro}
           </p>
 
           {/* Options list — bullets with raised gradient circles, aligned to text start */}
-          <div className="mx-auto mt-5 w-fit">
+          <div className="mt-5">
             <ul className="flex flex-col gap-2.5 text-[1.05rem]">
               {dict.home.heroOptions.map((item) => (
                 <li key={item} className="flex items-start gap-3" style={{ color: "var(--color-ink)" }}>
@@ -131,12 +131,12 @@ export default async function HomePage({
 
           {/* Advantages — same heading style and bullets as the options list */}
           <p
-            className="mx-auto mt-10 max-w-2xl text-center text-[1.35rem] font-bold md:text-[1.6rem]"
+            className="mt-10 text-left text-[1.35rem] font-bold md:text-[1.6rem]"
             style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
           >
             {dict.home.heroAdvantagesTitle}
           </p>
-          <div className="mx-auto mt-5 w-fit">
+          <div className="mt-5">
             <ul className="flex flex-col gap-2.5 text-[1.05rem]">
               {dict.home.heroAdvantages.map((line) => {
                 const m = line.match(/^(\d+%|Больше|More)\b/);
@@ -173,12 +173,12 @@ export default async function HomePage({
 
           {/* Principles — same heading style and bullets */}
           <p
-            className="mx-auto mt-10 max-w-2xl text-center text-[1.35rem] font-bold md:text-[1.6rem]"
+            className="mt-10 text-left text-[1.35rem] font-bold md:text-[1.6rem]"
             style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
           >
             {dict.home.heroPrinciplesTitle}
           </p>
-          <div className="mx-auto mt-5 w-fit">
+          <div className="mt-5">
             <ul className="flex flex-col gap-2.5 text-[1.05rem]">
               {dict.home.heroPrinciples.map((line) => (
                 <li key={line} className="flex items-start gap-3" style={{ color: "var(--color-ink)" }}>
