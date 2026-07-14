@@ -104,7 +104,7 @@ export default async function HomePage({
               </div>
               <button
                 type="submit"
-                className="btn btn-quiet shrink-0"
+                className="btn btn-quiet shrink-0 h-12"
                 aria-label={dict.header.searchAria}
               >
                 {dict.header.search}

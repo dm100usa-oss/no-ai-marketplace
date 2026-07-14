@@ -129,27 +129,24 @@ a { color: inherit; text-decoration: none; }
   line-height: 1;
   padding: 0.875rem 1.5rem;
   border-radius: var(--radius-btn);
-  border: none;
+  border: 1px solid rgba(22, 35, 58, 0.06);
   cursor: pointer;
   user-select: none;
   transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.12s ease;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.35),
-    inset 0 0 0 1px rgba(22, 35, 58, 0.06),
+    inset 0 2px 0 rgba(255, 255, 255, 0.6),
     var(--shadow-raise);
 }
 .btn:hover {
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.35),
-    inset 0 0 0 1px rgba(22,35,58,0.06),
+    inset 0 2px 0 rgba(255,255,255,0.6),
     var(--shadow-raise-hover);
 }
 .btn:active {
   transform: translateY(1px);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.2),
-    inset 0 0 0 1px rgba(22,35,58,0.08),
-    0 1px 2px rgba(22,35,58,0.10);
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    0 1px 3px rgba(22,35,58,0.12);
 }
 
 /* Accent action button (search, primary actions) */
@@ -172,24 +169,9 @@ a { color: inherit; text-decoration: none; }
 .btn-quiet {
   background: #fff;
   color: var(--color-ink);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.7),
-    inset 0 0 0 1px rgba(22,35,58,0.10),
-    var(--shadow-raise);
-}
-.btn-quiet:hover {
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.7),
-    inset 0 0 0 1px rgba(22,35,58,0.10),
-    var(--shadow-raise-hover);
 }
 .btn-quiet:active {
-  transform: translateY(1px);
   background: #f4f7fc;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.4),
-    inset 0 0 0 1px rgba(22,35,58,0.12),
-    0 1px 2px rgba(22,35,58,0.10);
 }
 
 .btn-full { width: 100%; }
