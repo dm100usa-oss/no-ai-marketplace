@@ -67,7 +67,7 @@ export default async function HomePage({
       {/* ---------- Hero ---------- */}
       <section
         className="relative bg-cover bg-center"
-        style={{ backgroundColor: "#c2d6f6", backgroundImage: "url('/images/hero.webp')" }}
+        style={{ backgroundColor: "#c5d4f3", backgroundImage: "url('/images/hero.webp')" }}
       >
         <div className="flex min-h-[380px] items-center justify-center py-16 sm:min-h-[440px] md:min-h-[520px]">
           <div
