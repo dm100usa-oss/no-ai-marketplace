@@ -65,21 +65,23 @@ export default async function HomePage({
       />
 
       {/* ---------- Hero ---------- */}
-      <section
-        className="section-brand relative bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/hero.webp')" }}
-      >
-        <div className="container-page py-16 md:py-24">
-          {/* Transparent centered panel — name, tagline, slogan */}
+      <section className="relative">
+        <img
+          src="/images/hero.webp"
+          alt=""
+          className="block w-full"
+        />
+        {/* Text overlaid on the clear central area of the banner */}
+        <div className="absolute inset-0 flex items-center justify-center">
           <div className="mx-auto max-w-2xl px-4 text-center">
             <h1 className="text-balance">{dict.site.name}</h1>
             <p
-              className="mt-3 text-[1.35rem] font-bold md:text-[1.6rem]"
+              className="mt-2 text-[1.2rem] font-bold sm:text-[1.35rem] md:text-[1.6rem]"
               style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
             >
               {dict.site.tagline}
             </p>
-            <p className="mt-1 text-[1.05rem] italic" style={{ color: "var(--color-muted)" }}>
+            <p className="mt-1 text-[0.95rem] italic sm:text-[1.05rem]" style={{ color: "var(--color-muted)" }}>
               {dict.site.slogan}
             </p>
           </div>
