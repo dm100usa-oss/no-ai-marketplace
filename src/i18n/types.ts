@@ -101,6 +101,14 @@ export interface Dictionary {
   };
 
   home: {
+    /** New hero (approved). */
+    heroIntro: string;
+    heroAdvantagesTitle: string;
+    heroAdvantages: string[];
+    heroPrinciplesTitle: string;
+    heroPrinciples: string[];
+    heroNoAi: string[];
+    heroActions: { hint: string; label: string; href: string }[];
     heroSearchPlaceholder: string;
     heroSearchAria: string;
     findAuthor: string;

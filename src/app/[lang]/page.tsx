@@ -1,7 +1,5 @@
 import { LocaleLink } from "@/components/LocaleLink";
-import { localizeHref } from "@/components/LocaleLink";
 import { DirectionTile } from "@/components/DirectionTile";
-import { FindAuthor } from "@/components/FindAuthor";
 import { ProfileGrid } from "@/components/ProfileGrid";
 import { SectionHeading } from "@/components/States";
 import { FAQ } from "@/components/FAQ";
@@ -45,25 +43,6 @@ export default async function HomePage({
     direction: directionOfCategoryL(c.slug, locale),
   }));
 
-  const findAuthorSlugs = [
-    "fine-artists",
-    "illustrators",
-    "photographers",
-    "graphic-designers",
-    "writers",
-    "copywriters",
-    "videographers",
-    "musicians",
-    "craft-makers",
-  ];
-  const allCats = getAllCategoriesL(locale);
-  const findAuthorCategories = findAuthorSlugs
-    .map((slug) => {
-      const cat = allCats.find((c) => c.slug === slug);
-      return cat ? { slug, name: cat.name } : null;
-    })
-    .filter((c): c is { slug: string; name: string } => c !== null);
-
   const faqItems = dict.home.faq;
 
   const faqJsonLd = {
@@ -76,8 +55,6 @@ export default async function HomePage({
       acceptedAnswer: { "@type": "Answer", text: it.a },
     })),
   };
-
-  const searchAction = localizeHref(locale, "/directory");
 
   return (
     <>
@@ -111,43 +88,86 @@ export default async function HomePage({
               {dict.site.slogan}
             </p>
 
-            <FindAuthor
-              lang={locale}
-              label={dict.home.findAuthor}
-              hint={dict.home.findAuthorHint}
-              categories={findAuthorCategories}
-            />
+            <p className="mx-auto mt-4 max-w-md text-[1.02rem]" style={{ color: "var(--color-muted)" }}>
+              {dict.home.heroIntro}
+            </p>
+
+            {/* No-AI pills */}
+            <div className="mt-5 flex flex-col items-center gap-2 sm:flex-row sm:flex-wrap sm:justify-center">
+              {dict.home.heroNoAi.map((item) => (
+                <span
+                  key={item}
+                  className="inline-flex w-full justify-center rounded-full border px-4 py-2 text-[0.95rem] font-semibold sm:w-auto"
+                  style={{ borderColor: "var(--color-line)", background: "#fff", color: "var(--color-ink)" }}
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
           </div>
 
-          {/* Secondary block: search + browse + join (to be revisited) */}
+          {/* Advantages + principles */}
           <div
-            className="mx-auto mt-6 max-w-2xl rounded-3xl px-4 py-6 text-center md:px-8"
+            className="mx-auto mt-6 grid max-w-2xl gap-4 rounded-3xl px-6 py-6 sm:grid-cols-2"
             style={{ background: "rgba(219,233,255,0.45)", backdropFilter: "blur(2px)" }}
           >
-            <form action={searchAction} role="search" className="mx-auto flex max-w-xl items-stretch gap-2">
-              <div className="relative flex-1">
-                <input
-                  type="search"
-                  name="q"
-                  placeholder={dict.home.heroSearchPlaceholder}
-                  aria-label={dict.home.heroSearchAria}
-                  className="h-12 w-full rounded-xl border px-4 outline-none focus:border-[var(--color-accent)]"
-                  style={{ borderColor: "var(--color-line)", background: "#fff" }}
-                />
-              </div>
-              <button type="submit" className="btn btn-accent shrink-0" aria-label={dict.header.searchAria}>
-                <SearchIcon />
-              </button>
-            </form>
-
-            <div className="mx-auto mt-4 flex max-w-xl flex-col gap-2.5 sm:flex-row">
-              <LocaleLink lang={locale} href="/directory" className="btn btn-quiet btn-full">
-                {dict.home.browseCatalog}
-              </LocaleLink>
-              <LocaleLink lang={locale} href="/join" className="btn btn-ink btn-full">
-                {dict.home.addProfile}
-              </LocaleLink>
+            <div>
+              <h3 className="text-[1.05rem]">{dict.home.heroAdvantagesTitle}</h3>
+              <ul className="mt-2 space-y-1.5 text-[1.02rem]">
+                {dict.home.heroAdvantages.map((line, i) => {
+                  const m = line.match(/^(\S+)\s+(.*)$/);
+                  const head = i < 2 && m ? m[1] : i === 2 ? "Больше" : null;
+                  return (
+                    <li key={line} style={{ color: "var(--color-ink)" }}>
+                      {head && line.startsWith(head) ? (
+                        <>
+                          <span className="font-bold" style={{ color: "var(--color-accent)" }}>
+                            {head}
+                          </span>
+                          {line.slice(head.length)}
+                        </>
+                      ) : (
+                        line
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
+            <div>
+              <h3 className="text-[1.05rem]">{dict.home.heroPrinciplesTitle}</h3>
+              <ul className="mt-2 space-y-1.5 text-[1.02rem]" style={{ color: "var(--color-ink)" }}>
+                {dict.home.heroPrinciples.map((line) => (
+                  <li key={line}>{line}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Three action buttons with hints */}
+          <div className="mx-auto mt-6 grid max-w-3xl gap-3 sm:grid-cols-3">
+            {dict.home.heroActions.map((action, i) => (
+              <LocaleLink
+                key={action.label}
+                lang={locale}
+                href={action.href}
+                className="flex flex-col items-center rounded-2xl border px-4 py-4 text-center transition-colors hover:border-[var(--color-accent)]"
+                style={{
+                  borderColor: "var(--color-line)",
+                  background: i === 0 ? "var(--color-brand-soft)" : i === 1 ? "#eef4ff" : "#fff",
+                }}
+              >
+                <span className="text-[0.85rem]" style={{ color: "var(--color-muted)" }}>
+                  {action.hint}
+                </span>
+                <span
+                  className="mt-1.5 text-[1.05rem] font-bold"
+                  style={{ fontFamily: "var(--font-display)", color: "var(--color-accent)" }}
+                >
+                  {action.label}
+                </span>
+              </LocaleLink>
+            ))}
           </div>
         </div>
       </section>

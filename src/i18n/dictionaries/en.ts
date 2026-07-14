@@ -86,6 +86,30 @@ export const en: Dictionary = {
   },
 
   home: {
+    heroIntro:
+      "Work with individual creators, build your own team, or hire an established company.",
+    heroNoAi: [
+      "No AI",
+      "No hidden fees",
+      "No middlemen",
+    ],
+    heroAdvantagesTitle: "What you get",
+    heroAdvantages: [
+      "100% of income to the creator",
+      "0% commission for the client",
+      "More reach for teams and companies",
+    ],
+    heroPrinciplesTitle: "Our principles",
+    heroPrinciples: [
+      "Real people only",
+      "Direct contact",
+      "Privacy",
+    ],
+    heroActions: [
+      { hint: "A specialist for a specific task", label: "Find a creator", href: "/directory" },
+      { hint: "A team for your project", label: "Build a team", href: "/teams" },
+      { hint: "A company for larger work", label: "Find a company", href: "/directory?type=company" },
+    ],
     heroSearchPlaceholder: "Search creators, categories, products…",
     heroSearchAria: "Search creators",
     findAuthor: "Find a creator",
