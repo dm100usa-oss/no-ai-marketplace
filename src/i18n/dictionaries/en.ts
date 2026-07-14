@@ -94,7 +94,7 @@ export const en: Dictionary = {
     exploreDirectionsSub:
       "Find people, studios and companies who create without AI.",
     popularCategories: "Popular categories",
-    popularCategoriesSub: "Straight to the specialisation you need.",
+    popularCategoriesSub: "Straight to the specialization you need.",
     howItWorks: "How the platform works",
     howItWorksSub:
       "A showcase for human creators, with the actual work happening on their own platforms.",
@@ -114,10 +114,10 @@ export const en: Dictionary = {
     ],
     featuredCreators: "Featured creators",
     featuredCreatorsSub:
-      "Leaders picked by hand rise to the top of the catalogue.",
+      "Leaders picked by hand rise to the top of the catalog.",
     forBuyers: "For buyers and clients",
     forBuyersText:
-      "Looking for illustration, writing, design or photography made by a real person? Search or browse the catalogue, open the profile that fits, and go straight to the creator's own site to talk or buy.",
+      "Looking for illustration, writing, design or photography made by a real person? Search or browse the catalog, open the profile that fits, and go straight to the creator's own site to talk or buy.",
     forBuyersPoints: [
       "Every profile is a real human creator or human-made business.",
       "No middleman, no in-site checkout — you deal with the creator directly.",
@@ -162,7 +162,7 @@ export const en: Dictionary = {
       },
       {
         q: "Is AI-generated work allowed?",
-        a: "The catalogue is focused on human-made work. Creators state their AI usage openly on their profile. Fully AI-generated listings are not accepted; hybrid work is accepted when the human contribution is the substance of the work and is stated clearly.",
+        a: "The catalog is focused on human-made work. Creators state their AI usage openly on their profile. Fully AI-generated listings are not accepted; hybrid work is accepted when the human contribution is the substance of the work and is stated clearly.",
       },
     ],
     closingTitle: "Are you a human creator?",
@@ -177,7 +177,7 @@ export const en: Dictionary = {
       "The first 100 profiles are free. After that, $5.99/month or $49/year.",
     title: "Pricing",
     intro:
-      "The first 100 profiles are free — they help fill the catalogue and rank in search and AI answers. After that, listings are paid. Prices are set once in a single config file, so a change is reflected everywhere on the site.",
+      "The first 100 profiles are free — they help fill the catalog and rank in search and AI answers. After that, listings are paid. Prices are set once in a single config file, so a change is reflected everywhere on the site.",
     everythingTitle: "Everything included in a paid profile",
     everythingItems: [
       "Full profile with description, services, products and gallery",
@@ -262,7 +262,7 @@ export const en: Dictionary = {
       },
       {
         t: "Your profile goes live",
-        d: "The profile appears in the catalogue and starts sending traffic to your own platforms.",
+        d: "The profile appears in the catalog and starts sending traffic to your own platforms.",
       },
     ],
     formTitle: "The form",
@@ -272,7 +272,7 @@ export const en: Dictionary = {
     rulesText1: "Please read ",
     rulesLink1: "Human-Made standards",
     rulesText2:
-      " before you submit — the standards describe what belongs in the catalogue and what does not, and how hybrid work fits. Payments and listing rules are covered in the ",
+      " before you submit — the standards describe what belongs in the catalog and what does not, and how hybrid work fits. Payments and listing rules are covered in the ",
     rulesLink2: "Listing Policy",
     rulesText3: ".",
     faqTitle: "Frequently asked questions",
@@ -287,7 +287,7 @@ export const en: Dictionary = {
       },
       {
         q: "How long until my profile goes live?",
-        a: "Profiles are reviewed by hand and typically appear in the catalogue within a few working days. Verification, if requested, may take a little longer.",
+        a: "Profiles are reviewed by hand and typically appear in the catalog within a few working days. Verification, if requested, may take a little longer.",
       },
       {
         q: "Can I edit my profile later?",
@@ -295,7 +295,7 @@ export const en: Dictionary = {
       },
       {
         q: "Can I cancel?",
-        a: "Yes. Paid listings can be cancelled at any time; the profile stays live until the end of the current period, then is removed from the catalogue.",
+        a: "Yes. Paid listings can be cancelled at any time; the profile stays live until the end of the current period, then is removed from the catalog.",
       },
       {
         q: "Do you take a cut of my sales?",
@@ -313,11 +313,11 @@ export const en: Dictionary = {
       "No AI Marketplace is an international directory of people, studios and companies whose work is made by humans, not by AI. It is a showcase and a source of traffic — not a shop with a cart, not a place where money changes hands.",
     whatTitle: "What the site does",
     whatText:
-      "A buyer searches or browses the catalogue, finds a creator or company, opens their profile, and clicks through to the creator's own site, shop or portfolio. Payment, delivery, communication and revisions all happen there, directly between buyer and creator. We do not sit in the middle.",
+      "A buyer searches or browses the catalog, finds a creator or company, opens their profile, and clicks through to the creator's own site, shop or portfolio. Payment, delivery, communication and revisions all happen there, directly between buyer and creator. We do not sit in the middle.",
     whyTitle: "Why it exists",
     whyText:
-      "As AI generates more of the content, products and services online, the demand for verified human-made work grows. Buyers, brands and agencies want to find creators whose work is genuinely made by hand or by human judgement. Creators, in turn, want to be recognised for that and be easy to find. No AI Marketplace closes both sides of that need.",
-    howTitle: "How profiles get into the catalogue",
+      "As AI generates more of the content, products and services online, the demand for verified human-made work grows. Buyers, brands and agencies want to find creators whose work is genuinely made by hand or by human judgment. Creators, in turn, want to be recognized for that and be easy to find. No AI Marketplace closes both sides of that need.",
+    howTitle: "How profiles get into the catalog",
     howText:
       "The first 100 profiles are free. After that, listings are paid. Each profile is reviewed before it goes live. Verified creators additionally submit materials (process photos or video, drafts, published work) that we look at by hand — the profile then shows what was reviewed.",
     notClaimTitle: "What we do not claim",
@@ -368,7 +368,7 @@ export const en: Dictionary = {
       "Search and browse every active human-made creator, studio and company on No AI Marketplace. Filter by direction, category, country and verification.",
     title: "Directory",
     intro:
-      "Every active profile in the catalogue — people, studios and companies who create work, products and services without AI. Search by name, category or country, and open a card to jump straight to the creator's own platform.",
+      "Every active profile in the catalog — people, studios and companies who create work, products and services without AI. Search by name, category or country, and open a card to jump straight to the creator's own platform.",
     searchPlaceholder: "Search creators, categories, products…",
     searchAria: "Search creators",
     filters: "Filters",
@@ -482,11 +482,11 @@ export const en: Dictionary = {
       "Writing, editing and copy where a human wrote and shaped the text.",
       "Design and branding work where the concept, layout and typography are the designer's.",
       "Handmade objects, craft and small-batch production.",
-      "Professional services that trade on human judgement — consulting, teaching, coaching, architecture, engineering, legal, medical adjacent work.",
+      "Professional services that trade on human judgment — consulting, teaching, coaching, architecture, engineering, legal, medical adjacent work.",
     ],
     hybridTitle: "Where hybrid work fits",
     hybridText1:
-      "AI touches many workflows now — background clean-up, transcription, research assistance, spell check, colour balancing. That is fine, as long as the human contribution is the substance of the finished work and the creator is open about how AI was used. Each profile has an ",
+      "AI touches many workflows now — background clean-up, transcription, research assistance, spell check, color balancing. That is fine, as long as the human contribution is the substance of the finished work and the creator is open about how AI was used. Each profile has an ",
     hybridStrong: "On the use of AI",
     hybridText2:
       " statement for this — clarity is the standard, not silence.",
@@ -807,7 +807,7 @@ export const en: Dictionary = {
     listingPolicy: {
       title: "Listing Policy",
       intro:
-        "This page describes what belongs in the catalogue, how new listings are reviewed, how paid plans work, and the conditions under which a listing can be edited, suspended or removed. It complements the Human-Made standards, which describe what human-made means in practice.",
+        "This page describes what belongs in the catalog, how new listings are reviewed, how paid plans work, and the conditions under which a listing can be edited, suspended or removed. It complements the Human-Made standards, which describe what human-made means in practice.",
     },
     verificationPolicy: {
       title: "Verification Policy",
@@ -863,14 +863,14 @@ export const en: Dictionary = {
     profileSuspended: {
       title: "Profile suspended",
       description:
-        "This profile is temporarily hidden from the catalogue while we review a report or a billing issue. If this is your profile, please get in touch — we handle every case by hand.",
+        "This profile is temporarily hidden from the catalog while we review a report or a billing issue. If this is your profile, please get in touch — we handle every case by hand.",
       primary: "Contact us",
       secondary: "Browse other profiles",
     },
     profileNotAvailable: {
       title: "Profile not available",
       description:
-        "This profile is no longer in the catalogue — the creator may have taken it down, or the plan lapsed. The rest of the directory is still here.",
+        "This profile is no longer in the catalog — the creator may have taken it down, or the plan lapsed. The rest of the directory is still here.",
       primary: "Browse the catalog",
       secondary: "Back to home",
     },
