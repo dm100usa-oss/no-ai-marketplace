@@ -7,7 +7,7 @@ import type { Dictionary } from "@/i18n/types";
 export const en: Dictionary = {
   site: {
     name: "No AI Marketplace",
-    tagline: "Find talented professionals",
+    tagline: "Find talented professionals who work without AI",
     slogan: "See their work and reach out directly",
     description:
       "An international directory of professionals who create professional work and services without the use of generative AI.",
