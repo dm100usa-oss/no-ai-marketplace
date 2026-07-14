@@ -87,7 +87,7 @@ export const ru: Dictionary = {
   },
 
   home: {
-    heroSearchPlaceholder: "иллюстрации для детских книг, шарфы ручной работы...",
+    heroSearchPlaceholder: "Поиск авторов, категорий, товаров...",
     heroSearchAria: "Поиск авторов",
     browseCatalog: "Открыть каталог",
     addProfile: "Добавить профиль",

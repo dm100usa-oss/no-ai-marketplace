@@ -86,7 +86,7 @@ export const en: Dictionary = {
   },
 
   home: {
-    heroSearchPlaceholder: "children's book illustrations, handmade scarves…",
+    heroSearchPlaceholder: "Search creators, categories, products…",
     heroSearchAria: "Search creators",
     browseCatalog: "Browse catalog",
     addProfile: "Add profile",
