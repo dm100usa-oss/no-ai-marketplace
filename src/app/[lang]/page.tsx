@@ -69,7 +69,7 @@ export default async function HomePage({
         className="relative bg-cover bg-center"
         style={{ backgroundColor: "#c5d4f3", backgroundImage: "url('/images/hero.webp')" }}
       >
-        <div className="flex min-h-[300px] items-center justify-center px-4 py-10 sm:min-h-[340px] md:aspect-[1799/931] md:min-h-0">
+        <div className="flex min-h-[300px] items-center justify-center px-4 py-10 sm:min-h-[340px] md:aspect-[2388/939] md:min-h-0">
           <div
             className="mx-auto max-w-2xl rounded-3xl px-6 py-6 text-center md:px-10 md:py-8"
             style={{ background: "rgba(219,233,255,0.60)", backdropFilter: "blur(2px)" }}
