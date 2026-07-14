@@ -38,11 +38,11 @@ export function FindAccordion({
         className="relative flex w-full items-center justify-center rounded-2xl border px-6 py-4 transition-transform duration-150 hover:-translate-y-0.5 active:translate-y-px"
         style={{
           background:
-            "linear-gradient(180deg, #b0bfd4 0%, #cfdcee 50%, #b0bfd4 100%)",
+            "linear-gradient(180deg, #aec3e0 0%, #c3d5ee 28%, #d6e4f7 50%, #c3d5ee 72%, #aec3e0 100%)",
           borderColor: "rgba(22,35,58,0.06)",
           color: "var(--color-ink)",
           boxShadow:
-            "inset 0 1px 0 rgba(255,255,255,0.55), 0 2px 5px rgba(22,35,58,0.10)",
+            "inset 0 1px 0 rgba(255,255,255,0.6), 0 2px 5px rgba(22,35,58,0.10)",
         }}
       >
         <span
@@ -56,7 +56,7 @@ export function FindAccordion({
           style={{ color: "var(--color-ink)" }}
           aria-hidden
         >
-          <SearchIcon size={22} />
+          <SearchIcon size={25} />
         </span>
       </button>
 
