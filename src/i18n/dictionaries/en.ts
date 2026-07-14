@@ -100,12 +100,15 @@ export const en: Dictionary = {
     ],
     heroAdvantagesTitle: "What you get",
     heroAdvantages: [
-      "100% of income to the creator",
       "0% commission for the client",
+      "100% of income to the creator",
       "More reach for teams and companies",
+      "No hidden fees",
+      "No middlemen",
     ],
     heroPrinciplesTitle: "Our principles",
     heroPrinciples: [
+      "No AI used",
       "Real people only",
       "Direct contact",
       "Privacy",

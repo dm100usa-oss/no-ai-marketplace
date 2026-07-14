@@ -129,28 +129,17 @@ export default async function HomePage({
             </ul>
           </div>
 
-          {/* No-AI — centered text with blue checks, no boxes */}
-          <div className="mx-auto mt-6 flex max-w-2xl flex-col items-center gap-2 text-[1.05rem] sm:flex-row sm:flex-wrap sm:justify-center sm:gap-6">
-            {dict.home.heroNoAi.map((item) => (
-              <span key={item} className="inline-flex items-center gap-2" style={{ color: "var(--color-ink)" }}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="shrink-0">
-                  <path d="M5 12.5l4.5 4.5L19 7" stroke="var(--color-accent)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                {item}
-              </span>
-            ))}
-          </div>
-
           {/* Advantages + principles — no card wrappers */}
           <div className="mx-auto mt-10 grid max-w-2xl gap-8 sm:grid-cols-2">
             <div>
               <h3 className="text-[1.05rem]">{dict.home.heroAdvantagesTitle}</h3>
               <ul className="mt-3 space-y-2 text-[1.05rem]">
-                {dict.home.heroAdvantages.map((line, i) => {
-                  const head = i === 0 ? "100%" : i === 1 ? "0%" : "Больше";
+                {dict.home.heroAdvantages.map((line) => {
+                  const m = line.match(/^(\d+%|Больше|More|No)\b/);
+                  const head = m ? m[1] : null;
                   return (
                     <li key={line} style={{ color: "var(--color-ink)" }}>
-                      {line.startsWith(head) ? (
+                      {head ? (
                         <>
                           <span className="font-bold" style={{ color: "var(--color-accent)" }}>
                             {head}
