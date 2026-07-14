@@ -69,19 +69,12 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             <Logo lang={lang} ariaLabel={`${dict.site.name} — ${dict.common.home}`} />
           </div>
 
-          {/* Right: language (desktop) + Add profile (highlighted) */}
+          {/* Right: language (desktop). Spacer on mobile keeps the centred logo aligned. */}
           <div className="flex items-center gap-2">
             <div className="hidden md:block">
               <LanguageSwitcher lang={lang} dict={dict} />
             </div>
-            <LocaleLink
-              lang={lang}
-              href="/join"
-              onClick={() => trackEvent("join_click", { source: "header" })}
-              className="btn btn-ink shrink-0 !px-4 !py-2.5 text-[0.95rem]"
-            >
-              {dict.header.addProfile}
-            </LocaleLink>
+            <span className="h-10 w-10 md:hidden" aria-hidden="true" />
           </div>
         </div>
 
