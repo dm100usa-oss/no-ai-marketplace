@@ -79,6 +79,10 @@ export interface Profile extends ReservedRating {
 
   featured?: boolean; // leader flag, set manually (TZ 3.4)
 
+  /** How many people are in the team. Only meaningful for profileType
+   *  "team"; the card falls back to a plain "Team" badge without it. */
+  teamSize?: number;
+
   dateCreated: string; // ISO
   dateUpdated?: string; // ISO
 

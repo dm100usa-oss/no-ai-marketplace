@@ -12,6 +12,35 @@ import type { Locale } from "@/i18n/config";
  * (country + a keyword or two), external "Visit" button — a jump to the
  * creator's own platform, not a purchase on the site.
  */
+/** "3 человека" / "3 people" — Russian needs one, few and many forms. */
+function peopleCount(n: number, dict: Dictionary): string {
+  const [one, few, many] = dict.common.peopleForms;
+  const mod10 = n % 10;
+  const mod100 = n % 100;
+  let word = many;
+  if (mod10 === 1 && mod100 !== 11) word = one;
+  else if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) word = few;
+  return `${n} ${word}`;
+}
+
+/** Badge shown over the work image for teams and companies. A single
+ *  creator gets none — the plain card already reads as one person. */
+function typeBadge(
+  profile: Profile,
+  dict: Dictionary,
+): { label: string; bg: string } | null {
+  if (profile.profileType === "company") {
+    return { label: dict.common.badgeCompany, bg: "#2f5cb0" };
+  }
+  if (profile.profileType === "team") {
+    const label = profile.teamSize
+      ? dict.common.badgeTeamWithSize.replace("{n}", peopleCount(profile.teamSize, dict))
+      : dict.common.badgeTeam;
+    return { label, bg: "#0f7a58" };
+  }
+  return null;
+}
+
 export function CreatorCard({
   lang,
   dict,
@@ -46,6 +75,15 @@ export function CreatorCard({
     visitLabel ??
     (profile.socialLinks.portfolio ? dict.profile.visitPortfolio : dict.profile.visitWebsite);
 
+  const badge = typeBadge(profile, dict);
+  // What this participant actually does — the difference between two
+  // people in the same profession. Products count too: an author sells
+  // books, not services.
+  const does = [...(profile.services ?? []), ...(profile.products ?? [])].slice(0, 3);
+  // A single creator reads as a person (round avatar); a team or company
+  // reads as a group (rounded square).
+  const isGroup = profile.profileType !== "creator";
+
   return (
     <article className="card card-hover flex flex-col">
       {/* Work image */}
@@ -55,6 +93,14 @@ export function CreatorCard({
           <img src={profile.mainImage} alt={`${dict.common.humanMadeWork} — ${profile.name}`} className="h-full w-full object-cover" loading="lazy" />
         ) : (
           <PlaceholderArt seed={profile.slug} label={dict.common.humanMadeWork} />
+        )}
+        {badge && (
+          <span
+            className="absolute left-2.5 top-2.5 max-w-[calc(100%-1.25rem)] truncate rounded-md px-2.5 py-1 text-[0.72rem] font-semibold text-white"
+            style={{ background: badge.bg, fontFamily: "var(--font-display)" }}
+          >
+            {badge.label}
+          </span>
         )}
       </LocaleLink>
 
@@ -68,13 +114,18 @@ export function CreatorCard({
                 src={profile.avatar}
                 alt={profile.name}
                 loading="lazy"
-                className="h-9 w-9 shrink-0 rounded-full object-cover"
+                className={`h-9 w-9 shrink-0 object-cover ${isGroup ? "rounded-[0.6rem]" : "rounded-full"}`}
               />
             ) : (
               <span
                 aria-hidden
-                className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-[0.8rem] font-bold text-white"
-                style={{ background: "var(--color-ink)", fontFamily: "var(--font-display)" }}
+                className={`grid h-9 w-9 shrink-0 place-items-center text-[0.8rem] font-bold text-white ${
+                  isGroup ? "rounded-[0.6rem]" : "rounded-full"
+                }`}
+                style={{
+                  background: badge?.bg ?? "var(--color-ink)",
+                  fontFamily: "var(--font-display)",
+                }}
               >
                 {initials}
               </span>
@@ -98,6 +149,14 @@ export function CreatorCard({
         <p className="line-clamp-2 text-[0.92rem] leading-snug" style={{ color: "var(--color-muted)" }}>
           {profile.shortDescription}
         </p>
+
+        {/* What they actually do — separates two people in one profession */}
+        {does.length > 0 && (
+          <p className="line-clamp-2 text-[0.85rem] leading-snug" style={{ color: "var(--color-muted)" }}>
+            <span style={{ color: "var(--color-muted-soft)" }}>{dict.common.cardDoes} </span>
+            {does.join(" · ")}
+          </p>
+        )}
 
         {/* Tags: country + a keyword or two */}
         <div className="flex flex-wrap gap-1.5">

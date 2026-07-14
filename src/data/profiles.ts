@@ -469,6 +469,7 @@ export const profiles: Profile[] = [
     aiUsageStatement:
       "Every page is drawn by hand by a named member of the team. No AI generation is used.",
     verificationDescription: "Process photos and original sketches from all three members reviewed.",
+    teamSize: 3,
     dateCreated: "2025-05-14",
   },
   {
@@ -494,6 +495,7 @@ export const profiles: Profile[] = [
     aiUsageStatement:
       "We cut and grade real footage. No generated frames, no synthetic voices.",
     verificationDescription: "Project files and raw footage from past work reviewed.",
+    teamSize: 3,
     dateCreated: "2025-06-02",
   },
   {
@@ -519,6 +521,7 @@ export const profiles: Profile[] = [
     aiUsageStatement:
       "We design and write our own code, understand every line we ship and support what we build.",
     verificationDescription: "Commit history and architecture decisions reviewed.",
+    teamSize: 2,
     dateCreated: "2025-06-18",
   },
 

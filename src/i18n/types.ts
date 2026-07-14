@@ -92,6 +92,15 @@ export interface Dictionary {
     reviewedByHand: string;
     leadersPickedByHand: string;
     humanMadeWork: string;
+    /** Card badge: participant type. {n} = number of people in the team. */
+    badgeTeam: string;
+    badgeTeamWithSize: string;
+    /** Plural forms for "N people": [one, few, many]. English uses the
+     *  first two only; Russian needs all three (человек/человека/человек). */
+    peopleForms: [string, string, string];
+    badgeCompany: string;
+    /** Card line listing what this participant actually does. */
+    cardDoes: string;
     backToHome: string;
     contactUs: string;
   };
