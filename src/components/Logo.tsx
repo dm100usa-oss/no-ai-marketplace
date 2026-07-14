@@ -22,13 +22,13 @@ export function Logo({
       <span className="inline-flex items-center gap-1.5">
         <span
           aria-hidden
-          className="inline-flex h-6 w-6 items-center justify-center rounded-md text-[13px] font-extrabold text-white"
+          className="inline-flex h-6 items-center justify-center rounded-md px-1.5 text-[13px] font-extrabold text-white"
           style={{ background: "var(--color-ink)" }}
         >
-          No
+          No AI
         </span>
         <span className="text-[1.15rem] font-extrabold leading-none" style={{ color: "var(--color-ink)" }}>
-          AI Marketplace
+          Marketplace
         </span>
       </span>
     </LocaleLink>

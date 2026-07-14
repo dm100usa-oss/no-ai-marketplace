@@ -158,11 +158,11 @@ a { color: inherit; text-decoration: none; }
 
 /* Dark Join button (Fiverr-style dark CTA) */
 .btn-ink {
-  background: radial-gradient(ellipse at center, #3a5f88 0%, #24405f 55%, #16233a 100%);
+  background: radial-gradient(ellipse at center, #4a72a0 0%, #2c4c70 55%, #1a2a45 100%);
   color: #fff;
 }
 .btn-ink:active {
-  background: radial-gradient(ellipse at center, #32557a 0%, #1d3550 55%, #101a2c 100%);
+  background: radial-gradient(ellipse at center, #416592 0%, #254060 55%, #14203a 100%);
 }
 
 /* Quiet button on light surface */

@@ -102,12 +102,8 @@ export default async function HomePage({
                   style={{ borderColor: "var(--color-line)", background: "#fff" }}
                 />
               </div>
-              <button
-                type="submit"
-                className="btn btn-quiet shrink-0 h-12"
-                aria-label={dict.header.searchAria}
-              >
-                {dict.header.search}
+              <button type="submit" className="btn btn-accent shrink-0" aria-label={dict.header.searchAria}>
+                <SearchIcon />
               </button>
             </form>
 
