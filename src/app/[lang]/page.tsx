@@ -65,14 +65,11 @@ export default async function HomePage({
       />
 
       {/* ---------- Hero ---------- */}
-      <section className="relative">
-        <img
-          src="/images/hero.webp"
-          alt=""
-          className="block w-full"
-        />
-        {/* Text overlaid on the clear central area of the banner */}
-        <div className="absolute inset-0 flex items-center justify-center">
+      <section
+        className="relative bg-cover bg-center"
+        style={{ backgroundColor: "#c2d6f6", backgroundImage: "url('/images/hero.webp')" }}
+      >
+        <div className="flex min-h-[380px] items-center justify-center py-16 sm:min-h-[440px] md:min-h-[520px]">
           <div className="mx-auto max-w-2xl px-4 text-center">
             <h1 className="text-balance">{dict.site.name}</h1>
             <p
@@ -81,7 +78,8 @@ export default async function HomePage({
             >
               {dict.site.tagline}
             </p>
-            <p className="mt-1 text-[0.95rem] italic sm:text-[1.05rem]" style={{ color: "var(--color-muted)" }}>
+            {/* Slogan: shown in banner on desktop, moved below on mobile */}
+            <p className="mt-1 hidden text-[1.05rem] italic sm:block" style={{ color: "var(--color-muted)" }}>
               {dict.site.slogan}
             </p>
           </div>
@@ -91,6 +89,14 @@ export default async function HomePage({
       {/* ---------- Hero content ---------- */}
       <section className="section">
         <div className="container-page">
+          {/* Slogan on mobile only */}
+          <p
+            className="mx-auto mb-6 max-w-xl text-center text-[1.05rem] italic sm:hidden"
+            style={{ color: "var(--color-muted)" }}
+          >
+            {dict.site.slogan}
+          </p>
+
           {/* Intro line — same display font as tagline */}
           <p
             className="mx-auto max-w-2xl text-center text-[1.35rem] font-bold md:text-[1.6rem]"
