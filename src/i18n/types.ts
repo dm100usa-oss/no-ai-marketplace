@@ -207,6 +207,17 @@ export interface Dictionary {
     steps: { t: string; d: string }[];
     formTitle: string;
     formIntro: string;
+    /** "Who are you" picker shown before the form. */
+    pickTitle: string;
+    pickIntro: string;
+    pickOptions: {
+      creator: { title: string; text: string; points: string[] };
+      team: { title: string; text: string; points: string[] };
+      company: { title: string; text: string; points: string[] };
+    };
+    pickCta: string;
+    pickChange: string;
+    pickChosen: string;
     rulesTitle: string;
     rulesText1: string;
     rulesLink1: string;

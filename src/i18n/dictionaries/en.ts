@@ -308,6 +308,29 @@ export const en: Dictionary = {
     formTitle: "The form",
     formIntro:
       "Fill in the form below. The first 100 profiles are free; after that the form moves to the paid step and takes payment through Stripe.",
+    pickTitle: "Who you are",
+    pickIntro:
+      "Pick how you work. It decides what the form asks you and how your profile looks in the catalog.",
+    pickOptions: {
+      creator: {
+        title: "Creator",
+        text: "You work alone and answer for the result yourself.",
+        points: ["A personal profile in your own name", "Your portfolio and your links", "Clients write to you directly"],
+      },
+      team: {
+        title: "Team",
+        text: "There are several of you and you take projects together.",
+        points: ["A team profile with the number of members", "Shared portfolio and roles", "One contact for the whole team"],
+      },
+      company: {
+        title: "Company or studio",
+        text: "You are a registered business with your own staff.",
+        points: ["A company profile", "Website, registration, staff", "Verified as a business"],
+      },
+    },
+    pickCta: "Fill in the form",
+    pickChange: "Choose another",
+    pickChosen: "You picked:",
     rulesTitle: "Rules and standards",
     rulesText1: "Please read ",
     rulesLink1: "Human-Made standards",

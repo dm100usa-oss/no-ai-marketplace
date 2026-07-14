@@ -3,7 +3,7 @@ import { LocaleLink } from "@/components/LocaleLink";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { pricing } from "@/lib/config";
 import { FAQ } from "@/components/FAQ";
-import { TallyForm } from "@/components/TallyForm";
+import { JoinPicker } from "@/components/JoinPicker";
 import { CheckShield, ArrowRight, SparkIcon } from "@/components/icons";
 import { getDictionary } from "@/i18n";
 import { DEFAULT_LOCALE, isLocale, localizedPath, LOCALES } from "@/i18n/config";
@@ -131,15 +131,9 @@ export default async function JoinPage({
           ))}
         </ol>
 
-        {/* Submission form */}
+        {/* Who you are, then the submission form */}
         <div id="form" className="mt-12 scroll-mt-32">
-          <h2>{dict.join.formTitle}</h2>
-          <p className="mt-3 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
-            {dict.join.formIntro}
-          </p>
-          <div className="mt-4">
-            <TallyForm lang={locale} dict={dict} />
-          </div>
+          <JoinPicker lang={locale} dict={dict} />
         </div>
 
         <h2 className="mt-12">{dict.join.rulesTitle}</h2>
