@@ -116,9 +116,9 @@ export const ru: Dictionary = {
     ],
     heroFindButton: "Найти",
     heroActions: [
-      { hint: "Специалист для конкретной задачи", label: "Найти автора", href: "/directory" },
-      { hint: "Команда для вашего проекта", label: "Собрать команду", href: "/teams" },
-      { hint: "Компания для масштабных задач", label: "Найти компанию", href: "/directory?type=company" },
+      { hint: "Специалиста для конкретной задачи", label: "Найти автора", href: "/directory" },
+      { hint: "Команду для вашего проекта", label: "Собрать команду", href: "/teams" },
+      { hint: "Компанию для масштабных задач", label: "Найти компанию", href: "/directory?type=company" },
     ],
     heroSearchPlaceholder: "Поиск авторов, категорий, товаров...",
     heroSearchAria: "Поиск авторов",
