@@ -12,6 +12,18 @@ export interface FindAction {
 }
 
 /**
+ * One tone per entry point, taken from the same pastel family as the
+ * direction tiles: sand for a single creator, mint for a team, blue for
+ * a company. Colour carries the difference between "team" and "company",
+ * which read too much alike on text alone.
+ */
+const ACTION_TONES = [
+  { bg: "#f7e2c0", ink: "#a3690f", sub: "#8a5a11", press: "#e2cead" },
+  { bg: "#c9e9dc", ink: "#0f7a58", sub: "#0c6549", press: "#b5d4c8" },
+  { bg: "#cfe0f8", ink: "#2f5cb0", sub: "#274a86", press: "#bccde4" },
+];
+
+/**
  * "Find" button that reveals the three entry points (creator / team /
  * company) right below it. The panel is always present in the HTML and
  * only collapsed with CSS, so search engines and AI answer engines read
@@ -37,11 +49,9 @@ export function FindAccordion({
         aria-controls="find-panel"
         className="press-btn relative flex w-full items-center justify-center rounded-2xl px-6 py-4"
         style={{
-          background:
-            "linear-gradient(180deg, #aec3e0 0%, #c3d5ee 28%, #d6e4f7 50%, #c3d5ee 72%, #aec3e0 100%)",
-          color: "var(--color-ink)",
-          ["--press-bg" as string]:
-            "linear-gradient(180deg, #94a6be 0%, #a6b5ca 28%, #b6c2d2 50%, #a6b5ca 72%, #94a6be 100%)",
+          background: "#5b87d8",
+          color: "#ffffff",
+          ["--press-bg" as string]: "#4d73bd",
         }}
       >
         <span
@@ -52,7 +62,7 @@ export function FindAccordion({
         </span>
         <span
           className="absolute right-6 flex items-center"
-          style={{ color: "var(--color-ink)" }}
+          style={{ color: "#ffffff" }}
           aria-hidden
         >
           <SearchIcon size={25} />
@@ -69,27 +79,36 @@ export function FindAccordion({
       >
         <div className="overflow-hidden">
           <div className="mt-3 grid max-w-3xl gap-3 sm:grid-cols-3">
-            {actions.map((action) => (
-              <LocaleLink
-                key={action.label}
-                lang={lang}
-                href={action.href}
-                tabIndex={open ? undefined : -1}
-                aria-hidden={open ? undefined : true}
-                className="press-btn flex flex-col items-center justify-center rounded-2xl px-4 py-4 text-center"
-                style={{
-                  background: "var(--color-brand-soft)",
-                  ["--press-bg" as string]: "#c7cdd9",
-                }}
-              >
-                <span
-                  className="text-[1.05rem] font-bold"
-                  style={{ fontFamily: "var(--font-display)", color: "var(--color-accent)" }}
+            {actions.map((action, i) => {
+              const tone = ACTION_TONES[i] ?? ACTION_TONES[0];
+              return (
+                <LocaleLink
+                  key={action.label}
+                  lang={lang}
+                  href={action.href}
+                  tabIndex={open ? undefined : -1}
+                  aria-hidden={open ? undefined : true}
+                  className="press-btn flex flex-col items-center justify-center rounded-2xl px-4 py-4 text-center"
+                  style={{
+                    background: tone.bg,
+                    ["--press-bg" as string]: tone.press,
+                  }}
                 >
-                  {action.hint}
-                </span>
-              </LocaleLink>
-            ))}
+                  <span
+                    className="text-[1.05rem] font-bold"
+                    style={{ fontFamily: "var(--font-display)", color: tone.ink }}
+                  >
+                    {action.hint}
+                  </span>
+                  <span
+                    className="mt-1 text-[0.8rem] leading-snug"
+                    style={{ color: tone.sub }}
+                  >
+                    {action.label}
+                  </span>
+                </LocaleLink>
+              );
+            })}
           </div>
         </div>
       </div>

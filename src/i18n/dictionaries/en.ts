@@ -115,9 +115,9 @@ export const en: Dictionary = {
     ],
     heroFindButton: "Find",
     heroActions: [
-      { hint: "A specialist for a specific task", label: "Find a creator", href: "/directory" },
-      { hint: "A team for your project", label: "Build a team", href: "/teams" },
-      { hint: "A company for larger work", label: "Find a company", href: "/directory?type=company" },
+      { hint: "A creator", label: "for a specific task", href: "/directory" },
+      { hint: "A team", label: "for your project", href: "/teams" },
+      { hint: "A company", label: "for larger work", href: "/directory?type=company" },
     ],
     heroSearchPlaceholder: "Search creators, categories, products…",
     heroSearchAria: "Search creators",
