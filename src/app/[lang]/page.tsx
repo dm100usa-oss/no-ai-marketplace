@@ -129,16 +129,31 @@ export default async function HomePage({
             </ul>
           </div>
 
-          {/* Advantages + principles — no card wrappers */}
-          <div className="mx-auto mt-10 grid max-w-2xl gap-8 sm:grid-cols-2">
-            <div>
-              <h3 className="text-[1.05rem]">{dict.home.heroAdvantagesTitle}</h3>
-              <ul className="mt-3 space-y-2 text-[1.05rem]">
-                {dict.home.heroAdvantages.map((line) => {
-                  const m = line.match(/^(\d+%|Больше|More|No)\b/);
-                  const head = m ? m[1] : null;
-                  return (
-                    <li key={line} style={{ color: "var(--color-ink)" }}>
+          {/* Advantages — same heading style and bullets as the options list */}
+          <p
+            className="mx-auto mt-10 max-w-2xl text-center text-[1.35rem] font-bold md:text-[1.6rem]"
+            style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+          >
+            {dict.home.heroAdvantagesTitle}
+          </p>
+          <div className="mx-auto mt-5 w-fit">
+            <ul className="flex flex-col gap-2.5 text-[1.05rem]">
+              {dict.home.heroAdvantages.map((line) => {
+                const m = line.match(/^(\d+%|Больше|More)\b/);
+                const head = m ? m[1] : null;
+                return (
+                  <li key={line} className="flex items-start gap-3" style={{ color: "var(--color-ink)" }}>
+                    <span
+                      aria-hidden="true"
+                      className="mt-[0.45rem] shrink-0 rounded-full"
+                      style={{
+                        width: "0.7rem",
+                        height: "0.7rem",
+                        background: "radial-gradient(circle at 30% 30%, #6f92cf, #325ba3 70%, #274a86)",
+                        boxShadow: "0 1px 2px rgba(30,50,90,0.4), inset 0 1px 1px rgba(255,255,255,0.45)",
+                      }}
+                    />
+                    <span>
                       {head ? (
                         <>
                           <span className="font-bold" style={{ color: "var(--color-accent)" }}>
@@ -149,19 +164,38 @@ export default async function HomePage({
                       ) : (
                         line
                       )}
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-[1.05rem]">{dict.home.heroPrinciplesTitle}</h3>
-              <ul className="mt-3 space-y-2 text-[1.05rem]" style={{ color: "var(--color-ink)" }}>
-                {dict.home.heroPrinciples.map((line) => (
-                  <li key={line}>{line}</li>
-                ))}
-              </ul>
-            </div>
+                    </span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+
+          {/* Principles — same heading style and bullets */}
+          <p
+            className="mx-auto mt-10 max-w-2xl text-center text-[1.35rem] font-bold md:text-[1.6rem]"
+            style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+          >
+            {dict.home.heroPrinciplesTitle}
+          </p>
+          <div className="mx-auto mt-5 w-fit">
+            <ul className="flex flex-col gap-2.5 text-[1.05rem]">
+              {dict.home.heroPrinciples.map((line) => (
+                <li key={line} className="flex items-start gap-3" style={{ color: "var(--color-ink)" }}>
+                  <span
+                    aria-hidden="true"
+                    className="mt-[0.45rem] shrink-0 rounded-full"
+                    style={{
+                      width: "0.7rem",
+                      height: "0.7rem",
+                      background: "radial-gradient(circle at 30% 30%, #6f92cf, #325ba3 70%, #274a86)",
+                      boxShadow: "0 1px 2px rgba(30,50,90,0.4), inset 0 1px 1px rgba(255,255,255,0.45)",
+                    }}
+                  />
+                  <span>{line}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Three action buttons with hints */}
