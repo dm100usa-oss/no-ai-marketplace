@@ -70,7 +70,7 @@ export default async function HomePage({
         <div className="absolute inset-0 flex items-center justify-center">
           <div
             className="mx-auto w-[85%] max-w-md rounded-2xl px-6 py-7 text-center sm:w-[70%] sm:px-10 sm:py-10"
-            style={{ background: "rgba(219,233,255,0.72)", backdropFilter: "blur(2px)" }}
+            style={{ background: "rgba(219,233,255,0.61)", backdropFilter: "blur(2px)" }}
           >
             <h1 className="text-balance text-[0.95rem] sm:text-[1.35rem] md:text-[1.7rem]" style={{ marginTop: "0" }}>{dict.site.name}</h1>
             <p
@@ -97,24 +97,26 @@ export default async function HomePage({
             {dict.home.heroIntro}
           </p>
 
-          {/* Options list — bullets with raised gradient circles in hero-plate tone */}
-          <ul className="mx-auto mt-5 flex max-w-2xl flex-col items-center gap-2.5 text-[1.05rem]">
-            {dict.home.heroOptions.map((item) => (
-              <li key={item} className="flex items-center gap-3" style={{ color: "var(--color-ink)" }}>
-                <span
-                  aria-hidden="true"
-                  className="shrink-0 rounded-full"
-                  style={{
-                    width: "0.7rem",
-                    height: "0.7rem",
-                    background: "radial-gradient(circle at 30% 30%, #eaf2ff, #a9c8ff 70%, #7ba7f0)",
-                    boxShadow: "0 1px 2px rgba(60,90,140,0.35), inset 0 1px 1px rgba(255,255,255,0.7)",
-                  }}
-                />
-                {item}
-              </li>
-            ))}
-          </ul>
+          {/* Options list — bullets with raised gradient circles, aligned to text start */}
+          <div className="mx-auto mt-5 w-fit">
+            <ul className="flex flex-col gap-2.5 text-[1.05rem]">
+              {dict.home.heroOptions.map((item) => (
+                <li key={item} className="flex items-start gap-3" style={{ color: "var(--color-ink)" }}>
+                  <span
+                    aria-hidden="true"
+                    className="mt-[0.45rem] shrink-0 rounded-full"
+                    style={{
+                      width: "0.7rem",
+                      height: "0.7rem",
+                      background: "radial-gradient(circle at 30% 30%, #6f92cf, #325ba3 70%, #274a86)",
+                      boxShadow: "0 1px 2px rgba(30,50,90,0.4), inset 0 1px 1px rgba(255,255,255,0.45)",
+                    }}
+                  />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
 
           {/* No-AI — centered text with blue checks, no boxes */}
           <div className="mx-auto mt-6 flex max-w-2xl flex-col items-center gap-2 text-[1.05rem] sm:flex-row sm:flex-wrap sm:justify-center sm:gap-6">
