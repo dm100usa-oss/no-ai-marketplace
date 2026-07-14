@@ -87,11 +87,11 @@ export const en: Dictionary = {
   },
 
   home: {
-    heroIntro: "Choose the option that suits you best",
+    heroIntro: "Choose the option that suits you",
     heroOptions: [
       "Work with individual creators",
-      "Build your own team for specific tasks",
-      "Hire professional companies",
+      "Build your own team of creators for specific tasks",
+      "Hire professional companies and studios",
     ],
     heroNoAi: [
       "No AI",
