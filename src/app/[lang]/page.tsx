@@ -65,23 +65,21 @@ export default async function HomePage({
       />
 
       {/* ---------- Hero ---------- */}
-      <section
-        className="relative bg-cover bg-center"
-        style={{ backgroundColor: "#c5d4f3", backgroundImage: "url('/images/hero.webp')" }}
-      >
-        <div className="flex min-h-[300px] items-center justify-center px-4 py-10 sm:min-h-[340px] md:aspect-[2388/939] md:min-h-0">
+      <section className="relative">
+        <img src="/images/hero.webp" alt="" className="block w-full" />
+        <div className="absolute inset-0 flex items-center justify-center">
           <div
-            className="mx-auto max-w-2xl rounded-3xl px-6 py-6 text-center md:px-10 md:py-8"
+            className="mx-auto max-w-2xl rounded-2xl px-4 py-3 text-center sm:px-8 sm:py-6"
             style={{ background: "rgba(219,233,255,0.60)", backdropFilter: "blur(2px)" }}
           >
-            <h1 className="text-balance">{dict.site.name}</h1>
+            <h1 className="text-balance text-[1.1rem] sm:text-[1.6rem] md:text-[2rem]">{dict.site.name}</h1>
             <p
-              className="mt-2 text-[1.2rem] font-bold sm:text-[1.35rem] md:text-[1.6rem]"
+              className="mt-1 text-[0.85rem] font-bold sm:text-[1.35rem] md:text-[1.6rem]"
               style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
             >
               {dict.site.tagline}
             </p>
-            <p className="mt-1 text-[0.95rem] italic sm:text-[1.05rem]" style={{ color: "var(--color-muted)" }}>
+            <p className="mt-0.5 text-[0.7rem] italic sm:text-[1.05rem]" style={{ color: "var(--color-muted)" }}>
               {dict.site.slogan}
             </p>
           </div>
