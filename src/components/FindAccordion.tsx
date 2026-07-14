@@ -82,14 +82,11 @@ export function FindAccordion({
                   ["--press-bg" as string]: "#c7cdd9",
                 }}
               >
-                <span className="text-[0.85rem]" style={{ color: "var(--color-muted)" }}>
-                  {action.hint}
-                </span>
                 <span
-                  className="mt-1.5 text-[1.05rem] font-bold"
+                  className="text-[1.05rem] font-bold"
                   style={{ fontFamily: "var(--font-display)", color: "var(--color-accent)" }}
                 >
-                  {action.label}
+                  {action.hint}
                 </span>
               </LocaleLink>
             ))}
