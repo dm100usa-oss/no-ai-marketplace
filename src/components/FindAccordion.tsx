@@ -38,8 +38,8 @@ export function FindAccordion({
         className="tile relative w-full flex-row items-center justify-center px-6 py-4"
         style={{
           background:
-            "linear-gradient(180deg, #4a74bd 0%, #3d66ab 45%, #2f5697 100%)",
-          color: "#fff",
+            "linear-gradient(180deg, #eaf2ff 0%, #dbe9ff 50%, #cddff8 100%)",
+          color: "var(--color-ink)",
         }}
       >
         <span
@@ -48,7 +48,7 @@ export function FindAccordion({
         >
           {label}
         </span>
-        <span className="absolute right-6 flex items-center" aria-hidden>
+        <span className="absolute right-6 flex items-center" style={{ color: "var(--color-accent)" }} aria-hidden>
           <SearchIcon size={22} />
         </span>
       </button>
@@ -62,26 +62,27 @@ export function FindAccordion({
         }}
       >
         <div className="overflow-hidden">
-          <div className="mt-3 flex flex-col gap-3">
-            {actions.map((action) => (
+          <div className="mt-3 grid max-w-3xl gap-3 sm:grid-cols-3">
+            {actions.map((action, i) => (
               <LocaleLink
                 key={action.label}
                 lang={lang}
                 href={action.href}
                 tabIndex={open ? undefined : -1}
                 aria-hidden={open ? undefined : true}
-                className="tile w-full flex-row items-center justify-center px-6 py-4"
+                className="tile items-center px-4 py-4 text-center"
                 style={{
-                  background:
-                    "linear-gradient(180deg, #4a74bd 0%, #3d66ab 45%, #2f5697 100%)",
-                  color: "#fff",
+                  background: i === 0 ? "var(--color-brand-soft)" : i === 1 ? "#eef4ff" : "#fff",
                 }}
               >
-                <span
-                  className="text-[1.15rem] font-bold"
-                  style={{ fontFamily: "var(--font-display)" }}
-                >
+                <span className="text-[0.85rem]" style={{ color: "var(--color-muted)" }}>
                   {action.hint}
+                </span>
+                <span
+                  className="mt-1.5 text-[1.05rem] font-bold"
+                  style={{ fontFamily: "var(--font-display)", color: "var(--color-accent)" }}
+                >
+                  {action.label}
                 </span>
               </LocaleLink>
             ))}
