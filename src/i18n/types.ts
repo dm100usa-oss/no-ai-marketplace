@@ -103,6 +103,7 @@ export interface Dictionary {
   home: {
     /** New hero (approved). */
     heroIntro: string;
+    heroOptions: string[];
     heroAdvantagesTitle: string;
     heroAdvantages: string[];
     heroPrinciplesTitle: string;

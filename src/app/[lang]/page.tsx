@@ -97,6 +97,25 @@ export default async function HomePage({
             {dict.home.heroIntro}
           </p>
 
+          {/* Options list — bullets with raised gradient circles in hero-plate tone */}
+          <ul className="mx-auto mt-5 flex max-w-2xl flex-col items-center gap-2.5 text-[1.05rem]">
+            {dict.home.heroOptions.map((item) => (
+              <li key={item} className="flex items-center gap-3" style={{ color: "var(--color-ink)" }}>
+                <span
+                  aria-hidden="true"
+                  className="shrink-0 rounded-full"
+                  style={{
+                    width: "0.7rem",
+                    height: "0.7rem",
+                    background: "radial-gradient(circle at 30% 30%, #eaf2ff, #a9c8ff 70%, #7ba7f0)",
+                    boxShadow: "0 1px 2px rgba(60,90,140,0.35), inset 0 1px 1px rgba(255,255,255,0.7)",
+                  }}
+                />
+                {item}
+              </li>
+            ))}
+          </ul>
+
           {/* No-AI — centered text with blue checks, no boxes */}
           <div className="mx-auto mt-6 flex max-w-2xl flex-col items-center gap-2 text-[1.05rem] sm:flex-row sm:flex-wrap sm:justify-center sm:gap-6">
             {dict.home.heroNoAi.map((item) => (

@@ -86,8 +86,12 @@ export const en: Dictionary = {
   },
 
   home: {
-    heroIntro:
-      "Work with individual creators, build your own team, or hire an established company",
+    heroIntro: "Choose the option that suits you",
+    heroOptions: [
+      "Work with individual creators",
+      "Build your own team for specific tasks",
+      "Hire professional companies",
+    ],
     heroNoAi: [
       "No AI",
       "No hidden fees",
