@@ -65,9 +65,13 @@ export default async function HomePage({
       />
 
       {/* ---------- Hero ---------- */}
-      <section className="relative">
-        <img src="/images/hero.webp" alt="" className="block w-full" />
-        <div className="absolute inset-0 flex items-center justify-center">
+      <section className="relative flex items-center justify-center overflow-hidden py-10 sm:py-14">
+        <img
+          src="/images/hero.webp"
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="relative flex w-full items-center justify-center px-4">
           <div
             className="mx-auto w-[85%] max-w-md rounded-2xl px-6 py-7 text-center sm:w-[70%] sm:px-10 sm:py-10"
             style={{ background: "rgba(219,233,255,0.61)", backdropFilter: "blur(2px)" }}
