@@ -5,10 +5,12 @@ import type { Locale } from "@/i18n/config";
 
 const bgVar: Record<DirectionColor | "all", string> = {
   art: "var(--color-dir-art-bg)",
+  lit: "var(--color-dir-lit-bg)",
   writing: "var(--color-dir-writing-bg)",
   design: "var(--color-dir-design-bg)",
   photo: "var(--color-dir-photo-bg)",
   music: "var(--color-dir-music-bg)",
+  code: "var(--color-dir-code-bg)",
   craft: "var(--color-dir-craft-bg)",
   services: "var(--color-dir-services-bg)",
   neutral: "var(--color-dir-neutral-bg)",
@@ -17,10 +19,12 @@ const bgVar: Record<DirectionColor | "all", string> = {
 
 const inkVar: Record<DirectionColor | "all", string> = {
   art: "var(--color-dir-art-ink)",
+  lit: "var(--color-dir-lit-ink)",
   writing: "var(--color-dir-writing-ink)",
   design: "var(--color-dir-design-ink)",
   photo: "var(--color-dir-photo-ink)",
   music: "var(--color-dir-music-ink)",
+  code: "var(--color-dir-code-ink)",
   craft: "var(--color-dir-craft-ink)",
   services: "var(--color-dir-services-ink)",
   neutral: "var(--color-dir-neutral-ink)",

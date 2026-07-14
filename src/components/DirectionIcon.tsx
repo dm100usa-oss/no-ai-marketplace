@@ -12,20 +12,24 @@ import type { DirectionColor } from "@/lib/types";
 
 type IconKind =
   | "art"
+  | "lit"
   | "writing"
   | "design"
   | "photo"
   | "music"
+  | "code"
   | "craft"
   | "services"
   | "all";
 
 const map: Record<DirectionColor | "all", IconKind> = {
   art: "art",
+  lit: "lit",
   writing: "writing",
   design: "design",
   photo: "photo",
   music: "music",
+  code: "code",
   craft: "craft",
   services: "services",
   neutral: "all",
@@ -74,6 +78,27 @@ function Shape({ kind }: { kind: IconKind }) {
           <circle cx="20" cy="14" r="2.6" fill="currentColor" />
           <circle cx="28.5" cy="14" r="2.6" fill="currentColor" />
           <circle cx="34" cy="21" r="2.6" fill="currentColor" />
+        </>
+      );
+    case "lit": // open book
+      return (
+        <>
+          <path
+            d="M4 11c6-2.5 12-2.5 20 1v25c-8-3.5-14-3.5-20-1V11Z"
+            fill="currentColor"
+            fillOpacity={SOFT}
+          />
+          <path
+            d="M44 11c-6-2.5-12-2.5-20 1v25c8-3.5 14-3.5 20-1V11Z"
+            fill="currentColor"
+            fillOpacity={SOFT}
+          />
+          <path
+            d="M24 12v25"
+            stroke="currentColor"
+            strokeWidth="3.4"
+            strokeLinecap="round"
+          />
         </>
       );
     case "writing": // pen nib
@@ -132,6 +157,27 @@ function Shape({ kind }: { kind: IconKind }) {
           />
           <circle cx="14" cy="34" r="6.5" fill="currentColor" />
           <circle cx="34" cy="30" r="6.5" fill="currentColor" />
+        </>
+      );
+    case "code": // angle brackets
+      return (
+        <>
+          <rect
+            x="5"
+            y="9"
+            width="38"
+            height="30"
+            rx="5"
+            fill="currentColor"
+            fillOpacity={SOFT}
+          />
+          <path
+            d="M18 18l-6 6 6 6M30 18l6 6-6 6"
+            stroke="currentColor"
+            strokeWidth="3.4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </>
       );
     case "craft": // needle & thread spool

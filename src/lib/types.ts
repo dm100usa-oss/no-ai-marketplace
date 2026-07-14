@@ -100,13 +100,15 @@ export interface Category {
   seoDescription?: string;
 }
 
-/** One of the seven brand direction colours (TZ 5.5). */
+/** One brand colour per direction (TZ 5.5). */
 export type DirectionColor =
   | "art"
+  | "lit"
   | "writing"
   | "design"
   | "photo"
   | "music"
+  | "code"
   | "craft"
   | "services"
   | "neutral";

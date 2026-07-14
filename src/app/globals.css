@@ -32,6 +32,8 @@
   /* Direction colours — background + icon per direction */
   --color-dir-art-bg: #e3ecfb;
   --color-dir-art-ink: #3e6fcc;
+  --color-dir-lit-bg: #f3e8dc;
+  --color-dir-lit-ink: #9a6b3f;
   --color-dir-writing-bg: #dff1e9;
   --color-dir-writing-ink: #1e9e75;
   --color-dir-design-bg: #eae4fa;
@@ -40,6 +42,8 @@
   --color-dir-photo-ink: #d08a22;
   --color-dir-music-bg: #fbe4e9;
   --color-dir-music-ink: #c44a6e;
+  --color-dir-code-bg: #dfe6f5;
+  --color-dir-code-ink: #4a5b8c;
   --color-dir-craft-bg: #fce7dc;
   --color-dir-craft-ink: #d85a30;
   --color-dir-services-bg: #ddf0f2;
