@@ -87,7 +87,7 @@ export const en: Dictionary = {
 
   home: {
     heroIntro:
-      "Work with individual creators, build your own team, or hire an established company.",
+      "Work with individual creators, build your own team, or hire an established company",
     heroNoAi: [
       "No AI",
       "No hidden fees",

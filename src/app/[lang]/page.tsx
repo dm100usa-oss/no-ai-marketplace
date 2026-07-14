@@ -69,12 +69,9 @@ export default async function HomePage({
         className="section-brand relative bg-cover bg-center"
         style={{ backgroundImage: "url('/images/hero.webp')" }}
       >
-        <div className="container-page py-14 md:py-20">
-          {/* Solid centered panel — only name, tagline, slogan */}
-          <div
-            className="mx-auto max-w-2xl rounded-3xl px-6 py-8 text-center shadow-sm md:px-10 md:py-10"
-            style={{ background: "var(--color-brand-soft)" }}
-          >
+        <div className="container-page py-16 md:py-24">
+          {/* Transparent centered panel — name, tagline, slogan */}
+          <div className="mx-auto max-w-2xl px-4 text-center">
             <h1 className="text-balance">{dict.site.name}</h1>
             <p
               className="mt-3 text-[1.35rem] font-bold md:text-[1.6rem]"
@@ -89,38 +86,34 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* ---------- Hero content on light background ---------- */}
+      {/* ---------- Hero content ---------- */}
       <section className="section">
         <div className="container-page">
-          {/* Intro line */}
+          {/* Intro line — same display font as tagline */}
           <p
-            className="mx-auto max-w-2xl text-center text-[1.05rem]"
-            style={{ color: "var(--color-ink)" }}
+            className="mx-auto max-w-2xl text-center text-[1.35rem] font-bold md:text-[1.6rem]"
+            style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
           >
             {dict.home.heroIntro}
           </p>
 
-          {/* No-AI pills */}
-          <div className="mx-auto mt-5 flex max-w-2xl flex-col items-center gap-2 sm:flex-row sm:flex-wrap sm:justify-center">
+          {/* No-AI — centered text with blue checks, no boxes */}
+          <div className="mx-auto mt-6 flex max-w-2xl flex-col items-center gap-2 text-[1.05rem] sm:flex-row sm:flex-wrap sm:justify-center sm:gap-6">
             {dict.home.heroNoAi.map((item) => (
-              <span
-                key={item}
-                className="inline-flex w-full justify-center rounded-full border px-4 py-2 text-[0.95rem] font-semibold sm:w-auto"
-                style={{ borderColor: "var(--color-line)", background: "#fff", color: "var(--color-ink)" }}
-              >
+              <span key={item} className="inline-flex items-center gap-2" style={{ color: "var(--color-ink)" }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="shrink-0">
+                  <path d="M5 12.5l4.5 4.5L19 7" stroke="var(--color-accent)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
                 {item}
               </span>
             ))}
           </div>
 
-          {/* Advantages + principles */}
-          <div className="mx-auto mt-8 grid max-w-2xl gap-4 sm:grid-cols-2">
-            <div
-              className="rounded-2xl border p-6"
-              style={{ borderColor: "var(--color-line)", background: "#fff" }}
-            >
+          {/* Advantages + principles — no card wrappers */}
+          <div className="mx-auto mt-10 grid max-w-2xl gap-8 sm:grid-cols-2">
+            <div>
               <h3 className="text-[1.05rem]">{dict.home.heroAdvantagesTitle}</h3>
-              <ul className="mt-3 space-y-2 text-[1.02rem]">
+              <ul className="mt-3 space-y-2 text-[1.05rem]">
                 {dict.home.heroAdvantages.map((line, i) => {
                   const head = i === 0 ? "100%" : i === 1 ? "0%" : "Больше";
                   return (
@@ -140,12 +133,9 @@ export default async function HomePage({
                 })}
               </ul>
             </div>
-            <div
-              className="rounded-2xl border p-6"
-              style={{ borderColor: "var(--color-line)", background: "#fff" }}
-            >
+            <div>
               <h3 className="text-[1.05rem]">{dict.home.heroPrinciplesTitle}</h3>
-              <ul className="mt-3 space-y-2 text-[1.02rem]" style={{ color: "var(--color-ink)" }}>
+              <ul className="mt-3 space-y-2 text-[1.05rem]" style={{ color: "var(--color-ink)" }}>
                 {dict.home.heroPrinciples.map((line) => (
                   <li key={line}>{line}</li>
                 ))}
@@ -154,7 +144,7 @@ export default async function HomePage({
           </div>
 
           {/* Three action buttons with hints */}
-          <div className="mx-auto mt-8 grid max-w-3xl gap-3 sm:grid-cols-3">
+          <div className="mx-auto mt-10 grid max-w-3xl gap-3 sm:grid-cols-3">
             {dict.home.heroActions.map((action, i) => (
               <LocaleLink
                 key={action.label}
