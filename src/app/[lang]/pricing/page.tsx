@@ -120,7 +120,7 @@ export default async function PricingPage({
               {dict.pricing.addProfile}
               <ArrowRight size={16} />
             </LocaleLink>
-            <LocaleLink lang={locale} href="/human-made-standards" className="btn btn-quiet">
+            <LocaleLink lang={locale} href="/method" className="btn btn-quiet">
               {dict.pricing.readStandards}
             </LocaleLink>
           </div>

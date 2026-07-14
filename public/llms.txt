@@ -1,0 +1,47 @@
+# No AI Marketplace
+
+No AI Marketplace is an international directory of professionals who create work and services without generative AI. Buyers find these professionals through search and the catalog, review their profiles, and contact them directly, with no middlemen and no commissions. Professionals create their own profiles to present themselves, their services, their portfolio, and links to their own sites and social media.
+
+## What this site is
+An international directory of professionals who create professional work and services without the use of generative AI.
+
+## How it works
+Professionals create their own pages, describe themselves, and publish their services, work, portfolio, and links to their websites and social profiles. Buyers use the directory and search to find these professionals, study their profiles, and reach out directly, working without intermediaries or commissions.
+
+## Who it is for
+- Buyers who want to find and choose professionals whose work and services are made without generative AI.
+- Professionals who work without generative AI and want to present themselves, show their portfolio, and reach new clients.
+
+## Mission
+To connect professionals who create work and services without generative AI with the clients who value human craft, originality, transparency, and direct collaboration.
+
+## Main sections
+- Directory of professionals: /directory
+- Categories: /categories
+- Verified profiles: /verified
+- Add your profile: /join
+- Human-made standards: /human-made-standards
+- About: /about
+
+## Languages
+- English: https://no-ai-marketplace.vercel.app
+- Russian: https://no-ai-marketplace.vercel.app/ru
+
+---
+
+# No AI Marketplace (Русский)
+
+No AI Marketplace — международный каталог специалистов, которые создают работы и услуги без использования генеративного ИИ. Заказчики находят таких специалистов через поиск и каталог, изучают их профили и связываются с ними напрямую, без посредников и комиссий. Специалисты создают собственные страницы, чтобы рассказать о себе, своих услугах, портфолио и разместить ссылки на свои сайты и социальные сети.
+
+## Что это
+Международный каталог специалистов, создающих профессиональные услуги и работы без использования генеративного ИИ.
+
+## Как это работает
+Специалисты создают собственные страницы, рассказывают о себе, публикуют свои услуги, работы, портфолио и ссылки на сайты и социальные сети. Заказчики благодаря каталогу и поиску находят таких специалистов, изучают их профили и связываются напрямую, работая без посредников и комиссий.
+
+## Для кого
+- Для заказчиков, которым важно находить и выбирать специалистов, создающих оригинальные работы и услуги без использования генеративного ИИ.
+- Для специалистов, которые работают без использования генеративного ИИ и хотят представить себя, показать портфолио и находить новых клиентов.
+
+## Миссия
+Объединить специалистов, создающих работы и услуги без использования генеративного ИИ, с заказчиками, которые ценят человеческое мастерство, оригинальность, прозрачность и прямое сотрудничество.

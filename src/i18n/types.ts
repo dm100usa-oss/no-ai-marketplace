@@ -39,6 +39,7 @@ export interface Dictionary {
     forCreators: string;
     project: string;
     legal: string;
+    ourApproach: string;
     // link labels
     directory: string;
     allCategories: string;
@@ -48,6 +49,10 @@ export interface Dictionary {
     pricing: string;
     humanMadeStandards: string;
     verification: string;
+    method: string;
+    principles: string;
+    faq: string;
+    whyUs: string;
     about: string;
     contact: string;
     privacy: string;
@@ -336,6 +341,49 @@ export interface Dictionary {
     ifWrongText1: string;
     listingPolicyLink: string;
     ifWrongText2: string;
+  };
+
+  /** Standalone Questions & Answers page. Each entry is a real search
+   *  intent; the answer builds topical authority and points both
+   *  audiences toward the catalog or toward creating a profile. */
+  faqPage: {
+    metaTitle: string;
+    metaDescription: string;
+    title: string;
+    intro: string;
+    groups: { title: string; items: FaqEntry[] }[];
+    ctaTitle: string;
+    ctaText: string;
+    ctaFind: string;
+    ctaJoin: string;
+  };
+
+  /** "Our method" — absorbs the former Human-Made standards and
+   *  Verification explanation into one authoritative page. */
+  method: {
+    metaTitle: string;
+    metaDescription: string;
+    title: string;
+    intro: string;
+    sections: { heading: string; paragraphs: string[]; bullets?: string[] }[];
+    ctaTitle: string;
+    ctaText: string;
+    ctaFind: string;
+    ctaJoin: string;
+  };
+
+  /** "Why us" — the authority/positioning page (the "expertise" idea,
+   *  named the way users expect). */
+  whyUs: {
+    metaTitle: string;
+    metaDescription: string;
+    title: string;
+    intro: string;
+    sections: { heading: string; paragraphs: string[]; bullets?: string[] }[];
+    ctaTitle: string;
+    ctaText: string;
+    ctaFind: string;
+    ctaJoin: string;
   };
 
   profile: {

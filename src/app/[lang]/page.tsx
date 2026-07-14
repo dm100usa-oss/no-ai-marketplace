@@ -333,7 +333,7 @@ export default async function HomePage({
               <LocaleLink lang={locale} href="/verified" className="btn btn-quiet">
                 {dict.home.seeVerified}
               </LocaleLink>
-              <LocaleLink lang={locale} href="/human-made-standards" className="btn btn-quiet">
+              <LocaleLink lang={locale} href="/method" className="btn btn-quiet">
                 {dict.home.standardsLink}
               </LocaleLink>
             </div>

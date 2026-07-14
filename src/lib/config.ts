@@ -9,7 +9,7 @@ export const site = {
   tagline: "Human-made creations.",
   slogan: "Real People. No AI.",
   description:
-    "International directory of people, studios and companies who create work, products and services without AI.",
+    "An international directory of professionals who create professional work and services without the use of generative AI.",
   url: "https://no-ai-marketplace.vercel.app",
   locale: "en",
   freeSlots: 100,

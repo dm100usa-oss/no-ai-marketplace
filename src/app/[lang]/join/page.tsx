@@ -145,7 +145,7 @@ export default async function JoinPage({
         <h2 className="mt-12">{dict.join.rulesTitle}</h2>
         <p className="mt-3" style={{ color: "var(--color-muted)" }}>
           {dict.join.rulesText1}
-          <LocaleLink lang={locale} href="/human-made-standards" className="font-semibold" style={{ color: "var(--color-accent)" }}>
+          <LocaleLink lang={locale} href="/method" className="font-semibold" style={{ color: "var(--color-accent)" }}>
             {dict.join.rulesLink1}
           </LocaleLink>
           {dict.join.rulesText2}

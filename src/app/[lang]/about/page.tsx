@@ -61,7 +61,7 @@ export default async function AboutPage({
         <h2 className="mt-10">{dict.about.notClaimTitle}</h2>
         <p className="mt-3" style={{ color: "var(--color-muted)" }}>
           {dict.about.notClaimText1}
-          <LocaleLink lang={locale} href="/human-made-standards" className="font-semibold" style={{ color: "var(--color-accent)" }}>
+          <LocaleLink lang={locale} href="/method" className="font-semibold" style={{ color: "var(--color-accent)" }}>
             {dict.about.standardsLink}
           </LocaleLink>
           {dict.about.notClaimText2}
