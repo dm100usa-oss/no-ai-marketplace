@@ -35,14 +35,13 @@ export function FindAccordion({
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-controls="find-panel"
-        className="relative flex w-full items-center justify-center rounded-2xl border px-6 py-4 transition-transform duration-150 hover:-translate-y-0.5 active:translate-y-px"
+        className="press-btn relative flex w-full items-center justify-center rounded-2xl px-6 py-4"
         style={{
           background:
             "linear-gradient(180deg, #aec3e0 0%, #c3d5ee 28%, #d6e4f7 50%, #c3d5ee 72%, #aec3e0 100%)",
-          borderColor: "rgba(22,35,58,0.06)",
           color: "var(--color-ink)",
-          boxShadow:
-            "inset 0 1px 0 rgba(255,255,255,0.6), 0 2px 5px rgba(22,35,58,0.10)",
+          ["--press-bg" as string]:
+            "linear-gradient(180deg, #94a6be 0%, #a6b5ca 28%, #b6c2d2 50%, #a6b5ca 72%, #94a6be 100%)",
         }}
       >
         <span
@@ -77,12 +76,10 @@ export function FindAccordion({
                 href={action.href}
                 tabIndex={open ? undefined : -1}
                 aria-hidden={open ? undefined : true}
-                className="flex flex-col items-center justify-center rounded-2xl border px-4 py-4 text-center transition-transform duration-150 hover:-translate-y-0.5 active:translate-y-px"
+                className="press-btn flex flex-col items-center justify-center rounded-2xl px-4 py-4 text-center"
                 style={{
                   background: "var(--color-brand-soft)",
-                  borderColor: "rgba(22,35,58,0.06)",
-                  boxShadow:
-                    "inset 0 1px 0 rgba(255,255,255,0.55), 0 2px 5px rgba(22,35,58,0.10)",
+                  ["--press-bg" as string]: "#c7cdd9",
                 }}
               >
                 <span className="text-[0.85rem]" style={{ color: "var(--color-muted)" }}>

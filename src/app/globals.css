@@ -149,6 +149,27 @@ a { color: inherit; text-decoration: none; }
     0 1px 3px rgba(22,35,58,0.12);
 }
 
+/* Raised button that darkens in its own hue on press (no grey film,
+   no brightness filter — both look dirty on pale surfaces). Each user
+   sets --press-bg to the same hue at RGB x 0.85. */
+.press-btn {
+  border: 1px solid rgba(22, 35, 58, 0.06);
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 2px 5px rgba(22, 35, 58, 0.10);
+}
+.press-btn:hover { transform: translateY(-2px); }
+.press-btn:active {
+  background: var(--press-bg) !important;
+  transform: translateY(1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 1px 3px rgba(22, 35, 58, 0.12);
+}
+
 /* Accent action button (search, primary actions) */
 .btn-accent {
   background: var(--color-accent);
