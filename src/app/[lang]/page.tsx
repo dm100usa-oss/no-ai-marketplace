@@ -69,7 +69,7 @@ export default async function HomePage({
         <img src="/images/hero.webp" alt="" className="block w-full" />
         <div className="absolute inset-0 flex items-center justify-center">
           <div
-            className="mx-auto max-w-2xl rounded-2xl px-4 py-3 text-center sm:px-8 sm:py-6"
+            className="mx-auto max-w-2xl rounded-2xl px-4 py-4 text-center sm:px-8 sm:py-8"
             style={{ background: "rgba(219,233,255,0.60)", backdropFilter: "blur(2px)" }}
           >
             <h1 className="text-balance text-[1.1rem] sm:text-[1.6rem] md:text-[2rem]">{dict.site.name}</h1>
