@@ -93,27 +93,25 @@ export default async function HomePage({
 
             <form action={searchAction} role="search" className="mx-auto mt-8 flex max-w-xl items-stretch gap-2">
               <div className="relative flex-1">
-                <span
-                  className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2"
-                  style={{ color: "var(--color-muted-soft)" }}
-                >
-                  <SearchIcon />
-                </span>
                 <input
                   type="search"
                   name="q"
                   placeholder={dict.home.heroSearchPlaceholder}
                   aria-label={dict.home.heroSearchAria}
-                  className="h-12 w-full rounded-xl border pl-11 pr-3 outline-none focus:border-[var(--color-accent)]"
+                  className="h-12 w-full rounded-xl border px-4 outline-none focus:border-[var(--color-accent)]"
                   style={{ borderColor: "var(--color-line)", background: "#fff" }}
                 />
               </div>
-              <button type="submit" className="btn btn-accent" aria-label={dict.header.searchAria}>
-                <SearchIcon />
+              <button
+                type="submit"
+                className="btn btn-quiet shrink-0"
+                aria-label={dict.header.searchAria}
+              >
+                {dict.header.search}
               </button>
             </form>
 
-            <div className="mx-auto mt-4 flex max-w-xl flex-col gap-2 sm:flex-row">
+            <div className="mx-auto mt-8 flex max-w-xl flex-col gap-2.5 sm:flex-row">
               <LocaleLink lang={locale} href="/directory" className="btn btn-quiet btn-full">
                 {dict.home.browseCatalog}
               </LocaleLink>

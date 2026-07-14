@@ -63,10 +63,11 @@
   --radius-btn: 12px;
   --radius-pill: 999px;
 
-  /* Shadows for raised objects (TZ: ~2mm physical thickness) */
-  --shadow-raise: 0 1px 2px rgba(22, 35, 58, 0.06), 0 4px 12px rgba(22, 35, 58, 0.08);
-  --shadow-raise-hover: 0 2px 4px rgba(22, 35, 58, 0.08), 0 8px 20px rgba(22, 35, 58, 0.12);
-  --shadow-card: 0 1px 2px rgba(22, 35, 58, 0.05), 0 6px 16px rgba(22, 35, 58, 0.07);
+  /* Shadows for raised objects — framed-painting feel:
+     tight contact shadow + soft diffuse shadow below, light from above */
+  --shadow-raise: 0 2px 3px rgba(22, 35, 58, 0.08), 0 8px 22px rgba(22, 35, 58, 0.16);
+  --shadow-raise-hover: 0 4px 6px rgba(22, 35, 58, 0.10), 0 14px 32px rgba(22, 35, 58, 0.22);
+  --shadow-card: 0 2px 3px rgba(22, 35, 58, 0.06), 0 8px 22px rgba(22, 35, 58, 0.12);
 }
 
 /* --- Base --- */
@@ -133,13 +134,22 @@ a { color: inherit; text-decoration: none; }
   user-select: none;
   transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.12s ease;
   box-shadow:
-    inset 0 2px 0 rgba(255, 255, 255, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 0 0 1px rgba(22, 35, 58, 0.06),
     var(--shadow-raise);
 }
-.btn:hover { box-shadow: inset 0 2px 0 rgba(255,255,255,0.5), var(--shadow-raise-hover); }
+.btn:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.35),
+    inset 0 0 0 1px rgba(22,35,58,0.06),
+    var(--shadow-raise-hover);
+}
 .btn:active {
   transform: translateY(1px);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 1px 3px rgba(22,35,58,0.12);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.2),
+    inset 0 0 0 1px rgba(22,35,58,0.08),
+    0 1px 2px rgba(22,35,58,0.10);
 }
 
 /* Accent action button (search, primary actions) */
@@ -151,24 +161,35 @@ a { color: inherit; text-decoration: none; }
 
 /* Dark Join button (Fiverr-style dark CTA) */
 .btn-ink {
-  background: var(--color-ink);
+  background: radial-gradient(ellipse at center, #3a5f88 0%, #24405f 55%, #16233a 100%);
   color: #fff;
 }
-.btn-ink:active { background: var(--color-ink-press); }
+.btn-ink:active {
+  background: radial-gradient(ellipse at center, #32557a 0%, #1d3550 55%, #101a2c 100%);
+}
 
 /* Quiet button on light surface */
 .btn-quiet {
   background: #fff;
   color: var(--color-ink);
   box-shadow:
-    inset 0 2px 0 rgba(255,255,255,0.8),
-    0 0 0 1px var(--color-line),
+    inset 0 1px 0 rgba(255,255,255,0.7),
+    inset 0 0 0 1px rgba(22,35,58,0.10),
     var(--shadow-raise);
+}
+.btn-quiet:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.7),
+    inset 0 0 0 1px rgba(22,35,58,0.10),
+    var(--shadow-raise-hover);
 }
 .btn-quiet:active {
   transform: translateY(1px);
   background: #f4f7fc;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 0 0 1px var(--color-line), 0 1px 3px rgba(22,35,58,0.1);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.4),
+    inset 0 0 0 1px rgba(22,35,58,0.12),
+    0 1px 2px rgba(22,35,58,0.10);
 }
 
 .btn-full { width: 100%; }
