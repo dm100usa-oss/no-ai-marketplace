@@ -17,6 +17,7 @@ export interface Dictionary {
   site: {
     name: string;
     tagline: string;
+    taglineSub: string;
     slogan: string;
     description: string;
     /** Footer copyright line suffix, after "© YEAR Name." */

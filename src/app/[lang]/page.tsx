@@ -79,6 +79,12 @@ export default async function HomePage({
             >
               {dict.site.tagline}
             </p>
+            <p
+              className="mt-1.5 text-[1.05rem] font-normal leading-tight sm:text-[1.5rem] md:text-[1.7rem]"
+              style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+            >
+              {dict.site.taglineSub}
+            </p>
             <p className="mt-3 text-[1.05rem] italic leading-tight sm:text-[1.5rem]" style={{ color: "var(--color-muted)" }}>
               {dict.site.slogan}
             </p>

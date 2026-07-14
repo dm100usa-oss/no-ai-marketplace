@@ -54,7 +54,7 @@ export async function generateMetadata({
 
   return {
     title: {
-      default: `${dict.site.name}. ${dict.site.tagline} ${dict.site.slogan}`,
+      default: `${dict.site.name}. ${dict.site.tagline}, ${dict.site.taglineSub}. ${dict.site.slogan}`,
       template: `%s. ${dict.site.name}`,
     },
     description: dict.site.description,
@@ -66,14 +66,14 @@ export async function generateMetadata({
     openGraph: {
       type: "website",
       siteName: dict.site.name,
-      title: `${dict.site.name}. ${dict.site.tagline}`,
+      title: `${dict.site.name}. ${dict.site.tagline}, ${dict.site.taglineSub}`,
       description: dict.site.description,
       url: `${site.url}${localizedPath(locale, "/")}`,
       locale: locale === "ru" ? "ru_RU" : "en_US",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${dict.site.name}. ${dict.site.tagline}`,
+      title: `${dict.site.name}. ${dict.site.tagline}, ${dict.site.taglineSub}`,
       description: dict.site.description,
     },
   };
