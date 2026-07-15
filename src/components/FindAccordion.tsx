@@ -96,20 +96,20 @@ export function FindAccordion({
                     src={`/images/find/${tone.icon}-v2.webp`}
                     alt=""
                     aria-hidden="true"
-                    width={112}
-                    height={112}
+                    width={130}
+                    height={130}
                     loading="lazy"
                     decoding="async"
-                    className="-my-3 block shrink-0"
+                    className="block shrink-0"
                   />
                   <span
-                    className="mt-4 text-[1.05rem] font-bold"
+                    className="mt-3 block text-[1.05rem] font-bold"
                     style={{ fontFamily: "var(--font-display)", color: tone.ink }}
                   >
                     {action.hint}
                   </span>
                   <span
-                    className="mt-1 text-[0.8rem] leading-snug"
+                    className="mt-1 block text-[0.8rem] leading-snug"
                     style={{ color: tone.sub }}
                   >
                     {action.label}
