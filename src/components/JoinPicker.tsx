@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { TallyForm } from "./TallyForm";
-import { CheckShield, ArrowRight, UsersIcon, HandshakeIcon, SparkIcon } from "./icons";
+import { CheckShield, ArrowRight } from "./icons";
 import type { Dictionary } from "@/i18n/types";
 import type { Locale } from "@/i18n/config";
 import type { ProfileType } from "@/lib/types";
@@ -26,10 +26,11 @@ const TONES: Record<ProfileType, { bg: string; ink: string; solid: string }> = {
   company: { bg: "#cfe0f8", ink: "#2f5cb0", solid: "#2f5cb0" },
 };
 
-const ICONS: Record<ProfileType, React.ReactNode> = {
-  creator: <SparkIcon />,
-  team: <UsersIcon />,
-  company: <HandshakeIcon />,
+/** Same drawings the "Find" block on the home page uses, one per type. */
+const ICON_FILE: Record<ProfileType, string> = {
+  creator: "creator",
+  team: "team",
+  company: "company",
 };
 
 export function JoinPicker({ lang, dict }: { lang: Locale; dict: Dictionary }) {
@@ -61,12 +62,16 @@ export function JoinPicker({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 ["--press-bg" as string]: tone.bg,
               }}
             >
-              <span
-                className="grid h-11 w-11 place-items-center rounded-xl"
-                style={{ background: tone.bg, color: tone.ink }}
-              >
-                {ICONS[type]}
-              </span>
+              <img
+                src={`/images/find/${ICON_FILE[type]}.webp`}
+                alt=""
+                aria-hidden="true"
+                width={48}
+                height={48}
+                loading="lazy"
+                decoding="async"
+                className="block"
+              />
               <span
                 className="mt-3 text-[1.1rem] font-bold"
                 style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
