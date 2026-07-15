@@ -63,7 +63,7 @@ export function JoinPicker({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               }}
             >
               <img
-                src={`/images/find/${ICON_FILE[type]}.webp`}
+                src={`/images/find/${ICON_FILE[type]}-v2.webp`}
                 alt=""
                 aria-hidden="true"
                 width={96}

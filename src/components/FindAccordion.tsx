@@ -93,7 +93,7 @@ export function FindAccordion({
                   }}
                 >
                   <img
-                    src={`/images/find/${tone.icon}.webp`}
+                    src={`/images/find/${tone.icon}-v2.webp`}
                     alt=""
                     aria-hidden="true"
                     width={112}
