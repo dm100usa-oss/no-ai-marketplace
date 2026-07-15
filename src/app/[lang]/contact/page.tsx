@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { LocaleLink } from "@/components/LocaleLink";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { getDictionary } from "@/i18n";
-import { DEFAULT_LOCALE, isLocale, localizedPath, LOCALES } from "@/i18n/config";
+import { DEFAULT_LOCALE, isLocale, localizedPath, altLanguages } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
 
 const CONTACT_EMAIL = "hello@no-ai-marketplace.example";
@@ -15,8 +15,7 @@ export async function generateMetadata({
   const { lang } = await params;
   const locale: Locale = isLocale(lang) ? lang : DEFAULT_LOCALE;
   const dict = getDictionary(locale);
-  const languages: Record<string, string> = {};
-  for (const l of LOCALES) languages[l] = localizedPath(l, "/contact");
+  const languages = altLanguages("/contact");
   return {
     title: dict.contact.metaTitle,
     description: dict.contact.metaDescription,

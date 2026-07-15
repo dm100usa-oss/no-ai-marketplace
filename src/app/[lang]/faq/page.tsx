@@ -5,7 +5,7 @@ import { FAQ } from "@/components/FAQ";
 import { ArrowRight } from "@/components/icons";
 import { getDictionary } from "@/i18n";
 import { getFaqProfessions } from "@/i18n/data/faqProfessions";
-import { DEFAULT_LOCALE, isLocale, localizedPath, LOCALES } from "@/i18n/config";
+import { DEFAULT_LOCALE, isLocale, localizedPath, altLanguages } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
 
 export async function generateMetadata({
@@ -16,8 +16,7 @@ export async function generateMetadata({
   const { lang } = await params;
   const locale: Locale = isLocale(lang) ? lang : DEFAULT_LOCALE;
   const dict = getDictionary(locale);
-  const languages: Record<string, string> = {};
-  for (const l of LOCALES) languages[l] = localizedPath(l, "/faq");
+  const languages = altLanguages("/faq");
   return {
     title: dict.faqPage.metaTitle,
     description: dict.faqPage.metaDescription,

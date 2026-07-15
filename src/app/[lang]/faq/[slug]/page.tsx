@@ -5,7 +5,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FAQ } from "@/components/FAQ";
 import { ArrowRight } from "@/components/icons";
 import { getDictionary } from "@/i18n";
-import { DEFAULT_LOCALE, isLocale, localizedPath, LOCALES } from "@/i18n/config";
+import { DEFAULT_LOCALE, isLocale, localizedPath, LOCALES, altLanguages } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
 import {
   FAQ_PROFESSION_SLUGS,
@@ -37,8 +37,7 @@ export async function generateMetadata({
   const page = getFaqProfession(locale, slug);
   if (!page) return {};
 
-  const languages: Record<string, string> = {};
-  for (const l of LOCALES) languages[l] = localizedPath(l, `/faq/${slug}`);
+  const languages = altLanguages(`/faq/${slug}`);
 
   return {
     title: page.metaTitle,

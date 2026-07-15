@@ -8,7 +8,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { site } from "@/lib/config";
 import { getDictionary } from "@/i18n";
-import { LOCALES, DEFAULT_LOCALE, isLocale, localizedPath, LOCALE_HTML_LANG } from "@/i18n/config";
+import { LOCALES, DEFAULT_LOCALE, isLocale, localizedPath, altLanguages, LOCALE_HTML_LANG } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
 
 // Self-hosted fonts (Inter + Manrope) — no external fetch at build time.
@@ -47,10 +47,7 @@ export async function generateMetadata({
   const locale: Locale = isLocale(lang) ? lang : DEFAULT_LOCALE;
   const dict = getDictionary(locale);
 
-  const languages: Record<string, string> = {};
-  for (const l of LOCALES) {
-    languages[l] = localizedPath(l, "/");
-  }
+  const languages = altLanguages("/");
 
   return {
     title: {
@@ -61,7 +58,7 @@ export async function generateMetadata({
     robots: { index: true, follow: true },
     alternates: {
       canonical: localizedPath(locale, "/"),
-      languages: { ...languages, "x-default": "/" },
+      languages,
     },
     openGraph: {
       type: "website",

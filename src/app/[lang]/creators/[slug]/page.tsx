@@ -5,7 +5,7 @@ import { profiles as baseProfiles } from "@/data/profiles";
 import { site } from "@/lib/config";
 import { ProfileView } from "@/components/ProfileView";
 import { getDictionary } from "@/i18n";
-import { DEFAULT_LOCALE, isLocale, localizedPath, LOCALES } from "@/i18n/config";
+import { DEFAULT_LOCALE, isLocale, localizedPath, LOCALES, altLanguages } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
 
 /** Static pages for creators only, per language. */
@@ -25,8 +25,7 @@ export async function generateMetadata({
   if (!p) return {};
   const title = p.seoTitle ?? p.name;
   const description = p.seoDescription ?? p.shortDescription;
-  const languages: Record<string, string> = {};
-  for (const l of LOCALES) languages[l] = localizedPath(l, `/creators/${p.slug}`);
+  const languages = altLanguages(`/creators/${p.slug}`);
   return {
     title,
     description,

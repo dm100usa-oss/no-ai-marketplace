@@ -13,7 +13,7 @@ import { getDictionary } from "@/i18n";
 import { LocaleLink } from "@/components/LocaleLink";
 import { ArrowRight } from "@/components/icons";
 import { getFaqProfession } from "@/i18n/data/faqProfessions";
-import { DEFAULT_LOCALE, isLocale, localizedPath, LOCALES } from "@/i18n/config";
+import { DEFAULT_LOCALE, isLocale, localizedPath, LOCALES, altLanguages } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
 import type { ProfileType as ParticipantType } from "@/lib/types";
 
@@ -33,8 +33,7 @@ export async function generateMetadata({
   const locale: Locale = isLocale(lang) ? lang : DEFAULT_LOCALE;
   const cat = getCategoryL(slug, locale);
   if (!cat) return {};
-  const languages: Record<string, string> = {};
-  for (const l of LOCALES) languages[l] = localizedPath(l, `/categories/${cat.slug}`);
+  const languages = altLanguages(`/categories/${cat.slug}`);
   return {
     title: cat.seoTitle ?? cat.name,
     description: cat.seoDescription ?? cat.shortDescription,

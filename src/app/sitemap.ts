@@ -3,7 +3,7 @@ import { profileBasePath } from "@/lib/profile-path";
 import { site } from "@/lib/config";
 import { getAllDirections, getAllCategories, getAllProfiles } from "@/lib/data";
 import { FAQ_PROFESSION_SLUGS } from "@/i18n/data/faqProfessions";
-import { LOCALES, localizedPath } from "@/i18n/config";
+import { LOCALES, DEFAULT_LOCALE, localizedPath } from "@/i18n/config";
 
 /**
  * Auto-generated sitemap. Every indexable page is emitted once per
@@ -74,12 +74,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       };
     });
 
-  // Build hreflang alternates for a canonical path.
+  // Build hreflang alternates for a canonical path. x-default points at the
+  // default language and must match what the pages themselves declare: if the
+  // sitemap and the page disagree, Google trusts neither.
   const alternatesFor = (path: string) => {
     const languages: Record<string, string> = {};
     for (const l of LOCALES) {
       languages[l] = `${base}${localizedPath(l, path)}`;
     }
+    languages["x-default"] = `${base}${localizedPath(DEFAULT_LOCALE, path)}`;
     return { languages };
   };
 

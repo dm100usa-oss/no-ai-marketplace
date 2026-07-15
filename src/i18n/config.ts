@@ -48,3 +48,25 @@ export function localizedPath(locale: Locale, path: string): string {
   }
   return `/${locale}${clean === "" ? "" : clean}`;
 }
+
+/**
+ * Build the full hreflang map for a canonical path: one entry per language
+ * plus x-default.
+ *
+ * x-default tells Google which version to show a user whose language we do
+ * not cover. Without it Google picks on its own, and on a site where the
+ * same page exists twice it may decide the two are duplicates and index
+ * only one. The default locale is the fallback, so x-default points at the
+ * unprefixed path.
+ *
+ * Every page builds its alternates through this so the set can never drift
+ * apart page by page.
+ */
+export function altLanguages(path: string): Record<string, string> {
+  const languages: Record<string, string> = {};
+  for (const l of LOCALES) {
+    languages[l] = localizedPath(l, path);
+  }
+  languages["x-default"] = localizedPath(DEFAULT_LOCALE, path);
+  return languages;
+}

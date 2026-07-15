@@ -14,7 +14,7 @@ import { ProfileGrid } from "@/components/ProfileGrid";
 import { SectionHeading } from "@/components/States";
 import { ArrowRight } from "@/components/icons";
 import { getDictionary } from "@/i18n";
-import { DEFAULT_LOCALE, isLocale, localizedPath, LOCALES } from "@/i18n/config";
+import { DEFAULT_LOCALE, isLocale, localizedPath, LOCALES, altLanguages } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
 import type { ProfileType as ParticipantType } from "@/lib/types";
 
@@ -33,8 +33,7 @@ export async function generateMetadata({
   const locale: Locale = isLocale(lang) ? lang : DEFAULT_LOCALE;
   const dir = getDirectionL(slug, locale);
   if (!dir) return {};
-  const languages: Record<string, string> = {};
-  for (const l of LOCALES) languages[l] = localizedPath(l, `/directions/${dir.slug}`);
+  const languages = altLanguages(`/directions/${dir.slug}`);
   return {
     title: dir.seoTitle ?? dir.name,
     description: dir.seoDescription ?? dir.shortDescription,
