@@ -37,7 +37,8 @@ export default async function CategoriesPage({
   const dirs = getActiveDirectionsL(locale);
 
   return (
-    <div className="container-page section">
+    <div style={{ background: "var(--color-brand-soft)" }}>
+      <div className="container-page section">
       <Breadcrumbs
         lang={locale}
         items={[{ label: dict.common.home, href: "/" }, { label: dict.categoriesPage.title }]}
@@ -81,6 +82,7 @@ export default async function CategoriesPage({
             </section>
           );
         })}
+      </div>
       </div>
     </div>
   );
