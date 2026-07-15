@@ -83,6 +83,11 @@ export interface Profile extends ReservedRating {
    *  "team"; the card falls back to a plain "Team" badge without it. */
   teamSize?: number;
 
+  /** A placeholder profile, not a real person or business. Marked in the
+   *  UI so nobody mistakes it for someone they can actually hire, and
+   *  removed once real profiles take its place. */
+  demo?: boolean;
+
   dateCreated: string; // ISO
   dateUpdated?: string; // ISO
 

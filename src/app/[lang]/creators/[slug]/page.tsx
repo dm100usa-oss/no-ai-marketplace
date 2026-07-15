@@ -30,6 +30,8 @@ export async function generateMetadata({
   return {
     title,
     description,
+    // A made-up profile should not compete in search with real ones.
+    robots: p.demo ? { index: false, follow: true } : undefined,
     alternates: { canonical: localizedPath(locale, `/creators/${p.slug}`), languages },
     openGraph: { title, description, url: `${site.url}${localizedPath(locale, `/creators/${p.slug}`)}`, type: "profile" },
   };

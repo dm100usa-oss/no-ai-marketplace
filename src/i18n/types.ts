@@ -99,6 +99,10 @@ export interface Dictionary {
      *  first two only; Russian needs all three (человек/человека/человек). */
     peopleForms: [string, string, string];
     badgeCompany: string;
+    /** Placeholder profile marker: short on the card, full on the page. */
+    badgeDemo: string;
+    demoNoticeTitle: string;
+    demoNoticeText: string;
     /** Card line listing what this participant actually does. */
     cardDoes: string;
     backToHome: string;

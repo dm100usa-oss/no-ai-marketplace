@@ -35,6 +35,7 @@ export const profiles: Profile[] = [
     aiUsageStatement: "All work is drawn by hand. No AI generation is used at any stage.",
     verificationDescription: "Process photos and original sketches reviewed.",
     dateCreated: "2025-02-10",
+    demo: true,
   },
   {
     id: "p02",
@@ -56,6 +57,7 @@ export const profiles: Profile[] = [
     aiUsageStatement: "Hand-drawn line work, no AI.",
     verificationDescription: "Studio process video reviewed.",
     dateCreated: "2025-03-01",
+    demo: true,
   },
 
   // ---------- Children's Book Illustrators ----------
@@ -82,6 +84,7 @@ export const profiles: Profile[] = [
     aiUsageStatement: "Every illustration is painted by hand. No AI is used.",
     verificationDescription: "Sketch stages and painted originals reviewed.",
     dateCreated: "2025-01-20",
+    demo: true,
   },
   {
     id: "p04",
@@ -99,6 +102,7 @@ export const profiles: Profile[] = [
     tags: ["Gouache", "Character art"],
     socialLinks: { portfolio: "#" },
     dateCreated: "2025-04-05",
+    demo: true,
   },
 
   // ---------- Fine Artists ----------
@@ -130,6 +134,7 @@ export const profiles: Profile[] = [
     verificationDescription: "Studio and work-in-progress photos reviewed.",
     featured: true,
     dateCreated: "2025-02-28",
+    demo: true,
   },
   {
     id: "p06",
@@ -158,6 +163,7 @@ export const profiles: Profile[] = [
     aiUsageStatement: "All work is painted and assembled by hand. No AI.",
     featured: true,
     dateCreated: "2025-04-18",
+    demo: true,
   },
   {
     id: "p06b",
@@ -189,6 +195,7 @@ export const profiles: Profile[] = [
     verificationDescription:
       "Studio, tools and work-in-progress photos reviewed.",
     dateCreated: "2025-05-06",
+    demo: true,
   },
 
   // ---------- Writers ----------
@@ -213,6 +220,7 @@ export const profiles: Profile[] = [
     aiUsageStatement: "Text is written by hand from research. No AI generation.",
     verificationDescription: "Drafts and revision history reviewed.",
     dateCreated: "2025-01-30",
+    demo: true,
   },
   {
     id: "p08",
@@ -230,6 +238,7 @@ export const profiles: Profile[] = [
     tags: ["Fiction", "Essays"],
     socialLinks: { portfolio: "#" },
     dateCreated: "2025-04-22",
+    demo: true,
   },
 
   // ---------- Copywriters ----------
@@ -255,6 +264,7 @@ export const profiles: Profile[] = [
     aiUsageStatement: "Copy is written by our team. No AI generation is used.",
     verificationDescription: "Team identity and sample briefs reviewed.",
     dateCreated: "2025-03-12",
+    demo: true,
   },
 
   // ---------- Editors ----------
@@ -277,6 +287,7 @@ export const profiles: Profile[] = [
     aiUsageStatement: "Editing is done by hand. No AI tools generate the work.",
     verificationDescription: "Marked-up sample edits reviewed.",
     dateCreated: "2025-03-20",
+    demo: true,
   },
 
   // ---------- Graphic Designers ----------
@@ -304,6 +315,7 @@ export const profiles: Profile[] = [
     aiUsageStatement: "Design is made by our people. No AI generation is used.",
     verificationDescription: "Studio identity and process files reviewed.",
     dateCreated: "2025-01-15",
+    demo: true,
   },
   {
     id: "p12",
@@ -321,6 +333,7 @@ export const profiles: Profile[] = [
     tags: ["Editorial", "Layout"],
     socialLinks: { portfolio: "#" },
     dateCreated: "2025-04-28",
+    demo: true,
   },
 
   // ---------- Logo Designers ----------
@@ -343,6 +356,7 @@ export const profiles: Profile[] = [
     aiUsageStatement: "Marks are sketched and drawn by hand. No AI.",
     verificationDescription: "Concept sketches reviewed.",
     dateCreated: "2025-03-08",
+    demo: true,
   },
   {
     id: "p14",
@@ -360,6 +374,7 @@ export const profiles: Profile[] = [
     tags: ["Minimal", "Lettering"],
     socialLinks: { portfolio: "#" },
     dateCreated: "2025-05-02",
+    demo: true,
   },
 
   // ---------- Photographers ----------
@@ -384,6 +399,7 @@ export const profiles: Profile[] = [
     aiUsageStatement: "Images are captured on camera. No AI generation.",
     verificationDescription: "Contact sheets and raw files reviewed.",
     dateCreated: "2025-02-05",
+    demo: true,
   },
   {
     id: "p16",
@@ -401,6 +417,7 @@ export const profiles: Profile[] = [
     tags: ["Product", "Food"],
     socialLinks: { portfolio: "#" },
     dateCreated: "2025-05-06",
+    demo: true,
   },
 
   // ---------- Videographers ----------
@@ -426,6 +443,7 @@ export const profiles: Profile[] = [
     aiUsageStatement: "Footage is filmed and edited by us. No AI generation.",
     verificationDescription: "Raw footage and edit timeline reviewed.",
     dateCreated: "2025-03-25",
+    demo: true,
   },
   {
     id: "p18",
@@ -443,6 +461,7 @@ export const profiles: Profile[] = [
     tags: ["Short film", "Events"],
     socialLinks: { portfolio: "#" },
     dateCreated: "2025-05-10",
+    demo: true,
   },
 
   // ---------- Teams ----------
@@ -471,6 +490,7 @@ export const profiles: Profile[] = [
     verificationDescription: "Process photos and original sketches from all three members reviewed.",
     teamSize: 3,
     dateCreated: "2025-05-14",
+    demo: true,
   },
   {
     id: "p20",
@@ -497,6 +517,7 @@ export const profiles: Profile[] = [
     verificationDescription: "Project files and raw footage from past work reviewed.",
     teamSize: 3,
     dateCreated: "2025-06-02",
+    demo: true,
   },
   {
     id: "p21",
@@ -523,6 +544,7 @@ export const profiles: Profile[] = [
     verificationDescription: "Commit history and architecture decisions reviewed.",
     teamSize: 2,
     dateCreated: "2025-06-18",
+    demo: true,
   },
 
   // ---------- Literature ----------
@@ -549,6 +571,7 @@ export const profiles: Profile[] = [
     verificationDescription: "Handwritten drafts and notebooks reviewed.",
     featured: true,
     dateCreated: "2025-04-08",
+    demo: true,
   },
   {
     id: "p23",
@@ -572,6 +595,7 @@ export const profiles: Profile[] = [
     aiUsageStatement: "I research and write everything myself and can source every claim.",
     verificationDescription: "Research notes and archive references reviewed.",
     dateCreated: "2025-05-21",
+    demo: true,
   },
 
   // ---------- Music & Audio ----------
@@ -597,6 +621,7 @@ export const profiles: Profile[] = [
     aiUsageStatement: "Every take is my own voice, recorded live. No synthetic voice, no cloning.",
     verificationDescription: "Live session and raw takes reviewed.",
     dateCreated: "2025-06-09",
+    demo: true,
   },
 
   // ---------- Development & IT ----------
@@ -623,6 +648,7 @@ export const profiles: Profile[] = [
       "I read and reason about code myself. Every finding I report I can defend line by line.",
     verificationDescription: "Past audit reports and client references reviewed.",
     dateCreated: "2025-06-25",
+    demo: true,
   },
 
   // ---------- Architecture & Interiors ----------
@@ -649,5 +675,6 @@ export const profiles: Profile[] = [
       "Our designers draw every plan themselves and stand behind it on site.",
     verificationDescription: "Studio registration and completed project drawings reviewed.",
     dateCreated: "2025-05-30",
+    demo: true,
   },
 ];

@@ -81,6 +81,10 @@ export const en: Dictionary = {
     badgeTeamWithSize: "Team · {n}",
     peopleForms: ["person", "people", "people"],
     badgeCompany: "Company",
+    badgeDemo: "Demo",
+    demoNoticeTitle: "This is a demo profile",
+    demoNoticeText:
+      "A made-up example showing how a profile works in the catalog. This person does not exist and the external links lead nowhere. Real profiles will appear here as the catalog fills up.",
     cardDoes: "Does:",
     humanMadeWork: "Human-made work",
     backToHome: "Back to home",

@@ -88,6 +88,23 @@ export function ProfileView({
         ]}
       />
 
+      {p.demo && (
+        <div
+          className="mb-6 rounded-xl border px-4 py-3"
+          style={{ borderColor: "var(--color-line)", background: "var(--color-brand-soft)" }}
+        >
+          <p
+            className="text-[0.95rem] font-bold"
+            style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+          >
+            {dict.common.demoNoticeTitle}
+          </p>
+          <p className="mt-1 text-[0.88rem] leading-snug" style={{ color: "var(--color-muted)" }}>
+            {dict.common.demoNoticeText}
+          </p>
+        </div>
+      )}
+
       <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
         {/* ------------------------- Main column ------------------------- */}
         <div>

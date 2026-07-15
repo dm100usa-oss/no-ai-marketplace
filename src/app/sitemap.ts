@@ -50,15 +50,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  const profileEntries = getAllProfiles().map((p) => {
-    const seg = profileBasePath(p.profileType).slice(1);
-    return {
-      path: `/${seg}/${p.slug}`,
-      priority: 0.6,
-      lastModified: p.dateUpdated ? new Date(p.dateUpdated) : new Date(p.dateCreated),
-      changeFrequency: "monthly" as const,
-    };
-  });
+  // Demo profiles are placeholders, not real people — they carry noindex
+  // and stay out of the sitemap so they never compete with real entries.
+  const profileEntries = getAllProfiles()
+    .filter((p) => !p.demo)
+    .map((p) => {
+      const seg = profileBasePath(p.profileType).slice(1);
+      return {
+        path: `/${seg}/${p.slug}`,
+        priority: 0.6,
+        lastModified: p.dateUpdated ? new Date(p.dateUpdated) : new Date(p.dateCreated),
+        changeFrequency: "monthly" as const,
+      };
+    });
 
   // Build hreflang alternates for a canonical path.
   const alternatesFor = (path: string) => {

@@ -102,6 +102,18 @@ export function CreatorCard({
             {badge.label}
           </span>
         )}
+        {profile.demo && (
+          <span
+            className="absolute right-2.5 top-2.5 rounded-md px-2 py-1 text-[0.7rem] font-semibold uppercase tracking-wide"
+            style={{
+              background: "rgba(22,35,58,0.72)",
+              color: "#fff",
+              fontFamily: "var(--font-display)",
+            }}
+          >
+            {dict.common.badgeDemo}
+          </span>
+        )}
       </LocaleLink>
 
       <div className="flex flex-1 flex-col gap-3 p-4">
