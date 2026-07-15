@@ -4,6 +4,7 @@ import { ProfileGrid } from "@/components/ProfileGrid";
 import { SectionHeading } from "@/components/States";
 import { FAQ } from "@/components/FAQ";
 import { FindAccordion } from "@/components/FindAccordion";
+import { PeopleMarquee } from "@/components/PeopleMarquee";
 import {
   SearchIcon,
   ArrowRight,
@@ -97,6 +98,9 @@ export default async function HomePage({
           </div>
         </div>
       </section>
+
+      {/* ---------- People band ---------- */}
+      <PeopleMarquee lang={locale} />
 
       {/* ---------- Hero content ---------- */}
       <section className="section">
