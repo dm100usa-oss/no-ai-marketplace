@@ -54,7 +54,7 @@ export function JoinPicker({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               type="button"
               onClick={() => setPicked(type)}
               aria-pressed={active}
-              className="press-btn flex flex-col rounded-2xl border p-5 text-left"
+              className="press-btn flex flex-col items-center rounded-2xl border p-5 text-center"
               style={{
                 borderColor: active ? tone.solid : "var(--color-line)",
                 borderWidth: active ? 2 : 1,
@@ -66,14 +66,14 @@ export function JoinPicker({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 src={`/images/find/${ICON_FILE[type]}.webp`}
                 alt=""
                 aria-hidden="true"
-                width={48}
-                height={48}
+                width={64}
+                height={64}
                 loading="lazy"
                 decoding="async"
-                className="block"
+                className="-my-3 block shrink-0"
               />
               <span
-                className="mt-3 text-[1.1rem] font-bold"
+                className="mt-4 text-[1.1rem] font-bold"
                 style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
               >
                 {opt.title}
@@ -81,7 +81,7 @@ export function JoinPicker({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               <span className="mt-1.5 text-[0.9rem] leading-snug" style={{ color: "var(--color-muted)" }}>
                 {opt.text}
               </span>
-              <span className="mt-3 flex flex-col gap-1.5">
+              <span className="mt-3 flex flex-col gap-1.5 text-left">
                 {opt.points.map((line) => (
                   <span
                     key={line}

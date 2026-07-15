@@ -86,7 +86,7 @@ export function FindAccordion({
                   href={action.href}
                   tabIndex={open ? undefined : -1}
                   aria-hidden={open ? undefined : true}
-                  className="press-btn relative flex min-h-[9.5rem] flex-col items-center justify-center rounded-2xl px-4 py-4 pl-20 text-center sm:pl-4 sm:pt-20"
+                  className="press-btn flex flex-col items-center justify-center rounded-2xl px-4 py-5 text-center"
                   style={{
                     background: tone.bg,
                     ["--press-bg" as string]: tone.press,
@@ -100,10 +100,10 @@ export function FindAccordion({
                     height={64}
                     loading="lazy"
                     decoding="async"
-                    className="absolute left-4 top-4 block"
+                    className="-my-3 block shrink-0"
                   />
                   <span
-                    className="text-[1.05rem] font-bold"
+                    className="mt-4 text-[1.05rem] font-bold"
                     style={{ fontFamily: "var(--font-display)", color: tone.ink }}
                   >
                     {action.hint}
