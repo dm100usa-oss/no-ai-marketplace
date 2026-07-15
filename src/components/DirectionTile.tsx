@@ -50,8 +50,8 @@ export function DirectionTile({
 }) {
   return (
     <LocaleLink lang={lang} href={href} className="tile" style={{ background: bgVar[color] }}>
-      <span style={{ color: inkVar[color] }}>
-        <DirectionIcon color={color} size={40} />
+      <span style={{ color: inkVar[color] }} className="-my-3 shrink-0">
+        <DirectionIcon color={color} size={64} />
       </span>
       <span>
         <span className="tile-title block" style={{ color: "var(--color-ink)" }}>{title}</span>
