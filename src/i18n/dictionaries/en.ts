@@ -667,6 +667,9 @@ export const en: Dictionary = {
         ],
       },
     ],
+    byProfessionTitle: "Questions by profession",
+    byProfessionIntro:
+      "Every craft has its own proofs and its own questions. An illustrator shows layers, a translator shows how they handled an idiom, a developer shows commit history.",
     ctaTitle: "Find the right professional, or become one people find",
     ctaText:
       "Browse the catalog to hire someone directly, or create a profile and let the right clients come to you.",
@@ -708,6 +711,19 @@ export const en: Dictionary = {
         heading: "How professionals present themselves",
         paragraphs: [
           "Each professional builds their own profile: who they are, the services they offer, a portfolio of real work, the countries and languages they work in, links to their own site and channels, and a clear statement on how they use, or do not use, AI. This is what a client reads before reaching out, so honesty and detail work in the professional's favor.",
+        ],
+      },
+      {
+        heading: "HTVS: four levels of proof",
+        paragraphs: [
+          "There is no single proof that a human made the work. There are levels, and the higher the level, the fewer questions a client has. The method is called HTVS: Human Talent Verification and Support. Verification is for the client, so they can see what a creator's process is backed by. Support is for the creator, because a directory's job is not to suspect them but to put their work in front of the people who pay for it.",
+          "You do not have to reach the top level. Level one is honest on its own, and it is where everyone starts. Level two satisfies most clients.",
+        ],
+        bullets: [
+          "Level 1. Statement. The creator describes how they work, in their own words. What it proves: where the author stands and that they are willing to answer for it. What it does not prove: anything beyond what is said.",
+          "Level 2. Source files. Layered files, sketches, drafts, work in progress. What it proves: the work grew in pieces rather than arriving finished. What it does not prove: that no part of it was generated.",
+          "Level 3. Version history. Autosaves, cloud file history, edit history. What it proves: a sequence of work over time, which is hard to assemble after the fact. What it does not prove: who authored the versions being saved.",
+          "Level 4. C2PA signature. A cryptographic provenance record written by editors and cameras. What it proves: the file has not changed since signing and passed through the named tools. What it does not prove: that what was shot or drawn is what is claimed. It is also easily lost: almost every platform strips metadata on upload.",
         ],
       },
       {

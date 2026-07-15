@@ -390,6 +390,8 @@ export interface Dictionary {
     title: string;
     intro: string;
     groups: { title: string; items: FaqEntry[] }[];
+    byProfessionTitle: string;
+    byProfessionIntro: string;
     ctaTitle: string;
     ctaText: string;
     ctaFind: string;

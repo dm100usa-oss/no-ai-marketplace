@@ -4,6 +4,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FAQ } from "@/components/FAQ";
 import { ArrowRight } from "@/components/icons";
 import { getDictionary } from "@/i18n";
+import { getFaqProfessions } from "@/i18n/data/faqProfessions";
 import { DEFAULT_LOCALE, isLocale, localizedPath, LOCALES } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
 
@@ -34,28 +35,13 @@ export default async function FaqPage({
   const dict = getDictionary(locale);
   const p = dict.faqPage;
 
-  // Flatten every Q&A into one FAQPage schema so search and AI engines
-  // read the whole set at once.
-  const allItems = p.groups.flatMap((g) => g.items);
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    inLanguage: locale,
-    mainEntity: allItems.map((it) => ({
-      "@type": "Question",
-      name: it.q,
-      acceptedAnswer: { "@type": "Answer", text: it.a },
-    })),
-  };
+  // No FAQPage schema here on purpose. Each profession page under
+  // /faq/[slug] carries its own, and a second copy on the hub would
+  // compete with them for the same questions.
+  const professions = getFaqProfessions(locale);
 
   return (
     <div className="container-page section">
-      <script
-        type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-
       <Breadcrumbs
         lang={locale}
         items={[{ label: dict.common.home, href: "/" }, { label: p.title }]}
@@ -75,6 +61,25 @@ export default async function FaqPage({
             </section>
           ))}
         </div>
+
+        <section className="mt-12">
+          <h2 className="!text-[1.35rem]">{p.byProfessionTitle}</h2>
+          <p className="mt-2 text-[0.98rem]" style={{ color: "var(--color-muted)" }}>
+            {p.byProfessionIntro}
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {professions.map((prof) => (
+              <LocaleLink
+                key={prof.slug}
+                lang={locale}
+                href={`/faq/${prof.slug}`}
+                className="btn btn-quiet"
+              >
+                {prof.title}
+              </LocaleLink>
+            ))}
+          </div>
+        </section>
 
         <div
           className="mt-12 rounded-2xl border p-6 md:p-8"
