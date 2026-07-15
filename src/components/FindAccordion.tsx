@@ -86,7 +86,7 @@ export function FindAccordion({
                   href={action.href}
                   tabIndex={open ? undefined : -1}
                   aria-hidden={open ? undefined : true}
-                  className="press-btn relative flex min-h-[9.5rem] flex-col items-center justify-center rounded-2xl px-4 py-4 text-center"
+                  className="press-btn relative flex min-h-[9.5rem] flex-col items-center justify-center rounded-2xl px-4 py-4 pl-20 text-center sm:pl-4 sm:pt-20"
                   style={{
                     background: tone.bg,
                     ["--press-bg" as string]: tone.press,
@@ -96,11 +96,11 @@ export function FindAccordion({
                     src={`/images/find/${tone.icon}.webp`}
                     alt=""
                     aria-hidden="true"
-                    width={80}
-                    height={80}
+                    width={64}
+                    height={64}
                     loading="lazy"
                     decoding="async"
-                    className="absolute left-3 top-3 block"
+                    className="absolute left-4 top-4 block"
                   />
                   <span
                     className="text-[1.05rem] font-bold"
