@@ -20,15 +20,19 @@ import type { Locale } from "@/i18n/config";
  * Files under /images/people. Order is deliberate: the three bright
  * abstracts sit at 3, 10 and 17 so they never arrive together, and no two
  * shots of the same craft stand side by side.
+ *
+ * Weighted towards material over paper. A page of handwriting is
+ * unreadable at 120px and turns into grey noise; clay, wood and glass
+ * still read as themselves.
  */
 const SHOTS = [
   "paint-canvas",
   "sculpture",
-  "literature",
+  "wood",
   "paint-expression",
   "architecture",
   "music",
-  "text",
+  "textile",
   "paint-knife",
   "photography",
   "graphics",
@@ -37,7 +41,7 @@ const SHOTS = [
   "code-paper",
   "paint-strokes",
   "fashion",
-  "typography",
+  "glass",
   "interior",
   "paint-minimal",
   "film",
