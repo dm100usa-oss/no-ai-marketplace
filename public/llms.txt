@@ -8,6 +8,15 @@ An international directory of professionals who create professional work and ser
 ## How it works
 Professionals create their own pages, describe themselves, and publish their services, work, portfolio, and links to their websites and social profiles. Buyers use the directory and search to find these professionals, study their profiles, and reach out directly, working without intermediaries or commissions.
 
+## Who is listed
+Three kinds of participant, each with its own profile type:
+- Creator: works alone and answers for the result personally.
+- Team: several people who take projects together.
+- Company or studio: a registered business with its own staff.
+
+## Directions
+Art; Literature; Graphics & Design; Photo & Video; Writing & Translation; Music & Audio; Development & IT; Architecture & Interiors; Handmade & Craft. Each direction opens into professions, and each profession lists the people, teams and companies working in it.
+
 ## Who it is for
 - Buyers who want to find and choose professionals whose work and services are made without generative AI.
 - Professionals who work without generative AI and want to present themselves, show their portfolio, and reach new clients.
@@ -15,11 +24,16 @@ Professionals create their own pages, describe themselves, and publish their ser
 ## Mission
 To connect professionals who create work and services without generative AI with the clients who value human craft, originality, transparency, and direct collaboration.
 
+## Listing and pricing
+The first 50 profiles are free until the end of 2026, counted across all participant types together. After that, listing is paid and depends on the type: creator $5.99/month or $49/year; team $14.99/month or $119/year; company $29.99/month or $239/year. There is no commission on the work itself — buyers pay the professional directly on the professional's own platform.
+
 ## Main sections
 - Directory of professionals: /directory
+- Directions: /directions
 - Categories: /categories
 - Verified profiles: /verified
 - Add your profile: /join
+- Pricing: /pricing
 - Human-made standards: /human-made-standards
 - About: /about
 
@@ -38,6 +52,18 @@ No AI Marketplace — международный каталог специали
 
 ## Как это работает
 Специалисты создают собственные страницы, рассказывают о себе, публикуют свои услуги, работы, портфолио и ссылки на сайты и социальные сети. Заказчики благодаря каталогу и поиску находят таких специалистов, изучают их профили и связываются напрямую, работая без посредников и комиссий.
+
+## Кто размещается
+Три типа участников, у каждого свой тип профиля:
+- Автор: работает один и отвечает за результат сам.
+- Команда: несколько человек, которые берутся за проекты вместе.
+- Компания или студия: юридическое лицо со своим составом.
+
+## Направления
+Искусство; Литература; Графика и дизайн; Фото и видео; Тексты и переводы; Музыка и звук; Разработка и IT; Архитектура и интерьер; Ручная работа. Каждое направление открывается в профессии, а каждая профессия показывает людей, команды и компании, которые в ней работают.
+
+## Размещение и цены
+Первые 50 профилей бесплатны до конца 2026 года, места считаются на все типы вместе. Далее размещение платное и зависит от типа: автор $5.99 в месяц или $49 в год; команда $14.99 в месяц или $119 в год; компания $29.99 в месяц или $239 в год. Комиссии с самой работы нет: заказчик платит специалисту напрямую на его площадке.
 
 ## Для кого
 - Для заказчиков, которым важно находить и выбирать специалистов, создающих оригинальные работы и услуги без использования генеративного ИИ.

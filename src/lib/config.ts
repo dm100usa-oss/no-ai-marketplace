@@ -151,7 +151,7 @@ export const socialLinks = [
  * Where a paid-plan button should send the visitor.
  * If the matching Stripe Payment Link is set, go straight to checkout;
  * otherwise fall back to the join form (TZ 2.3: the Tally form itself
- * switches to the paid step after the first 100 free places).
+ * switches to the paid step after the first 50 free places).
  */
 export function planCheckoutHref(plan: PlanId, period: BillingPeriod): string {
   const link = plans[plan][period].stripeLink;

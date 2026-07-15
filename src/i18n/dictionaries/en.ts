@@ -61,7 +61,7 @@ export const en: Dictionary = {
     searchAria: "Search",
     search: "Search",
     language: "Language",
-    addProfileFree: "Add your profile — first 100 free",
+    addProfileFree: "Add your profile — first 50 free",
   },
 
   common: {
@@ -171,7 +171,7 @@ export const en: Dictionary = {
     forCreatorsText:
       "If your work is made by humans, be found by buyers who value that. Add your profile with links to your own site, shop or portfolio — traffic goes to you, not to a middleman.",
     forCreatorsPoints: [
-      "The first 100 profiles are free.",
+      "The first 50 profiles are free until the end of 2026.",
       "All external links belong to you. Buyers land on your platform.",
       "Submit materials for a verified badge and gain trust faster.",
     ],
@@ -202,7 +202,7 @@ export const en: Dictionary = {
       },
       {
         q: "How do I add my profile?",
-        a: "The first 100 profiles are free. After that, listings are $5.99/month or $49/year. You fill out one form, choose a plan and submit materials for review. Full instructions on the Add Your Profile page.",
+        a: "The first 50 profiles are free until the end of 2026. After that, listings are paid: a creator is $5.99/month or $49/year, a team $14.99 or $119, a company $29.99 or $239. You fill out one form, say who you are and submit materials for review. Full instructions on the Add Your Profile page.",
       },
       {
         q: "Is AI-generated work allowed?",
@@ -211,7 +211,7 @@ export const en: Dictionary = {
     ],
     closingTitle: "Are you a human creator?",
     closingText:
-      "The first 100 profiles are free. Get found by buyers looking for work made by people.",
+      "The first 50 profiles are free until the end of 2026. Get found by buyers looking for work made by people.",
     closingCta: "Add your profile",
   },
 
@@ -285,10 +285,10 @@ export const en: Dictionary = {
   join: {
     metaTitle: "Add your profile",
     metaDescription:
-      "Add a profile to No AI Marketplace. The first 100 are free, then $5.99/month or $49/year.",
+      "Add a profile to No AI Marketplace. The first 50 are free until the end of 2026, then from $5.99/month.",
     title: "Add your profile",
     intro:
-      "Be found by buyers looking for work made by people. Add your profile in a few minutes — the first 100 profiles are free.",
+      "Be found by buyers looking for work made by people. Add your profile in a few minutes — the first 50 profiles are free until the end of 2026.",
     startNow: "Start now",
     seePricing: "See pricing",
     whyTitle: "Why be on No AI Marketplace",
@@ -308,7 +308,7 @@ export const en: Dictionary = {
       },
       {
         t: "Pick a plan",
-        d: "The first 100 profiles are free. After that you choose Monthly ($5.99) or Yearly ($49) and pay through Stripe.",
+        d: "The first 50 profiles are free until the end of 2026. After that you choose the plan for your type and a period, monthly or yearly, and pay through Stripe.",
       },
       {
         t: "We review by hand",
@@ -321,7 +321,7 @@ export const en: Dictionary = {
     ],
     formTitle: "The form",
     formIntro:
-      "Fill in the form below. The first 100 profiles are free; after that the form moves to the paid step and takes payment through Stripe.",
+      "Fill in the form below. While free places last, listing costs nothing. Once they run out, the form moves to payment through Stripe.",
     pickTitle: "Who you are",
     pickIntro:
       "Pick how you work. It decides what the form asks you and how your profile looks in the catalog.",
@@ -356,7 +356,7 @@ export const en: Dictionary = {
     faq: [
       {
         q: "How much does a profile cost?",
-        a: "The first 100 profiles on the site are free. After that, listings are $5.99/month or $49/year (about 32% off vs monthly).",
+        a: "The first 50 profiles on the site are free until the end of 2026. After that, what you pay depends on who you are: a creator is $5.99/month or $49/year, a team $14.99 or $119, a company $29.99 or $239. Paying yearly saves about a third.",
       },
       {
         q: "What do I need to add a profile?",
@@ -396,7 +396,7 @@ export const en: Dictionary = {
       "As AI generates more of the content, products and services online, the demand for verified human-made work grows. Buyers, brands and agencies want to find creators whose work is genuinely made by hand or by human judgment. Creators, in turn, want to be recognized for that and be easy to find. No AI Marketplace closes both sides of that need.",
     howTitle: "How profiles get into the catalog",
     howText:
-      "The first 100 profiles are free. After that, listings are paid. Each profile is reviewed before it goes live. Verified creators additionally submit materials (process photos or video, drafts, published work) that we look at by hand — the profile then shows what was reviewed.",
+      "The first 50 profiles are free until the end of 2026. After that, listings are paid. Each profile is reviewed before it goes live. Verified creators additionally submit materials (process photos or video, drafts, published work) that we look at by hand — the profile then shows what was reviewed.",
     notClaimTitle: "What we do not claim",
     notClaimText1:
       "We do not claim a legal guarantee that no AI was ever used at any step of any listed work. Verification is an honest, human review of the materials the creator provided, and we describe on each profile exactly what that review covered. Read more in ",
@@ -855,7 +855,7 @@ export const en: Dictionary = {
 
   tally: {
     notice1:
-      "The submission form is powered by Tally and includes a built-in limit of 100 free places. Once that limit is reached, the form automatically switches to the paid step and takes payment through Stripe.",
+      "The submission form is powered by Tally and includes a built-in limit of 50 free places. Once that limit is reached, the form automatically switches to the paid step and takes payment through Stripe.",
     notice2a: "The form is being connected. In the meantime, please ",
     getInTouch: "get in touch",
     notice2b: " to be added.",
