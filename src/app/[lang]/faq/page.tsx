@@ -66,7 +66,7 @@ export default async function FaqPage({
           <p className="mt-2 text-[0.98rem]" style={{ color: "var(--color-muted)" }}>
             {p.byProfessionIntro}
           </p>
-          <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
             {professions.map((prof) => (
               <LocaleLink
                 key={prof.slug}
