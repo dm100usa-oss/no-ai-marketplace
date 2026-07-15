@@ -96,8 +96,8 @@ export function FindAccordion({
                     src={`/images/find/${tone.icon}-v2.webp`}
                     alt=""
                     aria-hidden="true"
-                    width={130}
-                    height={130}
+                    width={104}
+                    height={104}
                     loading="lazy"
                     decoding="async"
                     className="block shrink-0"
