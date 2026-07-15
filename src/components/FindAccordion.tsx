@@ -25,7 +25,9 @@ const ACTION_TONES = [
 
 /**
  * "Find" button that reveals the three entry points (creator / team /
- * company) right below it. The panel is always present in the HTML and
+ * company) right below it. Its lift and gradient live in globals.css
+ * (.find-btn), because a horizontal gradient plus a raised shadow is more
+ * CSS than belongs in a style attribute. The panel is always present in the HTML and
  * only collapsed with CSS, so search engines and AI answer engines read
  * the full semantic core without needing to run the click.
  */
@@ -47,12 +49,8 @@ export function FindAccordion({
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-controls="find-panel"
-        className="press-btn relative flex w-full items-center justify-center rounded-2xl px-6 py-4"
-        style={{
-          background: "#5b87d8",
-          color: "#ffffff",
-          ["--press-bg" as string]: "#4d73bd",
-        }}
+        className="find-btn press-btn relative flex w-full items-center justify-center rounded-2xl px-6 py-4"
+        style={{ color: "#ffffff" }}
       >
         <span
           className="text-[1.15rem] font-bold"

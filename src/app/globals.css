@@ -175,19 +175,85 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* Accent action button (search, primary actions) */
+/* Accent action button. Same treatment as .btn-ink: horizontal gradient
+   with a flat middle, and the .btn highlight softened for a dark face. */
 .btn-accent {
-  background: var(--color-accent);
+  background: linear-gradient(
+    to right,
+    #335dad 0%,
+    #3e6fcc 18%,
+    #4b7dd8 50%,
+    #3e6fcc 82%,
+    #335dad 100%
+  );
   color: #fff;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 rgba(22, 35, 58, 0.18),
+    var(--shadow-raise);
+  border-color: rgba(22, 35, 58, 0.12);
 }
-.btn-accent:active { background: var(--color-accent-press); }
+.btn-accent:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 rgba(22, 35, 58, 0.18),
+    var(--shadow-raise-hover);
+}
+.btn-accent:active {
+  background: linear-gradient(
+    to right,
+    #2b5096 0%,
+    #345fb0 18%,
+    #406cbd 50%,
+    #345fb0 82%,
+    #2b5096 100%
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 1px 3px rgba(22, 35, 58, 0.14);
+}
 
 /* Dark Join button (Fiverr-style dark CTA) */
+/* Dark "Add profile" button. Horizontal gradient, darker towards both
+   ends, with a flat middle: the stops sit at 0/18/50/82/100 so the centre
+   stays even. A radial gradient was here before and read as a bulging
+   pill, which is exactly what the raised-slab look is not. */
 .btn-ink {
-  background: radial-gradient(ellipse at center, #4a72a0 0%, #2c4c70 55%, #1a2a45 100%);
+  background: linear-gradient(
+    to right,
+    #22375a 0%,
+    #2c4c70 18%,
+    #3a5c85 50%,
+    #2c4c70 82%,
+    #22375a 100%
+  );
   color: #fff;
+  /* The 2px white line from .btn is meant for pale surfaces; over a near
+     black slab it reads as a glaring edge. Softened here. */
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.22),
+    var(--shadow-raise);
+  border-color: rgba(22, 35, 58, 0.18);
+}
+.btn-ink:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.22),
+    var(--shadow-raise-hover);
 }
 .btn-ink:active {
-  background: radial-gradient(ellipse at center, #416592 0%, #254060 55%, #14203a 100%);
+  background: linear-gradient(
+    to right,
+    #1a2a45 0%,
+    #24405f 18%,
+    #304e72 50%,
+    #24405f 82%,
+    #1a2a45 100%
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 1px 3px rgba(22, 35, 58, 0.16);
 }
 
 /* Quiet button on light surface */
@@ -316,10 +382,30 @@ a { color: inherit; text-decoration: none; }
 ------------------------------------------------------------------ */
 .people-marquee {
   overflow: hidden;
-  padding: 14px 0;
-  /* Fade the two ends so cards enter and leave instead of being chopped. */
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
-          mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+  padding: 8px 0;
+  /* Fade the two ends so cards enter and leave instead of being chopped.
+     A mask re-composites the whole strip every frame; two small gradient
+     overlays cost nothing and look the same. */
+  position: relative;
+}
+
+.people-marquee::before,
+.people-marquee::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  z-index: 1;
+  pointer-events: none;
+}
+.people-marquee::before {
+  left: 0;
+  background: linear-gradient(to right, var(--color-page), transparent);
+}
+.people-marquee::after {
+  right: 0;
+  background: linear-gradient(to left, var(--color-page), transparent);
 }
 
 .people-marquee__track {
@@ -327,6 +413,11 @@ a { color: inherit; text-decoration: none; }
   gap: 10px;
   width: max-content;
   animation: people-marquee-slide 150s linear infinite;
+  /* The track is ~7000px wide. Promoting it to its own compositor layer
+     means the GPU slides a ready-made texture instead of the main thread
+     re-lifting 44 images on every frame. */
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 /* Half the track is a full copy of the first half, so -50% lands exactly
@@ -357,6 +448,8 @@ a { color: inherit; text-decoration: none; }
   width: 100%;
   height: 144px; /* 3:4 */
   object-fit: cover;
+  /* Files are 300x400: exactly 2x the largest painted size, no more. */
+  content-visibility: auto;
 }
 
 @media (min-width: 640px) {
@@ -374,4 +467,51 @@ a { color: inherit; text-decoration: none; }
 @media (prefers-reduced-motion: reduce) {
   .people-marquee__track { animation: none; }
   .people-marquee { overflow-x: auto; }
+}
+
+/* ----------------------------------------------------------------
+   Find button — the main action on the home page
+------------------------------------------------------------------ */
+.find-btn {
+  /* Darker towards both ends, lightest across the middle. The stops sit
+     at 0/18/50/82/100 rather than a plain three-stop fade: the flat
+     centre is what keeps it reading as a raised slab and not a pill. */
+  background: linear-gradient(
+    to right,
+    #4a72bd 0%,
+    #5580d0 18%,
+    #6791de 50%,
+    #5580d0 82%,
+    #4a72bd 100%
+  );
+  /* Lifted to the same height as the direction tiles. The old shadow was
+     0 2px 5px, which reads as lying on the page rather than above it. */
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.34),
+    inset 0 -1px 0 rgba(22, 35, 58, 0.16),
+    var(--shadow-raise);
+  border-color: rgba(22, 35, 58, 0.10);
+}
+
+.find-btn:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.34),
+    inset 0 -1px 0 rgba(22, 35, 58, 0.16),
+    var(--shadow-raise-hover);
+}
+
+/* Pressed: the whole slab goes down and darkens. Overrides .press-btn,
+   which sets a flat --press-bg colour; this one keeps the gradient. */
+.find-btn:active {
+  background: linear-gradient(
+    to right,
+    #3e60a1 0%,
+    #486db1 18%,
+    #587bbd 50%,
+    #486db1 82%,
+    #3e60a1 100%
+  ) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    0 1px 3px rgba(22, 35, 58, 0.14);
 }

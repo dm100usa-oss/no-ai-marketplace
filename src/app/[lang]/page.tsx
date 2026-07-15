@@ -68,7 +68,7 @@ export default async function HomePage({
       />
 
       {/* ---------- Hero ---------- */}
-      <section className="relative flex items-center justify-center overflow-hidden py-10 sm:py-14">
+      <section className="relative flex items-center justify-center overflow-hidden py-6 sm:py-10">
         <img
           src="/images/hero.webp"
           alt=""
@@ -77,7 +77,7 @@ export default async function HomePage({
         />
         <div className="relative flex w-full items-center justify-center px-4">
           <div
-            className="mx-auto w-[92%] max-w-2xl rounded-2xl px-6 py-7 text-center sm:w-[80%] sm:px-10 sm:py-10"
+            className="mx-auto w-[92%] max-w-2xl rounded-2xl px-6 py-5 text-center sm:w-[80%] sm:px-10 sm:py-8"
             style={{ background: "rgba(219,233,255,0.61)", backdropFilter: "blur(2px)" }}
           >
             <h1 className="text-balance text-[0.95rem] sm:text-[1.35rem] md:text-[1.7rem]" style={{ marginTop: "0" }}>{dict.site.name}</h1>
@@ -104,7 +104,9 @@ export default async function HomePage({
       <PeopleMarquee lang={locale} />
 
       {/* ---------- Hero content ---------- */}
-      <section className="section">
+      {/* Tighter on top than a normal .section: this block belongs to the
+          people band above it, not to the page below. */}
+      <section className="section pt-6 sm:pt-8">
         <div className="container-page">
           {/* Intro line — same display font as tagline */}
           <p
