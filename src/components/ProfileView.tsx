@@ -115,6 +115,9 @@ export function ProfileView({
               <img
                 src={p.avatar}
                 alt={p.name}
+                width={600}
+                height={600}
+                decoding="async"
                 className="h-16 w-16 shrink-0 rounded-2xl object-cover"
               />
             ) : (

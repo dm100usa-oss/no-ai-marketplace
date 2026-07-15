@@ -61,9 +61,14 @@ export function GalleryLightbox({
           aria-label={`Open ${heroAlt ?? `work by ${name}`} full screen`}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
+          {/* The hero variant is the LCP element on a profile page: it sits at
+              the top and is the largest thing on screen. High priority, never
+              lazy. */}
           <img
             src={images[0]}
             alt={heroAlt ?? `Featured work by ${name}`}
+            fetchPriority="high"
+            decoding="async"
             className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
           />
         </button>
@@ -83,6 +88,7 @@ export function GalleryLightbox({
                 src={src}
                 alt={`Work ${i + 1} by ${name}`}
                 loading="lazy"
+                decoding="async"
                 className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
             </button>

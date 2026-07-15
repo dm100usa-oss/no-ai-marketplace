@@ -90,7 +90,7 @@ export function CreatorCard({
       <LocaleLink lang={lang} href={profileHref} className="relative block aspect-[4/3] overflow-hidden" style={{ background: "var(--color-brand-soft)" }}>
         {profile.mainImage ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={profile.mainImage} alt={`${dict.common.humanMadeWork} — ${profile.name}`} className="h-full w-full object-cover" loading="lazy" />
+          <img src={profile.mainImage} alt={`${dict.common.humanMadeWork} — ${profile.name}`} className="h-full w-full object-cover" loading="lazy" decoding="async" />
         ) : (
           <PlaceholderArt seed={profile.slug} label={dict.common.humanMadeWork} />
         )}
@@ -125,7 +125,10 @@ export function CreatorCard({
               <img
                 src={profile.avatar}
                 alt={profile.name}
+                width={600}
+                height={600}
                 loading="lazy"
+                decoding="async"
                 className={`h-9 w-9 shrink-0 object-cover ${isGroup ? "rounded-[0.6rem]" : "rounded-full"}`}
               />
             ) : (

@@ -69,9 +69,17 @@ export default async function HomePage({
 
       {/* ---------- Hero ---------- */}
       <section className="relative flex items-center justify-center overflow-hidden py-6 sm:py-10">
+        {/* The hero image is the LCP element on the home page. fetchPriority
+            tells the browser to start it ahead of the lazy images further
+            down, and width/height give it the aspect ratio up front so the
+            block never resizes once the file lands. */}
         <img
           src="/images/hero.webp"
           alt=""
+          width={1799}
+          height={929}
+          fetchPriority="high"
+          decoding="async"
           className="absolute inset-0 h-full w-full object-cover"
           style={{ objectPosition: "18% center" }}
         />
