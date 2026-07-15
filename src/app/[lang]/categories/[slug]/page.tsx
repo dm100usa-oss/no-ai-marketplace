@@ -10,6 +10,9 @@ import { site } from "@/lib/config";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ProfileGrid } from "@/components/ProfileGrid";
 import { getDictionary } from "@/i18n";
+import { LocaleLink } from "@/components/LocaleLink";
+import { ArrowRight } from "@/components/icons";
+import { getFaqProfession } from "@/i18n/data/faqProfessions";
 import { DEFAULT_LOCALE, isLocale, localizedPath, LOCALES } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
 import type { ProfileType as ParticipantType } from "@/lib/types";
@@ -63,6 +66,10 @@ export default async function CategoryPage({
   const type: ParticipantType | "" =
     raw === "creator" || raw === "team" || raw === "company" ? raw : "";
   const suffix = type ? `?type=${type}` : "";
+
+  // Anyone browsing a category is exactly the person the profession FAQ
+  // is written for, so link the two together when that FAQ exists.
+  const faq = getFaqProfession(locale, cat.slug);
 
   const dir = directionOfCategoryL(cat.slug, locale);
   const list = getProfilesByCategoryL(cat.slug, locale).filter(
@@ -139,6 +146,25 @@ export default async function CategoryPage({
           emptyMessage={dict.categoryDetail.emptyMessage}
         />
       </div>
+
+      {faq && (
+        <section className="mt-12 max-w-3xl">
+          <h2 className="!text-[1.35rem]">{faq.title}</h2>
+          <ul className="mt-4 space-y-2">
+            {faq.items.slice(0, 3).map((it, i) => (
+              <li key={i} className="text-[0.98rem]" style={{ color: "var(--color-muted)" }}>
+                {it.q}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-4">
+            <LocaleLink lang={locale} href={`/faq/${faq.slug}`} className="btn btn-quiet">
+              {dict.faqPage.byProfessionTitle}
+              <ArrowRight size={16} />
+            </LocaleLink>
+          </div>
+        </section>
+      )}
     </div>
   );
 }

@@ -61,6 +61,7 @@ export function footerNav(dict: Dictionary): NavGroup[] {
       title: dict.footer.project,
       links: [
         { label: dict.footer.about, href: "/about" },
+        { label: dict.footer.faq, href: "/faq" },
         { label: dict.footer.contact, href: "/contact" },
       ],
     },
