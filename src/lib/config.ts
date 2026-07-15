@@ -69,11 +69,25 @@ export const freeTier = {
  * HOW TO GET EACH VALUE — see the owner guide in README (section
  * "Stage 5: registration and payment"). Short version:
  *
- * 1. tallyFormId — create a form on tally.so, open it, the id is the
- *    code in the share URL tally.so/r/XXXXXXX (that XXXXXXX). The form
- *    receives a hidden `type` field (creator / team / company) and a
- *    `lang` field straight from the embed URL, so one form covers all
- *    three participant types and every submission arrives labelled.
+ * 1. tallyFormIds — one Tally form per language. Create a form on
+ *    tally.so, open it, the id is the code in the share URL
+ *    tally.so/r/XXXXXXX (that XXXXXXX). Paste the English form's id
+ *    under `en` and the Russian one under `ru`.
+ *
+ *    Why one form per language: Tally renders a form in the single
+ *    language it was written in, and its page-jump logic only fires
+ *    after the visitor presses Next — so a single form cannot show
+ *    Russian questions to a Russian visitor without walking them
+ *    through the English ones first. One form per language keeps each
+ *    submission clean and each form editable on its own.
+ *
+ *    The participant type picked on /join is still passed to every form
+ *    as a hidden `type` field (creator / team / company), together with
+ *    a `lang` field, so submissions arrive labelled.
+ *
+ *    NOTE: Tally counts its "limit responses" setting per form, so the
+ *    50 free places are counted per language, not across both. Watch the
+ *    combined total by hand until the free places run out.
  *
  * 2. Stripe Payment Links live in the `plans` table above, one per plan
  *    and period (six in total). Create each link in the Stripe dashboard
@@ -87,8 +101,18 @@ export const freeTier = {
  * "form is being connected" notice in place of the embedded form.
  */
 export const integrations = {
-  tallyFormId: "ZjKKMa", // e.g. "wgABCD" from tally.so/r/wgABCD
+  /** One Tally form id per language, e.g. "wgABCD" from tally.so/r/wgABCD */
+  tallyFormIds: {
+    en: "ZjKKMa",
+    ru: "VLAB8v",
+  },
 } as const;
+
+/** The Tally form id for a given language, or "" when it isn't set yet. */
+export function tallyFormId(locale: string): string {
+  const ids = integrations.tallyFormIds as Record<string, string>;
+  return ids[locale] ?? "";
+}
 
 /** Primary navigation (TZ Etap 1: Directory, Categories, Verified,
  *  About, Pricing, Join). Join is visually highlighted. */

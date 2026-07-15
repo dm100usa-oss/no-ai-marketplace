@@ -2,23 +2,24 @@
 
 import { useEffect } from "react";
 import { LocaleLink } from "./LocaleLink";
-import { integrations } from "@/lib/config";
+import { tallyFormId } from "@/lib/config";
 import type { Dictionary } from "@/i18n/types";
 import type { Locale } from "@/i18n/config";
 import type { ProfileType } from "@/lib/types";
 
 /**
- * Embeds the Tally submission form. The form lives on tally.so and carries
- * its own "limit responses" setting (100). Once the limit is reached Tally
- * closes the free form and shows the paid step, so the count, the threshold
- * and the switch to payment all happen without the owner.
+ * Embeds the Tally submission form for the current language. Each
+ * language has its own form on tally.so (Tally renders a form in the one
+ * language it was written in), and each form carries its own "limit
+ * responses" setting.
  *
  * The participant type picked on /join is passed to Tally as a hidden
- * field, so one form can branch to the right questions and every
- * submission arrives already labelled creator / team / company.
+ * field, so one form per language can still branch to the right
+ * questions and every submission arrives already labelled creator /
+ * team / company.
  *
- * If no form id is configured yet, we render a short notice instead of an
- * empty box, so the page always makes sense.
+ * If no form id is configured for this language yet, we render a short
+ * notice instead of an empty box, so the page always makes sense.
  */
 export function TallyForm({
   lang,
@@ -30,7 +31,7 @@ export function TallyForm({
   /** Participant type chosen before the form, passed through to Tally. */
   type?: ProfileType;
 }) {
-  const formId = integrations.tallyFormId;
+  const formId = tallyFormId(lang);
 
   useEffect(() => {
     if (!formId) return;
@@ -94,7 +95,7 @@ export function TallyForm({
 
   return (
     <div
-      key={type ?? "any"}
+      key={`${lang}-${type ?? "any"}`}
       className="overflow-hidden rounded-2xl border"
       style={{ borderColor: "var(--color-line)", background: "#fff" }}
     >
