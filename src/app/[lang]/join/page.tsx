@@ -73,10 +73,11 @@ export default async function JoinPage({
             src="/images/how/creators.webp"
             alt=""
             aria-hidden="true"
+            width={120}
             height={88}
             loading="lazy"
             decoding="async"
-            className="block h-[88px] w-auto"
+            className="block"
           />
           <h1 className="mt-4">{dict.join.title}</h1>
           <p className="lead mt-3">{dict.join.intro}</p>

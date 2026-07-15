@@ -22,8 +22,14 @@ import {
   directionOfCategoryL,
 } from "@/lib/localized-data";
 
-/** Drawings for "How the platform works", one per card, in card order. */
-const HOW_ICONS = ["people", "shopfront", "verified"];
+/** Drawings for "How the platform works", one per card, in card order.
+ *  Each keeps its own aspect ratio: the box is fixed at 96 wide, the height
+ *  follows the drawing, so nothing is stretched or squashed. */
+const HOW_ICONS = [
+  { file: "people", w: 96, h: 113 },
+  { file: "shopfront", w: 96, h: 82 },
+  { file: "verified", w: 96, h: 108 },
+];
 
 export default async function HomePage({
   params,
@@ -293,15 +299,16 @@ export default async function HomePage({
           </SectionHeading>
           <div className="grid gap-6 sm:grid-cols-3">
             {dict.home.howItWorksCards.map((item, i) => (
-              <div key={i} className="flex gap-3">
+              <div key={i} className="flex flex-col gap-3">
                 <img
-                  src={`/images/how/${HOW_ICONS[i]}.webp`}
+                  src={`/images/how/${HOW_ICONS[i].file}.webp`}
                   alt=""
                   aria-hidden="true"
-                  height={72}
+                  width={HOW_ICONS[i].w}
+                  height={HOW_ICONS[i].h}
                   loading="lazy"
                   decoding="async"
-                  className="block h-[72px] w-auto shrink-0"
+                  className="block self-start"
                 />
                 <div>
                   <h3>{item.t}</h3>
@@ -342,10 +349,11 @@ export default async function HomePage({
                 src="/images/how/buyers.webp"
                 alt=""
                 aria-hidden="true"
-                height={88}
+                width={120}
+                height={97}
                 loading="lazy"
                 decoding="async"
-                className="block h-[88px] w-auto"
+                className="block"
               />
               <h2 className="mt-4">{dict.home.forBuyers}</h2>
               <p className="mt-3" style={{ color: "var(--color-muted)" }}>
@@ -379,10 +387,11 @@ export default async function HomePage({
                 src="/images/how/creators.webp"
                 alt=""
                 aria-hidden="true"
+                width={120}
                 height={88}
                 loading="lazy"
                 decoding="async"
-                className="block h-[88px] w-auto"
+                className="block"
               />
               <h2 className="mt-4">{dict.home.forCreators}</h2>
               <p className="mt-3" style={{ color: "var(--color-muted)" }}>
