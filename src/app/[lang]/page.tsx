@@ -9,8 +9,6 @@ import {
   SearchIcon,
   ArrowRight,
   CheckShield,
-  UsersIcon,
-  HandshakeIcon,
   SparkIcon,
 } from "@/components/icons";
 import { getDictionary } from "@/i18n";
@@ -26,7 +24,8 @@ import {
   directionOfCategoryL,
 } from "@/lib/localized-data";
 
-const ICONS = [<UsersIcon key="u" />, <HandshakeIcon key="h" />, <CheckShield key="c" size={22} />];
+/** Drawings for "How the platform works", one per card, in card order. */
+const HOW_ICONS = ["people", "shopfront", "verified"];
 
 export default async function HomePage({
   params,
@@ -297,12 +296,16 @@ export default async function HomePage({
           <div className="grid gap-6 sm:grid-cols-3">
             {dict.home.howItWorksCards.map((item, i) => (
               <div key={i} className="flex gap-3">
-                <span
-                  className="grid h-11 w-11 shrink-0 place-items-center rounded-xl"
-                  style={{ background: "var(--color-brand-soft)", color: "var(--color-accent)" }}
-                >
-                  {ICONS[i]}
-                </span>
+                <img
+                  src={`/images/how/${HOW_ICONS[i]}.webp`}
+                  alt=""
+                  aria-hidden="true"
+                  width={72}
+                  height={72}
+                  loading="lazy"
+                  decoding="async"
+                  className="block shrink-0"
+                />
                 <div>
                   <h3>{item.t}</h3>
                   <p className="mt-1 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
