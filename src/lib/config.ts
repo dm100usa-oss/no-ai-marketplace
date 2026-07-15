@@ -87,7 +87,7 @@ export const freeTier = {
  * "form is being connected" notice in place of the embedded form.
  */
 export const integrations = {
-  tallyFormId: "", // e.g. "wgABCD" from tally.so/r/wgABCD
+  tallyFormId: "ZjKKMa", // e.g. "wgABCD" from tally.so/r/wgABCD
 } as const;
 
 /** Primary navigation (TZ Etap 1: Directory, Categories, Verified,
