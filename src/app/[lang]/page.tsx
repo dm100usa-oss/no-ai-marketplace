@@ -6,10 +6,8 @@ import { FAQ } from "@/components/FAQ";
 import { FindAccordion } from "@/components/FindAccordion";
 import { PeopleMarquee } from "@/components/PeopleMarquee";
 import {
-  SearchIcon,
   ArrowRight,
   CheckShield,
-  SparkIcon,
 } from "@/components/icons";
 import { getDictionary } from "@/i18n";
 import { categoryCount } from "@/lib/plural";
@@ -300,11 +298,10 @@ export default async function HomePage({
                   src={`/images/how/${HOW_ICONS[i]}.webp`}
                   alt=""
                   aria-hidden="true"
-                  width={72}
                   height={72}
                   loading="lazy"
                   decoding="async"
-                  className="block shrink-0"
+                  className="block h-[72px] w-auto shrink-0"
                 />
                 <div>
                   <h3>{item.t}</h3>
@@ -341,12 +338,15 @@ export default async function HomePage({
               className="flex flex-col rounded-2xl border p-6 md:p-8"
               style={{ borderColor: "var(--color-line)", background: "#fff" }}
             >
-              <span
-                className="grid h-11 w-11 place-items-center rounded-xl"
-                style={{ background: "var(--color-brand-soft)", color: "var(--color-accent)" }}
-              >
-                <SearchIcon />
-              </span>
+              <img
+                src="/images/how/buyers.webp"
+                alt=""
+                aria-hidden="true"
+                height={88}
+                loading="lazy"
+                decoding="async"
+                className="block h-[88px] w-auto"
+              />
               <h2 className="mt-4">{dict.home.forBuyers}</h2>
               <p className="mt-3" style={{ color: "var(--color-muted)" }}>
                 {dict.home.forBuyersText}
@@ -375,12 +375,15 @@ export default async function HomePage({
                 background: "var(--color-brand-soft)",
               }}
             >
-              <span
-                className="grid h-11 w-11 place-items-center rounded-xl bg-white"
-                style={{ color: "var(--color-accent)" }}
-              >
-                <SparkIcon />
-              </span>
+              <img
+                src="/images/how/creators.webp"
+                alt=""
+                aria-hidden="true"
+                height={88}
+                loading="lazy"
+                decoding="async"
+                className="block h-[88px] w-auto"
+              />
               <h2 className="mt-4">{dict.home.forCreators}</h2>
               <p className="mt-3" style={{ color: "var(--color-muted)" }}>
                 {dict.home.forCreatorsText}

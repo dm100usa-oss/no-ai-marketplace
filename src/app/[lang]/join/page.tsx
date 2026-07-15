@@ -4,7 +4,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { site } from "@/lib/config";
 import { FAQ } from "@/components/FAQ";
 import { JoinPicker } from "@/components/JoinPicker";
-import { CheckShield, ArrowRight, SparkIcon } from "@/components/icons";
+import { CheckShield, ArrowRight } from "@/components/icons";
 import { getDictionary } from "@/i18n";
 import { DEFAULT_LOCALE, isLocale, localizedPath, altLanguages } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
@@ -69,12 +69,15 @@ export default async function JoinPage({
           className="rounded-2xl border p-6 md:p-10"
           style={{ borderColor: "var(--color-brand)", background: "var(--color-brand-soft)" }}
         >
-          <span
-            className="grid h-11 w-11 place-items-center rounded-xl bg-white"
-            style={{ color: "var(--color-accent)" }}
-          >
-            <SparkIcon />
-          </span>
+          <img
+            src="/images/how/creators.webp"
+            alt=""
+            aria-hidden="true"
+            height={88}
+            loading="lazy"
+            decoding="async"
+            className="block h-[88px] w-auto"
+          />
           <h1 className="mt-4">{dict.join.title}</h1>
           <p className="lead mt-3">{dict.join.intro}</p>
           <div className="mt-6 flex flex-wrap gap-2">
