@@ -434,13 +434,7 @@ export default async function HomePage({
       <section className="section">
         <div className="container-page">
           <div className="mx-auto max-w-3xl text-center">
-            <span
-              className="mx-auto grid h-12 w-12 place-items-center rounded-xl"
-              style={{ background: "#dff1e9", color: "#157a58" }}
-            >
-              <CheckShield size={22} />
-            </span>
-            <h2 className="mt-4">{dict.home.verificationTitle}</h2>
+            <h2>{dict.home.verificationTitle}</h2>
             <p className="lead mt-4">{dict.home.verificationText}</p>
             <div className="mt-6 flex flex-wrap justify-center gap-2">
               <LocaleLink lang={locale} href="/verified" className="btn btn-quiet">
