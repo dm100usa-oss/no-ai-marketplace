@@ -14,6 +14,7 @@ import {
   SparkIcon,
 } from "@/components/icons";
 import { getDictionary } from "@/i18n";
+import { categoryCount } from "@/lib/plural";
 import { DEFAULT_LOCALE, isLocale } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
 import {
@@ -232,7 +233,7 @@ export default async function HomePage({
                   href={`/directions/${d.slug}`}
                   title={d.name}
                   color={d.color}
-                  subtitle={`${count} ${count === 1 ? dict.common.category : dict.common.categories}`}
+                  subtitle={categoryCount(count, dict)}
                 />
               );
             })}

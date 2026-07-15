@@ -3,6 +3,7 @@ import { getActiveDirectionsL, getCategoriesByDirectionL } from "@/lib/localized
 import { DirectionTile } from "@/components/DirectionTile";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { getDictionary } from "@/i18n";
+import { categoryCount } from "@/lib/plural";
 import { DEFAULT_LOCALE, isLocale, localizedPath, LOCALES } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
 import type { ProfileType as ParticipantType } from "@/lib/types";
@@ -65,7 +66,7 @@ export default async function DirectionsPage({
               href={`/directions/${d.slug}${suffix}`}
               title={d.name}
               color={d.color}
-              subtitle={`${count} ${count === 1 ? dict.common.category : dict.common.categories}`}
+              subtitle={categoryCount(count, dict)}
             />
           );
         })}

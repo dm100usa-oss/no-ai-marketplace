@@ -76,6 +76,7 @@ export const ru: Dictionary = {
     profiles: "профилей",
     category: "категория",
     categories: "категорий",
+    categoryForms: ["категория", "категории", "категорий"],
     reviewedByHand: "Проверено вручную",
     leadersPickedByHand: "Лидеры, отобранные вручную",
     badgeTeam: "Команда",

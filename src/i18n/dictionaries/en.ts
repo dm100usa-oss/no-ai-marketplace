@@ -75,6 +75,7 @@ export const en: Dictionary = {
     profiles: "profiles",
     category: "category",
     categories: "categories",
+    categoryForms: ["category", "categories", "categories"],
     reviewedByHand: "Reviewed by hand",
     leadersPickedByHand: "Leaders picked by hand",
     badgeTeam: "Team",

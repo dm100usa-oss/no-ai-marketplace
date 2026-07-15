@@ -118,4 +118,16 @@ export const directions: Direction[] = [
     seoDescription:
       "Directory of makers producing handmade goods: ceramics, furniture, leather, jewellery and custom clothing. Buy directly from each maker.",
   },
+  {
+    slug: "other",
+    name: "Other",
+    color: "neutral",
+    active: true,
+    shortDescription: "Human-made work that does not fit the categories above.",
+    seoText:
+      "Not every craft fits a named section, and a directory that only admits the obvious ones leaves out the people worth finding. This section is for human-made work that sits between categories or ahead of them: restorers, calligraphers, instrument builders, puppet makers, tattoo artists, stage and circus performers, and those who teach any of it. The standard is the same as everywhere else on No AI Marketplace: the work is made by a person, and that person can show how. Every profile links straight to the creator's own site, portfolio or shop.",
+    seoTitle: "Other — human-made work beyond the usual categories",
+    seoDescription:
+      "Directory of human-made work that does not fit a standard category: restoration, calligraphy, instrument making, performance and more. Contact each creator directly.",
+  },
 ];

@@ -89,6 +89,9 @@ export interface Dictionary {
     profiles: string;
     category: string;
     categories: string;
+    /** Plural forms for "N categories": [one, few, many]. English uses the
+     *  first two only; Russian needs all three (категория/категории/категорий). */
+    categoryForms: [string, string, string];
     reviewedByHand: string;
     leadersPickedByHand: string;
     humanMadeWork: string;
