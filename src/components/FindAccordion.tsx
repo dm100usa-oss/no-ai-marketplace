@@ -18,9 +18,9 @@ export interface FindAction {
  * which read too much alike on text alone.
  */
 const ACTION_TONES = [
-  { bg: "#f7e2c0", ink: "#a3690f", sub: "#8a5a11", press: "#e2cead" },
-  { bg: "#c9e9dc", ink: "#0f7a58", sub: "#0c6549", press: "#b5d4c8" },
-  { bg: "#cfe0f8", ink: "#2f5cb0", sub: "#274a86", press: "#bccde4" },
+  { bg: "#f7e2c0", ink: "#a3690f", sub: "#8a5a11", press: "#e2cead", icon: "creator" },
+  { bg: "#c9e9dc", ink: "#0f7a58", sub: "#0c6549", press: "#b5d4c8", icon: "team" },
+  { bg: "#cfe0f8", ink: "#2f5cb0", sub: "#274a86", press: "#bccde4", icon: "company" },
 ];
 
 /**
@@ -92,6 +92,16 @@ export function FindAccordion({
                     ["--press-bg" as string]: tone.press,
                   }}
                 >
+                  <img
+                    src={`/images/find/${tone.icon}.webp`}
+                    alt=""
+                    aria-hidden="true"
+                    width={64}
+                    height={64}
+                    loading="lazy"
+                    decoding="async"
+                    className="mb-2 block"
+                  />
                   <span
                     className="text-[1.05rem] font-bold"
                     style={{ fontFamily: "var(--font-display)", color: tone.ink }}
