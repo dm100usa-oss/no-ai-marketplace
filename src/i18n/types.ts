@@ -160,6 +160,20 @@ export interface Dictionary {
     metaDescription: string;
     title: string;
     intro: string;
+    /** Free-places banner. {n} = places, {date} = the shared end date. */
+    freeBannerTitle: string;
+    freeBannerText: string;
+    /** Monthly / yearly switch. */
+    perMonth: string;
+    perYear: string;
+    billedMonthly: string;
+    billedYearly: string;
+    saveLabel: string; // "Save {n}"
+    /** One block per participant type. */
+    planNames: { creator: string; team: string; company: string };
+    planFor: { creator: string; team: string; company: string };
+    planFeatures: { creator: string[]; team: string[]; company: string[] };
+    freeNowLabel: string; // shown in place of the price while free
     everythingTitle: string;
     everythingItems: string[];
     howPaymentTitle: string;
@@ -171,16 +185,6 @@ export interface Dictionary {
     readStandards: string;
     claimFree: string;
     getStarted: string;
-    planFree: string;
-    planMonthly: string;
-    planYearly: string;
-    periodFree: string;
-    periodMonthly: string;
-    periodYearly: string;
-    yearlyNote: string;
-    featuresFree: string[];
-    featuresMonthly: string[];
-    featuresYearly: string[];
   };
 
   join: {
@@ -193,16 +197,7 @@ export interface Dictionary {
     whyTitle: string;
     whyPoints: string[];
     plansTitle: string;
-    planFree: string;
-    planMonthly: string;
-    planYearly: string;
-    periodFree: string;
-    periodMonthly: string;
-    periodYearly: string;
-    yearlyNote: string;
-    fullComparison1: string;
     fullComparisonLink: string;
-    fullComparison2: string;
     howTitle: string;
     steps: { t: string; d: string }[];
     formTitle: string;

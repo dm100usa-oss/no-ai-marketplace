@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { LocaleLink } from "@/components/LocaleLink";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { pricing } from "@/lib/config";
+import { site } from "@/lib/config";
 import { FAQ } from "@/components/FAQ";
 import { JoinPicker } from "@/components/JoinPicker";
 import { CheckShield, ArrowRight, SparkIcon } from "@/components/icons";
@@ -34,6 +34,11 @@ export default async function JoinPage({
   const { lang } = await params;
   const locale: Locale = isLocale(lang) ? lang : DEFAULT_LOCALE;
   const dict = getDictionary(locale);
+
+  const freeDate = new Date(site.freeUntil).toLocaleDateString(
+    locale === "ru" ? "ru-RU" : "en-GB",
+    { day: "numeric", month: "long", year: "numeric" },
+  );
 
   const faqItems = dict.join.faq;
   const faqJsonLd = {
@@ -95,20 +100,30 @@ export default async function JoinPage({
           ))}
         </ul>
 
-        {/* Plans compact */}
+        {/* Plans — one source of truth lives on /pricing */}
         <h2 className="mt-12">{dict.join.plansTitle}</h2>
-        <div className="mt-4 grid gap-3 sm:grid-cols-3">
-          <PlanCard title={dict.join.planFree} price={pricing.free.priceLabel} period={dict.join.periodFree} highlight={false} />
-          <PlanCard title={dict.join.planMonthly} price={pricing.monthly.priceLabel} period={dict.join.periodMonthly} highlight={false} />
-          <PlanCard title={dict.join.planYearly} price={pricing.yearly.priceLabel} period={dict.join.periodYearly} note={dict.join.yearlyNote} highlight />
+        <div
+          className="mt-4 rounded-2xl border p-5"
+          style={{ borderColor: "var(--color-brand)", background: "var(--color-brand-soft)" }}
+        >
+          <p
+            className="text-[1.05rem] font-bold"
+            style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+          >
+            {dict.pricing.freeBannerTitle.replace("{n}", String(site.freeSlots))}
+          </p>
+          <p className="mt-2 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
+            {dict.pricing.freeBannerText
+              .replace("{n}", String(site.freeSlots))
+              .replace("{date}", freeDate)}
+          </p>
+          <div className="mt-4">
+            <LocaleLink lang={locale} href="/pricing" className="btn btn-quiet">
+              {dict.join.fullComparisonLink}
+              <ArrowRight size={16} />
+            </LocaleLink>
+          </div>
         </div>
-        <p className="mt-3 text-[0.9rem]" style={{ color: "var(--color-muted-soft)" }}>
-          {dict.join.fullComparison1}
-          <LocaleLink lang={locale} href="/pricing" className="font-semibold" style={{ color: "var(--color-accent)" }}>
-            {dict.join.fullComparisonLink}
-          </LocaleLink>
-          {dict.join.fullComparison2}
-        </p>
 
         {/* Steps */}
         <h2 className="mt-12">{dict.join.howTitle}</h2>
@@ -155,51 +170,6 @@ export default async function JoinPage({
           <FAQ items={faqItems} />
         </div>
       </div>
-    </div>
-  );
-}
-
-function PlanCard({
-  title,
-  price,
-  period,
-  note,
-  highlight,
-}: {
-  title: string;
-  price: string;
-  period: string;
-  note?: string;
-  highlight: boolean;
-}) {
-  return (
-    <div
-      className="rounded-xl border p-4"
-      style={{
-        borderColor: highlight ? "var(--color-accent)" : "var(--color-line)",
-        background: highlight ? "var(--color-brand-soft)" : "#fff",
-      }}
-    >
-      <p
-        className="text-[0.8rem] font-semibold uppercase tracking-wide"
-        style={{ color: highlight ? "var(--color-accent)" : "var(--color-muted-soft)" }}
-      >
-        {title}
-      </p>
-      <p
-        className="mt-1 text-[1.35rem] font-bold"
-        style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
-      >
-        {price}
-      </p>
-      <p className="text-[0.85rem]" style={{ color: "var(--color-muted-soft)" }}>
-        {period}
-      </p>
-      {note && (
-        <p className="mt-2 text-[0.82rem] font-semibold" style={{ color: "var(--color-accent)" }}>
-          {note}
-        </p>
-      )}
     </div>
   );
 }

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { isExternalCheckout } from "@/lib/config";
+import type { PlanId, BillingPeriod } from "@/lib/config";
 import { trackEvent } from "@/lib/analytics";
 import { localizeHref } from "./LocaleLink";
 import type { Locale } from "@/i18n/config";
@@ -16,20 +17,24 @@ export function CheckoutButton({
   href,
   label,
   plan,
+  period,
   className,
 }: {
   lang: Locale;
   href: string;
   label: string;
-  plan: "free" | "monthly" | "yearly";
+  plan: PlanId;
+  period: BillingPeriod;
   className: string;
 }) {
   const external = isExternalCheckout(href);
 
   const onClick = () => {
-    if (plan !== "free") {
-      trackEvent("checkout_click", { plan, target: external ? "stripe" : "form" });
-    }
+    trackEvent("checkout_click", {
+      plan,
+      period,
+      target: external ? "stripe" : "form",
+    });
   };
 
   if (external) {
