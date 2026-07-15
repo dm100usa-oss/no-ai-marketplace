@@ -66,8 +66,8 @@ export function JoinPicker({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 src={`/images/find/${ICON_FILE[type]}.webp`}
                 alt=""
                 aria-hidden="true"
-                width={64}
-                height={64}
+                width={96}
+                height={96}
                 loading="lazy"
                 decoding="async"
                 className="-my-3 block shrink-0"
