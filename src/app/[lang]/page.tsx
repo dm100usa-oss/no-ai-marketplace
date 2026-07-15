@@ -23,12 +23,12 @@ import {
 } from "@/lib/localized-data";
 
 /** Drawings for "How the platform works", one per card, in card order.
- *  Each keeps its own aspect ratio: the box is fixed at 96 wide, the height
+ *  Each keeps its own aspect ratio: the box is fixed at 64 wide, the height
  *  follows the drawing, so nothing is stretched or squashed. */
 const HOW_ICONS = [
-  { file: "people", w: 96, h: 113 },
-  { file: "shopfront", w: 96, h: 82 },
-  { file: "verified", w: 96, h: 108 },
+  { file: "people", w: 64, h: 75 },
+  { file: "shopfront", w: 64, h: 55 },
+  { file: "verified", w: 64, h: 72 },
 ];
 
 export default async function HomePage({
@@ -299,7 +299,7 @@ export default async function HomePage({
           </SectionHeading>
           <div className="grid gap-6 sm:grid-cols-3">
             {dict.home.howItWorksCards.map((item, i) => (
-              <div key={i} className="flex flex-col gap-3">
+              <div key={i} className="flex gap-3">
                 <img
                   src={`/images/how/${HOW_ICONS[i].file}.webp`}
                   alt=""
@@ -308,7 +308,7 @@ export default async function HomePage({
                   height={HOW_ICONS[i].h}
                   loading="lazy"
                   decoding="async"
-                  className="block self-start"
+                  className="block shrink-0 self-start"
                 />
                 <div>
                   <h3>{item.t}</h3>
