@@ -35,19 +35,19 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               onClick={() => setMenuOpen((v) => !v)}
               aria-label={menuOpen ? dict.header.closeMenu : dict.header.openMenu}
               aria-expanded={menuOpen}
-              className="grid h-10 w-10 place-items-center rounded-lg md:hidden"
+              className="grid h-10 w-10 place-items-center rounded-lg lg:hidden"
               style={{ color: "var(--color-ink)" }}
             >
               {menuOpen ? <CloseIcon /> : <MenuIcon />}
             </button>
 
             {/* Logo — desktop only in left cluster */}
-            <div className="hidden md:block md:mr-3">
+            <div className="hidden lg:block lg:mr-3">
               <Logo lang={lang} ariaLabel={`${dict.site.name} — ${dict.common.home}`} />
             </div>
 
             {/* Primary nav — desktop only */}
-            <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
+            <nav className="hidden min-w-0 items-center gap-1 lg:flex" aria-label="Primary">
               {nav.map((item) => (
                 <LocaleLink
                   key={item.href}
@@ -63,23 +63,23 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           </div>
 
           {/* Centre: logo — mobile only */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <Logo lang={lang} ariaLabel={`${dict.site.name} — ${dict.common.home}`} />
           </div>
 
           {/* Right: language (desktop). Spacer on mobile keeps the centred logo aligned. */}
           <div className="flex items-center gap-2">
-            <div className="hidden md:block">
+            <div className="hidden lg:block">
               <LanguageSwitcher lang={lang} dict={dict} />
             </div>
-            <span className="h-10 w-10 md:hidden" aria-hidden="true" />
+            <span className="h-10 w-10 lg:hidden" aria-hidden="true" />
           </div>
         </div>
       </div>
 
       {/* Mobile accordion menu */}
       {menuOpen && (
-        <div className="border-t md:hidden" style={{ borderColor: "var(--color-line)" }}>
+        <div className="border-t lg:hidden" style={{ borderColor: "var(--color-line)" }}>
           <MobileMenu lang={lang} dict={dict} onNavigate={() => setMenuOpen(false)} />
         </div>
       )}

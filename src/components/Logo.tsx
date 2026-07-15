@@ -16,10 +16,10 @@ export function Logo({
       lang={lang}
       href="/"
       aria-label={ariaLabel}
-      className={`inline-flex items-baseline gap-1.5 ${className}`}
+      className={`inline-flex shrink-0 items-baseline gap-1.5 whitespace-nowrap ${className}`}
       style={{ fontFamily: "var(--font-display)" }}
     >
-      <span className="inline-flex items-center gap-1.5">
+      <span className="inline-flex shrink-0 items-center gap-1.5">
         <span
           aria-hidden
           className="inline-flex h-6 items-center justify-center rounded-md px-1.5 text-[13px] font-extrabold text-white"
