@@ -86,7 +86,7 @@ export function FindAccordion({
                   href={action.href}
                   tabIndex={open ? undefined : -1}
                   aria-hidden={open ? undefined : true}
-                  className="press-btn flex flex-col items-center justify-center rounded-2xl px-4 py-4 text-center"
+                  className="press-btn flex flex-col items-start justify-center rounded-2xl px-4 py-4 text-left"
                   style={{
                     background: tone.bg,
                     ["--press-bg" as string]: tone.press,
@@ -100,7 +100,7 @@ export function FindAccordion({
                     height={80}
                     loading="lazy"
                     decoding="async"
-                    className="mb-2 block"
+                    className="mb-3 block"
                   />
                   <span
                     className="text-[1.05rem] font-bold"
