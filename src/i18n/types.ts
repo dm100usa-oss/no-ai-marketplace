@@ -519,6 +519,30 @@ export interface Dictionary {
     browseDirectory: string;
   };
 
+  /** Reviews page and the form on it. */
+  reviews: {
+    title: string;
+    subtitle: string;
+    /** "{n}" is replaced with the number of approved reviews. */
+    basedOn: string;
+    formTitle: string;
+    nameLabel: string;
+    namePlaceholder: string;
+    ratingLabel: string;
+    textLabel: string;
+    textPlaceholder: string;
+    submit: string;
+    sending: string;
+    moderationNote: string;
+    thanksTitle: string;
+    thanksText: string;
+    errName: string;
+    errRating: string;
+    errText: string;
+    errRate: string;
+    errServer: string;
+  };
+
   stub: {
     ownerNote: string;
   };

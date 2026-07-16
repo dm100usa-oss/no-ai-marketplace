@@ -895,6 +895,30 @@ export const en: Dictionary = {
     browseDirectory: "Browse directory",
   },
 
+  reviews: {
+    title: "Reviews",
+    subtitle:
+      "What people say about the platform after using it. Every review is read by a person before it goes up.",
+    basedOn: "based on {n} reviews",
+    formTitle: "Leave a review",
+    nameLabel: "Name",
+    namePlaceholder: "What should we call you",
+    ratingLabel: "Rating",
+    textLabel: "Review",
+    textPlaceholder: "Tell us how it went",
+    submit: "Send review",
+    sending: "Sending...",
+    moderationNote:
+      "Your review goes up once it has been read. We do not remove criticism: only abuse and spam.",
+    thanksTitle: "Thank you, your review is in",
+    thanksText: "It will appear on the page once it has been read, usually within a day or two.",
+    errName: "Please add a name, at least two characters.",
+    errRating: "Please pick a rating from one to five stars.",
+    errText: "Please write a few words, at least ten characters.",
+    errRate: "There is already a review from this address today. Try again tomorrow.",
+    errServer: "Could not send it. Please try again in a moment.",
+  },
+
   stub: {
     ownerNote:
       "The final text is added by the owner. Structure and links are in place; content to follow.",

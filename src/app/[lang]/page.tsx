@@ -12,7 +12,7 @@ import {
 } from "@/components/icons";
 import { getDictionary } from "@/i18n";
 import { categoryCount } from "@/lib/plural";
-import { stats } from "@/lib/config";
+import { getWeeklyVisits, getAverageRating } from "@/lib/redis";
 import { DEFAULT_LOCALE, isLocale } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
 import {
@@ -33,6 +33,10 @@ const HOW_ICONS = [
   { file: "verified", w: 64, h: 72 },
 ];
 
+/** Re-read on every request: the band must show today's numbers, not
+ *  the numbers that happened to be true when the site was built. */
+export const dynamic = "force-dynamic";
+
 export default async function HomePage({
   params,
 }: {
@@ -41,6 +45,13 @@ export default async function HomePage({
   const { lang } = await params;
   const locale: Locale = isLocale(lang) ? lang : DEFAULT_LOCALE;
   const dict = getDictionary(locale);
+
+  // Live figures for the band. Both come back null when there is nothing
+  // real yet, and the band renders nothing at all in that case.
+  const [visits, { average: rating }] = await Promise.all([
+    getWeeklyVisits(),
+    getAverageRating(),
+  ]);
 
   const dirs = getActiveDirectionsL(locale);
   const featured = getFeaturedProfilesL(locale).slice(0, 6);
@@ -117,12 +128,13 @@ export default async function HomePage({
       <PeopleMarquee lang={locale} />
 
       {/* ---------- Stats band ---------- */}
-      {/* Renders nothing while both figures in lib/config.ts are null. */}
+      {/* Live from Redis: visits over the last 7 days and the average of
+          approved reviews. Renders nothing until either is real. */}
       <StatsBand
         locale={locale}
-        visits={stats.visits}
+        visits={visits}
         visitsLabel={dict.home.statsVisitsLabel}
-        rating={stats.rating}
+        rating={rating}
       />
 
       {/* ---------- Hero content ---------- */}

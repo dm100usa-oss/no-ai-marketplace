@@ -17,6 +17,9 @@ export default function robots(): MetadataRoute.Robots {
     "/profile-submitted",
     "/profile-suspended",
     "/profile-not-available",
+    // Owner-only. The API behind it checks the password on every call;
+    // this just keeps the page out of the index.
+    "/admin",
   ];
 
   // Disallow both the English (clean) and Russian (/ru) variants.
