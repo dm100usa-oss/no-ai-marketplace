@@ -516,46 +516,77 @@ a { color: inherit; text-decoration: none; }
     0 1px 3px rgba(22, 35, 58, 0.14);
 }
 
-/* The join button: same slab as .find-btn, lighter.
+/* The join button: the same slab as .find-btn in a different colour.
 
-   Same five-stop scheme, but the edges go deeper than the find button's
-   and the centre stays light, so the two read as a pair with the find
-   button clearly first. The centre is deliberately not as pale as it
-   could be: white text sits in the middle of the button, and a paler
-   core would drop it below a readable contrast. */
+   Flat teal, no gradient. The hue is not arbitrary — it is the mint of the
+   "team" card in the panel that opens under the find button, so the colour
+   already lives on this page. There is enough blue in it that it does not
+   fight the button above it, and it is dark enough that white text and the
+   silhouettes hold at a readable contrast. */
 .join-btn {
-  background: linear-gradient(
-    to right,
-    #3d63ab 0%,
-    #5578bd 20%,
-    #7f99c6 50%,
-    #5578bd 80%,
-    #3d63ab 100%
-  );
+  background: #189a8e;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
     inset 0 -1px 0 rgba(22, 35, 58, 0.16),
     var(--shadow-raise);
   border-color: rgba(22, 35, 58, 0.10);
 }
 .join-btn:hover {
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
     inset 0 -1px 0 rgba(22, 35, 58, 0.16),
     var(--shadow-raise-hover);
 }
-/* Pressed: the whole slab goes down and darkens, keeping the gradient
-   rather than flattening to the single --press-bg colour .press-btn sets. */
 .join-btn:active {
-  background: linear-gradient(
-    to right,
-    #345490 0%,
-    #4867a2 20%,
-    #6c83a9 50%,
-    #4867a2 80%,
-    #345490 100%
-  ) !important;
+  background: #147f76 !important;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.16),
     0 1px 3px rgba(22, 35, 58, 0.14);
+}
+
+/* Icon pulse.
+
+   Every five seconds the icon swells and settles back. It says "this is a
+   button" without a word, and it costs one transform on one small element.
+
+   The whole cycle is one 5s animation rather than a 0.9s animation with a
+   4.1s delay: a delay only fires once, an animation loops. The movement is
+   packed into the first 18% and the rest of the timeline is the icon
+   sitting still.
+
+   Only transform is animated, so the browser hands it to the compositor
+   and no layout is recalculated. The icon has its own element, so nothing
+   around it moves.
+
+   Paused unless the button is on screen — see .btn-pulse-live in the
+   component. No point animating below the fold. */
+@keyframes icon-pulse {
+  0%   { transform: scale(1); }
+  6%   { transform: scale(1.22); }
+  14%  { transform: scale(0.97); }
+  18%  { transform: scale(1); }
+  100% { transform: scale(1); }
+}
+.btn-pulse {
+  display: inline-flex;
+  transform-origin: center;
+}
+.btn-pulse-live {
+  animation: icon-pulse 5s ease-in-out infinite;
+}
+/* Off the beat.
+
+   The two buttons sit on screen together, and pulsing them in step reads
+   as drill rather than as life. A negative delay starts the second one
+   already part-way through its cycle, so it fires 1.7s after the first and
+   the pair never lands together. Negative, not positive: a positive delay
+   would hold the icon still for the first 1.7s after it appears. */
+.btn-pulse-live.btn-pulse-offbeat {
+  animation-delay: -1.7s;
+}
+/* Someone who has asked the system for less movement gets none. */
+@media (prefers-reduced-motion: reduce) {
+  .btn-pulse-live {
+    animation: none;
+  }
 }

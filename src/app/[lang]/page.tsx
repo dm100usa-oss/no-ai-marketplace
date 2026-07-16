@@ -6,6 +6,7 @@ import { FAQ } from "@/components/FAQ";
 import { FindAccordion } from "@/components/FindAccordion";
 import { PeopleMarquee } from "@/components/PeopleMarquee";
 import { StatsBand } from "@/components/StatsBand";
+import { PulseIcon } from "@/components/PulseIcon";
 import {
   ArrowRight,
   CheckShield,
@@ -158,14 +159,19 @@ export default async function HomePage({
               The intro line lives in the hero above and is not repeated here. */}
           {/* Indented by the width of a bullet plus its gap (0.7rem +
               0.75rem), so the heading starts exactly above the text of the
-              points below it rather than above their bullets. */}
+              points below it rather than above their bullets.
+
+              Spacing rhythm for all three headings on this page: 2.5rem of
+              air above, 0.75rem below. A heading equidistant from the block
+              before it and the list under it belongs to neither; pulling it
+              close to its own text is what makes it read as a heading. */}
           <p
             className="pl-[1.45rem] text-left text-[1.35rem] font-bold md:text-[1.6rem]"
             style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
           >
             {dict.home.heroAdvantagesTitle}
           </p>
-          <div className="mt-5">
+          <div className="mt-3">
             <ul className="flex flex-col gap-2.5 text-[1.05rem]">
               {dict.home.heroAdvantages.map((line) => {
                 const m = line.match(/^(\d+%)/);
@@ -221,7 +227,7 @@ export default async function HomePage({
           >
             {dict.home.heroClientsTitle}
           </p>
-          <div className="mt-5">
+          <div className="mt-3">
             <ul className="flex flex-col gap-2.5 text-[1.05rem]">
               {dict.home.heroClients.map((line) => (
                 <li key={line} className="flex items-start gap-3" style={{ color: "var(--color-ink)" }}>
@@ -254,7 +260,7 @@ export default async function HomePage({
           >
             {dict.home.heroCreatorsTitle}
           </p>
-          <div className="mt-5">
+          <div className="mt-3">
             <ul className="flex flex-col gap-2.5 text-[1.05rem]">
               {dict.home.heroCreators.map((line) => (
                 <li key={line} className="flex items-start gap-3" style={{ color: "var(--color-ink)" }}>
@@ -290,8 +296,10 @@ export default async function HomePage({
               >
                 {dict.home.heroJoinButton}
               </span>
-              <span className="absolute right-6 flex items-center" aria-hidden>
-                <TeamIcon size={30} />
+              <span className="absolute right-6 flex items-center">
+                <PulseIcon offbeat>
+                  <TeamIcon size={30} />
+                </PulseIcon>
               </span>
             </LocaleLink>
           </div>
@@ -302,13 +310,18 @@ export default async function HomePage({
       {/* ---------- Explore directions ---------- */}
       <section className="section">
         <div className="container-page">
-          <SectionHeading
-            lang={locale}
-            title={dict.home.exploreDirections}
-            action={{ href: "/directions", label: dict.common.allDirections }}
+          {/* A plain heading, not a SectionHeading: the subtitle explained
+              how to use tiles that explain themselves, and the "all
+              directions" link pointed at a page showing the same ten tiles
+              already on screen. Both were noise. Indented to the same
+              1.45rem as the headings above, so the whole page keeps one
+              left edge. */}
+          <p
+            className="mb-3 pl-[1.45rem] text-left text-[1.35rem] font-bold md:text-[1.6rem]"
+            style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
           >
-            {dict.home.exploreDirectionsSub}
-          </SectionHeading>
+            {dict.home.exploreDirections}
+          </p>
           <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
             {dirs.map((d) => {
               const count = getCategoriesByDirectionL(d.slug, locale).length;

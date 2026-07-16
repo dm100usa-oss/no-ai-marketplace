@@ -136,7 +136,7 @@ export const ru: Dictionary = {
     findAuthorHint: "Выберите, кто вам нужен",
     browseCatalog: "Открыть каталог",
     addProfile: "Добавить профиль",
-    exploreDirections: "Направления",
+    exploreDirections: "Все направления",
     exploreDirectionsSub:
       "Выберите интересующее направление и найдите подходящего автора, команду или компанию.",
     popularCategories: "Популярные категории",

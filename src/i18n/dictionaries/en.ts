@@ -135,7 +135,7 @@ export const en: Dictionary = {
     findAuthorHint: "Choose who you need",
     browseCatalog: "Browse catalog",
     addProfile: "Add profile",
-    exploreDirections: "Explore directions",
+    exploreDirections: "All directions",
     exploreDirectionsSub:
       "Choose a direction and find the right creator, team, or company.",
     popularCategories: "Popular categories",

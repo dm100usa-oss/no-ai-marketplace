@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { LocaleLink } from "./LocaleLink";
 import { SearchIcon } from "./icons";
+import { PulseIcon } from "./PulseIcon";
 import type { Locale } from "@/i18n/config";
 
 export interface FindAction {
@@ -61,9 +62,10 @@ export function FindAccordion({
         <span
           className="absolute right-6 flex items-center"
           style={{ color: "#ffffff" }}
-          aria-hidden
         >
-          <SearchIcon size={25} />
+          <PulseIcon>
+            <SearchIcon size={25} />
+          </PulseIcon>
         </span>
       </button>
 
