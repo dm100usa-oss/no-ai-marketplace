@@ -119,13 +119,14 @@ export interface Dictionary {
 
   home: {
     /** New hero (approved). */
-    heroIntro: string;
-    heroOptions: string[];
+    heroIntro: string[];
     heroAdvantagesTitle: string;
     heroAdvantages: string[];
-    heroPrinciplesTitle: string;
-    heroPrinciples: string[];
-    heroNoAi: string[];
+    heroClientsTitle: string;
+    heroClients: string[];
+    heroCreatorsTitle: string;
+    heroCreators: string[];
+    heroJoinButton: string;
     heroFindButton: string;
     heroActions: { hint: string; label: string; href: string }[];
     heroSearchPlaceholder: string;

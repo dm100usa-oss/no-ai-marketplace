@@ -119,42 +119,19 @@ export default async function HomePage({
           people band above it, not to the page below. */}
       <section className="section pt-6 sm:pt-8">
         <div className="container-page">
-          {/* Intro line — same display font as tagline */}
-          <p
-            className="text-left text-[1.35rem] font-bold md:text-[1.6rem]"
-            style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
-          >
-            {dict.home.heroIntro}
-          </p>
+          {/* Intro lines — same display font as tagline */}
+          {dict.home.heroIntro.map((line, i) => (
+            <p
+              key={line}
+              className={`text-left text-[1.35rem] font-bold md:text-[1.6rem]${i > 0 ? " mt-1.5" : ""}`}
+              style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+            >
+              {line}
+            </p>
+          ))}
 
-          {/* Options list — bullets with raised gradient circles, aligned to text start */}
-          <div className="mt-5">
-            <ul className="flex flex-col gap-2.5 text-[1.05rem]">
-              {dict.home.heroOptions.map((item) => (
-                <li key={item} className="flex items-start gap-3" style={{ color: "var(--color-ink)" }}>
-                  <span
-                    aria-hidden="true"
-                    className="mt-[0.45rem] shrink-0 rounded-full"
-                    style={{
-                      width: "0.7rem",
-                      height: "0.7rem",
-                      background: "radial-gradient(circle at 30% 30%, #6f92cf, #325ba3 70%, #274a86)",
-                      boxShadow: "0 1px 2px rgba(30,50,90,0.4), inset 0 1px 1px rgba(255,255,255,0.45)",
-                    }}
-                  />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <FindAccordion
-            lang={locale}
-            label={dict.home.heroFindButton}
-            actions={dict.home.heroActions}
-          />
-
-          {/* Advantages — same heading style and bullets as the options list */}
+          {/* Advantages — first block after the intro: the numbers answer
+              "why this platform" before anything else is asked of the reader. */}
           <p
             className="mt-10 text-left text-[1.35rem] font-bold md:text-[1.6rem]"
             style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
@@ -164,7 +141,7 @@ export default async function HomePage({
           <div className="mt-5">
             <ul className="flex flex-col gap-2.5 text-[1.05rem]">
               {dict.home.heroAdvantages.map((line) => {
-                const m = line.match(/^(\d+%|Больше|More)\b/);
+                const m = line.match(/^(\d+%)/);
                 const head = m ? m[1] : null;
                 return (
                   <li key={line} className="flex items-start gap-3" style={{ color: "var(--color-ink)" }}>
@@ -196,16 +173,16 @@ export default async function HomePage({
             </ul>
           </div>
 
-          {/* Principles — same heading style and bullets */}
+          {/* For clients — same heading style and bullets, then the Find action */}
           <p
             className="mt-10 text-left text-[1.35rem] font-bold md:text-[1.6rem]"
             style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
           >
-            {dict.home.heroPrinciplesTitle}
+            {dict.home.heroClientsTitle}
           </p>
           <div className="mt-5">
             <ul className="flex flex-col gap-2.5 text-[1.05rem]">
-              {dict.home.heroPrinciples.map((line) => (
+              {dict.home.heroClients.map((line) => (
                 <li key={line} className="flex items-start gap-3" style={{ color: "var(--color-ink)" }}>
                   <span
                     aria-hidden="true"
@@ -221,6 +198,46 @@ export default async function HomePage({
                 </li>
               ))}
             </ul>
+          </div>
+
+          <FindAccordion
+            lang={locale}
+            label={dict.home.heroFindButton}
+            actions={dict.home.heroActions}
+          />
+
+          {/* For creators — same heading style and bullets, then the Join action */}
+          <p
+            className="mt-10 text-left text-[1.35rem] font-bold md:text-[1.6rem]"
+            style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+          >
+            {dict.home.heroCreatorsTitle}
+          </p>
+          <div className="mt-5">
+            <ul className="flex flex-col gap-2.5 text-[1.05rem]">
+              {dict.home.heroCreators.map((line) => (
+                <li key={line} className="flex items-start gap-3" style={{ color: "var(--color-ink)" }}>
+                  <span
+                    aria-hidden="true"
+                    className="mt-[0.45rem] shrink-0 rounded-full"
+                    style={{
+                      width: "0.7rem",
+                      height: "0.7rem",
+                      background: "radial-gradient(circle at 30% 30%, #6f92cf, #325ba3 70%, #274a86)",
+                      boxShadow: "0 1px 2px rgba(30,50,90,0.4), inset 0 1px 1px rgba(255,255,255,0.45)",
+                    }}
+                  />
+                  <span>{line}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="mt-6">
+            <LocaleLink lang={locale} href="/join" className="btn btn-ink btn-lg btn-full">
+              {dict.home.heroJoinButton}
+              <ArrowRight size={18} />
+            </LocaleLink>
           </div>
 
         </div>

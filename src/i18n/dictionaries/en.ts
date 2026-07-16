@@ -97,33 +97,36 @@ export const en: Dictionary = {
   },
 
   home: {
-    heroIntro: "Choose the option that suits you",
-    heroOptions: [
-      "Work with individual creators",
-      "Invite creators and build your own team for specific tasks",
-      "Hire professional companies and studios",
+    heroIntro: [
+      "Find talented professionals who work without AI",
+      "See their work and reach out directly",
     ],
-    heroNoAi: [
-      "No AI",
-      "No hidden fees",
-      "No middlemen",
-    ],
-    heroAdvantagesTitle: "What you get",
+    heroAdvantagesTitle: "Our advantages",
     heroAdvantages: [
-      "0% commission for the client",
-      "100% of income to the creator",
-      "More reach for teams and companies",
-      "No hidden fees",
+      "0% commission for clients",
+      "100% of earnings for creators",
       "No middlemen",
+      "No hidden fees",
+      "New opportunities for creators, teams, and companies",
     ],
-    heroPrinciplesTitle: "Our principles",
-    heroPrinciples: [
-      "No AI used",
-      "Real people only",
-      "Direct contact",
-      "Privacy",
+    heroClientsTitle: "For clients",
+    heroClients: [
+      "Work with individual professionals",
+      "Build your own team for a specific project",
+      "Choose an established team or company",
+      "Talk directly with the people behind the work",
+      "Lower your risk",
+      "Get predictable quality and original work",
     ],
-    heroFindButton: "Find",
+    heroCreatorsTitle: "For creators",
+    heroCreators: [
+      "Find clients who value your experience and craft",
+      "Keep 100% of what you earn, no platform cut",
+      "Work solo, join a team, or start your own company",
+      "Build long-term relationships with clients",
+    ],
+    heroJoinButton: "Join the platform",
+    heroFindButton: "Find a creator",
     heroActions: [
       { hint: "A creator", label: "for a specific task", href: "/directions?type=creator" },
       { hint: "A team", label: "for your project", href: "/directions?type=team" },
@@ -137,7 +140,7 @@ export const en: Dictionary = {
     addProfile: "Add profile",
     exploreDirections: "Explore directions",
     exploreDirectionsSub:
-      "Find people, studios and companies who create without AI.",
+      "Choose a direction and find the right creator, team, or company.",
     popularCategories: "Popular categories",
     popularCategoriesSub: "Straight to the specialization you need.",
     howItWorks: "How the platform works",
