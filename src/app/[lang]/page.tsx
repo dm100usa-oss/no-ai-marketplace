@@ -304,6 +304,18 @@ export default async function HomePage({
             </LocaleLink>
           </div>
 
+          {/* The project's call, closing the block. It lands where the
+              reader has just been told what the platform gives creators and
+              is deciding whether to join, so it argues rather than
+              decorates. Centred and quiet: a line that has to shout is a
+              line that is not believed. */}
+          <p
+            className="mt-5 text-center text-[1.05rem] italic leading-snug sm:text-[1.15rem]"
+            style={{ color: "var(--color-muted)" }}
+          >
+            {dict.home.heroSlogan}
+          </p>
+
         </div>
       </section>
 

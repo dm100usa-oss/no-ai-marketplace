@@ -123,6 +123,7 @@ export const en: Dictionary = {
       "Build long-term relationships with clients",
     ],
     heroJoinButton: "Join the platform",
+    heroSlogan: "Let's bring back the value of human work",
     heroFindButton: "Find a creator",
     heroActions: [
       { hint: "A creator", label: "for a specific task", href: "/directions?type=creator" },

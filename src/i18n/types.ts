@@ -127,6 +127,8 @@ export interface Dictionary {
     heroCreatorsTitle: string;
     heroCreators: string[];
     heroJoinButton: string;
+    /** The project's call, under the join button. */
+    heroSlogan: string;
     heroFindButton: string;
     heroActions: { hint: string; label: string; href: string }[];
     heroSearchPlaceholder: string;
