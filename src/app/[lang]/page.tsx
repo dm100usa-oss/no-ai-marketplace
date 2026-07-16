@@ -155,8 +155,11 @@ export default async function HomePage({
           {/* Advantages — the page opens on the numbers: they answer
               "why this platform" before anything else is asked of the reader.
               The intro line lives in the hero above and is not repeated here. */}
+          {/* Indented by the width of a bullet plus its gap (0.7rem +
+              0.75rem), so the heading starts exactly above the text of the
+              points below it rather than above their bullets. */}
           <p
-            className="text-left text-[1.35rem] font-bold md:text-[1.6rem]"
+            className="pl-[1.45rem] text-left text-[1.35rem] font-bold md:text-[1.6rem]"
             style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
           >
             {dict.home.heroAdvantagesTitle}
@@ -212,7 +215,7 @@ export default async function HomePage({
 
           {/* For clients — same heading style and bullets, then the Find action */}
           <p
-            className="mt-10 text-left text-[1.35rem] font-bold md:text-[1.6rem]"
+            className="mt-10 pl-[1.45rem] text-left text-[1.35rem] font-bold md:text-[1.6rem]"
             style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
           >
             {dict.home.heroClientsTitle}
@@ -245,7 +248,7 @@ export default async function HomePage({
 
           {/* For creators — same heading style and bullets, then the Join action */}
           <p
-            className="mt-10 text-left text-[1.35rem] font-bold md:text-[1.6rem]"
+            className="mt-10 pl-[1.45rem] text-left text-[1.35rem] font-bold md:text-[1.6rem]"
             style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
           >
             {dict.home.heroCreatorsTitle}
