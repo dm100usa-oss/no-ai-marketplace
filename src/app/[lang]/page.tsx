@@ -119,21 +119,11 @@ export default async function HomePage({
           people band above it, not to the page below. */}
       <section className="section pt-6 sm:pt-8">
         <div className="container-page">
-          {/* Intro lines — same display font as tagline */}
-          {dict.home.heroIntro.map((line, i) => (
-            <p
-              key={line}
-              className={`text-left text-[1.35rem] font-bold md:text-[1.6rem]${i > 0 ? " mt-1.5" : ""}`}
-              style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
-            >
-              {line}
-            </p>
-          ))}
-
-          {/* Advantages — first block after the intro: the numbers answer
-              "why this platform" before anything else is asked of the reader. */}
+          {/* Advantages — the page opens on the numbers: they answer
+              "why this platform" before anything else is asked of the reader.
+              The intro line lives in the hero above and is not repeated here. */}
           <p
-            className="mt-10 text-left text-[1.35rem] font-bold md:text-[1.6rem]"
+            className="text-left text-[1.35rem] font-bold md:text-[1.6rem]"
             style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
           >
             {dict.home.heroAdvantagesTitle}
@@ -144,10 +134,17 @@ export default async function HomePage({
                 const m = line.match(/^(\d+%)/);
                 const head = m ? m[1] : null;
                 return (
-                  <li key={line} className="flex items-start gap-3" style={{ color: "var(--color-ink)" }}>
+                  <li
+                    key={line}
+                    className={head ? "flex items-center gap-3" : "flex items-start gap-3"}
+                    style={{ color: "var(--color-ink)" }}
+                  >
+                    {/* The bullet hangs from the top of a normal line, but a
+                        row carrying a big figure is taller than one line, so
+                        there it centres against the figure instead. */}
                     <span
                       aria-hidden="true"
-                      className="mt-[0.45rem] shrink-0 rounded-full"
+                      className={`shrink-0 rounded-full${head ? "" : " mt-[0.45rem]"}`}
                       style={{
                         width: "0.7rem",
                         height: "0.7rem",
@@ -157,12 +154,19 @@ export default async function HomePage({
                     />
                     <span>
                       {head ? (
-                        <>
-                          <span className="font-bold" style={{ color: "var(--color-accent)" }}>
+                        <span className="flex items-center gap-2.5">
+                          {/* Double size on the figure itself: it is the one
+                              thing that has to land before anything is read.
+                              leading-none keeps the taller glyph from pushing
+                              the line apart. */}
+                          <span
+                            className="text-[2.1rem] font-bold leading-none"
+                            style={{ fontFamily: "var(--font-display)", color: "var(--color-accent)" }}
+                          >
                             {head}
                           </span>
-                          {line.slice(head.length)}
-                        </>
+                          <span>{line.slice(head.length).trim()}</span>
+                        </span>
                       ) : (
                         line
                       )}

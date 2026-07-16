@@ -97,10 +97,6 @@ export const en: Dictionary = {
   },
 
   home: {
-    heroIntro: [
-      "Find talented professionals who work without AI",
-      "See their work and reach out directly",
-    ],
     heroAdvantagesTitle: "Our advantages",
     heroAdvantages: [
       "0% commission for clients",
