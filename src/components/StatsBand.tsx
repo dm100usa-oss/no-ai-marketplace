@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 /**
  * Band under the work strip: visits for the week on the left, rating on
@@ -11,6 +11,10 @@ import { useEffect, useRef, useState } from "react";
  * its half of the band is not rendered at all, so the site never shows a
  * number nobody earned. On the day real analytics and real reviews exist,
  * fill them in there and the band lights up on its own.
+ *
+ * The counters write their text straight into the DOM node instead of
+ * going through state: a state update per animation frame rebuilds the
+ * component sixty times a second, which is what makes a count stutter.
  *
  * The outer strip is the colour sampled out of the right-hand side of
  * hero.webp, so the band and the banner above it are the same blue. The
@@ -27,13 +31,15 @@ function easeOut(t: number) {
 }
 
 function useCountUp(target: number | null, decimals: number, locale: string) {
-  const [value, setValue] = useState(0);
   const ref = useRef<HTMLSpanElement | null>(null);
   const done = useRef(false);
 
   useEffect(() => {
     const el = ref.current;
     if (el === null || target === null || done.current) return;
+
+    const format = (n: number) =>
+      decimals > 0 ? n.toFixed(decimals) : Math.round(n).toLocaleString(locale);
 
     // Hold the animation until the band is on screen: on a phone the strip
     // is well below the fold and a counter that finished during the scroll
@@ -44,19 +50,22 @@ function useCountUp(target: number | null, decimals: number, locale: string) {
         done.current = true;
         io.disconnect();
 
-        const reduced = window.matchMedia(
-          "(prefers-reduced-motion: reduce)",
-        ).matches;
+        const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         if (reduced) {
-          setValue(target);
+          el.textContent = format(target);
           return;
         }
 
+        // The text is written straight into the node rather than held in
+        // state. Sixty state updates a second would rebuild the component
+        // on every frame, and that is what makes the count stutter — the
+        // work is in React, not in the arithmetic. Writing to the node
+        // touches one property and leaves the rest of the page alone.
         let start: number | null = null;
         const step = (ts: number) => {
           if (start === null) start = ts;
           const p = Math.min((ts - start) / DURATION, 1);
-          setValue(target * easeOut(p));
+          el.textContent = format(target * easeOut(p));
           if (p < 1) requestAnimationFrame(step);
         };
         requestAnimationFrame(step);
@@ -66,14 +75,19 @@ function useCountUp(target: number | null, decimals: number, locale: string) {
 
     io.observe(el);
     return () => io.disconnect();
-  }, [target]);
+  }, [target, decimals, locale]);
 
-  const text =
-    decimals > 0
-      ? value.toFixed(decimals)
-      : Math.round(value).toLocaleString(locale);
+  // Server and first paint show the final figure: the animation overwrites
+  // it a moment later. This way the number is correct for anyone with the
+  // animation off, and correct in the HTML for anything reading the page.
+  const initial =
+    target === null
+      ? ""
+      : decimals > 0
+        ? target.toFixed(decimals)
+        : Math.round(target).toLocaleString(locale);
 
-  return { ref, text };
+  return { ref, initial };
 }
 
 export function StatsBand({
@@ -111,9 +125,10 @@ export function StatsBand({
                 style={{
                   fontFamily: "var(--font-display)",
                   color: "var(--color-accent)",
+                  fontVariantNumeric: "tabular-nums",
                 }}
               >
-                {v.text}
+                {v.initial}
               </span>
               <span
                 className="whitespace-nowrap text-[0.85rem] leading-none sm:text-[1.35rem]"
@@ -126,10 +141,9 @@ export function StatsBand({
 
           {rating !== null && (
             <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
-              {/* Lit from the top left and falling away to a deeper gold at
-                  the bottom, so the star has body without a drawn outline.
-                  The stroke is the same gradient a shade down: it firms up
-                  the points without ringing them in pencil. */}
+              {/* One flat colour, no gradient and no stroke. At this size a
+                  three-stop gradient with a darker outline muddies into a
+                  smudge; a single clean fill reads as a star. */}
               <svg
                 width={52}
                 height={52}
@@ -137,23 +151,9 @@ export function StatsBand({
                 aria-hidden="true"
                 className="h-[2.1rem] w-[2.1rem] shrink-0 sm:h-[3.25rem] sm:w-[3.25rem]"
               >
-                <defs>
-                  <linearGradient id="starFill" x1="0" y1="0" x2="0.35" y2="1">
-                    <stop offset="0" stopColor="#f6c66a" />
-                    <stop offset="0.55" stopColor="#e8a33d" />
-                    <stop offset="1" stopColor="#c9832a" />
-                  </linearGradient>
-                  <linearGradient id="starEdge" x1="0" y1="0" x2="0.3" y2="1">
-                    <stop offset="0" stopColor="#e8b463" />
-                    <stop offset="1" stopColor="#b9762a" />
-                  </linearGradient>
-                </defs>
                 <path
                   d="M12 2.5l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.35l-5.8 3.05 1.1-6.47-4.7-4.58 6.5-.95z"
-                  fill="url(#starFill)"
-                  stroke="url(#starEdge)"
-                  strokeWidth={0.5}
-                  strokeLinejoin="round"
+                  fill="#e8a33d"
                 />
               </svg>
               <span
@@ -162,9 +162,10 @@ export function StatsBand({
                 style={{
                   fontFamily: "var(--font-display)",
                   color: "var(--color-ink)",
+                  fontVariantNumeric: "tabular-nums",
                 }}
               >
-                {r.text}
+                {r.initial}
               </span>
             </div>
           )}
