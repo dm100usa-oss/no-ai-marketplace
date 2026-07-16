@@ -128,13 +128,23 @@ export default async function HomePage({
       <PeopleMarquee lang={locale} />
 
       {/* ---------- Stats band ---------- */}
-      {/* Live from Redis: visits over the last 7 days and the average of
-          approved reviews. Renders nothing until either is real. */}
+      {/* Live from Redis: views over the last 7 days and the average of
+          approved reviews.
+
+          The star always shows. With no approved reviews the average comes
+          back null and the band shows 0.0 — a site with nothing rated yet,
+          said plainly. The moment the first review is approved the real
+          average takes its place on the next page load, with no code
+          change: the page is force-dynamic and reads Redis every time.
+
+          Views keep the other rule: no views means no counter at all,
+          because a "0 visits this week" would be counting the person who
+          is reading it. */}
       <StatsBand
         locale={locale}
         visits={visits}
         visitsLabel={dict.home.statsVisitsLabel}
-        rating={rating}
+        rating={rating ?? 0}
       />
 
       {/* ---------- Hero content ---------- */}

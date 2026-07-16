@@ -4,7 +4,7 @@ import { createHash } from "crypto";
 /**
  * The one place that talks to the database.
  *
- * Everything the site stores lives here: the visit counter behind the band
+ * Everything the site stores lives here: the view counter behind the band
  * on the home page, and the reviews behind the rating next to it. Nothing
  * else in the project imports @upstash/redis directly, so if the store is
  * ever swapped the change is this file and no other.
@@ -44,55 +44,43 @@ function dayKey(offsetDays = 0): string {
 }
 
 /**
- * A stable but unreadable id for one visitor on one day.
+ * Record one page view.
  *
- * The IP is never stored. It is hashed together with the user agent and
- * the date, so the same person on the same day maps to the same short
- * string, a different day maps to a different one, and the original
- * address cannot be recovered from what is kept. The day is part of the
- * input on purpose: it means yesterday's ids cannot be matched to today's.
+ * Every open counts: a reload, a second tab, a walk around the site. The
+ * band says "views this week" and this is what it counts, so the word and
+ * the number agree.
+ *
+ * Nothing about the visitor is stored — not the address, not the browser,
+ * nothing. A view is a +1 on a per-day counter and no more than that.
+ *
+ * Each day's counter is kept for 8 days and expires by itself. The home
+ * page sums the last 7, so there is nothing to clean up by hand and no
+ * history piling up.
  */
-function visitorId(ip: string, ua: string, day: string): string {
-  return createHash("sha256").update(`${ip}|${ua}|${day}`).digest("hex").slice(0, 24);
-}
-
-/**
- * Record one visit. Returns quietly whatever happens.
- *
- * Counting is per person per day, not per page view: a reload, a second
- * tab, or a walk around the site all land on the same id inside the same
- * day's set, and a set counts each member once. So the number cannot be
- * inflated by pressing F5.
- *
- * Each day's set is kept for 8 days and then expires by itself. The home
- * page only ever sums the last 7, so there is nothing to clean up by hand
- * and no history piling up.
- */
-export async function recordVisit(ip: string, ua: string): Promise<void> {
+export async function recordVisit(): Promise<void> {
   if (!redis) return;
-  const day = dayKey();
-  const key = `visits:${day}`;
+  const key = `views:${dayKey()}`;
   try {
-    await redis.sadd(key, visitorId(ip, ua, day));
+    await redis.incr(key);
     await redis.expire(key, 60 * 60 * 24 * 8);
   } catch {
-    // A missed visit is not worth an error page.
+    // A missed view is not worth an error page.
   }
 }
 
 /**
- * Visits over the last 7 days, today included.
+ * Page views over the last 7 days, today included.
  *
  * Returns null when there is nothing to show — no database, an error, or
  * simply nobody yet. Null means the band does not render at all, which is
- * the honest answer for a site that has not launched.
+ * the honest answer for a site nobody has opened.
  */
 export async function getWeeklyVisits(): Promise<number | null> {
   if (!redis) return null;
   try {
-    const keys = Array.from({ length: 7 }, (_, i) => `visits:${dayKey(i)}`);
-    const counts = await Promise.all(keys.map((k) => redis.scard(k)));
-    const total = counts.reduce((sum: number, n) => sum + (Number(n) || 0), 0);
+    const keys = Array.from({ length: 7 }, (_, i) => `views:${dayKey(i)}`);
+    const counts = await redis.mget<(number | null)[]>(...keys);
+    const total = (counts ?? []).reduce((sum: number, n) => sum + (Number(n) || 0), 0);
     return total > 0 ? total : null;
   } catch {
     return null;

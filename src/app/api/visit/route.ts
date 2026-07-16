@@ -1,28 +1,21 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { recordVisit } from "@/lib/redis";
 
 /**
- * One visit, recorded.
+ * One page view, recorded.
  *
- * Called once per session by <VisitBeacon> in the layout. The IP is read
- * from the proxy headers Vercel sets and handed to recordVisit, which
- * hashes it and throws the original away — nothing identifying is stored.
+ * Called by <VisitBeacon> on every page. Nothing about the caller is read
+ * or stored: no address, no browser, no headers. The view is a +1 on
+ * today's counter and that is all.
  *
- * Always answers 200. A visit that failed to register is not the
- * visitor's problem and must never surface as an error in their console.
+ * Always answers 200. A view that failed to register is not the visitor's
+ * problem and must never surface as an error in their console.
  */
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-export async function POST(request: NextRequest) {
-  const ip =
-    request.headers.get("x-forwarded-for")?.split(",")[0].trim() ||
-    request.headers.get("x-real-ip") ||
-    "unknown";
-  const ua = request.headers.get("user-agent") || "unknown";
-
-  await recordVisit(ip, ua);
-
+export async function POST() {
+  await recordVisit();
   return NextResponse.json({ ok: true });
 }

@@ -1,34 +1,31 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 /**
- * Marks one visit, once.
+ * Marks every page view.
  *
- * Sits in the layout, so it is on every page. The sessionStorage flag
- * keeps it to a single call per tab: walking around the site is one
- * visit, not one per page opened.
+ * Sits in the layout, so it runs on every page, and usePathname makes it
+ * run again on each move around the site — without it Next keeps the
+ * component mounted through client-side navigation and only the first
+ * page of a visit would ever register.
  *
- * The server counts per person per day anyway, so this flag is not what
- * makes the number honest — it just saves a pointless request on every
- * click. Failures are swallowed: a visit that did not register is not
- * something to bother the visitor about.
+ * Every open counts, reloads included. That is the decision: the figure is
+ * page views for the week and is labelled as such. A visitor who refreshes
+ * and sees it move learns the counter is alive rather than a picture of a
+ * number.
+ *
+ * Failures are swallowed. A view that did not register is not something to
+ * bother the visitor about.
  */
 
-const FLAG = "visit-counted";
-
 export function VisitBeacon() {
-  useEffect(() => {
-    try {
-      if (sessionStorage.getItem(FLAG)) return;
-      sessionStorage.setItem(FLAG, "1");
-    } catch {
-      // Private mode with storage disabled: still count the visit, the
-      // server-side day set will deduplicate it.
-    }
+  const pathname = usePathname();
 
+  useEffect(() => {
     fetch("/api/visit", { method: "POST", keepalive: true }).catch(() => {});
-  }, []);
+  }, [pathname]);
 
   return null;
 }
