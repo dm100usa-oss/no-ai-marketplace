@@ -102,3 +102,30 @@ export const SparkIcon = ({ size = 22, className = "", strokeWidth = 2 }: P) => 
     <circle cx="12" cy="12" r="2.5" fill="currentColor" />
   </svg>
 );
+
+/**
+ * Three filled silhouettes: a team.
+ *
+ * Filled rather than outlined, unlike everything above it, and on its own
+ * wider viewBox — three figures squeezed into the shared 24-square would
+ * either touch or shrink to nothing. The middle one stands taller and
+ * slightly forward so the group reads as a group and not as three equal
+ * marks in a row.
+ */
+export const TeamIcon = ({ size = 27, className = "" }: { size?: number; className?: string }) => (
+  <svg
+    width={size}
+    height={(size * 24) / 30}
+    viewBox="0 0 30 24"
+    fill="currentColor"
+    aria-hidden="true"
+    className={className}
+  >
+    <circle cx="7" cy="8" r="3.1" />
+    <path d="M1.5 20c0-3.1 2.5-5.4 5.5-5.4s5.5 2.3 5.5 5.4z" />
+    <circle cx="23" cy="8" r="3.1" />
+    <path d="M17.5 20c0-3.1 2.5-5.4 5.5-5.4s5.5 2.3 5.5 5.4z" />
+    <circle cx="15" cy="5.4" r="3.8" />
+    <path d="M8.4 20c0-3.7 3-6.6 6.6-6.6s6.6 2.9 6.6 6.6z" />
+  </svg>
+);

@@ -124,7 +124,7 @@ export const ru: Dictionary = {
       "Выстраивайте долгосрочное сотрудничество с клиентами",
     ],
     heroJoinButton: "Стать участником",
-    heroFindButton: "Найти автора",
+    heroFindButton: "Найти исполнителя",
     heroActions: [
       { hint: "Автора", label: "для конкретной задачи", href: "/directions?type=creator" },
       { hint: "Команду", label: "под ваш проект", href: "/directions?type=team" },

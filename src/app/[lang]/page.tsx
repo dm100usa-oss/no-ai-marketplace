@@ -9,6 +9,7 @@ import { StatsBand } from "@/components/StatsBand";
 import {
   ArrowRight,
   CheckShield,
+  TeamIcon,
 } from "@/components/icons";
 import { getDictionary } from "@/i18n";
 import { categoryCount } from "@/lib/plural";
@@ -273,10 +274,25 @@ export default async function HomePage({
             </ul>
           </div>
 
+          {/* Built to match the find button above it exactly: same rounding,
+              same padding, same type size, same lift. Only the colour differs,
+              and the icon on the right is a team rather than a magnifier. */}
           <div className="mt-6">
-            <LocaleLink lang={locale} href="/join" className="btn btn-ink btn-lg btn-full">
-              {dict.home.heroJoinButton}
-              <ArrowRight size={18} />
+            <LocaleLink
+              lang={locale}
+              href="/join"
+              className="join-btn press-btn relative flex w-full items-center justify-center rounded-2xl px-6 py-4"
+              style={{ color: "#ffffff" }}
+            >
+              <span
+                className="text-[1.15rem] font-bold"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                {dict.home.heroJoinButton}
+              </span>
+              <span className="absolute right-6 flex items-center" aria-hidden>
+                <TeamIcon size={30} />
+              </span>
             </LocaleLink>
           </div>
 

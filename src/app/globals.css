@@ -515,3 +515,47 @@ a { color: inherit; text-decoration: none; }
     inset 0 1px 0 rgba(255, 255, 255, 0.16),
     0 1px 3px rgba(22, 35, 58, 0.14);
 }
+
+/* The join button: same slab as .find-btn, lighter.
+
+   Same five-stop scheme, but the edges go deeper than the find button's
+   and the centre stays light, so the two read as a pair with the find
+   button clearly first. The centre is deliberately not as pale as it
+   could be: white text sits in the middle of the button, and a paler
+   core would drop it below a readable contrast. */
+.join-btn {
+  background: linear-gradient(
+    to right,
+    #3d63ab 0%,
+    #5578bd 20%,
+    #7f99c6 50%,
+    #5578bd 80%,
+    #3d63ab 100%
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.34),
+    inset 0 -1px 0 rgba(22, 35, 58, 0.16),
+    var(--shadow-raise);
+  border-color: rgba(22, 35, 58, 0.10);
+}
+.join-btn:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.34),
+    inset 0 -1px 0 rgba(22, 35, 58, 0.16),
+    var(--shadow-raise-hover);
+}
+/* Pressed: the whole slab goes down and darkens, keeping the gradient
+   rather than flattening to the single --press-bg colour .press-btn sets. */
+.join-btn:active {
+  background: linear-gradient(
+    to right,
+    #345490 0%,
+    #4867a2 20%,
+    #6c83a9 50%,
+    #4867a2 80%,
+    #345490 100%
+  ) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    0 1px 3px rgba(22, 35, 58, 0.14);
+}
