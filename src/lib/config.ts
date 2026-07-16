@@ -20,6 +20,22 @@ export const site = {
 } as const;
 
 /**
+ * The two figures in the band under the work strip.
+ *
+ * Both are null until they are true. There is no analytics wired up yet
+ * and nobody has reviewed the platform, so the band stays hidden rather
+ * than showing a number that was made up. Put a real figure in and that
+ * half of the band appears on its own, counter and all.
+ *
+ * visits: real visits for the last seven days, once analytics is live.
+ * rating: average of real reviews, once there are reviews to average.
+ */
+export const stats = {
+  visits: null as number | null,
+  rating: null as number | null,
+} as const;
+
+/**
  * Pricing (TZ 2.2). Edit here only — the pricing page, the join page and
  * every button read from this.
  *

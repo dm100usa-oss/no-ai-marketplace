@@ -97,6 +97,7 @@ export const en: Dictionary = {
   },
 
   home: {
+    statsVisitsLabel: "visits this week",
     heroAdvantagesTitle: "Our advantages",
     heroAdvantages: [
       "0% commission for clients",

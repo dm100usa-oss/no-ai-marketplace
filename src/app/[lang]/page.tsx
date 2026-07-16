@@ -5,12 +5,14 @@ import { SectionHeading } from "@/components/States";
 import { FAQ } from "@/components/FAQ";
 import { FindAccordion } from "@/components/FindAccordion";
 import { PeopleMarquee } from "@/components/PeopleMarquee";
+import { StatsBand } from "@/components/StatsBand";
 import {
   ArrowRight,
   CheckShield,
 } from "@/components/icons";
 import { getDictionary } from "@/i18n";
 import { categoryCount } from "@/lib/plural";
+import { stats } from "@/lib/config";
 import { DEFAULT_LOCALE, isLocale } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
 import {
@@ -113,6 +115,15 @@ export default async function HomePage({
 
       {/* ---------- People band ---------- */}
       <PeopleMarquee lang={locale} />
+
+      {/* ---------- Stats band ---------- */}
+      {/* Renders nothing while both figures in lib/config.ts are null. */}
+      <StatsBand
+        locale={locale}
+        visits={stats.visits}
+        visitsLabel={dict.home.statsVisitsLabel}
+        rating={stats.rating}
+      />
 
       {/* ---------- Hero content ---------- */}
       {/* Tighter on top than a normal .section: this block belongs to the

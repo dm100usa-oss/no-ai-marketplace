@@ -119,6 +119,7 @@ export interface Dictionary {
 
   home: {
     /** New hero (approved). */
+    statsVisitsLabel: string;
     heroAdvantagesTitle: string;
     heroAdvantages: string[];
     heroClientsTitle: string;

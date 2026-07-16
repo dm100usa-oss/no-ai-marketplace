@@ -98,6 +98,7 @@ export const ru: Dictionary = {
   },
 
   home: {
+    statsVisitsLabel: "посещений за неделю",
     heroAdvantagesTitle: "Наши преимущества",
     heroAdvantages: [
       "0% комиссии для заказчиков",
