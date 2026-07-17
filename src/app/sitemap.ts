@@ -2,7 +2,6 @@ import type { MetadataRoute } from "next";
 import { profileBasePath } from "@/lib/profile-path";
 import { site } from "@/lib/config";
 import { getAllDirections, getAllCategories, getAllProfiles } from "@/lib/data";
-import { FAQ_PROFESSION_SLUGS } from "@/i18n/data/faqProfessions";
 import { LOCALES, DEFAULT_LOCALE, localizedPath } from "@/i18n/config";
 
 /**
@@ -48,16 +47,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const categoryPaths = getAllCategories().map((c) => ({
     path: `/categories/${c.slug}`,
-    priority: 0.7,
-  }));
-
-  // One FAQ page per profession. These are the pages built to be found:
-  // narrow questions that AI engines answer by citing whoever wrote the
-  // answer. They rank above the /faq hub on purpose, so they carry a
-  // higher priority than the hub's 0.6.
-  const faqProfessionPaths = FAQ_PROFESSION_SLUGS.map((slug) => ({
-    path: `/faq/${slug}`,
-    priority: 0.7,
+    // A category page now answers the profession FAQ and lists the people
+    // who do the work, so it is the strongest page on the site.
+    priority: 0.8,
   }));
 
   // Demo profiles are placeholders, not real people — they carry noindex
@@ -105,7 +97,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...staticPaths.flatMap((s) => expand(s.path, s.priority, "weekly", now)),
     ...directionPaths.flatMap((s) => expand(s.path, s.priority, "weekly", now)),
     ...categoryPaths.flatMap((s) => expand(s.path, s.priority, "weekly", now)),
-    ...faqProfessionPaths.flatMap((s) => expand(s.path, s.priority, "weekly", now)),
     ...profileEntries.flatMap((s) => expand(s.path, s.priority, s.changeFrequency, s.lastModified)),
   ];
 

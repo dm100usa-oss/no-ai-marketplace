@@ -9,9 +9,8 @@ import { categories as baseCategories } from "@/data/categories";
 import { site } from "@/lib/config";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ProfileGrid } from "@/components/ProfileGrid";
+import { FAQAccordion } from "@/components/FAQAccordion";
 import { getDictionary } from "@/i18n";
-import { LocaleLink } from "@/components/LocaleLink";
-import { ArrowRight } from "@/components/icons";
 import { getFaqProfession } from "@/i18n/data/faqProfessions";
 import { DEFAULT_LOCALE, isLocale, localizedPath, LOCALES, altLanguages } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
@@ -75,6 +74,19 @@ export default async function CategoryPage({
     (p) => !type || p.profileType === type,
   );
 
+  // The profession FAQ lives here now, on the page that also lists the
+  // people who do the work, so the FAQPage schema travels with it.
+  const faqJsonLd = faq && {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    inLanguage: locale,
+    mainEntity: faq.items.map((it) => ({
+      "@type": "Question",
+      name: it.q,
+      acceptedAnswer: { "@type": "Answer", text: it.a },
+    })),
+  };
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -101,6 +113,13 @@ export default async function CategoryPage({
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       <Breadcrumbs
         lang={locale}
         items={[
@@ -144,19 +163,10 @@ export default async function CategoryPage({
       {faq && (
         <section className="mt-12 max-w-3xl">
           <h2 className="!text-[1.35rem]">{faq.title}</h2>
-          <ul className="mt-4 space-y-2">
-            {faq.items.slice(0, 3).map((it, i) => (
-              <li key={i} className="text-[0.98rem]" style={{ color: "var(--color-muted)" }}>
-                {it.q}
-              </li>
-            ))}
-          </ul>
-          <div className="mt-4">
-            <LocaleLink lang={locale} href={`/faq/${faq.slug}`} className="btn btn-quiet">
-              {dict.faqPage.byProfessionTitle}
-              <ArrowRight size={16} />
-            </LocaleLink>
-          </div>
+          <p className="mb-5 mt-2 text-[0.98rem]" style={{ color: "var(--color-muted)" }}>
+            {faq.intro}
+          </p>
+          <FAQAccordion items={faq.items} lang={locale} />
         </section>
       )}
     </div>

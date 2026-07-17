@@ -34,8 +34,8 @@ export default async function FaqPage({
   const dict = getDictionary(locale);
   const p = dict.faqPage;
 
-  // No FAQPage schema here on purpose. Each profession page under
-  // /faq/[slug] carries its own, and a second copy on the hub would
+  // No FAQPage schema here on purpose. Each category page carries the
+  // schema for its own profession FAQ, and a second copy on the hub would
   // compete with them for the same questions.
   const professions = getFaqProfessions(locale);
 
@@ -71,7 +71,7 @@ export default async function FaqPage({
               <LocaleLink
                 key={prof.slug}
                 lang={locale}
-                href={`/faq/${prof.slug}`}
+                href={`/categories/${prof.category}`}
                 className="btn btn-quiet !flex h-full w-full justify-center text-center !leading-snug"
               >
                 {prof.title}

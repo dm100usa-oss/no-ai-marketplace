@@ -51,7 +51,6 @@ const ru: FaqProfession[] = [
         a: "В каталоге, где отсутствие генерации это условие входа, а не приписка мелким шрифтом. Здесь профиль ведет на ваш собственный сайт или магазин, а комиссии с заказов нет: вы платите за размещение и забираете весь гонорар. На крупных биржах ваши работы стоят в одной выдаче с генерацией, и заказчик не видит разницы, пока не спросит.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог иллюстраторов", href: "/categories/illustrators" },
         ],
       },
       {
@@ -80,7 +79,6 @@ const ru: FaqProfession[] = [
       {
         q: "Как проверить, что иллюстратор не использует ИИ?",
         a: "Попросить послойный файл предыдущей работы и два-три эскиза. Уходит минута, и этого достаточно: генерация приходит одним плоским слоем. Чего делать не стоит: гнать картинку через детектор и судить по анатомии рук, потому что приметы 2023 года устарели, а детекторы ошибаются. В каталоге иллюстраторы описывают процесс сразу в профиле.",
-        links: [{ label: "Каталог иллюстраторов", href: "/categories/illustrators" }],
       },
     ],
   },
@@ -99,7 +97,6 @@ const ru: FaqProfession[] = [
         a: "Там, где заказчик приходит именно за живым текстом, а не выбирает между вами и генерацией по цене. Здесь профиль ведет на ваш сайт и каналы, обращения приходят напрямую, комиссии с гонорара нет. На обычных биржах ваша ставка стоит рядом со ставкой того, кто отдает результат нейросети, и заказчик видит только разницу в цене.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог копирайтеров", href: "/categories/copywriters" },
         ],
       },
       {
@@ -124,7 +121,6 @@ const ru: FaqProfession[] = [
       {
         q: "Как проверить, что копирайтер пишет сам?",
         a: "Попросить черновик и историю правок в документе, а еще лучше дать задачу, где нужна фактура: интервью, свои цифры, разбор конкретного случая. Генерация тут проваливается, потому что фактуру негде взять. Чего делать не стоит: гонять текст через детектор, они ошибаются слишком часто, особенно на авторах, для которых язык неродной.",
-        links: [{ label: "Каталог копирайтеров", href: "/categories/copywriters" }],
       },
     ],
   },
@@ -143,7 +139,6 @@ const ru: FaqProfession[] = [
         a: "В каталоге, куда заказчик приходит именно за живым переводом. Здесь профиль ведет на ваш сайт, обращения идут напрямую, комиссии с гонорара нет. На общих биржах ваша работа стоит в одном списке с постредактурой машинного перевода, и заказчик, который не знает языка, разницы не увидит.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог переводчиков", href: "/categories/translators" },
         ],
       },
       {
@@ -167,7 +162,6 @@ const ru: FaqProfession[] = [
       {
         q: "Как проверить, что переводчик не пользуется машинным переводом?",
         a: "Дать тестовый абзац со сленгом, идиомой или юмором. Прогоните его через машинный переводчик сами и сравните с тем, что пришло от переводчика: совпадение конструкций видно сразу. Спросите, почему выбран тот или иной вариант, живой переводчик объяснит.",
-        links: [{ label: "Каталог переводчиков", href: "/categories/translators" }],
       },
     ],
   },
@@ -184,7 +178,6 @@ const ru: FaqProfession[] = [
       {
         q: "Как проверить, что разработчик пишет код сам?",
         a: "Посмотреть историю коммитов: живая разработка идет шагами, с возвратами, исправлениями и осмысленными сообщениями. Сгенерированный код приходит большими кусками сразу. Второй способ надежнее: попросите объяснить архитектурное решение голосом. Тот, кто писал сам, объяснит, почему сделал так, а не иначе.",
-        links: [{ label: "Каталог веб-разработчиков", href: "/categories/web-developers" }],
       },
       {
         q: "Чем рискует заказчик, если код сгенерирован?",
@@ -193,7 +186,6 @@ const ru: FaqProfession[] = [
       {
         q: "Где найти разработчика, который не отдает логику нейросети?",
         a: "В каталоге, где отсутствие генерации это условие входа. Профили ведут на GitHub и личные сайты разработчиков, вы связываетесь напрямую и комиссии с проекта нет. Каждый разработчик описывает в профиле, как он работает и какие инструменты использует.",
-        links: [{ label: "Каталог веб-разработчиков", href: "/categories/web-developers" }],
       },
       {
         q: "Где разместиться разработчику, который пишет код сам?",
@@ -229,7 +221,6 @@ const ru: FaqProfession[] = [
       {
         q: "Где найти фотографа, который снимает, а не генерирует?",
         a: "В каталоге, где это условие входа. Особенно важно для предметной съемки: генерация промахивается в деталях реального товара, а заказчику нужен именно его товар, а не похожий. Профили ведут на сайты фотографов, вы связываетесь напрямую.",
-        links: [{ label: "Каталог фотографов", href: "/categories/photographers" }],
       },
       {
         q: "Где разместиться фотографу без ИИ?",
@@ -257,7 +248,6 @@ const ru: FaqProfession[] = [
         a: "В каталоге, куда покупатель приходит именно за живой работой. Профиль ведет на ваш сайт, галерею или магазин, продажа идет напрямую, комиссии с нее нет. Это отличает нас от площадок, где ваш холст стоит в одной ленте с напечатанной генерацией.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог художников", href: "/categories/painters" },
         ],
       },
       {
@@ -268,7 +258,6 @@ const ru: FaqProfession[] = [
       {
         q: "Как покупателю проверить, что это живопись, а не печать генерации?",
         a: "Попросить фотографию под боковым светом: рельеф мазка видно сразу, у печати поверхность ровная. Попросить снимки процесса. При личной встрече все решается за секунду, вопрос возникает только при покупке по фото.",
-        links: [{ label: "Каталог художников", href: "/categories/painters" }],
       },
       {
         q: "Можно ли выкладывать работы, если делаешь цифровые копии для печати?",
@@ -290,7 +279,6 @@ const ru: FaqProfession[] = [
         a: "В каталоге, где заказчик ищет именно ручную работу. Профиль ведет на ваш сайт или в мастерскую, обращения приходят напрямую, комиссии с заказа нет.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог скульпторов", href: "/categories/sculptors" },
         ],
       },
       {
@@ -306,7 +294,6 @@ const ru: FaqProfession[] = [
       {
         q: "Как заказчику проверить скульптора перед заказом?",
         a: "Попросить фотографии стадий по прошлой работе и эскизы в материале. У ручной скульптуры есть промежуточные состояния: каркас, набор массы, проработка. Попросите объяснить, как вещь поведет себя в бронзе или в камне, живой скульптор ответит сразу, потому что материал диктует форму.",
-        links: [{ label: "Каталог скульпторов", href: "/categories/sculptors" }],
       },
       {
         q: "Сколько занимает работа скульптора и почему так долго?",
@@ -327,7 +314,6 @@ const ru: FaqProfession[] = [
         a: "Здесь. Профиль ведет на ваш ArtStation или сайт, студии связываются напрямую, комиссии с проекта нет. Спрос есть именно потому, что генерация не решает главную задачу концепта: дать команде то, с чем можно работать дальше.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог концепт-художников", href: "/categories/concept-artists" },
         ],
       },
       {
@@ -337,7 +323,6 @@ const ru: FaqProfession[] = [
       {
         q: "Как проверить концепт-художника перед наймом?",
         a: "Попросить лист с ортогональными видами одного персонажа и послойный файл. Это ровно то, что развалится у генерации, и то, что у настоящего концептера есть в каждом проекте. Тестовое задание с правкой конструкции тоже все показывает.",
-        links: [{ label: "Каталог концепт-художников", href: "/categories/concept-artists" }],
       },
       {
         q: "Где разместиться концепт-художнику, если основное портфолио на ArtStation?",
@@ -364,7 +349,6 @@ const ru: FaqProfession[] = [
         a: "В каталоге, где издатели и читатели ищут именно живого автора. Профиль ведет на ваш сайт и магазины, где продаются книги, обращения приходят напрямую, комиссии нет.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог авторов прозы", href: "/categories/fiction-authors" },
         ],
       },
       {
@@ -397,7 +381,6 @@ const ru: FaqProfession[] = [
         a: "Здесь. Профиль ведет на ваш сайт и магазины, обращения от издателей и заказчиков приходят напрямую, комиссии нет.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог авторов нон-фикшн", href: "/categories/non-fiction-authors" },
         ],
       },
       {
@@ -417,7 +400,6 @@ const ru: FaqProfession[] = [
       {
         q: "Как издателю проверить автора нон-фикшн?",
         a: "Попросить показать архив материалов: заметки с интервью, ссылки на первичные документы, переписку с экспертами. Проверьте две-три сноски наугад, ведут ли они туда, куда обещают. Модель придумывает источники, которые выглядят настоящими, и это вылезает уже после публикации.",
-        links: [{ label: "Каталог авторов нон-фикшн", href: "/categories/non-fiction-authors" }],
       },
     ],
   },
@@ -434,7 +416,6 @@ const ru: FaqProfession[] = [
         a: "Здесь. Профиль ведет на ваш сайт и магазины, издатели и родители находят вас напрямую, комиссии нет.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог детских авторов", href: "/categories/childrens-authors" },
         ],
       },
       {
@@ -471,7 +452,6 @@ const ru: FaqProfession[] = [
         a: "Здесь. Профиль ведет на ваш сайт и сборники, заказы на тексты приходят напрямую, комиссии нет.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог поэтов", href: "/categories/poets" },
         ],
       },
       {
@@ -507,7 +487,6 @@ const ru: FaqProfession[] = [
         a: "Здесь. Профиль ведет на ваш Behance или сайт, заказчики связываются напрямую, комиссии с проекта нет. Спрос растет, потому что бренды столкнулись с правовой стороной генерации и стали спрашивать, кто рисовал.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог дизайнеров", href: "/categories/graphic-designers" },
         ],
       },
       {
@@ -517,7 +496,6 @@ const ru: FaqProfession[] = [
       {
         q: "Как проверить, что дизайнер работал сам?",
         a: "Попросить исходник в векторе и посмотреть, как устроены кривые и слои: у ручной работы логика построения читается, точки стоят осмысленно. Плюс попросите показать отвергнутые варианты, у настоящего проекта их всегда десятки.",
-        links: [{ label: "Каталог дизайнеров", href: "/categories/graphic-designers" }],
       },
       {
         q: "Можно ли пользоваться трассировкой и плагинами?",
@@ -539,7 +517,6 @@ const ru: FaqProfession[] = [
         a: "Здесь. Профиль ведет на ваш сайт и Figma-портфолио, заказчики связываются напрямую, комиссии нет.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог UI и UX дизайнеров", href: "/categories/ui-ux-designers" },
         ],
       },
       {
@@ -559,7 +536,6 @@ const ru: FaqProfession[] = [
       {
         q: "Что должно быть в макете, кроме основного экрана?",
         a: "Состояния: загрузка, ошибка, пустой экран, длинный текст, отвалившаяся сеть. Именно по этому списку видно, продуман интерфейс или красиво нарисован. Просите его у дизайнера при найме, а если вы дизайнер, покажите его в портфолио сразу: это отличает вас лучше любых слов.",
-        links: [{ label: "Каталог UI и UX дизайнеров", href: "/categories/ui-ux-designers" }],
       },
     ],
   },
@@ -576,7 +552,6 @@ const ru: FaqProfession[] = [
         a: "Здесь. Профиль ведет на ваш сайт и шоурил, заказчики связываются напрямую, комиссии с проекта нет.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог монтажеров", href: "/categories/video-editors" },
         ],
       },
       {
@@ -592,7 +567,6 @@ const ru: FaqProfession[] = [
       {
         q: "Как заказчику проверить монтажера перед наймом?",
         a: "Попросить проект или скриншот таймлайна прошлой работы и спросить, почему склейка стоит здесь. Монтажер объяснит ритмом и тем, куда смотрит зритель. Второе: дайте сырой материал с браком и посмотрите, что человек из него соберет, это и есть профессия.",
-        links: [{ label: "Каталог монтажеров", href: "/categories/video-editors" }],
       },
       {
         q: "Чем монтажер полезен, если черновой монтаж собирает автоматика?",
@@ -613,7 +587,6 @@ const ru: FaqProfession[] = [
         a: "Здесь. Профиль ведет на ваш сайт и шоурил, заказчики связываются напрямую, комиссии нет.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог моушн-дизайнеров", href: "/categories/motion-designers" },
         ],
       },
       {
@@ -633,7 +606,6 @@ const ru: FaqProfession[] = [
       {
         q: "Как заказчику проверить моушн-дизайнера?",
         a: "Попросить проектный файл прошлой работы и правку: подвиньте акцент на секунду позже. У живой работы есть композиции, слои и ключи, правка занимает минуты. Со сгенерированным роликом правка невозможна в принципе, есть только готовое видео.",
-        links: [{ label: "Каталог моушн-дизайнеров", href: "/categories/motion-designers" }],
       },
     ],
   },
@@ -650,7 +622,6 @@ const ru: FaqProfession[] = [
         a: "Здесь. Профиль ведет на ваш сайт и примеры до и после, заказчики связываются напрямую, комиссии нет.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог колористов", href: "/categories/colourists" },
         ],
       },
       {
@@ -670,7 +641,6 @@ const ru: FaqProfession[] = [
       {
         q: "Как заказчику выбрать колориста?",
         a: "Попросить примеры на материале, похожем на ваш по условиям съемки, а не красивую подборку. И спросить про референс: колорист скажет, что из него достижимо на вашей камере, а что нет. Разговор про ограничения полезнее любого шоурила.",
-        links: [{ label: "Каталог колористов", href: "/categories/colourists" }],
       },
     ],
   },
@@ -687,7 +657,6 @@ const ru: FaqProfession[] = [
         a: "Здесь. Профиль ведет на ваш сайт, заказчики связываются напрямую, комиссии нет. Спрос сейчас растет: рынок наполнился текстами, которые надо приводить в порядок.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог редакторов", href: "/categories/editors" },
         ],
       },
       {
@@ -723,7 +692,6 @@ const ru: FaqProfession[] = [
         a: "Здесь. Профиль ведет на ваш сайт и портфолио сценариев, продюсеры и студии связываются напрямую, комиссии с гонорара нет. В профиле стоит указывать не только жанры, но и формат: полный метр, сериал, короткий метр, реклама. Ищут обычно по формату.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог сценаристов", href: "/categories/scriptwriters" },
         ],
       },
       {
@@ -743,7 +711,6 @@ const ru: FaqProfession[] = [
       {
         q: "Как продюсеру проверить сценариста?",
         a: "Попросить историю версий и предыдущие черновики, а потом дать правку по существу: поменяйте мотивацию героя во втором акте. Живой сценарист скажет, что за этим потянется в третьем. Модель перепишет сцену, не заметив, что развалилось все остальное.",
-        links: [{ label: "Каталог сценаристов", href: "/categories/scriptwriters" }],
       },
     ],
   },
@@ -760,7 +727,6 @@ const ru: FaqProfession[] = [
         a: "Здесь. Профиль ведет на ваш сайт и демо, заказчики связываются напрямую, комиссии нет. Это тот случай, когда каталог особенно нужен: на общих площадках ваш голос стоит в одном списке с синтезом за доллар.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог дикторов", href: "/categories/voice-actors" },
         ],
       },
       {
@@ -792,7 +758,6 @@ const ru: FaqProfession[] = [
         a: "Здесь. Профиль ведет на ваш сайт и примеры треков, заказчики связываются напрямую, комиссии с гонорара нет. Отдельно стоит указать, пишете ли вы под картинку и работаете ли с живыми музыкантами: именно это чаще всего и ищут.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог композиторов", href: "/categories/composers" },
         ],
       },
       {
@@ -824,7 +789,6 @@ const ru: FaqProfession[] = [
         a: "Здесь. Профиль ведет на ваш сайт и шоурил, студии и разработчики игр связываются напрямую, комиссии с проекта нет. В профиле имеет смысл написать, есть ли у вас своя библиотека записей и пишете ли вы фоли под задачу: за этим и приходят.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог саунд-дизайнеров", href: "/categories/sound-designers" },
         ],
       },
       {
@@ -844,7 +808,6 @@ const ru: FaqProfession[] = [
       {
         q: "Как заказчику проверить саунд-дизайнера?",
         a: "Попросить исходники записи и спросить, из чего собран конкретный звук. Живой саунд-дизайнер расскажет, что рык собран из трех слоев, и покажет сырые файлы. Это разговор на минуту, и он все решает.",
-        links: [{ label: "Каталог саунд-дизайнеров", href: "/categories/sound-designers" }],
       },
     ],
   },
@@ -861,7 +824,6 @@ const ru: FaqProfession[] = [
         a: "Здесь. Профиль ведет на ваш сайт и примеры работ, заказчики связываются напрямую, комиссии с проекта нет. Стоит указать, что именно вы делаете: запись, сведение, мастеринг или все вместе, и на чем работаете. Ищут по конкретной задаче, а не по слову звукорежиссер.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог звукорежиссеров", href: "/categories/audio-engineers" },
         ],
       },
       {
@@ -881,7 +843,6 @@ const ru: FaqProfession[] = [
       {
         q: "Как заказчику выбрать звукорежиссера?",
         a: "Дать один и тот же материал двоим и сравнить. Разница в решениях слышна даже неподготовленному уху, и это честнее любого портфолио, собранного из чужих удачных записей. Спросите заодно, что человек предложит убрать: это показывает уровень лучше, чем список оборудования.",
-        links: [{ label: "Каталог звукорежиссеров", href: "/categories/audio-engineers" }],
       },
     ],
   },
@@ -898,13 +859,11 @@ const ru: FaqProfession[] = [
         a: "Здесь. Профиль ведет на ваш GitHub и приложения в магазинах, заказчики связываются напрямую, комиссии нет.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог мобильных разработчиков", href: "/categories/mobile-developers" },
         ],
       },
       {
         q: "Как проверить мобильного разработчика?",
         a: "Посмотреть историю коммитов и попросить объяснить решение по архитектуре голосом. Живая разработка идет шагами, генерация приходит блоками. Для мобильных приложений добавьте вопрос про работу вне сети и про экономию батареи: тут генерация обычно молчит, потому что в обучающих данных этого мало.",
-        links: [{ label: "Каталог мобильных разработчиков", href: "/categories/mobile-developers" }],
       },
       {
         q: "Чем рискует заказчик со сгенерированным приложением?",
@@ -935,7 +894,6 @@ const ru: FaqProfession[] = [
         a: "Здесь. Профиль ведет на ваш сайт, itch.io или Steam, студии связываются напрямую, комиссии нет.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог разработчиков игр", href: "/categories/game-developers" },
         ],
       },
       {
@@ -971,7 +929,6 @@ const ru: FaqProfession[] = [
         a: "Здесь. Профиль ведет на ваш GitHub и сайт, заказчики связываются напрямую, комиссии нет.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог разработчиков автоматизации", href: "/categories/automation-developers" },
         ],
       },
       {
@@ -981,7 +938,6 @@ const ru: FaqProfession[] = [
       {
         q: "Как проверить разработчика автоматизации?",
         a: "Дать реальный кусок ваших данных с грязью: пропуски, дубли, кривые даты. Тот, кто пишет сам, начнет с вопросов о крайних случаях. Плюс история коммитов.",
-        links: [{ label: "Каталог разработчиков автоматизации", href: "/categories/automation-developers" }],
       },
       {
         q: "Где разместиться разработчику интеграций и ботов?",
@@ -1006,7 +962,6 @@ const ru: FaqProfession[] = [
       {
         q: "Где найти независимого аудитора кода?",
         a: "Здесь. Профили ведут на GitHub и сайты аудиторов, вы связываетесь напрямую, комиссии с проекта нет. Аудит нужен именно тогда, когда подрядчик сдал работу, а вы не можете оценить, что получили.",
-        links: [{ label: "Каталог аудиторов кода", href: "/categories/code-auditors" }],
       },
       {
         q: "Как понять, что подрядчик сдал сгенерированный код?",
@@ -1041,7 +996,6 @@ const ru: FaqProfession[] = [
         a: "Здесь. Профиль ведет на ваш сайт и портфолио проектов, заказчики связываются напрямую, комиссии нет.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог дизайнеров интерьера", href: "/categories/interior-designers" },
         ],
       },
       {
@@ -1051,7 +1005,6 @@ const ru: FaqProfession[] = [
       {
         q: "Как проверить дизайнера перед заказом?",
         a: "Попросить рабочую документацию по прошлому проекту: планы, развертки, спецификацию, и рядом фотографию того, что построено. Совпадение проекта с реальностью и есть работа дизайнера. Рендер показывает только, что человек умеет делать рендеры.",
-        links: [{ label: "Каталог дизайнеров интерьера", href: "/categories/interior-designers" }],
       },
       {
         q: "Можно ли пользоваться визуализацией и подбором палитр?",
@@ -1073,7 +1026,6 @@ const ru: FaqProfession[] = [
         a: "Здесь. Профиль ведет на ваш сайт и портфолио участков, заказчики связываются напрямую, комиссии с проекта нет. Обязательно укажите регион: ландшафт привязан к климату, и заказчик ищет того, кто знает его зону зимостойкости, а не дизайнера вообще.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог ландшафтных дизайнеров", href: "/categories/landscape-designers" },
         ],
       },
       {
@@ -1083,7 +1035,6 @@ const ru: FaqProfession[] = [
       {
         q: "Как проверить дизайнера перед заказом?",
         a: "Спросить про зону зимостойкости вашего участка и про то, что будет с посадками на третий год. Человек, который работает сам, начнет с вопросов о почве и воде.",
-        links: [{ label: "Каталог ландшафтных дизайнеров", href: "/categories/landscape-designers" }],
       },
       {
         q: "Можно ли ландшафтному дизайнеру пользоваться визуализацией?",
@@ -1110,7 +1061,6 @@ const ru: FaqProfession[] = [
         a: "Здесь. Профиль ведет на ваш магазин или сайт, покупатели приходят напрямую, комиссии с продажи нет. Это заметная разница с площадками, которые берут долю с каждого заказа.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог мастеров", href: "/categories/craft-makers" },
         ],
       },
       {
@@ -1125,7 +1075,6 @@ const ru: FaqProfession[] = [
       {
         q: "Как покупателю проверить, что вещь сделана руками?",
         a: "Попросить фото процесса и спросить, можно ли изменить деталь: размер, цвет, отделку. Мастер ответит, что именно можно, перепродавец фабричного не изменит ничего. При личной встрече вопрос снимается сразу.",
-        links: [{ label: "Каталог мастеров", href: "/categories/craft-makers" }],
       },
       {
         q: "Можно ли мастеру обрабатывать фотографии своих изделий?",
@@ -1147,7 +1096,6 @@ const ru: FaqProfession[] = [
         a: "Здесь. Профиль ведет на ваш магазин, покупатели приходят напрямую, комиссии с продажи нет.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог мастеров аксессуаров", href: "/categories/accessory-makers" },
         ],
       },
       {
@@ -1184,7 +1132,6 @@ const ru: FaqProfession[] = [
         a: "Здесь. Профиль ведет на ваш магазин или ателье, покупатели и заказчики приходят напрямую, комиссии с продажи нет.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог дизайнеров одежды", href: "/categories/clothing-designers" },
         ],
       },
       {
@@ -1220,7 +1167,6 @@ const ru: FaqProfession[] = [
         a: "Здесь. Профиль ведет на ваш сайт и мастерскую, заказчики связываются напрямую, комиссии нет.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог реставраторов", href: "/categories/restoration" },
         ],
       },
       {
@@ -1240,7 +1186,6 @@ const ru: FaqProfession[] = [
       {
         q: "Как выбрать реставратора и о чем спросить сразу?",
         a: "Спросить, что он не станет восстанавливать и почему. Ответ на этот вопрос отделяет реставратора от того, кто сделает красиво. Попросите отчет по прошлой работе: там должно быть написано, что именно утрачено и что осталось нетронутым.",
-        links: [{ label: "Каталог реставраторов", href: "/categories/restoration" }],
       },
     ],
   },
@@ -1257,7 +1202,6 @@ const ru: FaqProfession[] = [
         a: "Здесь. Профиль ведет на ваш сайт или магазин, заказчики связываются напрямую, комиссии нет.",
         links: [
           { label: "Добавить профиль", href: "/join" },
-          { label: "Каталог каллиграфов", href: "/categories/calligraphy" },
         ],
       },
       {
@@ -1277,7 +1221,6 @@ const ru: FaqProfession[] = [
       {
         q: "Зачем заказывать каллиграфа, если есть рукописные шрифты?",
         a: "Затем, что шрифт повторяется, а рука нет. В приглашении на сто гостей каждое имя написано отдельно, и это видно. Каллиграф еще и подстроит нажим под конкретную бумагу и чернила, чего шрифт не умеет по определению.",
-        links: [{ label: "Каталог каллиграфов", href: "/categories/calligraphy" }],
       },
     ],
   },
@@ -1299,7 +1242,6 @@ const en: FaqProfession[] = [
         a: "In a directory where no generation is the condition of entry, not a line of small print. Here your profile links to your own site or shop and there is no commission on jobs: you pay for the listing and keep the whole fee. On the large marketplaces your work sits in the same results as generated images, and the client cannot tell until they ask.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Illustrators directory", href: "/categories/illustrators" },
         ],
       },
       {
@@ -1328,7 +1270,6 @@ const en: FaqProfession[] = [
       {
         q: "How do I check that an illustrator does not use AI?",
         a: "Ask for the layered file from a previous job and two or three sketches. It takes a minute and it is enough: generated images arrive as one flat layer. What not to do: run the image through a detector or judge by the anatomy of the hands, because those 2023 tells are out of date and detectors get it wrong. In our directory illustrators describe their process in the profile.",
-        links: [{ label: "Illustrators directory", href: "/categories/illustrators" }],
       },
     ],
   },
@@ -1347,7 +1288,6 @@ const en: FaqProfession[] = [
         a: "Where the client came for writing by a person, not to compare you with generation on price. Here your profile links to your own site and channels, enquiries come straight to you, and there is no commission on your fee. On the general marketplaces your rate sits next to the rate of someone handing the job to a model, and all the client sees is the price gap.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Copywriters directory", href: "/categories/copywriters" },
         ],
       },
       {
@@ -1372,7 +1312,6 @@ const en: FaqProfession[] = [
       {
         q: "How do I check that a copywriter writes their own work?",
         a: "Ask for a draft and the document edit history, and better still give a task that needs reporting: an interview, your own figures, a specific case. Generation fails there because there is nowhere to get the material. What not to do: run the text through a detector, they are wrong too often, especially on writers working in a second language.",
-        links: [{ label: "Copywriters directory", href: "/categories/copywriters" }],
       },
     ],
   },
@@ -1391,7 +1330,6 @@ const en: FaqProfession[] = [
         a: "In a directory where the client came for translation by a person. Here your profile links to your own site, enquiries come straight to you, and there is no commission on your fee. On the general marketplaces your work sits in the same list as machine translation post-editing, and a client who does not speak the language will not see the difference.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Translators directory", href: "/categories/translators" },
         ],
       },
       {
@@ -1415,7 +1353,6 @@ const en: FaqProfession[] = [
       {
         q: "How do I check that a translator does not use machine translation?",
         a: "Give a test paragraph with slang, an idiom or humour. Run it through a machine translator yourself and compare: matching constructions show up immediately. Ask why a particular choice was made, a human translator will explain.",
-        links: [{ label: "Translators directory", href: "/categories/translators" }],
       },
     ],
   },
@@ -1432,7 +1369,6 @@ const en: FaqProfession[] = [
       {
         q: "How do I check that a developer writes their own code?",
         a: "Look at the commit history: real development moves in steps, with backtracks, fixes and messages that mean something. Generated code lands in large blocks at once. The second way is better: ask them to talk through an architectural decision. Someone who wrote it will explain why they did it this way and not another.",
-        links: [{ label: "Web developers directory", href: "/categories/web-developers" }],
       },
       {
         q: "What does a client risk if the code is generated?",
@@ -1441,7 +1377,6 @@ const en: FaqProfession[] = [
       {
         q: "Where do I find a developer who does not hand the logic to a model?",
         a: "In a directory where no generation is the condition of entry. Profiles link to developers' GitHub and personal sites, you contact them directly, and there is no commission on the project. Each developer describes in their profile how they work and which tools they use.",
-        links: [{ label: "Web developers directory", href: "/categories/web-developers" }],
       },
       {
         q: "Where can a developer who writes their own code list?",
@@ -1477,7 +1412,6 @@ const en: FaqProfession[] = [
       {
         q: "Where do I find a photographer who shoots rather than generates?",
         a: "In a directory where that is the condition of entry. It matters most for product work: generation misses the details of a real product, and the client needs their product, not one that looks like it. Profiles link to photographers' own sites and you contact them directly.",
-        links: [{ label: "Photographers directory", href: "/categories/photographers" }],
       },
       {
         q: "Where can a photographer list without AI?",
@@ -1504,7 +1438,6 @@ const en: FaqProfession[] = [
         a: "In a directory where the buyer came for real work. Your profile links to your own site, gallery or shop, the sale happens directly, and there is no commission on it. That is the difference from platforms where your canvas sits in the same feed as printed generation.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Painters directory", href: "/categories/painters" },
         ],
       },
       {
@@ -1515,7 +1448,6 @@ const en: FaqProfession[] = [
       {
         q: "How can a buyer check this is a painting and not a printed generation?",
         a: "Ask for a photograph under raking light: brush texture shows immediately, a print has a flat surface. Ask for progress shots. In person it takes a second; the question only arises when buying from photographs.",
-        links: [{ label: "Painters directory", href: "/categories/painters" }],
       },
       {
         q: "Can I list if I make digital copies for print?",
@@ -1537,7 +1469,6 @@ const en: FaqProfession[] = [
         a: "In a directory where clients are looking for handwork. Your profile links to your own site or studio, enquiries come straight to you, and there is no commission on the job.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Sculptors directory", href: "/categories/sculptors" },
         ],
       },
       {
@@ -1553,7 +1484,6 @@ const en: FaqProfession[] = [
       {
         q: "How does a client check a sculptor before commissioning?",
         a: "Ask for stage photos from a previous piece and sketches in the material. Handmade sculpture has intermediate states: armature, building up mass, refining, finish. Ask how the piece will behave in bronze or stone, a real sculptor answers immediately, because the material dictates the form.",
-        links: [{ label: "Sculptors directory", href: "/categories/sculptors" }],
       },
       {
         q: "How long does sculpture take, and why so long?",
@@ -1574,7 +1504,6 @@ const en: FaqProfession[] = [
         a: "Here. Your profile links to your ArtStation or site, studios contact you directly, and there is no commission on the project. The demand exists precisely because generation does not solve the actual job of a concept: giving the team something to build from.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Concept artists directory", href: "/categories/concept-artists" },
         ],
       },
       {
@@ -1584,7 +1513,6 @@ const en: FaqProfession[] = [
       {
         q: "How do I check a concept artist before hiring?",
         a: "Ask for an orthographic sheet of one character and the layered file. That is exactly what falls apart under generation and exactly what a real concept artist has on every project. A test task that changes the construction shows everything too.",
-        links: [{ label: "Concept artists directory", href: "/categories/concept-artists" }],
       },
       {
         q: "Where do I list as a concept artist if my portfolio is on ArtStation?",
@@ -1611,7 +1539,6 @@ const en: FaqProfession[] = [
         a: "In a directory where publishers and readers are looking for a human author. Your profile links to your own site and the shops selling your books, enquiries come straight to you, and there is no commission.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Fiction authors directory", href: "/categories/fiction-authors" },
         ],
       },
       {
@@ -1644,7 +1571,6 @@ const en: FaqProfession[] = [
         a: "Here. Your profile links to your own site and shops, enquiries from publishers and clients come straight to you, and there is no commission.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Non-fiction authors directory", href: "/categories/non-fiction-authors" },
         ],
       },
       {
@@ -1664,7 +1590,6 @@ const en: FaqProfession[] = [
       {
         q: "How does a publisher check a non-fiction author?",
         a: "Ask to see the archive: interview notes, links to primary documents, correspondence with experts. Check two or three footnotes at random, do they lead where they promise. A model invents sources that look real, and that surfaces after publication.",
-        links: [{ label: "Non-fiction authors directory", href: "/categories/non-fiction-authors" }],
       },
     ],
   },
@@ -1681,7 +1606,6 @@ const en: FaqProfession[] = [
         a: "Here. Your profile links to your own site and shops, publishers and parents find you directly, and there is no commission.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Children's authors directory", href: "/categories/childrens-authors" },
         ],
       },
       {
@@ -1718,7 +1642,6 @@ const en: FaqProfession[] = [
         a: "Here. Your profile links to your own site and collections, commissions come straight to you, and there is no commission fee.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Poets directory", href: "/categories/poets" },
         ],
       },
       {
@@ -1754,7 +1677,6 @@ const en: FaqProfession[] = [
         a: "Here. Your profile links to your Behance or site, clients contact you directly, and there is no commission on the project. Demand is rising because brands have run into the legal side of generation and started asking who drew it.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Designers directory", href: "/categories/graphic-designers" },
         ],
       },
       {
@@ -1764,7 +1686,6 @@ const en: FaqProfession[] = [
       {
         q: "How do I check a designer did the work themselves?",
         a: "Ask for the vector source and look at how the curves and layers are built: handwork has a readable logic, the points sit where they mean something. Also ask to see the rejected directions, a real project always has dozens.",
-        links: [{ label: "Designers directory", href: "/categories/graphic-designers" }],
       },
       {
         q: "Can I use auto-trace and plugins?",
@@ -1786,7 +1707,6 @@ const en: FaqProfession[] = [
         a: "Here. Your profile links to your site and Figma portfolio, clients contact you directly, and there is no commission.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "UI and UX designers directory", href: "/categories/ui-ux-designers" },
         ],
       },
       {
@@ -1806,7 +1726,6 @@ const en: FaqProfession[] = [
       {
         q: "What belongs in a design besides the main screen?",
         a: "States: loading, error, empty, long text, dropped connection. That list is exactly what shows whether an interface was thought through or just drawn nicely. Ask for it when hiring, and if you are the designer, show it in your portfolio: it sets you apart better than any words.",
-        links: [{ label: "UI and UX designers directory", href: "/categories/ui-ux-designers" }],
       },
     ],
   },
@@ -1823,7 +1742,6 @@ const en: FaqProfession[] = [
         a: "Here. Your profile links to your site and showreel, clients contact you directly, and there is no commission on the project.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Video editors directory", href: "/categories/video-editors" },
         ],
       },
       {
@@ -1839,7 +1757,6 @@ const en: FaqProfession[] = [
       {
         q: "How does a client check an editor before hiring?",
         a: "Ask for the project or a timeline screenshot from past work and ask why a cut sits where it does. An editor explains it with rhythm and where the viewer is looking. Second: give them raw footage with problems in it and see what they build, that is the craft.",
-        links: [{ label: "Editors directory", href: "/categories/video-editors" }],
       },
       {
         q: "What is an editor for if automation assembles the rough cut?",
@@ -1860,7 +1777,6 @@ const en: FaqProfession[] = [
         a: "Here. Your profile links to your site and showreel, clients contact you directly, and there is no commission.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Motion designers directory", href: "/categories/motion-designers" },
         ],
       },
       {
@@ -1880,7 +1796,6 @@ const en: FaqProfession[] = [
       {
         q: "How does a client check a motion designer?",
         a: "Ask for the project file from past work and ask for a change: move the accent a second later. Real work has compositions, layers and keys, the change takes minutes. With a generated clip a change is impossible, there is only finished video.",
-        links: [{ label: "Motion designers directory", href: "/categories/motion-designers" }],
       },
     ],
   },
@@ -1897,7 +1812,6 @@ const en: FaqProfession[] = [
         a: "Here. Your profile links to your site and before-and-after examples, clients contact you directly, and there is no commission.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Colourists directory", href: "/categories/colourists" },
         ],
       },
       {
@@ -1917,7 +1831,6 @@ const en: FaqProfession[] = [
       {
         q: "How does a client choose a colourist?",
         a: "Ask for examples shot in conditions like yours, not a pretty reel. And ask about your reference: a colourist will tell you what is achievable on your camera and what is not. A conversation about limits tells you more than any showreel.",
-        links: [{ label: "Colourists directory", href: "/categories/colourists" }],
       },
     ],
   },
@@ -1934,7 +1847,6 @@ const en: FaqProfession[] = [
         a: "Here. Your profile links to your own site, clients contact you directly, and there is no commission. Demand is rising: the market filled up with text that needs putting right.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Editors directory", href: "/categories/editors" },
         ],
       },
       {
@@ -1970,7 +1882,6 @@ const en: FaqProfession[] = [
         a: "Here. Your profile links to your site and script portfolio, producers and studios contact you directly, and there is no commission on your fee. Worth listing format as well as genre: feature, series, short, commercial. Format is what people search by.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Scriptwriters directory", href: "/categories/scriptwriters" },
         ],
       },
       {
@@ -1990,7 +1901,6 @@ const en: FaqProfession[] = [
       {
         q: "How does a producer check a screenwriter?",
         a: "Ask for version history and earlier drafts, then ask for a real change: alter the hero’s motivation in act two. A working writer will tell you what that drags with it in act three. A model rewrites the scene without noticing everything else fell apart.",
-        links: [{ label: "Screenwriters directory", href: "/categories/scriptwriters" }],
       },
     ],
   },
@@ -2007,7 +1917,6 @@ const en: FaqProfession[] = [
         a: "Here. Your profile links to your site and demos, clients contact you directly, and there is no commission. This is where a directory matters most: on the general platforms your voice sits in the same list as synthesis for a dollar.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Voice actors directory", href: "/categories/voice-actors" },
         ],
       },
       {
@@ -2039,7 +1948,6 @@ const en: FaqProfession[] = [
         a: "Here. Your profile links to your site and sample tracks, clients contact you directly, and there is no commission on your fee. Say whether you score to picture and whether you work with live players: that is what clients look for.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Composers directory", href: "/categories/composers" },
         ],
       },
       {
@@ -2071,7 +1979,6 @@ const en: FaqProfession[] = [
         a: "Here. Your profile links to your site and showreel, studios and game developers contact you directly, and there is no commission on the project. Worth saying whether you have your own recording library and whether you record foley to order: that is what people come for.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Sound designers directory", href: "/categories/sound-designers" },
         ],
       },
       {
@@ -2091,7 +1998,6 @@ const en: FaqProfession[] = [
       {
         q: "How does a client check a sound designer?",
         a: "Ask for the raw recordings and ask what a particular sound is made of. A real sound designer will tell you the roar is three layers and show you the raw files. It takes a minute and settles the question.",
-        links: [{ label: "Sound designers directory", href: "/categories/sound-designers" }],
       },
     ],
   },
@@ -2108,7 +2014,6 @@ const en: FaqProfession[] = [
         a: "Here. Your profile links to your site and sample work, clients contact you directly, and there is no commission on the project. Say what you actually do, tracking, mixing, mastering or all of it, and what you work on. People search by the task, not by the word engineer.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Audio engineers directory", href: "/categories/audio-engineers" },
         ],
       },
       {
@@ -2128,7 +2033,6 @@ const en: FaqProfession[] = [
       {
         q: "How does a client choose an audio engineer?",
         a: "Give the same material to two of them and compare. The difference in decisions is audible even to an untrained ear, and it is more honest than a portfolio built from other people’s good recordings. Ask what they would take out: that shows level better than a gear list.",
-        links: [{ label: "Audio engineers directory", href: "/categories/audio-engineers" }],
       },
     ],
   },
@@ -2145,13 +2049,11 @@ const en: FaqProfession[] = [
         a: "Here. Your profile links to your GitHub and your apps in the stores, clients contact you directly, and there is no commission.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Mobile developers directory", href: "/categories/mobile-developers" },
         ],
       },
       {
         q: "How do I check a mobile developer?",
         a: "Look at the commit history and ask them to talk through an architecture decision. Real development moves in steps, generation arrives in blocks. For mobile, add a question about offline behaviour and battery: generation usually goes quiet there, because there is little of it in the training data.",
-        links: [{ label: "Mobile developers directory", href: "/categories/mobile-developers" }],
       },
       {
         q: "What does a client risk with a generated app?",
@@ -2182,7 +2084,6 @@ const en: FaqProfession[] = [
         a: "Here. Your profile links to your site, itch.io or Steam, studios contact you directly, and there is no commission.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Game developers directory", href: "/categories/game-developers" },
         ],
       },
       {
@@ -2218,7 +2119,6 @@ const en: FaqProfession[] = [
         a: "Here. Your profile links to your GitHub and site, clients contact you directly, and there is no commission.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Automation developers directory", href: "/categories/automation-developers" },
         ],
       },
       {
@@ -2228,7 +2128,6 @@ const en: FaqProfession[] = [
       {
         q: "How do I check an automation developer?",
         a: "Give them a real piece of your data with the mess in it: gaps, duplicates, broken dates. Someone who writes their own code starts with questions about edge cases. Plus the commit history.",
-        links: [{ label: "Automation developers directory", href: "/categories/automation-developers" }],
       },
       {
         q: "Where do I list if I build integrations and bots?",
@@ -2253,7 +2152,6 @@ const en: FaqProfession[] = [
       {
         q: "Where do I find an independent code auditor?",
         a: "Here. Profiles link to auditors' GitHub and sites, you contact them directly, and there is no commission on the project. An audit is what you need when a contractor has delivered and you cannot judge what you got.",
-        links: [{ label: "Code auditors directory", href: "/categories/code-auditors" }],
       },
       {
         q: "How do I tell if a contractor delivered generated code?",
@@ -2288,7 +2186,6 @@ const en: FaqProfession[] = [
         a: "Here. Your profile links to your site and project portfolio, clients contact you directly, and there is no commission.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Interior designers directory", href: "/categories/interior-designers" },
         ],
       },
       {
@@ -2298,7 +2195,6 @@ const en: FaqProfession[] = [
       {
         q: "How do I check a designer before hiring?",
         a: "Ask for the working drawings from a past project: plans, elevations, schedule, and next to them a photograph of what got built. The match between drawing and reality is the designer's work. A render only shows that someone can make renders.",
-        links: [{ label: "Interior designers directory", href: "/categories/interior-designers" }],
       },
       {
         q: "Can I use visualisation and palette tools?",
@@ -2320,7 +2216,6 @@ const en: FaqProfession[] = [
         a: "Here. Your profile links to your site and project portfolio, clients contact you directly, and there is no commission on the project. Name your region: landscape is tied to climate, and a client is looking for someone who knows their hardiness zone, not a designer in general.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Landscape designers directory", href: "/categories/landscape-designers" },
         ],
       },
       {
@@ -2330,7 +2225,6 @@ const en: FaqProfession[] = [
       {
         q: "How do I check a designer before hiring?",
         a: "Ask about the hardiness zone of your plot and what the planting will look like in year three. Someone who does the work themselves starts with questions about soil and water.",
-        links: [{ label: "Landscape designers directory", href: "/categories/landscape-designers" }],
       },
       {
         q: "Can a landscape designer use visualisation?",
@@ -2357,7 +2251,6 @@ const en: FaqProfession[] = [
         a: "Here. Your profile links to your shop or site, buyers come straight to you, and there is no commission on the sale. That is a visible difference from platforms taking a cut of every order.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Craft makers directory", href: "/categories/craft-makers" },
         ],
       },
       {
@@ -2372,7 +2265,6 @@ const en: FaqProfession[] = [
       {
         q: "How does a buyer check a piece is handmade?",
         a: "Ask for process photos and ask whether a detail can be changed: size, colour, finish. A maker will tell you exactly what is possible, someone reselling factory goods will change nothing. In person the question settles itself.",
-        links: [{ label: "Makers directory", href: "/categories/craft-makers" }],
       },
       {
         q: "Can a maker edit photos of their own work?",
@@ -2394,7 +2286,6 @@ const en: FaqProfession[] = [
         a: "Here. Your profile links to your shop, buyers come straight to you, and there is no commission on the sale.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Accessory makers directory", href: "/categories/accessory-makers" },
         ],
       },
       {
@@ -2431,7 +2322,6 @@ const en: FaqProfession[] = [
         a: "Here. Your profile links to your shop or studio, buyers and clients come straight to you, and there is no commission on the sale.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Clothing designers directory", href: "/categories/clothing-designers" },
         ],
       },
       {
@@ -2467,7 +2357,6 @@ const en: FaqProfession[] = [
         a: "Here. Your profile links to your site and workshop, clients contact you directly, and there is no commission.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Restorers directory", href: "/categories/restoration" },
         ],
       },
       {
@@ -2487,7 +2376,6 @@ const en: FaqProfession[] = [
       {
         q: "How do I choose a restorer and what do I ask first?",
         a: "Ask what they will not restore, and why. The answer to that separates a restorer from someone who will just make it look nice. Ask for a report from past work: it should state what was lost and what was left untouched.",
-        links: [{ label: "Restorers directory", href: "/categories/restoration" }],
       },
     ],
   },
@@ -2504,7 +2392,6 @@ const en: FaqProfession[] = [
         a: "Here. Your profile links to your site or shop, clients contact you directly, and there is no commission.",
         links: [
           { label: "Add your profile", href: "/join" },
-          { label: "Calligraphers directory", href: "/categories/calligraphy" },
         ],
       },
       {
@@ -2524,7 +2411,6 @@ const en: FaqProfession[] = [
       {
         q: "Why hire a calligrapher when handwriting fonts exist?",
         a: "Because a font repeats and a hand does not. On an invitation for a hundred guests every name is written separately, and it shows. A calligrapher also adjusts pressure to the specific paper and ink, which a font cannot do by definition.",
-        links: [{ label: "Calligraphers directory", href: "/categories/calligraphy" }],
       },
     ],
   },
@@ -2545,3 +2431,7 @@ export function getFaqProfession(
 
 /** Slugs are the same across locales, so one list drives static params. */
 export const FAQ_PROFESSION_SLUGS = en.map((p) => p.slug);
+
+/** Old /faq/<slug> URL -> the category page that now carries that FAQ. */
+export const FAQ_PROFESSION_CATEGORY: Record<string, string> =
+  Object.fromEntries(en.map((p) => [p.slug, p.category]));
