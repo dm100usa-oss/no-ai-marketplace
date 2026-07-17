@@ -5,7 +5,7 @@
  */
 
 export const site = {
-  name: "No AI Marketplace",
+  name: "No AI Directory",
   tagline: "Human-made creations.",
   slogan: "Real People. No AI.",
   description:

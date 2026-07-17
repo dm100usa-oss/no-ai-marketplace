@@ -17,7 +17,7 @@ export const directions: Direction[] = [
     active: true,
     shortDescription: "Painters, sculptors, illustrators and concept artists.",
     seoText:
-      "Find artists whose work is made by hand, not generated. This section of No AI Marketplace brings together painters, sculptors, illustrators and concept artists who can show the process behind the piece: sketches, studies, work in progress. Every profile links straight to the artist's own portfolio, gallery or shop, where you can commission or buy directly.",
+      "Find artists whose work is made by hand, not generated. This section of No AI Directory brings together painters, sculptors, illustrators and concept artists who can show the process behind the piece: sketches, studies, work in progress. Every profile links straight to the artist's own portfolio, gallery or shop, where you can commission or buy directly.",
     seoTitle: "Art: human artists, painters, sculptors and illustrators",
     seoDescription:
       "Directory of artists who create by hand, without AI. Browse human-made art and go directly to each artist's own portfolio or shop.",
@@ -125,7 +125,7 @@ export const directions: Direction[] = [
     active: true,
     shortDescription: "Human-made work that does not fit the categories above.",
     seoText:
-      "Not every craft fits a named section, and a directory that only admits the obvious ones leaves out the people worth finding. This section is for human-made work that sits between categories or ahead of them: restorers, calligraphers, instrument builders, puppet makers, tattoo artists, stage and circus performers, and those who teach any of it. The standard is the same as everywhere else on No AI Marketplace: the work is made by a person, and that person can show how. Every profile links straight to the creator's own site, portfolio or shop.",
+      "Not every craft fits a named section, and a directory that only admits the obvious ones leaves out the people worth finding. This section is for human-made work that sits between categories or ahead of them: restorers, calligraphers, instrument builders, puppet makers, tattoo artists, stage and circus performers, and those who teach any of it. The standard is the same as everywhere else on No AI Directory: the work is made by a person, and that person can show how. Every profile links straight to the creator's own site, portfolio or shop.",
     seoTitle: "Other: human-made work beyond the usual categories",
     seoDescription:
       "Directory of human-made work that does not fit a standard category: restoration, calligraphy, instrument making, performance and more. Contact each creator directly.",

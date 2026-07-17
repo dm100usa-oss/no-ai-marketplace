@@ -1,4 +1,4 @@
-# No AI Marketplace
+# No AI Directory
 
 International directory of creators, teams and companies whose work is made
 by people, without generative AI.

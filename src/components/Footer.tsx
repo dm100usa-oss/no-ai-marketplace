@@ -33,7 +33,7 @@ export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 No
               </span>
               <span className="text-[1.1rem] font-extrabold text-white" style={{ fontFamily: "var(--font-display)" }}>
-                AI Marketplace
+                AI Directory
               </span>
             </div>
             <p className="mt-3 text-[0.92rem] leading-relaxed text-white/70">

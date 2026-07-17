@@ -6,7 +6,7 @@ import type { Dictionary } from "@/i18n/types";
  */
 export const en: Dictionary = {
   site: {
-    name: "No AI Marketplace",
+    name: "No AI Directory",
     tagline: "Find talented professionals",
     taglineSub: "who work without AI",
     slogan: "See their work and reach out directly",
@@ -187,7 +187,7 @@ export const en: Dictionary = {
     faqTitle: "Frequently asked questions",
     faq: [
       {
-        q: "What is No AI Marketplace?",
+        q: "What is No AI Directory?",
         a: "An international directory of people, studios and companies whose work is made by humans, not by AI. You browse here, then visit the creator's own site or shop to buy or hire. The site is a showcase, not a shopping cart.",
       },
       {
@@ -220,7 +220,7 @@ export const en: Dictionary = {
   pricing: {
     metaTitle: "Pricing",
     metaDescription:
-      "No AI Marketplace plans: creator, team, company. The first 50 profiles are free until the end of 2026.",
+      "No AI Directory plans: creator, team, company. The first 50 profiles are free until the end of 2026.",
     title: "Pricing",
     intro:
       "One plan per participant type. A creator pays for themselves, a team for the team, a company for the company. You pay to list a profile and nothing else: there is no commission on your work, and clients pay you directly.",
@@ -287,13 +287,13 @@ export const en: Dictionary = {
   join: {
     metaTitle: "Add your profile",
     metaDescription:
-      "Add a profile to No AI Marketplace. The first 50 are free until the end of 2026, then from $5.99/month.",
+      "Add a profile to No AI Directory. The first 50 are free until the end of 2026, then from $5.99/month.",
     title: "Add your profile",
     intro:
       "Be found by buyers looking for work made by people. Add your profile in a few minutes. The first 50 profiles are free until the end of 2026.",
     startNow: "Start now",
     seePricing: "See pricing",
-    whyTitle: "Why be on No AI Marketplace",
+    whyTitle: "Why be on No AI Directory",
     whyPoints: [
       "All buyer traffic goes to your own site, shop or portfolio, not to a middleman.",
       "Your profile is a clean, indexable page built for SEO and generative AI answers.",
@@ -386,16 +386,16 @@ export const en: Dictionary = {
   about: {
     metaTitle: "About the project",
     metaDescription:
-      "No AI Marketplace is an international directory of people, studios and companies who create work, products and services without AI. It is a showcase, not a shop.",
-    title: "About No AI Marketplace",
+      "No AI Directory is an international directory of people, studios and companies who create work, products and services without AI. It is a showcase, not a shop.",
+    title: "About No AI Directory",
     intro:
-      "No AI Marketplace is an international directory of people, studios and companies whose work is made by humans, not by AI. It is a showcase and a source of traffic, not a shop with a cart, not a place where money changes hands.",
+      "No AI Directory is an international directory of people, studios and companies whose work is made by humans, not by AI. It is a showcase and a source of traffic, not a shop with a cart, not a place where money changes hands.",
     whatTitle: "What the site does",
     whatText:
       "A buyer searches or browses the catalog, finds a creator or company, opens their profile, and clicks through to the creator's own site, shop or portfolio. Payment, delivery, communication and revisions all happen there, directly between buyer and creator. We do not sit in the middle.",
     whyTitle: "Why it exists",
     whyText:
-      "As AI generates more of the content, products and services online, the demand for verified human-made work grows. Buyers, brands and agencies want to find creators whose work is genuinely made by hand or by human judgment. Creators, in turn, want to be recognized for that and be easy to find. No AI Marketplace closes both sides of that need.",
+      "As AI generates more of the content, products and services online, the demand for verified human-made work grows. Buyers, brands and agencies want to find creators whose work is genuinely made by hand or by human judgment. Creators, in turn, want to be recognized for that and be easy to find. No AI Directory closes both sides of that need.",
     howTitle: "How profiles get into the catalog",
     howText:
       "The first 50 profiles are free until the end of 2026. After that, listings are paid. Each profile is reviewed before it goes live. Verified creators additionally submit materials (process photos or video, drafts, published work) that we look at by hand. The profile then shows what was reviewed.",
@@ -413,7 +413,7 @@ export const en: Dictionary = {
   contact: {
     metaTitle: "Contact",
     metaDescription:
-      "How to reach No AI Marketplace, for owners of listed profiles, buyers, journalists and partners.",
+      "How to reach No AI Directory, for owners of listed profiles, buyers, journalists and partners.",
     title: "Contact",
     intro:
       "The best way to reach us is by email. We read every message and reply within a few working days.",
@@ -438,13 +438,13 @@ export const en: Dictionary = {
     legalLink: "Content Removal",
     legalText2: ". That page lists what we need to act on a request.",
     footNote:
-      "No AI Marketplace does not run in-site transactions. Purchases and enquiries always happen on the creator's own platform, not here.",
+      "No AI Directory does not run in-site transactions. Purchases and enquiries always happen on the creator's own platform, not here.",
   },
 
   directory: {
     metaTitle: "Directory",
     metaDescription:
-      "Search and browse every active human-made creator, studio and company on No AI Marketplace. Filter by direction, category, country and verification.",
+      "Search and browse every active human-made creator, studio and company on No AI Directory. Filter by direction, category, country and verification.",
     title: "Directory",
     intro:
       "Every active profile in the catalog: people, studios and companies who create work, products and services without AI. Search by name, category or country, and open a card to jump straight to the creator's own platform.",
@@ -480,7 +480,7 @@ export const en: Dictionary = {
   verified: {
     metaTitle: "Verified profiles",
     metaDescription:
-      "Creators and businesses reviewed based on submitted materials. Verified human-made process on No AI Marketplace.",
+      "Creators and businesses reviewed based on submitted materials. Verified human-made process on No AI Directory.",
     title: "Verified profiles",
     intro:
       "These creators and businesses have been reviewed based on submitted materials. Verification is done by hand and reflects the human-made process shown to us. It is not a legal guarantee.",
@@ -513,7 +513,7 @@ export const en: Dictionary = {
   categoriesPage: {
     metaTitle: "All categories",
     metaDescription:
-      "Every category on No AI Marketplace, grouped by direction. Find human-made creators by exactly what they do.",
+      "Every category on No AI Directory, grouped by direction. Find human-made creators by exactly what they do.",
     title: "All categories",
     intro:
       "Every category across all directions, each with its own page. Find human creators by exactly what they make.",
@@ -523,7 +523,7 @@ export const en: Dictionary = {
   directionsPage: {
     metaTitle: "Directions",
     metaDescription:
-      "Browse the major directions of No AI Marketplace: art, literature, design, photo and video, writing, music, development, architecture and craft. People and studios who create without AI.",
+      "Browse the major directions of No AI Directory: art, literature, design, photo and video, writing, music, development, architecture and craft. People and studios who create without AI.",
     title: "Directions",
     intro:
       "The major directions of the catalog. Each one opens into its professions, where you find people and studios who create without AI.",
@@ -559,7 +559,7 @@ export const en: Dictionary = {
   standards: {
     metaTitle: "Human-Made standards",
     metaDescription:
-      "What counts as human-made on No AI Marketplace, what does not, and where hybrid work fits.",
+      "What counts as human-made on No AI Directory, what does not, and where hybrid work fits.",
     title: "Human-Made standards",
     intro:
       "A short, honest description of what we mean by human-made, so creators know what belongs here and buyers know what to expect.",
@@ -603,7 +603,7 @@ export const en: Dictionary = {
   faqPage: {
     metaTitle: "Questions and answers",
     metaDescription:
-      "How to find professionals who work without generative AI, how to work with them directly, and how the No AI Marketplace directory works.",
+      "How to find professionals who work without generative AI, how to work with them directly, and how the No AI Directory directory works.",
     title: "Questions and answers",
     intro:
       "Straight answers to the questions people actually ask about hiring, and about working, without generative AI. If a question is missing, the catalog and the profiles usually answer it in practice.",
@@ -613,7 +613,7 @@ export const en: Dictionary = {
         items: [
           {
             q: "Where can I find professionals who work without generative AI?",
-            a: "Right here. No AI Marketplace is an international directory of professionals who create work and services without the use of generative AI. You can browse by category, search by name or skill, and open a full profile for each person or studio. Every profile links straight to the professional's own site and channels, so you reach out to them directly.",
+            a: "Right here. No AI Directory is an international directory of professionals who create work and services without the use of generative AI. You can browse by category, search by name or skill, and open a full profile for each person or studio. Every profile links straight to the professional's own site and channels, so you reach out to them directly.",
           },
           {
             q: "How do I choose the right professional?",
@@ -681,7 +681,7 @@ export const en: Dictionary = {
   method: {
     metaTitle: "Our method",
     metaDescription:
-      "How No AI Marketplace defines human-made work without generative AI, how professionals present themselves, and how profiles are reviewed and verified by hand.",
+      "How No AI Directory defines human-made work without generative AI, how professionals present themselves, and how profiles are reviewed and verified by hand.",
     title: "Our method",
     intro:
       "How this directory works, what we mean by work made without generative AI, and how we keep it honest for both sides. Plain language, no fine print.",
@@ -689,7 +689,7 @@ export const en: Dictionary = {
       {
         heading: "The idea in one line",
         paragraphs: [
-          "No AI Marketplace is an international directory of professionals who create professional work and services without the use of generative AI. Professionals present themselves and their portfolios; clients find them through search and the catalog and work with them directly, with no middlemen and no commissions.",
+          "No AI Directory is an international directory of professionals who create professional work and services without the use of generative AI. Professionals present themselves and their portfolios; clients find them through search and the catalog and work with them directly, with no middlemen and no commissions.",
         ],
       },
       {
@@ -751,7 +751,7 @@ export const en: Dictionary = {
   whyUs: {
     metaTitle: "Why us",
     metaDescription:
-      "Why No AI Marketplace is the reliable place to find and hire professionals who work without generative AI, and to be found by clients who value human work.",
+      "Why No AI Directory is the reliable place to find and hire professionals who work without generative AI, and to be found by clients who value human work.",
     title: "Why us",
     intro:
       "Why this directory, and not a general marketplace or an open search. What we focus on, and what that focus is worth to both sides.",
@@ -827,7 +827,7 @@ export const en: Dictionary = {
     processStep3Creator:
       "Work is done by hand, personally; process updates and drafts are shared as agreed.",
     processStep4:
-      "Payment, delivery and revisions happen directly with {kind}, not on No AI Marketplace.",
+      "Payment, delivery and revisions happen directly with {kind}, not on No AI Directory.",
     kindStudio: "the studio",
     kindTeam: "the team",
     kindCreator: "the creator",
@@ -940,7 +940,7 @@ export const en: Dictionary = {
     privacy: {
       title: "Privacy Policy",
       intro:
-        "This page explains how No AI Marketplace handles personal data, cookies and third-party services (Tally forms, Stripe payments, analytics, hosting on Vercel). We collect the minimum needed to run the directory and never sell your data.",
+        "This page explains how No AI Directory handles personal data, cookies and third-party services (Tally forms, Stripe payments, analytics, hosting on Vercel). We collect the minimum needed to run the directory and never sell your data.",
     },
     terms: {
       title: "Terms of Use",
@@ -1023,12 +1023,12 @@ export const en: Dictionary = {
     directions: {
       title: "Directions",
       description:
-        "Browse the major directions of No AI Marketplace: art, writing, design, photography, and the people and studios who create without AI.",
+        "Browse the major directions of No AI Directory: art, writing, design, photography, and the people and studios who create without AI.",
     },
     categories: {
       title: "All categories",
       description:
-        "Every category on No AI Marketplace, grouped by direction. Find human-made creators by exactly what they do.",
+        "Every category on No AI Directory, grouped by direction. Find human-made creators by exactly what they do.",
     },
   },
 };

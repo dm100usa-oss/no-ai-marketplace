@@ -28,7 +28,7 @@ export function ReportForm({
     const body = encodeURIComponent(
       `Reported profile: ${profileName}\nProfile URL: ${profileSlug}\n\nReason: ${reason}\n\nDetails:\n${details.trim() || "(none)"}\n`,
     );
-    window.location.href = `mailto:hello@no-ai-marketplace.example?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:hello@no-ai-directory.example?subject=${subject}&body=${body}`;
     setStatus("sent");
   };
 

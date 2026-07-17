@@ -5,7 +5,7 @@ import { getDictionary } from "@/i18n";
 import { DEFAULT_LOCALE, isLocale, localizedPath, altLanguages } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
 
-const CONTACT_EMAIL = "hello@no-ai-marketplace.example";
+const CONTACT_EMAIL = "hello@no-ai-directory.example";
 
 export async function generateMetadata({
   params,

@@ -1,5 +1,5 @@
 /**
- * No AI Marketplace — data model.
+ * No AI Directory — data model.
  * Full model laid down from the start per TZ Part IV, even where
  * fields are not yet populated. Cheap to lay down, costly to retrofit.
  */

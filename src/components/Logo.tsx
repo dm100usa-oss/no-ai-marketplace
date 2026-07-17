@@ -1,7 +1,7 @@
 import { LocaleLink } from "./LocaleLink";
 import type { Locale } from "@/i18n/config";
 
-/** Wordmark logo. "No AI" carries the accent, "Marketplace" quieter. */
+/** Wordmark logo. "No AI" carries the accent, "Directory" quieter. */
 export function Logo({
   lang,
   ariaLabel,
@@ -28,7 +28,7 @@ export function Logo({
           No AI
         </span>
         <span className="text-[1.15rem] font-extrabold leading-none" style={{ color: "var(--color-ink)" }}>
-          Marketplace
+          Directory
         </span>
       </span>
     </LocaleLink>
