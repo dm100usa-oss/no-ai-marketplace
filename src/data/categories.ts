@@ -13,7 +13,7 @@ export const categories: Category[] = [
     direction: "art",
     shortDescription: "Painters working in oil, acrylic, watercolour and mixed media.",
     seoText:
-      "Painters here work with real brushes and real paint. This category covers oil, acrylic, watercolour, gouache and mixed media, from studies to large gallery canvases, sold as originals or prints. Every painter links to their own studio site, gallery or shop, where you can buy an existing piece or commission a new one directly.",
+      "For a painting made by an artist with real paint rather than generated, this is where to look. The category holds painters working in oil, acrylic, watercolour, gouache and mixed media, authors of portraits, landscapes, still life and abstract work, and artists who take commissions and paint walls: murals, facades, interiors and decorative panels. Paint has a body: the stroke sits in layers, the canvas shows through, and a year on the picture looks different from the day it was finished. A file does no such thing, and what hangs on your wall is an object.",
     seoTitle: "Painters — original human-made painting",
     seoDescription:
       "Find painters who work by hand in oil, acrylic and watercolour. Buy originals or commission directly from the artist.",
@@ -24,7 +24,7 @@ export const categories: Category[] = [
     direction: "art",
     shortDescription: "Sculptors working in clay, stone, metal and wood.",
     seoText:
-      "Sculptors on the platform shape physical material by hand: clay, stone, wood, metal, plaster. This category covers figurative and abstract sculpture, busts, reliefs and object art, made as originals or limited runs. Each sculptor links to their own studio site or shop for direct purchase and commissions.",
+      "Looking for sculpture shaped or carved by hand rather than printed from a generated model? Start here. The category holds sculptors working in clay, wood, stone, metal and plaster, authors of portrait, monumental and interior sculpture, and makers of contemporary forms, figurines and miniatures. A sculptor works against a material that answers back: stone splits along its own fault, clay slumps, wood runs with the grain. The work comes out of that argument, and nothing generated ever has the argument.",
     seoTitle: "Sculptors — human-made sculpture in clay, stone and metal",
     seoDescription:
       "Directory of sculptors working by hand in clay, stone, wood and metal. Commission or buy sculpture directly from the artist.",
@@ -35,7 +35,7 @@ export const categories: Category[] = [
     direction: "art",
     shortDescription: "Illustrators who draw by hand across styles and media.",
     seoText:
-      "Illustrators here draw by hand, without AI generation. This category covers editorial, book, children's, product and decorative illustration in pen and ink, watercolour, gouache, digital hand-drawing and mixed technique. Each illustrator links to their own portfolio or shop, where you can commission a piece or buy prints directly.",
+      "Looking for original illustration drawn by an artist from scratch rather than generated? This category will help you find the right one. Here you will find book illustrators and children's book artists, cover and educational illustrators, specialists in advertising and commercial illustration for packaging, websites, magazines and social media, and artists who design characters and mascots and draw them in a style you would recognise anywhere. Illustrating a text is a reading of it: the artist decides which moment to show and what to leave out, and that decision comes from understanding the story rather than from a description in a prompt.",
     seoTitle: "Illustrators — human-made, hand-drawn illustration",
     seoDescription:
       "Find illustrators who draw by hand, without AI. Browse human-made illustration and commission each artist directly.",
@@ -46,7 +46,7 @@ export const categories: Category[] = [
     direction: "art",
     shortDescription: "Concept artists designing characters, creatures and worlds.",
     seoText:
-      "Concept artists here design the look of games, films and animation by hand: characters, creatures, environments, props and key art. This category is for studios and developers who need a coherent visual world someone can defend, extend and iterate on. Each artist links to their own portfolio for direct commissions.",
+      "For concept work on a character, an environment or a prop for a game, a film or animation, invented by an artist rather than generated, look here. The category holds character concept artists, environment and location specialists, authors of vehicle and prop concepts, and artists who lead the visual development of games, films and animated projects. A concept is not a nice picture, it is a working document: a modeller builds from it and a lighting artist reads the intent in it. It has to explain how the world holds together and survive the question of why it is like that.",
     seoTitle: "Concept Artists — human character, creature and world design",
     seoDescription:
       "Directory of concept artists who design characters, creatures and environments by hand, without AI. Commission each artist directly.",
@@ -58,7 +58,7 @@ export const categories: Category[] = [
     direction: "literature",
     shortDescription: "Novelists and short-story writers.",
     seoText:
-      "Fiction authors here write their own manuscripts. This category covers novels, novellas and short stories across genres, from literary fiction to science fiction, fantasy, crime and romance. Each author links to their own site, publisher page or shop, where you can read samples, buy the book or reach them directly.",
+      "For prose written by a living author rather than generated, this is where to look. The category holds novelists and writers of short stories, authors of crime, science fiction and historical fiction, and writers who take books on commission, work as ghostwriters, and carry a manuscript from draft to publishable book. A novel holds together because the author knows more about people than the text says out loud. Generated prose can assemble sentences, but it has nothing to withhold, and prose without a second floor does not read.",
     seoTitle: "Fiction Authors — human-written novels and short stories",
     seoDescription:
       "Directory of novelists and short-story writers who write without AI. Find human-written fiction and contact each author directly.",
@@ -69,7 +69,7 @@ export const categories: Category[] = [
     direction: "literature",
     shortDescription: "Authors of research, memoir, history and practical books.",
     seoText:
-      "Non-fiction authors here write from their own knowledge and research. This category covers history, science, biography and memoir, business and practical books, written by people who can source every claim and answer for it. Each author links to their own site, publisher page or shop for direct contact.",
+      "Need a book about work you know from the inside, written by a person rather than generated? Start here. The category holds authors of business and expert books, biographies and memoirs, specialists in history, psychology and popular science, and writers who turn someone else's experience into a coherent book. Non-fiction is not judged on smoothness, it is judged on whether it holds up: the author answers for every fact, knows where it came from, and can tell the difference between what is established and what everyone simply repeats. A generator cannot see that difference.",
     seoTitle: "Non-Fiction Authors — human-written research, history and memoir",
     seoDescription:
       "Directory of non-fiction authors who research and write without AI. Find human-written books and contact each author directly.",
@@ -80,7 +80,7 @@ export const categories: Category[] = [
     direction: "literature",
     shortDescription: "Writers of picture books and children's fiction.",
     seoText:
-      "Children's authors here write picture books, early readers and middle-grade fiction by hand. This category is for parents, teachers and publishers looking for stories written by a person who understands how children actually read. Each author links to their own site or publisher page for direct contact.",
+      "For a children's book written by an author rather than generated, this is the place. The category holds authors of fairy tales and books for the very young, writers of teenage fiction, and people who write educational stories where the knowledge arrives through the plot rather than through a paragraph. Children's books are tested by the most honest audience alive: a child does not finish a book out of politeness. A writer who has read the pages aloud to a real child and watched where the attention went knows something about that text no generator does.",
     seoTitle: "Children's Authors — human-written picture books and children's fiction",
     seoDescription:
       "Directory of children's authors who write without AI. Find human-written picture books and children's fiction, and contact each author directly.",
@@ -91,7 +91,7 @@ export const categories: Category[] = [
     direction: "literature",
     shortDescription: "Poets writing and publishing their own work.",
     seoText:
-      "Poets here write their own verse. This category covers collections, individual poems, commissioned pieces for occasions and spoken word. Each poet links to their own site, publisher or shop, where you can read, buy or commission directly.",
+      "Looking for poetry written by a poet rather than assembled to a pattern? Start here. The category holds poets writing lyric verse and their own collections, authors of children's poems, specialists in verse for occasions and for advertising, and writers of song lyrics. In a poem the meaning rides on sound: the rhyme, the pause and the broken beat carry as much as the words. Generated lines tend to be correct and empty, because they were assembled from likelihoods rather than from needing to say it exactly that way.",
     seoTitle: "Poets — human-written poetry and verse",
     seoDescription:
       "Directory of poets who write without AI. Read and commission human-written poetry directly from the author.",
@@ -103,7 +103,7 @@ export const categories: Category[] = [
     direction: "graphics-and-design",
     shortDescription: "Graphic designers for identity, print and packaging.",
     seoText:
-      "Graphic designers here make decisions themselves and can explain each one. This category covers brand identity, logos, packaging, print, merch and social graphics, from independent designers and small studios. Each profile links to the designer's own site or portfolio for direct commissions.",
+      "Looking for a logo, a brand identity, packaging or advertising work drawn by a designer rather than assembled by a generator out of other people's work? This is where to look. The category holds identity designers who build the logo, the colour system, the typography and the brand book, advertising designers responsible for banners, posters, brochures, presentations and outdoor work, and print specialists working on catalogues, magazines, menus, business cards and packaging. A logo is not a picture, it is a decision: it has to survive on a shopfront and in an app icon, in one colour and on fabric, and only the person who designed it that way can tell you why it will.",
     seoTitle: "Graphic Designers — human identity, print and packaging design",
     seoDescription:
       "Directory of graphic designers who design without AI: identity, logos, packaging and print. Reach each designer directly.",
@@ -114,7 +114,7 @@ export const categories: Category[] = [
     direction: "graphics-and-design",
     shortDescription: "Interface and experience designers for apps and sites.",
     seoText:
-      "UI/UX designers here research, structure and design interfaces that real people can actually use. This category covers product design, user flows, wireframes, design systems and prototypes for web and mobile. Each profile links to the designer's own portfolio or case studies for direct contact.",
+      "Need an interface for a website, a mobile app or an internal system, thought through by a designer rather than dropped into a template? Start here. The category holds web designers working on corporate sites, online shops, landing pages and catalogues, mobile designers building for iOS and Android along with prototypes, and product designers responsible for SaaS, customer accounts, dashboards and internal tools like CRM. A screen that looks good and a screen that works are two different things: good interface design grows out of watching where real people hesitate and give up, and no average of the internet contains that.",
     seoTitle: "UI/UX Designers — human interface and product design",
     seoDescription:
       "Directory of UI/UX designers who design interfaces without AI. Find human-made product design and contact each designer directly.",
@@ -125,7 +125,7 @@ export const categories: Category[] = [
     direction: "graphics-and-design",
     shortDescription: "3D modellers for games, print, product and animation.",
     seoText:
-      "3D artists here build clean, correct geometry by hand. This category covers modelling, texturing and rendering for games, animation, product visualisation and 3D printing, from people who understand topology and can hand over a model that actually works in production. Each profile links to the artist's own portfolio.",
+      "For a 3D character, an environment or an object sculpted by an artist rather than produced by a generator, this is the place to look. The category holds character artists and digital sculptors, environment and prop artists, authors of game assets, and specialists in 3D animation, texturing and rendering for games, film, advertising and product visualisation. A model has to do more than look right in one frame: it needs clean topology, a sensible mesh and a weight the engine will accept, and only the person who took it from the first polygon knows why it is built that way.",
     seoTitle: "3D Artists — human 3D modelling for games, print and product",
     seoDescription:
       "Directory of 3D artists who model by hand, without AI. Find production-ready human-made 3D work and hire each artist directly.",
@@ -136,7 +136,7 @@ export const categories: Category[] = [
     direction: "graphics-and-design",
     shortDescription: "Product and industrial 3D designers: parts, packaging, print-ready models.",
     seoText:
-      "3D designers here work on things that have to be made, not only rendered. This category covers product and industrial design, packaging, parts and assemblies, technical visualisation and models prepared for 3D printing or manufacture. Where a 3D artist is hired to make a scene look right, a 3D designer is hired to make an object work: wall thickness, tolerances, materials, a file the factory can actually use. Each profile links to the designer's own portfolio.",
+      "If a part, a product or a package has to be manufactured rather than just rendered, this is where to look. The category holds product and industrial designers working on objects, parts and assemblies, packaging and label designers, authors of technical and product visualisation, and people who prepare models for 3D printing and for the factory floor. The difference from a 3D artist is simple: an artist is hired to make a scene look right, a designer is hired to make an object work. Wall thickness, tolerances, how the material shrinks, a file the factory will actually accept: none of that is settled in a render. It is settled by the first batch, and a person answers for it.",
     seoTitle: "3D Designers — human product and industrial 3D design",
     seoDescription:
       "Directory of 3D designers who model products, parts and packaging by hand, without AI. Find manufacture-ready human-made 3D design and hire each designer directly.",
@@ -148,7 +148,7 @@ export const categories: Category[] = [
     direction: "photo-and-video",
     shortDescription: "Photographers shooting real people, products and events.",
     seoText:
-      "Photographers here work behind a real camera. This category covers portrait, product, e-commerce, event, wedding, documentary and reportage photography. Each photographer links to their own site or portfolio for direct booking.",
+      "Looking for photographs of real people, products or events, taken by a photographer rather than generated? This is where to look. The category holds portrait photographers shooting personal, business and family work, commercial specialists covering product, e-commerce and catalogue shoots, architectural photographers working with interiors, property, hotels and restaurants, and reportage photographers covering weddings, conferences and corporate events. A photograph is evidence: this person was there, the light fell that way, and it happened. A generated image can reproduce everything except that.",
     seoTitle: "Photographers — human photography, real cameras",
     seoDescription:
       "Directory of photographers who shoot real work, without AI generation. Find human-made photography and book each photographer directly.",
@@ -159,7 +159,7 @@ export const categories: Category[] = [
     direction: "photo-and-video",
     shortDescription: "Editors cutting long-form, ads, Reels and Shorts.",
     seoText:
-      "Video editors here cut real footage on a real timeline. This category covers YouTube long-form, commercials, short-form for Reels, Shorts and TikTok, podcasts and documentary edits, from people who understand pacing and retention. Each editor links to their own reel or portfolio for direct booking.",
+      "For an advert, a film, an interview or social content cut by a person rather than by an automatic trimmer, start here. The category holds commercial editors, YouTube and social media specialists, film and series editors, and people who assemble interviews and documentaries. Editing is rhythm: the same scene cut two frames early works, cut two frames late it does not. That call is not made by a rule, it is made by someone who has watched all the footage and knows what the story needs.",
     seoTitle: "Video Editors — human editing for YouTube, ads and short-form",
     seoDescription:
       "Directory of video editors who cut real footage without AI. Find human-made editing and book each editor directly.",
@@ -170,7 +170,7 @@ export const categories: Category[] = [
     direction: "photo-and-video",
     shortDescription: "Motion designers and frame-by-frame animators.",
     seoText:
-      "Motion designers and 2D animators here animate by hand. This category covers explainers, logo animation, titles and intros, and frame-by-frame character animation. Each profile links to the animator's own reel or portfolio for direct commissions.",
+      "Need animation, titles, a title sequence or an explainer made by an animator rather than a generator? This is the place. The category holds 2D and hand-drawn animators, stop motion specialists, character animators, and authors of explainer films, titles and idents. Animation runs on weight and timing: an object has to accelerate and settle the way objects do, and a character has to move as though it intends something. Those fractions of a second are set by hand, frame by frame.",
     seoTitle: "Motion & 2D Animators — human animation and motion design",
     seoDescription:
       "Directory of motion designers and 2D animators who animate by hand, without AI. Find human-made animation and hire each artist directly.",
@@ -181,7 +181,7 @@ export const categories: Category[] = [
     direction: "photo-and-video",
     shortDescription: "Colourists grading footage for film, ads and video.",
     seoText:
-      "Colourists here grade real footage with a trained eye. This category covers colour correction and creative grading for film, commercials, music videos and online content. Each colourist links to their own reel for direct booking.",
+      "For colour grading on a film, an advert, a music video or online content, done by a colourist rather than a filter, look here. The category holds film and series colourists, advertising and music video specialists, and people grading commercial video and YouTube work. Colour is not a setting, it is a statement: it fixes the hour, the era and the mood of a scene, and it decides whether the audience believes any of it. That call comes from a person who has seen the whole cut and knows where the story is going.",
     seoTitle: "Colourists — human colour grading for film and video",
     seoDescription:
       "Directory of colourists who grade footage by hand. Find human-made colour work and book each colourist directly.",
@@ -193,7 +193,7 @@ export const categories: Category[] = [
     direction: "writing-and-translation",
     shortDescription: "Copywriters for sales pages, ads and content.",
     seoText:
-      "Copywriters here write from real understanding of the product and the buyer. This category covers landing and sales pages, email sequences, ad copy, expert articles and social posts, written by people who defend every claim. Each copywriter links to their own site or portfolio for direct hire.",
+      "Need copy for a website, an advert or an email sequence, written by someone who understood your business rather than generated? This is where to look. The category holds copywriters working on sites, landing pages, ads, email sequences and product descriptions, authors of articles, blogs, interviews and social content, and SEO specialists writing articles, category pages and product cards. Good copy starts with questions for the client: what makes you different from the shop next door, who is buying, and what is stopping them. A generator asks none of that and writes something that suits anyone, which is to say nobody.",
     seoTitle: "Copywriters — human-written sales copy and content",
     seoDescription:
       "Directory of copywriters who write without AI. Find human-written copy with real judgement behind it and hire each writer directly.",
@@ -204,7 +204,7 @@ export const categories: Category[] = [
     direction: "writing-and-translation",
     shortDescription: "Editors and proofreaders for manuscripts and copy.",
     seoText:
-      "Editors and proofreaders here read closely and fix what is actually wrong: structure, argument, grammar, consistency. This category covers manuscript editing, developmental editing, copy-editing and proofreading. Each editor links to their own site or portfolio for direct hire.",
+      "For an editor or proofreader who will read closely and understand the intent rather than run a checker, look here. The category holds literary editors, book and manuscript specialists, commercial and academic editors, and proofreaders responsible for spelling, punctuation, typography and consistency. An editor earns their fee where the text is technically correct and still not working: the argument comes apart, the chapter opens in the wrong place. Seeing that means holding the whole thing in your head and knowing what the author was trying to do.",
     seoTitle: "Editors & Proofreaders — human editing and proofreading",
     seoDescription:
       "Directory of editors and proofreaders who work by hand. Find human editing for manuscripts and copy, and hire each editor directly.",
@@ -215,7 +215,7 @@ export const categories: Category[] = [
     direction: "writing-and-translation",
     shortDescription: "Translators and localisers across language pairs.",
     seoText:
-      "Translators here carry meaning across languages, not just words. This category covers literary translation, business and technical translation, and localisation adapted to the target culture. Each translator links to their own site or portfolio for direct hire.",
+      "Looking for translation done by someone who understands both cultures rather than a machine gloss? Start here. The category holds literary translators, specialists in business, legal, technical and medical translation, website translators, and localisers who adapt apps, games, books and advertising to a country and its habits. Translation begins where the dictionary ends: an idiom, a joke and a polite formula cannot be translated, only reinvented in the other language. Doing that means knowing what people laugh at there and what counts as rude.",
     seoTitle: "Translators — human translation and localisation",
     seoDescription:
       "Directory of translators and localisers who translate without AI. Find human translation and hire each translator directly.",
@@ -226,7 +226,7 @@ export const categories: Category[] = [
     direction: "writing-and-translation",
     shortDescription: "Scriptwriters for film, video, games and quests.",
     seoText:
-      "Scriptwriters here build story and dialogue by hand. This category covers screenplays, video scripts, game narrative, quests and branching dialogue. Each writer links to their own site or portfolio for direct hire.",
+      "For a script for a film, a video, a game or the stage, written by an author rather than generated, this is the place. The category holds screenwriters for features and shorts, authors of commercial and corporate scripts, game narrative specialists working on quests and branching dialogue, and playwrights writing for theatre, musicals and adaptation. A script is a blueprint for time: a line has to sound like people talking, and a scene has to end one beat before the audience is ready to leave. That sense of rhythm is learned in a room with an audience, not in a dataset.",
     seoTitle: "Scriptwriters — human scripts for film, video and games",
     seoDescription:
       "Directory of scriptwriters who write scripts and game narrative without AI. Find human-written story work and hire each writer directly.",
@@ -238,7 +238,7 @@ export const categories: Category[] = [
     direction: "music-and-audio",
     shortDescription: "Voice actors and narrators recording live.",
     seoText:
-      "Voice actors here record with a real voice in a real room. This category covers commercial voice-over, audiobook narration, dubbing, character voices and e-learning. Each actor links to their own demo reel for direct booking.",
+      "For a real voice for an advert, an audiobook or a dub rather than synthesis, look here. The category holds advertising and corporate voice artists, audiobook narrators, documentary and e-learning voices, telephone system specialists, and dub actors for film, series, games and animation. Synthesis learned to pronounce the words correctly. It has not learned to leave the pause where the character finds it hard to speak. An actor knows what is happening to the person between the lines, and that is what you can hear.",
     seoTitle: "Voice Actors — human voice-over and narration",
     seoDescription:
       "Directory of voice actors and narrators who record live, without synthetic voices. Book each actor directly.",
@@ -249,7 +249,7 @@ export const categories: Category[] = [
     direction: "music-and-audio",
     shortDescription: "Composers and musicians writing and playing original work.",
     seoText:
-      "Composers and musicians here write and play their own music. This category covers original scores and soundtracks, songs, beats, session performance and custom tracks. Each profile links to the musician's own site or portfolio for direct commissions.",
+      "Need music written and played by a person rather than generated? This is where to look. The category holds composers writing for film, advertising, games, theatre and podcasts, songwriters working on songs, melodies and jingles, arrangers handling orchestration and preparing a piece for recording, and session musicians for studio work, live performance and individual parts. Music lives in the imprecision: slightly ahead of the beat, a note taken a shade differently. That is exactly what makes a performance alive, and exactly what generation averages away first.",
     seoTitle: "Composers & Musicians — human-written original music",
     seoDescription:
       "Directory of composers and musicians who write and play without AI generation. Commission original human-made music directly.",
@@ -260,7 +260,7 @@ export const categories: Category[] = [
     direction: "music-and-audio",
     shortDescription: "Sound designers creating custom effects and audio worlds.",
     seoText:
-      "Sound designers here record and build sound from scratch. This category covers custom effects for games and film, foley, ambience and audio branding. Each profile links to the designer's own reel for direct booking.",
+      "For sound on a film, a game or an advert, built by a sound designer rather than pulled from a stock library, start here. The category holds film and game sound designers, interface sound specialists, authors of atmospheres and effects, and people who build the sound of a scene from nothing. Good sound is almost never a recording of what is on screen: footsteps in snow are cornflour in a bag, and fire is often cellophane. The sound designer invents what to build the illusion from, and that substitution comes out of experience rather than out of a catalogue search.",
     seoTitle: "Sound Designers — human sound effects and audio design",
     seoDescription:
       "Directory of sound designers who create custom effects by hand. Find human-made sound design and book each specialist directly.",
@@ -271,7 +271,7 @@ export const categories: Category[] = [
     direction: "music-and-audio",
     shortDescription: "Engineers mixing, mastering and cleaning audio.",
     seoText:
-      "Audio engineers here mix and master with trained ears. This category covers mixing, mastering, audio restoration and podcast editing. Each engineer links to their own site or portfolio for direct booking.",
+      "Looking for recording, mixing or mastering done by an engineer rather than automatic processing? This is the place. The category holds studio recording engineers, mixing and mastering specialists, audio restoration and clean-up experts, and people who prepare podcasts and finish sound for video. A mix is a decision about what matters in this song and what has to move behind it. An automatic tool levels everything toward the middle; a person listens to the whole thing and takes away what is in the way so the important part can be heard.",
     seoTitle: "Audio Engineers — human mixing, mastering and podcast editing",
     seoDescription:
       "Directory of audio engineers who mix and master by hand. Find human audio work and book each engineer directly.",
@@ -283,7 +283,7 @@ export const categories: Category[] = [
     direction: "development-and-it",
     shortDescription: "Developers building sites, stores and web apps.",
     seoText:
-      "Web developers here design the architecture themselves and understand every line they ship. This category covers websites, online stores, web applications and front-end work, from people who can explain their decisions and fix what they built. Each developer links to their own site, repository or portfolio.",
+      "Looking for a corporate site, an online shop, a web service or an internal application built by a developer rather than generated by a neural network? This is where to look. The category holds frontend developers who build interfaces in HTML, CSS, JavaScript, React and Vue, backend developers responsible for the server side, APIs, databases and integrations, and full-stack developers able to carry a project from the first line of code through launch and the years of support that follow. Generated code tends to hold up right until the first thing nobody anticipated: explaining the decisions and fixing what broke is work only the person who made those decisions can do.",
     seoTitle: "Web Developers — human-written sites, stores and web apps",
     seoDescription:
       "Directory of web developers who write and answer for their own code. Find developers who understand and support what they build.",
@@ -294,7 +294,7 @@ export const categories: Category[] = [
     direction: "development-and-it",
     shortDescription: "Developers building iOS and Android applications.",
     seoText:
-      "Mobile developers here build apps they can maintain. This category covers native iOS and Android and cross-platform applications, from people who own the architecture and support the result. Each developer links to their own site, repository or portfolio.",
+      "For an iOS or Android app written by a developer rather than assembled by a generator, start here. The category holds iOS and Android developers, cross-platform specialists, and people who handle service integrations, store submission and support after release. An app has to survive: the operating system moves on, the store changes its rules, somebody else's service breaks, and each time it is a person who remembers how the thing is built inside who puts it right.",
     seoTitle: "Mobile Developers — human-written iOS and Android apps",
     seoDescription:
       "Directory of mobile developers who write and answer for their own code. Find developers who understand and support what they build.",
@@ -305,7 +305,7 @@ export const categories: Category[] = [
     direction: "development-and-it",
     shortDescription: "Developers programming game logic, physics and mechanics.",
     seoText:
-      "Game developers here write the systems behind the game: mechanics, physics, AI behaviour, tools and gameplay logic. This category is for studios and creators who need code that holds together under real play. Each developer links to their own site, repository or portfolio.",
+      "Need a game, or part of one, made by a developer rather than assembled from generated pieces? This is the place. The category holds game programmers, gameplay and mechanics specialists, Unity and Unreal Engine developers, and authors of mobile and PC games. A game lives or dies on feel: the jump has to have weight, the hit has to land in your hands, and a few frames of timing decide whether any of it is fun. That gets tuned by hand over hundreds of passes, and nothing generated can tell you where to stop.",
     seoTitle: "Game Developers — human-written game logic and mechanics",
     seoDescription:
       "Directory of game developers who write and answer for their own code. Find developers who understand and support what they build.",
@@ -316,7 +316,7 @@ export const categories: Category[] = [
     direction: "development-and-it",
     shortDescription: "Developers building bots, parsers and automation.",
     seoText:
-      "Automation developers here build tools that keep running. This category covers Telegram and chat bots, scrapers and parsers, integrations and workflow automation, written by people who handle the edge cases. Each developer links to their own site, repository or portfolio.",
+      "To automate the repetitive part of a job, connect services that were never meant to talk, or build a tool for one specific problem, look here. The category holds business process automation specialists, service integration developers, authors of bots and scripts, and people who process data and build internal tools for a particular company. Automation does not start with code, it starts with working out how the job is actually done, exceptions included, and the exceptions are never written down anywhere. The only way to find them is to ask the people doing the work.",
     seoTitle: "Scripts & Automation — human-written bots, parsers and integrations",
     seoDescription:
       "Directory of developers who build bots, parsers and automation by hand. Find developers who understand and support what they build.",
@@ -327,7 +327,7 @@ export const categories: Category[] = [
     direction: "development-and-it",
     shortDescription: "Specialists reviewing code for bugs and vulnerabilities.",
     seoText:
-      "Code auditors here read code line by line and tell you what is actually wrong. This category covers code review, bug hunting, security assessment and rescue of projects that stopped working and nobody can explain why. Each specialist links to their own site, repository or portfolio.",
+      "For a second pair of eyes on someone else's code, a hunt for a bug, or a security review, this is where to look. The category holds code quality auditors, bug hunters and architecture reviewers, performance specialists, and experts in security audit, vulnerability testing and hardening sites and applications. An audit is not a run through a checklist: the danger usually sits between the lines, in assumptions nobody wrote down. Finding those means asking the developer questions and understanding what the answers imply.",
     seoTitle: "Code Audit & Security — human code review and bug hunting",
     seoDescription:
       "Directory of specialists who audit code by hand: bugs, vulnerabilities and rescue of broken projects. Contact each specialist directly.",
@@ -339,7 +339,7 @@ export const categories: Category[] = [
     direction: "architecture-and-interiors",
     shortDescription: "Designers producing plans, layouts and material selection.",
     seoText:
-      "Interior designers here draw real plans for real rooms. This category covers layouts, technical drawings, material and finish selection, lighting and full project supervision, made by people who account for the actual building and budget. Each designer links to their own site or portfolio for direct contact.",
+      "For an interior for a flat, a house, an office or a restaurant, worked out by a designer rather than assembled from pictures, look here. The category holds residential interior designers, specialists in commercial spaces such as offices, restaurants, shops and hotels, and people who run a project end to end: concept, layout, materials, site supervision and decoration. A good render and living in the room are different things: the door has to open, the socket has to be where it is needed, and the material has to last ten years. That is settled on site, not on screen.",
     seoTitle: "Interior Designers — human plans, layouts and material selection",
     seoDescription:
       "Directory of interior designers who design without AI. Find human-made plans and contact each designer directly.",
@@ -350,7 +350,7 @@ export const categories: Category[] = [
     direction: "architecture-and-interiors",
     shortDescription: "Designers planning gardens, plots and outdoor spaces.",
     seoText:
-      "Landscape designers here plan for the real site: soil, light, climate, water and how the planting will look in five years. This category covers garden design, plot planning, planting schemes and hardscaping. Each designer links to their own site or portfolio for direct contact.",
+      "Need a garden, a terrace or grounds designed by a person rather than generated? Start here. The category holds garden designers, specialists in public spaces and terraces, and people working on planting, plant selection and landscape lighting. A garden is the only project that is not delivered on the day the work ends but five years later: the tree grows and takes the view, the perennial spreads or dies. You are not designing a picture, you are designing time, and that means knowing these plants and this soil.",
     seoTitle: "Landscape Designers — human garden and plot design",
     seoDescription:
       "Directory of landscape designers who plan real sites without AI. Find human-made landscape design and contact each designer directly.",
@@ -362,7 +362,7 @@ export const categories: Category[] = [
     direction: "handmade-and-craft",
     shortDescription: "Makers of ceramics, furniture, decor and objects.",
     seoText:
-      "Craft makers here shape physical objects with their hands. This category covers ceramics and pottery, woodwork and furniture, glass, metal, and decor for the home. Every maker links to their own shop or studio site, where you can buy or commission directly.",
+      "For an object made by a maker's hands rather than stamped out in a factory, this is where to look. The category holds ceramicists making tableware, decorative and sculptural work, woodworkers building furniture, carving and interior pieces, leatherworkers making bags, belts and accessories, textile makers working in embroidery, weaving, knitting and patchwork, glass and stained glass artists, and makers of toys and dolls. A handmade object carries the hand: a slightly uneven edge, a living surface, the mark of a decision taken in the middle of the work. That is what separates it from a copy, and it cannot be generated.",
     seoTitle: "Craft Makers — handmade ceramics, furniture and decor",
     seoDescription:
       "Directory of makers producing handmade ceramics, furniture, glass and decor. Buy or commission directly from the maker.",
@@ -373,7 +373,7 @@ export const categories: Category[] = [
     direction: "handmade-and-craft",
     shortDescription: "Makers of leather goods, bags and jewellery.",
     seoText:
-      "Accessory makers here cut, stitch and set by hand. This category covers leather bags and wallets, belts, small goods and handmade jewellery. Every maker links to their own shop, where you can buy or commission directly.",
+      "Looking for jewellery or accessories made by a maker rather than cast in a run from somebody else's sketch? Start here. The category holds jewellers making rings, earrings, pendants and bracelets, makers of commissioned pieces, repair and restoration specialists, and makers of accessories in leather, glass and other materials. A piece of jewellery is made for a person: for the size, for the hand, for the story behind the commission. A wedding ring with an engraving inside knows something no catalogue does, and it is made by the person who listened to the story.",
     seoTitle: "Accessories & Jewellery — handmade leather goods and jewellery",
     seoDescription:
       "Directory of makers producing handmade bags, leather goods and jewellery. Buy or commission directly from the maker.",
@@ -384,7 +384,7 @@ export const categories: Category[] = [
     direction: "handmade-and-craft",
     shortDescription: "Designers sewing bespoke clothing and custom pieces.",
     seoText:
-      "Clothing designers here cut and sew real garments. This category covers bespoke tailoring, pattern making, custom pieces and hand-painted clothing. Every designer links to their own shop or studio site for direct orders.",
+      "For clothing cut to your measurements or made by its author rather than produced in a run, look here. The category holds designers of women's, men's and children's clothing, authors of their own collections, specialists in stage and historical costume, and tailors making to order. Clothing is judged on a living body: fabric behaves the way it wants, the fit changes as you move, and the garment is finished at the fitting rather than on screen. No image will tell you what the sleeve does when the wearer raises an arm.",
     seoTitle: "Clothing Designers — bespoke tailoring and custom clothing",
     seoDescription:
       "Directory of clothing designers who sew and pattern by hand. Order bespoke and custom pieces directly from the designer.",
@@ -397,7 +397,7 @@ export const categories: Category[] = [
     direction: "other",
     shortDescription: "Restorers of paintings, furniture, books and photographs.",
     seoText:
-      "Restoration is the one craft that cannot be generated by definition: the object already exists, it is damaged, and it has to survive the repair. This category covers restorers of paintings, frames, furniture, books, bindings, photographs and documents, people who match a pigment to a two-hundred-year-old canvas and know when to stop. Every restorer links to their own workshop site or portfolio, where you can see completed work and discuss a piece directly.",
+      "To save a painting, a book, a piece of furniture or an old photograph, look here. The category holds restorers of painting, frames and gilding, specialists in antique and modern furniture, restorers of books and bindings, sculpture, textile and tapestry, experts in photographs and documents, and people working on architectural elements and decorative work. Restoration is the one craft that cannot be generated by definition: the object already exists, it is damaged, and there is no second attempt. These are people who match a pigment to a two-hundred-year-old canvas and know when to stop.",
     seoTitle: "Restoration — human restorers of art, furniture and books",
     seoDescription:
       "Directory of restorers working by hand on paintings, furniture, books and photographs. See finished work and contact each workshop directly.",
@@ -408,7 +408,7 @@ export const categories: Category[] = [
     direction: "other",
     shortDescription: "Calligraphers and hand-lettering artists.",
     seoText:
-      "Calligraphers draw letters with a pen, a brush and a hand that has practised the stroke for years. This category covers wedding and event calligraphy, certificates, hand-lettered logos and packaging, custom scripts and traditional schools of the craft. A generated script is a picture of writing; this is writing. Each calligrapher links to their own portfolio or shop for direct commissions.",
+      "For lettering drawn by a calligrapher's hand rather than set in a typeface or generated, this is the place. The category holds wedding and event calligraphers, specialists in diplomas, certificates and awards, authors of hand-lettered logos and packaging, letterers, and people who draw custom alphabets and work in the traditional schools of the craft. Calligraphy is movement held still on paper: the pressure, the speed and the breath are all visible in the line. A generated script is a picture of writing; this is writing.",
     seoTitle: "Calligraphy & Lettering — human calligraphers and letterers",
     seoDescription:
       "Directory of calligraphers and hand-lettering artists working by hand. Commission custom lettering directly from the artist.",
