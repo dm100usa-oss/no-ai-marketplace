@@ -61,7 +61,7 @@ export const en: Dictionary = {
     searchAria: "Search",
     search: "Search",
     language: "Language",
-    addProfileFree: "Add your profile — first 50 free",
+    addProfileFree: "Add your profile, first 50 free",
   },
 
   common: {
@@ -166,12 +166,12 @@ export const en: Dictionary = {
       "Looking for illustration, writing, design or photography made by a real person? Search or browse the catalog, open the profile that fits, and go straight to the creator's own site to talk or buy.",
     forBuyersPoints: [
       "Every profile is a real human creator or human-made business.",
-      "No middleman, no in-site checkout — you deal with the creator directly.",
+      "No middleman, no in-site checkout. You deal with the creator directly.",
       "Verified profiles show exactly what was reviewed.",
     ],
     forCreators: "For creators and companies",
     forCreatorsText:
-      "If your work is made by humans, be found by buyers who value that. Add your profile with links to your own site, shop or portfolio — traffic goes to you, not to a middleman.",
+      "If your work is made by humans, be found by buyers who value that. Add your profile with links to your own site, shop or portfolio. Traffic goes to you, not to a middleman.",
     forCreatorsPoints: [
       "The first 50 profiles are free until the end of 2026.",
       "All external links belong to you. Buyers land on your platform.",
@@ -181,14 +181,14 @@ export const en: Dictionary = {
     newProfilesSub: "Recently added human creators and companies.",
     verificationTitle: "Honest verification, reviewed by hand",
     verificationText:
-      "Creators can submit process photos, video, sketches, drafts or published work. We review each submission by hand and describe on the profile what exactly was checked. Verification does not claim a legal guarantee — it is an honest, human review of the materials the creator provided.",
+      "Creators can submit process photos, video, sketches, drafts or published work. We review each submission by hand and describe on the profile what exactly was checked. Verification does not claim a legal guarantee. It is an honest, human review of the materials the creator provided.",
     seeVerified: "See verified profiles",
     standardsLink: "Our method",
     faqTitle: "Frequently asked questions",
     faq: [
       {
         q: "What is No AI Marketplace?",
-        a: "An international directory of people, studios and companies whose work is made by humans, not by AI. You browse here, then visit the creator's own site or shop to buy or hire — the site is a showcase, not a shopping cart.",
+        a: "An international directory of people, studios and companies whose work is made by humans, not by AI. You browse here, then visit the creator's own site or shop to buy or hire. The site is a showcase, not a shopping cart.",
       },
       {
         q: "How do I find a creator?",
@@ -196,11 +196,11 @@ export const en: Dictionary = {
       },
       {
         q: "Do I buy things on this site?",
-        a: "No. Every card links to the creator's own website, shop or portfolio — Etsy, Behance, Amazon, their personal site and so on. Payments, delivery and communication all happen there, directly with the creator.",
+        a: "No. Every card links to the creator's own website, shop or portfolio: Etsy, Behance, Amazon, their personal site and so on. Payments, delivery and communication all happen there, directly with the creator.",
       },
       {
         q: "What does “verified” mean?",
-        a: "Verified profiles have submitted materials — process photos or video, sketches, drafts, published work — that were reviewed by hand. We describe what was reviewed on each profile. It is a good-faith review, not a legal guarantee.",
+        a: "Verified profiles have submitted materials, such as process photos or video, sketches, drafts or published work, that were reviewed by hand. We describe what was reviewed on each profile. It is a good-faith review, not a legal guarantee.",
       },
       {
         q: "How do I add my profile?",
@@ -290,12 +290,12 @@ export const en: Dictionary = {
       "Add a profile to No AI Marketplace. The first 50 are free until the end of 2026, then from $5.99/month.",
     title: "Add your profile",
     intro:
-      "Be found by buyers looking for work made by people. Add your profile in a few minutes — the first 50 profiles are free until the end of 2026.",
+      "Be found by buyers looking for work made by people. Add your profile in a few minutes. The first 50 profiles are free until the end of 2026.",
     startNow: "Start now",
     seePricing: "See pricing",
     whyTitle: "Why be on No AI Marketplace",
     whyPoints: [
-      "All buyer traffic goes to your own site, shop or portfolio — not to a middleman.",
+      "All buyer traffic goes to your own site, shop or portfolio, not to a middleman.",
       "Your profile is a clean, indexable page built for SEO and generative AI answers.",
       "A verified badge shows exactly what we reviewed, which builds trust with buyers.",
       "One-time set-up, then the profile keeps working while you focus on the work.",
@@ -351,7 +351,7 @@ export const en: Dictionary = {
     rulesText1: "Please read ",
     rulesLink1: "Human-Made standards",
     rulesText2:
-      " before you submit — the standards describe what belongs in the catalog and what does not, and how hybrid work fits. Payments and listing rules are covered in the ",
+      " before you submit. The standards describe what belongs in the catalog and what does not, and how hybrid work fits. Payments and listing rules are covered in the ",
     rulesLink2: "Listing Policy",
     rulesText3: ".",
     faqTitle: "Frequently asked questions",
@@ -378,7 +378,7 @@ export const en: Dictionary = {
       },
       {
         q: "Do you take a cut of my sales?",
-        a: "No. We are a directory, not a marketplace. All transactions happen on your own site, shop or portfolio — we never sit between you and your buyer.",
+        a: "No. We are a directory, not a marketplace. All transactions happen on your own site, shop or portfolio. We never sit between you and your buyer.",
       },
     ],
   },
@@ -389,7 +389,7 @@ export const en: Dictionary = {
       "No AI Marketplace is an international directory of people, studios and companies who create work, products and services without AI. It is a showcase, not a shop.",
     title: "About No AI Marketplace",
     intro:
-      "No AI Marketplace is an international directory of people, studios and companies whose work is made by humans, not by AI. It is a showcase and a source of traffic — not a shop with a cart, not a place where money changes hands.",
+      "No AI Marketplace is an international directory of people, studios and companies whose work is made by humans, not by AI. It is a showcase and a source of traffic, not a shop with a cart, not a place where money changes hands.",
     whatTitle: "What the site does",
     whatText:
       "A buyer searches or browses the catalog, finds a creator or company, opens their profile, and clicks through to the creator's own site, shop or portfolio. Payment, delivery, communication and revisions all happen there, directly between buyer and creator. We do not sit in the middle.",
@@ -398,7 +398,7 @@ export const en: Dictionary = {
       "As AI generates more of the content, products and services online, the demand for verified human-made work grows. Buyers, brands and agencies want to find creators whose work is genuinely made by hand or by human judgment. Creators, in turn, want to be recognized for that and be easy to find. No AI Marketplace closes both sides of that need.",
     howTitle: "How profiles get into the catalog",
     howText:
-      "The first 50 profiles are free until the end of 2026. After that, listings are paid. Each profile is reviewed before it goes live. Verified creators additionally submit materials (process photos or video, drafts, published work) that we look at by hand — the profile then shows what was reviewed.",
+      "The first 50 profiles are free until the end of 2026. After that, listings are paid. Each profile is reviewed before it goes live. Verified creators additionally submit materials (process photos or video, drafts, published work) that we look at by hand. The profile then shows what was reviewed.",
     notClaimTitle: "What we do not claim",
     notClaimText1:
       "We do not claim a legal guarantee that no AI was ever used at any step of any listed work. Verification is an honest, human review of the materials the creator provided, and we describe on each profile exactly what that review covered. Read more in ",
@@ -413,7 +413,7 @@ export const en: Dictionary = {
   contact: {
     metaTitle: "Contact",
     metaDescription:
-      "How to reach No AI Marketplace — for owners of listed profiles, buyers, journalists and partners.",
+      "How to reach No AI Marketplace, for owners of listed profiles, buyers, journalists and partners.",
     title: "Contact",
     intro:
       "The best way to reach us is by email. We read every message and reply within a few working days.",
@@ -423,20 +423,20 @@ export const en: Dictionary = {
     addingText1: "Please use the ",
     addingLink: "Add your profile",
     addingText2:
-      " page — the form there collects everything we need and is the fastest path in. Email is for follow-up questions.",
+      " page. The form there collects everything we need and is the fastest path in. Email is for follow-up questions.",
     correctionsTitle: "Corrections and updates",
     correctionsText:
       "If details on your profile need to change, email us with the profile URL and what should be updated.",
     reportingTitle: "Reporting a problem with a listing",
     reportingText:
-      "Every profile page has a Report a problem link at the bottom. That is the fastest route — it lands directly in our inbox with the profile URL attached.",
+      "Every profile page has a Report a problem link at the bottom. That is the fastest route, it lands directly in our inbox with the profile URL attached.",
     pressTitle: "Press and partnerships",
     pressText:
       "Journalists, researchers and partners are welcome. Please include the outlet and a short brief; we'll get back with relevant details.",
     legalTitle: "Legal notices",
     legalText1: "Copyright complaints and takedown requests are handled through ",
     legalLink: "Content Removal",
-    legalText2: " — that page lists what we need to act on a request.",
+    legalText2: ". That page lists what we need to act on a request.",
     footNote:
       "No AI Marketplace does not run in-site transactions. Purchases and enquiries always happen on the creator's own platform, not here.",
   },
@@ -447,7 +447,7 @@ export const en: Dictionary = {
       "Search and browse every active human-made creator, studio and company on No AI Marketplace. Filter by direction, category, country and verification.",
     title: "Directory",
     intro:
-      "Every active profile in the catalog — people, studios and companies who create work, products and services without AI. Search by name, category or country, and open a card to jump straight to the creator's own platform.",
+      "Every active profile in the catalog: people, studios and companies who create work, products and services without AI. Search by name, category or country, and open a card to jump straight to the creator's own platform.",
     searchPlaceholder: "Search creators, categories, products…",
     searchAria: "Search creators",
     filters: "Filters",
@@ -498,7 +498,7 @@ export const en: Dictionary = {
       },
       {
         t: "3. What was checked appears on the profile",
-        d: "The profile shows a short description of what we actually reviewed — no vague claims, no legal guarantees.",
+        d: "The profile shows a short description of what we actually reviewed, with no vague claims, no legal guarantees.",
       },
     ],
     twoBadges:
@@ -562,10 +562,10 @@ export const en: Dictionary = {
       "What counts as human-made on No AI Marketplace, what does not, and where hybrid work fits.",
     title: "Human-Made standards",
     intro:
-      "A short, honest description of what we mean by human-made — so creators know what belongs here and buyers know what to expect.",
+      "A short, honest description of what we mean by human-made, so creators know what belongs here and buyers know what to expect.",
     oneLineTitle: "The one-line rule",
     oneLineText:
-      "The substance of the work — the drawing, the writing, the photograph, the design decision, the code, the object made by hand — is done by a human. If AI touched it, the human contribution is still the substance, and the creator says so clearly.",
+      "The substance of the work, meaning the drawing, the writing, the photograph, the design decision, the code, the object made by hand, is done by a human. If AI touched it, the human contribution is still the substance, and the creator says so clearly.",
     belongsTitle: "What clearly belongs here",
     belongsItems: [
       "Hand-drawn or hand-painted illustration and art, including work done in a graphics tablet by a person.",
@@ -573,14 +573,14 @@ export const en: Dictionary = {
       "Writing, editing and copy where a human wrote and shaped the text.",
       "Design and branding work where the concept, layout and typography are the designer's.",
       "Handmade objects, craft and small-batch production.",
-      "Professional services that trade on human judgment — consulting, teaching, coaching, architecture, engineering, legal, medical adjacent work.",
+      "Professional services that trade on human judgment: consulting, teaching, coaching, architecture, engineering, legal, medical adjacent work.",
     ],
     hybridTitle: "Where hybrid work fits",
     hybridText1:
-      "AI touches many workflows now — background clean-up, transcription, research assistance, spell check, color balancing. That is fine, as long as the human contribution is the substance of the finished work and the creator is open about how AI was used. Each profile has an ",
+      "AI touches many workflows now: background clean-up, transcription, research assistance, spell check, color balancing. That is fine, as long as the human contribution is the substance of the finished work and the creator is open about how AI was used. Each profile has an ",
     hybridStrong: "On the use of AI",
     hybridText2:
-      " statement for this — clarity is the standard, not silence.",
+      " statement for this. Clarity is the standard, not silence.",
     notBelongTitle: "What does not belong",
     notBelongItems: [
       "Listings whose main output is AI-generated imagery, text, music or code with only a light human touch on top.",
@@ -595,7 +595,7 @@ export const en: Dictionary = {
     verificationBoxText2: ".",
     ifWrongTitle: "If we get it wrong",
     ifWrongText1:
-      "Every profile page has a Report a problem link. If a listing looks like it breaks these standards, tell us — we review reports by hand. See also ",
+      "Every profile page has a Report a problem link. If a listing looks like it breaks these standards, tell us. we review reports by hand. See also ",
     listingPolicyLink: "Listing Policy",
     ifWrongText2: ".",
   },
@@ -821,7 +821,7 @@ export const en: Dictionary = {
     processStep1:
       "You reach out on {kind}'s own site or shop, using the links on this page.",
     processStep2:
-      "You describe the project — goals, materials, timing — and get a scope and quote.",
+      "You describe the project, including goals, materials and timing, and get a scope and quote.",
     processStep3Company:
       "Work is done by hand, by the team; process updates and drafts are shared as agreed.",
     processStep3Creator:
@@ -853,7 +853,7 @@ export const en: Dictionary = {
     prompt: "Something wrong with this profile?",
     reportProblem: "Report a problem",
     sentThanks:
-      "Thanks — your mail client should have opened with the report ready to send. We review every report by hand.",
+      "Thanks, your mail client should have opened with the report ready to send. We review every report by hand.",
     title: "Report a problem",
     subtitle: "Tell us what looks wrong. We read every report and act by hand.",
     reason: "Reason",
@@ -949,17 +949,17 @@ export const en: Dictionary = {
     refundPolicy: {
       title: "Refund Policy",
       intro:
-        "This page covers refunds for paid listings — when a refund is available, when it is not, how cancellations affect current billing periods, and the process for requesting a refund through Stripe. Purchases made on creators' own platforms are not covered by this site's refund policy — those transactions are between buyer and creator.",
+        "This page covers refunds for paid listings: when a refund is available, when it is not, how cancellations affect current billing periods, and the process for requesting a refund through Stripe. Purchases made on creators' own platforms are not covered by this site's refund policy. Those transactions are between buyer and creator.",
     },
     contentRemoval: {
       title: "Content Removal",
       intro:
-        "This page explains how to request removal or correction of content — a wrong description, an image used without permission, incorrect claims about a person or business, or content that breaks the Human-Made standards. Every profile page also has a Report a problem button that lands directly in our inbox.",
+        "This page explains how to request removal or correction of content, such as a wrong description, an image used without permission, incorrect claims about a person or business, or content that breaks the Human-Made standards. Every profile page also has a Report a problem button that lands directly in our inbox.",
     },
     copyrightComplaint: {
       title: "Copyright Complaint",
       intro:
-        "This page describes how to file a copyright complaint about material shown on a profile — what information we need (the work in question, proof of ownership, the URL, contact details, a statement made in good faith), how quickly we act on complete requests, how the counter-notice process works, and how to reach us.",
+        "This page describes how to file a copyright complaint about material shown on a profile, including what information we need (the work in question, proof of ownership, the URL, contact details, a statement made in good faith), how quickly we act on complete requests, how the counter-notice process works, and how to reach us.",
     },
   },
 
@@ -974,14 +974,14 @@ export const en: Dictionary = {
     paymentSuccess: {
       title: "Payment successful",
       description:
-        "Thank you — your payment went through. We'll review your profile by hand and publish it shortly. A receipt from Stripe is on its way to your email.",
+        "Thank you, your payment went through. We'll review your profile by hand and publish it shortly. A receipt from Stripe is on its way to your email.",
       primary: "Back to home",
       secondary: "Browse the catalog",
     },
     paymentCancelled: {
       title: "Payment cancelled",
       description:
-        "You cancelled the payment before it completed — no charge was made. You can start again from the Add profile page whenever you're ready.",
+        "You cancelled the payment before it completed, so no charge was made. You can start again from the Add profile page whenever you're ready.",
       primary: "Back to Add profile",
       secondary: "See pricing",
     },
@@ -995,14 +995,14 @@ export const en: Dictionary = {
     profileSuspended: {
       title: "Profile suspended",
       description:
-        "This profile is temporarily hidden from the catalog while we review a report or a billing issue. If this is your profile, please get in touch — we handle every case by hand.",
+        "This profile is temporarily hidden from the catalog while we review a report or a billing issue. If this is your profile, please get in touch. We handle every case by hand.",
       primary: "Contact us",
       secondary: "Browse other profiles",
     },
     profileNotAvailable: {
       title: "Profile not available",
       description:
-        "This profile is no longer in the catalog — the creator may have taken it down, or the plan lapsed. The rest of the directory is still here.",
+        "This profile is no longer in the catalog. The creator may have taken it down, or the plan lapsed. The rest of the directory is still here.",
       primary: "Browse the catalog",
       secondary: "Back to home",
     },
@@ -1012,7 +1012,7 @@ export const en: Dictionary = {
     directions: {
       title: "Directions",
       description:
-        "Browse the major directions of No AI Marketplace: art, writing, design, photography — people and studios who create without AI.",
+        "Browse the major directions of No AI Marketplace: art, writing, design, photography, and the people and studios who create without AI.",
     },
     categories: {
       title: "All categories",

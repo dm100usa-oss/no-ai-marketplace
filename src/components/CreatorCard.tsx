@@ -90,7 +90,7 @@ export function CreatorCard({
       <LocaleLink lang={lang} href={profileHref} className="relative block aspect-[4/3] overflow-hidden" style={{ background: "var(--color-brand-soft)" }}>
         {profile.mainImage ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={profile.mainImage} alt={`${dict.common.humanMadeWork} — ${profile.name}`} className="h-full w-full object-cover" loading="lazy" decoding="async" />
+          <img src={profile.mainImage} alt={`${dict.common.humanMadeWork}: ${profile.name}`} className="h-full w-full object-cover" loading="lazy" decoding="async" />
         ) : (
           <PlaceholderArt seed={profile.slug} label={dict.common.humanMadeWork} />
         )}

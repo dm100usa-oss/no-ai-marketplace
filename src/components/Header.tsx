@@ -43,7 +43,7 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
 
             {/* Logo — desktop only in left cluster */}
             <div className="hidden lg:block lg:mr-3">
-              <Logo lang={lang} ariaLabel={`${dict.site.name} — ${dict.common.home}`} />
+              <Logo lang={lang} ariaLabel={`${dict.site.name}: ${dict.common.home}`} />
             </div>
 
             {/* Primary nav — desktop only */}
@@ -64,7 +64,7 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
 
           {/* Centre: logo — mobile only */}
           <div className="lg:hidden">
-            <Logo lang={lang} ariaLabel={`${dict.site.name} — ${dict.common.home}`} />
+            <Logo lang={lang} ariaLabel={`${dict.site.name}: ${dict.common.home}`} />
           </div>
 
           {/* Right: language (desktop). Spacer on mobile keeps the centred logo aligned. */}
