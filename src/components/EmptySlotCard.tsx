@@ -28,7 +28,7 @@ function gradient(seed: string): string {
  *  nobody. */
 function PersonSilhouette({ color }: { color: string }) {
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
       <circle cx="12" cy="8" r="3.6" fill={color} />
       <path
         d="M4.8 20c0-3.6 3.2-6 7.2-6s7.2 2.4 7.2 6"
@@ -43,36 +43,31 @@ export function EmptySlotCard({
   dict,
   categoryName,
   categorySlug,
-  directionColor,
 }: {
   lang: Locale;
   dict: Dictionary;
   categoryName: string;
   categorySlug: string;
-  /** Direction colour key, so the avatar carries the colour of its part
-   *  of the site: pink for music, blue for code, orange for craft. */
-  directionColor?: string;
 }) {
   const s = dict.states;
-  const dir = directionColor ?? "neutral";
 
   return (
     <article className="card flex flex-col overflow-hidden">
       <div
-        className="flex aspect-[4/3] flex-col items-center gap-3 px-6 pt-9 text-center"
+        className="flex aspect-[4/3] flex-col items-center px-6 pt-8 text-center"
         style={{ background: gradient(categorySlug) }}
       >
-        <p className="text-[0.85rem] leading-snug" style={{ color: "var(--color-muted-soft)" }}>
+        <p className="text-[1.05rem] leading-snug" style={{ color: "var(--color-muted-soft)" }}>
           {s.slotTitle.replace("{name}", categoryName.toLowerCase())}
         </p>
         <h3
-          className="!m-0 text-[1.05rem] font-semibold leading-tight"
+          className="!m-0 mt-6 text-[1.05rem] font-semibold leading-snug"
           style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
         >
           {s.slotMessage}
         </h3>
         <p
-          className="text-[1rem] font-semibold"
+          className="mt-6 text-[1.2rem] font-semibold"
           style={{ fontFamily: "var(--font-display)", color: "var(--color-accent)" }}
         >
           {s.slotBeFirst}
@@ -82,12 +77,14 @@ export function EmptySlotCard({
       <div className="flex flex-1 flex-col gap-3 p-4">
         <div className="flex items-stretch justify-between gap-2">
           <span className="flex min-w-0 items-center gap-2.5">
+            {/* One tint for every category: a colour that shifts per direction
+                fights the gradient behind it as often as it agrees with it. */}
             <span
               aria-hidden
-              className="grid h-9 w-9 shrink-0 place-items-center rounded-full"
-              style={{ background: `var(--color-dir-${dir}-bg)` }}
+              className="grid h-[2.7rem] w-[2.7rem] shrink-0 place-items-center rounded-full"
+              style={{ background: "#fbeedb" }}
             >
-              <PersonSilhouette color={`var(--color-dir-${dir}-ink)`} />
+              <PersonSilhouette color="#a9691a" />
             </span>
             <span className="min-w-0">
               <span

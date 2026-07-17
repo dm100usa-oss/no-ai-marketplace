@@ -162,7 +162,6 @@ export default async function CategoryPage({
           showSlotCard
           slotCategoryName={cat.name}
           slotCategorySlug={cat.slug}
-          slotDirectionColor={dir?.color}
           emptyTitle={`${dict.categoryDetail.emptyTitlePrefix} ${cat.name.toLowerCase()}`}
           emptyMessage={dict.categoryDetail.emptyMessage}
         />
