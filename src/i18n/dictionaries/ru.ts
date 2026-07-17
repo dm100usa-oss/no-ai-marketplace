@@ -891,6 +891,16 @@ export const ru: Dictionary = {
     errorTitle: "Что-то не загрузилось",
     errorMessage: "Не удалось показать эту страницу. Обновите, чтобы попробовать снова.",
     backToDirectory: "Назад в каталог",
+    slotTitle: "Пока нет: {name}",
+    slotMessage: "Эта категория готова и ждет свои первые профили. Добавьте свой.",
+    slotBeFirst: "Станьте первым",
+    slotName: "Имя Фамилия",
+    slotInitials: "ИФ",
+    slotRole: "Профессия, специализация",
+    slotTagCountry: "Страна",
+    slotTagDirection: "Направление",
+    slotTagWork: "Работа",
+    slotAction: "Добавить профиль",
   },
 
   notFound: {

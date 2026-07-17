@@ -887,6 +887,16 @@ export const en: Dictionary = {
     errorTitle: "Something didn't load",
     errorMessage: "This page couldn't be shown. Refresh to try again.",
     backToDirectory: "Back to directory",
+    slotTitle: "Not here yet: {name}",
+    slotMessage: "This category is ready and waiting for its first profiles. Add yours.",
+    slotBeFirst: "Be the first",
+    slotName: "Your name",
+    slotInitials: "YN",
+    slotRole: "Profession, specialisation",
+    slotTagCountry: "Country",
+    slotTagDirection: "Direction",
+    slotTagWork: "Work",
+    slotAction: "Add your profile",
   },
 
   notFound: {

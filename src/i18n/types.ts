@@ -512,6 +512,18 @@ export interface Dictionary {
     errorTitle: string;
     errorMessage: string;
     backToDirectory: string;
+    /** The empty-category card: a real listing card with the spot free.
+     *  slotTitle takes the category name via {name}. */
+    slotTitle: string;
+    slotMessage: string;
+    slotBeFirst: string;
+    slotName: string;
+    slotInitials: string;
+    slotRole: string;
+    slotTagCountry: string;
+    slotTagDirection: string;
+    slotTagWork: string;
+    slotAction: string;
   };
 
   notFound: {

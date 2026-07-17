@@ -1,4 +1,5 @@
 import type { Profile } from "@/lib/types";
+import { EmptySlotCard } from "./EmptySlotCard";
 import { CreatorCard } from "./CreatorCard";
 import { categoryNameL, resolveVisitL } from "@/lib/localized-data";
 import { EmptyState } from "./States";
@@ -16,14 +17,36 @@ export function ProfileGrid({
   profiles,
   emptyTitle,
   emptyMessage,
+  showSlotCard,
+  slotCategoryName,
+  slotCategorySlug,
 }: {
   lang: Locale;
   dict: Dictionary;
   profiles: Profile[];
   emptyTitle?: string;
   emptyMessage?: string;
+  /** Category pages show the invitation card when nobody is listed yet. */
+  showSlotCard?: boolean;
+  slotCategoryName?: string;
+  slotCategorySlug?: string;
 }) {
   if (profiles.length === 0) {
+    // A category with nobody in it gets the billboard card instead of a
+    // plain "nothing here" notice: the spot is free, and saying so is
+    // more use to the first person who lands on it.
+    if (showSlotCard && slotCategoryName && slotCategorySlug) {
+      return (
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <EmptySlotCard
+            lang={lang}
+            dict={dict}
+            categoryName={slotCategoryName}
+            categorySlug={slotCategorySlug}
+          />
+        </div>
+      );
+    }
     return (
       <EmptyState
         lang={lang}
