@@ -17,37 +17,40 @@ import type { Locale } from "@/i18n/config";
  */
 
 /**
- * Files under /images/people. Order is deliberate: the three bright
- * abstracts sit at 3, 10 and 17 so they never arrive together, and no two
- * shots of the same craft stand side by side.
+ * Files under /images/people. Order is deliberate: the bright abstracts sit
+ * apart so they never arrive together, and no two shots of the same craft
+ * stand side by side. The two guitar frames are twelve cards apart; the
+ * photographs the owner shot himself are spread across the loop rather than
+ * clustered.
  *
  * Weighted towards material over paper. A page of handwriting is
  * unreadable at 120px and turns into grey noise; clay, wood and glass
- * still read as themselves.
+ * still read as themselves. Drawings and plans lose to the same rule: at
+ * this size thin linework goes flat and reads as a gap in the band.
  */
 const SHOTS = [
   "paint-canvas",
   "sculpture",
-  "wood",
+  "palace",
   "paint-expression",
   "architecture",
-  "music",
+  "guitars",
   "textile",
   "paint-knife",
   "photography",
   "graphics",
   "paint-modern",
   "ceramics",
-  "code-paper",
-  "paint-strokes",
+  "maple",
+  "oak",
   "fashion",
   "glass",
-  "interior",
-  "paint-minimal",
+  "building",
+  "guitar-red",
   "film",
   "code-notebook",
-  "jewelry",
-  "paint-abstract",
+  "eclairs",
+  "tea",
 ];
 
 function Card({ slug, eager }: { slug: string; eager: boolean }) {
