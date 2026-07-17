@@ -171,7 +171,7 @@ const ru: FaqProfession[] = [
     metaTitle: "Разработчики без ИИ-генерации кода: частые вопросы",
     metaDescription:
       "Как проверить, что разработчик пишет код сам, чем рискует заказчик при генерации кода и где найти разработчика без ИИ.",
-    title: "Разработчики: частые вопросы",
+    title: "Веб-разработчики: частые вопросы",
     intro:
       "Вопросы, которые чаще всего задают заказчики и разработчики. Ответы короткие и по делу.",
     items: [
@@ -240,7 +240,7 @@ const ru: FaqProfession[] = [
     metaTitle: "Художники: частые вопросы",
     metaDescription:
       "Где разместиться художнику, как продавать оригиналы и принты напрямую и как проверить, что картина написана красками.",
-    title: "Художники: частые вопросы",
+    title: "Живописцы: частые вопросы",
     intro: "Вопросы, которые чаще всего задают художники и те, кто покупает их работы.",
     items: [
       {
@@ -509,7 +509,7 @@ const ru: FaqProfession[] = [
     category: "ui-ux-designers",
     metaTitle: "UI и UX дизайнеры: частые вопросы",
     metaDescription: "Как проверить, что интерфейс продуман, а не сгенерирован, и где найти UI-дизайнера без ИИ.",
-    title: "UI и UX дизайнеры: частые вопросы",
+    title: "UI/UX-дизайнеры: частые вопросы",
     intro: "Вопросы, которые чаще всего задают дизайнеры интерфейсов и те, кто их нанимает.",
     items: [
       {
@@ -579,7 +579,7 @@ const ru: FaqProfession[] = [
     category: "motion-designers",
     metaTitle: "Моушн-дизайнеры: частые вопросы",
     metaDescription: "Где разместиться моушн-дизайнеру и почему бренду нужна анимация под свой стиль.",
-    title: "Моушн-дизайнеры: частые вопросы",
+    title: "Моушн- и 2D-аниматоры: частые вопросы",
     intro: "Вопросы, которые чаще всего задают моушн-дизайнеры и те, кто их нанимает.",
     items: [
       {
@@ -719,7 +719,7 @@ const ru: FaqProfession[] = [
     category: "voice-actors",
     metaTitle: "Дикторы и актеры озвучки: частые вопросы",
     metaDescription: "Где разместиться диктору, как защитить голос от клонирования и как заказать живую озвучку.",
-    title: "Дикторы и актеры озвучки: частые вопросы",
+    title: "Дикторы и актеры дубляжа: частые вопросы",
     intro: "Вопросы, которые чаще всего задают дикторы и те, кто заказывает озвучку.",
     items: [
       {
@@ -1224,6 +1224,241 @@ const ru: FaqProfession[] = [
       },
     ],
   },
+  {
+    slug: "musicians",
+    category: "composers",
+    metaTitle: "Музыканты без ИИ: частые вопросы",
+    metaDescription:
+      "Где найти сессионного музыканта, как проверить живую запись и чем живое исполнение отличается от сгенерированного.",
+    title: "Музыканты: частые вопросы",
+    intro:
+      "Вопросы, которые задают музыканты и те, кто зовет их на запись или на сцену.",
+    items: [
+      {
+        q: "Чем музыкант отличается от композитора в заказе?",
+        a:
+          "Композитор пишет музыку, музыкант ее играет. Часто это разные люди и разные деньги: автору платят за сочинение и права, исполнителю за сессию или концерт. Если нужна и музыка, и запись, в заказе это две работы, даже когда их делает один человек.",
+        links: [{ label: "Добавить профиль", href: "/join" }],
+      },
+      {
+        q: "Где найти сессионного музыканта на запись?",
+        a:
+          "Здесь, в разделе композиторов и музыкантов. Профили ведут на записи и страницы исполнителей, вы слышите игру до того, как позвали в студию, и договариваетесь напрямую.",
+      },
+      {
+        q: "Как проверить, что партия сыграна, а не сгенерирована?",
+        a:
+          "Попросите исходные дорожки сессии и видео с записи. В живой игре слышно дыхание инструмента: ноты чуть плавают по времени, громкость дышит, в паузах есть комната. Генерация выравнивает все это в первую очередь.",
+      },
+      {
+        q: "Можно ли играть под клик и править дубли?",
+        a:
+          "Да. Клик, склейка лучших дублей и подстройка строя это студийная работа, а не генерация. Линия там же, где у всех: сыграно человеком можно править, сгенерированную партию выдавать за игру нельзя.",
+        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+      },
+      {
+        q: "Где разместиться музыканту?",
+        a:
+          "Здесь. Профиль ведет на ваши записи и страницу исполнителя, обращения приходят напрямую, комиссии с проекта нет. Спрос на живую игру растет ровно потому, что рынок наполнился ровными сгенерированными дорожками.",
+        links: [{ label: "Добавить профиль", href: "/join" }],
+      },
+    ],
+  },
+  {
+    slug: "jewellers",
+    category: "accessory-makers",
+    metaTitle: "Ювелиры без ИИ: частые вопросы",
+    metaDescription:
+      "Где заказать украшение у ювелира, как проверить металл и камни и сколько занимает работа на заказ.",
+    title: "Ювелиры: частые вопросы",
+    intro:
+      "Вопросы, которые задают ювелиры и те, кто заказывает украшения.",
+    items: [
+      {
+        q: "Чем заказ у ювелира отличается от покупки в магазине?",
+        a:
+          "Украшение делают под вас: размер, форма, посадка камня, гравировка. Вы участвуете в эскизе и можете поменять решение до того, как металл уйдет в работу. В магазине вы выбираете из готового, здесь вещь появляется от разговора.",
+      },
+      {
+        q: "Как проверить металл и камни перед заказом?",
+        a:
+          "Спросите пробу металла и документы на камни. У серьезного мастера есть и то, и другое, и он спокойно скажет, что именно ставит. Отказ назвать пробу или происхождение камня это ответ сам по себе.",
+      },
+      {
+        q: "Сколько занимает украшение на заказ?",
+        a:
+          "Обычно от двух недель до двух месяцев. Эскиз, восковая модель, отливка, посадка камней, полировка, и на каждом шаге бывает возврат назад. Кольцо с камнем дольше, чем гладкое: посадку подгоняют под конкретный камень.",
+      },
+      {
+        q: "Можно ли ювелиру пользоваться 3D-моделированием и печатью?",
+        a:
+          "Да. Модель в программе и печать воска это инструменты, как надфиль и горелка. Линия там же: форму придумывает и доводит мастер, а не генератор. Печать восковки не отменяет ручной посадки камня и полировки.",
+        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+      },
+      {
+        q: "Где разместиться ювелиру?",
+        a:
+          "Здесь. Профиль ведет на ваш сайт или магазин, заказчик пишет напрямую, комиссии с продажи нет. Покупатель авторских украшений ищет именно мастера, а не витрину с одинаковыми изделиями.",
+        links: [{ label: "Добавить профиль", href: "/join" }],
+      },
+    ],
+  },
+  {
+    slug: "security-auditors",
+    category: "code-auditors",
+    metaTitle: "Безопасность и уязвимости: частые вопросы",
+    metaDescription:
+      "Чем проверка безопасности отличается от аудита кода, как проходит поиск уязвимостей и что вы получаете в отчете.",
+    title: "Безопасность: частые вопросы",
+    intro:
+      "Вопросы про поиск уязвимостей и защиту сайтов и приложений.",
+    items: [
+      {
+        q: "Чем проверка безопасности отличается от аудита кода?",
+        a:
+          "Аудит смотрит, как код написан и будет ли он жить дальше. Проверка безопасности смотрит, как его сломать. Код может быть чистым и при этом дырявым: аккуратная архитектура и открытая админка сочетаются легко.",
+      },
+      {
+        q: "Как проходит поиск уязвимостей?",
+        a:
+          "Сначала разведка: что торчит наружу, какие версии, где входные точки. Потом проверка гипотез руками. Автоматический сканер дает список подозрений, а специалист отделяет реальную дыру от шума и показывает, как через нее пройти.",
+      },
+      {
+        q: "Что вы получите в отчете по безопасности?",
+        a:
+          "Список находок с оценкой опасности, шаги воспроизведения и что чинить в первую очередь. Хороший отчет читается вашим разработчиком без переводчика: не общие слова о рисках, а конкретный запрос, который проходит там, где не должен.",
+      },
+      {
+        q: "Можно ли специалисту по безопасности пользоваться сканерами?",
+        a:
+          "Да. Сканер это инструмент разведки, как и в любой другой работе. Линия там же: находки подтверждает и объясняет человек. Отчет, целиком собранный из вывода сканера, это не проверка безопасности, а распечатка.",
+        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+      },
+      {
+        q: "Где разместиться специалисту по безопасности?",
+        a:
+          "Здесь. Профиль ведет на ваш сайт и публикации, обращения приходят напрямую, комиссии с проекта нет. Заказчик ищет человека, который объяснит находку, а не пришлет отчет из сканера.",
+        links: [{ label: "Добавить профиль", href: "/join" }],
+      },
+    ],
+  },
+  {
+    slug: "proofreaders",
+    category: "editors",
+    metaTitle: "Корректоры без ИИ: частые вопросы",
+    metaDescription:
+      "Чем корректор отличается от редактора, зачем он нужен при автопроверке и сколько стоит вычитка.",
+    title: "Корректоры: частые вопросы",
+    intro:
+      "Вопросы, которые задают корректоры и те, кто отдает текст на вычитку.",
+    items: [
+      {
+        q: "Чем корректор отличается от редактора?",
+        a:
+          "Редактор отвечает за то, работает ли текст: логику, порядок, лишнее. Корректор за то, чтобы в готовом тексте не осталось ошибок: орфография, пунктуация, единообразие, типографика. Редактор приходит раньше, корректор последним.",
+      },
+      {
+        q: "Зачем корректор, если есть автопроверка?",
+        a:
+          "Автопроверка ловит опечатку, но не видит смысла. Она пропустит верное слово не на месте, разнобой в написании имени по главам и кавычки, которые в одном абзаце одни, а в соседнем другие. Это ошибки текста целиком, а не отдельного слова.",
+      },
+      {
+        q: "Сколько стоит вычитка и как считают?",
+        a:
+          "Обычно по объему: за тысячу знаков или за авторский лист. Цена зависит от состояния текста: чистая рукопись читается быстро, черновик с разнобоем в терминах и оформлении медленно. Спросите пробную страницу, по ней видно и качество, и объем работы.",
+      },
+      {
+        q: "Считается ли вычитка сгенерированного текста работой без ИИ?",
+        a:
+          "Нет. Если текст написала модель, а человек поправил запятые, работа человека это правка, а не текст. В профиле такое честно называют вычиткой, а не авторством.",
+        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+      },
+      {
+        q: "Где разместиться корректору?",
+        a:
+          "Здесь. Профиль ведет на ваш сайт и примеры работ, обращения приходят напрямую, комиссии с заказа нет. Спрос на живую вычитку растет ровно потому, что сгенерированные тексты выглядят гладко и разваливаются в деталях.",
+        links: [{ label: "Добавить профиль", href: "/join" }],
+      },
+    ],
+  },
+  {
+    slug: "lettering-artists",
+    category: "calligraphy",
+    metaTitle: "Леттеринг без ИИ: частые вопросы",
+    metaDescription:
+      "Чем леттеринг отличается от каллиграфии и от шрифта, зачем рисовать буквы под задачу и где найти художника леттеринга.",
+    title: "Леттеринг: частые вопросы",
+    intro:
+      "Вопросы про рисованные буквы: логотипы, упаковка, обложки, вывески.",
+    items: [
+      {
+        q: "Чем леттеринг отличается от каллиграфии?",
+        a:
+          "Каллиграф пишет: буква рождается движением пера за один проход. Леттерист рисует: буква строится, правится и доводится, как любое изображение. Отсюда и разница в заказах. Каллиграфия это приглашение и диплом, леттеринг это логотип и упаковка.",
+      },
+      {
+        q: "Зачем рисовать буквы, если есть шрифты?",
+        a:
+          "Шрифт должен работать в любом слове, поэтому каждая буква в нем компромисс. Леттеринг рисуется под одно конкретное слово: здесь хвост длиннее, тут буквы ближе, а вот эта пара соединяется. Готовый шрифт так не умеет, он не знает вашего слова.",
+      },
+      {
+        q: "Как отличить рисованные буквы от набора шрифтом?",
+        a:
+          "Посмотрите на повторяющиеся буквы. В наборе две буквы «о» одинаковы до пикселя. В леттеринге они всегда чуть разные, потому что каждая нарисована под свое место. Попросите исходник в кривых и промежуточные варианты.",
+      },
+      {
+        q: "Можно ли леттеристу работать в векторе и на планшете?",
+        a:
+          "Да. Планшет, вектор и направляющие это инструменты. Линия там же, где у всех: форму букв придумывает и строит художник, а не генератор. Сгенерированную надпись нельзя выдавать за рисованную.",
+        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+      },
+      {
+        q: "Где разместиться художнику леттеринга?",
+        a:
+          "Здесь. Профиль ведет на ваше портфолио, заказчик пишет напрямую, комиссии с проекта нет. Бренду нужна надпись, которой больше нет ни у кого, а это ровно то, чего генерация не дает.",
+        links: [{ label: "Добавить профиль", href: "/join" }],
+      },
+    ],
+  },
+  {
+    slug: "data-specialists",
+    category: "automation-developers",
+    metaTitle: "Обработка данных без ИИ: частые вопросы",
+    metaDescription:
+      "Кто собирает и приводит в порядок данные компании, чем это отличается от автоматизации процессов и как проверить специалиста.",
+    title: "Обработка данных: частые вопросы",
+    intro:
+      "Вопросы про сбор, разбор и приведение данных в порядок.",
+    items: [
+      {
+        q: "Чем обработка данных отличается от автоматизации процессов?",
+        a:
+          "Автоматизация убирает ручную работу: письмо ушло само, задача создалась сама. Обработка данных отвечает на вопрос, что у вас вообще есть: собрать из пяти источников, свести, вычистить дубли и разнобой. Часто второе нужно до первого: автоматизировать поверх грязных данных значит быстрее делать ошибки.",
+      },
+      {
+        q: "Почему нельзя просто выгрузить данные и работать с ними?",
+        a:
+          "Потому что в одном месте клиент записан как «ООО Ромашка», в другом «Ромашка ООО», а в третьем с опечаткой. Пока это три разные строки, любой отчет врет. Основная работа не в выгрузке, а в решении, что здесь один и тот же объект.",
+      },
+      {
+        q: "Как проверить специалиста по данным?",
+        a:
+          "Дайте кусок настоящих данных, не образец. Хороший специалист сначала спросит, откуда они и что означают спорные поля, а плохой сразу начнет писать код. Вопросы до работы это лучший признак.",
+      },
+      {
+        q: "Можно ли пользоваться готовыми библиотеками и инструментами?",
+        a:
+          "Да, это обычный инструмент. Линия там же: логику разбора придумывает человек, который понимает, что означают ваши поля. Сгенерированный скрипт разбора красиво отработает и тихо потеряет часть строк.",
+        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+      },
+      {
+        q: "Где разместиться специалисту по обработке данных?",
+        a:
+          "Здесь. Профиль ведет на ваш GitHub и сайт, обращения приходят напрямую, комиссии с проекта нет. Заказчику нужен человек, который объяснит, почему в отчете именно эти числа.",
+        links: [{ label: "Добавить профиль", href: "/join" }],
+      },
+    ],
+  },
 ];
 
 const en: FaqProfession[] = [
@@ -1362,7 +1597,7 @@ const en: FaqProfession[] = [
     metaTitle: "Developers without AI code generation: common questions",
     metaDescription:
       "How to check a developer writes their own code, what a client risks with generated code, and where to find a developer without AI.",
-    title: "Developers: common questions",
+    title: "Web developers: common questions",
     intro:
       "The questions clients and developers ask most. Short answers.",
     items: [
@@ -1699,7 +1934,7 @@ const en: FaqProfession[] = [
     category: "ui-ux-designers",
     metaTitle: "UI and UX designers: common questions",
     metaDescription: "How to check an interface was designed rather than generated, and where to find a UI designer without AI.",
-    title: "UI and UX designers: common questions",
+    title: "UI/UX designers: common questions",
     intro: "The questions interface designers and the people hiring them ask most.",
     items: [
       {
@@ -1769,7 +2004,7 @@ const en: FaqProfession[] = [
     category: "motion-designers",
     metaTitle: "Motion designers: common questions",
     metaDescription: "Where a motion designer can list and why a brand needs animation built to its own style.",
-    title: "Motion designers: common questions",
+    title: "Motion and 2D animators: common questions",
     intro: "The questions motion designers and the people hiring them ask most.",
     items: [
       {
@@ -2414,6 +2649,241 @@ const en: FaqProfession[] = [
       },
     ],
   },
+  {
+    slug: "musicians",
+    category: "composers",
+    metaTitle: "Musicians without AI: common questions",
+    metaDescription:
+      "Where to find a session musician, how to check a performance is played live, and how live playing differs from generated audio.",
+    title: "Musicians: common questions",
+    intro:
+      "Questions from musicians and from the people who book them for a session or a stage.",
+    items: [
+      {
+        q: "How does hiring a musician differ from hiring a composer?",
+        a:
+          "A composer writes the music, a musician plays it. They are usually different people and different money: the writer is paid for the composition and the rights, the player for the session or the show. If you need both the piece and the recording, that is two jobs even when one person does them.",
+        links: [{ label: "Add your profile", href: "/join" }],
+      },
+      {
+        q: "Where do I find a session musician for a recording?",
+        a:
+          "Here, under composers and musicians. Profiles link to recordings and artist pages, so you hear the playing before you book the studio and you deal with the player directly.",
+      },
+      {
+        q: "How do I check a part was played rather than generated?",
+        a:
+          "Ask for the raw session tracks and video from the take. Live playing breathes: notes drift slightly against the grid, dynamics move, and the room sits in the pauses. Those are the first things a generator smooths away.",
+      },
+      {
+        q: "Can a musician play to a click and edit takes?",
+        a:
+          "Yes. A click track, comping the best takes and tuning are studio craft, not generation. The line is the same as everywhere: what a person played can be edited, a generated part cannot be passed off as playing.",
+        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+      },
+      {
+        q: "Where can a musician get listed?",
+        a:
+          "Here. Your profile links to your recordings and artist page, enquiries come straight to you, and the site takes no cut. Demand for live playing is rising precisely because the market filled up with flat generated stems.",
+        links: [{ label: "Add your profile", href: "/join" }],
+      },
+    ],
+  },
+  {
+    slug: "jewellers",
+    category: "accessory-makers",
+    metaTitle: "Jewellers without AI: common questions",
+    metaDescription:
+      "How to commission a piece from a jeweller, how to check metal and stones, and how long custom work takes.",
+    title: "Jewellers: common questions",
+    intro:
+      "Questions from jewellers and from the people commissioning a piece.",
+    items: [
+      {
+        q: "How is commissioning a jeweller different from buying a piece?",
+        a:
+          "The piece is made for you: size, form, how a stone sits, the engraving. You are part of the sketch and can change your mind before metal is cut. In a shop you choose from what exists; here the piece comes out of a conversation.",
+      },
+      {
+        q: "How do I check the metal and stones before ordering?",
+        a:
+          "Ask for the metal hallmark and the paperwork on the stones. A serious maker has both and will tell you plainly what is going in. Refusing to name the hallmark or where a stone came from is an answer in itself.",
+      },
+      {
+        q: "How long does a commissioned piece take?",
+        a:
+          "Usually two weeks to two months. Sketch, wax model, casting, setting, polishing, and any step can send the work back a stage. A stone-set ring takes longer than a plain band: the setting is fitted to that particular stone.",
+      },
+      {
+        q: "Can a jeweller use 3D modelling and printing?",
+        a:
+          "Yes. Modelling and printing a wax are tools, like a file or a torch. The line is the same: the maker designs and finishes the form, not a generator. A printed wax still gets hand-set stones and hand polishing.",
+        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+      },
+      {
+        q: "Where can a jeweller get listed?",
+        a:
+          "Here. Your profile links to your own site or shop, buyers write to you directly, and the site takes no cut on the sale. Someone buying a handmade piece is looking for the maker, not for a shelf of identical items.",
+        links: [{ label: "Add your profile", href: "/join" }],
+      },
+    ],
+  },
+  {
+    slug: "security-auditors",
+    category: "code-auditors",
+    metaTitle: "Security and vulnerabilities: common questions",
+    metaDescription:
+      "How a security review differs from a code audit, how vulnerability testing works, and what the report contains.",
+    title: "Security: common questions",
+    intro:
+      "Questions about vulnerability testing and protecting sites and applications.",
+    items: [
+      {
+        q: "How does a security review differ from a code audit?",
+        a:
+          "An audit looks at how the code is written and whether it will survive. A security review looks at how to break it. Code can be clean and still wide open: tidy architecture and an exposed admin panel go together easily.",
+      },
+      {
+        q: "How does vulnerability testing actually work?",
+        a:
+          "First reconnaissance: what is exposed, which versions, where the entry points are. Then testing the guesses by hand. A scanner produces a list of suspicions; a person separates a real hole from noise and shows you how to walk through it.",
+      },
+      {
+        q: "What do you get in a security report?",
+        a:
+          "Findings with a severity rating, steps to reproduce, and what to fix first. A good report reads straight to your developer: not general talk about risk, but the exact request that goes through where it should not.",
+      },
+      {
+        q: "Can a security specialist use scanners?",
+        a:
+          "Yes. A scanner is a reconnaissance tool like any other. The line is the same: a person confirms and explains every finding. A report assembled wholesale from scanner output is not a security review, it is a printout.",
+        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+      },
+      {
+        q: "Where can a security specialist get listed?",
+        a:
+          "Here. Your profile links to your own site and write-ups, enquiries come straight to you, and the site takes no cut. Clients are looking for someone who can explain a finding, not forward a scanner report.",
+        links: [{ label: "Add your profile", href: "/join" }],
+      },
+    ],
+  },
+  {
+    slug: "proofreaders",
+    category: "editors",
+    metaTitle: "Proofreaders without AI: common questions",
+    metaDescription:
+      "How a proofreader differs from an editor, why you still need one alongside a spellchecker, and how proofreading is priced.",
+    title: "Proofreaders: common questions",
+    intro:
+      "Questions from proofreaders and from the people sending them a final text.",
+    items: [
+      {
+        q: "How does a proofreader differ from an editor?",
+        a:
+          "An editor is responsible for whether the text works: logic, order, what to cut. A proofreader is responsible for what is left on the page: spelling, punctuation, consistency, typography. The editor comes first, the proofreader last.",
+      },
+      {
+        q: "Why hire a proofreader when a spellchecker exists?",
+        a:
+          "A checker catches a typo but cannot see meaning. It will pass a correct word in the wrong place, a name spelled two ways across chapters, and quotation marks that change style between paragraphs. Those are faults of the whole text, not of a single word.",
+      },
+      {
+        q: "How is proofreading priced?",
+        a:
+          "Usually by length: per thousand words or per sheet. The state of the text drives the rate: a clean manuscript reads fast, a draft with inconsistent terms and formatting reads slowly. Ask for a sample page, it shows both the quality and the size of the job.",
+      },
+      {
+        q: "Does proofreading generated text count as human-made work?",
+        a:
+          "No. If a model wrote the text and a person fixed the commas, the human contribution is the correction, not the writing. An honest profile calls that proofreading, not authorship.",
+        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+      },
+      {
+        q: "Where can a proofreader get listed?",
+        a:
+          "Here. Your profile links to your own site and samples, enquiries come straight to you, and the site takes no cut. Demand for real proofreading is rising precisely because generated text looks smooth and falls apart in the details.",
+        links: [{ label: "Add your profile", href: "/join" }],
+      },
+    ],
+  },
+  {
+    slug: "lettering-artists",
+    category: "calligraphy",
+    metaTitle: "Lettering without AI: common questions",
+    metaDescription:
+      "How lettering differs from calligraphy and from a typeface, why letters are drawn for one word, and where to find a lettering artist.",
+    title: "Lettering: common questions",
+    intro:
+      "Questions about drawn letters: logos, packaging, covers, signage.",
+    items: [
+      {
+        q: "How does lettering differ from calligraphy?",
+        a:
+          "A calligrapher writes: the letter comes out of one movement of the pen. A lettering artist draws: the letter is built, corrected and refined like any other image. That drives the work too. Calligraphy is the invitation and the certificate; lettering is the logo and the packaging.",
+      },
+      {
+        q: "Why draw letters when typefaces exist?",
+        a:
+          "A typeface has to work in every word, so every letter in it is a compromise. Lettering is drawn for one word: this tail runs longer, these two letters sit closer, that pair joins. A ready-made font cannot do that, it does not know your word.",
+      },
+      {
+        q: "How do I tell drawn letters from typed ones?",
+        a:
+          "Look at repeated letters. In type, two letter o's are identical to the pixel. In lettering they always differ slightly, because each was drawn for its own spot. Ask for the outlined source file and the versions in between.",
+      },
+      {
+        q: "Can a lettering artist work in vector and on a tablet?",
+        a:
+          "Yes. A tablet, vector curves and guides are tools. The line is the same as everywhere: the artist invents and builds the letterforms, not a generator. Generated lettering cannot be passed off as drawn.",
+        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+      },
+      {
+        q: "Where can a lettering artist get listed?",
+        a:
+          "Here. Your profile links to your portfolio, clients write to you directly, and the site takes no cut. A brand wants lettering nobody else has, which is exactly what generation cannot give.",
+        links: [{ label: "Add your profile", href: "/join" }],
+      },
+    ],
+  },
+  {
+    slug: "data-specialists",
+    category: "automation-developers",
+    metaTitle: "Data processing without AI: common questions",
+    metaDescription:
+      "Who collects and cleans company data, how that differs from process automation, and how to check a data specialist.",
+    title: "Data processing: common questions",
+    intro:
+      "Questions about collecting, parsing and cleaning up data.",
+    items: [
+      {
+        q: "How does data work differ from process automation?",
+        a:
+          "Automation removes manual steps: the email sends itself, the task creates itself. Data work answers what you actually have: pull from five sources, reconcile, clear duplicates and inconsistencies. Often the second comes first, because automating on top of dirty data just makes mistakes faster.",
+      },
+      {
+        q: "Why can't I just export the data and work with it?",
+        a:
+          "Because in one system the client is Acme Ltd, in another Acme Limited, and in a third it is misspelled. While those are three rows, every report lies. The work is not the export, it is deciding what counts as the same thing.",
+      },
+      {
+        q: "How do I check a data specialist?",
+        a:
+          "Give them a piece of your real data, not a sample. A good one asks where it came from and what the ambiguous fields mean before writing anything; a weak one starts coding immediately. Questions before work is the best sign there is.",
+      },
+      {
+        q: "Can a data specialist use ready-made libraries and tools?",
+        a:
+          "Yes, those are ordinary tools. The line is the same: a person who understands what your fields mean designs the parsing logic. A generated parser runs beautifully and quietly drops rows.",
+        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+      },
+      {
+        q: "Where can a data specialist get listed?",
+        a:
+          "Here. Your profile links to your GitHub and site, enquiries come straight to you, and the site takes no cut. Clients want someone who can explain why the report says what it says.",
+        links: [{ label: "Add your profile", href: "/join" }],
+      },
+    ],
+  },
 ];
 
 const byLocale: Record<Locale, FaqProfession[]> = { en, ru };
@@ -2427,6 +2897,19 @@ export function getFaqProfession(
   slug: string,
 ): FaqProfession | undefined {
   return getFaqProfessions(locale).find((p) => p.slug === slug);
+}
+
+/**
+ * Every FAQ block that belongs to a category. A category named after two
+ * trades ("Composers & Musicians") carries one block per trade, because
+ * a musician asking about session work is not asking what a composer
+ * asks. Categories with a single trade return a single block.
+ */
+export function getFaqForCategory(
+  locale: Locale,
+  category: string,
+): FaqProfession[] {
+  return getFaqProfessions(locale).filter((p) => p.category === category);
 }
 
 /** Slugs are the same across locales, so one list drives static params. */

@@ -11,7 +11,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ProfileGrid } from "@/components/ProfileGrid";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { getDictionary } from "@/i18n";
-import { getFaqProfession } from "@/i18n/data/faqProfessions";
+import { getFaqForCategory } from "@/i18n/data/faqProfessions";
 import { DEFAULT_LOCALE, isLocale, localizedPath, LOCALES, altLanguages } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
 import type { ProfileType as ParticipantType } from "@/lib/types";
@@ -67,7 +67,7 @@ export default async function CategoryPage({
 
   // Anyone browsing a category is exactly the person the profession FAQ
   // is written for, so link the two together when that FAQ exists.
-  const faq = getFaqProfession(locale, cat.slug);
+  const faqBlocks = getFaqForCategory(locale, cat.slug);
 
   const dir = directionOfCategoryL(cat.slug, locale);
   const list = getProfilesByCategoryL(cat.slug, locale).filter(
@@ -76,11 +76,12 @@ export default async function CategoryPage({
 
   // The profession FAQ lives here now, on the page that also lists the
   // people who do the work, so the FAQPage schema travels with it.
-  const faqJsonLd = faq && {
+  const faqItems = faqBlocks.flatMap((b) => b.items);
+  const faqJsonLd = faqItems.length > 0 && {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     inLanguage: locale,
-    mainEntity: faq.items.map((it) => ({
+    mainEntity: faqItems.map((it) => ({
       "@type": "Question",
       name: it.q,
       acceptedAnswer: { "@type": "Answer", text: it.a },
@@ -168,15 +169,15 @@ export default async function CategoryPage({
         </div>
       </div>
 
-      {faq && (
-        <section className="mt-12 max-w-3xl">
+      {faqBlocks.map((faq) => (
+        <section key={faq.slug} className="mt-12 max-w-3xl">
           <h2 className="!text-[1.35rem]">{faq.title}</h2>
           <p className="mb-5 mt-2 text-[0.98rem]" style={{ color: "var(--color-muted)" }}>
             {faq.intro}
           </p>
           <FAQAccordion items={faq.items} lang={locale} />
         </section>
-      )}
+      ))}
     </div>
   );
 }
