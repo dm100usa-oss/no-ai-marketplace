@@ -891,6 +891,7 @@ export const ru: Dictionary = {
     errorTitle: "Что-то не загрузилось",
     errorMessage: "Не удалось показать эту страницу. Обновите, чтобы попробовать снова.",
     backToDirectory: "Назад в каталог",
+    slotYourWork: "Ваша работа",
     slotTitle: "Пока нет профилей: {name}",
     slotMessage: "Эта категория готова и ждет свои первые профили. Добавьте свой.",
     slotBeFirst: "Станьте первым!",

@@ -887,6 +887,7 @@ export const en: Dictionary = {
     errorTitle: "Something didn't load",
     errorMessage: "This page couldn't be shown. Refresh to try again.",
     backToDirectory: "Back to directory",
+    slotYourWork: "Your work",
     slotTitle: "No profiles yet: {name}",
     slotMessage: "This category is ready and waiting for its first profiles. Add yours.",
     slotBeFirst: "Be the first",

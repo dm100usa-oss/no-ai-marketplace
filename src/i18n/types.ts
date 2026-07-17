@@ -514,6 +514,7 @@ export interface Dictionary {
     backToDirectory: string;
     /** The empty-category card: a real listing card with the spot free.
      *  slotTitle takes the category name via {name}. */
+    slotYourWork: string;
     slotTitle: string;
     slotMessage: string;
     slotBeFirst: string;

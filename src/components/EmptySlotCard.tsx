@@ -57,17 +57,28 @@ export function EmptySlotCard({
         className="flex aspect-[4/3] flex-col items-center px-6 pt-8 text-center"
         style={{ background: gradient(categorySlug) }}
       >
-        <p className="text-[1.05rem] leading-snug" style={{ color: "var(--color-muted-soft)" }}>
+        {/* The spot where the work itself will sit, named out loud. Everything
+            below it explains why the spot is still empty. */}
+        <p
+          className="text-[1.5rem] font-semibold leading-tight"
+          style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+        >
+          {s.slotYourWork}
+        </p>
+        <p
+          className="mt-10 text-[0.95rem] leading-normal"
+          style={{ color: "var(--color-muted-soft)" }}
+        >
           {s.slotTitle.replace("{name}", categoryName.toLowerCase())}
         </p>
         <h3
-          className="!mb-0 !mt-6 text-[1.05rem] font-semibold leading-snug"
+          className="!mb-0 !mt-3.5 text-[0.95rem] font-semibold leading-[1.75]"
           style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
         >
           {s.slotMessage}
         </h3>
         <p
-          className="mt-6 text-[1.2rem] font-semibold"
+          className="mt-3.5 text-[1.05rem] font-semibold"
           style={{ fontFamily: "var(--font-display)", color: "var(--color-accent)" }}
         >
           {s.slotBeFirst}
