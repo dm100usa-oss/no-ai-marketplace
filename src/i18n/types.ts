@@ -524,6 +524,7 @@ export interface Dictionary {
     slotTagDirection: string;
     slotTagWork: string;
     slotAction: string;
+    slotNote: string;
   };
 
   notFound: {

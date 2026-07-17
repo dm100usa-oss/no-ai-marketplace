@@ -125,6 +125,12 @@ export function EmptySlotCard({
           >
             {s.slotAction}
           </LocaleLink>
+          <p
+            className="mt-2 text-center text-[0.78rem]"
+            style={{ color: "var(--color-muted-soft)" }}
+          >
+            {s.slotNote}
+          </p>
         </div>
       </div>
     </article>

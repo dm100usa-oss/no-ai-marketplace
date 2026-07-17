@@ -887,7 +887,7 @@ export const en: Dictionary = {
     errorTitle: "Something didn't load",
     errorMessage: "This page couldn't be shown. Refresh to try again.",
     backToDirectory: "Back to directory",
-    slotTitle: "Not here yet: {name}",
+    slotTitle: "No profiles yet: {name}",
     slotMessage: "This category is ready and waiting for its first profiles. Add yours.",
     slotBeFirst: "Be the first",
     slotName: "Your name",
@@ -897,6 +897,7 @@ export const en: Dictionary = {
     slotTagDirection: "Direction",
     slotTagWork: "Work",
     slotAction: "Add your profile",
+    slotNote: "The first 50 profiles are free until the end of 2026",
   },
 
   notFound: {
