@@ -890,7 +890,7 @@ export const en: Dictionary = {
     slotTitle: "No profiles yet: {name}",
     slotMessage: "This category is ready and waiting for its first profiles. Add yours.",
     slotBeFirst: "Be the first",
-    slotName: "Your name",
+    slotName: "Name",
     slotRole: "Profession",
     slotTagCountry: "Country",
     slotTagDirection: "Direction",
