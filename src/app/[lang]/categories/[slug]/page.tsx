@@ -74,9 +74,6 @@ export default async function CategoryPage({
   const list = getProfilesByCategoryL(cat.slug, locale).filter(
     (p) => !type || p.profileType === type,
   );
-  const featured = list.filter((p) => p.status === "featured" || p.featured);
-  const featuredSlugs = new Set(featured.map((p) => p.slug));
-  const rest = list.filter((p) => !featuredSlugs.has(p.slug));
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -118,29 +115,27 @@ export default async function CategoryPage({
       />
 
       <h1>{cat.name}</h1>
-      {cat.seoText && <p className="lead mt-3 max-w-3xl">{cat.seoText}</p>}
 
-      {featured.length > 0 && (
-        <div className="mt-10">
-          <div className="mb-4 flex items-baseline justify-between gap-3">
-            <h2 className="!text-[1.35rem]">{dict.categoryDetail.featuredIn} {cat.name.toLowerCase()}</h2>
-            <span className="text-[0.85rem]" style={{ color: "var(--color-muted-soft)" }}>
-              {dict.categoryDetail.leadersPickedByHand}
-            </span>
-          </div>
-          <ProfileGrid lang={locale} dict={dict} profiles={featured} />
-        </div>
+      {cat.professions && (
+        <p
+          className="mt-3 max-w-3xl rounded-xl px-4 py-3 text-[0.98rem]"
+          style={{ background: "var(--color-brand-soft)", color: "var(--color-muted)" }}
+        >
+          {cat.professions}
+        </p>
       )}
+
+      {cat.seoText && <p className="lead mt-4 max-w-3xl">{cat.seoText}</p>}
 
       <div className="mt-10">
         <h2 className="!text-[1.35rem]">{dict.categoryDetail.allProfiles}</h2>
         <p className="mb-5 mt-2 text-[0.9rem]" style={{ color: "var(--color-muted-soft)" }}>
-          {rest.length} {rest.length === 1 ? dict.common.profile : dict.common.profiles}
+          {list.length} {list.length === 1 ? dict.common.profile : dict.common.profiles}
         </p>
         <ProfileGrid
           lang={locale}
           dict={dict}
-          profiles={rest}
+          profiles={list}
           emptyTitle={`${dict.categoryDetail.emptyTitlePrefix} ${cat.name.toLowerCase()}`}
           emptyMessage={dict.categoryDetail.emptyMessage}
         />

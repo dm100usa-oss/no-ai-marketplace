@@ -102,6 +102,11 @@ export interface Category {
   name: string;
   direction: string; // parent direction slug
   shortDescription?: string;
+  /** Comma-separated list of professions and specialisations inside this
+   *  category, shown first on the category page so a visitor can tell at a
+   *  glance whether they are in the right place. Plain text, not links:
+   *  filtering by specialisation waits until there are real profiles. */
+  professions?: string;
   /** SEO intro text shown on the category page (TZ 5.3:
    *  no empty pages made only of cards). */
   seoText?: string;

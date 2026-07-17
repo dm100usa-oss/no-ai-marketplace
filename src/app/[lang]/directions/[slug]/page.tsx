@@ -4,13 +4,11 @@ import { LocaleLink } from "@/components/LocaleLink";
 import {
   getDirectionL,
   getCategoriesByDirectionL,
-  getProfilesByDirectionL,
   getProfilesByCategoryL,
 } from "@/lib/localized-data";
 import { directions as baseDirections } from "@/data/directions";
 import { site } from "@/lib/config";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { ProfileGrid } from "@/components/ProfileGrid";
 import { SectionHeading } from "@/components/States";
 import { ArrowRight } from "@/components/icons";
 import { getDictionary } from "@/i18n";
@@ -69,9 +67,6 @@ export default async function DirectionPage({
     !type || p.profileType === type;
 
   const cats = getCategoriesByDirectionL(dir.slug, locale);
-  const featured = getProfilesByDirectionL(dir.slug, locale)
-    .filter(ofType)
-    .filter((p) => p.status === "featured" || p.featured);
 
   return (
     <div className="container-page section">
@@ -122,16 +117,6 @@ export default async function DirectionPage({
           })}
         </div>
       </div>
-
-      {/* Featured in this direction */}
-      {featured.length > 0 && (
-        <div className="mt-14">
-          <SectionHeading lang={locale} title={`${dict.directionDetail.featuredIn} ${dir.name}`}>
-            {dict.directionDetail.leadersPickedByHand}
-          </SectionHeading>
-          <ProfileGrid lang={locale} dict={dict} profiles={featured} />
-        </div>
-      )}
     </div>
   );
 }

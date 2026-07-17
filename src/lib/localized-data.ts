@@ -68,6 +68,7 @@ function localizeCategory(c: Category, locale: Locale): Category {
     ...c,
     name: pick(t.name, c.name),
     shortDescription: pick(t.shortDescription, c.shortDescription),
+    professions: pick(t.professions, c.professions),
     seoText: pick(t.seoText, c.seoText),
     seoTitle: pick(t.seoTitle, c.seoTitle),
     seoDescription: pick(t.seoDescription, c.seoDescription),
