@@ -61,7 +61,7 @@ export function EmptySlotCard({
           {s.slotTitle.replace("{name}", categoryName.toLowerCase())}
         </p>
         <h3
-          className="!m-0 mt-6 text-[1.05rem] font-semibold leading-snug"
+          className="!mb-0 !mt-6 text-[1.05rem] font-semibold leading-snug"
           style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
         >
           {s.slotMessage}
