@@ -149,10 +149,11 @@ export default async function CategoryPage({
       <div className="mt-10">
         <h2 className="!text-[1.35rem]">{dict.categoryDetail.allProfiles}</h2>
         {list.length > 0 && (
-          <p className="mb-5 mt-2 text-[0.9rem]" style={{ color: "var(--color-muted-soft)" }}>
+          <p className="mt-2 text-[0.9rem]" style={{ color: "var(--color-muted-soft)" }}>
             {list.length} {list.length === 1 ? dict.common.profile : dict.common.profiles}
           </p>
         )}
+        <div className="mt-5">
         <ProfileGrid
           lang={locale}
           dict={dict}
@@ -160,9 +161,11 @@ export default async function CategoryPage({
           showSlotCard
           slotCategoryName={cat.name}
           slotCategorySlug={cat.slug}
+          slotDirectionColor={dir?.color}
           emptyTitle={`${dict.categoryDetail.emptyTitlePrefix} ${cat.name.toLowerCase()}`}
           emptyMessage={dict.categoryDetail.emptyMessage}
         />
+        </div>
       </div>
 
       {faq && (

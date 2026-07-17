@@ -23,20 +23,19 @@ function gradient(seed: string): string {
   return `linear-gradient(135deg, ${hues[h]}, ${hues[(h + 3) % hues.length]})`;
 }
 
-/** Avatar tint from the same family, a shade the initials read against. */
-function avatarTint(seed: string): { bg: string; fg: string } {
-  const pairs = [
-    { bg: "#e3ecfb", fg: "#3e6fcc" },
-    { bg: "#dff1e9", fg: "#157a58" },
-    { bg: "#eae4fa", fg: "#7a6bd6" },
-    { bg: "#fbeedb", fg: "#a9691a" },
-    { bg: "#fbe4e9", fg: "#c44a6e" },
-    { bg: "#fce7dc", fg: "#d85a30" },
-    { bg: "#ddf0f2", fg: "#1e8c96" },
-  ];
-  let h = 0;
-  for (const c of seed) h = (h + c.charCodeAt(0)) % pairs.length;
-  return pairs[h];
+/** Silhouette where a real profile carries a photo: it reads as "a face
+ *  goes here" without asking anyone to parse initials that belong to
+ *  nobody. */
+function PersonSilhouette({ color }: { color: string }) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <circle cx="12" cy="8" r="3.6" fill={color} />
+      <path
+        d="M4.8 20c0-3.6 3.2-6 7.2-6s7.2 2.4 7.2 6"
+        fill={color}
+      />
+    </svg>
+  );
 }
 
 export function EmptySlotCard({
@@ -44,32 +43,36 @@ export function EmptySlotCard({
   dict,
   categoryName,
   categorySlug,
+  directionColor,
 }: {
   lang: Locale;
   dict: Dictionary;
   categoryName: string;
   categorySlug: string;
+  /** Direction colour key, so the avatar carries the colour of its part
+   *  of the site: pink for music, blue for code, orange for craft. */
+  directionColor?: string;
 }) {
   const s = dict.states;
-  const tint = avatarTint(categorySlug);
+  const dir = directionColor ?? "neutral";
 
   return (
     <article className="card flex flex-col overflow-hidden">
       <div
-        className="flex aspect-[4/3] flex-col items-center justify-center gap-2.5 px-6 text-center"
+        className="flex aspect-[4/3] flex-col items-center gap-3 px-6 pt-9 text-center"
         style={{ background: gradient(categorySlug) }}
       >
+        <p className="text-[0.85rem] leading-snug" style={{ color: "var(--color-muted-soft)" }}>
+          {s.slotTitle.replace("{name}", categoryName.toLowerCase())}
+        </p>
         <h3
-          className="!m-0 text-[1.05rem] leading-tight"
+          className="!m-0 text-[1.05rem] font-semibold leading-tight"
           style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
         >
-          {s.slotTitle.replace("{name}", categoryName.toLowerCase())}
-        </h3>
-        <p className="text-[0.85rem] leading-snug" style={{ color: "var(--color-muted)" }}>
           {s.slotMessage}
-        </p>
+        </h3>
         <p
-          className="text-[0.9rem] font-semibold"
+          className="text-[1rem] font-semibold"
           style={{ fontFamily: "var(--font-display)", color: "var(--color-accent)" }}
         >
           {s.slotBeFirst}
@@ -77,18 +80,14 @@ export function EmptySlotCard({
       </div>
 
       <div className="flex flex-1 flex-col gap-3 p-4">
-        <div className="flex items-start justify-between gap-2">
+        <div className="flex items-stretch justify-between gap-2">
           <span className="flex min-w-0 items-center gap-2.5">
             <span
               aria-hidden
-              className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-[0.8rem] font-bold"
-              style={{
-                background: tint.bg,
-                color: tint.fg,
-                fontFamily: "var(--font-display)",
-              }}
+              className="grid h-9 w-9 shrink-0 place-items-center rounded-full"
+              style={{ background: `var(--color-dir-${dir}-bg)` }}
             >
-              {s.slotInitials}
+              <PersonSilhouette color={`var(--color-dir-${dir}-ink)`} />
             </span>
             <span className="min-w-0">
               <span
@@ -105,7 +104,13 @@ export function EmptySlotCard({
               </span>
             </span>
           </span>
-          <span className="badge badge-verified shrink-0" title={dict.badges.verifiedTitle}>
+          {/* The badge spans the full height of the author row here: from the
+              top of the name to the bottom of the profession line. On real
+              cards it stays its normal size. */}
+          <span
+            className="badge badge-verified !flex shrink-0 !items-center self-stretch !py-0"
+            title={dict.badges.verifiedTitle}
+          >
             <CheckShield size={18} />
             {dict.badges.verifiedCreator}
           </span>

@@ -20,6 +20,7 @@ export function ProfileGrid({
   showSlotCard,
   slotCategoryName,
   slotCategorySlug,
+  slotDirectionColor,
 }: {
   lang: Locale;
   dict: Dictionary;
@@ -30,6 +31,7 @@ export function ProfileGrid({
   showSlotCard?: boolean;
   slotCategoryName?: string;
   slotCategorySlug?: string;
+  slotDirectionColor?: string;
 }) {
   if (profiles.length === 0) {
     // A category with nobody in it gets the billboard card instead of a
@@ -43,6 +45,7 @@ export function ProfileGrid({
             dict={dict}
             categoryName={slotCategoryName}
             categorySlug={slotCategorySlug}
+            directionColor={slotDirectionColor}
           />
         </div>
       );

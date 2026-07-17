@@ -518,7 +518,6 @@ export interface Dictionary {
     slotMessage: string;
     slotBeFirst: string;
     slotName: string;
-    slotInitials: string;
     slotRole: string;
     slotTagCountry: string;
     slotTagDirection: string;
