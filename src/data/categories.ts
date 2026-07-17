@@ -130,6 +130,17 @@ export const categories: Category[] = [
     seoDescription:
       "Directory of 3D artists who model by hand, without AI. Find production-ready human-made 3D work and hire each artist directly.",
   },
+  {
+    slug: "3d-designers",
+    name: "3D Designers",
+    direction: "graphics-and-design",
+    shortDescription: "Product and industrial 3D designers: parts, packaging, print-ready models.",
+    seoText:
+      "3D designers here work on things that have to be made, not only rendered. This category covers product and industrial design, packaging, parts and assemblies, technical visualisation and models prepared for 3D printing or manufacture. Where a 3D artist is hired to make a scene look right, a 3D designer is hired to make an object work: wall thickness, tolerances, materials, a file the factory can actually use. Each profile links to the designer's own portfolio.",
+    seoTitle: "3D Designers — human product and industrial 3D design",
+    seoDescription:
+      "Directory of 3D designers who model products, parts and packaging by hand, without AI. Find manufacture-ready human-made 3D design and hire each designer directly.",
+  },
   // ---- photo-and-video ----
   {
     slug: "photographers",

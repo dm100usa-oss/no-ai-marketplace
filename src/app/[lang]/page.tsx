@@ -59,10 +59,30 @@ export default async function HomePage({
   const featured = getFeaturedProfilesL(locale).slice(0, 6);
   const newest = getNewestProfilesL(locale, 6);
 
-  const popularCategories = getAllCategoriesL(locale).slice(0, 8).map((c) => ({
-    ...c,
-    direction: directionOfCategoryL(c.slug, locale),
-  }));
+  // Named, not sliced. Taking the first eight of the list gave whatever
+  // happened to sit at the top of categories.ts — four painters and four
+  // writers, in file order, which is not what "popular" means. These eight
+  // are the ones actually in demand, and the order here is the order on
+  // screen.
+  const POPULAR = [
+    "graphic-designers",
+    "web-developers",
+    "video-editors",
+    "ui-ux-designers",
+    "illustrators",
+    "copywriters",
+    "photographers",
+    "3d-designers",
+  ];
+
+  const allCats = getAllCategoriesL(locale);
+  const popularCategories = POPULAR.map((slug) => allCats.find((c) => c.slug === slug))
+    // A typo in a slug should drop one tile, not take down the page.
+    .filter((c): c is NonNullable<typeof c> => c !== undefined)
+    .map((c) => ({
+      ...c,
+      direction: directionOfCategoryL(c.slug, locale),
+    }));
 
   const faqItems = dict.home.faq;
 
