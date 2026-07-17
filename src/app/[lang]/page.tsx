@@ -339,6 +339,30 @@ export default async function HomePage({
         </div>
       </section>
 
+      {/* ---------- What this place is ---------- */}
+      {/* The slogan above is a call; this answers it plainly, in the words a
+          person would use to say what they came here for. It sits on the same
+          tint as the stats band, so the two quiet claims on the page read as
+          one voice. No full stop: it is a statement, not a paragraph. */}
+      <section className="pt-2">
+        <div className="container-page">
+          <div
+            className="mx-[1.45rem] rounded-xl px-6 py-5"
+            style={{
+              background: "rgba(219,233,255,0.61)",
+              borderLeft: "3px solid var(--color-accent)",
+            }}
+          >
+            <p
+              className="text-[1rem] leading-[1.7] sm:text-[1.05rem]"
+              style={{ color: "var(--color-ink)" }}
+            >
+              {dict.home.heroStatement}
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ---------- Explore directions ---------- */}
       <section className="section">
         <div className="container-page">

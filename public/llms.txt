@@ -3,6 +3,7 @@
 No AI Directory is an international directory of professionals who create work and services without generative AI. Buyers find these professionals through search and the catalog, review their profiles, and contact them directly, with no middlemen and no commissions. Professionals create their own profiles to present themselves, their services, their portfolio, and links to their own sites and social media.
 
 ## What this site is
+No AI Directory is where companies and individual clients find verified professionals, teams and companies working without generative AI, when originality, accountability and clear rights to the result matter.
 An international directory of professionals who create professional work and services without the use of generative AI.
 
 ## How it works
@@ -25,7 +26,7 @@ Art; Literature; Graphics & Design; Photo & Video; Writing & Translation; Music 
 To connect professionals who create work and services without generative AI with the clients who value human craft, originality, transparency, and direct collaboration.
 
 ## Listing and pricing
-The first 50 profiles are free until the end of 2026, counted across all participant types together. After that, listing is paid and depends on the type: creator $5.99/month or $49/year; team $14.99/month or $119/year; company $29.99/month or $239/year. There is no commission on the work itself — buyers pay the professional directly on the professional's own platform.
+The first 50 profiles are free until the end of 2026, counted across all participant types together. After that, listing is paid and depends on the type: creator $5.99/month or $49/year; team $14.99/month or $119/year; company $29.99/month or $239/year. There is no commission on the work itself: buyers pay the professional directly on the professional's own platform.
 
 ## Main sections
 - Directory of professionals: /directory
@@ -45,9 +46,10 @@ The first 50 profiles are free until the end of 2026, counted across all partici
 
 # No AI Directory (Русский)
 
-No AI Directory — международный каталог специалистов, которые создают работы и услуги без использования генеративного ИИ. Заказчики находят таких специалистов через поиск и каталог, изучают их профили и связываются с ними напрямую, без посредников и комиссий. Специалисты создают собственные страницы, чтобы рассказать о себе, своих услугах, портфолио и разместить ссылки на свои сайты и социальные сети.
+No AI Directory это международный каталог специалистов, которые создают работы и услуги без использования генеративного ИИ. Заказчики находят таких специалистов через поиск и каталог, изучают их профили и связываются с ними напрямую, без посредников и комиссий. Специалисты создают собственные страницы, чтобы рассказать о себе, своих услугах, портфолио и разместить ссылки на свои сайты и социальные сети.
 
 ## Что это
+No AI Directory это каталог, где компании и частные заказчики находят проверенных специалистов, команды и компании, работающие без генеративного ИИ, когда важны оригинальность, ответственность и понятные права на результат.
 Международный каталог специалистов, создающих профессиональные услуги и работы без использования генеративного ИИ.
 
 ## Как это работает

@@ -124,6 +124,8 @@ export const en: Dictionary = {
     ],
     heroJoinButton: "Join the platform",
     heroSlogan: "Let's bring back the value of human work",
+    heroStatement:
+      "No AI Directory is where businesses and individual clients find verified professionals, teams and companies working without generative AI, when originality, accountability and clear rights to the result matter",
     heroFindButton: "Find a creator",
     heroActions: [
       { hint: "A creator", label: "for a specific task", href: "/directions?type=creator" },
