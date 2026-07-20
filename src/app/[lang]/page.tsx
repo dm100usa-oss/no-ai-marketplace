@@ -347,30 +347,6 @@ export default async function HomePage({
         namePlaceholder={dict.home.newMembersNamePlaceholder}
       />
 
-      {/* ---------- What this place is ---------- */}
-      {/* The slogan above is a call; this answers it plainly, in the words a
-          person would use to say what they came here for. It sits on the same
-          tint as the stats band, so the two quiet claims on the page read as
-          one voice. No full stop: it is a statement, not a paragraph. */}
-      <section className="pt-2">
-        <div className="container-page">
-          <div
-            className="mx-[1.45rem] rounded-xl px-6 py-5"
-            style={{
-              background: "rgba(219,233,255,0.61)",
-              borderLeft: "3px solid var(--color-accent)",
-            }}
-          >
-            <p
-              className="text-[1rem] leading-[1.7] sm:text-[1.05rem]"
-              style={{ color: "var(--color-ink)" }}
-            >
-              {dict.home.heroStatement}
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* ---------- Explore directions ---------- */}
       <section className="section">
         <div className="container-page">
@@ -381,7 +357,7 @@ export default async function HomePage({
               1.45rem as the headings above, so the whole page keeps one
               left edge. */}
           <p
-            className="mb-3 pl-[1.45rem] text-left text-[1.35rem] font-bold md:text-[1.6rem]"
+            className="mb-3 text-center text-[1.35rem] font-bold md:text-[1.6rem]"
             style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
           >
             {dict.home.exploreDirections}
@@ -468,6 +444,29 @@ export default async function HomePage({
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- What this place is ---------- */}
+      {/* Moved below "how the platform works": the reader now knows how it
+          runs, and this states plainly what the place is. Same tint as the
+          stats band so the quiet claims read as one voice. */}
+      <section className="pt-2">
+        <div className="container-page">
+          <div
+            className="mx-[1.45rem] rounded-xl px-6 py-5"
+            style={{
+              background: "rgba(219,233,255,0.61)",
+              borderLeft: "3px solid var(--color-accent)",
+            }}
+          >
+            <p
+              className="text-[1rem] leading-[1.7] sm:text-[1.05rem]"
+              style={{ color: "var(--color-ink)" }}
+            >
+              {dict.home.heroStatement}
+            </p>
           </div>
         </div>
       </section>
