@@ -55,7 +55,10 @@ const SHOTS = [
 
 function Card({ slug, eager }: { slug: string; eager: boolean }) {
   return (
-    <div className="people-marquee__card">
+    <div
+      className="people-marquee__card"
+      onContextMenu={(e) => e.preventDefault()}
+    >
       <img
         src={`/images/people/${slug}.webp`}
         alt=""
@@ -63,7 +66,10 @@ function Card({ slug, eager }: { slug: string; eager: boolean }) {
         height={800}
         loading={eager ? "eager" : "lazy"}
         decoding="async"
+        draggable={false}
+        onDragStart={(e) => e.preventDefault()}
       />
+      <span className="people-marquee__guard" aria-hidden="true" />
     </div>
   );
 }

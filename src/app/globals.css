@@ -450,6 +450,21 @@ a { color: inherit; text-decoration: none; }
   object-fit: cover;
   /* Files are 300x400: exactly 2x the largest painted size, no more. */
   content-visibility: auto;
+  /* Soft protection: block drag-to-save and long-press selection. */
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  pointer-events: none;
+}
+
+/* Transparent layer over each image so a tap/long-press lands on this,
+   not on the image file itself. Stops the "save image" popup on mobile. */
+.people-marquee__guard {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: block;
 }
 
 @media (min-width: 640px) {
