@@ -505,14 +505,14 @@ a { color: inherit; text-decoration: none; }
   /* Same band as the visits/rating strip: a deeper blue shows at the
      edges, a lighter translucent layer sits over the middle. */
   background: #c4d3f4;
-  padding: 26px 0 30px;
+  padding: 10px 0 14px;
   margin: 0;
 }
 
 .members-marquee-inner {
   background: rgba(219, 233, 255, 0.61);
   backdrop-filter: blur(2px);
-  padding: 20px 0 22px;
+  padding: 12px 0 14px;
 }
 
 .members-marquee-title {
@@ -521,7 +521,7 @@ a { color: inherit; text-decoration: none; }
   font-weight: 700;
   font-size: 1.35rem;
   color: var(--color-ink);
-  margin: 0 0 16px;
+  margin: 0 0 12px;
 }
 
 .members-marquee {
@@ -570,7 +570,7 @@ a { color: inherit; text-decoration: none; }
 
 .members-marquee__card {
   flex: 0 0 auto;
-  width: 120px;
+  width: 138px;
   border-radius: 14px;
   background: #ffffff;
   border: 1px solid rgba(120, 150, 200, 0.16);
@@ -580,7 +580,7 @@ a { color: inherit; text-decoration: none; }
 
 .members-marquee__photo {
   width: 100%;
-  height: 104px;
+  height: 120px;
   border-radius: 10px;
   display: grid;
   place-items: center;
@@ -599,14 +599,14 @@ a { color: inherit; text-decoration: none; }
 }
 
 @media (min-width: 640px) {
-  .members-marquee__card { width: 140px; }
-  .members-marquee__photo { height: 124px; }
+  .members-marquee__card { width: 161px; }
+  .members-marquee__photo { height: 143px; }
   .members-marquee-title { font-size: 1.5rem; }
 }
 
 @media (min-width: 1024px) {
-  .members-marquee__card { width: 156px; }
-  .members-marquee__photo { height: 138px; }
+  .members-marquee__card { width: 179px; }
+  .members-marquee__photo { height: 159px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -131,6 +131,7 @@ export interface Dictionary {
     heroSlogan: string;
     /** Title above the "new members" marquee. */
     newMembersTitle: string;
+    newMembersNamePlaceholder: string;
     heroStatement: string;
     heroFindButton: string;
     heroActions: { hint: string; label: string; href: string }[];

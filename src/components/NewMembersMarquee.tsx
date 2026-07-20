@@ -37,13 +37,21 @@ function PersonSilhouette({ color }: { color: string }) {
 // name once a member joins (with permission).
 const MEMBERS = Array.from({ length: 8 }, (_, i) => ({ i, name: "" }));
 
-function MemberCard({ i, name }: { i: number; name: string }) {
+function MemberCard({
+  i,
+  name,
+  namePlaceholder,
+}: {
+  i: number;
+  name: string;
+  namePlaceholder: string;
+}) {
   return (
     <div className="members-marquee__card">
       <div className="members-marquee__photo" style={{ background: gradient(i) }}>
         <PersonSilhouette color="rgba(90,110,150,0.55)" />
       </div>
-      <div className="members-marquee__name">{name || "\u00A0"}</div>
+      <div className="members-marquee__name">{name || namePlaceholder}</div>
     </div>
   );
 }
@@ -51,9 +59,11 @@ function MemberCard({ i, name }: { i: number; name: string }) {
 export function NewMembersMarquee({
   lang,
   title,
+  namePlaceholder,
 }: {
   lang: Locale;
   title: string;
+  namePlaceholder: string;
 }) {
   void lang;
   return (
@@ -63,10 +73,20 @@ export function NewMembersMarquee({
         <div className="members-marquee" aria-hidden="true">
           <div className="members-marquee__track">
             {MEMBERS.map((m) => (
-              <MemberCard key={`a-${m.i}`} i={m.i} name={m.name} />
+              <MemberCard
+                key={`a-${m.i}`}
+                i={m.i}
+                name={m.name}
+                namePlaceholder={namePlaceholder}
+              />
             ))}
             {MEMBERS.map((m) => (
-              <MemberCard key={`b-${m.i}`} i={m.i} name={m.name} />
+              <MemberCard
+                key={`b-${m.i}`}
+                i={m.i}
+                name={m.name}
+                namePlaceholder={namePlaceholder}
+              />
             ))}
           </div>
         </div>

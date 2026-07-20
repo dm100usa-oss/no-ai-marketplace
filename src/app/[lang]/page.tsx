@@ -341,7 +341,11 @@ export default async function HomePage({
       </section>
 
       {/* ---------- New members marquee ---------- */}
-      <NewMembersMarquee lang={locale} title={dict.home.newMembersTitle} />
+      <NewMembersMarquee
+        lang={locale}
+        title={dict.home.newMembersTitle}
+        namePlaceholder={dict.home.newMembersNamePlaceholder}
+      />
 
       {/* ---------- What this place is ---------- */}
       {/* The slogan above is a call; this answers it plainly, in the words a
