@@ -583,6 +583,7 @@ export interface Dictionary {
     profileSubmitted: { title: string; description: string; primary: string; secondary: string };
     profileSuspended: { title: string; description: string; primary: string; secondary: string };
     profileNotAvailable: { title: string; description: string; primary: string; secondary: string };
+    newMember: { title: string; description: string; primary: string; secondary: string };
   };
 
   /** Meta titles/descriptions for pages that set their own. */

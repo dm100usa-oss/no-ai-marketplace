@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { Locale } from "@/i18n/config";
 
 /**
@@ -41,18 +42,23 @@ function MemberCard({
   i,
   name,
   namePlaceholder,
+  lang,
 }: {
   i: number;
   name: string;
   namePlaceholder: string;
+  lang: Locale;
 }) {
   return (
-    <div className="members-marquee__card">
+    <Link
+      href={`/${lang}/new-member`}
+      className="members-marquee__card members-marquee__card--link"
+    >
       <div className="members-marquee__photo" style={{ background: gradient(i) }}>
         <PersonSilhouette color="rgba(90,110,150,0.55)" />
       </div>
       <div className="members-marquee__name">{name || namePlaceholder}</div>
-    </div>
+    </Link>
   );
 }
 
@@ -65,12 +71,11 @@ export function NewMembersMarquee({
   title: string;
   namePlaceholder: string;
 }) {
-  void lang;
   return (
     <section className="members-marquee-section">
       <div className="members-marquee-inner">
         <h2 className="members-marquee-title">{title}</h2>
-        <div className="members-marquee" aria-hidden="true">
+        <div className="members-marquee">
           <div className="members-marquee__track">
             {MEMBERS.map((m) => (
               <MemberCard
@@ -78,6 +83,7 @@ export function NewMembersMarquee({
                 i={m.i}
                 name={m.name}
                 namePlaceholder={namePlaceholder}
+                lang={lang}
               />
             ))}
             {MEMBERS.map((m) => (
@@ -86,6 +92,7 @@ export function NewMembersMarquee({
                 i={m.i}
                 name={m.name}
                 namePlaceholder={namePlaceholder}
+                lang={lang}
               />
             ))}
           </div>

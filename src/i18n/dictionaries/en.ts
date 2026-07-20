@@ -1021,6 +1021,13 @@ export const en: Dictionary = {
       primary: "Browse the catalog",
       secondary: "Back to home",
     },
+    newMember: {
+      title: "A new member's profile will be here",
+      description:
+        "This spot is for a creator who works without generative AI. Create a profile and be the first to take it.",
+      primary: "Create a profile",
+      secondary: "Back to home",
+    },
   },
 
   meta: {
