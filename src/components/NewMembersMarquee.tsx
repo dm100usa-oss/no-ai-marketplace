@@ -57,16 +57,18 @@ export function NewMembersMarquee({
 }) {
   void lang;
   return (
-    <section className="members-marquee-section section-brand">
-      <h2 className="members-marquee-title">{title}</h2>
-      <div className="members-marquee" aria-hidden="true">
-        <div className="members-marquee__track">
-          {MEMBERS.map((m) => (
-            <MemberCard key={`a-${m.i}`} i={m.i} name={m.name} />
-          ))}
-          {MEMBERS.map((m) => (
-            <MemberCard key={`b-${m.i}`} i={m.i} name={m.name} />
-          ))}
+    <section className="members-marquee-section">
+      <div className="members-marquee-inner">
+        <h2 className="members-marquee-title">{title}</h2>
+        <div className="members-marquee" aria-hidden="true">
+          <div className="members-marquee__track">
+            {MEMBERS.map((m) => (
+              <MemberCard key={`a-${m.i}`} i={m.i} name={m.name} />
+            ))}
+            {MEMBERS.map((m) => (
+              <MemberCard key={`b-${m.i}`} i={m.i} name={m.name} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -502,8 +502,17 @@ a { color: inherit; text-decoration: none; }
    Same slow drift as the work strip, translucent member cards.
 ------------------------------------------------------------------ */
 .members-marquee-section {
+  /* Same band as the visits/rating strip: a deeper blue shows at the
+     edges, a lighter translucent layer sits over the middle. */
+  background: #c4d3f4;
   padding: 26px 0 30px;
   margin: 0;
+}
+
+.members-marquee-inner {
+  background: rgba(219, 233, 255, 0.61);
+  backdrop-filter: blur(2px);
+  padding: 20px 0 22px;
 }
 
 .members-marquee-title {
@@ -533,11 +542,11 @@ a { color: inherit; text-decoration: none; }
 }
 .members-marquee::before {
   left: 0;
-  background: linear-gradient(to right, var(--color-brand-soft), transparent);
+  background: linear-gradient(to right, rgba(224, 235, 253, 0.9), transparent);
 }
 .members-marquee::after {
   right: 0;
-  background: linear-gradient(to left, var(--color-brand-soft), transparent);
+  background: linear-gradient(to left, rgba(224, 235, 253, 0.9), transparent);
 }
 
 .members-marquee__track {
