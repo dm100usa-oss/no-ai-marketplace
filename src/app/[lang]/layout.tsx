@@ -7,6 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { VisitBeacon } from "@/components/VisitBeacon";
+import { ImageGuard } from "@/components/ImageGuard";
 import { site } from "@/lib/config";
 import { getDictionary } from "@/i18n";
 import { LOCALES, DEFAULT_LOCALE, isLocale, localizedPath, altLanguages, LOCALE_HTML_LANG } from "@/i18n/config";
@@ -125,6 +126,7 @@ export default async function LangLayout({
         <main className="flex-1">{children}</main>
         <Footer lang={locale} dict={dict} />
         <VisitBeacon />
+        <ImageGuard />
         <Analytics />
         <SpeedInsights />
       </body>

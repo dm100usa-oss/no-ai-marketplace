@@ -1,6 +1,19 @@
 @import "tailwindcss";
 
 /*
+  Site-wide soft image protection: block drag-to-save and long-press save
+  on every image, icon and logo. Screenshots are not (and cannot be)
+  blocked. Interactive elements keep working; this only affects <img>.
+*/
+img {
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+
+/*
   No AI Directory — design system
   Palette and typography per TZ section 5.5.
   Ash-blue brand, calm modern catalogue, mobile-first.
