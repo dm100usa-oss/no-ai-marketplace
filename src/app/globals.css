@@ -502,7 +502,8 @@ a { color: inherit; text-decoration: none; }
    Same slow drift as the work strip, translucent member cards.
 ------------------------------------------------------------------ */
 .members-marquee-section {
-  margin: 28px 0 8px;
+  padding: 26px 0 30px;
+  margin: 0;
 }
 
 .members-marquee-title {
@@ -511,7 +512,7 @@ a { color: inherit; text-decoration: none; }
   font-weight: 700;
   font-size: 1.35rem;
   color: var(--color-ink);
-  margin: 0 0 14px;
+  margin: 0 0 16px;
 }
 
 .members-marquee {
@@ -532,11 +533,11 @@ a { color: inherit; text-decoration: none; }
 }
 .members-marquee::before {
   left: 0;
-  background: linear-gradient(to right, var(--color-page), transparent);
+  background: linear-gradient(to right, var(--color-brand-soft), transparent);
 }
 .members-marquee::after {
   right: 0;
-  background: linear-gradient(to left, var(--color-page), transparent);
+  background: linear-gradient(to left, var(--color-brand-soft), transparent);
 }
 
 .members-marquee__track {
@@ -562,19 +563,18 @@ a { color: inherit; text-decoration: none; }
   flex: 0 0 auto;
   width: 120px;
   border-radius: 14px;
-  /* Translucent, soft look */
-  background: rgba(255, 255, 255, 0.55);
-  border: 1px solid rgba(120, 150, 200, 0.18);
-  box-shadow: 0 1px 4px rgba(30, 50, 90, 0.08);
-  padding: 10px 10px 12px;
-  opacity: 0.9;
+  background: #ffffff;
+  border: 1px solid rgba(120, 150, 200, 0.16);
+  box-shadow: 0 2px 6px rgba(30, 50, 90, 0.10);
+  padding: 8px 8px 10px;
 }
 
 .members-marquee__photo {
   width: 100%;
-  height: 100px;
+  height: 104px;
   border-radius: 10px;
-  opacity: 0.85;
+  display: grid;
+  place-items: center;
 }
 
 .members-marquee__name {
@@ -591,13 +591,13 @@ a { color: inherit; text-decoration: none; }
 
 @media (min-width: 640px) {
   .members-marquee__card { width: 140px; }
-  .members-marquee__photo { height: 120px; }
+  .members-marquee__photo { height: 124px; }
   .members-marquee-title { font-size: 1.5rem; }
 }
 
 @media (min-width: 1024px) {
   .members-marquee__card { width: 156px; }
-  .members-marquee__photo { height: 136px; }
+  .members-marquee__photo { height: 138px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
