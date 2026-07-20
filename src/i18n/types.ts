@@ -129,6 +129,8 @@ export interface Dictionary {
     heroJoinButton: string;
     /** The project's call, under the join button. */
     heroSlogan: string;
+    /** Title above the "new members" marquee. */
+    newMembersTitle: string;
     heroStatement: string;
     heroFindButton: string;
     heroActions: { hint: string; label: string; href: string }[];

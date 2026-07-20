@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/States";
 import { FAQ } from "@/components/FAQ";
 import { FindAccordion } from "@/components/FindAccordion";
 import { PeopleMarquee } from "@/components/PeopleMarquee";
+import { NewMembersMarquee } from "@/components/NewMembersMarquee";
 import { StatsBand } from "@/components/StatsBand";
 import { PulseIcon } from "@/components/PulseIcon";
 import {
@@ -338,6 +339,9 @@ export default async function HomePage({
 
         </div>
       </section>
+
+      {/* ---------- New members marquee ---------- */}
+      <NewMembersMarquee lang={locale} title={dict.home.newMembersTitle} />
 
       {/* ---------- What this place is ---------- */}
       {/* The slogan above is a call; this answers it plainly, in the words a

@@ -498,6 +498,114 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ----------------------------------------------------------------
+   New members marquee — second strip, under the join call.
+   Same slow drift as the work strip, translucent member cards.
+------------------------------------------------------------------ */
+.members-marquee-section {
+  margin: 28px 0 8px;
+}
+
+.members-marquee-title {
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: var(--color-ink);
+  margin: 0 0 14px;
+}
+
+.members-marquee {
+  overflow: hidden;
+  padding: 8px 0;
+  position: relative;
+}
+
+.members-marquee::before,
+.members-marquee::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  z-index: 1;
+  pointer-events: none;
+}
+.members-marquee::before {
+  left: 0;
+  background: linear-gradient(to right, var(--color-page), transparent);
+}
+.members-marquee::after {
+  right: 0;
+  background: linear-gradient(to left, var(--color-page), transparent);
+}
+
+.members-marquee__track {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+  animation: members-marquee-slide 90s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+@keyframes members-marquee-slide {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+.members-marquee:hover .members-marquee__track,
+.members-marquee:focus-within .members-marquee__track {
+  animation-play-state: paused;
+}
+
+.members-marquee__card {
+  flex: 0 0 auto;
+  width: 120px;
+  border-radius: 14px;
+  /* Translucent, soft look */
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(120, 150, 200, 0.18);
+  box-shadow: 0 1px 4px rgba(30, 50, 90, 0.08);
+  padding: 10px 10px 12px;
+  opacity: 0.9;
+}
+
+.members-marquee__photo {
+  width: 100%;
+  height: 100px;
+  border-radius: 10px;
+  opacity: 0.85;
+}
+
+.members-marquee__name {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-muted);
+  min-height: 1.1em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@media (min-width: 640px) {
+  .members-marquee__card { width: 140px; }
+  .members-marquee__photo { height: 120px; }
+  .members-marquee-title { font-size: 1.5rem; }
+}
+
+@media (min-width: 1024px) {
+  .members-marquee__card { width: 156px; }
+  .members-marquee__photo { height: 136px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .members-marquee__track { animation: none; }
+  .members-marquee { overflow-x: auto; }
+}
+
+/* ----------------------------------------------------------------
    Find button — the main action on the home page
 ------------------------------------------------------------------ */
 .find-btn {
