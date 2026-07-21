@@ -99,9 +99,9 @@ export const en: Dictionary = {
   home: {
     statsVisitsLabel: "visits this week",
     steps: [
-      { title: "Tell us about yourself", text: "Create a profile and show your work." },
-      { title: "Attract clients", text: "Who value your experience, quality and unique result." },
-      { title: "Earn", text: "Doing what you love." },
+      { title: "Tell us about yourself", text: "Create a profile and show your work" },
+      { title: "Attract clients", text: "Who value your experience, quality and unique result" },
+      { title: "Earn", text: "Doing what you love" },
     ],
     heroAdvantagesTitle: "Our advantages",
     heroAdvantages: [
