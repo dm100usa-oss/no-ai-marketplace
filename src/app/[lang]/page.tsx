@@ -168,9 +168,9 @@ export default async function HomePage({
       />
 
       {/* ---------- Steps ---------- */}
-      <section className="pt-1 pb-10 sm:pt-8 sm:pb-16">
+      <section className="pt-2 pb-10 sm:pt-8 sm:pb-16">
         <div className="container-page">
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-3.5">
             {dict.home.steps.map((step) => (
               <div key={step.title}>
                 <p
@@ -204,13 +204,7 @@ export default async function HomePage({
               air above, 0.75rem below. A heading equidistant from the block
               before it and the list under it belongs to neither; pulling it
               close to its own text is what makes it read as a heading. */}
-          <p
-            className="pl-[1.45rem] text-left text-[1.35rem] font-bold md:text-[1.6rem]"
-            style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
-          >
-            {dict.home.heroAdvantagesTitle}
-          </p>
-          <div className="mt-3">
+          <div className="mt-0">
             <ul className="flex flex-col gap-2.5 text-[1.05rem]">
               {dict.home.heroAdvantages.map((line) => {
                 const m = line.match(/^(\d+%)/);
