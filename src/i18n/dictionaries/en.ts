@@ -7,9 +7,9 @@ import type { Dictionary } from "@/i18n/types";
 export const en: Dictionary = {
   site: {
     name: "No AI Directory",
-    tagline: "Find talented professionals",
-    taglineSub: "who work without AI",
-    slogan: "See their work and reach out directly",
+    tagline: "An international platform for talented professionals",
+    taglineSub: "who create work without using artificial intelligence",
+    slogan: "",
     description:
       "An international directory of professionals who create professional work and services without the use of generative AI.",
     footerNote: "Human-made creations.",
@@ -98,6 +98,11 @@ export const en: Dictionary = {
 
   home: {
     statsVisitsLabel: "visits this week",
+    steps: [
+      { title: "Tell us about yourself", text: "Create a profile and show your work." },
+      { title: "Attract clients", text: "Who value your experience, quality and unique result." },
+      { title: "Earn", text: "Doing what you love." },
+    ],
     heroAdvantagesTitle: "Our advantages",
     heroAdvantages: [
       "0% commission for clients",

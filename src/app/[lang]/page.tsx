@@ -140,9 +140,6 @@ export default async function HomePage({
             >
               {dict.site.taglineSub}
             </p>
-            <p className="mt-3 text-[1.05rem] italic leading-tight sm:text-[1.5rem]" style={{ color: "var(--color-muted)" }}>
-              {dict.site.slogan}
-            </p>
           </div>
         </div>
       </section>
@@ -169,6 +166,27 @@ export default async function HomePage({
         visitsLabel={dict.home.statsVisitsLabel}
         rating={rating ?? 0}
       />
+
+      {/* ---------- Steps ---------- */}
+      <section className="section pt-6 sm:pt-8">
+        <div className="container-page">
+          <div className="flex flex-col gap-7">
+            {dict.home.steps.map((step) => (
+              <div key={step.title}>
+                <p
+                  className="text-[1.35rem] font-bold md:text-[1.6rem]"
+                  style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+                >
+                  {step.title}
+                </p>
+                <p className="mt-1.5 text-[1.05rem]" style={{ color: "var(--color-ink)" }}>
+                  {step.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ---------- Hero content ---------- */}
       {/* Tighter on top than a normal .section: this block belongs to the
