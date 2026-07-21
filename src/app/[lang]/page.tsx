@@ -1,6 +1,5 @@
 import { LocaleLink } from "@/components/LocaleLink";
 import { DirectionTile } from "@/components/DirectionTile";
-import { ProfileGrid } from "@/components/ProfileGrid";
 import { SectionHeading } from "@/components/States";
 import { FAQ } from "@/components/FAQ";
 import { FAQAccordion } from "@/components/FAQAccordion";
@@ -11,7 +10,6 @@ import { StatsBand } from "@/components/StatsBand";
 import { PulseIcon } from "@/components/PulseIcon";
 import {
   ArrowRight,
-  CheckShield,
   TeamIcon,
 } from "@/components/icons";
 import { getDictionary } from "@/i18n";
@@ -23,8 +21,6 @@ import {
   getActiveDirectionsL,
   getAllCategoriesL,
   getCategoriesByDirectionL,
-  getFeaturedProfilesL,
-  getNewestProfilesL,
   directionOfCategoryL,
 } from "@/lib/localized-data";
 
@@ -52,8 +48,6 @@ export default async function HomePage({
   ]);
 
   const dirs = getActiveDirectionsL(locale);
-  const featured = getFeaturedProfilesL(locale).slice(0, 6);
-  const newest = getNewestProfilesL(locale, 6);
 
   // Named, not sliced. Taking the first eight of the list gave whatever
   // happened to sit at the top of categories.ts — four painters and four
@@ -448,155 +442,6 @@ export default async function HomePage({
           >
             {dict.home.howReport}
           </p>
-        </div>
-      </section>
-
-      {/* ---------- What this place is ---------- */}
-      {/* Moved below "how the platform works": the reader now knows how it
-          runs, and this states plainly what the place is. Same tint as the
-          stats band so the quiet claims read as one voice. */}
-      <section className="pt-2">
-        <div className="container-page">
-          <div
-            className="mx-[1.45rem] rounded-xl px-6 py-5"
-            style={{
-              background: "rgba(219,233,255,0.61)",
-              borderLeft: "3px solid var(--color-accent)",
-            }}
-          >
-            <p
-              className="text-[1rem] leading-[1.7] sm:text-[1.05rem]"
-              style={{ color: "var(--color-ink)" }}
-            >
-              {dict.home.heroStatement}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ---------- Featured creators ---------- */}
-      <section className="section-brand section">
-        <div className="container-page">
-          <SectionHeading
-            lang={locale}
-            title={dict.home.featuredCreators}
-            action={{ href: "/directory?sort=featured", label: dict.common.seeAll }}
-          >
-            {dict.home.featuredCreatorsSub}
-          </SectionHeading>
-          <ProfileGrid lang={locale} dict={dict} profiles={featured} />
-        </div>
-      </section>
-
-      {/* ---------- For buyers & For creators ---------- */}
-      <section className="section">
-        <div className="container-page">
-          <div className="grid gap-5 md:grid-cols-2">
-            {/* Buyers */}
-            <div
-              className="flex flex-col rounded-2xl border p-6 md:p-8"
-              style={{ borderColor: "var(--color-line)", background: "#fff" }}
-            >
-              <img
-                src="/images/how/buyers.webp"
-                alt=""
-                aria-hidden="true"
-                width={120}
-                height={97}
-                loading="lazy"
-                decoding="async"
-                className="block"
-              />
-              <h2 className="mt-4">{dict.home.forBuyers}</h2>
-              <p className="mt-3" style={{ color: "var(--color-muted)" }}>
-                {dict.home.forBuyersText}
-              </p>
-              <ul className="mt-4 space-y-2 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
-                {dict.home.forBuyersPoints.map((line) => (
-                  <li key={line} className="flex gap-2">
-                    <CheckShield size={16} className="mt-0.5 shrink-0" />
-                    {line}
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-auto pt-6">
-                <LocaleLink lang={locale} href="/directory" className="btn btn-quiet">
-                  {dict.home.browseCatalog}
-                  <ArrowRight size={16} />
-                </LocaleLink>
-              </div>
-            </div>
-
-            {/* Creators */}
-            <div
-              className="flex flex-col rounded-2xl border p-6 md:p-8"
-              style={{
-                borderColor: "var(--color-brand)",
-                background: "var(--color-brand-soft)",
-              }}
-            >
-              <img
-                src="/images/how/creators.webp"
-                alt=""
-                aria-hidden="true"
-                width={120}
-                height={88}
-                loading="lazy"
-                decoding="async"
-                className="block"
-              />
-              <h2 className="mt-4">{dict.home.forCreators}</h2>
-              <p className="mt-3" style={{ color: "var(--color-muted)" }}>
-                {dict.home.forCreatorsText}
-              </p>
-              <ul className="mt-4 space-y-2 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
-                {dict.home.forCreatorsPoints.map((line) => (
-                  <li key={line} className="flex gap-2">
-                    <CheckShield size={16} className="mt-0.5 shrink-0" />
-                    {line}
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-auto pt-6">
-                <LocaleLink lang={locale} href="/join" className="btn btn-ink">
-                  {dict.home.addProfile}
-                  <ArrowRight size={16} />
-                </LocaleLink>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ---------- New profiles ---------- */}
-      <section className="section-brand section">
-        <div className="container-page">
-          <SectionHeading
-            lang={locale}
-            title={dict.home.newProfiles}
-            action={{ href: "/directory", label: dict.common.browseCatalog }}
-          >
-            {dict.home.newProfilesSub}
-          </SectionHeading>
-          <ProfileGrid lang={locale} dict={dict} profiles={newest} />
-        </div>
-      </section>
-
-      {/* ---------- Verification block ---------- */}
-      <section className="section">
-        <div className="container-page">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2>{dict.home.verificationTitle}</h2>
-            <p className="lead mt-4">{dict.home.verificationText}</p>
-            <div className="mt-6 flex flex-wrap justify-center gap-2">
-              <LocaleLink lang={locale} href="/verified" className="btn btn-quiet">
-                {dict.home.seeVerified}
-              </LocaleLink>
-              <LocaleLink lang={locale} href="/method" className="btn btn-quiet">
-                {dict.home.standardsLink}
-              </LocaleLink>
-            </div>
-          </div>
         </div>
       </section>
 
