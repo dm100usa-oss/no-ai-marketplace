@@ -432,11 +432,11 @@ export default async function HomePage({
       </section>
 
       {/* ---------- How the platform works ---------- */}
-      <section className="section">
+      <section className="pb-[clamp(2.5rem,6vw,4.5rem)]" style={{ paddingTop: "31px" }}>
         <div className="container-page">
           <div className="mb-6">
             <h2 className="text-center">{dict.home.howItWorks}</h2>
-            <p className="lead mt-1.5 text-justify">{dict.home.howItWorksSub}</p>
+            <p className="lead mt-3 text-justify">{dict.home.howItWorksSub}</p>
           </div>
           <FAQAccordion
             lang={locale}
