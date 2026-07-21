@@ -360,7 +360,7 @@ export default async function HomePage({
       />
 
       {/* ---------- Explore directions ---------- */}
-      <section className="section">
+      <section className="pb-[clamp(2.5rem,6vw,4.5rem)]" style={{ paddingTop: "12px" }}>
         <div className="container-page">
           {/* A plain heading, not a SectionHeading: the subtitle explained
               how to use tiles that explain themselves, and the "all
@@ -369,7 +369,7 @@ export default async function HomePage({
               1.45rem as the headings above, so the whole page keeps one
               left edge. */}
           <p
-            className="mb-3 text-center text-[1.35rem] font-bold md:text-[1.6rem]"
+            className="mb-[18px] text-center text-[1.35rem] font-bold md:text-[1.6rem]"
             style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
           >
             {dict.home.exploreDirections}
@@ -395,13 +395,10 @@ export default async function HomePage({
       {/* ---------- Popular categories ---------- */}
       <section className="section-brand section">
         <div className="container-page">
-          <SectionHeading
-            lang={locale}
-            title={dict.home.popularCategories}
-            action={{ href: "/categories", label: dict.common.seeAll }}
-          >
-            {dict.home.popularCategoriesSub}
-          </SectionHeading>
+          <div className="mb-6">
+            <h2 className="whitespace-nowrap">{dict.home.popularCategories}</h2>
+            <p className="lead mt-1.5 whitespace-nowrap">{dict.home.popularCategoriesSub}</p>
+          </div>
           <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-4">
             {popularCategories.map((c) => (
               <LocaleLink
@@ -425,6 +422,16 @@ export default async function HomePage({
                 </div>
               </LocaleLink>
             ))}
+          </div>
+          <div className="mt-4 flex justify-end">
+            <LocaleLink
+              lang={locale}
+              href="/categories"
+              className="text-[0.92rem] font-semibold"
+              style={{ color: "var(--color-accent)" }}
+            >
+              {dict.common.seeAll} →
+            </LocaleLink>
           </div>
         </div>
       </section>

@@ -148,7 +148,7 @@ export const ru: Dictionary = {
     exploreDirectionsSub:
       "Выберите интересующее направление и найдите подходящего автора, команду или компанию.",
     popularCategories: "Популярные категории",
-    popularCategoriesSub: "Сразу к нужной вам специализации.",
+    popularCategoriesSub: "Переходите сразу к нужной вам специализации",
     howItWorks: "Как работает платформа",
     howItWorksSub:
       "Витрина для авторов. Сама работа происходит у них на площадках.",

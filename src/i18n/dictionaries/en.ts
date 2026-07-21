@@ -147,7 +147,7 @@ export const en: Dictionary = {
     exploreDirectionsSub:
       "Choose a direction and find the right creator, team, or company.",
     popularCategories: "Popular categories",
-    popularCategoriesSub: "Straight to the specialization you need.",
+    popularCategoriesSub: "Go straight to the specialization you need",
     howItWorks: "How the platform works",
     howItWorksSub:
       "A showcase for human creators, with the actual work happening on their own platforms.",
