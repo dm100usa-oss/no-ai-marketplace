@@ -79,6 +79,12 @@ export interface Profile extends ReservedRating {
 
   featured?: boolean; // leader flag, set manually (TZ 3.4)
 
+  /** The author allowed their photo and work to appear in the homepage
+   *  showcase (new works / new members strips). Off by default: without
+   *  consent the profile still lists in the catalog but never on the home
+   *  page. Set from the consent checkbox in the join form. */
+  showOnHomepage?: boolean;
+
   /** How many people are in the team. Only meaningful for profileType
    *  "team"; the card falls back to a plain "Team" badge without it. */
   teamSize?: number;

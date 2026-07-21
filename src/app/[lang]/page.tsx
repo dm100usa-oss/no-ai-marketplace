@@ -58,7 +58,7 @@ export default async function HomePage({
   // the moment a real author with a work is added, it shows here on the
   // next load — no manual step.
   const newWorks = getNewestProfilesL(locale)
-    .filter((p) => !p.demo && p.mainImage)
+    .filter((p) => !p.demo && p.mainImage && p.showOnHomepage)
     .slice(0, 6);
 
   // Named, not sliced. Taking the first eight of the list gave whatever

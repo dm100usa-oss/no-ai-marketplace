@@ -972,7 +972,7 @@ export const en: Dictionary = {
     privacy: {
       title: "Privacy Policy",
       intro:
-        "This page explains how No AI Directory handles personal data, cookies and third-party services (Tally forms, Stripe payments, analytics, hosting on Vercel). We collect the minimum needed to run the directory and never sell your data.",
+        "This page explains how No AI Directory handles personal data, cookies and third-party services (Tally forms, Stripe payments, analytics, hosting on Vercel). We collect the minimum needed to run the directory and never sell your data. Listing submissions are processed by the Tally form service, not directly by us. When you send a review we briefly store the sender's IP address solely to prevent spam.",
     },
     terms: {
       title: "Terms of Use",
