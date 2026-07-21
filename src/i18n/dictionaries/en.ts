@@ -107,8 +107,7 @@ export const en: Dictionary = {
     heroAdvantages: [
       "100% of earnings for creators",
       "0% commission for clients",
-      "No middlemen",
-      "No hidden fees",
+      "No middlemen. No hidden fees",
     ],
     heroClientsTitle: "For clients",
     heroClients: [

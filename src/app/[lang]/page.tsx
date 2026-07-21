@@ -168,7 +168,7 @@ export default async function HomePage({
       />
 
       {/* ---------- Steps ---------- */}
-      <section className="pt-2.5 pb-0 sm:pt-8 sm:pb-16">
+      <section className="pt-1.5 pb-0 sm:pt-8 sm:pb-16">
         <div className="container-page">
           <div className="flex flex-col gap-3.5">
             {dict.home.steps.map((step) => (
