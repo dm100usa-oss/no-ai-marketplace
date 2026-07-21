@@ -133,6 +133,7 @@ export interface Dictionary {
     /** Title above the "new members" marquee. */
     newMembersTitle: string;
     newMembersNamePlaceholder: string;
+    newWorksTitle: string;
     heroStatement: string;
     heroFindButton: string;
     heroActions: { hint: string; label: string; href: string }[];

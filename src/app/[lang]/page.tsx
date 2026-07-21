@@ -13,6 +13,7 @@ import {
   TeamIcon,
 } from "@/components/icons";
 import { getDictionary } from "@/i18n";
+import { profileBasePath } from "@/lib/profile-path";
 import { categoryCount } from "@/lib/plural";
 import { getWeeklyVisits, getAverageRating } from "@/lib/redis";
 import { DEFAULT_LOCALE, isLocale } from "@/i18n/config";
@@ -21,6 +22,7 @@ import {
   getActiveDirectionsL,
   getAllCategoriesL,
   getCategoriesByDirectionL,
+  getNewestProfilesL,
   directionOfCategoryL,
 } from "@/lib/localized-data";
 
@@ -48,6 +50,16 @@ export default async function HomePage({
   ]);
 
   const dirs = getActiveDirectionsL(locale);
+
+  // New works strip: real works from the newest profiles, newest first.
+  // A profile qualifies only if it is real (not a demo placeholder) and
+  // actually carries a picture (mainImage). We take up to six; whatever is
+  // missing is filled by coloured "your work" invitation cards below. So
+  // the moment a real author with a work is added, it shows here on the
+  // next load — no manual step.
+  const newWorks = getNewestProfilesL(locale)
+    .filter((p) => !p.demo && p.mainImage)
+    .slice(0, 6);
 
   // Named, not sliced. Taking the first eight of the list gave whatever
   // happened to sit at the top of categories.ts — four painters and four
@@ -347,6 +359,93 @@ export default async function HomePage({
         title={dict.home.newMembersTitle}
         namePlaceholder={dict.home.newMembersNamePlaceholder}
       />
+
+      {/* ---------- New works ---------- */}
+      {/* Shows real works from the newest authors first, each linking to
+          that author's profile. Any slot with no work yet is a coloured
+          "your work" invitation that links to /join. With no works at all
+          the whole strip is invitations — a living colour field, not an
+          empty shelf. It fills itself in as real authors arrive; nothing to
+          switch on by hand. */}
+      <section className="pb-[clamp(2.5rem,6vw,4.5rem)]" style={{ paddingTop: "26px" }}>
+        <div className="container-page">
+          <p
+            className="mb-[18px] text-center text-[1.35rem] font-bold md:text-[1.6rem]"
+            style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+          >
+            {dict.home.newWorksTitle}
+          </p>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {(() => {
+              const slotGradients = [
+                "linear-gradient(135deg, #ff9a6c 0%, #ff6a88 55%, #ff99ac 100%)",
+                "linear-gradient(135deg, #4facfe 0%, #2f80ed 55%, #56ccf2 100%)",
+                "linear-gradient(135deg, #a18cd1 0%, #7b6cd9 55%, #fbc2eb 100%)",
+                "linear-gradient(135deg, #43e97b 0%, #12b98a 55%, #38f9d7 100%)",
+                "linear-gradient(135deg, #fbc687 0%, #f7797d 55%, #fbd786 100%)",
+                "linear-gradient(135deg, #5b6bd6 0%, #6a3fb5 55%, #b06ab3 100%)",
+              ];
+              const cards = [];
+
+              // Real works first: picture of the work, linking to the author.
+              for (const p of newWorks) {
+                const href = `${profileBasePath(p.profileType)}/${p.slug}`;
+                cards.push(
+                  <LocaleLink
+                    key={`work-${p.slug}`}
+                    lang={locale}
+                    href={href}
+                    className="press-btn relative flex aspect-[4/3] items-end overflow-hidden rounded-2xl"
+                  >
+                    <img
+                      src={p.mainImage}
+                      alt={p.name}
+                      loading="lazy"
+                      decoding="async"
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                    <span
+                      className="relative w-full px-3 py-2 text-[0.95rem] font-semibold"
+                      style={{
+                        color: "#ffffff",
+                        background: "linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0))",
+                      }}
+                    >
+                      {p.name}
+                    </span>
+                  </LocaleLink>,
+                );
+              }
+
+              // Fill remaining slots up to six with invitation cards.
+              for (let i = newWorks.length; i < 6; i++) {
+                cards.push(
+                  <LocaleLink
+                    key={`slot-${i}`}
+                    lang={locale}
+                    href="/join"
+                    className="press-btn relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-2xl"
+                    style={{ background: slotGradients[i % slotGradients.length] }}
+                  >
+                    <span
+                      className="text-[1.15rem] font-bold"
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        color: "#ffffff",
+                        textShadow: "0 1px 3px rgba(0,0,0,0.25)",
+                      }}
+                    >
+                      {dict.states.slotYourWork}
+                    </span>
+                  </LocaleLink>,
+                );
+              }
+
+              return cards;
+            })()}
+          </div>
+        </div>
+      </section>
 
       {/* ---------- Explore directions ---------- */}
       <section className="pb-[clamp(2.5rem,6vw,4.5rem)]" style={{ paddingTop: "12px" }}>
