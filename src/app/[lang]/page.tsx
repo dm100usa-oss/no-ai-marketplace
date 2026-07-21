@@ -378,12 +378,12 @@ export default async function HomePage({
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {(() => {
               const slotGradients = [
-                "linear-gradient(135deg, #ff9a6c 0%, #ff6a88 55%, #ff99ac 100%)",
-                "linear-gradient(135deg, #4facfe 0%, #2f80ed 55%, #56ccf2 100%)",
-                "linear-gradient(135deg, #a18cd1 0%, #7b6cd9 55%, #fbc2eb 100%)",
-                "linear-gradient(135deg, #43e97b 0%, #12b98a 55%, #38f9d7 100%)",
-                "linear-gradient(135deg, #fbc687 0%, #f7797d 55%, #fbd786 100%)",
-                "linear-gradient(135deg, #5b6bd6 0%, #6a3fb5 55%, #b06ab3 100%)",
+                "linear-gradient(135deg, rgba(255,154,108,0.75) 0%, rgba(255,106,136,0.75) 55%, rgba(255,153,172,0.75) 100%)",
+                "linear-gradient(135deg, rgba(79,172,254,0.75) 0%, rgba(47,128,237,0.75) 55%, rgba(86,204,242,0.75) 100%)",
+                "linear-gradient(135deg, rgba(161,140,209,0.75) 0%, rgba(123,108,217,0.75) 55%, rgba(251,194,235,0.75) 100%)",
+                "linear-gradient(135deg, rgba(67,233,123,0.75) 0%, rgba(18,185,138,0.75) 55%, rgba(56,249,215,0.75) 100%)",
+                "linear-gradient(135deg, rgba(251,198,135,0.75) 0%, rgba(247,121,125,0.75) 55%, rgba(251,215,134,0.75) 100%)",
+                "linear-gradient(135deg, rgba(91,107,214,0.75) 0%, rgba(106,63,181,0.75) 55%, rgba(176,106,179,0.75) 100%)",
               ];
               const cards = [];
 
