@@ -434,16 +434,16 @@ export default async function HomePage({
       {/* ---------- How the platform works ---------- */}
       <section className="section">
         <div className="container-page">
-          <div className="mb-6 text-center">
-            <h2>{dict.home.howItWorks}</h2>
-            <p className="lead mt-1.5">{dict.home.howItWorksSub}</p>
+          <div className="mb-6">
+            <h2 className="text-center">{dict.home.howItWorks}</h2>
+            <p className="lead mt-1.5 text-justify">{dict.home.howItWorksSub}</p>
           </div>
           <FAQAccordion
             lang={locale}
             items={dict.home.howSteps}
           />
           <p
-            className="mt-6 text-[0.95rem] leading-relaxed"
+            className="mt-6 text-justify text-[0.95rem] leading-relaxed"
             style={{ color: "var(--color-muted)" }}
           >
             {dict.home.howReport}

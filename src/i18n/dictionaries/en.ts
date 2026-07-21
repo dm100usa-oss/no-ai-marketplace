@@ -150,7 +150,7 @@ export const en: Dictionary = {
     popularCategoriesSub: "Go straight to the specialization you need",
     howItWorks: "How the platform works",
     howItWorksSub:
-      "A showcase for human creators, with the actual work happening on their own platforms.",
+      "We help you find talented creators, teams and companies that work without using AI. All arrangements and further collaboration happen directly between the parties, with no commissions and no middlemen.",
     howSteps: [
       {
         q: "1. Choose a direction",
