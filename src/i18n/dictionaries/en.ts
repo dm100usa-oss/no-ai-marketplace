@@ -151,6 +151,30 @@ export const en: Dictionary = {
     howItWorks: "How the platform works",
     howItWorksSub:
       "A showcase for human creators, with the actual work happening on their own platforms.",
+    howSteps: [
+      {
+        q: "1. Choose a direction",
+        a: "Open the category you need and explore the profiles of creators, teams and companies.",
+      },
+      {
+        q: "2. Choose the right format",
+        a: "Work with an individual creator, an established team or a company. If needed, assemble your own team for the project.",
+      },
+      {
+        q: "3. Look for the verification badge",
+        a: "Every member passes a basic check at registration. The badge marks profiles that have passed the platform's additional verification.",
+      },
+      {
+        q: "4. Get in touch directly",
+        a: "Discuss the project, timeline and price with no middlemen and no platform commission.",
+      },
+      {
+        q: "5. Start the project",
+        a: "Once you have chosen a professional or team, agree directly and get to work.",
+      },
+    ],
+    howReport:
+      "If you find generated material, inaccurate information or any other breach of the platform's rules in a profile, please let us know. We will review your report and take action if needed.",
     howItWorksCards: [
       {
         t: "Human creators",

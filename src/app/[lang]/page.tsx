@@ -3,6 +3,7 @@ import { DirectionTile } from "@/components/DirectionTile";
 import { ProfileGrid } from "@/components/ProfileGrid";
 import { SectionHeading } from "@/components/States";
 import { FAQ } from "@/components/FAQ";
+import { FAQAccordion } from "@/components/FAQAccordion";
 import { FindAccordion } from "@/components/FindAccordion";
 import { PeopleMarquee } from "@/components/PeopleMarquee";
 import { NewMembersMarquee } from "@/components/NewMembersMarquee";
@@ -30,12 +31,6 @@ import {
 /** Drawings for "How the platform works", one per card, in card order.
  *  Each keeps its own aspect ratio: the box is fixed at 64 wide, the height
  *  follows the drawing, so nothing is stretched or squashed. */
-const HOW_ICONS = [
-  { file: "people", w: 64, h: 75 },
-  { file: "shopfront", w: 64, h: 55 },
-  { file: "verified", w: 64, h: 72 },
-];
-
 /** Re-read on every request: the band must show today's numbers, not
  *  the numbers that happened to be true when the site was built. */
 export const dynamic = "force-dynamic";
@@ -393,11 +388,11 @@ export default async function HomePage({
       </section>
 
       {/* ---------- Popular categories ---------- */}
-      <section className="section-brand section">
+      <section className="section-brand pb-[clamp(2.5rem,6vw,4.5rem)]" style={{ paddingTop: "26px" }}>
         <div className="container-page">
-          <div className="mb-6">
+          <div className="mb-6 text-center">
             <h2 className="whitespace-nowrap">{dict.home.popularCategories}</h2>
-            <p className="lead mt-1.5 whitespace-nowrap">{dict.home.popularCategoriesSub}</p>
+            <p className="lead mt-1.5">{dict.home.popularCategoriesSub}</p>
           </div>
           <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-4">
             {popularCategories.map((c) => (
@@ -439,31 +434,20 @@ export default async function HomePage({
       {/* ---------- How the platform works ---------- */}
       <section className="section">
         <div className="container-page">
-          <SectionHeading lang={locale} title={dict.home.howItWorks}>
-            {dict.home.howItWorksSub}
-          </SectionHeading>
-          <div className="grid gap-6 sm:grid-cols-3">
-            {dict.home.howItWorksCards.map((item, i) => (
-              <div key={i} className="flex gap-3">
-                <img
-                  src={`/images/how/${HOW_ICONS[i].file}.webp`}
-                  alt=""
-                  aria-hidden="true"
-                  width={HOW_ICONS[i].w}
-                  height={HOW_ICONS[i].h}
-                  loading="lazy"
-                  decoding="async"
-                  className="block shrink-0 self-start"
-                />
-                <div>
-                  <h3>{item.t}</h3>
-                  <p className="mt-1 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
-                    {item.d}
-                  </p>
-                </div>
-              </div>
-            ))}
+          <div className="mb-6 text-center">
+            <h2>{dict.home.howItWorks}</h2>
+            <p className="lead mt-1.5">{dict.home.howItWorksSub}</p>
           </div>
+          <FAQAccordion
+            lang={locale}
+            items={dict.home.howSteps}
+          />
+          <p
+            className="mt-6 text-[0.95rem] leading-relaxed"
+            style={{ color: "var(--color-muted)" }}
+          >
+            {dict.home.howReport}
+          </p>
         </div>
       </section>
 

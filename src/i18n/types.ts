@@ -148,6 +148,8 @@ export interface Dictionary {
     popularCategoriesSub: string;
     howItWorks: string;
     howItWorksSub: string;
+    howSteps: { q: string; a: string }[];
+    howReport: string;
     howItWorksCards: { t: string; d: string }[];
     featuredCreators: string;
     featuredCreatorsSub: string;
