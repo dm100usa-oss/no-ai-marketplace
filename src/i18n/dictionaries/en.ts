@@ -111,11 +111,11 @@ export const en: Dictionary = {
     ],
     heroClientsTitle: "For clients",
     heroClients: [
-      "Work with individual professionals",
+      "Work with individual, verified professionals",
       "Build your own team for a specific project",
       "Choose an established team or company",
       "Talk directly with the people behind the work",
-      "Lower your risk",
+      "Lower legal and creative risks",
       "Get predictable quality and original work",
     ],
     heroCreatorsTitle: "For creators",

@@ -303,8 +303,8 @@ export default async function HomePage({
                     style={{
                       width: "0.7rem",
                       height: "0.7rem",
-                      background: "radial-gradient(circle at 30% 30%, #6f92cf, #325ba3 70%, #274a86)",
-                      boxShadow: "0 1px 2px rgba(30,50,90,0.4), inset 0 1px 1px rgba(255,255,255,0.45)",
+                      background: "radial-gradient(circle at 30% 30%, #3fb8ab, #189a8e 70%, #0f6d64)",
+                      boxShadow: "0 1px 2px rgba(15,90,80,0.4), inset 0 1px 1px rgba(255,255,255,0.45)",
                     }}
                   />
                   <span>{line}</span>
