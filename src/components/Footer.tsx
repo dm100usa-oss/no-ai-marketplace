@@ -21,7 +21,7 @@ export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
     <footer className="section-dark mt-auto">
       <div className="container-page py-12">
         {/* Top: brand + groups */}
-        <div className="grid gap-8 md:grid-cols-[1.4fr_repeat(4,1fr)]">
+        <div className="grid gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-[1.6fr_repeat(5,1fr)]">
           {/* Brand block */}
           <div className="max-w-xs">
             <div className="inline-flex items-center gap-2">
