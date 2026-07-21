@@ -255,8 +255,8 @@ export default async function HomePage({
 
           {/* For clients — same heading style and bullets, then the Find action */}
           <p
-            className="mt-10 pl-[1.45rem] text-left text-[1.35rem] font-bold md:text-[1.6rem]"
-            style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+            className="mt-10 w-screen relative left-1/2 -translate-x-1/2 py-2.5 text-center text-[1.35rem] font-bold md:text-[1.6rem]"
+            style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)", background: "rgba(85,128,208,0.28)" }}
           >
             {dict.home.heroClientsTitle}
           </p>
@@ -288,8 +288,8 @@ export default async function HomePage({
 
           {/* For creators — same heading style and bullets, then the Join action */}
           <p
-            className="mt-10 pl-[1.45rem] text-left text-[1.35rem] font-bold md:text-[1.6rem]"
-            style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+            className="mt-10 w-screen relative left-1/2 -translate-x-1/2 py-2.5 text-center text-[1.35rem] font-bold md:text-[1.6rem]"
+            style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)", background: "rgba(24,154,142,0.28)" }}
           >
             {dict.home.heroCreatorsTitle}
           </p>
