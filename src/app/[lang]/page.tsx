@@ -122,9 +122,9 @@ export default async function HomePage({
           className="absolute inset-0 h-full w-full object-cover"
           style={{ objectPosition: "18% center" }}
         />
-        <div className="relative flex w-full items-center justify-center px-4">
+        <div className="relative flex w-full items-center justify-center px-2 sm:px-4">
           <div
-            className="mx-auto w-[92%] max-w-2xl rounded-2xl px-6 py-5 text-center sm:w-[80%] sm:px-10 sm:py-8"
+            className="mx-auto w-[98%] max-w-2xl rounded-2xl px-4 py-5 text-center sm:w-[80%] sm:px-10 sm:py-8"
             style={{ background: "rgba(219,233,255,0.61)", backdropFilter: "blur(2px)" }}
           >
             <h1 className="text-balance text-[0.95rem] sm:text-[1.35rem] md:text-[1.7rem]" style={{ marginTop: "0" }}>{dict.site.name}</h1>
