@@ -236,7 +236,7 @@ export default async function HomePage({
       {/* ---------- Steps ---------- */}
       <section className="pb-0 sm:pb-16" style={{ paddingTop: "18px" }}>
         <div className="container-page">
-          <div className="flex flex-col gap-3.5">
+          <div className="flex flex-col gap-2.5">
             {dict.home.steps.map((step) => (
               <div key={step.title}>
                 <p
