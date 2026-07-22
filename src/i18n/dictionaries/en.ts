@@ -841,6 +841,34 @@ export const en: Dictionary = {
   },
 
   profile: {
+    intro: {
+      openers: ["Meet", "Introducing"],
+      openerNew: "New to the directory",
+      adjectives: [
+        "talented",
+        "attentive",
+        "dedicated",
+        "experienced",
+        "thoughtful",
+        "wholehearted",
+      ],
+      byHand: {
+        art: "Made by hand, from the first sketch to the last layer.",
+        literature: "Written by a person, from the first line to the final edit.",
+        "graphics-and-design":
+          "Behind every decision here is a person who can explain it.",
+        "photo-and-video": "Shot on a camera, cut on a real timeline.",
+        "writing-and-translation":
+          "The texts are written by someone who understands the subject.",
+        "music-and-audio": "Played, recorded and mixed by hand.",
+        "development-and-it":
+          "The code is written by hand: it can be read, maintained and handed over.",
+        "architecture-and-interiors":
+          "From the first sketch to drawings you can actually build from.",
+        "handmade-and-craft": "Made by hand, one at a time.",
+        other: "Made by a person, from the idea to the finished result.",
+      },
+    },
     services: "Services",
     products: "Products",
     portfolio: "Portfolio",

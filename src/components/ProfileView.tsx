@@ -8,6 +8,7 @@ import { CreatorCard } from "@/components/CreatorCard";
 import { GalleryLightbox } from "@/components/GalleryLightbox";
 import { ReportForm } from "@/components/ReportForm";
 import { ExternalLink, ArrowRight, CheckShield } from "@/components/icons";
+import { buildIntroduction } from "@/lib/introduction";
 import { localizedPath } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/types";
@@ -69,6 +70,7 @@ export function ProfileView({
   const relatedProfiles = getRelatedProfiles(p, 3, lang);
   const workingProcess = deriveWorkingProcess(p, dict);
   const kindWord = kindWordFor(p.profileType, dict);
+  const intro = buildIntroduction(p, dict, lang);
 
   return (
     <div className="container-page section">
@@ -174,6 +176,56 @@ export function ProfileView({
                 );
               })()}
             </div>
+          </div>
+
+          {/* Introduction. The platform speaking about the author, before
+              anything else on the page. A profile that opens with a name
+              and a job title reads like a listing in a phone book; a few
+              warm, accurate sentences read like an introduction between
+              people, which is what this place is for.
+
+              Set on its own soft plate so it is clearly the platform's
+              voice, not the author's own words further down the page. */}
+          <div
+            className="mt-5 rounded-2xl px-4 py-3.5 sm:px-5 sm:py-4"
+            style={{
+              background: "var(--color-brand-soft)",
+              border: "1px solid rgba(22, 35, 58, 0.05)",
+            }}
+          >
+            {"text" in intro ? (
+              <p
+                className="whitespace-pre-line text-[1rem] leading-relaxed"
+                style={{ color: "var(--color-ink)" }}
+              >
+                {intro.text}
+              </p>
+            ) : (
+              <>
+                <p
+                  className="text-[1.05rem] font-semibold leading-snug sm:text-[1.15rem]"
+                  style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+                >
+                  {intro.lead}
+                </p>
+                {intro.does && (
+                  <p
+                    className="mt-1 text-[0.98rem] leading-relaxed"
+                    style={{ color: "var(--color-ink)" }}
+                  >
+                    {intro.does}
+                  </p>
+                )}
+                {intro.byHand && (
+                  <p
+                    className="mt-1.5 text-[0.95rem] leading-relaxed"
+                    style={{ color: "var(--color-muted)" }}
+                  >
+                    {intro.byHand}
+                  </p>
+                )}
+              </>
+            )}
           </div>
 
           {/* Main work image / hero */}

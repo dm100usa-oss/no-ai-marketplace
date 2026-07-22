@@ -10,6 +10,7 @@ export const categories: Category[] = [
   {
     slug: "painters",
     name: "Painters",
+    nameSingular: "painter",
     direction: "art",
     shortDescription: "Painters working in oil, acrylic, watercolour and mixed media.",
     professions:
@@ -23,6 +24,7 @@ export const categories: Category[] = [
   {
     slug: "sculptors",
     name: "Sculptors",
+    nameSingular: "sculptor",
     direction: "art",
     shortDescription: "Sculptors working in clay, stone, metal and wood.",
     professions:
@@ -36,6 +38,7 @@ export const categories: Category[] = [
   {
     slug: "illustrators",
     name: "Illustrators",
+    nameSingular: "illustrator",
     direction: "art",
     shortDescription: "Illustrators who draw by hand across styles and media.",
     professions:
@@ -49,6 +52,7 @@ export const categories: Category[] = [
   {
     slug: "concept-artists",
     name: "Concept Artists",
+    nameSingular: "concept artist",
     direction: "art",
     shortDescription: "Concept artists designing characters, creatures and worlds.",
     professions:
@@ -63,6 +67,7 @@ export const categories: Category[] = [
   {
     slug: "fiction-authors",
     name: "Fiction Authors",
+    nameSingular: "fiction author",
     direction: "literature",
     shortDescription: "Novelists and short-story writers.",
     professions:
@@ -76,6 +81,7 @@ export const categories: Category[] = [
   {
     slug: "non-fiction-authors",
     name: "Non-Fiction Authors",
+    nameSingular: "non-fiction author",
     direction: "literature",
     shortDescription: "Authors of research, memoir, history and practical books.",
     professions:
@@ -89,6 +95,7 @@ export const categories: Category[] = [
   {
     slug: "childrens-authors",
     name: "Children's Authors",
+    nameSingular: "children's author",
     direction: "literature",
     shortDescription: "Writers of picture books and children's fiction.",
     professions:
@@ -102,6 +109,7 @@ export const categories: Category[] = [
   {
     slug: "poets",
     name: "Poets",
+    nameSingular: "poet",
     direction: "literature",
     shortDescription: "Poets writing and publishing their own work.",
     professions:
@@ -116,6 +124,7 @@ export const categories: Category[] = [
   {
     slug: "graphic-designers",
     name: "Graphic Designers",
+    nameSingular: "graphic designer",
     direction: "graphics-and-design",
     shortDescription: "Graphic designers for identity, print and packaging.",
     professions:
@@ -129,6 +138,7 @@ export const categories: Category[] = [
   {
     slug: "ui-ux-designers",
     name: "UI/UX Designers",
+    nameSingular: "UI/UX designer",
     direction: "graphics-and-design",
     shortDescription: "Interface and experience designers for apps and sites.",
     professions:
@@ -142,6 +152,7 @@ export const categories: Category[] = [
   {
     slug: "3d-artists",
     name: "3D Artists",
+    nameSingular: "3D artist",
     direction: "graphics-and-design",
     shortDescription: "3D modellers for games, print, product and animation.",
     professions:
@@ -155,6 +166,7 @@ export const categories: Category[] = [
   {
     slug: "3d-designers",
     name: "3D Designers",
+    nameSingular: "3D designer",
     direction: "graphics-and-design",
     shortDescription: "Product and industrial 3D designers: parts, packaging, print-ready models.",
     professions:
@@ -169,6 +181,7 @@ export const categories: Category[] = [
   {
     slug: "photographers",
     name: "Photographers",
+    nameSingular: "photographer",
     direction: "photo-and-video",
     shortDescription: "Photographers shooting real people, products and events.",
     professions:
@@ -182,6 +195,7 @@ export const categories: Category[] = [
   {
     slug: "video-editors",
     name: "Video Editors",
+    nameSingular: "video editor",
     direction: "photo-and-video",
     shortDescription: "Editors cutting long-form, ads, Reels and Shorts.",
     professions:
@@ -195,6 +209,7 @@ export const categories: Category[] = [
   {
     slug: "motion-designers",
     name: "Motion & 2D Animators",
+    nameSingular: "motion designer",
     direction: "photo-and-video",
     shortDescription: "Motion designers and frame-by-frame animators.",
     professions:
@@ -208,6 +223,7 @@ export const categories: Category[] = [
   {
     slug: "colourists",
     name: "Colourists",
+    nameSingular: "colourist",
     direction: "photo-and-video",
     shortDescription: "Colourists grading footage for film, ads and video.",
     professions:
@@ -222,6 +238,7 @@ export const categories: Category[] = [
   {
     slug: "copywriters",
     name: "Copywriters",
+    nameSingular: "copywriter",
     direction: "writing-and-translation",
     shortDescription: "Copywriters for sales pages, ads and content.",
     professions:
@@ -235,6 +252,7 @@ export const categories: Category[] = [
   {
     slug: "editors",
     name: "Editors & Proofreaders",
+    nameSingular: "editor",
     direction: "writing-and-translation",
     shortDescription: "Editors and proofreaders for manuscripts and copy.",
     professions:
@@ -248,6 +266,7 @@ export const categories: Category[] = [
   {
     slug: "translators",
     name: "Translators",
+    nameSingular: "translator",
     direction: "writing-and-translation",
     shortDescription: "Translators and localisers across language pairs.",
     professions:
@@ -261,6 +280,7 @@ export const categories: Category[] = [
   {
     slug: "scriptwriters",
     name: "Scriptwriters",
+    nameSingular: "scriptwriter",
     direction: "writing-and-translation",
     shortDescription: "Scriptwriters for film, video, games and quests.",
     professions:
@@ -275,6 +295,7 @@ export const categories: Category[] = [
   {
     slug: "voice-actors",
     name: "Voice Actors",
+    nameSingular: "voice actor",
     direction: "music-and-audio",
     shortDescription: "Voice actors and narrators recording live.",
     professions:
@@ -288,6 +309,7 @@ export const categories: Category[] = [
   {
     slug: "composers",
     name: "Composers & Musicians",
+    nameSingular: "composer",
     direction: "music-and-audio",
     shortDescription: "Composers and musicians writing and playing original work.",
     professions:
@@ -301,6 +323,7 @@ export const categories: Category[] = [
   {
     slug: "sound-designers",
     name: "Sound Designers",
+    nameSingular: "sound designer",
     direction: "music-and-audio",
     shortDescription: "Sound designers creating custom effects and audio worlds.",
     professions:
@@ -314,6 +337,7 @@ export const categories: Category[] = [
   {
     slug: "audio-engineers",
     name: "Audio Engineers",
+    nameSingular: "audio engineer",
     direction: "music-and-audio",
     shortDescription: "Engineers mixing, mastering and cleaning audio.",
     professions:
@@ -328,6 +352,7 @@ export const categories: Category[] = [
   {
     slug: "web-developers",
     name: "Web Developers",
+    nameSingular: "web developer",
     direction: "development-and-it",
     shortDescription: "Developers building sites, stores and web apps.",
     professions:
@@ -341,6 +366,7 @@ export const categories: Category[] = [
   {
     slug: "mobile-developers",
     name: "Mobile Developers",
+    nameSingular: "mobile developer",
     direction: "development-and-it",
     shortDescription: "Developers building iOS and Android applications.",
     professions:
@@ -354,6 +380,7 @@ export const categories: Category[] = [
   {
     slug: "game-developers",
     name: "Game Developers",
+    nameSingular: "game developer",
     direction: "development-and-it",
     shortDescription: "Developers programming game logic, physics and mechanics.",
     professions:
@@ -367,6 +394,7 @@ export const categories: Category[] = [
   {
     slug: "automation-developers",
     name: "Scripts & Automation",
+    nameSingular: "automation developer",
     direction: "development-and-it",
     shortDescription: "Developers building bots, parsers and automation.",
     professions:
@@ -380,6 +408,7 @@ export const categories: Category[] = [
   {
     slug: "code-auditors",
     name: "Code Audit & Security",
+    nameSingular: "code auditor",
     direction: "development-and-it",
     shortDescription: "Specialists reviewing code for bugs and vulnerabilities.",
     professions:
@@ -394,6 +423,7 @@ export const categories: Category[] = [
   {
     slug: "architects",
     name: "Architects",
+    nameSingular: "architect",
     direction: "architecture-and-interiors",
     shortDescription: "Architects designing houses, extensions and public buildings.",
     professions:
@@ -407,6 +437,7 @@ export const categories: Category[] = [
   {
     slug: "interior-designers",
     name: "Interior Designers",
+    nameSingular: "interior designer",
     direction: "architecture-and-interiors",
     shortDescription: "Designers producing plans, layouts and material selection.",
     professions:
@@ -420,6 +451,7 @@ export const categories: Category[] = [
   {
     slug: "landscape-designers",
     name: "Landscape Designers",
+    nameSingular: "landscape designer",
     direction: "architecture-and-interiors",
     shortDescription: "Designers planning gardens, plots and outdoor spaces.",
     professions:
@@ -434,6 +466,7 @@ export const categories: Category[] = [
   {
     slug: "craft-makers",
     name: "Craft Makers",
+    nameSingular: "craft maker",
     direction: "handmade-and-craft",
     shortDescription: "Makers of ceramics, furniture, decor and objects.",
     professions:
@@ -447,6 +480,7 @@ export const categories: Category[] = [
   {
     slug: "accessory-makers",
     name: "Accessories & Jewellery",
+    nameSingular: "jewellery maker",
     direction: "handmade-and-craft",
     shortDescription: "Makers of leather goods, bags and jewellery.",
     professions:
@@ -460,6 +494,7 @@ export const categories: Category[] = [
   {
     slug: "clothing-designers",
     name: "Clothing Designers",
+    nameSingular: "clothing designer",
     direction: "handmade-and-craft",
     shortDescription: "Designers sewing bespoke clothing and custom pieces.",
     professions:
@@ -475,6 +510,7 @@ export const categories: Category[] = [
   {
     slug: "restoration",
     name: "Restoration",
+    nameSingular: "restorer",
     direction: "other",
     shortDescription: "Restorers of paintings, furniture, books and photographs.",
     professions:
@@ -488,6 +524,7 @@ export const categories: Category[] = [
   {
     slug: "calligraphy",
     name: "Calligraphy & Lettering",
+    nameSingular: "calligrapher",
     direction: "other",
     shortDescription: "Calligraphers and hand-lettering artists.",
     professions:

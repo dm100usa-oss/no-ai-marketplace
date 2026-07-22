@@ -6,6 +6,7 @@
 
 export interface CategoryTranslation {
   name?: string;
+  nameSingular?: string;
   shortDescription?: string;
   professions?: string;
   seoText?: string;
@@ -16,6 +17,7 @@ export interface CategoryTranslation {
 export const categoriesRu: Record<string, CategoryTranslation> = {
   painters: {
     name: "Живописцы",
+    nameSingular: "живописец",
     shortDescription:
       "Художники, работающие маслом, акрилом, акварелью и в смешанной технике.",
     professions:
@@ -29,6 +31,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   sculptors: {
     name: "Скульпторы",
+    nameSingular: "скульптор",
     shortDescription:
       "Скульпторы, работающие с глиной, камнем, металлом и деревом.",
     professions:
@@ -42,6 +45,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   illustrators: {
     name: "Иллюстраторы",
+    nameSingular: "иллюстратор",
     shortDescription:
       "Иллюстраторы, которые рисуют вручную в разных стилях и техниках.",
     professions:
@@ -55,6 +59,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   "concept-artists": {
     name: "Концепт-художники",
+    nameSingular: "концепт-художник",
     shortDescription:
       "Концепт-художники, придумывающие персонажей, существ и миры.",
     professions:
@@ -68,6 +73,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   "fiction-authors": {
     name: "Прозаики",
+    nameSingular: "прозаик",
     shortDescription:
       "Романисты и авторы рассказов.",
     professions:
@@ -81,6 +87,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   "non-fiction-authors": {
     name: "Авторы нон-фикшн",
+    nameSingular: "автор нон-фикшн",
     shortDescription:
       "Авторы исследований, мемуаров, истории и практических книг.",
     professions:
@@ -94,6 +101,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   "childrens-authors": {
     name: "Детские писатели",
+    nameSingular: "детский писатель",
     shortDescription:
       "Авторы книжек-картинок и детской прозы.",
     professions:
@@ -107,6 +115,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   poets: {
     name: "Поэты",
+    nameSingular: "поэт",
     shortDescription:
       "Поэты, которые пишут и издают свои стихи.",
     professions:
@@ -120,6 +129,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   "graphic-designers": {
     name: "Графические дизайнеры",
+    nameSingular: "графический дизайнер",
     shortDescription:
       "Дизайнеры фирменного стиля, печати и упаковки.",
     professions:
@@ -133,6 +143,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   "ui-ux-designers": {
     name: "UI/UX-дизайнеры",
+    nameSingular: "UI/UX-дизайнер",
     shortDescription:
       "Дизайнеры интерфейсов и пользовательского опыта.",
     professions:
@@ -146,6 +157,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   "3d-artists": {
     name: "3D-художники",
+    nameSingular: "3D-художник",
     shortDescription:
       "3D-моделлеры для игр, печати, продукта и анимации.",
     professions:
@@ -159,6 +171,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   "3d-designers": {
     name: "3D-дизайнеры",
+    nameSingular: "3D-дизайнер",
     shortDescription:
       "Предметный и промышленный 3D: детали, упаковка, модели под печать.",
     professions:
@@ -171,6 +184,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   photographers: {
     name: "Фотографы",
+    nameSingular: "фотограф",
     shortDescription:
       "Фотографы, которые снимают настоящих людей, товары и события.",
     professions:
@@ -184,6 +198,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   "video-editors": {
     name: "Режиссеры монтажа",
+    nameSingular: "режиссер монтажа",
     shortDescription:
       "Монтажеры для длинных роликов, рекламы, Reels и Shorts.",
     professions:
@@ -197,6 +212,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   "motion-designers": {
     name: "Моушн- и 2D-аниматоры",
+    nameSingular: "моушн-дизайнер",
     shortDescription:
       "Моушн-дизайнеры и покадровые аниматоры.",
     professions:
@@ -210,6 +226,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   colourists: {
     name: "Колористы",
+    nameSingular: "колорист",
     shortDescription:
       "Колористы, которые красят материал для кино, рекламы и видео.",
     professions:
@@ -223,6 +240,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   copywriters: {
     name: "Копирайтеры",
+    nameSingular: "копирайтер",
     shortDescription:
       "Копирайтеры для продающих страниц, рекламы и контента.",
     professions:
@@ -236,6 +254,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   editors: {
     name: "Редакторы и корректоры",
+    nameSingular: "редактор",
     shortDescription:
       "Редакторы и корректоры для рукописей и текстов.",
     professions:
@@ -249,6 +268,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   translators: {
     name: "Переводчики",
+    nameSingular: "переводчик",
     shortDescription:
       "Переводчики и локализаторы для разных языковых пар.",
     professions:
@@ -262,6 +282,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   scriptwriters: {
     name: "Сценаристы",
+    nameSingular: "сценарист",
     shortDescription:
       "Сценаристы для кино, видео, игр и квестов.",
     professions:
@@ -275,6 +296,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   "voice-actors": {
     name: "Дикторы и актеры дубляжа",
+    nameSingular: "диктор",
     shortDescription:
       "Дикторы и чтецы, которые записываются живьем.",
     professions:
@@ -288,6 +310,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   composers: {
     name: "Композиторы и музыканты",
+    nameSingular: "композитор",
     shortDescription:
       "Композиторы и музыканты, которые пишут и играют свое.",
     professions:
@@ -301,6 +324,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   "sound-designers": {
     name: "Саунд-дизайнеры",
+    nameSingular: "саунд-дизайнер",
     shortDescription:
       "Саунд-дизайнеры, создающие уникальные эффекты и звуковые миры.",
     professions:
@@ -314,6 +338,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   "audio-engineers": {
     name: "Звукорежиссеры",
+    nameSingular: "звукорежиссер",
     shortDescription:
       "Специалисты по сведению, мастерингу и чистке звука.",
     professions:
@@ -327,6 +352,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   "web-developers": {
     name: "Веб-разработчики",
+    nameSingular: "веб-разработчик",
     shortDescription:
       "Разработчики сайтов, магазинов и веб-приложений.",
     professions:
@@ -340,6 +366,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   "mobile-developers": {
     name: "Мобильные разработчики",
+    nameSingular: "мобильный разработчик",
     shortDescription:
       "Разработчики приложений для iOS и Android.",
     professions:
@@ -353,6 +380,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   "game-developers": {
     name: "Разработчики игр",
+    nameSingular: "разработчик игр",
     shortDescription:
       "Разработчики игровой логики, физики и механик.",
     professions:
@@ -366,6 +394,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   "automation-developers": {
     name: "Скрипты и автоматизация",
+    nameSingular: "разработчик автоматизации",
     shortDescription:
       "Разработчики ботов, парсеров и автоматизации.",
     professions:
@@ -379,6 +408,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   "code-auditors": {
     name: "Аудит кода и безопасность",
+    nameSingular: "аудитор кода",
     shortDescription:
       "Специалисты по разбору чужого кода, багам и уязвимостям.",
     professions:
@@ -392,6 +422,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   architects: {
     name: "Архитекторы",
+    nameSingular: "архитектор",
     shortDescription:
       "Архитекторы, которые проектируют дома, пристройки и общественные здания.",
     professions:
@@ -405,6 +436,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   "interior-designers": {
     name: "Дизайнеры интерьера",
+    nameSingular: "дизайнер интерьера",
     shortDescription:
       "Дизайнеры, которые делают чертежи, планировки и подбор материалов.",
     professions:
@@ -418,6 +450,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   "landscape-designers": {
     name: "Ландшафтные дизайнеры",
+    nameSingular: "ландшафтный дизайнер",
     shortDescription:
       "Дизайнеры, которые планируют сады, участки и открытые пространства.",
     professions:
@@ -431,6 +464,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   "craft-makers": {
     name: "Мастера ручной работы",
+    nameSingular: "мастер ручной работы",
     shortDescription:
       "Мастера керамики, мебели, декора и предметов.",
     professions:
@@ -444,6 +478,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   "accessory-makers": {
     name: "Аксессуары и украшения",
+    nameSingular: "мастер украшений",
     shortDescription:
       "Мастера изделий из кожи, сумок и украшений.",
     professions:
@@ -457,6 +492,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   "clothing-designers": {
     name: "Дизайнеры одежды",
+    nameSingular: "дизайнер одежды",
     shortDescription:
       "Дизайнеры, которые шьют одежду на заказ и делают кастом.",
     professions:
@@ -470,6 +506,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   restoration: {
     name: "Реставрация",
+    nameSingular: "реставратор",
     shortDescription: "Реставраторы картин, мебели, книг и фотографий.",
     professions:
       "Живопись, мебель, книги, переплеты, скульптура, текстиль, фотографии, документы, архитектурный декор",
@@ -481,6 +518,7 @@ export const categoriesRu: Record<string, CategoryTranslation> = {
   },
   calligraphy: {
     name: "Каллиграфия и леттеринг",
+    nameSingular: "каллиграф",
     shortDescription: "Каллиграфы и мастера рукописных шрифтов.",
     professions:
       "Свадебная и праздничная каллиграфия, дипломы, сертификаты, рукописные логотипы, упаковка, леттеринг, авторские шрифты",

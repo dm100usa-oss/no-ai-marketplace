@@ -448,6 +448,28 @@ export interface Dictionary {
   };
 
   profile: {
+    /** Warm introduction at the top of a profile, written by the platform.
+     *  Three short lines: an opening phrase with the author's name, trade
+     *  and city; what they actually do; and one line on the work being made
+     *  by hand, worded per direction so it does not wear out across pages.
+     *
+     *  Assembled from the profile's own fields, so every author gets one
+     *  with no manual step. A profile can override the whole thing with its
+     *  own `introduction` field when the assembled version reads badly. */
+    intro: {
+      /** Opening phrases, chosen by the author's own id so the page reads
+       *  the same on every visit rather than shuffling on reload. */
+      openers: string[];
+      /** Used only for profiles added within the last two months, then it
+       *  gives way to the others on its own. */
+      openerNew: string;
+      /** Warm adjectives about how a person works, not about how good they
+       *  are: praise repeated on every page stops meaning anything, while
+       *  "works by hand" stays true on the hundredth profile. */
+      adjectives: string[];
+      /** The made-by-hand line, one per direction slug. */
+      byHand: Record<string, string>;
+    };
     services: string;
     products: string;
     portfolio: string;

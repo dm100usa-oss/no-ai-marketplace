@@ -58,6 +58,18 @@ export interface Profile extends ReservedRating {
   shortDescription: string;
   fullDescription?: string;
 
+  /** Hand-written introduction, shown at the top of the profile instead of
+   *  the one the site assembles from the fields below. Left empty for
+   *  almost everyone: the assembled version is there so no profile ever
+   *  opens cold, and this exists for the cases where it reads badly — an
+   *  unusual name, a services list that will not fold into a sentence, an
+   *  author worth a few words of their own. */
+  introduction?: string;
+  /** Middle line of the assembled introduction: what this person actually
+   *  does, in plain words. Built from `services` when absent. Set it when
+   *  the services list is too long or too technical to read as a sentence. */
+  introDoes?: string;
+
   services?: string[];
   products?: string[];
 
@@ -106,6 +118,12 @@ export interface Profile extends ReservedRating {
 export interface Category {
   slug: string;
   name: string;
+  /** The trade in the singular, as one person would be called: "Иллюстратор"
+   *  next to the plural "Иллюстраторы" on the category page. Used by the
+   *  introduction at the top of a profile, where the plural would be wrong.
+   *  In Russian it carries the masculine form; the introduction is built so
+   *  that no case ending is ever needed. */
+  nameSingular?: string;
   direction: string; // parent direction slug
   shortDescription?: string;
   /** Comma-separated list of professions and specialisations inside this
