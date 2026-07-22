@@ -108,20 +108,20 @@ export function StatsBand({
   if (visits === null && rating === null) return null;
 
   return (
-    <div style={{ background: "#c4d3f4", padding: "1.1rem 0 0.5rem" }}>
+    <div style={{ background: "#c4d3f4", padding: "0.8rem 0 0.4rem" }}>
       <div
         style={{
           background: "rgba(219,233,255,0.61)",
           backdropFilter: "blur(2px)",
         }}
-        className="px-5 py-3.5"
+        className="px-5 py-2.5"
       >
         <div className="container-page flex items-center justify-between gap-4">
           {visits !== null && (
             <div className="flex items-center gap-2 sm:gap-2.5">
               <span
                 ref={v.ref}
-                className="text-[1.7rem] font-bold leading-none sm:text-[2rem]"
+                className="text-[1.45rem] font-bold leading-none sm:text-[1.7rem]"
                 style={{
                   fontFamily: "var(--font-display)",
                   color: "var(--color-accent)",
@@ -131,7 +131,7 @@ export function StatsBand({
                 {v.initial}
               </span>
               <span
-                className="whitespace-nowrap text-[0.85rem] leading-none sm:text-[1.35rem]"
+                className="whitespace-nowrap text-[0.78rem] leading-none sm:text-[1.15rem]"
                 style={{ color: "var(--color-ink)" }}
               >
                 {visitsLabel}
@@ -149,7 +149,7 @@ export function StatsBand({
                 height={52}
                 viewBox="0 0 24 24"
                 aria-hidden="true"
-                className="h-[2.1rem] w-[2.1rem] shrink-0 sm:h-[3.25rem] sm:w-[3.25rem]"
+                className="h-[1.8rem] w-[1.8rem] shrink-0 sm:h-[2.75rem] sm:w-[2.75rem]"
               >
                 <path
                   d="M12 2.5l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.35l-5.8 3.05 1.1-6.47-4.7-4.58 6.5-.95z"
@@ -158,7 +158,7 @@ export function StatsBand({
               </svg>
               <span
                 ref={r.ref}
-                className="text-[1.7rem] font-normal leading-none sm:text-[2rem]"
+                className="text-[1.45rem] font-normal leading-none sm:text-[1.7rem]"
                 style={{
                   fontFamily: "var(--font-display)",
                   color: "var(--color-ink)",

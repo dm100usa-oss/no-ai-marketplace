@@ -395,7 +395,7 @@ a { color: inherit; text-decoration: none; }
 ------------------------------------------------------------------ */
 .people-marquee {
   overflow: hidden;
-  padding: 8px 0;
+  padding: 5px 0;
   /* Fade the two ends so cards enter and leave instead of being chopped.
      A mask re-composites the whole strip every frame; two small gradient
      overlays cost nothing and look the same. */
@@ -448,7 +448,7 @@ a { color: inherit; text-decoration: none; }
 .people-marquee__card {
   position: relative;
   flex: 0 0 auto;
-  width: 108px;
+  width: 92px;
   margin: 0;
   overflow: hidden;
   border-radius: 12px;
@@ -459,7 +459,7 @@ a { color: inherit; text-decoration: none; }
 .people-marquee__card img {
   display: block;
   width: 100%;
-  height: 144px; /* 3:4 */
+  height: 122px; /* 3:4 */
   object-fit: cover;
   /* Files are 300x400: exactly 2x the largest painted size, no more. */
   content-visibility: auto;
@@ -482,13 +482,13 @@ a { color: inherit; text-decoration: none; }
 
 @media (min-width: 640px) {
   .people-marquee__track { gap: 12px; }
-  .people-marquee__card { width: 132px; }
-  .people-marquee__card img { height: 176px; }
+  .people-marquee__card { width: 112px; }
+  .people-marquee__card img { height: 150px; }
 }
 
 @media (min-width: 1024px) {
-  .people-marquee__card { width: 150px; }
-  .people-marquee__card img { height: 200px; }
+  .people-marquee__card { width: 128px; }
+  .people-marquee__card img { height: 170px; }
 }
 
 /* Stand still for anyone who has asked the system to cut animation. */

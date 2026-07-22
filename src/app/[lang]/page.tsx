@@ -108,7 +108,7 @@ export default async function HomePage({
       />
 
       {/* ---------- Hero ---------- */}
-      <section className="relative flex items-center justify-center overflow-hidden py-6 sm:py-10">
+      <section className="relative flex items-center justify-center overflow-hidden py-4 sm:py-8">
         {/* The hero image is the LCP element on the home page. fetchPriority
             tells the browser to start it ahead of the lazy images further
             down, and width/height give it the aspect ratio up front so the
@@ -179,7 +179,7 @@ export default async function HomePage({
           the catalog rather than a banner bolted on top. Plain text, not
           links: the job here is recognition, not navigation — a click would
           pull people off the page before they have read anything. */}
-      <section className="pt-6 sm:pt-8">
+      <section className="pt-4 sm:pt-6">
         <div className="container-page">
           <ul className="mx-auto grid max-w-2xl grid-cols-3 gap-2.5 sm:gap-3">
             {dict.home.audienceTrades.map((trade) => (
@@ -234,7 +234,7 @@ export default async function HomePage({
       </section>
 
       {/* ---------- Steps ---------- */}
-      <section className="pb-0 sm:pb-16" style={{ paddingTop: "28px" }}>
+      <section className="pb-0 sm:pb-16" style={{ paddingTop: "18px" }}>
         <div className="container-page">
           <div className="flex flex-col gap-3.5">
             {dict.home.steps.map((step) => (
