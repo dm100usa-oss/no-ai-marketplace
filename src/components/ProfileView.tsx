@@ -141,6 +141,38 @@ export function ProfileView({
                 {p.city ? `${p.city}, ` : ""}
                 {p.country}
               </p>
+              {/* Additional categories, shown as clickable tags. Follows the
+                  common portfolio pattern (Behance, Dribbble): the main role
+                  reads above, secondary specialisations sit below as pills,
+                  each linking to its own category page. This surfaces the
+                  author under every discipline they picked in the join form
+                  — both for people browsing and for search/AI. The main
+                  category is filtered out so it is not repeated, and the row
+                  renders only when there is at least one extra. */}
+              {(() => {
+                const extras = (p.additionalCategories ?? []).filter(
+                  (slug) => slug !== p.mainCategory,
+                );
+                if (extras.length === 0) return null;
+                return (
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    {extras.map((slug) => (
+                      <LocaleLink
+                        key={slug}
+                        lang={lang}
+                        href={`/categories/${slug}`}
+                        className="rounded-full px-2.5 py-1 text-[0.8rem] transition-colors"
+                        style={{
+                          background: "var(--color-brand-soft)",
+                          color: "var(--color-ink)",
+                        }}
+                      >
+                        {categoryNameL(slug, lang)}
+                      </LocaleLink>
+                    ))}
+                  </div>
+                );
+              })()}
             </div>
           </div>
 
