@@ -868,6 +868,21 @@ export const en: Dictionary = {
         "handmade-and-craft": "Made by hand, one at a time.",
         other: "Made by a person, from the idea to the finished result.",
       },
+      byHandTrade: {
+        sculptors: "Made by hand, in clay, stone and metal.",
+        "3d-artists": "Every model is built by hand, polygon by polygon.",
+        "3d-designers": "Every model is built by hand, polygon by polygon.",
+        photographers: "Shot on a real camera, in a real place.",
+        "voice-actors": "Recorded in a living voice, take after take.",
+        "code-auditors": "The code is read by a person, line by line.",
+        "interior-designers":
+          "From the first sketch to drawings the builders can work from.",
+        "landscape-designers":
+          "From the first sketch to a plan you can plant from.",
+        "clothing-designers": "Sewn by hand, to patterns of their own.",
+        restoration: "Restored by hand, with respect for the original.",
+        calligraphy: "Written with a pen, by hand.",
+      },
       more:
         "This is only a glimpse. There is much more work behind it, each piece its own, and you can discover it through the links below.",
     },

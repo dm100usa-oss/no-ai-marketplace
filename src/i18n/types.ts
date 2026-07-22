@@ -469,6 +469,11 @@ export interface Dictionary {
       adjectives: string[];
       /** The made-by-hand line, one per direction slug. */
       byHand: Record<string, string>;
+      /** Overrides byHand for the trades where the direction's line lands
+       *  wrong: a sculptor does not work with a brush, a code auditor does
+       *  not write the code they read. Keyed by category slug; a trade
+       *  absent here falls back to its direction. */
+      byHandTrade: Record<string, string>;
       /** Closing line, pointing at the author's own sites. Shown only when
        *  the profile actually carries external links, so the invitation is
        *  never empty. */

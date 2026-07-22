@@ -156,8 +156,12 @@ export function buildIntroduction(
     ? `${opener}: ${p.name}, ${parts} ${from} ${place}.`
     : `${opener}: ${p.name}, ${parts}.`;
 
+  // Trade first, direction second. Most trades read fine on their
+  // direction's line; the handful that do not are listed by slug.
   const dir = directionOfCategoryL(p.mainCategory, locale);
-  const byHand = dir ? (intro.byHand[dir.slug] ?? intro.byHand.other) : null;
+  const byHand =
+    intro.byHandTrade[p.mainCategory] ??
+    (dir ? (intro.byHand[dir.slug] ?? intro.byHand.other) : null);
 
   return {
     lead,
