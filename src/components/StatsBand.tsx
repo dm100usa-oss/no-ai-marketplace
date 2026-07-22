@@ -108,7 +108,7 @@ export function StatsBand({
   if (visits === null && rating === null) return null;
 
   return (
-    <div style={{ background: "#c4d3f4", padding: "0.8rem 0 0.4rem" }}>
+    <div style={{ background: "#c4d3f4", padding: "0.4rem 0" }}>
       <div
         style={{
           background: "rgba(219,233,255,0.61)",
