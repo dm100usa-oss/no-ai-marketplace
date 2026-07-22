@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { Review } from "@/lib/redis";
+import type { Review, Submission } from "@/lib/redis";
 
 /**
  * The moderation screen.
@@ -45,6 +45,8 @@ export function AdminClient() {
   const [password, setPassword] = useState("");
   const [authed, setAuthed] = useState(false);
   const [reviews, setReviews] = useState<Review[]>([]);
+  const [submissions, setSubmissions] = useState<Submission[]>([]);
+  const [tab, setTab] = useState<"profiles" | "reviews">("profiles");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
 
@@ -62,7 +64,45 @@ export function AdminClient() {
       }
       const data = await res.json();
       setReviews(data.reviews ?? []);
+
+      // The join queue rides on the same password. A failure here must not
+      // lock the reviews screen: an empty list is better than no page.
+      try {
+        const sres = await fetch("/api/admin/submissions", {
+          headers: { "x-admin-password": pw },
+        });
+        if (sres.ok) {
+          const sdata = await sres.json();
+          setSubmissions(sdata.submissions ?? []);
+        }
+      } catch {
+        /* leave submissions as they were */
+      }
+
       setAuthed(true);
+    } catch {
+      setError("Could not reach the server.");
+    }
+    setBusy(false);
+  }
+
+  /** Publish or reject one join request. */
+  async function decideSubmission(id: string, status: "published" | "rejected") {
+    setBusy(true);
+    try {
+      const res = await fetch("/api/admin/submissions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-password": password,
+        },
+        body: JSON.stringify({ id, status }),
+      });
+      if (res.ok) {
+        await load(password);
+        return;
+      }
+      setError("Could not save the decision.");
     } catch {
       setError("Could not reach the server.");
     }
@@ -203,6 +243,131 @@ export function AdminClient() {
     );
   }
 
+  /** One join request, with everything the author filled in. */
+  function SubmissionCard({ s, actions }: { s: Submission; actions: boolean }) {
+    const pics = [
+      ...(s.avatar ? [{ label: "Photo", url: s.avatar }] : []),
+      ...(s.mainImage ? [{ label: "Work 1", url: s.mainImage }] : []),
+      ...(s.gallery ?? []).map((u, i) => ({ label: `Work ${i + 2}`, url: u })),
+    ];
+
+    return (
+      <li
+        className="rounded-2xl border p-5"
+        style={{ borderColor: "var(--color-line)", background: "#fff" }}
+      >
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <span className="flex flex-wrap items-center gap-2.5">
+            <span className="font-semibold" style={{ color: "var(--color-ink)" }}>
+              {s.name}
+            </span>
+            {s.profileType && s.profileType !== "creator" && (
+              <span
+                className="rounded-full px-2 py-0.5 text-[0.7rem] font-semibold uppercase"
+                style={{ background: "var(--color-brand-soft)", color: "var(--color-ink)" }}
+              >
+                {s.profileType}
+              </span>
+            )}
+            <span
+              className="rounded-full px-2 py-0.5 text-[0.7rem] font-semibold uppercase"
+              style={{
+                background: "var(--color-brand-soft)",
+                color:
+                  s.status === "published"
+                    ? "#2f6b45"
+                    : s.status === "rejected"
+                      ? "#b4342a"
+                      : "var(--color-muted)",
+              }}
+            >
+              {s.status}
+            </span>
+            {s.showOnHomepage && (
+              <span className="text-[0.75rem]" style={{ color: "#2f6b45" }}>
+                homepage ok
+              </span>
+            )}
+          </span>
+          <span className="text-[0.75rem]" style={{ color: "var(--color-muted-soft)" }}>
+            {fmt.format(new Date(s.createdAt))}
+          </span>
+        </div>
+
+        <p className="mt-2 text-[0.85rem]" style={{ color: "var(--color-muted-soft)" }}>
+          {[s.mainCategory, [s.city, s.country].filter(Boolean).join(", ")]
+            .filter(Boolean)
+            .join(" · ")}
+        </p>
+
+        {s.additionalCategories?.length ? (
+          <p className="mt-1 text-[0.8rem]" style={{ color: "var(--color-muted-soft)" }}>
+            also: {s.additionalCategories.join(", ")}
+          </p>
+        ) : null}
+
+        {(s.shortDescription || s.fullDescription) && (
+          <p
+            className="mt-2 whitespace-pre-line text-[0.95rem] leading-relaxed"
+            style={{ color: "var(--color-muted)" }}
+          >
+            {s.shortDescription ?? s.fullDescription}
+          </p>
+        )}
+
+        {(s.email || s.website || s.otherLinks) && (
+          <p
+            className="mt-2 break-all text-[0.8rem]"
+            style={{ color: "var(--color-muted-soft)" }}
+          >
+            {[s.email, s.website, s.otherLinks].filter(Boolean).join(" · ")}
+          </p>
+        )}
+
+        {pics.length > 0 && (
+          <div className="mt-3 flex flex-wrap gap-2">
+            {pics.map((p) => (
+              <a
+                key={p.url}
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full px-2.5 py-1 text-[0.78rem] underline"
+                style={{ background: "var(--color-brand-soft)", color: "var(--color-ink)" }}
+              >
+                {p.label}
+              </a>
+            ))}
+          </div>
+        )}
+
+        {actions && (
+          <div className="mt-4 flex gap-2">
+            <button
+              type="button"
+              onClick={() => decideSubmission(s.id, "published")}
+              disabled={busy}
+              className="btn btn-accent disabled:opacity-60"
+            >
+              Publish
+            </button>
+            <button
+              type="button"
+              onClick={() => decideSubmission(s.id, "rejected")}
+              disabled={busy}
+              className="btn btn-quiet disabled:opacity-60"
+            >
+              Reject
+            </button>
+          </div>
+        )}
+      </li>
+    );
+  }
+
+  const subPending = submissions.filter((s) => s.status === "pending");
+  const subDecided = submissions.filter((s) => s.status !== "pending");
+
   return (
     <div className="section">
       <div className="container-page max-w-3xl">
@@ -229,31 +394,85 @@ export function AdminClient() {
           </p>
         )}
 
-        <h2 className="mt-7 font-semibold" style={{ color: "var(--color-ink)" }}>
-          Waiting ({pending.length})
-        </h2>
-        {pending.length === 0 ? (
-          <p className="mt-2 text-[0.9rem]" style={{ color: "var(--color-muted-soft)" }}>
-            Nothing to review.
-          </p>
-        ) : (
-          <ul className="mt-3 space-y-3">
-            {pending.map((r) => (
-              <Card key={r.id} review={r} actions />
-            ))}
-          </ul>
-        )}
+        {/* Two queues, one screen. Profiles first: a waiting author is
+            more urgent than a waiting review. */}
+        <div className="mt-5 flex gap-2">
+          {(["profiles", "reviews"] as const).map((t) => (
+            <button
+              key={t}
+              type="button"
+              onClick={() => setTab(t)}
+              className="rounded-full px-4 py-1.5 text-[0.85rem] font-semibold capitalize"
+              style={
+                tab === t
+                  ? { background: "var(--color-ink)", color: "#fff" }
+                  : { background: "var(--color-brand-soft)", color: "var(--color-ink)" }
+              }
+            >
+              {t} ({t === "profiles" ? subPending.length : pending.length})
+            </button>
+          ))}
+        </div>
 
-        {decided.length > 0 && (
+        {tab === "profiles" ? (
           <>
-            <h2 className="mt-9 font-semibold" style={{ color: "var(--color-ink)" }}>
-              Decided ({decided.length})
+            <h2 className="mt-7 font-semibold" style={{ color: "var(--color-ink)" }}>
+              Waiting ({subPending.length})
             </h2>
-            <ul className="mt-3 space-y-3">
-              {decided.map((r) => (
-                <Card key={r.id} review={r} actions={false} />
-              ))}
-            </ul>
+            {subPending.length === 0 ? (
+              <p className="mt-2 text-[0.9rem]" style={{ color: "var(--color-muted-soft)" }}>
+                No new profiles.
+              </p>
+            ) : (
+              <ul className="mt-3 space-y-3">
+                {subPending.map((s) => (
+                  <SubmissionCard key={s.id} s={s} actions />
+                ))}
+              </ul>
+            )}
+
+            {subDecided.length > 0 && (
+              <>
+                <h2 className="mt-9 font-semibold" style={{ color: "var(--color-ink)" }}>
+                  Decided ({subDecided.length})
+                </h2>
+                <ul className="mt-3 space-y-3">
+                  {subDecided.map((s) => (
+                    <SubmissionCard key={s.id} s={s} actions={false} />
+                  ))}
+                </ul>
+              </>
+            )}
+          </>
+        ) : (
+          <>
+            <h2 className="mt-7 font-semibold" style={{ color: "var(--color-ink)" }}>
+              Waiting ({pending.length})
+            </h2>
+            {pending.length === 0 ? (
+              <p className="mt-2 text-[0.9rem]" style={{ color: "var(--color-muted-soft)" }}>
+                Nothing to review.
+              </p>
+            ) : (
+              <ul className="mt-3 space-y-3">
+                {pending.map((r) => (
+                  <Card key={r.id} review={r} actions />
+                ))}
+              </ul>
+            )}
+
+            {decided.length > 0 && (
+              <>
+                <h2 className="mt-9 font-semibold" style={{ color: "var(--color-ink)" }}>
+                  Decided ({decided.length})
+                </h2>
+                <ul className="mt-3 space-y-3">
+                  {decided.map((r) => (
+                    <Card key={r.id} review={r} actions={false} />
+                  ))}
+                </ul>
+              </>
+            )}
           </>
         )}
       </div>

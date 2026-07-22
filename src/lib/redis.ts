@@ -225,3 +225,134 @@ export async function setReviewStatus(
     return false;
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* Profile submissions                                                 */
+/* ------------------------------------------------------------------ */
+
+/**
+ * A join request waiting for a yes or a no in /admin.
+ *
+ * The shape mirrors what the join form asks for, kept deliberately loose:
+ * the form lives on Tally and may gain a field before this file does, so
+ * anything unrecognised rides along in `extra` rather than being dropped.
+ *
+ * Images are URLs, not files. Whatever the form hands over is stored as a
+ * link and shown as a link. Nothing is uploaded anywhere by this project.
+ */
+export interface Submission {
+  id: string;
+  createdAt: number;
+  status: "pending" | "published" | "rejected";
+
+  /** Identity */
+  name: string;
+  email?: string;
+  country?: string;
+  city?: string;
+
+  /** What they do */
+  profileType?: "creator" | "team" | "company";
+  mainCategory?: string;
+  additionalCategories?: string[];
+  shortDescription?: string;
+  fullDescription?: string;
+
+  /** Where to find them */
+  website?: string;
+  otherLinks?: string;
+
+  /** Pictures, as links */
+  avatar?: string;
+  mainImage?: string;
+  gallery?: string[];
+
+  /** Consents */
+  showOnHomepage?: boolean;
+
+  /** Anything the form sends that this file does not know about yet. */
+  extra?: Record<string, unknown>;
+}
+
+const SUBMISSIONS_KEY = "submissions";
+
+/**
+ * Store one join request, always as pending.
+ *
+ * Same rule as reviews: nothing reaches the catalog without a human
+ * saying yes. The queue is the only way in.
+ */
+export async function addSubmission(
+  input: Omit<Submission, "id" | "createdAt" | "status">,
+): Promise<{ ok: boolean }> {
+  if (!redis) return { ok: false };
+  try {
+    const submission: Submission = {
+      ...input,
+      id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+      createdAt: Date.now(),
+      status: "pending",
+    };
+    await redis.lpush(SUBMISSIONS_KEY, JSON.stringify(submission));
+    return { ok: true };
+  } catch {
+    return { ok: false };
+  }
+}
+
+/** Everything in the queue, newest first. Admin page only. */
+export async function getAllSubmissions(): Promise<Submission[]> {
+  if (!redis) return [];
+  try {
+    const raw = await redis.lrange(SUBMISSIONS_KEY, 0, -1);
+    return raw
+      .map((r) => {
+        if (typeof r === "string") {
+          try {
+            return JSON.parse(r) as Submission;
+          } catch {
+            return null;
+          }
+        }
+        return r as unknown as Submission;
+      })
+      .filter((s): s is Submission => s !== null);
+  } catch {
+    return [];
+  }
+}
+
+/** Published submissions — the ones the catalog shows alongside the file. */
+export async function getPublishedSubmissions(): Promise<Submission[]> {
+  const all = await getAllSubmissions();
+  return all.filter((s) => s.status === "published");
+}
+
+/**
+ * Publish or reject one submission.
+ *
+ * Same rewrite-the-list approach as reviews: submissions are few, the
+ * decision is occasional, and a rewrite is easier to trust than an index.
+ */
+export async function setSubmissionStatus(
+  id: string,
+  status: "published" | "rejected",
+): Promise<boolean> {
+  if (!redis) return false;
+  try {
+    const all = await getAllSubmissions();
+    const target = all.find((s) => s.id === id);
+    if (!target) return false;
+
+    target.status = status;
+
+    const pipe = redis.pipeline();
+    pipe.del(SUBMISSIONS_KEY);
+    for (const s of [...all].reverse()) pipe.lpush(SUBMISSIONS_KEY, JSON.stringify(s));
+    await pipe.exec();
+
+    return true;
+  } catch {
+    return false;
+  }
+}
