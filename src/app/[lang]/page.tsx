@@ -211,7 +211,7 @@ export default async function HomePage({
               <LocaleLink
                 lang={locale}
                 href="/categories"
-                className="press-btn flex h-full items-center justify-center rounded-2xl px-2 py-3 text-center text-[1.05rem] font-bold sm:px-3 sm:py-4 sm:text-[1.2rem]"
+                className="press-btn flex h-full items-center justify-center gap-1.5 rounded-2xl px-2 py-3 text-center text-[0.9rem] font-semibold sm:px-3 sm:py-4 sm:text-[1.05rem]"
                 style={{
                   fontFamily: "var(--font-display)",
                   background: "var(--color-dir-craft-bg)",
@@ -221,7 +221,12 @@ export default async function HomePage({
                     "inset 0 2px 0 rgba(255, 255, 255, 0.6), var(--shadow-raise)",
                 }}
               >
-                {dict.home.audienceAllPrefix} {allCats.length}
+                {dict.home.audienceAllPrefix}{" "}
+                <span
+                  className="text-[1.05rem] font-bold leading-none sm:text-[1.2rem]"
+                >
+                  {allCats.length}
+                </span>
               </LocaleLink>
             </li>
           </ul>
