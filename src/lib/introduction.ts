@@ -93,6 +93,33 @@ export interface Introduction {
   does: string | null;
   /** The made-by-hand line for this author's direction. */
   byHand: string | null;
+  /** Invitation to the author's own sites. Null when there are none. */
+  more: string | null;
+}
+
+/** Does this profile actually lead anywhere? The closing line invites the
+ *  reader to see more work "through the links below", so it may only appear
+ *  when those links exist. */
+function hasExternalLinks(p: Profile): boolean {
+  const l = p.socialLinks;
+  if (!l) return false;
+  const named = [
+    l.website,
+    l.portfolio,
+    l.etsy,
+    l.amazon,
+    l.behance,
+    l.dribbble,
+    l.linkedin,
+    l.instagram,
+    l.youtube,
+  ];
+  if (named.some((u) => typeof u === "string" && u.trim() !== "" && u !== "#")) {
+    return true;
+  }
+  return (l.other ?? []).some(
+    (o) => typeof o.url === "string" && o.url.trim() !== "" && o.url !== "#",
+  );
 }
 
 export function buildIntroduction(
@@ -132,5 +159,10 @@ export function buildIntroduction(
   const dir = directionOfCategoryL(p.mainCategory, locale);
   const byHand = dir ? (intro.byHand[dir.slug] ?? intro.byHand.other) : null;
 
-  return { lead, does: doesLine(p, locale), byHand };
+  return {
+    lead,
+    does: doesLine(p, locale),
+    byHand,
+    more: hasExternalLinks(p) ? intro.more : null,
+  };
 }

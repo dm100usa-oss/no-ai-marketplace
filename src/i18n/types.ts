@@ -469,6 +469,10 @@ export interface Dictionary {
       adjectives: string[];
       /** The made-by-hand line, one per direction slug. */
       byHand: Record<string, string>;
+      /** Closing line, pointing at the author's own sites. Shown only when
+       *  the profile actually carries external links, so the invitation is
+       *  never empty. */
+      more: string;
     };
     services: string;
     products: string;

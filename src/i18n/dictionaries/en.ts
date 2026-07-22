@@ -868,6 +868,8 @@ export const en: Dictionary = {
         "handmade-and-craft": "Made by hand, one at a time.",
         other: "Made by a person, from the idea to the finished result.",
       },
+      more:
+        "This is only a glimpse. There is much more work behind it, each piece its own, and you can discover it through the links below.",
     },
     services: "Services",
     products: "Products",

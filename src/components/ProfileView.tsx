@@ -224,6 +224,14 @@ export function ProfileView({
                     {intro.byHand}
                   </p>
                 )}
+                {intro.more && (
+                  <p
+                    className="mt-1.5 text-[0.95rem] leading-relaxed"
+                    style={{ color: "var(--color-muted)" }}
+                  >
+                    {intro.more}
+                  </p>
+                )}
               </>
             )}
           </div>
