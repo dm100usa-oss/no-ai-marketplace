@@ -111,13 +111,13 @@ export const ru: Dictionary = {
      *  direction tiles further down the page rather than inventing a new
      *  palette. */
     audienceTrades: [
-      { label: "Художники", color: "art", href: "/directions/art" },
-      { label: "Писатели", color: "lit", href: "/directions/literature" },
       { label: "Дизайнеры", color: "design", href: "/directions/graphics-and-design" },
+      { label: "Художники", color: "art", href: "/directions/art" },
+      { label: "Разработчики", color: "code", href: "/directions/development-and-it" },
       { label: "Фотографы", color: "photo", href: "/categories/photographers" },
       { label: "Копирайтеры", color: "writing", href: "/categories/copywriters" },
+      { label: "Писатели", color: "lit", href: "/directions/literature" },
       { label: "Музыканты", color: "music", href: "/categories/composers" },
-      { label: "Разработчики", color: "code", href: "/directions/development-and-it" },
       { label: "Архитекторы", color: "services", href: "/categories/architects" },
     ],
     audienceAllPrefix: "Все",

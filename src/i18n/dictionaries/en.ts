@@ -102,13 +102,13 @@ export const en: Dictionary = {
      *  dictionary for the reasoning: recognition beats precision here.
      *  Colours match the direction tiles further down the page. */
     audienceTrades: [
-      { label: "Artists", color: "art", href: "/directions/art" },
-      { label: "Writers", color: "lit", href: "/directions/literature" },
       { label: "Designers", color: "design", href: "/directions/graphics-and-design" },
+      { label: "Artists", color: "art", href: "/directions/art" },
+      { label: "Developers", color: "code", href: "/directions/development-and-it" },
       { label: "Photographers", color: "photo", href: "/categories/photographers" },
       { label: "Copywriters", color: "writing", href: "/categories/copywriters" },
+      { label: "Writers", color: "lit", href: "/directions/literature" },
       { label: "Musicians", color: "music", href: "/categories/composers" },
-      { label: "Developers", color: "code", href: "/directions/development-and-it" },
       { label: "Architects", color: "services", href: "/categories/architects" },
     ],
     audienceAllPrefix: "All",

@@ -211,7 +211,7 @@ export default async function HomePage({
               <LocaleLink
                 lang={locale}
                 href="/categories"
-                className="press-btn flex h-full items-center justify-center rounded-2xl px-2 py-3 text-center text-[0.9rem] font-semibold sm:px-3 sm:py-4 sm:text-[1.05rem]"
+                className="press-btn flex h-full items-center justify-center rounded-2xl px-2 py-3 text-center text-[1.05rem] font-bold sm:px-3 sm:py-4 sm:text-[1.2rem]"
                 style={{
                   fontFamily: "var(--font-display)",
                   background: "var(--color-dir-craft-bg)",
