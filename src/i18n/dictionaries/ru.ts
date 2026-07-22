@@ -105,17 +105,21 @@ export const ru: Dictionary = {
      *  one per direction of the catalog, so a visitor sees their own trade
      *  within a second of landing and knows the platform is for them.
      *  Deliberately broad ("Художники", not "Концепт-художники"): this is
-     *  about recognition, precision comes later in the catalog. */
+     *  about recognition, precision comes later in the catalog.
+     *
+     *  Each carries its direction's colour, so the strip rhymes with the
+     *  direction tiles further down the page rather than inventing a new
+     *  palette. */
     audienceTrades: [
-      "Художники",
-      "Писатели",
-      "Дизайнеры",
-      "Фотографы",
-      "Переводчики",
-      "Музыканты",
-      "Разработчики",
-      "Архитекторы",
-      "Мастера",
+      { label: "Художники", color: "art" },
+      { label: "Писатели", color: "lit" },
+      { label: "Дизайнеры", color: "design" },
+      { label: "Фотографы", color: "photo" },
+      { label: "Переводчики", color: "writing" },
+      { label: "Музыканты", color: "music" },
+      { label: "Разработчики", color: "code" },
+      { label: "Архитекторы", color: "services" },
+      { label: "Мастера", color: "craft" },
     ],
     steps: [
       { title: "Расскажите о себе", text: "Создайте профиль и покажите свои работы" },

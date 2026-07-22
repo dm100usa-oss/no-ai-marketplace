@@ -7,6 +7,8 @@
  * guarantees no string is forgotten when a language is added.
  */
 
+import type { DirectionColor } from "@/lib/types";
+
 export interface FaqEntry {
   q: string;
   a: string;
@@ -120,8 +122,9 @@ export interface Dictionary {
   home: {
     /** New hero (approved). */
     statsVisitsLabel: string;
-    /** Nine trades shown three by three under the stats band. */
-    audienceTrades: string[];
+    /** Nine trades shown three by three under the stats band, each in the
+     *  colour of the catalog direction it belongs to. */
+    audienceTrades: { label: string; color: DirectionColor }[];
     steps: { title: string; text: string }[];
     heroAdvantagesTitle: string;
     heroAdvantages: string[];

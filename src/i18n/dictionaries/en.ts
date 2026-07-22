@@ -99,17 +99,18 @@ export const en: Dictionary = {
   home: {
     statsVisitsLabel: "visits this week",
     /** Nine trades under the stats band, three by three. See the Russian
-     *  dictionary for the reasoning: recognition beats precision here. */
+     *  dictionary for the reasoning: recognition beats precision here.
+     *  Colours match the direction tiles further down the page. */
     audienceTrades: [
-      "Artists",
-      "Writers",
-      "Designers",
-      "Photographers",
-      "Translators",
-      "Musicians",
-      "Developers",
-      "Architects",
-      "Makers",
+      { label: "Artists", color: "art" },
+      { label: "Writers", color: "lit" },
+      { label: "Designers", color: "design" },
+      { label: "Photographers", color: "photo" },
+      { label: "Translators", color: "writing" },
+      { label: "Musicians", color: "music" },
+      { label: "Developers", color: "code" },
+      { label: "Architects", color: "services" },
+      { label: "Makers", color: "craft" },
     ],
     steps: [
       { title: "Tell us about yourself", text: "Create a profile and show your work" },

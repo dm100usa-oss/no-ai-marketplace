@@ -173,23 +173,29 @@ export default async function HomePage({
           says "professionals who work without AI", which is accurate but
           abstract, and a visitor scanning for a second cannot tell whether
           it means them. Naming the trades answers that before they scroll.
-          Plain text, not links: this sits above the whole page and its job
-          is recognition, not navigation — a click here would pull people
-          out of the page before they have read anything. */}
+
+          Each tile wears its direction's colour and the same raised look as
+          the direction tiles further down, so the strip reads as part of
+          the catalog rather than a banner bolted on top. Plain text, not
+          links: the job here is recognition, not navigation — a click would
+          pull people off the page before they have read anything. */}
       <section className="pt-6 sm:pt-8">
         <div className="container-page">
-          <ul className="mx-auto grid max-w-2xl grid-cols-3 gap-2 sm:gap-2.5">
+          <ul className="mx-auto grid max-w-2xl grid-cols-3 gap-2.5 sm:gap-3">
             {dict.home.audienceTrades.map((trade) => (
               <li
-                key={trade}
-                className="rounded-xl border px-2 py-2.5 text-center text-[0.9rem] sm:px-3 sm:py-3 sm:text-[1.05rem]"
+                key={trade.label}
+                className="rounded-2xl px-2 py-3 text-center text-[0.9rem] font-semibold sm:px-3 sm:py-4 sm:text-[1.05rem]"
                 style={{
-                  borderColor: "var(--color-line)",
-                  background: "#fff",
+                  fontFamily: "var(--font-display)",
+                  background: `var(--color-dir-${trade.color}-bg)`,
                   color: "var(--color-ink)",
+                  border: "1px solid rgba(22, 35, 58, 0.06)",
+                  boxShadow:
+                    "inset 0 2px 0 rgba(255, 255, 255, 0.6), var(--shadow-raise)",
                 }}
               >
-                {trade}
+                {trade.label}
               </li>
             ))}
           </ul>
