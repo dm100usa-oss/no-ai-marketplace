@@ -102,16 +102,16 @@ export const en: Dictionary = {
      *  dictionary for the reasoning: recognition beats precision here.
      *  Colours match the direction tiles further down the page. */
     audienceTrades: [
-      { label: "Artists", color: "art" },
-      { label: "Writers", color: "lit" },
-      { label: "Designers", color: "design" },
-      { label: "Photographers", color: "photo" },
-      { label: "Translators", color: "writing" },
-      { label: "Musicians", color: "music" },
-      { label: "Developers", color: "code" },
-      { label: "Architects", color: "services" },
-      { label: "Makers", color: "craft" },
+      { label: "Artists", color: "art", href: "/directions/art" },
+      { label: "Writers", color: "lit", href: "/directions/literature" },
+      { label: "Designers", color: "design", href: "/directions/graphics-and-design" },
+      { label: "Photographers", color: "photo", href: "/categories/photographers" },
+      { label: "Copywriters", color: "writing", href: "/categories/copywriters" },
+      { label: "Musicians", color: "music", href: "/categories/composers" },
+      { label: "Developers", color: "code", href: "/directions/development-and-it" },
+      { label: "Architects", color: "services", href: "/categories/architects" },
     ],
+    audienceAllPrefix: "All",
     steps: [
       { title: "Tell us about yourself", text: "Create a profile and show your work" },
       { title: "Attract clients", text: "Who value your experience, quality and unique result" },

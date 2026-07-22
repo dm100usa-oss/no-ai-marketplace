@@ -392,6 +392,19 @@ export const categories: Category[] = [
   },
   // ---- architecture-and-interiors ----
   {
+    slug: "architects",
+    name: "Architects",
+    direction: "architecture-and-interiors",
+    shortDescription: "Architects designing houses, extensions and public buildings.",
+    professions:
+      "Private houses, extensions and rebuilds, small public buildings, concept design, planning permission drawings, working drawings, site supervision, restoration of existing buildings",
+    seoText:
+      "Looking for an architect who designs a building rather than generates a picture of one? Start here. A house has to stand on a specific plot, in a specific climate, under specific rules, and every one of those constraints changes the design. A generated image knows none of them: it has no structure behind it, no sections, no drawings anyone can build from. An architect carries the project from the first sketch through the permission drawings to the finished building, and answers for every decision along the way. Each profile links straight to the architect's own site or portfolio.",
+    seoTitle: "Architects: human building design, drawings and site supervision",
+    seoDescription:
+      "Directory of architects who design without AI: houses, extensions and public buildings. See real projects and contact each architect directly.",
+  },
+  {
     slug: "interior-designers",
     name: "Interior Designers",
     direction: "architecture-and-interiors",

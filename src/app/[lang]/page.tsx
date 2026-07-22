@@ -183,21 +183,47 @@ export default async function HomePage({
         <div className="container-page">
           <ul className="mx-auto grid max-w-2xl grid-cols-3 gap-2.5 sm:gap-3">
             {dict.home.audienceTrades.map((trade) => (
-              <li
-                key={trade.label}
-                className="rounded-2xl px-2 py-3 text-center text-[0.9rem] font-semibold sm:px-3 sm:py-4 sm:text-[1.05rem]"
+              <li key={trade.label}>
+                <LocaleLink
+                  lang={locale}
+                  href={trade.href}
+                  className="press-btn flex h-full items-center justify-center rounded-2xl px-2 py-3 text-center text-[0.9rem] font-semibold sm:px-3 sm:py-4 sm:text-[1.05rem]"
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    background: `var(--color-dir-${trade.color}-bg)`,
+                    color: "var(--color-ink)",
+                    border: "1px solid rgba(22, 35, 58, 0.06)",
+                    boxShadow:
+                      "inset 0 2px 0 rgba(255, 255, 255, 0.6), var(--shadow-raise)",
+                  }}
+                >
+                  {trade.label}
+                </LocaleLink>
+              </li>
+            ))}
+            {/* Ninth tile. Eight trades name people, this one names the
+                catalog: a visitor whose own trade is not on the list can
+                see it is simply not among the eight, and a client can see
+                how wide the catalog actually is. The figure is counted from
+                the catalog itself, so adding a profession updates it with
+                no edit here. */}
+            <li>
+              <LocaleLink
+                lang={locale}
+                href="/categories"
+                className="press-btn flex h-full items-center justify-center rounded-2xl px-2 py-3 text-center text-[0.9rem] font-semibold sm:px-3 sm:py-4 sm:text-[1.05rem]"
                 style={{
                   fontFamily: "var(--font-display)",
-                  background: `var(--color-dir-${trade.color}-bg)`,
+                  background: "var(--color-dir-craft-bg)",
                   color: "var(--color-ink)",
                   border: "1px solid rgba(22, 35, 58, 0.06)",
                   boxShadow:
                     "inset 0 2px 0 rgba(255, 255, 255, 0.6), var(--shadow-raise)",
                 }}
               >
-                {trade.label}
-              </li>
-            ))}
+                {dict.home.audienceAllPrefix} {allCats.length}
+              </LocaleLink>
+            </li>
           </ul>
         </div>
       </section>

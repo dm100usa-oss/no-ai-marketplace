@@ -123,8 +123,13 @@ export interface Dictionary {
     /** New hero (approved). */
     statsVisitsLabel: string;
     /** Nine trades shown three by three under the stats band, each in the
-     *  colour of the catalog direction it belongs to. */
-    audienceTrades: { label: string; color: DirectionColor }[];
+     *  colour of the catalog direction it belongs to. Every tile is a link:
+     *  href points either at the direction that holds the trade or, for a
+     *  trade that is a single category, straight at that category. */
+    audienceTrades: { label: string; color: DirectionColor; href: string }[];
+    /** Last tile of the trades grid: "All 37" with the figure counted from
+     *  the catalog, so it stays true when a profession is added. */
+    audienceAllPrefix: string;
     steps: { title: string; text: string }[];
     heroAdvantagesTitle: string;
     heroAdvantages: string[];

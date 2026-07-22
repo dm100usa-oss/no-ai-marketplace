@@ -984,6 +984,40 @@ const ru: FaqProfession[] = [
     ],
   },
   {
+    slug: "architects",
+    category: "architects",
+    metaTitle: "Архитекторы: частые вопросы",
+    metaDescription: "Где найти архитектора и почему по сгенерированной картинке дома нельзя построить.",
+    title: "Архитекторы: частые вопросы",
+    intro: "Вопросы, которые чаще всего задают архитекторы и их заказчики.",
+    items: [
+      {
+        q: "Где разместиться архитектору?",
+        a: "Здесь. Профиль ведет на ваш сайт и портфолио проектов, заказчики связываются напрямую, комиссии с проекта нет. Укажите регион: согласование привязано к местным нормам, и заказчик ищет того, кто работает в его юрисдикции.",
+        links: [
+          { label: "Добавить профиль", href: "/join" },
+        ],
+      },
+      {
+        q: "Почему по сгенерированной картинке дома нельзя построить?",
+        a: "Потому что за ней нет конструкции. Нет разрезов, узлов, расчета нагрузок, привязки к участку и к нормам. Красивый фасад за минуту оборачивается тем, что строить не по чему: проект, по которому работает подрядчик, все равно делает человек, и делает с нуля.",
+      },
+      {
+        q: "Как проверить архитектора перед заказом?",
+        a: "Попросить рабочую документацию по построенному объекту и рядом фотографию того, что построено. Совпадение чертежей с реальностью и есть работа архитектора. Спросите, как решался конкретный узел и почему именно так: человек, который вел проект, ответит сразу.",
+      },
+      {
+        q: "Можно ли архитектору пользоваться визуализацией и расчетными программами?",
+        a: "Да. Линия простая: нельзя генерировать, все остальное можно. Рендер вашей же модели, расчет конструкций, инсоляции, энергоэффективности, обмер участка дроном это инструменты. Сгенерировать изображение дома и выдать его за проект нельзя.",
+        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+      },
+      {
+        q: "Чем архитектор отличается от дизайнера интерьера?",
+        a: "Архитектор отвечает за само здание: посадку на участок, объем, конструкцию, фасады, согласование. Дизайнер интерьера работает внутри уже существующих стен. На частном доме их часто нанимают вместе, и это разные договоры и разные зоны ответственности.",
+      },
+    ],
+  },
+  {
     slug: "interior-designers",
     category: "interior-designers",
     metaTitle: "Дизайнеры интерьера: частые вопросы",
@@ -2405,6 +2439,40 @@ const en: FaqProfession[] = [
         q: "Can an auditor use automated analysers?",
         a: "Yes, nobody audits without them. The line is simple: no generation, everything else is fine. Static analysers, dependency scanners, linters are tools, they clear out the obvious. A human draws the conclusions: an analyser cannot tell you this code should not exist at all.",
         links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+      },
+    ],
+  },
+  {
+    slug: "architects",
+    category: "architects",
+    metaTitle: "Architects: common questions",
+    metaDescription: "Where to find an architect and why a generated picture of a house cannot be built.",
+    title: "Architects: common questions",
+    intro: "The questions architects and their clients ask most often.",
+    items: [
+      {
+        q: "Where can an architect get listed?",
+        a: "Here. Your profile links to your own site and project portfolio, clients contact you directly, and there is no commission on the job. State your region: permission is tied to local codes, and clients look for someone who works in their jurisdiction.",
+        links: [
+          { label: "Add your profile", href: "/join" },
+        ],
+      },
+      {
+        q: "Why can a generated picture of a house not be built?",
+        a: "Because there is no structure behind it. No sections, no junctions, no load calculations, no relation to the plot or the local code. A beautiful facade produced in a minute leaves nothing to build from: the drawings a contractor works to are still made by a person, and made from scratch.",
+      },
+      {
+        q: "How do I check an architect before hiring?",
+        a: "Ask for the working drawings of a completed building and a photograph of what was actually built. The match between the two is the architect's work. Ask how a particular junction was resolved and why: someone who ran the project answers immediately.",
+      },
+      {
+        q: "Can an architect use rendering and calculation software?",
+        a: "Yes. The line is simple: no generation, everything else is fine. Rendering your own model, structural and daylight calculations, energy modelling, surveying a plot by drone are all tools. Generating an image of a house and presenting it as a design is not.",
+        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+      },
+      {
+        q: "How is an architect different from an interior designer?",
+        a: "The architect is responsible for the building itself: how it sits on the plot, its volume, its structure, the facades, the permissions. An interior designer works inside walls that already exist. On a private house the two are often hired together, under separate contracts and with separate responsibilities.",
       },
     ],
   },

@@ -111,16 +111,16 @@ export const ru: Dictionary = {
      *  direction tiles further down the page rather than inventing a new
      *  palette. */
     audienceTrades: [
-      { label: "Художники", color: "art" },
-      { label: "Писатели", color: "lit" },
-      { label: "Дизайнеры", color: "design" },
-      { label: "Фотографы", color: "photo" },
-      { label: "Переводчики", color: "writing" },
-      { label: "Музыканты", color: "music" },
-      { label: "Разработчики", color: "code" },
-      { label: "Архитекторы", color: "services" },
-      { label: "Мастера", color: "craft" },
+      { label: "Художники", color: "art", href: "/directions/art" },
+      { label: "Писатели", color: "lit", href: "/directions/literature" },
+      { label: "Дизайнеры", color: "design", href: "/directions/graphics-and-design" },
+      { label: "Фотографы", color: "photo", href: "/categories/photographers" },
+      { label: "Копирайтеры", color: "writing", href: "/categories/copywriters" },
+      { label: "Музыканты", color: "music", href: "/categories/composers" },
+      { label: "Разработчики", color: "code", href: "/directions/development-and-it" },
+      { label: "Архитекторы", color: "services", href: "/categories/architects" },
     ],
+    audienceAllPrefix: "Все",
     steps: [
       { title: "Расскажите о себе", text: "Создайте профиль и покажите свои работы" },
       { title: "Привлекайте клиентов", text: "Которые ценят ваш опыт, качество и уникальный результат" },
