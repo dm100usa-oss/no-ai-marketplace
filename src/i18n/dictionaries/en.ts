@@ -98,6 +98,19 @@ export const en: Dictionary = {
 
   home: {
     statsVisitsLabel: "visits this week",
+    /** Nine trades under the stats band, three by three. See the Russian
+     *  dictionary for the reasoning: recognition beats precision here. */
+    audienceTrades: [
+      "Artists",
+      "Writers",
+      "Designers",
+      "Photographers",
+      "Translators",
+      "Musicians",
+      "Developers",
+      "Architects",
+      "Makers",
+    ],
     steps: [
       { title: "Tell us about yourself", text: "Create a profile and show your work" },
       { title: "Attract clients", text: "Who value your experience, quality and unique result" },

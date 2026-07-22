@@ -120,6 +120,8 @@ export interface Dictionary {
   home: {
     /** New hero (approved). */
     statsVisitsLabel: string;
+    /** Nine trades shown three by three under the stats band. */
+    audienceTrades: string[];
     steps: { title: string; text: string }[];
     heroAdvantagesTitle: string;
     heroAdvantages: string[];

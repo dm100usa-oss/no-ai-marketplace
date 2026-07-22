@@ -99,6 +99,24 @@ export const ru: Dictionary = {
 
   home: {
     statsVisitsLabel: "посещений за неделю",
+    /** Nine trades under the stats band, three by three. The hero calls
+     *  visitors "профессионалы", which is true but abstract: a translator
+     *  does not recognise herself in it. These nine name the work instead,
+     *  one per direction of the catalog, so a visitor sees their own trade
+     *  within a second of landing and knows the platform is for them.
+     *  Deliberately broad ("Художники", not "Концепт-художники"): this is
+     *  about recognition, precision comes later in the catalog. */
+    audienceTrades: [
+      "Художники",
+      "Писатели",
+      "Дизайнеры",
+      "Фотографы",
+      "Переводчики",
+      "Музыканты",
+      "Разработчики",
+      "Архитекторы",
+      "Мастера",
+    ],
     steps: [
       { title: "Расскажите о себе", text: "Создайте профиль и покажите свои работы" },
       { title: "Привлекайте клиентов", text: "Которые ценят ваш опыт, качество и уникальный результат" },

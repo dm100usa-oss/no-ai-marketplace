@@ -168,6 +168,34 @@ export default async function HomePage({
         rating={rating ?? 0}
       />
 
+      {/* ---------- Who this is for ---------- */}
+      {/* Nine trades, three by three, straight under the band. The hero
+          says "professionals who work without AI", which is accurate but
+          abstract, and a visitor scanning for a second cannot tell whether
+          it means them. Naming the trades answers that before they scroll.
+          Plain text, not links: this sits above the whole page and its job
+          is recognition, not navigation — a click here would pull people
+          out of the page before they have read anything. */}
+      <section className="pt-6 sm:pt-8">
+        <div className="container-page">
+          <ul className="mx-auto grid max-w-2xl grid-cols-3 gap-2 sm:gap-2.5">
+            {dict.home.audienceTrades.map((trade) => (
+              <li
+                key={trade}
+                className="rounded-xl border px-2 py-2.5 text-center text-[0.9rem] sm:px-3 sm:py-3 sm:text-[1.05rem]"
+                style={{
+                  borderColor: "var(--color-line)",
+                  background: "#fff",
+                  color: "var(--color-ink)",
+                }}
+              >
+                {trade}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* ---------- Steps ---------- */}
       <section className="pb-0 sm:pb-16" style={{ paddingTop: "28px" }}>
         <div className="container-page">
