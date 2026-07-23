@@ -56,7 +56,7 @@ export function JoinPicker({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               key={type}
               className="overflow-hidden rounded-2xl border"
               style={{
-                borderColor: active ? tone.solid : "var(--color-line)",
+                borderColor: tone.solid,
                 borderWidth: active ? 2 : 1,
               }}
             >
@@ -67,7 +67,7 @@ export function JoinPicker({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 aria-expanded={active}
                 className="press-btn flex w-full items-center gap-4 p-4 text-left"
                 style={{
-                  background: active ? tone.bg : "#fff",
+                  background: tone.bg,
                   ["--press-bg" as string]: tone.bg,
                 }}
               >
