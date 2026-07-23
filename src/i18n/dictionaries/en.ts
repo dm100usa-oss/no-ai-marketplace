@@ -360,18 +360,10 @@ export const en: Dictionary = {
     metaTitle: "Add your profile",
     metaDescription:
       "Add a profile to No AI Directory. The first 50 are free until the end of 2026, then from $5.99/month.",
-    title: "Add your profile",
+    title: "Welcome to the community!",
     intro:
-      "Get maximum visibility with people looking for work made without AI. Add your profile in a few minutes. The first 50 profiles are free until the end of 2026.",
-    startNow: "Start now",
+      "Thank you for sharing our values and choosing No AI Directory. May your talent, experience and skill help you find new clients, exciting projects and the recognition you deserve. Below we explain briefly how it all works. After that, you can fill out the form.",
     seePricing: "See pricing",
-    whyTitle: "Why be on No AI Directory",
-    whyPoints: [
-      "All buyer traffic goes to your own site, shop or portfolio, not to a middleman.",
-      "Your profile is a clean, indexable page built for SEO and generative AI answers.",
-      "A verified badge shows exactly what we reviewed, which builds trust with buyers.",
-      "One-time set-up, then the profile keeps working while you focus on the work.",
-    ],
     plansTitle: "Plans",
     fullComparisonLink: "Pricing",
     howTitle: "How it works",

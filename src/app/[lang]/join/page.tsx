@@ -4,7 +4,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { site } from "@/lib/config";
 import { FAQ } from "@/components/FAQ";
 import { JoinPicker } from "@/components/JoinPicker";
-import { CheckShield, ArrowRight } from "@/components/icons";
+import { ArrowRight } from "@/components/icons";
 import { getDictionary } from "@/i18n";
 import { DEFAULT_LOCALE, isLocale, localizedPath, altLanguages } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
@@ -65,6 +65,7 @@ export default async function JoinPage({
       />
 
       <div className="mx-auto max-w-3xl">
+        {/* Welcome / thank you */}
         <div
           className="rounded-2xl border p-6 md:p-10"
           style={{ borderColor: "var(--color-brand)", background: "var(--color-brand-soft)" }}
@@ -81,54 +82,9 @@ export default async function JoinPage({
           />
           <h1 className="mt-4">{dict.join.title}</h1>
           <p className="lead mt-3">{dict.join.intro}</p>
-          <div className="mt-6 flex flex-wrap gap-2">
-            <LocaleLink lang={locale} href="#form" className="btn btn-ink">
-              {dict.join.startNow}
-              <ArrowRight size={16} />
-            </LocaleLink>
-            <LocaleLink lang={locale} href="/pricing" className="btn btn-quiet">
-              {dict.join.seePricing}
-            </LocaleLink>
-          </div>
         </div>
 
-        {/* Benefits */}
-        <h2 className="mt-12">{dict.join.whyTitle}</h2>
-        <ul className="mt-4 space-y-3">
-          {dict.join.whyPoints.map((line) => (
-            <li key={line} className="flex gap-3" style={{ color: "var(--color-muted)" }}>
-              <CheckShield size={18} className="mt-0.5 shrink-0" />
-              <span className="text-[0.98rem]">{line}</span>
-            </li>
-          ))}
-        </ul>
-
-        {/* Plans — one source of truth lives on /pricing */}
-        <h2 className="mt-12">{dict.join.plansTitle}</h2>
-        <div
-          className="mt-4 rounded-2xl border p-5"
-          style={{ borderColor: "var(--color-brand)", background: "var(--color-brand-soft)" }}
-        >
-          <p
-            className="text-[1.05rem] font-bold"
-            style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
-          >
-            {dict.pricing.freeBannerTitle.replace("{n}", String(site.freeSlots))}
-          </p>
-          <p className="mt-2 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
-            {dict.pricing.freeBannerText
-              .replace("{n}", String(site.freeSlots))
-              .replace("{date}", freeDate)}
-          </p>
-          <div className="mt-4">
-            <LocaleLink lang={locale} href="/pricing" className="btn btn-quiet">
-              {dict.join.fullComparisonLink}
-              <ArrowRight size={16} />
-            </LocaleLink>
-          </div>
-        </div>
-
-        {/* Steps */}
+        {/* Steps — how it works */}
         <h2 className="mt-12">{dict.join.howTitle}</h2>
         <ol className="mt-4 space-y-4">
           {dict.join.steps.map((s, i) => (
@@ -149,11 +105,37 @@ export default async function JoinPage({
           ))}
         </ol>
 
+        {/* Plans — one source of truth lives on /pricing */}
+        <h2 className="mt-12">{dict.join.plansTitle}</h2>
+        <div
+          className="mt-4 rounded-2xl border p-5"
+          style={{ borderColor: "var(--color-brand)", background: "var(--color-brand-soft)" }}
+        >
+          <p
+            className="text-[1.05rem] font-bold"
+            style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+          >
+            {dict.pricing.freeBannerTitle.replace("{n}", String(site.freeSlots))}
+          </p>
+          <p className="mt-2 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
+            {dict.pricing.freeBannerText
+              .replace("{n}", String(site.freeSlots))
+              .replace("{date}", freeDate)}
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <LocaleLink lang={locale} href="/pricing" className="btn btn-quiet">
+              {dict.join.seePricing}
+              <ArrowRight size={16} />
+            </LocaleLink>
+          </div>
+        </div>
+
         {/* Who you are, then the submission form */}
         <div id="form" className="mt-12 scroll-mt-32">
           <JoinPicker lang={locale} dict={dict} />
         </div>
 
+        {/* Rules and standards */}
         <h2 className="mt-12">{dict.join.rulesTitle}</h2>
         <p className="mt-3" style={{ color: "var(--color-muted)" }}>
           {dict.join.rulesText1}

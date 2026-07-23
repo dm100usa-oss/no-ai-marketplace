@@ -227,10 +227,7 @@ export interface Dictionary {
     metaDescription: string;
     title: string;
     intro: string;
-    startNow: string;
     seePricing: string;
-    whyTitle: string;
-    whyPoints: string[];
     plansTitle: string;
     fullComparisonLink: string;
     howTitle: string;
