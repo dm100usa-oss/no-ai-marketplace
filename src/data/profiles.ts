@@ -37,9 +37,9 @@ export const profiles: Profile[] = [
     services: ["Жилые дома", "Общественные здания", "Городские пространства"],
     tags: ["Архитектура", "Проектирование"],
     avatar: "/images/david-kort-avatar.webp",
-    mainImage: "/images/david-kort-work-1.webp",
+    mainImage: "/images/david-kort-work-1b.webp",
     gallery: [
-      "/images/david-kort-work-1.webp",
+      "/images/david-kort-work-1b.webp",
       "/images/david-kort-work-2.webp",
       "/images/david-kort-work-3.webp",
       "/images/david-kort-work-4.webp",
