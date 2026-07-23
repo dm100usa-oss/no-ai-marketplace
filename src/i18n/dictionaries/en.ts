@@ -260,7 +260,7 @@ export const en: Dictionary = {
     faq: [
       {
         q: "What is No AI Directory?",
-        a: "An international directory of people, studios and companies whose work is made by humans, not by AI. You browse here, then visit the creator's own site or shop to buy or hire. The site is a showcase, not a shopping cart.",
+        a: "An international directory of people, teams and companies whose work is made by humans, not by AI. You browse here, then visit the creator's own site or shop to buy or hire. The site is a showcase, not a shopping cart.",
       },
       {
         q: "How do I find a creator?",
@@ -272,7 +272,7 @@ export const en: Dictionary = {
       },
       {
         q: "What does “verified” mean?",
-        a: "Verified profiles have submitted materials, such as process photos or video, sketches, drafts or published work, that were reviewed by hand. We describe what was reviewed on each profile. It is a good-faith review, not a legal guarantee.",
+        a: "Creators, teams and companies with verified profiles have submitted materials, such as process photos or video, sketches, drafts or published work, that were reviewed by hand. We describe what was reviewed on each profile. It is a good-faith review, not a legal guarantee.",
       },
       {
         q: "How do I add my profile?",
@@ -280,12 +280,12 @@ export const en: Dictionary = {
       },
       {
         q: "Is AI-generated work allowed?",
-        a: "The catalog is focused on human-made work. Creators state their AI usage openly on their profile. Fully AI-generated listings are not accepted; hybrid work is accepted when the human contribution is the substance of the work and is stated clearly.",
+        a: "The catalog is focused on human-made work. The leading creative role always belongs to the person. Ordinary working software is a tool and has nothing to do with AI. Creators state their AI usage openly on their profile. Fully AI-generated listings are not accepted. Work where AI was only a supporting tool and the substance was made by a person is accepted when this is stated clearly.",
       },
     ],
     closingTitle: "Are you a human creator?",
     closingText:
-      "The first 50 profiles are free until the end of 2026. Get found by buyers looking for work made by people.",
+      "The first 50 profiles are free until the end of 2026. Get maximum visibility with people looking for work made without AI.",
     closingCta: "Add your profile",
   },
 
@@ -362,7 +362,7 @@ export const en: Dictionary = {
       "Add a profile to No AI Directory. The first 50 are free until the end of 2026, then from $5.99/month.",
     title: "Add your profile",
     intro:
-      "Be found by buyers looking for work made by people. Add your profile in a few minutes. The first 50 profiles are free until the end of 2026.",
+      "Get maximum visibility with people looking for work made without AI. Add your profile in a few minutes. The first 50 profiles are free until the end of 2026.",
     startNow: "Start now",
     seePricing: "See pricing",
     whyTitle: "Why be on No AI Directory",
@@ -458,10 +458,10 @@ export const en: Dictionary = {
   about: {
     metaTitle: "About the project",
     metaDescription:
-      "No AI Directory is an international directory of people, studios and companies who create work, products and services without AI. It is a showcase, not a shop.",
+      "No AI Directory is an international directory of people, teams and companies who create work, products and services without AI. It is a showcase, not a shop.",
     title: "About No AI Directory",
     intro:
-      "No AI Directory is an international directory of people, studios and companies whose work is made by humans, not by AI. It is a showcase and a source of traffic, not a shop with a cart, not a place where money changes hands.",
+      "No AI Directory is an international directory of people, teams and companies whose work is made by humans, not by AI. It is a showcase and a source of traffic, not a shop with a cart, not a place where money changes hands.",
     whatTitle: "What the site does",
     whatText:
       "A buyer searches or browses the catalog, finds a creator or company, opens their profile, and clicks through to the creator's own site, shop or portfolio. Payment, delivery, communication and revisions all happen there, directly between buyer and creator. We do not sit in the middle.",
@@ -519,7 +519,7 @@ export const en: Dictionary = {
       "Search and browse every active human-made creator, studio and company on No AI Directory. Filter by direction, category, country and verification.",
     title: "Directory",
     intro:
-      "Every active profile in the catalog: people, studios and companies who create work, products and services without AI. Search by name, category or country, and open a card to jump straight to the creator's own platform.",
+      "Every active profile in the catalog: people, teams and companies who create work, products and services without AI. Search by name, category or country, and open a card to jump straight to the creator's own platform.",
     searchPlaceholder: "Search creators, categories, products…",
     searchAria: "Search creators",
     filters: "Filters",
