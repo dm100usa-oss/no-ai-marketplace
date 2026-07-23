@@ -388,9 +388,8 @@ export const en: Dictionary = {
     formTitle: "The form",
     formIntro:
       "Fill in the form below. While free places last, listing costs nothing. Once they run out, the form moves to payment through Stripe.",
-    pickTitle: "Who you are",
-    pickIntro:
-      "Pick how you work. It decides what the form asks you and how your profile looks in the catalog.",
+    pickTitle: "Choose how you work",
+    pickIntro: "",
     pickOptions: {
       creator: {
         title: "Creator",

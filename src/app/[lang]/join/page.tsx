@@ -39,6 +39,12 @@ export default async function JoinPage({
     { day: "numeric", month: "long", year: "numeric" },
   );
 
+  // The thank-you intro is two sentences: the first reads as a heading,
+  // the rest as a softer line under it.
+  const introParts = dict.join.intro.split(/(?<=\.)\s+/);
+  const introLead = introParts[0].replace(/\.$/, "");
+  const introRest = introParts.slice(1).join(" ");
+
   const faqItems = dict.join.faq;
   const faqJsonLd = {
     "@context": "https://schema.org",
@@ -65,13 +71,21 @@ export default async function JoinPage({
       />
 
       <div className="mx-auto max-w-3xl">
-        {/* Thank-you intro — plain text, no card, no heading (welcome line
-            lives on the published profile page instead). */}
-        <p className="lead mt-2">{dict.join.intro}</p>
+        {/* Thank-you intro — first sentence as a heading, no card, no image
+            (the welcome line lives on the published profile page instead). */}
+        <p
+          className="text-[1.5rem] font-bold md:text-[1.8rem]"
+          style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+        >
+          {introLead}
+        </p>
+        {introRest ? <p className="lead mt-3">{introRest}</p> : null}
 
-        {/* Steps — how it works. Bold display title with a smaller line
-            under it, each preceded by a numbered accent circle. */}
-        <h2 className="mt-12">{dict.join.howTitle}</h2>
+        {/* Steps — how it works. Indented so the "How it works" heading sits
+            above the step titles (which start after the number circle). */}
+        <div className="mt-12 pl-12">
+          <h2>{dict.join.howTitle}</h2>
+        </div>
         <div className="mt-5 flex flex-col gap-4">
           {dict.join.steps.map((s, i) => (
             <div key={s.t} className="flex gap-3">
@@ -94,6 +108,11 @@ export default async function JoinPage({
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Who you are — accordion, each type opens its own form */}
+        <div id="form" className="mt-12 scroll-mt-32">
+          <JoinPicker lang={locale} dict={dict} />
         </div>
 
         {/* Plans — one source of truth lives on /pricing */}
@@ -119,11 +138,6 @@ export default async function JoinPage({
               <ArrowRight size={16} />
             </LocaleLink>
           </div>
-        </div>
-
-        {/* Who you are, then the submission form */}
-        <div id="form" className="mt-12 scroll-mt-32">
-          <JoinPicker lang={locale} dict={dict} />
         </div>
 
         {/* Rules and standards */}
