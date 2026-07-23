@@ -394,17 +394,28 @@ export const en: Dictionary = {
       creator: {
         title: "Creator",
         text: "You work alone and answer for the result yourself.",
-        points: ["A personal profile in your own name", "Your portfolio and your links", "Clients write to you directly"],
+        points: ["Personal profile", "Individual projects", "Direct communication with clients"],
       },
       team: {
         title: "Team",
         text: "There are several of you and you take projects together.",
-        points: ["A team profile with the number of members", "Shared portfolio and roles", "One contact for the whole team"],
+        points: [
+          "Larger projects",
+          "Several specialists",
+          "A ready solution for complex requests",
+          "More visible in the catalog",
+        ],
       },
       company: {
         title: "Company or studio",
         text: "You are a registered business with your own staff.",
-        points: ["A company profile", "Website, registration, staff", "Verified as a business"],
+        points: [
+          "Large, long-term projects",
+          "Brand promotion",
+          "Corporate clients",
+          "Full-cycle delivery",
+          "Top positions in the catalog",
+        ],
       },
     },
     pickCta: "Fill in the form",
