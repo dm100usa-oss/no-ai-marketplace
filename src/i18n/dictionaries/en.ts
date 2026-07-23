@@ -362,7 +362,7 @@ export const en: Dictionary = {
       "Add a profile to No AI Directory. The first 50 are free until the end of 2026, then from $5.99/month.",
     title: "Welcome to the community!",
     intro:
-      "Thank you for sharing our values and choosing No AI Directory. May your talent, experience and skill help you find new clients, exciting projects and the recognition you deserve. Below we explain briefly how it all works. After that, you can fill out the form.",
+      "Thank you for sharing our values. May your talent, experience and skill help you find new clients, exciting projects and the recognition you deserve.",
     seePricing: "See pricing",
     plansTitle: "Plans",
     fullComparisonLink: "Pricing",
@@ -370,19 +370,19 @@ export const en: Dictionary = {
     steps: [
       {
         t: "Fill in the form",
-        d: "Name, one main category, description, country, tags and the links to your own platforms. Verified creators also attach process materials.",
+        d: "Your name, category and links to your own platforms",
       },
       {
         t: "Pick a plan",
-        d: "The first 50 profiles are free until the end of 2026. After that you choose the plan for your type and a period, monthly or yearly, and pay through Stripe.",
+        d: "The first 50 profiles are free until the end of 2026",
       },
       {
-        t: "We review by hand",
-        d: "We check the profile fits the Human-Made standards and, if you asked for verification, we look at the materials.",
+        t: "Wait for the review result",
+        d: "Basic review for everyone, an optional deeper one for the trust badge",
       },
       {
-        t: "Your profile goes live",
-        d: "The profile appears in the catalog and starts sending traffic to your own platforms.",
+        t: "We publish your profile",
+        d: "And it starts sending traffic your way",
       },
     ],
     formTitle: "The form",

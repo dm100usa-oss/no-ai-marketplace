@@ -65,45 +65,28 @@ export default async function JoinPage({
       />
 
       <div className="mx-auto max-w-3xl">
-        {/* Welcome / thank you */}
-        <div
-          className="rounded-2xl border p-6 md:p-10"
-          style={{ borderColor: "var(--color-brand)", background: "var(--color-brand-soft)" }}
-        >
-          <img
-            src="/images/how/creators.webp"
-            alt=""
-            aria-hidden="true"
-            width={120}
-            height={88}
-            loading="lazy"
-            decoding="async"
-            className="block"
-          />
-          <h1 className="mt-4">{dict.join.title}</h1>
-          <p className="lead mt-3">{dict.join.intro}</p>
-        </div>
+        {/* Thank-you intro — plain text, no card, no heading (welcome line
+            lives on the published profile page instead). */}
+        <p className="lead mt-2">{dict.join.intro}</p>
 
-        {/* Steps — how it works */}
+        {/* Steps — how it works. Same visual style as the homepage steps:
+            bold display title, smaller line under it, no card, no numbers. */}
         <h2 className="mt-12">{dict.join.howTitle}</h2>
-        <ol className="mt-4 space-y-4">
-          {dict.join.steps.map((s, i) => (
-            <li key={i} className="flex gap-3">
-              <span
-                className="grid h-9 w-9 shrink-0 place-items-center rounded-full font-bold text-white"
-                style={{ background: "var(--color-accent)", fontFamily: "var(--font-display)" }}
+        <div className="mt-5 flex flex-col gap-4">
+          {dict.join.steps.map((s) => (
+            <div key={s.t}>
+              <p
+                className="text-[1.2rem] font-bold md:text-[1.35rem]"
+                style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
               >
-                {i + 1}
-              </span>
-              <div>
-                <h3 className="text-[1rem]">{s.t}</h3>
-                <p className="mt-1 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
-                  {s.d}
-                </p>
-              </div>
-            </li>
+                {s.t}
+              </p>
+              <p className="mt-0.5 text-[1rem]" style={{ color: "var(--color-muted)" }}>
+                {s.d}
+              </p>
+            </div>
           ))}
-        </ol>
+        </div>
 
         {/* Plans — one source of truth lives on /pricing */}
         <h2 className="mt-12">{dict.join.plansTitle}</h2>
