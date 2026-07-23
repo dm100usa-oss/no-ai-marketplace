@@ -136,8 +136,8 @@ export const en: Dictionary = {
     audienceAllPrefix: "All",
     steps: [
       { title: "Tell us about yourself", text: "Create a profile and show your work" },
-      { title: "Attract clients", text: "Who value your experience, quality and unique result" },
-      { title: "Earn", text: "Doing what you love" },
+      { title: "Attract new clients", text: "Who value your experience, quality and unique result" },
+      { title: "Earn", text: "Growing your audience and opportunities" },
     ],
     heroAdvantagesTitle: "Our advantages",
     heroAdvantages: [
@@ -156,10 +156,14 @@ export const en: Dictionary = {
     ],
     heroCreatorsTitle: "For creators",
     heroCreators: [
-      "Find clients who value your experience and craft",
+      "Showcase your portfolio and the services you offer",
+      "Open the door to long-term working relationships",
+      "Get clients who value your experience and expertise",
+      "Take orders directly, with no middleman",
       "Keep 100% of what you earn, no platform cut",
       "Work solo, join a team, or start your own company",
-      "Build long-term relationships with clients",
+      "Show your work is made without AI and earn more trust",
+      "Unlock new opportunities alongside our community",
     ],
     heroJoinButton: "Join the platform",
     heroSlogan: "Let's bring back the value of human work",
