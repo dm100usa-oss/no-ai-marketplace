@@ -62,6 +62,24 @@ export default async function HomePage({
   const realWorks = shown.filter((p) => !p.demo);
   const newWorks = (realWorks.length > 0 ? realWorks : shown).slice(0, 6);
 
+  // New members strip: the same idea as new works, but keyed on the avatar
+  // rather than the work image. Real authors first; the demo profile fills
+  // the strip only while there are no real members yet, and steps aside on
+  // its own once the first real author is published. Each becomes a card
+  // with photo and name; empty slots after them stay as invitations, so a
+  // near-empty catalog still shows a full, living strip.
+  const membersShown = getNewestProfilesL(locale).filter(
+    (p) => p.avatar && p.showOnHomepage,
+  );
+  const realMembers = membersShown.filter((p) => !p.demo);
+  const newMembers = (realMembers.length > 0 ? realMembers : membersShown)
+    .slice(0, 8)
+    .map((p) => ({
+      name: p.name,
+      avatar: p.avatar as string,
+      href: `${profileBasePath(p.profileType)}/${p.slug}`,
+    }));
+
   // Named, not sliced. Taking the first eight of the list gave whatever
   // happened to sit at the top of categories.ts — four painters and four
   // writers, in file order, which is not what "popular" means. These eight
@@ -424,6 +442,7 @@ export default async function HomePage({
         lang={locale}
         title={dict.home.newMembersTitle}
         namePlaceholder={dict.home.newMembersNamePlaceholder}
+        members={newMembers}
       />
 
       {/* ---------- New works ---------- */}

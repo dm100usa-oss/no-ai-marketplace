@@ -599,6 +599,10 @@ a { color: inherit; text-decoration: none; }
   border-radius: 10px;
   display: grid;
   place-items: center;
+  overflow: hidden;
+}
+.members-marquee__photo img {
+  border-radius: 10px;
 }
 
 .members-marquee__name {

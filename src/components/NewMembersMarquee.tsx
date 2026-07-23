@@ -34,30 +34,56 @@ function PersonSilhouette({ color }: { color: string }) {
   );
 }
 
-// Eight placeholder members. Swap a card's data for a real photo/logo and
-// name once a member joins (with permission).
-const MEMBERS = Array.from({ length: 8 }, (_, i) => ({ i, name: "" }));
+// A real member to show in the strip: photo, name and a link to the
+// profile. The homepage resolves these; an empty list is fine and simply
+// leaves the strip as all invitations.
+export interface MarqueeMember {
+  name: string;
+  avatar: string;
+  href: string;
+}
 
 function MemberCard({
   i,
   name,
   namePlaceholder,
   lang,
+  member,
 }: {
   i: number;
   name: string;
   namePlaceholder: string;
   lang: Locale;
+  member?: MarqueeMember;
 }) {
+  // A real member links to their profile and shows their photo; an empty
+  // slot is a soft gradient invitation that links to /join.
+  const href = member ? `/${lang}${member.href}` : `/${lang}/new-member`;
   return (
     <Link
-      href={`/${lang}/new-member`}
+      href={href}
       className="members-marquee__card members-marquee__card--link"
     >
-      <div className="members-marquee__photo" style={{ background: gradient(i) }}>
-        <PersonSilhouette color="rgba(90,110,150,0.55)" />
+      <div
+        className="members-marquee__photo"
+        style={member ? undefined : { background: gradient(i) }}
+      >
+        {member ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={member.avatar}
+            alt={member.name}
+            loading="lazy"
+            decoding="async"
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
+        ) : (
+          <PersonSilhouette color="rgba(90,110,150,0.55)" />
+        )}
       </div>
-      <div className="members-marquee__name">{name || namePlaceholder}</div>
+      <div className="members-marquee__name">
+        {member ? member.name : name || namePlaceholder}
+      </div>
     </Link>
   );
 }
@@ -66,33 +92,45 @@ export function NewMembersMarquee({
   lang,
   title,
   namePlaceholder,
+  members = [],
 }: {
   lang: Locale;
   title: string;
   namePlaceholder: string;
+  members?: MarqueeMember[];
 }) {
+  // Real members first, then invitation slots up to eight, so the strip is
+  // always full even with a single author in the catalog. The list renders
+  // twice for a seamless loop.
+  const slots = Array.from({ length: 8 }, (_, i) => ({
+    i,
+    member: members[i],
+  }));
+
   return (
     <section className="members-marquee-section">
       <div className="members-marquee-inner">
         <h2 className="members-marquee-title">{title}</h2>
         <div className="members-marquee">
           <div className="members-marquee__track">
-            {MEMBERS.map((m) => (
+            {slots.map((s) => (
               <MemberCard
-                key={`a-${m.i}`}
-                i={m.i}
-                name={m.name}
+                key={`a-${s.i}`}
+                i={s.i}
+                name=""
                 namePlaceholder={namePlaceholder}
                 lang={lang}
+                member={s.member}
               />
             ))}
-            {MEMBERS.map((m) => (
+            {slots.map((s) => (
               <MemberCard
-                key={`b-${m.i}`}
-                i={m.i}
-                name={m.name}
+                key={`b-${s.i}`}
+                i={s.i}
+                name=""
                 namePlaceholder={namePlaceholder}
                 lang={lang}
+                member={s.member}
               />
             ))}
           </div>
