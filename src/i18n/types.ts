@@ -109,7 +109,14 @@ export interface Dictionary {
     demoNoticeTitle: string;
     demoNoticeText: string;
     /** Card line listing what this participant actually does. */
-    cardDoes: string;
+    /** Verb before the "what they do" line on a card. One flat "Does:" for
+     *  everyone reads flat; a card is the author's face in the catalog and
+     *  should carry some pride, so the verb fits the trade — an architect
+     *  designs, a writer writes, a sculptor sculpts. Keyed by direction,
+     *  with a per-trade override for the handful the direction verb misses
+     *  (a code auditor reviews, they do not develop). */
+    cardVerb: Record<string, string>;
+    cardVerbTrade: Record<string, string>;
     backToHome: string;
     contactUs: string;
   };

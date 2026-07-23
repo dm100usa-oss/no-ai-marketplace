@@ -3,6 +3,7 @@ import type { Profile } from "@/lib/types";
 import { VerifiedBadge, FeaturedBadge } from "./Badges";
 import { ExternalLink } from "./icons";
 import { profileBasePath } from "@/lib/profile-path";
+import { directionOfCategoryL } from "@/lib/localized-data";
 import type { Dictionary } from "@/i18n/types";
 import type { Locale } from "@/i18n/config";
 
@@ -80,6 +81,12 @@ export function CreatorCard({
   // people in the same profession. Products count too: an author sells
   // books, not services.
   const does = [...(profile.services ?? []), ...(profile.products ?? [])].slice(0, 3);
+  // The verb before that line fits the trade, not a flat "Does:" — trade
+  // first, direction second, "Makes" if neither is known.
+  const dir = directionOfCategoryL(profile.mainCategory, lang);
+  const verb =
+    dict.common.cardVerbTrade[profile.mainCategory] ??
+    (dir ? (dict.common.cardVerb[dir.slug] ?? dict.common.cardVerb.other) : dict.common.cardVerb.other);
   // A single creator reads as a person (round avatar); a team or company
   // reads as a group (rounded square).
   const isGroup = profile.profileType !== "creator";
@@ -168,7 +175,7 @@ export function CreatorCard({
         {/* What they actually do — separates two people in one profession */}
         {does.length > 0 && (
           <p className="line-clamp-2 text-[0.85rem] leading-snug" style={{ color: "var(--color-muted)" }}>
-            <span style={{ color: "var(--color-muted-soft)" }}>{dict.common.cardDoes} </span>
+            <span style={{ color: "var(--color-muted-soft)" }}>{verb}: </span>
             {does.join(" · ")}
           </p>
         )}
