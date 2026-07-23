@@ -52,14 +52,15 @@ export default async function HomePage({
   const dirs = getActiveDirectionsL(locale);
 
   // New works strip: real works from the newest profiles, newest first.
-  // A profile qualifies only if it is real (not a demo placeholder) and
-  // actually carries a picture (mainImage). We take up to six; whatever is
-  // missing is filled by coloured "your work" invitation cards below. So
-  // the moment a real author with a work is added, it shows here on the
-  // next load — no manual step.
-  const newWorks = getNewestProfilesL(locale)
-    .filter((p) => !p.demo && p.mainImage && p.showOnHomepage)
-    .slice(0, 6);
+  // A profile qualifies if it carries a picture and is set to show. Real
+  // authors always win; the demo profile fills the strip only while there
+  // are no real works yet, and drops out on its own the moment the first
+  // real author with a work is published — no manual step either way.
+  const shown = getNewestProfilesL(locale).filter(
+    (p) => p.mainImage && p.showOnHomepage,
+  );
+  const realWorks = shown.filter((p) => !p.demo);
+  const newWorks = (realWorks.length > 0 ? realWorks : shown).slice(0, 6);
 
   // Named, not sliced. Taking the first eight of the list gave whatever
   // happened to sit at the top of categories.ts — four painters and four
