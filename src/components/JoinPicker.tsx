@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { TallyForm } from "./TallyForm";
 import { CheckShield, ChevronDown } from "./icons";
 import type { Dictionary } from "@/i18n/types";
@@ -37,6 +37,30 @@ const ICON_FILE: Record<ProfileType, string> = {
 export function JoinPicker({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const [open, setOpen] = useState<ProfileType | null>(null);
 
+  // Keeps a clicked row from jumping when another row collapses above it.
+  // We remember the row's distance from the top of the viewport at click
+  // time, then restore the scroll so it stays put after the re-render.
+  const rowRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const anchor = useRef<{ type: ProfileType; top: number } | null>(null);
+
+  useLayoutEffect(() => {
+    const a = anchor.current;
+    if (!a) return;
+    const el = rowRefs.current[a.type];
+    if (el) {
+      const newTop = el.getBoundingClientRect().top;
+      const delta = newTop - a.top;
+      if (delta !== 0) window.scrollBy(0, delta);
+    }
+    anchor.current = null;
+  }, [open]);
+
+  const handleToggle = (type: ProfileType) => {
+    const el = rowRefs.current[type];
+    if (el) anchor.current = { type, top: el.getBoundingClientRect().top };
+    setOpen((cur) => (cur === type ? null : type));
+  };
+
   return (
     <div>
       <h2>{dict.join.pickTitle}</h2>
@@ -54,6 +78,9 @@ export function JoinPicker({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           return (
             <div
               key={type}
+              ref={(el) => {
+                rowRefs.current[type] = el;
+              }}
               className="overflow-hidden rounded-2xl border"
               style={{
                 borderColor: tone.solid,
@@ -63,7 +90,7 @@ export function JoinPicker({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               {/* Row header — click to open/close */}
               <button
                 type="button"
-                onClick={() => setOpen(active ? null : type)}
+                onClick={() => handleToggle(type)}
                 aria-expanded={active}
                 className="press-btn flex w-full items-center gap-4 p-4 text-left"
                 style={{
