@@ -69,21 +69,29 @@ export default async function JoinPage({
             lives on the published profile page instead). */}
         <p className="lead mt-2">{dict.join.intro}</p>
 
-        {/* Steps — how it works. Same visual style as the homepage steps:
-            bold display title, smaller line under it, no card, no numbers. */}
+        {/* Steps — how it works. Bold display title with a smaller line
+            under it, each preceded by a numbered accent circle. */}
         <h2 className="mt-12">{dict.join.howTitle}</h2>
         <div className="mt-5 flex flex-col gap-4">
-          {dict.join.steps.map((s) => (
-            <div key={s.t}>
-              <p
-                className="text-[1.2rem] font-bold md:text-[1.35rem]"
-                style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+          {dict.join.steps.map((s, i) => (
+            <div key={s.t} className="flex gap-3">
+              <span
+                className="grid h-9 w-9 shrink-0 place-items-center rounded-full font-bold text-white"
+                style={{ background: "var(--color-accent)", fontFamily: "var(--font-display)" }}
               >
-                {s.t}
-              </p>
-              <p className="mt-0.5 text-[1rem]" style={{ color: "var(--color-muted)" }}>
-                {s.d}
-              </p>
+                {i + 1}
+              </span>
+              <div>
+                <p
+                  className="text-[1.2rem] font-bold md:text-[1.35rem]"
+                  style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+                >
+                  {s.t}
+                </p>
+                <p className="mt-0.5 text-[1rem]" style={{ color: "var(--color-muted)" }}>
+                  {s.d}
+                </p>
+              </div>
             </div>
           ))}
         </div>
