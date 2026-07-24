@@ -16,11 +16,15 @@ export function GalleryLightbox({
   name,
   variant = "grid",
   heroAlt,
+  workLabel = "Work",
 }: {
   images: string[];
   name: string;
   variant?: "grid" | "hero";
   heroAlt?: string;
+  /** The word "Work" in the current language, for image alt text like
+   *  "Work 1 by David Kort". Falls back to English when not supplied. */
+  workLabel?: string;
 }) {
   const [open, setOpen] = useState<number | null>(null);
 
@@ -58,7 +62,7 @@ export function GalleryLightbox({
           type="button"
           onClick={() => setOpen(0)}
           className="group h-full w-full cursor-zoom-in"
-          aria-label={`Open ${heroAlt ?? `work by ${name}`} full screen`}
+          aria-label={heroAlt ?? `${workLabel} — ${name}`}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           {/* The hero variant is the LCP element on a profile page: it sits at
@@ -66,7 +70,7 @@ export function GalleryLightbox({
               lazy. */}
           <img
             src={images[0]}
-            alt={heroAlt ?? `Featured work by ${name}`}
+            alt={heroAlt ?? `${workLabel} — ${name}`}
             fetchPriority="high"
             decoding="async"
             className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
@@ -81,12 +85,12 @@ export function GalleryLightbox({
               onClick={() => setOpen(i)}
               className="group aspect-square cursor-zoom-in overflow-hidden rounded-xl"
               style={{ background: "var(--color-brand-soft)" }}
-              aria-label={`Open work ${i + 1} by ${name} full screen`}
+              aria-label={`${workLabel} ${i + 1} — ${name}`}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={src}
-                alt={`Work ${i + 1} by ${name}`}
+                alt={`${workLabel} ${i + 1} — ${name}`}
                 loading="lazy"
                 decoding="async"
                 className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
@@ -103,7 +107,7 @@ export function GalleryLightbox({
           onClick={close}
           role="dialog"
           aria-modal="true"
-          aria-label={`Work by ${name}`}
+          aria-label={`${workLabel} — ${name}`}
         >
           {/* Close */}
           <button
@@ -136,7 +140,7 @@ export function GalleryLightbox({
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={images[open]}
-            alt={`Work ${open + 1} by ${name}`}
+            alt={`${workLabel} ${open + 1} — ${name}`}
             onClick={(e) => e.stopPropagation()}
             className="max-h-[90vh] max-w-[92vw] rounded-lg object-contain"
           />

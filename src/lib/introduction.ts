@@ -50,42 +50,6 @@ function isRecent(dateCreated: string): boolean {
   return Date.now() - then < twoMonths;
 }
 
-/** Middle line: what the person does, from their own services list.
- *  Two items read as a sentence, five read as a form. Anything longer or
- *  more awkward than that is what `introDoes` on the profile is for. */
-function doesLine(p: Profile, locale: Locale): string | null {
-  if (p.introDoes) return p.introDoes;
-
-  const services = (p.services ?? []).filter((s) => s.trim().length > 0);
-  if (services.length === 0) return null;
-
-  const picked = services.slice(0, 3).map((s) => s.trim());
-  // Services are written as list items and start with a capital: "Book
-  // covers". Inside a sentence that capital reads as a stray proper noun,
-  // so it is eased down — unless the word is an acronym or a name, where
-  // the capital is the word ("UI/UX", "SEO", "Photoshop"), which is what
-  // the all-caps and mid-word-capital checks protect.
-  const lower = picked.map((s) => {
-    const first = s.split(/[\s/-]/)[0];
-    const isAcronym = first.length > 1 && first === first.toUpperCase();
-    const hasInnerCaps = /[a-zа-я][A-ZА-Я]/.test(first);
-    if (isAcronym || hasInnerCaps) return s;
-    return s.charAt(0).toLowerCase() + s.slice(1);
-  });
-
-  const joined =
-    locale === "ru"
-      ? lower.length === 1
-        ? lower[0]
-        : `${lower.slice(0, -1).join(", ")} и ${lower[lower.length - 1]}`
-      : lower.length === 1
-        ? lower[0]
-        : `${lower.slice(0, -1).join(", ")} and ${lower[lower.length - 1]}`;
-
-  // Sentence case: the list is prose now, not a row of tags.
-  return `${joined.charAt(0).toUpperCase()}${joined.slice(1)}.`;
-}
-
 export interface Introduction {
   /** The opening sentence: opener, name, adjective, trade, city. */
   lead: string;
@@ -150,11 +114,14 @@ export function buildIntroduction(
   const place = p.city || p.country;
   const from = locale === "ru" ? "из" : "from";
 
-  // "Знакомьтесь: Анна, талантливый живописец из Казани."
+  // "Знакомьтесь: опытный архитектор из Вены."
+  // The name is deliberately left out — it already stands large just above
+  // the introduction, and repeating it here ("Представляем: David Kort")
+  // read as a stutter. The opener keeps the warm, human tone; the sentence
+  // introduces the person by trade and place, not by name twice.
   const parts = [adjective, trade].filter(Boolean).join(" ");
-  const lead = place
-    ? `${opener}: ${p.name}, ${parts} ${from} ${place}.`
-    : `${opener}: ${p.name}, ${parts}.`;
+  const leadCore = place ? `${parts} ${from} ${place}` : parts;
+  const lead = `${opener}: ${leadCore}.`;
 
   // Trade first, direction second. Most trades read fine on their
   // direction's line; the handful that do not are listed by slug.
@@ -165,7 +132,11 @@ export function buildIntroduction(
 
   return {
     lead,
-    does: doesLine(p, locale),
+    // The "what they do" line is intentionally gone: it was assembled from
+    // the same services that already appear as their own block just below,
+    // so it repeated them word for word. The introduction now introduces;
+    // the services list lists.
+    does: null,
     byHand,
     more: hasExternalLinks(p) ? intro.more : null,
   };

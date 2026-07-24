@@ -133,7 +133,7 @@ export function ProfileView({
             )}
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-2">
-                <h1 className="text-[1.75rem] leading-tight">{p.name}</h1>
+                <h1 className="text-[1.75rem] leading-tight notranslate" translate="no">{p.name}</h1>
                 <FeaturedBadge status={p.status} dict={dict} />
                 <VerifiedBadge status={p.verificationStatus} dict={dict} />
               </div>
@@ -251,6 +251,7 @@ export function ProfileView({
                 name={p.name}
                 variant="hero"
                 heroAlt={p.name}
+                workLabel={dict.states.slotTagWork ?? "Work"}
               />
             ) : (
               <span className="text-[0.85rem]">{dict.common.humanMadeWork}</span>
@@ -308,7 +309,7 @@ export function ProfileView({
               <p className="mt-1 text-[0.92rem]" style={{ color: "var(--color-muted-soft)" }}>
                 {dict.profile.portfolioHint}
               </p>
-              <GalleryLightbox images={p.gallery} name={p.name} />
+              <GalleryLightbox images={p.gallery} name={p.name} workLabel={dict.states.slotTagWork ?? "Work"} />
             </div>
           ) : null}
 

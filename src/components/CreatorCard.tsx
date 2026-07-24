@@ -153,7 +153,7 @@ export function CreatorCard({
               </span>
             )}
             <span className="min-w-0">
-              <span className="block truncate font-semibold leading-tight" style={{ fontFamily: "var(--font-display)" }}>
+              <span className="block truncate font-semibold leading-tight notranslate" translate="no" style={{ fontFamily: "var(--font-display)" }}>
                 {profile.name}
               </span>
               <span className="block truncate text-[0.85rem]" style={{ color: "var(--color-muted-soft)" }}>
