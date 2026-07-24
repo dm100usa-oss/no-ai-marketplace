@@ -25,12 +25,11 @@ export function VerifiedBadge({
           width: "1.6rem",
           height: "1.6rem",
           borderRadius: "9999px",
-          background: "linear-gradient(180deg, #33a874 0%, #1f8a5b 100%)",
-          color: "#fff",
-          boxShadow: "inset 0 1px 1px rgba(255,255,255,0.4)",
+          background: "#d3ead9",
+          color: "#1f8a5b",
         }}
       >
-        <CheckShield size={15} />
+        <CheckShield size={17} />
       </span>
       {label}
     </span>
