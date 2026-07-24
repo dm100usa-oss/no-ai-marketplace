@@ -24,8 +24,8 @@ export function VerifiedBadge({
 }
 
 /** Featured (leader) badge — "First in category", set manually. The "1"
- *  sits in a filled circle so the rank reads at a glance, with the words
- *  "in category" beside it: ① in category. */
+ *  sits in a filled gold circle like a medal, with "in category" beside it,
+ *  on a soft gold plate: ① in category. */
 export function FeaturedBadge({
   status,
   dict,
@@ -35,20 +35,28 @@ export function FeaturedBadge({
 }) {
   if (status !== "featured") return null;
   return (
-    <span className="badge badge-featured">
+    <span
+      className="badge"
+      style={{
+        background: "linear-gradient(180deg, #fbf1d2 0%, #f6e4ad 100%)",
+        color: "#8a6a17",
+        border: "1px solid #e9d18f",
+      }}
+    >
       <span
         aria-hidden
         style={{
           display: "inline-grid",
           placeItems: "center",
-          width: "1.05rem",
-          height: "1.05rem",
+          width: "1.15rem",
+          height: "1.15rem",
           borderRadius: "9999px",
-          background: "#a9691a",
+          background: "linear-gradient(180deg, #e7b53c 0%, #c8901d 100%)",
           color: "#fff",
-          fontSize: "0.7rem",
-          fontWeight: 700,
+          fontSize: "0.72rem",
+          fontWeight: 800,
           lineHeight: 1,
+          boxShadow: "inset 0 1px 1px rgba(255,255,255,0.5)",
         }}
       >
         1

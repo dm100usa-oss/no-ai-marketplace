@@ -111,7 +111,7 @@ export function ProfileView({
         {/* ------------------------- Main column ------------------------- */}
         <div>
           {/* Header */}
-          <div className="flex items-start gap-4">
+          <div className="flex items-start gap-5">
             {p.avatar ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
@@ -120,24 +120,29 @@ export function ProfileView({
                 width={600}
                 height={600}
                 decoding="async"
-                className="h-16 w-16 shrink-0 rounded-2xl object-cover"
+                className="h-32 w-32 shrink-0 rounded-2xl object-cover"
               />
             ) : (
               <span
                 aria-hidden
-                className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl text-[1.3rem] font-bold text-white"
+                className="grid h-32 w-32 shrink-0 place-items-center rounded-2xl text-[2.2rem] font-bold text-white"
                 style={{ background: "var(--color-ink)", fontFamily: "var(--font-display)" }}
               >
                 {initials}
               </span>
             )}
             <div className="min-w-0">
-              <div className="flex flex-wrap items-center gap-2">
-                <h1 className="text-[1.75rem] leading-tight notranslate" translate="no">{p.name}</h1>
-                <FeaturedBadge status={p.status} dict={dict} />
-                <VerifiedBadge status={p.verificationStatus} dict={dict} />
-              </div>
-              <p className="mt-1 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
+              <h1 className="text-[1.75rem] leading-tight notranslate" translate="no">{p.name}</h1>
+              {/* Badges stacked, First-in-category above Verified, each on
+                  its own line so they never drift apart on a narrow phone. */}
+              {(p.status === "featured" ||
+                p.verificationStatus !== "none") && (
+                <div className="mt-2 flex flex-col items-start gap-1.5">
+                  <FeaturedBadge status={p.status} dict={dict} />
+                  <VerifiedBadge status={p.verificationStatus} dict={dict} />
+                </div>
+              )}
+              <p className="mt-2 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
                 {cat ? cat.name : categoryNameL(p.mainCategory, lang)}
                 {" · "}
                 {p.city ? `${p.city}, ` : ""}
@@ -309,19 +314,25 @@ export function ProfileView({
             </div>
           ) : null}
 
-          {/* Portfolio / gallery */}
-          {p.gallery?.length ? (
-            <div className="mt-10">
-              <h2 className="!text-[1.35rem]">{dict.profile.portfolio}</h2>
-              <p className="mt-1 text-[0.92rem]" style={{ color: "var(--color-muted-soft)" }}>
-                {dict.profile.portfolioHint}
-              </p>
-              <GalleryLightbox images={p.gallery} name={p.name} workLabel={dict.states.slotTagWork ?? "Work"} />
-              <p className="mt-3 text-[0.95rem] leading-relaxed" style={{ color: "var(--color-muted)" }}>
-                {dict.profile.portfolioMore}
-              </p>
-            </div>
-          ) : null}
+          {/* Portfolio / gallery. The main image already stands large just
+              under the introduction, so it is dropped from the grid here:
+              showing it twice, once big and once as the first tile, read as
+              a duplicate. */}
+          {(() => {
+            const rest = (p.gallery ?? []).filter((src) => src !== p.mainImage);
+            return rest.length ? (
+              <div className="mt-10">
+                <h2 className="!text-[1.35rem]">{dict.profile.portfolio}</h2>
+                <p className="mt-1 text-[0.92rem]" style={{ color: "var(--color-muted-soft)" }}>
+                  {dict.profile.portfolioHint}
+                </p>
+                <GalleryLightbox images={rest} name={p.name} workLabel={dict.states.slotTagWork ?? "Work"} />
+                <p className="mt-3 text-[0.95rem] leading-relaxed" style={{ color: "var(--color-muted)" }}>
+                  {dict.profile.portfolioMore}
+                </p>
+              </div>
+            ) : null;
+          })()}
 
           {/* Video links */}
           {p.videoLinks?.length ? (
