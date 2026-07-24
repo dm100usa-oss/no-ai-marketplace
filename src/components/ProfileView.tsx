@@ -200,8 +200,8 @@ export function ProfileView({
           >
             {"text" in intro ? (
               <p
-                className="whitespace-pre-line text-[1rem] leading-relaxed"
-                style={{ color: "var(--color-ink)" }}
+                className="whitespace-pre-line text-[1.1rem] leading-relaxed"
+                style={{ color: "var(--color-ink)", textAlign: "justify" }}
               >
                 {(() => {
                   // If the introduction opens with a lead word and a colon

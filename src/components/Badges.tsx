@@ -22,14 +22,14 @@ export function VerifiedBadge({
         style={{
           display: "inline-grid",
           placeItems: "center",
-          width: "1.6rem",
-          height: "1.6rem",
+          width: "2.16rem",
+          height: "2.16rem",
           borderRadius: "9999px",
           background: "#d3ead9",
           color: "#1f8a5b",
         }}
       >
-        <CheckShield size={24} />
+        <CheckShield size={32} />
       </span>
       {label}
     </span>
