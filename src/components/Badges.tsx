@@ -17,7 +17,21 @@ export function VerifiedBadge({
       : dict.badges.verifiedCreator;
   return (
     <span className="badge badge-verified" title={dict.badges.verifiedTitle}>
-      <CheckShield size={14} />
+      <span
+        aria-hidden
+        style={{
+          display: "inline-grid",
+          placeItems: "center",
+          width: "1.6rem",
+          height: "1.6rem",
+          borderRadius: "9999px",
+          background: "linear-gradient(180deg, #33a874 0%, #1f8a5b 100%)",
+          color: "#fff",
+          boxShadow: "inset 0 1px 1px rgba(255,255,255,0.4)",
+        }}
+      >
+        <CheckShield size={15} />
+      </span>
       {label}
     </span>
   );
@@ -48,12 +62,12 @@ export function FeaturedBadge({
         style={{
           display: "inline-grid",
           placeItems: "center",
-          width: "1.15rem",
-          height: "1.15rem",
+          width: "1.6rem",
+          height: "1.6rem",
           borderRadius: "9999px",
           background: "linear-gradient(180deg, #e7b53c 0%, #c8901d 100%)",
           color: "#fff",
-          fontSize: "0.72rem",
+          fontSize: "0.95rem",
           fontWeight: 800,
           lineHeight: 1,
           boxShadow: "inset 0 1px 1px rgba(255,255,255,0.5)",

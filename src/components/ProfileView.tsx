@@ -241,28 +241,6 @@ export function ProfileView({
             )}
           </div>
 
-          {/* Main work image / hero */}
-          <div
-            className="mt-6 grid aspect-[16/9] w-full place-items-center overflow-hidden rounded-2xl"
-            style={{ background: "var(--color-brand-soft)", color: "var(--color-muted-soft)" }}
-          >
-            {p.mainImage ? (
-              <GalleryLightbox
-                images={
-                  p.gallery?.length
-                    ? Array.from(new Set([p.mainImage, ...p.gallery]))
-                    : [p.mainImage]
-                }
-                name={p.name}
-                variant="hero"
-                heroAlt={p.name}
-                workLabel={dict.states.slotTagWork ?? "Work"}
-              />
-            ) : (
-              <span className="text-[0.85rem]">{dict.common.humanMadeWork}</span>
-            )}
-          </div>
-
           {/* Description. Shown only when there is no hand-written
               introduction: the introduction up top already tells the
               author's story in their own words, so repeating the
@@ -282,57 +260,44 @@ export function ProfileView({
             </div>
           )}
 
-          {/* Services / products */}
+          {/* Services / products — one compact line each, so they name what
+              the author does without pushing the portfolio down the page. */}
           {(p.services?.length || p.products?.length) ? (
-            <div className="mt-8 grid gap-6 sm:grid-cols-2">
+            <div className="mt-6 space-y-2">
               {p.services?.length ? (
-                <div>
-                  <h3 className="mb-2">{dict.profile.services}</h3>
-                  <ul className="space-y-1.5">
-                    {p.services.map((s) => (
-                      <li key={s} className="flex gap-2 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
-                        <span aria-hidden style={{ color: "var(--color-accent)" }}>•</span>
-                        {s}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <p className="text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
+                  <span className="font-semibold" style={{ color: "var(--color-ink)" }}>
+                    {dict.profile.services}:
+                  </span>{" "}
+                  {p.services.join(" · ")}
+                </p>
               ) : null}
               {p.products?.length ? (
-                <div>
-                  <h3 className="mb-2">{dict.profile.products}</h3>
-                  <ul className="space-y-1.5">
-                    {p.products.map((s) => (
-                      <li key={s} className="flex gap-2 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
-                        <span aria-hidden style={{ color: "var(--color-accent)" }}>•</span>
-                        {s}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <p className="text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
+                  <span className="font-semibold" style={{ color: "var(--color-ink)" }}>
+                    {dict.profile.products}:
+                  </span>{" "}
+                  {p.products.join(" · ")}
+                </p>
               ) : null}
             </div>
           ) : null}
 
-          {/* Portfolio / gallery. The main image already stands large just
-              under the introduction, so it is dropped from the grid here:
-              showing it twice, once big and once as the first tile, read as
-              a duplicate. */}
-          {(() => {
-            const rest = (p.gallery ?? []).filter((src) => src !== p.mainImage);
-            return rest.length ? (
-              <div className="mt-10">
-                <h2 className="!text-[1.35rem]">{dict.profile.portfolio}</h2>
-                <p className="mt-1 text-[0.92rem]" style={{ color: "var(--color-muted-soft)" }}>
-                  {dict.profile.portfolioHint}
-                </p>
-                <GalleryLightbox images={rest} name={p.name} workLabel={dict.states.slotTagWork ?? "Work"} />
-                <p className="mt-3 text-[0.95rem] leading-relaxed" style={{ color: "var(--color-muted)" }}>
-                  {dict.profile.portfolioMore}
-                </p>
-              </div>
-            ) : null;
-          })()}
+          {/* Portfolio / gallery — the whole set. There is no separate hero
+              image above any more, so every work lives here in one place,
+              under its own heading. */}
+          {p.gallery?.length ? (
+            <div className="mt-8">
+              <h2 className="!text-[1.35rem]">{dict.profile.portfolio}</h2>
+              <p className="mt-1 text-[0.92rem]" style={{ color: "var(--color-muted-soft)" }}>
+                {dict.profile.portfolioHint}
+              </p>
+              <GalleryLightbox images={p.gallery} name={p.name} workLabel={dict.states.slotTagWork ?? "Work"} />
+              <p className="mt-3 text-[0.95rem] leading-relaxed" style={{ color: "var(--color-muted)" }}>
+                {dict.profile.portfolioMore}
+              </p>
+            </div>
+          ) : null}
 
           {/* Video links */}
           {p.videoLinks?.length ? (
