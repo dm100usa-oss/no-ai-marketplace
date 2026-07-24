@@ -15,6 +15,9 @@
 export interface ProfileTranslation {
   /** Country label in Russian (identity stays via slug; this is display only). */
   country?: string;
+  /** Hand-written introduction in Russian, shown at the top of the profile
+   *  in place of the assembled one. */
+  introduction?: string;
   shortDescription?: string;
   fullDescription?: string;
   services?: string[];
@@ -27,6 +30,8 @@ export interface ProfileTranslation {
 export const profilesRu: Record<string, ProfileTranslation> = {
   "david-kort": {
     country: "Австрия",
+    introduction:
+      "Знакомьтесь: David Kort, архитектор из Вены. Проектирует частные дома, общественные здания и городские пространства. Ведет каждый проект от первого наброска до рабочих чертежей, по которым идет стройка, и лично отвечает за каждое решение.",
     shortDescription:
       "Проектирует жилые дома и общественные здания. Ведет проект от эскиза до сдачи.",
     fullDescription:

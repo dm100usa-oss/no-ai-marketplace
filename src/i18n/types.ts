@@ -487,6 +487,7 @@ export interface Dictionary {
     products: string;
     portfolio: string;
     portfolioHint: string;
+    portfolioMore: string;
     video: string;
     watchExternal: string;
     workingProcess: string;

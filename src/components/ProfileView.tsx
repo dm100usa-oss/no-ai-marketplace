@@ -310,6 +310,9 @@ export function ProfileView({
                 {dict.profile.portfolioHint}
               </p>
               <GalleryLightbox images={p.gallery} name={p.name} workLabel={dict.states.slotTagWork ?? "Work"} />
+              <p className="mt-3 text-[0.95rem] leading-relaxed" style={{ color: "var(--color-muted)" }}>
+                {dict.profile.portfolioMore}
+              </p>
             </div>
           ) : null}
 
@@ -442,15 +445,29 @@ export function ProfileView({
         {/* ------------------------- Sidebar ------------------------- */}
         <aside className="lg:sticky lg:top-32 lg:self-start">
           <div className="card p-5">
-            <a
-              href={visit.href}
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-              className="btn btn-accent btn-full"
-            >
-              {visit.label}
-              <ExternalLink size={16} />
-            </a>
+            {p.demo ? (
+              // On the demo profile the Visit button has nowhere real to go,
+              // so it leads to the join page instead: someone who liked the
+              // example can step straight into making their own.
+              <LocaleLink
+                lang={lang}
+                href="/join"
+                className="btn btn-accent btn-full"
+              >
+                {visit.label}
+                <ArrowRight size={16} />
+              </LocaleLink>
+            ) : (
+              <a
+                href={visit.href}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="btn btn-accent btn-full"
+              >
+                {visit.label}
+                <ExternalLink size={16} />
+              </a>
+            )}
 
             {externalLinks.length > 1 ? (
               <div className="mt-4 space-y-2 border-t pt-4" style={{ borderColor: "var(--color-line)" }}>

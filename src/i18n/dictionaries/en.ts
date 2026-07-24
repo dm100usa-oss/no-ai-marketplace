@@ -85,7 +85,7 @@ export const en: Dictionary = {
     badgeDemo: "Demo",
     demoNoticeTitle: "This is a demo profile",
     demoNoticeText:
-      "A made-up example showing how a profile works in the catalog. This person does not exist and the external links lead nowhere. Real profiles will appear here as the catalog fills up.",
+      "An example that shows how your own profile will look in the catalog.",
     cardVerb: {
       art: "Creates",
       literature: "Writes",
@@ -918,6 +918,7 @@ export const en: Dictionary = {
     products: "Products",
     portfolio: "Portfolio",
     portfolioHint: "A selection of recent work. Tap any piece to view it full screen.",
+    portfolioMore: "Only a small part is shown here. There is much more, and every piece is its own.",
     video: "Video",
     watchExternal: "Watch on external platform",
     workingProcess: "Working process",

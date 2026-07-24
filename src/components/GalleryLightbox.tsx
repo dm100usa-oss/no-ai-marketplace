@@ -77,13 +77,13 @@ export function GalleryLightbox({
           />
         </button>
       ) : (
-        <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
+        <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
           {images.map((src, i) => (
             <button
               key={i}
               type="button"
               onClick={() => setOpen(i)}
-              className="group aspect-square cursor-zoom-in overflow-hidden rounded-xl"
+              className="group aspect-[4/3] cursor-zoom-in overflow-hidden rounded-2xl"
               style={{ background: "var(--color-brand-soft)" }}
               aria-label={`${workLabel} ${i + 1} — ${name}`}
             >

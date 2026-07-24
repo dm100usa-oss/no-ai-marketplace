@@ -114,6 +114,7 @@ function localizeProfile(p: Profile, locale: Locale): Profile {
   return {
     ...p,
     country: pick(t.country, p.country),
+    introduction: pick(t.introduction, p.introduction),
     shortDescription: pick(t.shortDescription, p.shortDescription),
     fullDescription: pick(t.fullDescription, p.fullDescription),
     services: pick(t.services, p.services),

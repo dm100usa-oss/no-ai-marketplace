@@ -31,6 +31,8 @@ export const profiles: Profile[] = [
     country: "Austria",
     city: "Vienna",
     languages: ["German", "English"],
+    introduction:
+      "Meet David Kort, an architect from Vienna. He designs private homes, public buildings and shared city spaces, carrying every project from the first sketch to the working drawings the builders follow, and answering personally for each decision along the way.",
     shortDescription:
       "Designs homes and public buildings. Sees every project through, from first sketch to finished build.",
     fullDescription:
