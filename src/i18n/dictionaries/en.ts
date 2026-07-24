@@ -966,7 +966,7 @@ export const en: Dictionary = {
     verifiedCreator: "Verified creator",
     verifiedBusiness: "Verified business",
     verifiedTitle: "Verified based on submitted materials",
-    featured: "Featured",
+    featured: "in category",
   },
 
   report: {

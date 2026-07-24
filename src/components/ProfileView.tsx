@@ -258,17 +258,24 @@ export function ProfileView({
             )}
           </div>
 
-          {/* Description */}
-          <div className="mt-6">
-            <p className="text-[1.05rem]" style={{ color: "var(--color-ink)" }}>
-              {p.shortDescription}
-            </p>
-            {p.fullDescription && (
-              <p className="mt-3 text-[0.98rem]" style={{ color: "var(--color-muted)" }}>
-                {p.fullDescription}
+          {/* Description. Shown only when there is no hand-written
+              introduction: the introduction up top already tells the
+              author's story in their own words, so repeating the
+              description here would say the same thing twice. Profiles
+              without a hand-written intro still show it, so the page never
+              opens with the assembled one-liner alone. */}
+          {!p.introduction && (
+            <div className="mt-6">
+              <p className="text-[1.05rem]" style={{ color: "var(--color-ink)" }}>
+                {p.shortDescription}
               </p>
-            )}
-          </div>
+              {p.fullDescription && (
+                <p className="mt-3 text-[0.98rem]" style={{ color: "var(--color-muted)" }}>
+                  {p.fullDescription}
+                </p>
+              )}
+            </div>
+          )}
 
           {/* Services / products */}
           {(p.services?.length || p.products?.length) ? (

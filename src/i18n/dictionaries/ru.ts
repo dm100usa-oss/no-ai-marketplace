@@ -977,7 +977,7 @@ export const ru: Dictionary = {
     verifiedCreator: "Проверенный автор",
     verifiedBusiness: "Проверенный бизнес",
     verifiedTitle: "Проверено на основе присланных материалов",
-    featured: "Избранное",
+    featured: "в категории",
   },
 
   report: {
