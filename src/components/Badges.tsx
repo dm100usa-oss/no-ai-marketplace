@@ -29,7 +29,7 @@ export function VerifiedBadge({
           color: "#1f8a5b",
         }}
       >
-        <CheckShield size={17} />
+        <CheckShield size={24} />
       </span>
       {label}
     </span>

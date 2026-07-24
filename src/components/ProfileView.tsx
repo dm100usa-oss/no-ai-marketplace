@@ -203,7 +203,21 @@ export function ProfileView({
                 className="whitespace-pre-line text-[1rem] leading-relaxed"
                 style={{ color: "var(--color-ink)" }}
               >
-                {intro.text}
+                {(() => {
+                  // If the introduction opens with a lead word and a colon
+                  // ("Знакомьтесь: ...", "Meet: ..."), that opener is set in
+                  // bold so the warm greeting stands out; the rest reads as
+                  // normal prose. No colon — the whole text stays plain.
+                  const m = intro.text.match(/^([^\s:]+):\s([\s\S]*)$/);
+                  if (m) {
+                    return (
+                      <>
+                        <strong style={{ fontWeight: 700 }}>{m[1]}:</strong> {m[2]}
+                      </>
+                    );
+                  }
+                  return intro.text;
+                })()}
               </p>
             ) : (
               <>

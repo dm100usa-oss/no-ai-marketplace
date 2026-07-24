@@ -15,6 +15,9 @@
 export interface ProfileTranslation {
   /** Country label in Russian (identity stays via slug; this is display only). */
   country?: string;
+  /** City label in Russian, for well-known cities (Вена, Лондon, Токио).
+   *  Optional: without it the city shows in its original spelling. */
+  city?: string;
   /** Hand-written introduction in Russian, shown at the top of the profile
    *  in place of the assembled one. */
   introduction?: string;
@@ -30,6 +33,7 @@ export interface ProfileTranslation {
 export const profilesRu: Record<string, ProfileTranslation> = {
   "david-kort": {
     country: "Австрия",
+    city: "Вена",
     introduction:
       "Знакомьтесь: David Kort, архитектор из Вены. Проектирует частные дома, общественные здания и городские пространства. Ведет каждый проект от первого наброска до рабочих чертежей, по которым идет стройка, и лично отвечает за каждое решение.",
     shortDescription:
