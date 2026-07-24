@@ -245,6 +245,33 @@ export interface Submission {
   createdAt: number;
   status: "pending" | "published" | "rejected";
 
+  /**
+   * Email confirmation (double opt-in).
+   *
+   * When a submission is published, the owner's approval is only half the
+   * story: the visitor still has to click the link in the welcome email to
+   * prove the address is theirs and that they want to be listed. Until then
+   * `emailConfirmed` stays false and the profile waits.
+   *
+   * `confirmToken` is the secret in that link. It is generated when the
+   * submission is published, cleared once confirmed, and never shown in the
+   * admin screen. Absent on a fresh submission — nothing to confirm yet.
+   */
+  emailConfirmed?: boolean;
+  confirmToken?: string;
+
+  /**
+   * Verification badge (TZ 4.3), granted by hand after the owner has looked
+   * at extra materials the author sent in. "none" until then. Kept separate
+   * from listing status: a profile can be published without ever being
+   * verified, and verifying it does not change whether it is published.
+   */
+  verification?: "none" | "verified-creator" | "verified-business";
+
+  /** Which language the author filled the form in, so letters go out in
+   *  the right one. Defaults to en when the form did not say. */
+  lang?: "en" | "ru";
+
   /** Identity */
   name: string;
   email?: string;
@@ -329,30 +356,110 @@ export async function getPublishedSubmissions(): Promise<Submission[]> {
 }
 
 /**
- * Publish or reject one submission.
+ * Rewrite the whole submissions list with one entry replaced.
  *
- * Same rewrite-the-list approach as reviews: submissions are few, the
- * decision is occasional, and a rewrite is easier to trust than an index.
+ * The shared helper behind every change to a submission. Submissions are
+ * few and changes are occasional, so rewriting the list is simpler and
+ * easier to trust than maintaining an index, and the cost is invisible at
+ * this size. Returns the changed submission so the caller can act on it
+ * (send a mail, read the fresh token), or null when the id was not found.
  */
-export async function setSubmissionStatus(
+async function updateSubmission(
   id: string,
-  status: "published" | "rejected",
-): Promise<boolean> {
-  if (!redis) return false;
+  change: (s: Submission) => void,
+): Promise<Submission | null> {
+  if (!redis) return null;
   try {
     const all = await getAllSubmissions();
     const target = all.find((s) => s.id === id);
-    if (!target) return false;
+    if (!target) return null;
 
-    target.status = status;
+    change(target);
 
     const pipe = redis.pipeline();
     pipe.del(SUBMISSIONS_KEY);
     for (const s of [...all].reverse()) pipe.lpush(SUBMISSIONS_KEY, JSON.stringify(s));
     await pipe.exec();
 
-    return true;
+    return target;
   } catch {
-    return false;
+    return null;
   }
+}
+
+/** A short, unguessable token for the confirmation link. */
+function makeToken(): string {
+  return (
+    Math.random().toString(36).slice(2) +
+    Math.random().toString(36).slice(2)
+  ).slice(0, 32);
+}
+
+/**
+ * Publish or reject one submission.
+ *
+ * On publish a fresh confirmation token is minted and email stays
+ * unconfirmed: approval lets the author in, the click in the welcome email
+ * finishes the job. The updated submission is returned so the caller can
+ * send the matching letter (welcome, with the token; or the rejection).
+ */
+export async function setSubmissionStatus(
+  id: string,
+  status: "published" | "rejected",
+): Promise<Submission | null> {
+  return updateSubmission(id, (s) => {
+    s.status = status;
+    if (status === "published") {
+      // Only mint a token the first time; re-publishing keeps the link
+      // already sent valid.
+      if (!s.confirmToken) s.confirmToken = makeToken();
+      if (s.emailConfirmed === undefined) s.emailConfirmed = false;
+    }
+  });
+}
+
+/**
+ * Confirm an email address from the token in the welcome link.
+ *
+ * Walks the queue for the submission whose token matches, marks it
+ * confirmed and clears the token so the link cannot be replayed. Returns
+ * the submission on success, null when no submission carries that token
+ * (already confirmed, or a bad link).
+ */
+export async function confirmSubmissionEmail(
+  token: string,
+): Promise<Submission | null> {
+  if (!redis || !token) return null;
+  try {
+    const all = await getAllSubmissions();
+    const target = all.find((s) => s.confirmToken === token);
+    if (!target) return null;
+
+    return await updateSubmission(target.id, (s) => {
+      s.emailConfirmed = true;
+      s.confirmToken = undefined;
+    });
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Grant a verification badge by hand, after the extra materials have been
+ * looked at. Returns the updated submission so the caller can send the
+ * "your profile now carries the Verified badge" note.
+ */
+export async function setSubmissionVerification(
+  id: string,
+  verification: "verified-creator" | "verified-business",
+): Promise<Submission | null> {
+  return updateSubmission(id, (s) => {
+    s.verification = verification;
+  });
+}
+
+/** Published AND email-confirmed — the ones truly ready for the catalog. */
+export async function getConfirmedSubmissions(): Promise<Submission[]> {
+  const all = await getAllSubmissions();
+  return all.filter((s) => s.status === "published" && s.emailConfirmed === true);
 }

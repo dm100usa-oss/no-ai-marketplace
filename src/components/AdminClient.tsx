@@ -109,6 +109,32 @@ export function AdminClient() {
     setBusy(false);
   }
 
+  /** Grant a verification badge and notify the author. */
+  async function verifySubmission(
+    id: string,
+    verification: "verified-creator" | "verified-business",
+  ) {
+    setBusy(true);
+    try {
+      const res = await fetch("/api/admin/submissions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-password": password,
+        },
+        body: JSON.stringify({ id, verification }),
+      });
+      if (res.ok) {
+        await load(password);
+        return;
+      }
+      setError("Could not grant the badge.");
+    } catch {
+      setError("Could not reach the server.");
+    }
+    setBusy(false);
+  }
+
   async function decide(id: string, status: "approved" | "rejected") {
     setBusy(true);
     try {
@@ -288,6 +314,24 @@ export function AdminClient() {
                 homepage ok
               </span>
             )}
+            {s.status === "published" && (
+              <span
+                className="text-[0.75rem]"
+                style={{ color: s.emailConfirmed ? "#2f6b45" : "#8a6d1f" }}
+              >
+                {s.emailConfirmed ? "email confirmed" : "email not confirmed"}
+              </span>
+            )}
+            {s.verification && s.verification !== "none" && (
+              <span
+                className="rounded-full px-2 py-0.5 text-[0.7rem] font-semibold uppercase"
+                style={{ background: "#dff1e9", color: "#157a58" }}
+              >
+                {s.verification === "verified-business"
+                  ? "verified business"
+                  : "verified creator"}
+              </span>
+            )}
           </span>
           <span className="text-[0.75rem]" style={{ color: "var(--color-muted-soft)" }}>
             {fmt.format(new Date(s.createdAt))}
@@ -361,6 +405,32 @@ export function AdminClient() {
             </button>
           </div>
         )}
+
+        {/* Verification is granted after publishing, once the author has
+            sent extra materials. Shown on decided (published) profiles that
+            do not already carry a badge. */}
+        {!actions &&
+          s.status === "published" &&
+          (!s.verification || s.verification === "none") && (
+            <div className="mt-4 flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() => verifySubmission(s.id, "verified-creator")}
+                disabled={busy}
+                className="btn btn-quiet disabled:opacity-60"
+              >
+                Grant Verified creator
+              </button>
+              <button
+                type="button"
+                onClick={() => verifySubmission(s.id, "verified-business")}
+                disabled={busy}
+                className="btn btn-quiet disabled:opacity-60"
+              >
+                Grant Verified business
+              </button>
+            </div>
+          )}
       </li>
     );
   }

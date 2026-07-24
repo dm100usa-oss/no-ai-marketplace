@@ -633,6 +633,8 @@ export interface Dictionary {
     profileSuspended: { title: string; description: string; primary: string; secondary: string };
     profileNotAvailable: { title: string; description: string; primary: string; secondary: string };
     newMember: { title: string; description: string; primary: string; secondary: string };
+    confirmOk: { title: string; description: string; primary: string; secondary: string };
+    confirmFail: { title: string; description: string; primary: string; secondary: string };
   };
 
   /** Meta titles/descriptions for pages that set their own. */

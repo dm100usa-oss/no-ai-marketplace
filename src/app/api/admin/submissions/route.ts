@@ -4,8 +4,14 @@ import {
   addSubmission,
   getAllSubmissions,
   setSubmissionStatus,
+  setSubmissionVerification,
   type Submission,
 } from "@/lib/redis";
+import {
+  sendWelcomeEmail,
+  sendRejectionEmail,
+  sendVerifiedEmail,
+} from "@/lib/mail";
 
 /**
  * The join queue, behind the same password as review moderation.
@@ -79,12 +85,40 @@ export async function POST(request: NextRequest) {
 
   // ---- Decision on an existing submission ----
   if (typeof data.id === "string") {
+    // Grant a verification badge, then tell the author it is on.
+    if (data.verification === "verified-creator" || data.verification === "verified-business") {
+      const updated = await setSubmissionVerification(data.id, data.verification);
+      if (!updated) return NextResponse.json({ ok: false }, { status: 500 });
+      await sendVerifiedEmail({
+        to: updated.email,
+        locale: updated.lang,
+        kind: data.verification,
+      });
+      return NextResponse.json({ ok: true });
+    }
+
     const status = data.status;
     if (status !== "published" && status !== "rejected") {
       return NextResponse.json({ ok: false }, { status: 400 });
     }
-    const done = await setSubmissionStatus(data.id, status);
-    return NextResponse.json({ ok: done }, { status: done ? 200 : 500 });
+
+    const updated = await setSubmissionStatus(data.id, status);
+    if (!updated) return NextResponse.json({ ok: false }, { status: 500 });
+
+    // The letter follows the decision. A mail that does not go out (no key
+    // yet, or a hiccup at Resend) must not undo a decision already stored,
+    // so its result is not folded into the response.
+    if (status === "published") {
+      await sendWelcomeEmail({
+        to: updated.email,
+        locale: updated.lang,
+        token: updated.confirmToken ?? "",
+      });
+    } else {
+      await sendRejectionEmail({ to: updated.email, locale: updated.lang });
+    }
+
+    return NextResponse.json({ ok: true });
   }
 
   // ---- A new submission, entered by hand from the Tally email ----
@@ -103,6 +137,7 @@ export async function POST(request: NextRequest) {
 
   const input: Omit<Submission, "id" | "createdAt" | "status"> = {
     name,
+    lang: data.lang === "ru" ? "ru" : "en",
     email: str(data.email),
     country: str(data.country),
     city: str(data.city),

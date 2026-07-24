@@ -1143,6 +1143,20 @@ export const en: Dictionary = {
       primary: "Create a profile",
       secondary: "Back to home",
     },
+    confirmOk: {
+      title: "Your address is confirmed",
+      description:
+        "Your profile is now published in the directory. Thank you for being with us.",
+      primary: "Back to home",
+      secondary: "Browse the catalog",
+    },
+    confirmFail: {
+      title: "This link is no longer active",
+      description:
+        "The address may already be confirmed, or the link has expired. If your profile is not showing, write to us and we will help.",
+      primary: "Back to home",
+      secondary: "Contact us",
+    },
   },
 
   meta: {
