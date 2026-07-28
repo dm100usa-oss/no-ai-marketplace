@@ -751,7 +751,7 @@ export const en: Dictionary = {
     professionAllQuestions: "All questions about this profession",
     professionSeeCatalog: "See creators in the catalog",
     professionBackToFaq: "All questions and answers",
-    professionOnCategory: "Common questions",
+    professionOnCategory: "Questions and answers",
   },
 
   knowledge: {

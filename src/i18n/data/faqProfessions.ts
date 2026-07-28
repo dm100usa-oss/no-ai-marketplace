@@ -39,10 +39,10 @@ const ru: FaqProfession[] = [
   {
     slug: "illustrators",
     category: "illustrators",
-    metaTitle: "Иллюстраторы без ИИ: частые вопросы",
+    metaTitle: "Иллюстраторы без ИИ: вопросы и ответы",
     metaDescription:
       "Где разместить портфолио иллюстратору без ИИ, как доказать ручную работу и как проверить иллюстратора перед заказом.",
-    title: "Иллюстраторы: частые вопросы",
+    title: "Иллюстраторы: вопросы и ответы",
     intro:
       "Вопросы, которые чаще всего задают иллюстраторы и те, кто их ищет. Ответы короткие и по делу.",
     items: [
@@ -85,10 +85,10 @@ const ru: FaqProfession[] = [
   {
     slug: "copywriters",
     category: "copywriters",
-    metaTitle: "Копирайтеры без ИИ: частые вопросы",
+    metaTitle: "Копирайтеры без ИИ: вопросы и ответы",
     metaDescription:
       "Где найти клиентов копирайтеру без ИИ, как доказать авторство текста, что делать при ложном срабатывании детектора.",
-    title: "Копирайтеры: частые вопросы",
+    title: "Копирайтеры: вопросы и ответы",
     intro:
       "Вопросы, которые чаще всего задают копирайтеры и те, кто их ищет. Ответы короткие и по делу.",
     items: [
@@ -127,10 +127,10 @@ const ru: FaqProfession[] = [
   {
     slug: "translators",
     category: "translators",
-    metaTitle: "Переводчики без машинного перевода: частые вопросы",
+    metaTitle: "Переводчики без машинного перевода: вопросы и ответы",
     metaDescription:
       "Где разместиться переводчику, который переводит сам, как показать разницу с машинным переводом и как проверить переводчика.",
-    title: "Переводчики: частые вопросы",
+    title: "Переводчики: вопросы и ответы",
     intro:
       "Вопросы, которые чаще всего задают переводчики и те, кто их ищет. Ответы короткие и по делу.",
     items: [
@@ -168,10 +168,10 @@ const ru: FaqProfession[] = [
   {
     slug: "web-developers",
     category: "web-developers",
-    metaTitle: "Разработчики без ИИ-генерации кода: частые вопросы",
+    metaTitle: "Разработчики без ИИ-генерации кода: вопросы и ответы",
     metaDescription:
       "Как проверить, что разработчик пишет код сам, чем рискует заказчик при генерации кода и где найти разработчика без ИИ.",
-    title: "Веб-разработчики: частые вопросы",
+    title: "Веб-разработчики: вопросы и ответы",
     intro:
       "Вопросы, которые чаще всего задают заказчики и разработчики. Ответы короткие и по делу.",
     items: [
@@ -202,10 +202,10 @@ const ru: FaqProfession[] = [
   {
     slug: "photographers",
     category: "photographers",
-    metaTitle: "Фотографы без ИИ: частые вопросы",
+    metaTitle: "Фотографы без ИИ: вопросы и ответы",
     metaDescription:
       "Как проверить, что фотография настоящая, что такое C2PA и где найти фотографа, который снимает, а не генерирует.",
-    title: "Фотографы: частые вопросы",
+    title: "Фотографы: вопросы и ответы",
     intro:
       "Вопросы, которые чаще всего задают фотографы и те, кто их ищет. Ответы короткие и по делу.",
     items: [
@@ -237,10 +237,10 @@ const ru: FaqProfession[] = [
   {
     slug: "painters",
     category: "painters",
-    metaTitle: "Художники: частые вопросы",
+    metaTitle: "Художники: вопросы и ответы",
     metaDescription:
       "Где разместиться художнику, как продавать оригиналы и принты напрямую и как проверить, что картина написана красками.",
-    title: "Живописцы: частые вопросы",
+    title: "Живописцы: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают художники и те, кто покупает их работы.",
     items: [
       {
@@ -269,9 +269,9 @@ const ru: FaqProfession[] = [
   {
     slug: "sculptors",
     category: "sculptors",
-    metaTitle: "Скульпторы: частые вопросы",
+    metaTitle: "Скульпторы: вопросы и ответы",
     metaDescription: "Где разместиться скульптору и как показать, что работа сделана руками, а не напечатана по сгенерированной модели.",
-    title: "Скульпторы: частые вопросы",
+    title: "Скульпторы: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают скульпторы и те, кто заказывает их работы.",
     items: [
       {
@@ -304,9 +304,9 @@ const ru: FaqProfession[] = [
   {
     slug: "concept-artists",
     category: "concept-artists",
-    metaTitle: "Концепт-художники: частые вопросы",
+    metaTitle: "Концепт-художники: вопросы и ответы",
     metaDescription: "Где найти концепт-художника без генерации и как проверить, что артборд нарисован, а не собран из выдачи модели.",
-    title: "Концепт-художники: частые вопросы",
+    title: "Концепт-художники: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают концепт-художники и студии, которые их нанимают.",
     items: [
       {
@@ -339,9 +339,9 @@ const ru: FaqProfession[] = [
   {
     slug: "fiction-authors",
     category: "fiction-authors",
-    metaTitle: "Авторы художественной прозы: частые вопросы",
+    metaTitle: "Авторы художественной прозы: вопросы и ответы",
     metaDescription: "Где разместиться писателю, как доказать авторство рукописи и что делать при ложном обвинении в использовании ИИ.",
-    title: "Авторы прозы: частые вопросы",
+    title: "Авторы прозы: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают писатели и те, кто их издает.",
     items: [
       {
@@ -371,9 +371,9 @@ const ru: FaqProfession[] = [
   {
     slug: "non-fiction-authors",
     category: "non-fiction-authors",
-    metaTitle: "Авторы нон-фикшн: частые вопросы",
+    metaTitle: "Авторы нон-фикшн: вопросы и ответы",
     metaDescription: "Где разместиться автору нон-фикшн и как показать, что книга основана на своей работе с источниками.",
-    title: "Авторы нон-фикшн: частые вопросы",
+    title: "Авторы нон-фикшн: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают авторы нон-фикшн и те, кто их издает.",
     items: [
       {
@@ -406,9 +406,9 @@ const ru: FaqProfession[] = [
   {
     slug: "childrens-authors",
     category: "childrens-authors",
-    metaTitle: "Детские авторы: частые вопросы",
+    metaTitle: "Детские авторы: вопросы и ответы",
     metaDescription: "Где разместиться детскому автору и почему издатели детских книг требуют живого автора.",
-    title: "Детские авторы: частые вопросы",
+    title: "Детские авторы: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают детские авторы и издатели.",
     items: [
       {
@@ -442,9 +442,9 @@ const ru: FaqProfession[] = [
   {
     slug: "poets",
     category: "poets",
-    metaTitle: "Поэты: частые вопросы",
+    metaTitle: "Поэты: вопросы и ответы",
     metaDescription: "Где разместиться поэту и как заказать стихи, написанные человеком.",
-    title: "Поэты: частые вопросы",
+    title: "Поэты: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают поэты и те, кто заказывает стихи.",
     items: [
       {
@@ -477,9 +477,9 @@ const ru: FaqProfession[] = [
   {
     slug: "graphic-designers",
     category: "graphic-designers",
-    metaTitle: "Графические дизайнеры: частые вопросы",
+    metaTitle: "Графические дизайнеры: вопросы и ответы",
     metaDescription: "Где найти дизайнера без генерации, чем рискует бренд со сгенерированным логотипом и как проверить дизайнера.",
-    title: "Графические дизайнеры: частые вопросы",
+    title: "Графические дизайнеры: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают дизайнеры и те, кто их нанимает.",
     items: [
       {
@@ -507,9 +507,9 @@ const ru: FaqProfession[] = [
   {
     slug: "ui-ux-designers",
     category: "ui-ux-designers",
-    metaTitle: "UI и UX дизайнеры: частые вопросы",
+    metaTitle: "UI и UX дизайнеры: вопросы и ответы",
     metaDescription: "Как проверить, что интерфейс продуман, а не сгенерирован, и где найти UI-дизайнера без ИИ.",
-    title: "UI/UX-дизайнеры: частые вопросы",
+    title: "UI/UX-дизайнеры: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают дизайнеры интерфейсов и те, кто их нанимает.",
     items: [
       {
@@ -542,9 +542,9 @@ const ru: FaqProfession[] = [
   {
     slug: "video-editors",
     category: "video-editors",
-    metaTitle: "Видеомонтажеры: частые вопросы",
+    metaTitle: "Видеомонтажеры: вопросы и ответы",
     metaDescription: "Где разместиться монтажеру и как проверить, что видео смонтировано человеком.",
-    title: "Видеомонтажеры: частые вопросы",
+    title: "Видеомонтажеры: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают монтажеры и те, кто их нанимает.",
     items: [
       {
@@ -577,9 +577,9 @@ const ru: FaqProfession[] = [
   {
     slug: "motion-designers",
     category: "motion-designers",
-    metaTitle: "Моушн-дизайнеры: частые вопросы",
+    metaTitle: "Моушн-дизайнеры: вопросы и ответы",
     metaDescription: "Где разместиться моушн-дизайнеру и почему бренду нужна анимация под свой стиль.",
-    title: "Моушн- и 2D-аниматоры: частые вопросы",
+    title: "Моушн- и 2D-аниматоры: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают моушн-дизайнеры и те, кто их нанимает.",
     items: [
       {
@@ -612,9 +612,9 @@ const ru: FaqProfession[] = [
   {
     slug: "colourists",
     category: "colourists",
-    metaTitle: "Колористы: частые вопросы",
+    metaTitle: "Колористы: вопросы и ответы",
     metaDescription: "Где разместиться колористу и чем работа колориста отличается от автоматического пресета.",
-    title: "Колористы: частые вопросы",
+    title: "Колористы: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают колористы и те, кто их нанимает.",
     items: [
       {
@@ -647,9 +647,9 @@ const ru: FaqProfession[] = [
   {
     slug: "editors",
     category: "editors",
-    metaTitle: "Редакторы: частые вопросы",
+    metaTitle: "Редакторы: вопросы и ответы",
     metaDescription: "Где найти редактора и сколько стоит вычитка сгенерированного черновика.",
-    title: "Редакторы: частые вопросы",
+    title: "Редакторы: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают редакторы и те, кто их нанимает.",
     items: [
       {
@@ -682,9 +682,9 @@ const ru: FaqProfession[] = [
   {
     slug: "scriptwriters",
     category: "scriptwriters",
-    metaTitle: "Сценаристы: частые вопросы",
+    metaTitle: "Сценаристы: вопросы и ответы",
     metaDescription: "Где разместиться сценаристу и как доказать авторство сценария.",
-    title: "Сценаристы: частые вопросы",
+    title: "Сценаристы: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают сценаристы и те, кто их нанимает.",
     items: [
       {
@@ -717,9 +717,9 @@ const ru: FaqProfession[] = [
   {
     slug: "voice-actors",
     category: "voice-actors",
-    metaTitle: "Дикторы и актеры озвучки: частые вопросы",
+    metaTitle: "Дикторы и актеры озвучки: вопросы и ответы",
     metaDescription: "Где разместиться диктору, как защитить голос от клонирования и как заказать живую озвучку.",
-    title: "Дикторы и актеры дубляжа: частые вопросы",
+    title: "Дикторы и актеры дубляжа: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают дикторы и те, кто заказывает озвучку.",
     items: [
       {
@@ -748,9 +748,9 @@ const ru: FaqProfession[] = [
   {
     slug: "composers",
     category: "composers",
-    metaTitle: "Композиторы: частые вопросы",
+    metaTitle: "Композиторы: вопросы и ответы",
     metaDescription: "Где разместиться композитору, чем рискует проект со сгенерированной музыкой и как доказать авторство.",
-    title: "Композиторы: частые вопросы",
+    title: "Композиторы: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают композиторы и те, кто заказывает музыку.",
     items: [
       {
@@ -779,9 +779,9 @@ const ru: FaqProfession[] = [
   {
     slug: "sound-designers",
     category: "sound-designers",
-    metaTitle: "Саунд-дизайнеры: частые вопросы",
+    metaTitle: "Саунд-дизайнеры: вопросы и ответы",
     metaDescription: "Где разместиться саунд-дизайнеру и зачем проекту записанные звуки вместо библиотечных.",
-    title: "Саунд-дизайнеры: частые вопросы",
+    title: "Саунд-дизайнеры: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают саунд-дизайнеры и те, кто их нанимает.",
     items: [
       {
@@ -814,9 +814,9 @@ const ru: FaqProfession[] = [
   {
     slug: "audio-engineers",
     category: "audio-engineers",
-    metaTitle: "Звукорежиссеры: частые вопросы",
+    metaTitle: "Звукорежиссеры: вопросы и ответы",
     metaDescription: "Где разместиться звукорежиссеру и чем работа инженера отличается от автоматического мастеринга.",
-    title: "Звукорежиссеры: частые вопросы",
+    title: "Звукорежиссеры: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают звукорежиссеры и те, кто их нанимает.",
     items: [
       {
@@ -849,9 +849,9 @@ const ru: FaqProfession[] = [
   {
     slug: "mobile-developers",
     category: "mobile-developers",
-    metaTitle: "Мобильные разработчики: частые вопросы",
+    metaTitle: "Мобильные разработчики: вопросы и ответы",
     metaDescription: "Где найти мобильного разработчика без генерации кода и как проверить его работу.",
-    title: "Мобильные разработчики: частые вопросы",
+    title: "Мобильные разработчики: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают заказчики и мобильные разработчики.",
     items: [
       {
@@ -884,9 +884,9 @@ const ru: FaqProfession[] = [
   {
     slug: "game-developers",
     category: "game-developers",
-    metaTitle: "Разработчики игр: частые вопросы",
+    metaTitle: "Разработчики игр: вопросы и ответы",
     metaDescription: "Где разместиться разработчику игр и чем рискует студия со сгенерированным кодом и ассетами.",
-    title: "Разработчики игр: частые вопросы",
+    title: "Разработчики игр: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают разработчики игр и студии.",
     items: [
       {
@@ -919,9 +919,9 @@ const ru: FaqProfession[] = [
   {
     slug: "automation-developers",
     category: "automation-developers",
-    metaTitle: "Разработчики автоматизации: частые вопросы",
+    metaTitle: "Разработчики автоматизации: вопросы и ответы",
     metaDescription: "Где найти разработчика автоматизации и почему сгенерированные скрипты опасны для бизнес-процессов.",
-    title: "Разработчики автоматизации: частые вопросы",
+    title: "Разработчики автоматизации: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают заказчики автоматизации и разработчики.",
     items: [
       {
@@ -954,9 +954,9 @@ const ru: FaqProfession[] = [
   {
     slug: "code-auditors",
     category: "code-auditors",
-    metaTitle: "Аудиторы кода: частые вопросы",
+    metaTitle: "Аудиторы кода: вопросы и ответы",
     metaDescription: "Как проверить чужой код на скрытую генерацию и где найти независимого аудитора.",
-    title: "Аудиторы кода: частые вопросы",
+    title: "Аудиторы кода: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают заказчики аудита и аудиторы.",
     items: [
       {
@@ -986,9 +986,9 @@ const ru: FaqProfession[] = [
   {
     slug: "architects",
     category: "architects",
-    metaTitle: "Архитекторы: частые вопросы",
+    metaTitle: "Архитекторы: вопросы и ответы",
     metaDescription: "Где найти архитектора и почему по сгенерированной картинке дома нельзя построить.",
-    title: "Архитекторы: частые вопросы",
+    title: "Архитекторы: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают архитекторы и их заказчики.",
     items: [
       {
@@ -1020,9 +1020,9 @@ const ru: FaqProfession[] = [
   {
     slug: "interior-designers",
     category: "interior-designers",
-    metaTitle: "Дизайнеры интерьера: частые вопросы",
+    metaTitle: "Дизайнеры интерьера: вопросы и ответы",
     metaDescription: "Где найти дизайнера интерьера и почему сгенерированный рендер нельзя воплотить.",
-    title: "Дизайнеры интерьера: частые вопросы",
+    title: "Дизайнеры интерьера: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают дизайнеры интерьера и их заказчики.",
     items: [
       {
@@ -1050,9 +1050,9 @@ const ru: FaqProfession[] = [
   {
     slug: "landscape-designers",
     category: "landscape-designers",
-    metaTitle: "Ландшафтные дизайнеры: частые вопросы",
+    metaTitle: "Ландшафтные дизайнеры: вопросы и ответы",
     metaDescription: "Где разместиться ландшафтному дизайнеру и почему участок нельзя спроектировать генерацией.",
-    title: "Ландшафтные дизайнеры: частые вопросы",
+    title: "Ландшафтные дизайнеры: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают ландшафтные дизайнеры и их заказчики.",
     items: [
       {
@@ -1085,9 +1085,9 @@ const ru: FaqProfession[] = [
   {
     slug: "craft-makers",
     category: "craft-makers",
-    metaTitle: "Мастера ручной работы: частые вопросы",
+    metaTitle: "Мастера ручной работы: вопросы и ответы",
     metaDescription: "Где разместиться мастеру ручной работы и как показать покупателю, что вещь сделана руками.",
-    title: "Мастера ручной работы: частые вопросы",
+    title: "Мастера ручной работы: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают мастера и покупатели ручных изделий.",
     items: [
       {
@@ -1120,9 +1120,9 @@ const ru: FaqProfession[] = [
   {
     slug: "accessory-makers",
     category: "accessory-makers",
-    metaTitle: "Мастера аксессуаров: частые вопросы",
+    metaTitle: "Мастера аксессуаров: вопросы и ответы",
     metaDescription: "Где разместиться мастеру аксессуаров и как показать ручное изготовление.",
-    title: "Мастера аксессуаров: частые вопросы",
+    title: "Мастера аксессуаров: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают мастера аксессуаров и покупатели.",
     items: [
       {
@@ -1156,9 +1156,9 @@ const ru: FaqProfession[] = [
   {
     slug: "clothing-designers",
     category: "clothing-designers",
-    metaTitle: "Дизайнеры одежды: частые вопросы",
+    metaTitle: "Дизайнеры одежды: вопросы и ответы",
     metaDescription: "Где разместиться дизайнеру одежды и как отличить сшитую вещь от сгенерированной картинки.",
-    title: "Дизайнеры одежды: частые вопросы",
+    title: "Дизайнеры одежды: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают дизайнеры одежды и покупатели.",
     items: [
       {
@@ -1191,9 +1191,9 @@ const ru: FaqProfession[] = [
   {
     slug: "restoration",
     category: "restoration",
-    metaTitle: "Реставраторы: частые вопросы",
+    metaTitle: "Реставраторы: вопросы и ответы",
     metaDescription: "Где разместиться реставратору и почему реставрация несовместима с дорисовкой нейросетью.",
-    title: "Реставраторы: частые вопросы",
+    title: "Реставраторы: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают реставраторы и владельцы вещей.",
     items: [
       {
@@ -1226,9 +1226,9 @@ const ru: FaqProfession[] = [
   {
     slug: "calligraphy",
     category: "calligraphy",
-    metaTitle: "Каллиграфы: частые вопросы",
+    metaTitle: "Каллиграфы: вопросы и ответы",
     metaDescription: "Где разместиться каллиграфу и как отличить живую каллиграфию от шрифта.",
-    title: "Каллиграфы: частые вопросы",
+    title: "Каллиграфы: вопросы и ответы",
     intro: "Вопросы, которые чаще всего задают каллиграфы и заказчики.",
     items: [
       {
@@ -1261,10 +1261,10 @@ const ru: FaqProfession[] = [
   {
     slug: "musicians",
     category: "composers",
-    metaTitle: "Музыканты без ИИ: частые вопросы",
+    metaTitle: "Музыканты без ИИ: вопросы и ответы",
     metaDescription:
       "Где найти сессионного музыканта, как проверить живую запись и чем живое исполнение отличается от сгенерированного.",
-    title: "Музыканты: частые вопросы",
+    title: "Музыканты: вопросы и ответы",
     intro:
       "Вопросы, которые задают музыканты и те, кто зовет их на запись или на сцену.",
     items: [
@@ -1301,10 +1301,10 @@ const ru: FaqProfession[] = [
   {
     slug: "jewellers",
     category: "accessory-makers",
-    metaTitle: "Ювелиры без ИИ: частые вопросы",
+    metaTitle: "Ювелиры без ИИ: вопросы и ответы",
     metaDescription:
       "Где заказать украшение у ювелира, как проверить металл и камни и сколько занимает работа на заказ.",
-    title: "Ювелиры: частые вопросы",
+    title: "Ювелиры: вопросы и ответы",
     intro:
       "Вопросы, которые задают ювелиры и те, кто заказывает украшения.",
     items: [
@@ -1340,10 +1340,10 @@ const ru: FaqProfession[] = [
   {
     slug: "security-auditors",
     category: "code-auditors",
-    metaTitle: "Безопасность и уязвимости: частые вопросы",
+    metaTitle: "Безопасность и уязвимости: вопросы и ответы",
     metaDescription:
       "Чем проверка безопасности отличается от аудита кода, как проходит поиск уязвимостей и что вы получаете в отчете.",
-    title: "Безопасность: частые вопросы",
+    title: "Безопасность: вопросы и ответы",
     intro:
       "Вопросы про поиск уязвимостей и защиту сайтов и приложений.",
     items: [
@@ -1379,10 +1379,10 @@ const ru: FaqProfession[] = [
   {
     slug: "proofreaders",
     category: "editors",
-    metaTitle: "Корректоры без ИИ: частые вопросы",
+    metaTitle: "Корректоры без ИИ: вопросы и ответы",
     metaDescription:
       "Чем корректор отличается от редактора, зачем он нужен при автопроверке и сколько стоит вычитка.",
-    title: "Корректоры: частые вопросы",
+    title: "Корректоры: вопросы и ответы",
     intro:
       "Вопросы, которые задают корректоры и те, кто отдает текст на вычитку.",
     items: [
@@ -1418,10 +1418,10 @@ const ru: FaqProfession[] = [
   {
     slug: "lettering-artists",
     category: "calligraphy",
-    metaTitle: "Леттеринг без ИИ: частые вопросы",
+    metaTitle: "Леттеринг без ИИ: вопросы и ответы",
     metaDescription:
       "Чем леттеринг отличается от каллиграфии и от шрифта, зачем рисовать буквы под задачу и где найти художника леттеринга.",
-    title: "Леттеринг: частые вопросы",
+    title: "Леттеринг: вопросы и ответы",
     intro:
       "Вопросы про рисованные буквы: логотипы, упаковка, обложки, вывески.",
     items: [
@@ -1457,10 +1457,10 @@ const ru: FaqProfession[] = [
   {
     slug: "data-specialists",
     category: "automation-developers",
-    metaTitle: "Обработка данных без ИИ: частые вопросы",
+    metaTitle: "Обработка данных без ИИ: вопросы и ответы",
     metaDescription:
       "Кто собирает и приводит в порядок данные компании, чем это отличается от автоматизации процессов и как проверить специалиста.",
-    title: "Обработка данных: частые вопросы",
+    title: "Обработка данных: вопросы и ответы",
     intro:
       "Вопросы про сбор, разбор и приведение данных в порядок.",
     items: [
@@ -1499,10 +1499,10 @@ const en: FaqProfession[] = [
   {
     slug: "illustrators",
     category: "illustrators",
-    metaTitle: "Illustrators without AI: common questions",
+    metaTitle: "Illustrators without AI: questions and answers",
     metaDescription:
       "Where an illustrator can list a portfolio without AI, how to prove hand-drawn work, and how to check an illustrator before hiring.",
-    title: "Illustrators: common questions",
+    title: "Illustrators: questions and answers",
     intro:
       "The questions illustrators and the people hiring them ask most. Short answers.",
     items: [
@@ -1545,10 +1545,10 @@ const en: FaqProfession[] = [
   {
     slug: "copywriters",
     category: "copywriters",
-    metaTitle: "Copywriters without AI: common questions",
+    metaTitle: "Copywriters without AI: questions and answers",
     metaDescription:
       "Where a copywriter without AI can find clients, how to prove you wrote the text, and what to do about a false detector result.",
-    title: "Copywriters: common questions",
+    title: "Copywriters: questions and answers",
     intro:
       "The questions copywriters and the people hiring them ask most. Short answers.",
     items: [
@@ -1587,10 +1587,10 @@ const en: FaqProfession[] = [
   {
     slug: "translators",
     category: "translators",
-    metaTitle: "Translators without machine translation: common questions",
+    metaTitle: "Translators without machine translation: questions and answers",
     metaDescription:
       "Where a human translator can list, how to show the difference from machine translation, and how to check a translator.",
-    title: "Translators: common questions",
+    title: "Translators: questions and answers",
     intro:
       "The questions translators and the people hiring them ask most. Short answers.",
     items: [
@@ -1628,10 +1628,10 @@ const en: FaqProfession[] = [
   {
     slug: "web-developers",
     category: "web-developers",
-    metaTitle: "Developers without AI code generation: common questions",
+    metaTitle: "Developers without AI code generation: questions and answers",
     metaDescription:
       "How to check a developer writes their own code, what a client risks with generated code, and where to find a developer without AI.",
-    title: "Web developers: common questions",
+    title: "Web developers: questions and answers",
     intro:
       "The questions clients and developers ask most. Short answers.",
     items: [
@@ -1662,10 +1662,10 @@ const en: FaqProfession[] = [
   {
     slug: "photographers",
     category: "photographers",
-    metaTitle: "Photographers without AI: common questions",
+    metaTitle: "Photographers without AI: questions and answers",
     metaDescription:
       "How to prove a photograph is real, what C2PA is, and where to find a photographer who shoots rather than generates.",
-    title: "Photographers: common questions",
+    title: "Photographers: questions and answers",
     intro:
       "The questions photographers and the people hiring them ask most. Short answers.",
     items: [
@@ -1697,9 +1697,9 @@ const en: FaqProfession[] = [
   {
     slug: "painters",
     category: "painters",
-    metaTitle: "Painters: common questions",
+    metaTitle: "Painters: questions and answers",
     metaDescription: "Where a painter can list, how to sell originals and prints directly, and how to check a painting was made with paint.",
-    title: "Painters: common questions",
+    title: "Painters: questions and answers",
     intro: "The questions painters and the people buying their work ask most.",
     items: [
       {
@@ -1728,9 +1728,9 @@ const en: FaqProfession[] = [
   {
     slug: "sculptors",
     category: "sculptors",
-    metaTitle: "Sculptors: common questions",
+    metaTitle: "Sculptors: questions and answers",
     metaDescription: "Where a sculptor can list and how to show work was made by hand rather than printed from a generated model.",
-    title: "Sculptors: common questions",
+    title: "Sculptors: questions and answers",
     intro: "The questions sculptors and the people commissioning them ask most.",
     items: [
       {
@@ -1763,9 +1763,9 @@ const en: FaqProfession[] = [
   {
     slug: "concept-artists",
     category: "concept-artists",
-    metaTitle: "Concept artists: common questions",
+    metaTitle: "Concept artists: questions and answers",
     metaDescription: "Where to find a concept artist without generation and how to check a board was drawn rather than assembled from model output.",
-    title: "Concept artists: common questions",
+    title: "Concept artists: questions and answers",
     intro: "The questions concept artists and the studios hiring them ask most.",
     items: [
       {
@@ -1798,9 +1798,9 @@ const en: FaqProfession[] = [
   {
     slug: "fiction-authors",
     category: "fiction-authors",
-    metaTitle: "Fiction authors: common questions",
+    metaTitle: "Fiction authors: questions and answers",
     metaDescription: "Where a novelist can list, how to prove authorship of a manuscript, and what to do about a false AI accusation.",
-    title: "Fiction authors: common questions",
+    title: "Fiction authors: questions and answers",
     intro: "The questions novelists and the people publishing them ask most.",
     items: [
       {
@@ -1830,9 +1830,9 @@ const en: FaqProfession[] = [
   {
     slug: "non-fiction-authors",
     category: "non-fiction-authors",
-    metaTitle: "Non-fiction authors: common questions",
+    metaTitle: "Non-fiction authors: questions and answers",
     metaDescription: "Where a non-fiction author can list and how to show a book is built on your own work with sources.",
-    title: "Non-fiction authors: common questions",
+    title: "Non-fiction authors: questions and answers",
     intro: "The questions non-fiction authors and the people publishing them ask most.",
     items: [
       {
@@ -1865,9 +1865,9 @@ const en: FaqProfession[] = [
   {
     slug: "childrens-authors",
     category: "childrens-authors",
-    metaTitle: "Children's authors: common questions",
+    metaTitle: "Children's authors: questions and answers",
     metaDescription: "Where a children's author can list and why publishers of children's books want a human author.",
-    title: "Children's authors: common questions",
+    title: "Children's authors: questions and answers",
     intro: "The questions children's authors and publishers ask most.",
     items: [
       {
@@ -1901,9 +1901,9 @@ const en: FaqProfession[] = [
   {
     slug: "poets",
     category: "poets",
-    metaTitle: "Poets: common questions",
+    metaTitle: "Poets: questions and answers",
     metaDescription: "Where a poet can list and how to commission poetry written by a person.",
-    title: "Poets: common questions",
+    title: "Poets: questions and answers",
     intro: "The questions poets and the people commissioning poems ask most.",
     items: [
       {
@@ -1936,9 +1936,9 @@ const en: FaqProfession[] = [
   {
     slug: "graphic-designers",
     category: "graphic-designers",
-    metaTitle: "Graphic designers: common questions",
+    metaTitle: "Graphic designers: questions and answers",
     metaDescription: "Where to find a designer without generation, what a brand risks with a generated logo, and how to check a designer.",
-    title: "Graphic designers: common questions",
+    title: "Graphic designers: questions and answers",
     intro: "The questions designers and the people hiring them ask most.",
     items: [
       {
@@ -1966,9 +1966,9 @@ const en: FaqProfession[] = [
   {
     slug: "ui-ux-designers",
     category: "ui-ux-designers",
-    metaTitle: "UI and UX designers: common questions",
+    metaTitle: "UI and UX designers: questions and answers",
     metaDescription: "How to check an interface was designed rather than generated, and where to find a UI designer without AI.",
-    title: "UI/UX designers: common questions",
+    title: "UI/UX designers: questions and answers",
     intro: "The questions interface designers and the people hiring them ask most.",
     items: [
       {
@@ -2001,9 +2001,9 @@ const en: FaqProfession[] = [
   {
     slug: "video-editors",
     category: "video-editors",
-    metaTitle: "Video editors: common questions",
+    metaTitle: "Video editors: questions and answers",
     metaDescription: "Where a video editor can list and how to check a cut was made by a person.",
-    title: "Video editors: common questions",
+    title: "Video editors: questions and answers",
     intro: "The questions editors and the people hiring them ask most.",
     items: [
       {
@@ -2036,9 +2036,9 @@ const en: FaqProfession[] = [
   {
     slug: "motion-designers",
     category: "motion-designers",
-    metaTitle: "Motion designers: common questions",
+    metaTitle: "Motion designers: questions and answers",
     metaDescription: "Where a motion designer can list and why a brand needs animation built to its own style.",
-    title: "Motion and 2D animators: common questions",
+    title: "Motion and 2D animators: questions and answers",
     intro: "The questions motion designers and the people hiring them ask most.",
     items: [
       {
@@ -2071,9 +2071,9 @@ const en: FaqProfession[] = [
   {
     slug: "colourists",
     category: "colourists",
-    metaTitle: "Colourists: common questions",
+    metaTitle: "Colourists: questions and answers",
     metaDescription: "Where a colourist can list and how a colourist's work differs from an automatic preset.",
-    title: "Colourists: common questions",
+    title: "Colourists: questions and answers",
     intro: "The questions colourists and the people hiring them ask most.",
     items: [
       {
@@ -2106,9 +2106,9 @@ const en: FaqProfession[] = [
   {
     slug: "editors",
     category: "editors",
-    metaTitle: "Editors: common questions",
+    metaTitle: "Editors: questions and answers",
     metaDescription: "Where to find an editor and what it costs to clean up a generated draft.",
-    title: "Editors: common questions",
+    title: "Editors: questions and answers",
     intro: "The questions editors and the people hiring them ask most.",
     items: [
       {
@@ -2141,9 +2141,9 @@ const en: FaqProfession[] = [
   {
     slug: "scriptwriters",
     category: "scriptwriters",
-    metaTitle: "Scriptwriters: common questions",
+    metaTitle: "Scriptwriters: questions and answers",
     metaDescription: "Where a scriptwriter can list and how to prove authorship of a script.",
-    title: "Scriptwriters: common questions",
+    title: "Scriptwriters: questions and answers",
     intro: "The questions scriptwriters and the people hiring them ask most.",
     items: [
       {
@@ -2176,9 +2176,9 @@ const en: FaqProfession[] = [
   {
     slug: "voice-actors",
     category: "voice-actors",
-    metaTitle: "Voice actors: common questions",
+    metaTitle: "Voice actors: questions and answers",
     metaDescription: "Where a voice actor can list, how to protect your voice from cloning, and how to commission human voice work.",
-    title: "Voice actors: common questions",
+    title: "Voice actors: questions and answers",
     intro: "The questions voice actors and the people commissioning voice work ask most.",
     items: [
       {
@@ -2207,9 +2207,9 @@ const en: FaqProfession[] = [
   {
     slug: "composers",
     category: "composers",
-    metaTitle: "Composers: common questions",
+    metaTitle: "Composers: questions and answers",
     metaDescription: "Where a composer can list, what a project risks with generated music, and how to prove authorship.",
-    title: "Composers: common questions",
+    title: "Composers: questions and answers",
     intro: "The questions composers and the people commissioning music ask most.",
     items: [
       {
@@ -2238,9 +2238,9 @@ const en: FaqProfession[] = [
   {
     slug: "sound-designers",
     category: "sound-designers",
-    metaTitle: "Sound designers: common questions",
+    metaTitle: "Sound designers: questions and answers",
     metaDescription: "Where a sound designer can list and why a project needs recorded sound rather than library sound.",
-    title: "Sound designers: common questions",
+    title: "Sound designers: questions and answers",
     intro: "The questions sound designers and the people hiring them ask most.",
     items: [
       {
@@ -2273,9 +2273,9 @@ const en: FaqProfession[] = [
   {
     slug: "audio-engineers",
     category: "audio-engineers",
-    metaTitle: "Audio engineers: common questions",
+    metaTitle: "Audio engineers: questions and answers",
     metaDescription: "Where an audio engineer can list and how an engineer's work differs from automatic mastering.",
-    title: "Audio engineers: common questions",
+    title: "Audio engineers: questions and answers",
     intro: "The questions audio engineers and the people hiring them ask most.",
     items: [
       {
@@ -2308,9 +2308,9 @@ const en: FaqProfession[] = [
   {
     slug: "mobile-developers",
     category: "mobile-developers",
-    metaTitle: "Mobile developers: common questions",
+    metaTitle: "Mobile developers: questions and answers",
     metaDescription: "Where to find a mobile developer without code generation and how to check their work.",
-    title: "Mobile developers: common questions",
+    title: "Mobile developers: questions and answers",
     intro: "The questions clients and mobile developers ask most.",
     items: [
       {
@@ -2343,9 +2343,9 @@ const en: FaqProfession[] = [
   {
     slug: "game-developers",
     category: "game-developers",
-    metaTitle: "Game developers: common questions",
+    metaTitle: "Game developers: questions and answers",
     metaDescription: "Where a game developer can list and what a studio risks with generated code and assets.",
-    title: "Game developers: common questions",
+    title: "Game developers: questions and answers",
     intro: "The questions game developers and studios ask most.",
     items: [
       {
@@ -2378,9 +2378,9 @@ const en: FaqProfession[] = [
   {
     slug: "automation-developers",
     category: "automation-developers",
-    metaTitle: "Automation developers: common questions",
+    metaTitle: "Automation developers: questions and answers",
     metaDescription: "Where to find an automation developer and why generated scripts are dangerous for business processes.",
-    title: "Automation developers: common questions",
+    title: "Automation developers: questions and answers",
     intro: "The questions automation clients and developers ask most.",
     items: [
       {
@@ -2413,9 +2413,9 @@ const en: FaqProfession[] = [
   {
     slug: "code-auditors",
     category: "code-auditors",
-    metaTitle: "Code auditors: common questions",
+    metaTitle: "Code auditors: questions and answers",
     metaDescription: "How to check someone else's code for hidden generation and where to find an independent auditor.",
-    title: "Code auditors: common questions",
+    title: "Code auditors: questions and answers",
     intro: "The questions audit clients and auditors ask most.",
     items: [
       {
@@ -2445,9 +2445,9 @@ const en: FaqProfession[] = [
   {
     slug: "architects",
     category: "architects",
-    metaTitle: "Architects: common questions",
+    metaTitle: "Architects: questions and answers",
     metaDescription: "Where to find an architect and why a generated picture of a house cannot be built.",
-    title: "Architects: common questions",
+    title: "Architects: questions and answers",
     intro: "The questions architects and their clients ask most often.",
     items: [
       {
@@ -2479,9 +2479,9 @@ const en: FaqProfession[] = [
   {
     slug: "interior-designers",
     category: "interior-designers",
-    metaTitle: "Interior designers: common questions",
+    metaTitle: "Interior designers: questions and answers",
     metaDescription: "Where to find an interior designer and why a generated render cannot be built.",
-    title: "Interior designers: common questions",
+    title: "Interior designers: questions and answers",
     intro: "The questions interior designers and their clients ask most.",
     items: [
       {
@@ -2509,9 +2509,9 @@ const en: FaqProfession[] = [
   {
     slug: "landscape-designers",
     category: "landscape-designers",
-    metaTitle: "Landscape designers: common questions",
+    metaTitle: "Landscape designers: questions and answers",
     metaDescription: "Where a landscape designer can list and why a plot cannot be designed by generation.",
-    title: "Landscape designers: common questions",
+    title: "Landscape designers: questions and answers",
     intro: "The questions landscape designers and their clients ask most.",
     items: [
       {
@@ -2544,9 +2544,9 @@ const en: FaqProfession[] = [
   {
     slug: "craft-makers",
     category: "craft-makers",
-    metaTitle: "Craft makers: common questions",
+    metaTitle: "Craft makers: questions and answers",
     metaDescription: "Where a craft maker can list and how to show a buyer the thing was made by hand.",
-    title: "Craft makers: common questions",
+    title: "Craft makers: questions and answers",
     intro: "The questions makers and the people buying handmade work ask most.",
     items: [
       {
@@ -2579,9 +2579,9 @@ const en: FaqProfession[] = [
   {
     slug: "accessory-makers",
     category: "accessory-makers",
-    metaTitle: "Accessory makers: common questions",
+    metaTitle: "Accessory makers: questions and answers",
     metaDescription: "Where an accessory maker can list and how to show handmade work.",
-    title: "Accessory makers: common questions",
+    title: "Accessory makers: questions and answers",
     intro: "The questions accessory makers and buyers ask most.",
     items: [
       {
@@ -2615,9 +2615,9 @@ const en: FaqProfession[] = [
   {
     slug: "clothing-designers",
     category: "clothing-designers",
-    metaTitle: "Clothing designers: common questions",
+    metaTitle: "Clothing designers: questions and answers",
     metaDescription: "Where a clothing designer can list and how to tell a sewn garment from a generated picture.",
-    title: "Clothing designers: common questions",
+    title: "Clothing designers: questions and answers",
     intro: "The questions clothing designers and buyers ask most.",
     items: [
       {
@@ -2650,9 +2650,9 @@ const en: FaqProfession[] = [
   {
     slug: "restoration",
     category: "restoration",
-    metaTitle: "Restorers: common questions",
+    metaTitle: "Restorers: questions and answers",
     metaDescription: "Where a restorer can list and why restoration is incompatible with painting things in with a model.",
-    title: "Restorers: common questions",
+    title: "Restorers: questions and answers",
     intro: "The questions restorers and owners ask most.",
     items: [
       {
@@ -2685,9 +2685,9 @@ const en: FaqProfession[] = [
   {
     slug: "calligraphy",
     category: "calligraphy",
-    metaTitle: "Calligraphers: common questions",
+    metaTitle: "Calligraphers: questions and answers",
     metaDescription: "Where a calligrapher can list and how to tell real calligraphy from a font.",
-    title: "Calligraphers: common questions",
+    title: "Calligraphers: questions and answers",
     intro: "The questions calligraphers and clients ask most.",
     items: [
       {
@@ -2720,10 +2720,10 @@ const en: FaqProfession[] = [
   {
     slug: "musicians",
     category: "composers",
-    metaTitle: "Musicians without AI: common questions",
+    metaTitle: "Musicians without AI: questions and answers",
     metaDescription:
       "Where to find a session musician, how to check a performance is played live, and how live playing differs from generated audio.",
-    title: "Musicians: common questions",
+    title: "Musicians: questions and answers",
     intro:
       "Questions from musicians and from the people who book them for a session or a stage.",
     items: [
@@ -2760,10 +2760,10 @@ const en: FaqProfession[] = [
   {
     slug: "jewellers",
     category: "accessory-makers",
-    metaTitle: "Jewellers without AI: common questions",
+    metaTitle: "Jewellers without AI: questions and answers",
     metaDescription:
       "How to commission a piece from a jeweller, how to check metal and stones, and how long custom work takes.",
-    title: "Jewellers: common questions",
+    title: "Jewellers: questions and answers",
     intro:
       "Questions from jewellers and from the people commissioning a piece.",
     items: [
@@ -2799,10 +2799,10 @@ const en: FaqProfession[] = [
   {
     slug: "security-auditors",
     category: "code-auditors",
-    metaTitle: "Security and vulnerabilities: common questions",
+    metaTitle: "Security and vulnerabilities: questions and answers",
     metaDescription:
       "How a security review differs from a code audit, how vulnerability testing works, and what the report contains.",
-    title: "Security: common questions",
+    title: "Security: questions and answers",
     intro:
       "Questions about vulnerability testing and protecting sites and applications.",
     items: [
@@ -2838,10 +2838,10 @@ const en: FaqProfession[] = [
   {
     slug: "proofreaders",
     category: "editors",
-    metaTitle: "Proofreaders without AI: common questions",
+    metaTitle: "Proofreaders without AI: questions and answers",
     metaDescription:
       "How a proofreader differs from an editor, why you still need one alongside a spellchecker, and how proofreading is priced.",
-    title: "Proofreaders: common questions",
+    title: "Proofreaders: questions and answers",
     intro:
       "Questions from proofreaders and from the people sending them a final text.",
     items: [
@@ -2877,10 +2877,10 @@ const en: FaqProfession[] = [
   {
     slug: "lettering-artists",
     category: "calligraphy",
-    metaTitle: "Lettering without AI: common questions",
+    metaTitle: "Lettering without AI: questions and answers",
     metaDescription:
       "How lettering differs from calligraphy and from a typeface, why letters are drawn for one word, and where to find a lettering artist.",
-    title: "Lettering: common questions",
+    title: "Lettering: questions and answers",
     intro:
       "Questions about drawn letters: logos, packaging, covers, signage.",
     items: [
@@ -2916,10 +2916,10 @@ const en: FaqProfession[] = [
   {
     slug: "data-specialists",
     category: "automation-developers",
-    metaTitle: "Data processing without AI: common questions",
+    metaTitle: "Data processing without AI: questions and answers",
     metaDescription:
       "Who collects and cleans company data, how that differs from process automation, and how to check a data specialist.",
-    title: "Data processing: common questions",
+    title: "Data processing: questions and answers",
     intro:
       "Questions about collecting, parsing and cleaning up data.",
     items: [
