@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { profileBasePath } from "@/lib/profile-path";
 import { site } from "@/lib/config";
 import { getAllDirections, getAllCategories, getAllProfiles } from "@/lib/data";
+import { FAQ_PROFESSION_SLUGS } from "@/i18n/data/faqProfessions";
 import { LOCALES, DEFAULT_LOCALE, localizedPath } from "@/i18n/config";
 
 /**
@@ -47,8 +48,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const categoryPaths = getAllCategories().map((c) => ({
     path: `/categories/${c.slug}`,
-    // A category page now answers the profession FAQ and lists the people
-    // who do the work, so it is the strongest page on the site.
+    // The catalog page for a trade: who does this work, and where to
+    // reach them.
+    priority: 0.8,
+  }));
+
+  // One page per profession, answering that profession's questions in
+  // full. Ranked with the category pages rather than below them: these
+  // are the pages an answer engine quotes.
+  const faqProfessionPaths = FAQ_PROFESSION_SLUGS.map((slug) => ({
+    path: `/faq/${slug}`,
     priority: 0.8,
   }));
 
@@ -97,6 +106,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...staticPaths.flatMap((s) => expand(s.path, s.priority, "weekly", now)),
     ...directionPaths.flatMap((s) => expand(s.path, s.priority, "weekly", now)),
     ...categoryPaths.flatMap((s) => expand(s.path, s.priority, "weekly", now)),
+    ...faqProfessionPaths.flatMap((s) => expand(s.path, s.priority, "monthly", now)),
     ...profileEntries.flatMap((s) => expand(s.path, s.priority, s.changeFrequency, s.lastModified)),
   ];
 

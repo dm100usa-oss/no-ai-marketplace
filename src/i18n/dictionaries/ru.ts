@@ -757,6 +757,10 @@ export const ru: Dictionary = {
       "Загляните в каталог, чтобы нанять специалиста напрямую, или создайте профиль, и нужные клиенты придут к вам.",
     ctaFind: "Открыть каталог",
     ctaJoin: "Добавить профиль",
+    professionAllQuestions: "Все вопросы об этой профессии",
+    professionSeeCatalog: "Смотреть авторов в каталоге",
+    professionBackToFaq: "Все вопросы и ответы",
+    professionOnCategory: "Частые вопросы",
   },
 
   method: {

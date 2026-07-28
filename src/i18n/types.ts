@@ -424,6 +424,13 @@ export interface Dictionary {
     ctaText: string;
     ctaFind: string;
     ctaJoin: string;
+    /** Labels tying a profession page to its catalog category and back.
+     *  The two pages answer different needs — one explains, one lists —
+     *  so each has to be able to send the reader to the other. */
+    professionAllQuestions: string;
+    professionSeeCatalog: string;
+    professionBackToFaq: string;
+    professionOnCategory: string;
   };
 
   /** "Our method" — absorbs the former Human-Made standards and

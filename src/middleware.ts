@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { LOCALES, DEFAULT_LOCALE } from "@/i18n/config";
-import { FAQ_PROFESSION_CATEGORY } from "@/i18n/data/faqProfessions";
 
 /**
  * Locale routing.
@@ -19,28 +18,9 @@ import { FAQ_PROFESSION_CATEGORY } from "@/i18n/data/faqProfessions";
 
 const PREFIXED_LOCALES = LOCALES.filter((l) => l !== DEFAULT_LOCALE);
 
-/**
- * The per-profession FAQ pages that used to live at /faq/<profession> now
- * sit on the matching category page, next to the profiles they talk about.
- * The old URLs redirect permanently so nothing they earned is lost.
- */
-function faqRedirectTarget(pathname: string): string | null {
-  const m = pathname.match(/^(\/[a-z]{2})?\/faq\/([^/]+)\/?$/);
-  if (!m) return null;
-  const prefix = m[1] ?? "";
-  const category = FAQ_PROFESSION_CATEGORY[m[2]];
-  return category ? `${prefix}/categories/${category}` : null;
-}
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-
-  const faqTarget = faqRedirectTarget(pathname);
-  if (faqTarget) {
-    const url = request.nextUrl.clone();
-    url.pathname = faqTarget;
-    return NextResponse.redirect(url, 301);
-  }
 
   // Which locale does this path already carry?
   const prefixLocale = PREFIXED_LOCALES.find(

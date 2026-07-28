@@ -10,6 +10,8 @@ import { site } from "@/lib/config";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ProfileGrid } from "@/components/ProfileGrid";
 import { FAQAccordion } from "@/components/FAQAccordion";
+import { LocaleLink } from "@/components/LocaleLink";
+import { ArrowRight } from "@/components/icons";
 import { getDictionary } from "@/i18n";
 import { getFaqForCategory } from "@/i18n/data/faqProfessions";
 import { DEFAULT_LOCALE, isLocale, localizedPath, LOCALES, altLanguages } from "@/i18n/config";
@@ -74,19 +76,10 @@ export default async function CategoryPage({
     (p) => !type || p.profileType === type,
   );
 
-  // The profession FAQ lives here now, on the page that also lists the
-  // people who do the work, so the FAQPage schema travels with it.
-  const faqItems = faqBlocks.flatMap((b) => b.items);
-  const faqJsonLd = faqItems.length > 0 && {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    inLanguage: locale,
-    mainEntity: faqItems.map((it) => ({
-      "@type": "Question",
-      name: it.q,
-      acceptedAnswer: { "@type": "Answer", text: it.a },
-    })),
-  };
+  // The question schema has moved to /faq/<profession>, the page that
+  // now carries these answers in full. Declaring the same questions here
+  // as well would offer an engine two structured answers to one question
+  // and let it pick the weaker page.
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -114,13 +107,6 @@ export default async function CategoryPage({
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      {faqJsonLd && (
-        <script
-          type="application/ld+json"
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-        />
-      )}
       <Breadcrumbs
         lang={locale}
         items={[
@@ -168,13 +154,30 @@ export default async function CategoryPage({
         </div>
       </div>
 
+      {/* A taste of the profession FAQ, not the whole of it. The full set
+          lives at /faq/<profession> under its own title, and repeating it
+          here word for word would leave two addresses competing for the
+          same question. Three questions are enough to show the reader
+          that the answers exist. */}
       {faqBlocks.map((faq) => (
         <section key={faq.slug} className="mt-12 max-w-3xl">
           <h2 className="!text-[1.35rem]">{faq.title}</h2>
           <p className="mb-5 mt-2 text-[0.98rem]" style={{ color: "var(--color-muted)" }}>
             {faq.intro}
           </p>
-          <FAQAccordion items={faq.items} lang={locale} />
+          <FAQAccordion items={faq.items.slice(0, 3)} lang={locale} />
+          {faq.items.length > 3 && (
+            <div className="mt-4">
+              <LocaleLink
+                lang={locale}
+                href={`/faq/${faq.slug}`}
+                className="btn btn-quiet"
+              >
+                {dict.faqPage.professionAllQuestions}
+                <ArrowRight size={16} />
+              </LocaleLink>
+            </div>
+          )}
         </section>
       ))}
     </div>

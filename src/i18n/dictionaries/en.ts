@@ -747,6 +747,10 @@ export const en: Dictionary = {
       "Browse the catalog to hire someone directly, or create a profile and let the right clients come to you.",
     ctaFind: "Browse the catalog",
     ctaJoin: "Add your profile",
+    professionAllQuestions: "All questions about this profession",
+    professionSeeCatalog: "See creators in the catalog",
+    professionBackToFaq: "All questions and answers",
+    professionOnCategory: "Common questions",
   },
 
   method: {

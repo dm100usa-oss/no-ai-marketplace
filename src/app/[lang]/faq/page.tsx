@@ -71,7 +71,7 @@ export default async function FaqPage({
               <LocaleLink
                 key={prof.slug}
                 lang={locale}
-                href={`/categories/${prof.category}`}
+                href={`/faq/${prof.slug}`}
                 className="btn btn-quiet !flex h-full w-full justify-center text-center !leading-snug"
               >
                 {prof.title}
