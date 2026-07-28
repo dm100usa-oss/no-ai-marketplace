@@ -293,7 +293,7 @@ export default async function HomePage({
               before it and the list under it belongs to neither; pulling it
               close to its own text is what makes it read as a heading. */}
           <div className="mt-0">
-            <ul className="flex flex-col gap-2.5 text-[1.05rem]">
+            <ul className="flex flex-col gap-2.5 text-[1.15rem]">
               {dict.home.heroAdvantages.map((line) => {
                 const m = line.match(/^(\d+%)/);
                 const head = m ? m[1] : null;
@@ -348,8 +348,8 @@ export default async function HomePage({
           >
             {dict.home.heroClientsTitle}
           </p>
-          <div className="mt-3">
-            <ul className="flex flex-col gap-2.5 text-[1.05rem]">
+          <div className="mt-5">
+            <ul className="flex flex-col gap-2.5 text-[1.15rem]">
               {dict.home.heroClients.map((item) => {
                 const text = typeof item === "string" ? item : item.text;
                 const sub = typeof item === "string" ? null : item.sub;
@@ -369,11 +369,11 @@ export default async function HomePage({
                         new point, so it hangs under it without a bullet and in
                         a quieter colour: read as a continuation, not a claim of
                         its own. */}
-                    {/* Justified to the right edge, at Ricardo's request, so
-                        the block reads as a column rather than a ragged list.
-                        Automatic hyphenation goes with it: without it Russian
-                        words are long enough to open gaps a finger wide. */}
-                    <span style={{ textAlign: "justify", hyphens: "auto" }}>
+                    {/* Justified to the right edge so the block reads as a
+                        column rather than a ragged list. Word breaking is
+                        deliberately left off: broken words cost more in
+                        reading than the even edge is worth. */}
+                    <span style={{ textAlign: "justify" }}>
                       {text}
                       {sub ? (
                         <span className="block" style={{ color: "var(--color-muted)" }}>
@@ -400,8 +400,8 @@ export default async function HomePage({
           >
             {dict.home.heroCreatorsTitle}
           </p>
-          <div className="mt-3">
-            <ul className="flex flex-col gap-2.5 text-[1.05rem]">
+          <div className="mt-5">
+            <ul className="flex flex-col gap-2.5 text-[1.15rem]">
               {dict.home.heroCreators.map((item) => {
                 const text = typeof item === "string" ? item : item.text;
                 const sub = typeof item === "string" ? null : item.sub;
@@ -417,11 +417,11 @@ export default async function HomePage({
                         boxShadow: "0 1px 2px rgba(15,90,80,0.4), inset 0 1px 1px rgba(255,255,255,0.45)",
                       }}
                     />
-                    {/* Justified to the right edge, at Ricardo's request, so
-                        the block reads as a column rather than a ragged list.
-                        Automatic hyphenation goes with it: without it Russian
-                        words are long enough to open gaps a finger wide. */}
-                    <span style={{ textAlign: "justify", hyphens: "auto" }}>
+                    {/* Justified to the right edge so the block reads as a
+                        column rather than a ragged list. Word breaking is
+                        deliberately left off: broken words cost more in
+                        reading than the even edge is worth. */}
+                    <span style={{ textAlign: "justify" }}>
                       {text}
                       {sub ? (
                         <span className="block" style={{ color: "var(--color-muted)" }}>
