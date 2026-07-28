@@ -267,7 +267,7 @@ export default async function HomePage({
                 >
                   {step.title}
                 </p>
-                <p className="mt-0.5 text-[1.05rem]" style={{ color: "var(--color-ink)" }}>
+                <p className="mt-0.5 text-[1.15rem]" style={{ color: "var(--color-ink)" }}>
                   {step.text}
                 </p>
               </div>
