@@ -14,12 +14,28 @@ import { LOCALES, DEFAULT_LOCALE, isLocale, localizedPath, altLanguages, LOCALE_
 import type { Locale } from "@/i18n/config";
 
 // Self-hosted fonts (Inter + Manrope) — no external fetch at build time.
+//
+// Latin and Cyrillic are separate files at every weight, and both have to
+// be here. With only the Latin ones loaded, Russian text quietly fell back
+// to whatever the phone had — SF Pro on an iPhone — and a line mixing the
+// two alphabets showed it: "Разработка и IT" put a heavy system bold next
+// to Manrope's lighter bold, and the Latin half read as not-quite-bold.
+// The same happened to every UI/UX, No AI and 3D on the site. Loading the
+// Cyrillic subsets puts both alphabets in the same typeface, so the weights
+// match because they are the same weight.
+//
+// The subsets carry unicode-range, so a browser only downloads the half it
+// needs for the page it is showing. Each Cyrillic file is around 8 KB.
 const inter = localFont({
   src: [
     { path: "../fonts/inter-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/inter-cyrillic-400-normal.woff2", weight: "400", style: "normal" },
     { path: "../fonts/inter-latin-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "../fonts/inter-cyrillic-500-normal.woff2", weight: "500", style: "normal" },
     { path: "../fonts/inter-latin-600-normal.woff2", weight: "600", style: "normal" },
+    { path: "../fonts/inter-cyrillic-600-normal.woff2", weight: "600", style: "normal" },
     { path: "../fonts/inter-latin-700-normal.woff2", weight: "700", style: "normal" },
+    { path: "../fonts/inter-cyrillic-700-normal.woff2", weight: "700", style: "normal" },
   ],
   variable: "--font-inter",
   display: "swap",
@@ -28,8 +44,11 @@ const inter = localFont({
 const manrope = localFont({
   src: [
     { path: "../fonts/manrope-latin-600-normal.woff2", weight: "600", style: "normal" },
+    { path: "../fonts/manrope-cyrillic-600-normal.woff2", weight: "600", style: "normal" },
     { path: "../fonts/manrope-latin-700-normal.woff2", weight: "700", style: "normal" },
+    { path: "../fonts/manrope-cyrillic-700-normal.woff2", weight: "700", style: "normal" },
     { path: "../fonts/manrope-latin-800-normal.woff2", weight: "800", style: "normal" },
+    { path: "../fonts/manrope-cyrillic-800-normal.woff2", weight: "800", style: "normal" },
   ],
   variable: "--font-manrope",
   display: "swap",
