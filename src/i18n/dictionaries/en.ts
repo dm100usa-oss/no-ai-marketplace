@@ -769,6 +769,7 @@ export const en: Dictionary = {
         "Hiring a creator means the work has a name attached to it. You talk to the person who will do it, not to an account manager who passes the brief along. Revisions are discussed directly, and the person listening to you is the one who picks the work back up.",
         "This usually makes sense when the job is a single clear one: a set of illustrations, a shoot, a text, a site, an interior. A creator costs less than a studio because there is no office or management in the price, and the quality rests on one person you can judge from a portfolio before you commit.",
         "Every link in a profile goes to the creator's own site, shop or portfolio. We take no part in the conversation and no cut of the work.",
+        "We review every application by hand, and one pattern shows up every time: someone who does the work themselves leaves a trail. Sketches, layers, drafts, camera originals. Generated work has no trail, only a result. Our HTVS scale is built on that: four levels of proof, from the creator's own statement to a documented process. A profile shows which level the creator is on, and you can ask them for the next one.",
       ],
       whenTitle: "When a creator is the right call",
       when: [
@@ -782,7 +783,7 @@ export const en: Dictionary = {
         "The first profiles are on their way. If you are a creator, the spot is still open.",
       ctaTitle: "Looking for someone specific",
       ctaText:
-        "Open the catalog and filter by direction, profession and country, or start with the guide for the profession you need.",
+        "Open the No AI Directory catalog and filter by direction, profession and country, or start with the guide for the profession you need: it tells you what to ask before you commission anything.",
       ctaBrowse: "Open the catalog",
       ctaJoin: "Add your profile",
     },
@@ -797,6 +798,7 @@ export const en: Dictionary = {
         "A team is what you need when the job does not fit in one pair of hands. A book needs a writer and an illustrator, a site needs a designer and a developer, a shoot needs a photographer and a stylist. You can hire each of them separately and introduce them to each other, or you can take people who have already worked together.",
         "What separates a team from a company is that there is no legal entity or payroll behind it. These are individuals splitting the work, each answerable for their own part. That usually makes a team cheaper than a studio, with fewer formal guarantees, and the arrangements are made with the members directly.",
         "Each team profile shows who is in it and what each person does. You can approach the team as a whole or any member on their own.",
+        "We require the line-up to be named, and we check members one by one, each against the same HTVS scale. The reason is simple: a team is not one thing, it is several people, and the weak spot is usually one of them. A team advert does not show you that. A profile here does.",
       ],
       whenTitle: "When a team is the right call",
       when: [
@@ -810,7 +812,7 @@ export const en: Dictionary = {
         "This section has only just opened. If you work alongside colleagues, you can list your team and be first.",
       ctaTitle: "Need a line-up for your project",
       ctaText:
-        "Build a team yourself from individual creators in the catalog, or take one that already exists. Both work.",
+        "Build a team yourself from individual creators on No AI Directory, or take one that already exists. Both work, and either way the line-up is named.",
       ctaBrowse: "Browse creators",
       ctaJoin: "List your team",
     },
@@ -825,6 +827,7 @@ export const en: Dictionary = {
         "You choose a company when you need more than hands: a contract, a schedule, an invoice, someone accountable if a deadline slips. For a large or long job that has to stand up inside your own organization, that is usually the deciding argument.",
         "A company distributes the work internally: you have one point of contact, and behind them sits a team you may never see. That is convenient and it costs more, because management, premises and guarantees are all in the price.",
         "The platform rule is the same here as everywhere else: the work is made by people, and generation is not allowed. Whoever signs off the profile answers for that.",
+        "We assess a company against the same HTVS scale as a single creator, and this is the one place where being large buys nothing. A studio can document its process and reach the top level exactly as one person can. If it does not, it stays at level one, and the client sees that on the profile.",
       ],
       whenTitle: "When a company is the right call",
       when: [
@@ -838,7 +841,7 @@ export const en: Dictionary = {
         "This section has only just opened. If you run a studio or a practice, the spot is still open.",
       ctaTitle: "A large job",
       ctaText:
-        "Look through the companies in the catalog, or start from the direction you need a supplier in.",
+        "Look through the companies on No AI Directory, or start from the direction you need a supplier in. Each one shows the level of proof it stands at.",
       ctaBrowse: "Open the catalog",
       ctaJoin: "List your company",
     },
