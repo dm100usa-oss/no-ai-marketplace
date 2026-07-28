@@ -724,6 +724,12 @@ a { color: inherit; text-decoration: none; }
    small circle reads as searching. 5px is enough to be seen across a
    button and small enough that the icon never approaches the label.
 
+   The circle is cut into twelve steps rather than four. A browser draws a
+   straight line between one keyframe and the next, so four points give a
+   diamond and the icon visibly knocks against the corners. Twelve points
+   at this radius put the path within a fifth of a pixel of a true circle,
+   which is past the point where an eye can tell.
+
    Only transform is animated, so the browser hands it to the compositor
    and no layout is recalculated. The icon has its own element, so nothing
    around it moves.
@@ -732,15 +738,22 @@ a { color: inherit; text-decoration: none; }
    component. No point animating below the fold. */
 @keyframes icon-pulse {
   0%   { transform: translate(0, 0) scale(1); }
-  /* Linear through the circle itself: eased steps at each quarter would
-     make the icon stutter at twelve, three, six and nine o'clock. */
-  6%   { transform: translate(0, -5px) scale(1.25); animation-timing-function: linear; }
-  13%  { transform: translate(5px, 0) scale(1.25); animation-timing-function: linear; }
-  20%  { transform: translate(0, 5px) scale(1.25); animation-timing-function: linear; }
-  27%  { transform: translate(-5px, 0) scale(1.25); animation-timing-function: linear; }
-  34%  { transform: translate(0, -5px) scale(1.25); }
+  6.00% { transform: translate(0.0px, -5.0px) scale(1.25); animation-timing-function: linear; }
+  8.33% { transform: translate(2.5px, -4.33px) scale(1.25); animation-timing-function: linear; }
+  10.67% { transform: translate(4.33px, -2.5px) scale(1.25); animation-timing-function: linear; }
+  13.00% { transform: translate(5.0px, 0.0px) scale(1.25); animation-timing-function: linear; }
+  15.33% { transform: translate(4.33px, 2.5px) scale(1.25); animation-timing-function: linear; }
+  17.67% { transform: translate(2.5px, 4.33px) scale(1.25); animation-timing-function: linear; }
+  20.00% { transform: translate(0.0px, 5.0px) scale(1.25); animation-timing-function: linear; }
+  22.33% { transform: translate(-2.5px, 4.33px) scale(1.25); animation-timing-function: linear; }
+  24.67% { transform: translate(-4.33px, 2.5px) scale(1.25); animation-timing-function: linear; }
+  27.00% { transform: translate(-5.0px, 0.0px) scale(1.25); animation-timing-function: linear; }
+  29.33% { transform: translate(-4.33px, -2.5px) scale(1.25); animation-timing-function: linear; }
+  31.67% { transform: translate(-2.5px, -4.33px) scale(1.25); animation-timing-function: linear; }
+  34.00% { transform: translate(0px, -5px) scale(1.25); }
   42%  { transform: translate(0, 0) scale(1); }
   100% { transform: translate(0, 0) scale(1); }
+}
 }
 .btn-pulse {
   display: inline-flex;
