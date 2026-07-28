@@ -253,7 +253,10 @@ export default async function HomePage({
       </section>
 
       {/* ---------- Steps ---------- */}
-      <section className="pb-0 sm:pb-16" style={{ paddingTop: "18px" }}>
+      {/* Steps sit closer to the trade tiles on a wide screen, where the two
+          blocks are read as one. On a phone the tiles fill the width and the
+          first heading landed right on them, so the gap is opened up there. */}
+      <section className="pb-0 pt-8 sm:pb-16 sm:pt-[18px]">
         <div className="container-page">
           <div className="flex flex-col gap-2.5">
             {dict.home.steps.map((step) => (
