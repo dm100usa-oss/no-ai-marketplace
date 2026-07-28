@@ -141,9 +141,12 @@ export interface Dictionary {
     heroAdvantagesTitle: string;
     heroAdvantages: string[];
     heroClientsTitle: string;
-    heroClients: string[];
+    /** A point in the clients list. A plain string is one line; the object
+     *  form adds a quieter second line under it, for a point that needs a
+     *  word of explanation without earning a bullet of its own. */
+    heroClients: (string | { text: string; sub: string })[];
     heroCreatorsTitle: string;
-    heroCreators: string[];
+    heroCreators: (string | { text: string; sub: string })[];
     heroJoinButton: string;
     /** The project's call, under the join button. */
     heroSlogan: string;

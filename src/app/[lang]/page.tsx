@@ -350,21 +350,36 @@ export default async function HomePage({
           </p>
           <div className="mt-3">
             <ul className="flex flex-col gap-2.5 text-[1.05rem]">
-              {dict.home.heroClients.map((line) => (
-                <li key={line} className="flex items-start gap-3" style={{ color: "var(--color-ink)" }}>
-                  <span
-                    aria-hidden="true"
-                    className="mt-[0.45rem] shrink-0 rounded-full"
-                    style={{
-                      width: "0.7rem",
-                      height: "0.7rem",
-                      background: "radial-gradient(circle at 30% 30%, #6f92cf, #325ba3 70%, #274a86)",
-                      boxShadow: "0 1px 2px rgba(30,50,90,0.4), inset 0 1px 1px rgba(255,255,255,0.45)",
-                    }}
-                  />
-                  <span>{line}</span>
-                </li>
-              ))}
+              {dict.home.heroClients.map((item) => {
+                const text = typeof item === "string" ? item : item.text;
+                const sub = typeof item === "string" ? null : item.sub;
+                return (
+                  <li key={text} className="flex items-start gap-3" style={{ color: "var(--color-ink)" }}>
+                    <span
+                      aria-hidden="true"
+                      className="mt-[0.45rem] shrink-0 rounded-full"
+                      style={{
+                        width: "0.7rem",
+                        height: "0.7rem",
+                        background: "radial-gradient(circle at 30% 30%, #6f92cf, #325ba3 70%, #274a86)",
+                        boxShadow: "0 1px 2px rgba(30,50,90,0.4), inset 0 1px 1px rgba(255,255,255,0.45)",
+                      }}
+                    />
+                    {/* The second line explains the first rather than adding a
+                        new point, so it hangs under it without a bullet and in
+                        a quieter colour: read as a continuation, not a claim of
+                        its own. */}
+                    <span>
+                      {text}
+                      {sub ? (
+                        <span className="block" style={{ color: "var(--color-muted)" }}>
+                          {sub}
+                        </span>
+                      ) : null}
+                    </span>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
@@ -383,21 +398,32 @@ export default async function HomePage({
           </p>
           <div className="mt-3">
             <ul className="flex flex-col gap-2.5 text-[1.05rem]">
-              {dict.home.heroCreators.map((line) => (
-                <li key={line} className="flex items-start gap-3" style={{ color: "var(--color-ink)" }}>
-                  <span
-                    aria-hidden="true"
-                    className="mt-[0.45rem] shrink-0 rounded-full"
-                    style={{
-                      width: "0.7rem",
-                      height: "0.7rem",
-                      background: "radial-gradient(circle at 30% 30%, #3fb8ab, #189a8e 70%, #0f6d64)",
-                      boxShadow: "0 1px 2px rgba(15,90,80,0.4), inset 0 1px 1px rgba(255,255,255,0.45)",
-                    }}
-                  />
-                  <span>{line}</span>
-                </li>
-              ))}
+              {dict.home.heroCreators.map((item) => {
+                const text = typeof item === "string" ? item : item.text;
+                const sub = typeof item === "string" ? null : item.sub;
+                return (
+                  <li key={text} className="flex items-start gap-3" style={{ color: "var(--color-ink)" }}>
+                    <span
+                      aria-hidden="true"
+                      className="mt-[0.45rem] shrink-0 rounded-full"
+                      style={{
+                        width: "0.7rem",
+                        height: "0.7rem",
+                        background: "radial-gradient(circle at 30% 30%, #3fb8ab, #189a8e 70%, #0f6d64)",
+                        boxShadow: "0 1px 2px rgba(15,90,80,0.4), inset 0 1px 1px rgba(255,255,255,0.45)",
+                      }}
+                    />
+                    <span>
+                      {text}
+                      {sub ? (
+                        <span className="block" style={{ color: "var(--color-muted)" }}>
+                          {sub}
+                        </span>
+                      ) : null}
+                    </span>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
