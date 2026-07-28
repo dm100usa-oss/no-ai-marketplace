@@ -157,8 +157,8 @@ export const en: Dictionary = {
     heroCreators: [
       "List on a platform that brings you clients, not random traffic",
       "Show finished work or simply describe your services and get listed fast",
-      "Draw more qualified inquiries and build long-term client relationships",
-      "Work solo, join a team, or start your own company",
+      "Win more qualified work and build long-term client relationships",
+      "Take projects on your own, join a team, or start your own company",
       "Show your work is made without AI and earn more trust",
       "Get ahead while everyone else stays on the general marketplaces",
     ],
