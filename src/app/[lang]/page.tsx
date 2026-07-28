@@ -293,7 +293,7 @@ export default async function HomePage({
               before it and the list under it belongs to neither; pulling it
               close to its own text is what makes it read as a heading. */}
           <div className="mt-0">
-            <ul className="flex flex-col gap-2.5 text-[1.15rem]">
+            <ul className="flex flex-col gap-4 text-[1.15rem]">
               {dict.home.heroAdvantages.map((line) => {
                 const m = line.match(/^(\d+%)/);
                 const head = m ? m[1] : null;
@@ -349,7 +349,7 @@ export default async function HomePage({
             {dict.home.heroClientsTitle}
           </p>
           <div className="mt-5">
-            <ul className="flex flex-col gap-2.5 text-[1.15rem]">
+            <ul className="flex flex-col gap-4 text-[1.15rem]">
               {dict.home.heroClients.map((item) => {
                 const text = typeof item === "string" ? item : item.text;
                 const sub = typeof item === "string" ? null : item.sub;
@@ -401,7 +401,7 @@ export default async function HomePage({
             {dict.home.heroCreatorsTitle}
           </p>
           <div className="mt-5">
-            <ul className="flex flex-col gap-2.5 text-[1.15rem]">
+            <ul className="flex flex-col gap-4 text-[1.15rem]">
               {dict.home.heroCreators.map((item) => {
                 const text = typeof item === "string" ? item : item.text;
                 const sub = typeof item === "string" ? null : item.sub;

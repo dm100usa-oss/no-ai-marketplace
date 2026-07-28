@@ -147,10 +147,7 @@ export const en: Dictionary = {
     ],
     heroClientsTitle: "For clients",
     heroClients: [
-      {
-        text: "Lower your legal and creative risk",
-        sub: "So you can use the work in your business with confidence",
-      },
+      "Lower your legal and creative risk, so you can use the work in your business with confidence",
       "Get predictable quality and original work",
       "Work with individual, verified professionals",
       "Build your own team for a specific project",
