@@ -864,7 +864,7 @@ export const en: Dictionary = {
             term: "Work without AI",
             definition:
               "Work whose substance was made by a person: the drawing, the text, the photograph, the structure, the object, the code. Assistive tools are allowed; generating the result is not. What decides the question is the substance, not the individual steps.",
-            href: "/human-made-standards",
+            href: "/method",
             hrefLabel: "Human-Made standards",
           },
           {
@@ -994,13 +994,8 @@ export const en: Dictionary = {
         href: "/glossary",
       },
       {
-        title: "Human-Made standards",
-        text: "What counts as made by a person, what does not, and how work where AI helped with the small things is treated.",
-        href: "/human-made-standards",
-      },
-      {
         title: "Our method",
-        text: "How the directory works, what we require before publishing a profile, and what happens when the rules are broken.",
+        text: "The Human-Made standards in full: what counts as made by a person, where the line runs, how the HTVS scale works, and what happens when the rules are broken.",
         href: "/method",
       },
       {

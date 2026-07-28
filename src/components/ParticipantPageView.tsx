@@ -81,7 +81,7 @@ export function ParticipantPageView({
           is usually made on one of them and a reader scanning for their
           own case should find it without reading the paragraphs above. */}
       <div className="mt-10 max-w-3xl">
-        <h2 className="!text-[1.35rem]">{page.whenTitle}</h2>
+        <h2 className="section-title !text-[1.35rem]">{page.whenTitle}</h2>
         <ul className="mt-4 flex flex-col gap-4 text-[1.05rem]">
           {page.when.map((line) => (
             <li key={line} className="flex items-start gap-3" style={{ color: "var(--color-ink)" }}>

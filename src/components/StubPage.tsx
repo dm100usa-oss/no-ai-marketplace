@@ -36,7 +36,15 @@ export function StubPage({
 
       <div className="mx-auto max-w-3xl">
         <h1>{title}</h1>
-        <p className="lead mt-4">{intro}</p>
+        {/* The text of a legal page is one long paragraph on a white page,
+            which reads as a wall. On a pale plate with a coloured edge it
+            reads as a statement, and the eye can find where it starts. */}
+        <div
+          className="mt-4 rounded-2xl p-5 md:p-6"
+          style={{ background: "var(--color-brand-soft)", borderLeft: "4px solid var(--color-accent)" }}
+        >
+          <p className="lead !mt-0">{intro}</p>
+        </div>
 
         {note && (
           <div

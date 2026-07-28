@@ -74,7 +74,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли убирать фон в Photoshop, если работаешь без ИИ?",
         a: "Да. Линия простая: нельзя генерировать, все остальное можно. Убрать фон, поправить цвет, почистить края, найти референс это инструменты, и автор остается автором. Так же рассуждает закон: Бюро по авторским правам США считает, что вспомогательное использование ИИ не лишает работу охраны.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
       {
         q: "Как проверить, что иллюстратор не использует ИИ?",
@@ -112,7 +112,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли пользоваться проверкой орфографии, если пишешь без ИИ?",
         a: "Да. Линия простая: нельзя генерировать, все остальное можно. Проверить орфографию, расшифровать интервью, найти источник, разобрать структуру чужой статьи это инструменты. Написать за вас абзац нельзя. Бюро по авторским правам США рассуждает так же: вспомогательное использование ИИ не лишает текст охраны, а сгенерированные куски не охраняются и должны быть раскрыты при регистрации.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
       {
         q: "Почему живой копирайтер стоит дороже генерации?",
@@ -153,7 +153,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли пользоваться глоссарием и памятью переводов?",
         a: "Да. Линия простая: нельзя генерировать, все остальное можно. Память переводов, глоссарии, словари, проверка терминологии это профессиональные инструменты, они у переводчиков были задолго до нейросетей. Прогнать текст через машину и слегка причесать нельзя: это уже не ваш перевод.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
       {
         q: "Почему живой перевод стоит дороже машинного?",
@@ -195,7 +195,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли пользоваться автодополнением, если работаешь без ИИ?",
         a: "Смотря чем. Линия простая: нельзя генерировать, все остальное можно. Подсказка имени метода, поиск по документации, линтер это инструменты. Сгенерировать функцию или модуль целиком и вставить не глядя нельзя: это уже не ваш код, и отвечать за него вы не сможете.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
     ],
   },
@@ -230,7 +230,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли обрабатывать снимки, если работаешь без ИИ?",
         a: "Да. Линия простая: нельзя генерировать, все остальное можно. Коррекция цвета, кадрирование, ретушь, удаление пыли с матрицы это обработка, которой фотографы занимаются со времен пленки. Дорисовать нейросетью то, чего не было в кадре, нельзя.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
     ],
   },
@@ -262,7 +262,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли выкладывать работы, если делаешь цифровые копии для печати?",
         a: "Да. Линия простая: нельзя генерировать, все остальное можно. Отсканировать холст, поправить цвет на скане, напечатать тираж это работа с вашей же картиной. Сгенерировать изображение и продать как живопись нельзя.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
     ],
   },
@@ -289,7 +289,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли пользоваться 3D-печатью и станками?",
         a: "Да, если модель создали вы. Линия простая: нельзя генерировать, все остальное можно. Вылепить в цифре, отфрезеровать, напечатать форму, отлить это инструменты, ими скульпторы пользуются давно. Сгенерировать модель нейросетью и напечатать нельзя.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
       {
         q: "Как заказчику проверить скульптора перед заказом?",
@@ -332,7 +332,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли концепт-художнику собирать референсы и фотобаши?",
         a: "Да. Линия простая: нельзя генерировать, все остальное можно. Сбор референсов, фотобаш из своих или лицензионных фотографий, 3D-болванка под перспективу это инструменты, концептеры работают так давно. Сгенерировать кадр и обвести нельзя.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
     ],
   },
@@ -364,7 +364,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли пользоваться редактором и проверкой орфографии?",
         a: "Да. Линия простая: нельзя генерировать, все остальное можно. Проверка грамматики, поиск фактов, работа с редактором это нормальная часть литературного труда. Сгенерировать главу нельзя.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
     ],
   },
@@ -395,7 +395,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли автору нон-фикшн пользоваться расшифровкой интервью?",
         a: "Да. Линия простая: нельзя генерировать, все остальное можно. Расшифровать запись интервью, найти источник, проверить цитату, собрать указатель это инструменты. Сгенерировать главу или абзац нельзя, охраняется только ваш вклад, и при регистрации это надо раскрывать.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
       {
         q: "Как издателю проверить автора нон-фикшн?",
@@ -430,7 +430,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли детскому автору работать с редактором и проверкой орфографии?",
         a: "Да. Линия простая: нельзя генерировать, все остальное можно. Редактор, проверка орфографии, поиск фактов это нормальная часть работы, и знак Human Authored от них не зависит. Сгенерировать текст сказки нельзя.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
       {
         q: "Кто рисует иллюстрации, если книгу пишет живой автор?",
@@ -470,7 +470,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли поэту пользоваться словарем рифм?",
         a: "Да. Линия простая: нельзя генерировать, все остальное можно. Словарь рифм, словарь синонимов, проверка размера это инструменты, они у поэтов были задолго до нейросетей. Сгенерировать строку или строфу нельзя.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
     ],
   },
@@ -500,7 +500,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли пользоваться трассировкой и плагинами?",
         a: "Да. Линия простая: нельзя генерировать, все остальное можно. Трассировка своего наброска, сетки, плагины, генератор палитр это инструменты. Сгенерировать логотип и обвести нельзя: авторство останется не у вас.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
     ],
   },
@@ -531,7 +531,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли UI-дизайнеру пользоваться автолейаутом и плагинами Figma?",
         a: "Да. Линия простая: нельзя генерировать, все остальное можно. Автолейаут, компоненты, плагины для иконок и сеток, генератор тестовых данных это инструменты. Сгенерировать экран целиком и выдать за макет нельзя.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
       {
         q: "Что должно быть в макете, кроме основного экрана?",
@@ -562,7 +562,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли пользоваться автоматической расшифровкой и стабилизацией?",
         a: "Да. Линия простая: нельзя генерировать, все остальное можно. Расшифровка речи в субтитры, стабилизация, шумодав, автосинхронизация звука это инструменты монтажера. Сгенерировать кадры, которых не снимали, нельзя.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
       {
         q: "Как заказчику проверить монтажера перед наймом?",
@@ -601,7 +601,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли моушн-дизайнеру пользоваться трекингом и ротоскопом?",
         a: "Да. Линия простая: нельзя генерировать, все остальное можно. Трекинг, автоматическое выделение объекта, интерполяция кадров, готовые пресеты кривых это инструменты. Сгенерировать ролик нейросетью нельзя.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
       {
         q: "Как заказчику проверить моушн-дизайнера?",
@@ -631,7 +631,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли пользоваться автоматическим анализом кадра?",
         a: "Да. Линия простая: нельзя генерировать, все остальное можно. Автобаланс белого, подбор совпадения между камерами, шумодав это инструменты. Дорисовать в кадре то, чего не снимали, нельзя.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
       {
         q: "Как показать, что цвет ставили вы?",
@@ -666,7 +666,7 @@ const ru: FaqProfession[] = [
       {
         q: "Считается ли редактура сгенерированного текста работой без ИИ?",
         a: "Ваша редактура да, готовый текст нет. Линия простая: нельзя генерировать, все остальное можно. Если основа сгенерирована, а вы ее правили, при регистрации авторских прав это надо раскрывать: охраняется только ваш вклад.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
       {
         q: "Как показать, что правку вносил редактор, а не модель?",
@@ -706,7 +706,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли сценаристу пользоваться программами вроде Final Draft?",
         a: "Да. Линия простая: нельзя генерировать, все остальное можно. Форматирование, карточки сцен, хронометраж, проверка орфографии это инструменты, сценаристы работают в них десятилетиями. Сгенерировать сцену или диалог нельзя.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
       {
         q: "Как продюсеру проверить сценариста?",
@@ -741,7 +741,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли чистить запись и убирать шум?",
         a: "Да. Линия простая: нельзя генерировать, все остальное можно. Шумодав, эквалайзер, склейка дублей, удаление вдохов это работа звукорежиссера с вашим голосом. Синтезировать реплику, которую вы не читали, нельзя.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
     ],
   },
@@ -772,7 +772,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли пользоваться сэмплами и виртуальными инструментами?",
         a: "Да. Линия простая: нельзя генерировать, все остальное можно. Библиотеки сэмплов, виртуальные инструменты, квантизация, автотюн это инструменты, композиторы работают с ними десятилетиями. Сгенерировать мелодию или трек нельзя.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
     ],
   },
@@ -803,7 +803,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли саунд-дизайнеру пользоваться библиотеками и обработкой?",
         a: "Да, и библиотеки это нормальная часть работы. Линия простая: нельзя генерировать, все остальное можно. Слои из библиотек, питч, реверс, гранулярная обработка это инструменты, из них и собирается звук. Сгенерировать звук по текстовому описанию нельзя.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
       {
         q: "Как заказчику проверить саунд-дизайнера?",
@@ -833,7 +833,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли пользоваться автоматическими плагинами?",
         a: "Да. Линия простая: нельзя генерировать, все остальное можно. Автоматический поиск резонансов, шумодав, разделение дорожек, автотюн это инструменты. Сгенерировать партию нельзя.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
       {
         q: "Как показать, что сведение делали вы?",
@@ -872,7 +872,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли мобильному разработчику пользоваться автодополнением?",
         a: "Смотря чем. Линия простая: нельзя генерировать, все остальное можно. Подсказка имени метода, поиск по документации, линтер, автоматические тесты это инструменты. Сгенерировать экран или модуль целиком и вставить не глядя нельзя: отвечать за такой код вы не сможете.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
       {
         q: "Как показать, что приложение написали вы?",
@@ -912,7 +912,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли использовать процедурную генерацию, если работаешь без ИИ?",
         a: "Да, это не то же самое. Линия простая: нельзя генерировать нейросетью, все остальное можно. Процедурная генерация уровней это ваш алгоритм, вы написали правила, по которым строится мир. Сгенерировать ассеты или код нейросетью нельзя, и в Steam такое ушло бы в раскрытие в карточке игры.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
     ],
   },
@@ -947,7 +947,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли пользоваться автодополнением при написании скриптов?",
         a: "Смотря чем. Линия простая: нельзя генерировать, все остальное можно. Подсказка синтаксиса, поиск по документации, линтер это инструменты. Сгенерировать скрипт целиком и запустить на боевых данных нельзя: именно тут потом и находят тихо пропущенные строки.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
     ],
   },
@@ -979,7 +979,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли аудитору пользоваться автоматическими анализаторами?",
         a: "Да, и без них аудит не делают. Линия простая: нельзя генерировать, все остальное можно. Статические анализаторы, сканеры зависимостей, линтеры это инструменты, они отсеивают очевидное. Выводы делает человек: анализатор не понимает, что этот код вообще не нужен.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
     ],
   },
@@ -1009,7 +1009,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли архитектору пользоваться визуализацией и расчетными программами?",
         a: "Да. Линия простая: нельзя генерировать, все остальное можно. Рендер вашей же модели, расчет конструкций, инсоляции, энергоэффективности, обмер участка дроном это инструменты. Сгенерировать изображение дома и выдать его за проект нельзя.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
       {
         q: "Чем архитектор отличается от дизайнера интерьера?",
@@ -1043,7 +1043,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли пользоваться визуализацией и подбором палитр?",
         a: "Да. Линия простая: нельзя генерировать, все остальное можно. Рендер вашей же модели, подбор сочетаний, каталоги, автоматическая расстановка света это инструменты. Сгенерировать интерьер картинкой и выдать за проект нельзя.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
     ],
   },
@@ -1073,7 +1073,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли ландшафтному дизайнеру пользоваться визуализацией?",
         a: "Да. Линия простая: нельзя генерировать, все остальное можно. Рендер вашей же модели, программы подбора растений, расчет полива, съемка участка дроном это инструменты. Сгенерировать картинку сада и выдать за проект нельзя: строить по ней нечего.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
       {
         q: "Что должно быть в проекте участка, кроме красивой картинки?",
@@ -1113,7 +1113,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли мастеру обрабатывать фотографии своих изделий?",
         a: "Да. Линия простая: нельзя генерировать, все остальное можно. Поправить свет, убрать фон, кадрировать, собрать карточку это обычная съемка товара. Сгенерировать фотографию вещи или описание нейросетью нельзя: покупатель приходит сюда именно за тем, что этого нет.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
     ],
   },
@@ -1144,7 +1144,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли мастеру аксессуаров пользоваться станками и лазерной резкой?",
         a: "Да, если модель ваша. Линия простая: нельзя генерировать, все остальное можно. Лазерная резка, гравировка, 3D-печать деталей, цифровые лекала это инструменты, ими пользуются давно. Сгенерировать эскиз нейросетью и выдать за свой нельзя.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
       {
         q: "Где разместиться мастеру аксессуаров, если уже есть магазин на маркетплейсе?",
@@ -1175,7 +1175,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли пользоваться цифровыми лекалами и раскроем?",
         a: "Да. Линия простая: нельзя генерировать, все остальное можно. Цифровые лекала, автоматическая раскладка, плоттер это инструменты швейного дела. Сгенерировать эскиз нейросетью и выдать за свой нельзя.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
       {
         q: "Как показать, что вещь сшили вы?",
@@ -1215,7 +1215,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли реставратору пользоваться цифровым анализом?",
         a: "Да, и это часть современной реставрации. Линия простая: нельзя генерировать, все остальное можно. Съемка в ультрафиолете и инфракрасном, рентген, макросъемка, цифровой архив состояния это инструменты исследования. Дорисовать утраченное нейросетью нельзя, это подделка, а не реставрация.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
       {
         q: "Как выбрать реставратора и о чем спросить сразу?",
@@ -1245,7 +1245,7 @@ const ru: FaqProfession[] = [
       {
         q: "Можно ли оцифровывать свою каллиграфию в шрифт?",
         a: "Да. Линия простая: нельзя генерировать, все остальное можно. Отсканировать свои буквы и собрать из них шрифт это работа с вашей же рукой. Сгенерировать надпись нейросетью нельзя.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
       {
         q: "Как показать, что надпись сделана рукой?",
@@ -1288,7 +1288,7 @@ const ru: FaqProfession[] = [
         q: "Можно ли играть под клик и править дубли?",
         a:
           "Да. Клик, склейка лучших дублей и подстройка строя это студийная работа, а не генерация. Линия там же, где у всех: сыграно человеком можно править, сгенерированную партию выдавать за игру нельзя.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
       {
         q: "Где разместиться музыканту?",
@@ -1327,7 +1327,7 @@ const ru: FaqProfession[] = [
         q: "Можно ли ювелиру пользоваться 3D-моделированием и печатью?",
         a:
           "Да. Модель в программе и печать воска это инструменты, как надфиль и горелка. Линия там же: форму придумывает и доводит мастер, а не генератор. Печать восковки не отменяет ручной посадки камня и полировки.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
       {
         q: "Где разместиться ювелиру?",
@@ -1366,7 +1366,7 @@ const ru: FaqProfession[] = [
         q: "Можно ли специалисту по безопасности пользоваться сканерами?",
         a:
           "Да. Сканер это инструмент разведки, как и в любой другой работе. Линия там же: находки подтверждает и объясняет человек. Отчет, целиком собранный из вывода сканера, это не проверка безопасности, а распечатка.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
       {
         q: "Где разместиться специалисту по безопасности?",
@@ -1405,7 +1405,7 @@ const ru: FaqProfession[] = [
         q: "Считается ли вычитка сгенерированного текста работой без ИИ?",
         a:
           "Нет. Если текст написала модель, а человек поправил запятые, работа человека это правка, а не текст. В профиле такое честно называют вычиткой, а не авторством.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
       {
         q: "Где разместиться корректору?",
@@ -1444,7 +1444,7 @@ const ru: FaqProfession[] = [
         q: "Можно ли леттеристу работать в векторе и на планшете?",
         a:
           "Да. Планшет, вектор и направляющие это инструменты. Линия там же, где у всех: форму букв придумывает и строит художник, а не генератор. Сгенерированную надпись нельзя выдавать за рисованную.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
       {
         q: "Где разместиться художнику леттеринга?",
@@ -1483,7 +1483,7 @@ const ru: FaqProfession[] = [
         q: "Можно ли пользоваться готовыми библиотеками и инструментами?",
         a:
           "Да, это обычный инструмент. Линия там же: логику разбора придумывает человек, который понимает, что означают ваши поля. Сгенерированный скрипт разбора красиво отработает и тихо потеряет часть строк.",
-        links: [{ label: "Стандарты Human-Made", href: "/human-made-standards" }],
+        links: [{ label: "Стандарты Human-Made", href: "/method" }],
       },
       {
         q: "Где разместиться специалисту по обработке данных?",
@@ -1534,7 +1534,7 @@ const en: FaqProfession[] = [
       {
         q: "Can I remove backgrounds in Photoshop and still work without AI?",
         a: "Yes. The line is simple: no generation, everything else is fine. Removing a background, correcting colour, cleaning edges, finding a reference are tools, and the author stays the author. The law reasons the same way: the US Copyright Office holds that assistive use of AI does not remove protection.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
       {
         q: "How do I check that an illustrator does not use AI?",
@@ -1572,7 +1572,7 @@ const en: FaqProfession[] = [
       {
         q: "Can I use a spellchecker and still write without AI?",
         a: "Yes. The line is simple: no generation, everything else is fine. Checking spelling, transcribing an interview, finding a source, breaking down someone else's structure are tools. Having a paragraph written for you is not. The US Copyright Office reasons the same way: assistive use of AI does not remove protection, while generated passages are unprotected and must be disclosed at registration.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
       {
         q: "Why does a human copywriter cost more than generation?",
@@ -1613,7 +1613,7 @@ const en: FaqProfession[] = [
       {
         q: "Can I use a glossary and translation memory?",
         a: "Yes. The line is simple: no generation, everything else is fine. Translation memory, glossaries, dictionaries, terminology checks are professional tools and translators had them long before neural networks. Running the text through a machine and tidying it is not: that is no longer your translation.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
       {
         q: "Why does human translation cost more than machine translation?",
@@ -1655,7 +1655,7 @@ const en: FaqProfession[] = [
       {
         q: "Can I use autocomplete and still work without AI?",
         a: "Depends which. The line is simple: no generation, everything else is fine. Suggesting a method name, searching documentation, a linter are tools. Generating a whole function or module and pasting it in unread is not: that is no longer your code, and you will not be able to answer for it.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
     ],
   },
@@ -1690,7 +1690,7 @@ const en: FaqProfession[] = [
       {
         q: "Can I edit my shots and still work without AI?",
         a: "Yes. The line is simple: no generation, everything else is fine. Colour correction, cropping, retouching, cleaning sensor dust are processing photographers have done since film. Painting in something with a model that was never in the frame is not.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
     ],
   },
@@ -1721,7 +1721,7 @@ const en: FaqProfession[] = [
       {
         q: "Can I list if I make digital copies for print?",
         a: "Yes. The line is simple: no generation, everything else is fine. Scanning a canvas, correcting colour on the scan, running a print edition is working with your own painting. Generating an image and selling it as painting is not.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
     ],
   },
@@ -1748,7 +1748,7 @@ const en: FaqProfession[] = [
       {
         q: "Can I use 3D printing and CNC?",
         a: "Yes, if you made the model. The line is simple: no generation, everything else is fine. Sculpting digitally, milling, printing a mould, casting are tools sculptors have used for years. Generating a model with a neural network and printing it is not.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
       {
         q: "How does a client check a sculptor before commissioning?",
@@ -1791,7 +1791,7 @@ const en: FaqProfession[] = [
       {
         q: "Can a concept artist use references and photobashing?",
         a: "Yes. The line is simple: no generation, everything else is fine. Gathering references, photobashing from your own or licensed photos, a 3D block-out for perspective are tools, concept artists have worked this way for years. Generating a frame and tracing over it is not allowed.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
     ],
   },
@@ -1823,7 +1823,7 @@ const en: FaqProfession[] = [
       {
         q: "Can I use an editor and a spellchecker?",
         a: "Yes. The line is simple: no generation, everything else is fine. Grammar checking, fact-finding, working with an editor are normal parts of writing. Generating a chapter is not.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
     ],
   },
@@ -1854,7 +1854,7 @@ const en: FaqProfession[] = [
       {
         q: "Can a non-fiction author use interview transcription?",
         a: "Yes. The line is simple: no generation, everything else is fine. Transcribing an interview, finding a source, checking a quote, building an index are tools. Generating a chapter or a paragraph is not allowed, only your contribution is protected, and it must be disclosed at registration.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
       {
         q: "How does a publisher check a non-fiction author?",
@@ -1889,7 +1889,7 @@ const en: FaqProfession[] = [
       {
         q: "Can a children’s author work with an editor and spell-check?",
         a: "Yes. The line is simple: no generation, everything else is fine. An editor, spell-check, fact-finding are a normal part of the work, and the Human Authored mark does not depend on them. Generating the text of the story is not allowed.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
       {
         q: "Who draws the illustrations if a human writes the book?",
@@ -1929,7 +1929,7 @@ const en: FaqProfession[] = [
       {
         q: "Can a poet use a rhyming dictionary?",
         a: "Yes. The line is simple: no generation, everything else is fine. A rhyming dictionary, a thesaurus, checking metre are tools, poets had them long before neural networks. Generating a line or a stanza is not allowed.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
     ],
   },
@@ -1959,7 +1959,7 @@ const en: FaqProfession[] = [
       {
         q: "Can I use auto-trace and plugins?",
         a: "Yes. The line is simple: no generation, everything else is fine. Tracing your own sketch, grids, plugins, a palette generator are tools. Generating a logo and tracing over it is not: the authorship will not be yours.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
     ],
   },
@@ -1990,7 +1990,7 @@ const en: FaqProfession[] = [
       {
         q: "Can a UI designer use auto layout and Figma plugins?",
         a: "Yes. The line is simple: no generation, everything else is fine. Auto layout, components, plugins for icons and grids, a dummy data generator are tools. Generating a whole screen and passing it off as a design is not allowed.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
       {
         q: "What belongs in a design besides the main screen?",
@@ -2021,7 +2021,7 @@ const en: FaqProfession[] = [
       {
         q: "Can I use auto-transcription and stabilisation?",
         a: "Yes. The line is simple: no generation, everything else is fine. Speech-to-subtitles, stabilisation, noise reduction, audio sync are an editor's tools. Generating footage that was never shot is not.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
       {
         q: "How does a client check an editor before hiring?",
@@ -2060,7 +2060,7 @@ const en: FaqProfession[] = [
       {
         q: "Can a motion designer use tracking and rotoscoping?",
         a: "Yes. The line is simple: no generation, everything else is fine. Tracking, automatic object selection, frame interpolation, preset curves are tools. Generating the whole piece with a neural network is not allowed.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
       {
         q: "How does a client check a motion designer?",
@@ -2090,7 +2090,7 @@ const en: FaqProfession[] = [
       {
         q: "Can I use automatic shot analysis?",
         a: "Yes. The line is simple: no generation, everything else is fine. Auto white balance, camera matching, noise reduction are tools. Painting in something that was never shot is not.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
       {
         q: "How do I show the grade is mine?",
@@ -2125,7 +2125,7 @@ const en: FaqProfession[] = [
       {
         q: "Does editing generated text count as working without AI?",
         a: "Your editing does, the finished text does not. The line is simple: no generation, everything else is fine. If the base is generated and you fixed it, that must be disclosed at copyright registration: only your contribution is protected.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
       {
         q: "How do I show the edits were mine and not a model’s?",
@@ -2165,7 +2165,7 @@ const en: FaqProfession[] = [
       {
         q: "Can a screenwriter use software like Final Draft?",
         a: "Yes. The line is simple: no generation, everything else is fine. Formatting, scene cards, timing, spell-check are tools, screenwriters have used them for decades. Generating a scene or dialogue is not allowed.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
       {
         q: "How does a producer check a screenwriter?",
@@ -2200,7 +2200,7 @@ const en: FaqProfession[] = [
       {
         q: "Can I clean the recording and remove noise?",
         a: "Yes. The line is simple: no generation, everything else is fine. Noise reduction, EQ, joining takes, removing breaths are an engineer's work on your voice. Synthesising a line you never read is not.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
     ],
   },
@@ -2231,7 +2231,7 @@ const en: FaqProfession[] = [
       {
         q: "Can I use samples and virtual instruments?",
         a: "Yes. The line is simple: no generation, everything else is fine. Sample libraries, virtual instruments, quantising, pitch correction are tools composers have worked with for decades. Generating a melody or a track is not.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
     ],
   },
@@ -2262,7 +2262,7 @@ const en: FaqProfession[] = [
       {
         q: "Can a sound designer use libraries and processing?",
         a: "Yes, and libraries are a normal part of the job. The line is simple: no generation, everything else is fine. Layers from libraries, pitching, reversing, granular processing are tools, sound is built from them. Generating a sound from a text description is not allowed.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
       {
         q: "How does a client check a sound designer?",
@@ -2292,7 +2292,7 @@ const en: FaqProfession[] = [
       {
         q: "Can I use automatic plugins?",
         a: "Yes. The line is simple: no generation, everything else is fine. Automatic resonance detection, noise reduction, stem separation, pitch correction are tools. Generating a part is not.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
       {
         q: "How do I show the mix is mine?",
@@ -2331,7 +2331,7 @@ const en: FaqProfession[] = [
       {
         q: "Can a mobile developer use autocomplete?",
         a: "Depends which. The line is simple: no generation, everything else is fine. Method name hints, documentation search, linters, automated tests are tools. Generating a whole screen or module and pasting it in unread is not allowed: you will not be able to answer for that code.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
       {
         q: "How do I show I wrote the app?",
@@ -2371,7 +2371,7 @@ const en: FaqProfession[] = [
       {
         q: "Can I use procedural generation and still work without AI?",
         a: "Yes, it is not the same thing. The line is simple: no neural network generation, everything else is fine. Procedural level generation is your algorithm, you wrote the rules the world is built from. Generating assets or code with a neural network is not allowed, and on Steam that would go into the store page disclosure.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
     ],
   },
@@ -2406,7 +2406,7 @@ const en: FaqProfession[] = [
       {
         q: "Can I use autocomplete when writing scripts?",
         a: "Depends which. The line is simple: no generation, everything else is fine. Syntax hints, documentation search, linters are tools. Generating a whole script and running it on live data is not allowed: that is exactly where the quietly skipped rows turn up later.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
     ],
   },
@@ -2438,7 +2438,7 @@ const en: FaqProfession[] = [
       {
         q: "Can an auditor use automated analysers?",
         a: "Yes, nobody audits without them. The line is simple: no generation, everything else is fine. Static analysers, dependency scanners, linters are tools, they clear out the obvious. A human draws the conclusions: an analyser cannot tell you this code should not exist at all.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
     ],
   },
@@ -2468,7 +2468,7 @@ const en: FaqProfession[] = [
       {
         q: "Can an architect use rendering and calculation software?",
         a: "Yes. The line is simple: no generation, everything else is fine. Rendering your own model, structural and daylight calculations, energy modelling, surveying a plot by drone are all tools. Generating an image of a house and presenting it as a design is not.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
       {
         q: "How is an architect different from an interior designer?",
@@ -2502,7 +2502,7 @@ const en: FaqProfession[] = [
       {
         q: "Can I use visualisation and palette tools?",
         a: "Yes. The line is simple: no generation, everything else is fine. Rendering your own model, picking combinations, catalogues, automatic light placement are tools. Generating an interior as a picture and passing it off as a project is not.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
     ],
   },
@@ -2532,7 +2532,7 @@ const en: FaqProfession[] = [
       {
         q: "Can a landscape designer use visualisation?",
         a: "Yes. The line is simple: no generation, everything else is fine. Rendering your own model, plant selection software, irrigation calculations, drone survey of the site are tools. Generating a picture of a garden and calling it a project is not allowed: there is nothing to build from it.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
       {
         q: "What belongs in a site design besides a pretty picture?",
@@ -2572,7 +2572,7 @@ const en: FaqProfession[] = [
       {
         q: "Can a maker edit photos of their own work?",
         a: "Yes. The line is simple: no generation, everything else is fine. Fixing the light, removing the background, cropping, building the listing is ordinary product photography. Generating a photo of the item or its description is not allowed: buyers come here precisely because that does not happen.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
     ],
   },
@@ -2603,7 +2603,7 @@ const en: FaqProfession[] = [
       {
         q: "Can an accessory maker use machines and laser cutting?",
         a: "Yes, if the design is yours. The line is simple: no generation, everything else is fine. Laser cutting, engraving, 3D-printed parts, digital patterns are tools and have been for years. Generating a sketch with a neural network and passing it off as yours is not allowed.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
       {
         q: "Where do I list if I already have a shop on a marketplace?",
@@ -2634,7 +2634,7 @@ const en: FaqProfession[] = [
       {
         q: "Can I use digital patterns and cutting?",
         a: "Yes. The line is simple: no generation, everything else is fine. Digital patterns, automatic nesting, a plotter are tools of the trade. Generating a sketch with a neural network and passing it off as yours is not.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
       {
         q: "How do I show I made the garment?",
@@ -2674,7 +2674,7 @@ const en: FaqProfession[] = [
       {
         q: "Can a restorer use digital analysis?",
         a: "Yes, and it is part of modern restoration. The line is simple: no generation, everything else is fine. Ultraviolet and infrared imaging, X-ray, macro photography, a digital record of condition are research tools. Painting in what was lost with a neural network is not allowed, that is forgery, not restoration.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
       {
         q: "How do I choose a restorer and what do I ask first?",
@@ -2704,7 +2704,7 @@ const en: FaqProfession[] = [
       {
         q: "Can I digitise my calligraphy into a font?",
         a: "Yes. The line is simple: no generation, everything else is fine. Scanning your own letters and building a font from them is working with your own hand. Generating lettering with a neural network is not.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
       {
         q: "How do I show the lettering was done by hand?",
@@ -2747,7 +2747,7 @@ const en: FaqProfession[] = [
         q: "Can a musician play to a click and edit takes?",
         a:
           "Yes. A click track, comping the best takes and tuning are studio craft, not generation. The line is the same as everywhere: what a person played can be edited, a generated part cannot be passed off as playing.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
       {
         q: "Where can a musician get listed?",
@@ -2786,7 +2786,7 @@ const en: FaqProfession[] = [
         q: "Can a jeweller use 3D modelling and printing?",
         a:
           "Yes. Modelling and printing a wax are tools, like a file or a torch. The line is the same: the maker designs and finishes the form, not a generator. A printed wax still gets hand-set stones and hand polishing.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
       {
         q: "Where can a jeweller get listed?",
@@ -2825,7 +2825,7 @@ const en: FaqProfession[] = [
         q: "Can a security specialist use scanners?",
         a:
           "Yes. A scanner is a reconnaissance tool like any other. The line is the same: a person confirms and explains every finding. A report assembled wholesale from scanner output is not a security review, it is a printout.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
       {
         q: "Where can a security specialist get listed?",
@@ -2864,7 +2864,7 @@ const en: FaqProfession[] = [
         q: "Does proofreading generated text count as human-made work?",
         a:
           "No. If a model wrote the text and a person fixed the commas, the human contribution is the correction, not the writing. An honest profile calls that proofreading, not authorship.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
       {
         q: "Where can a proofreader get listed?",
@@ -2903,7 +2903,7 @@ const en: FaqProfession[] = [
         q: "Can a lettering artist work in vector and on a tablet?",
         a:
           "Yes. A tablet, vector curves and guides are tools. The line is the same as everywhere: the artist invents and builds the letterforms, not a generator. Generated lettering cannot be passed off as drawn.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
       {
         q: "Where can a lettering artist get listed?",
@@ -2942,7 +2942,7 @@ const en: FaqProfession[] = [
         q: "Can a data specialist use ready-made libraries and tools?",
         a:
           "Yes, those are ordinary tools. The line is the same: a person who understands what your fields mean designs the parsing logic. A generated parser runs beautifully and quietly drops rows.",
-        links: [{ label: "Human-Made standards", href: "/human-made-standards" }],
+        links: [{ label: "Human-Made standards", href: "/method" }],
       },
       {
         q: "Where can a data specialist get listed?",

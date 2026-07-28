@@ -42,22 +42,22 @@ export default async function AboutPage({
         <h1>{dict.about.title}</h1>
         <p className="lead mt-4">{dict.about.intro}</p>
 
-        <h2 className="mt-10">{dict.about.whatTitle}</h2>
+        <h2 className="section-title mt-10">{dict.about.whatTitle}</h2>
         <p className="mt-3" style={{ color: "var(--color-muted)" }}>
           {dict.about.whatText}
         </p>
 
-        <h2 className="mt-10">{dict.about.whyTitle}</h2>
+        <h2 className="section-title mt-10">{dict.about.whyTitle}</h2>
         <p className="mt-3" style={{ color: "var(--color-muted)" }}>
           {dict.about.whyText}
         </p>
 
-        <h2 className="mt-10">{dict.about.howTitle}</h2>
+        <h2 className="section-title mt-10">{dict.about.howTitle}</h2>
         <p className="mt-3" style={{ color: "var(--color-muted)" }}>
           {dict.about.howText}
         </p>
 
-        <h2 className="mt-10">{dict.about.notClaimTitle}</h2>
+        <h2 className="section-title mt-10">{dict.about.notClaimTitle}</h2>
         <p className="mt-3" style={{ color: "var(--color-muted)" }}>
           {dict.about.notClaimText1}
           <LocaleLink lang={locale} href="/method" className="font-semibold" style={{ color: "var(--color-accent)" }}>

@@ -49,7 +49,7 @@ export function ContentPage({
         <div className="mt-10 space-y-10">
           {data.sections.map((s) => (
             <section key={s.heading}>
-              <h2 className="!text-[1.35rem]">{s.heading}</h2>
+              <h2 className="section-title !text-[1.35rem]">{s.heading}</h2>
               {s.paragraphs.map((para, i) => (
                 <p key={i} className="mt-3" style={{ color: "var(--color-muted)" }}>
                   {para}

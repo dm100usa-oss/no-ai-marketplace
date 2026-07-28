@@ -156,7 +156,7 @@ export const footerNav = [
     links: [
       { label: "Add your profile", href: "/join" },
       { label: "Pricing", href: "/pricing" },
-      { label: "Human-Made standards", href: "/human-made-standards" },
+      { label: "Human-Made standards", href: "/method" },
       { label: "Verification", href: "/verified" },
     ],
   },
