@@ -813,12 +813,13 @@ a { color: inherit; text-decoration: none; }
   }
 }
 
-/* Home page font trial. Overrides both type families inside the wrapper
-   and sets font-family on it, because the body element resolves its own
-   family before children ever see the variables. Remove this block and
-   the .font-trial wrapper on the home page to go back. */
+/* Home page font trial: the whole page on Manrope, headings and body
+   alike. Overrides both type families inside the wrapper and sets
+   font-family on it, because the body element resolves its own family
+   before children ever see the variables. Remove this block and the
+   .font-trial wrapper on the home page to go back. */
 .font-trial {
-  --font-display: var(--font-onest), ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-body: var(--font-onest), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-manrope), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-body: var(--font-manrope), ui-sans-serif, system-ui, -apple-system, sans-serif;
   font-family: var(--font-body);
 }
