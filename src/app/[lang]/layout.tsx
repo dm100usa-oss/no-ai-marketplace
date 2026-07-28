@@ -26,27 +26,9 @@ import type { Locale } from "@/i18n/config";
 //
 // The subsets carry unicode-range, so a browser only downloads the half it
 // needs for the page it is showing. Each Cyrillic file is around 8 KB.
-const inter = localFont({
-  src: [
-    { path: "../fonts/inter-latin-400-normal.woff2", weight: "400", style: "normal" },
-    { path: "../fonts/inter-cyrillic-400-normal.woff2", weight: "400", style: "normal" },
-    { path: "../fonts/inter-latin-500-normal.woff2", weight: "500", style: "normal" },
-    { path: "../fonts/inter-cyrillic-500-normal.woff2", weight: "500", style: "normal" },
-    { path: "../fonts/inter-latin-600-normal.woff2", weight: "600", style: "normal" },
-    { path: "../fonts/inter-cyrillic-600-normal.woff2", weight: "600", style: "normal" },
-    { path: "../fonts/inter-latin-700-normal.woff2", weight: "700", style: "normal" },
-    { path: "../fonts/inter-cyrillic-700-normal.woff2", weight: "700", style: "normal" },
-  ],
-  variable: "--font-inter",
-  display: "swap",
-});
 
 const manrope = localFont({
   src: [
-    { path: "../fonts/manrope-latin-600-normal.woff2", weight: "600", style: "normal" },
-    { path: "../fonts/manrope-cyrillic-600-normal.woff2", weight: "600", style: "normal" },
-    { path: "../fonts/manrope-latin-700-normal.woff2", weight: "700", style: "normal" },
-    { path: "../fonts/manrope-cyrillic-700-normal.woff2", weight: "700", style: "normal" },
     { path: "../fonts/manrope-latin-800-normal.woff2", weight: "800", style: "normal" },
     { path: "../fonts/manrope-cyrillic-800-normal.woff2", weight: "800", style: "normal" },
   ],
@@ -54,24 +36,25 @@ const manrope = localFont({
   display: "swap",
 });
 
-// Nunito Sans, loaded for the home page trial. Softer terminals than Inter
-// and a full Cyrillic set drawn with the Latin one, so mixed lines keep an
-// even weight. Applied through the .font-trial class on the home page; the
-// rest of the site stays on Inter and Manrope until we decide.
-const nunito = localFont({
+// Onest carries the whole site: headings, body, everything except the
+// wordmark. Cyrillic and Latin are drawn as one family, so a line
+// mixing "No AI" with Russian words keeps an even weight. Manrope
+// stays loaded for the logo alone, so the name keeps the shape it has
+// had since the first day.
+const onest = localFont({
   src: [
-    { path: "../fonts/nunito-latin-400-normal.woff2", weight: "400", style: "normal" },
-    { path: "../fonts/nunito-cyrillic-400-normal.woff2", weight: "400", style: "normal" },
-    { path: "../fonts/nunito-latin-500-normal.woff2", weight: "500", style: "normal" },
-    { path: "../fonts/nunito-cyrillic-500-normal.woff2", weight: "500", style: "normal" },
-    { path: "../fonts/nunito-latin-600-normal.woff2", weight: "600", style: "normal" },
-    { path: "../fonts/nunito-cyrillic-600-normal.woff2", weight: "600", style: "normal" },
-    { path: "../fonts/nunito-latin-700-normal.woff2", weight: "700", style: "normal" },
-    { path: "../fonts/nunito-cyrillic-700-normal.woff2", weight: "700", style: "normal" },
-    { path: "../fonts/nunito-latin-800-normal.woff2", weight: "800", style: "normal" },
-    { path: "../fonts/nunito-cyrillic-800-normal.woff2", weight: "800", style: "normal" },
+    { path: "../fonts/onest-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/onest-cyrillic-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/onest-latin-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "../fonts/onest-cyrillic-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "../fonts/onest-latin-600-normal.woff2", weight: "600", style: "normal" },
+    { path: "../fonts/onest-cyrillic-600-normal.woff2", weight: "600", style: "normal" },
+    { path: "../fonts/onest-latin-700-normal.woff2", weight: "700", style: "normal" },
+    { path: "../fonts/onest-cyrillic-700-normal.woff2", weight: "700", style: "normal" },
+    { path: "../fonts/onest-latin-800-normal.woff2", weight: "800", style: "normal" },
+    { path: "../fonts/onest-cyrillic-800-normal.woff2", weight: "800", style: "normal" },
   ],
-  variable: "--font-nunito",
+  variable: "--font-onest",
   display: "swap",
 });
 
@@ -155,8 +138,8 @@ export default async function LangLayout({
   };
 
   return (
-    <html lang={LOCALE_HTML_LANG[locale]} className={`${inter.variable} ${manrope.variable} ${nunito.variable}`}>
-      <body className="flex min-h-screen flex-col" style={{ fontFamily: "var(--font-inter), var(--font-body)" }}>
+    <html lang={LOCALE_HTML_LANG[locale]} className={`${manrope.variable} ${onest.variable}`}>
+      <body className="flex min-h-screen flex-col" style={{ fontFamily: "var(--font-body)" }}>
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger

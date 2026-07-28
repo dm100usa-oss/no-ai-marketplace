@@ -28,11 +28,11 @@ export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               <span
                 aria-hidden
                 className="grid h-6 w-6 place-items-center rounded-md text-[13px] font-extrabold"
-                style={{ background: "#fff", color: "var(--color-ink)", fontFamily: "var(--font-display)" }}
+                style={{ background: "#fff", color: "var(--color-ink)", fontFamily: "var(--font-brand)" }}
               >
                 No
               </span>
-              <span className="text-[1.1rem] font-extrabold text-white" style={{ fontFamily: "var(--font-display)" }}>
+              <span className="text-[1.1rem] font-extrabold text-white" style={{ fontFamily: "var(--font-brand)" }}>
                 AI Directory
               </span>
             </div>
