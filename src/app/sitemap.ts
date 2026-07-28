@@ -23,6 +23,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths: { path: string; priority: number }[] = [
     { path: "/", priority: 1 },
     { path: "/directory", priority: 0.9 },
+    // One page per participant kind. They answer a question the catalog
+    // only filters for, so they rank with the catalog, not below it.
+    { path: "/creators", priority: 0.9 },
+    { path: "/teams", priority: 0.9 },
+    { path: "/companies", priority: 0.9 },
     { path: "/categories", priority: 0.8 },
     { path: "/directions", priority: 0.8 },
     { path: "/verified", priority: 0.7 },

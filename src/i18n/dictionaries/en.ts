@@ -27,6 +27,9 @@ export const en: Dictionary = {
   footer: {
     explore: "Explore",
     knowledge: "Knowledge base",
+    creators: "Creators",
+    teams: "Teams",
+    companies: "Companies",
     forCreators: "For creators",
     project: "Project",
     legal: "Legal",
@@ -752,6 +755,93 @@ export const en: Dictionary = {
     professionSeeCatalog: "See creators in the catalog",
     professionBackToFaq: "All questions and answers",
     professionOnCategory: "Questions and answers",
+  },
+
+  participants: {
+    creators: {
+      metaTitle: "Creators without AI: illustrators, photographers, writers, designers",
+      metaDescription:
+        "A directory of creators who make their work by hand, without generative AI. Contact them directly, with no commissions and no middlemen.",
+      title: "Creators",
+      intro:
+        "People who do the work themselves and answer for it personally. Illustrators, photographers, writers, designers, translators, developers, makers.",
+      body: [
+        "Hiring a creator means the work has a name attached to it. You talk to the person who will do it, not to an account manager who passes the brief along. Revisions are discussed directly, and the person listening to you is the one who picks the work back up.",
+        "This usually makes sense when the job is a single clear one: a set of illustrations, a shoot, a text, a site, an interior. A creator costs less than a studio because there is no office or management in the price, and the quality rests on one person you can judge from a portfolio before you commit.",
+        "Every link in a profile goes to the creator's own site, shop or portfolio. We take no part in the conversation and no cut of the work.",
+      ],
+      whenTitle: "When a creator is the right call",
+      when: [
+        "One job, carried by one person from start to finish",
+        "You want a recognizable hand, not an averaged style",
+        "You would rather discuss the work with whoever is doing it",
+        "The budget is finite and the quality has to be predictable",
+      ],
+      emptyTitle: "Nobody listed yet",
+      emptyMessage:
+        "The first profiles are on their way. If you are a creator, the spot is still open.",
+      ctaTitle: "Looking for someone specific",
+      ctaText:
+        "Open the catalog and filter by direction, profession and country, or start with the guide for the profession you need.",
+      ctaBrowse: "Open the catalog",
+      ctaJoin: "Add your profile",
+    },
+    teams: {
+      metaTitle: "Teams without AI: several creators on one project",
+      metaDescription:
+        "Teams of creators working without generative AI. Several specialists on one project, direct contact, no platform commission.",
+      title: "Teams",
+      intro:
+        "Several creators who work together on one project and sort the work out among themselves. No office, no payroll, no management markup.",
+      body: [
+        "A team is what you need when the job does not fit in one pair of hands. A book needs a writer and an illustrator, a site needs a designer and a developer, a shoot needs a photographer and a stylist. You can hire each of them separately and introduce them to each other, or you can take people who have already worked together.",
+        "What separates a team from a company is that there is no legal entity or payroll behind it. These are individuals splitting the work, each answerable for their own part. That usually makes a team cheaper than a studio, with fewer formal guarantees, and the arrangements are made with the members directly.",
+        "Each team profile shows who is in it and what each person does. You can approach the team as a whole or any member on their own.",
+      ],
+      whenTitle: "When a team is the right call",
+      when: [
+        "The project has several distinct jobs in it",
+        "You want people who already know how to work together",
+        "You need a line-up for this project, not a standing contractor",
+        "It matters to you who is doing which part",
+      ],
+      emptyTitle: "No teams yet",
+      emptyMessage:
+        "This section has only just opened. If you work alongside colleagues, you can list your team and be first.",
+      ctaTitle: "Need a line-up for your project",
+      ctaText:
+        "Build a team yourself from individual creators in the catalog, or take one that already exists. Both work.",
+      ctaBrowse: "Browse creators",
+      ctaJoin: "List your team",
+    },
+    companies: {
+      metaTitle: "Companies and studios without AI: work under contract",
+      metaDescription:
+        "Studios and companies delivering work without generative AI. Contracts, deadlines, and the accountability of a legal entity. Direct contact, no commissions.",
+      title: "Companies",
+      intro:
+        "Studios, practices and companies with a standing team. They work under contract and answer for the result as a legal entity.",
+      body: [
+        "You choose a company when you need more than hands: a contract, a schedule, an invoice, someone accountable if a deadline slips. For a large or long job that has to stand up inside your own organization, that is usually the deciding argument.",
+        "A company distributes the work internally: you have one point of contact, and behind them sits a team you may never see. That is convenient and it costs more, because management, premises and guarantees are all in the price.",
+        "The platform rule is the same here as everywhere else: the work is made by people, and generation is not allowed. Whoever signs off the profile answers for that.",
+      ],
+      whenTitle: "When a company is the right call",
+      when: [
+        "You need a contract, an invoice and a legal entity behind the work",
+        "The project is large, or runs for months",
+        "Several specialisms are needed at once, from a standing team",
+        "Your organization requires a formal supplier",
+      ],
+      emptyTitle: "No companies yet",
+      emptyMessage:
+        "This section has only just opened. If you run a studio or a practice, the spot is still open.",
+      ctaTitle: "A large job",
+      ctaText:
+        "Look through the companies in the catalog, or start from the direction you need a supplier in.",
+      ctaBrowse: "Open the catalog",
+      ctaJoin: "List your company",
+    },
   },
 
   knowledge: {

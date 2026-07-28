@@ -14,6 +14,24 @@ export interface FaqEntry {
   a: string;
 }
 
+export interface ParticipantPage {
+  metaTitle: string;
+  metaDescription: string;
+  title: string;
+  intro: string;
+  /** Two or three paragraphs of substance: who this is, when to choose
+   *  them, what to check. */
+  body: string[];
+  whenTitle: string;
+  when: string[];
+  emptyTitle: string;
+  emptyMessage: string;
+  ctaTitle: string;
+  ctaText: string;
+  ctaBrowse: string;
+  ctaJoin: string;
+}
+
 export interface Dictionary {
   /** Brand-level strings. Name stays the same in every language. */
   site: {
@@ -40,6 +58,9 @@ export interface Dictionary {
   footer: {
     explore: string;
     knowledge: string;
+    creators: string;
+    teams: string;
+    companies: string;
     forCreators: string;
     project: string;
     legal: string;
@@ -432,6 +453,16 @@ export interface Dictionary {
     professionSeeCatalog: string;
     professionBackToFaq: string;
     professionOnCategory: string;
+  };
+
+  /** The three participant pages: creators, teams, companies. One page
+   *  per kind, because "find an illustrator", "find a team for a project"
+   *  and "find a studio for a large job" are three different questions
+   *  and a single catalog with a filter answers none of them by name. */
+  participants: {
+    creators: ParticipantPage;
+    teams: ParticipantPage;
+    companies: ParticipantPage;
   };
 
   /** Knowledge base: the hub that gathers every explanatory page on the

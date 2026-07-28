@@ -35,6 +35,9 @@ export function footerNav(dict: Dictionary): NavGroup[] {
       title: dict.footer.explore,
       links: [
         { label: dict.footer.directory, href: "/directory" },
+        { label: dict.footer.creators, href: "/creators" },
+        { label: dict.footer.teams, href: "/teams" },
+        { label: dict.footer.companies, href: "/companies" },
         { label: dict.footer.allCategories, href: "/categories" },
         { label: dict.footer.directions, href: "/directions" },
         { label: dict.footer.verifiedProfiles, href: "/verified" },
