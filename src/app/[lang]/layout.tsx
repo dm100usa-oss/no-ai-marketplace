@@ -54,6 +54,27 @@ const manrope = localFont({
   display: "swap",
 });
 
+// Nunito Sans, loaded for the home page trial. Softer terminals than Inter
+// and a full Cyrillic set drawn with the Latin one, so mixed lines keep an
+// even weight. Applied through the .font-trial class on the home page; the
+// rest of the site stays on Inter and Manrope until we decide.
+const nunito = localFont({
+  src: [
+    { path: "../fonts/nunito-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/nunito-cyrillic-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/nunito-latin-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "../fonts/nunito-cyrillic-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "../fonts/nunito-latin-600-normal.woff2", weight: "600", style: "normal" },
+    { path: "../fonts/nunito-cyrillic-600-normal.woff2", weight: "600", style: "normal" },
+    { path: "../fonts/nunito-latin-700-normal.woff2", weight: "700", style: "normal" },
+    { path: "../fonts/nunito-cyrillic-700-normal.woff2", weight: "700", style: "normal" },
+    { path: "../fonts/nunito-latin-800-normal.woff2", weight: "800", style: "normal" },
+    { path: "../fonts/nunito-cyrillic-800-normal.woff2", weight: "800", style: "normal" },
+  ],
+  variable: "--font-nunito",
+  display: "swap",
+});
+
 /** Build one static shell per language. */
 export function generateStaticParams() {
   return LOCALES.map((lang) => ({ lang }));
@@ -134,7 +155,7 @@ export default async function LangLayout({
   };
 
   return (
-    <html lang={LOCALE_HTML_LANG[locale]} className={`${inter.variable} ${manrope.variable}`}>
+    <html lang={LOCALE_HTML_LANG[locale]} className={`${inter.variable} ${manrope.variable} ${nunito.variable}`}>
       <body className="flex min-h-screen flex-col" style={{ fontFamily: "var(--font-inter), var(--font-body)" }}>
         <script
           type="application/ld+json"
