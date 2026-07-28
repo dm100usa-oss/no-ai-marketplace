@@ -153,7 +153,6 @@ export const en: Dictionary = {
       },
       "Get predictable quality and original work",
       "Work with individual, verified professionals",
-      "Talk directly with the people behind the work",
       "Build your own team for a specific project",
       "Or choose an established team or company",
     ],
