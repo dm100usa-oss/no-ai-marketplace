@@ -75,6 +75,7 @@ export function footerNav(dict: Dictionary): NavGroup[] {
       title: dict.footer.legal,
       links: [
         { label: dict.footer.privacy, href: "/privacy" },
+        { label: dict.footer.cookiePolicy, href: "/cookie-policy" },
         { label: dict.footer.terms, href: "/terms" },
         { label: dict.footer.listingPolicy, href: "/listing-policy" },
         { label: dict.footer.verificationPolicy, href: "/verification-policy" },

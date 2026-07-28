@@ -50,6 +50,7 @@ export const en: Dictionary = {
     about: "About",
     contact: "Contact",
     privacy: "Privacy Policy",
+    cookiePolicy: "Cookie policy",
     terms: "Terms of Use",
     listingPolicy: "Listing Policy",
     verificationPolicy: "Verification Policy",
@@ -1332,6 +1333,11 @@ export const en: Dictionary = {
       title: "Privacy Policy",
       intro:
         "This page explains how No AI Directory handles personal data, cookies and third-party services (Tally forms, Stripe payments, analytics, hosting on Vercel). We collect the minimum needed to run the directory and never sell your data. Listing submissions are processed by the Tally form service, not directly by us. When you send a review we briefly store the sender's IP address solely to prevent spam.",
+    },
+    cookiePolicy: {
+      title: "Cookie policy",
+      intro:
+        "Cookies are small records a site leaves in your browser. No AI Directory runs no advertising cookies and passes nothing about you to ad networks. We set no tracking cookies of our own. The functional records that do exist come from three services the site depends on: Vercel hosting, which balances traffic and blocks attacks; Vercel's built-in analytics, which counts page views anonymously, with no visitor identifier and no profiling; and Tally forms, which load only on the join page and operate under that service's own terms. The site's visit counter keeps a single number in an Upstash Redis database and is tied to no visitor. When you submit a review we hold the sender's IP address briefly to filter spam, then discard it. You can disable cookies in your browser: the catalog, search and profiles will work as usual, since none of these records are needed to read the site. If payments are added later, Stripe will set its own technical cookies on the payment pages, and we will describe them here.",
     },
     terms: {
       title: "Terms of Use",

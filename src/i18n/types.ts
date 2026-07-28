@@ -95,6 +95,7 @@ export interface Dictionary {
     about: string;
     contact: string;
     privacy: string;
+    cookiePolicy: string;
     terms: string;
     listingPolicy: string;
     verificationPolicy: string;
@@ -712,6 +713,7 @@ export interface Dictionary {
 
   legal: {
     privacy: { title: string; intro: string };
+    cookiePolicy: { title: string; intro: string };
     terms: { title: string; intro: string };
     listingPolicy: { title: string; intro: string };
     verificationPolicy: { title: string; intro: string };
