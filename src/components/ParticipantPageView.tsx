@@ -85,16 +85,7 @@ export function ParticipantPageView({
         <ul className="mt-4 flex flex-col gap-4 text-[1.05rem]">
           {page.when.map((line) => (
             <li key={line} className="flex items-start gap-3" style={{ color: "var(--color-ink)" }}>
-              <span
-                aria-hidden="true"
-                className="mt-[0.45rem] shrink-0 rounded-full"
-                style={{
-                  width: "0.7rem",
-                  height: "0.7rem",
-                  background: "radial-gradient(circle at 30% 30%, #6f92cf, #325ba3 70%, #274a86)",
-                  boxShadow: "0 1px 2px rgba(30,50,90,0.4), inset 0 1px 1px rgba(255,255,255,0.45)",
-                }}
-              />
+              <span aria-hidden="true" className="bullet-ball" />
               <span>{line}</span>
             </li>
           ))}

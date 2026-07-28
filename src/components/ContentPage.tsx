@@ -58,8 +58,8 @@ export function ContentPage({
               {s.bullets && s.bullets.length > 0 && (
                 <ul className="mt-4 space-y-2" style={{ color: "var(--color-muted)" }}>
                   {s.bullets.map((b, i) => (
-                    <li key={i} className="flex gap-2 text-[0.98rem]">
-                      <span aria-hidden style={{ color: "var(--color-accent)" }}>•</span>
+                    <li key={i} className="flex gap-3 text-[0.98rem]">
+                      <span aria-hidden className="bullet-ball" />
                       <span>{b}</span>
                     </li>
                   ))}

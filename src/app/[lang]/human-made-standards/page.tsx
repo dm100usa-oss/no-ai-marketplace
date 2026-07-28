@@ -43,26 +43,26 @@ export default async function StandardsPage({
         <h1>{s.title}</h1>
         <p className="lead mt-4">{s.intro}</p>
 
-        <h2 className="mt-10">{s.oneLineTitle}</h2>
+        <h2 className="section-title mt-10">{s.oneLineTitle}</h2>
         <p className="mt-3" style={{ color: "var(--color-muted)" }}>
           {s.oneLineText}
         </p>
 
-        <h2 className="mt-10">{s.belongsTitle}</h2>
+        <h2 className="section-title mt-10">{s.belongsTitle}</h2>
         <ul className="mt-3 space-y-2" style={{ color: "var(--color-muted)" }}>
           {s.belongsItems.map((it) => (
             <BulletItem key={it}>{it}</BulletItem>
           ))}
         </ul>
 
-        <h2 className="mt-10">{s.hybridTitle}</h2>
+        <h2 className="section-title mt-10">{s.hybridTitle}</h2>
         <p className="mt-3" style={{ color: "var(--color-muted)" }}>
           {s.hybridText1}
           <strong style={{ color: "var(--color-ink)" }}>{s.hybridStrong}</strong>
           {s.hybridText2}
         </p>
 
-        <h2 className="mt-10">{s.notBelongTitle}</h2>
+        <h2 className="section-title mt-10">{s.notBelongTitle}</h2>
         <ul className="mt-3 space-y-2" style={{ color: "var(--color-muted)" }}>
           {s.notBelongItems.map((it) => (
             <BulletItem key={it}>{it}</BulletItem>
@@ -91,7 +91,7 @@ export default async function StandardsPage({
           </div>
         </div>
 
-        <h2 className="mt-10">{s.ifWrongTitle}</h2>
+        <h2 className="section-title mt-10">{s.ifWrongTitle}</h2>
         <p className="mt-3" style={{ color: "var(--color-muted)" }}>
           {s.ifWrongText1}
           <LocaleLink lang={locale} href="/listing-policy" className="font-semibold" style={{ color: "var(--color-accent)" }}>
@@ -107,7 +107,7 @@ export default async function StandardsPage({
 function BulletItem({ children }: { children: React.ReactNode }) {
   return (
     <li className="flex gap-2 text-[0.98rem]">
-      <span aria-hidden style={{ color: "var(--color-accent)" }}>•</span>
+      <span aria-hidden className="bullet-ball" />
       <span>{children}</span>
     </li>
   );

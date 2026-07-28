@@ -116,8 +116,8 @@ export default async function GlossaryPage({
                 {group.terms.map((t) => (
                   <div
                     key={t.term}
-                    className="border-l-2 pl-4"
-                    style={{ borderColor: "var(--color-brand)" }}
+                    className="rounded-xl p-4"
+                    style={{ background: "var(--color-brand-soft)" }}
                   >
                     <dt
                       className="text-[1.1rem] font-bold"

@@ -41,7 +41,7 @@ export function StubPage({
             reads as a statement, and the eye can find where it starts. */}
         <div
           className="mt-4 rounded-2xl p-5 md:p-6"
-          style={{ background: "var(--color-brand-soft)", borderLeft: "4px solid var(--color-accent)" }}
+          style={{ background: "var(--color-brand-soft)" }}
         >
           <p className="lead !mt-0">{intro}</p>
         </div>
