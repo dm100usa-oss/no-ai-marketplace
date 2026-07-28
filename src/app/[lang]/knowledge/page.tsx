@@ -19,6 +19,9 @@ import type { Locale } from "@/i18n/config";
 
 const ROUTE = "/knowledge";
 
+/** Tile colours for the platform documents, in the catalog's own order. */
+const DOC_TONES = ["services", "art", "writing", "craft"] as const;
+
 /**
  * The knowledge base: one address that gathers every explanatory page on
  * the site.
@@ -127,24 +130,34 @@ export default async function KnowledgePage({
           <p className="mt-2 text-[0.98rem]" style={{ color: "var(--color-muted)" }}>
             {k.docsIntro}
           </p>
+          {/* Raised colour tiles, the same device as the direction tiles on
+              the home page. A document is a place to go, not a line in a
+              list, and the reader already knows what a tile of this shape
+              means here. Colours are taken in the catalog's own order so
+              nothing new is invented for this page. */}
           <div className="mt-5 grid gap-3 sm:grid-cols-2">
-            {k.docs.map((doc) => (
+            {k.docs.map((doc, i) => (
               <LocaleLink
                 key={doc.href}
                 lang={locale}
                 href={doc.href}
-                className="rounded-2xl border bg-white p-5 transition-colors hover:border-[var(--color-brand)]"
-                style={{ borderColor: "var(--color-line)" }}
+                className="press-btn rounded-2xl p-5"
+                style={{
+                  background: `var(--color-dir-${DOC_TONES[i % DOC_TONES.length]}-bg)`,
+                  border: "1px solid rgba(22, 35, 58, 0.06)",
+                  boxShadow:
+                    "inset 0 2px 0 rgba(255, 255, 255, 0.6), var(--shadow-raise)",
+                }}
               >
                 <span
-                  className="block text-[1.05rem] font-bold"
+                  className="block text-[1.1rem] font-bold"
                   style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
                 >
                   {doc.title}
                 </span>
                 <span
                   className="mt-1.5 block text-[0.95rem] leading-relaxed"
-                  style={{ color: "var(--color-muted)" }}
+                  style={{ color: "var(--color-ink)", opacity: 0.75 }}
                 >
                   {doc.text}
                 </span>
