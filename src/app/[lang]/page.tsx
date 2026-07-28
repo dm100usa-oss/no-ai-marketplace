@@ -658,7 +658,7 @@ export default async function HomePage({
             items={dict.home.howSteps}
           />
           <p
-            className="mt-6 text-justify text-[0.95rem] leading-relaxed"
+            className="mt-6 text-justify text-[1.15rem] leading-relaxed"
             style={{ color: "var(--color-muted)" }}
           >
             {dict.home.howReport}
