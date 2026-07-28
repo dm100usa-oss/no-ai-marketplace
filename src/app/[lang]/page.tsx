@@ -647,7 +647,14 @@ export default async function HomePage({
       </section>
 
       {/* ---------- How the platform works ---------- */}
-      <section className="pb-[clamp(2.5rem,6vw,4.5rem)]" style={{ paddingTop: "31px" }}>
+      {/* Tinted like the categories band above it, so the white question
+          cards sit on colour instead of on the page. A pale teal rather
+          than the same blue: three identical bands in a row would read as
+          one long block and the section would lose its own edges. */}
+      <section
+        className="pb-[clamp(2.5rem,6vw,4.5rem)]"
+        style={{ paddingTop: "31px", background: "var(--color-dir-services-bg)" }}
+      >
         <div className="container-page">
           <div className="mb-6">
             <h2 className="text-center">{dict.home.howItWorks}</h2>
