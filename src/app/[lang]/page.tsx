@@ -369,7 +369,11 @@ export default async function HomePage({
                         new point, so it hangs under it without a bullet and in
                         a quieter colour: read as a continuation, not a claim of
                         its own. */}
-                    <span>
+                    {/* Justified to the right edge, at Ricardo's request, so
+                        the block reads as a column rather than a ragged list.
+                        Automatic hyphenation goes with it: without it Russian
+                        words are long enough to open gaps a finger wide. */}
+                    <span style={{ textAlign: "justify", hyphens: "auto" }}>
                       {text}
                       {sub ? (
                         <span className="block" style={{ color: "var(--color-muted)" }}>
@@ -413,7 +417,11 @@ export default async function HomePage({
                         boxShadow: "0 1px 2px rgba(15,90,80,0.4), inset 0 1px 1px rgba(255,255,255,0.45)",
                       }}
                     />
-                    <span>
+                    {/* Justified to the right edge, at Ricardo's request, so
+                        the block reads as a column rather than a ragged list.
+                        Automatic hyphenation goes with it: without it Russian
+                        words are long enough to open gaps a finger wide. */}
+                    <span style={{ textAlign: "justify", hyphens: "auto" }}>
                       {text}
                       {sub ? (
                         <span className="block" style={{ color: "var(--color-muted)" }}>
