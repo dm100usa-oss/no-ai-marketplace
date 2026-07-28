@@ -713,10 +713,16 @@ a { color: inherit; text-decoration: none; }
    Every five seconds the icon swells and settles back. It says "this is a
    button" without a word, and it costs one transform on one small element.
 
-   The whole cycle is one 5s animation rather than a 0.9s animation with a
-   4.1s delay: a delay only fires once, an animation loops. The movement is
-   packed into the first 18% and the rest of the timeline is the icon
+   The whole cycle is one 5s animation rather than a short animation with a
+   long delay: a delay only fires once, an animation loops. The movement is
+   packed into the first 40% and the rest of the timeline is the icon
    sitting still.
+
+   The icon grows, walks one clockwise circle of 5px around its own place
+   and settles back. The circle is a translation, not a rotation: a rotated
+   magnifier looks like it is spinning on a pin, while one carried around a
+   small circle reads as searching. 5px is enough to be seen across a
+   button and small enough that the icon never approaches the label.
 
    Only transform is animated, so the browser hands it to the compositor
    and no layout is recalculated. The icon has its own element, so nothing
@@ -725,11 +731,16 @@ a { color: inherit; text-decoration: none; }
    Paused unless the button is on screen — see .btn-pulse-live in the
    component. No point animating below the fold. */
 @keyframes icon-pulse {
-  0%   { transform: scale(1); }
-  6%   { transform: scale(1.22); }
-  14%  { transform: scale(0.97); }
-  18%  { transform: scale(1); }
-  100% { transform: scale(1); }
+  0%   { transform: translate(0, 0) scale(1); }
+  /* Linear through the circle itself: eased steps at each quarter would
+     make the icon stutter at twelve, three, six and nine o'clock. */
+  6%   { transform: translate(0, -5px) scale(1.25); animation-timing-function: linear; }
+  13%  { transform: translate(5px, 0) scale(1.25); animation-timing-function: linear; }
+  20%  { transform: translate(0, 5px) scale(1.25); animation-timing-function: linear; }
+  27%  { transform: translate(-5px, 0) scale(1.25); animation-timing-function: linear; }
+  34%  { transform: translate(0, -5px) scale(1.25); }
+  42%  { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(0, 0) scale(1); }
 }
 .btn-pulse {
   display: inline-flex;
