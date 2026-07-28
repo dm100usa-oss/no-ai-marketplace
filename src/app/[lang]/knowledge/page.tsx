@@ -167,17 +167,31 @@ export default async function KnowledgePage({
         </section>
 
         <section className="mt-14">
-          <h2 className="!text-[1.35rem]">{k.professionsTitle}</h2>
-          <p className="mt-2 text-[0.98rem]" style={{ color: "var(--color-muted)" }}>
-            {k.professionsIntro}
-          </p>
+          {/* The heading sits on colour, so the long list below it reads as
+              one section rather than as loose links on the page. */}
+          <div
+            className="rounded-2xl p-5 md:p-6"
+            style={{ background: "var(--color-brand-soft)" }}
+          >
+            <h2 className="!mt-0 !text-[1.35rem]">{k.professionsTitle}</h2>
+            <p className="mt-2 text-[0.98rem]" style={{ color: "var(--color-muted)" }}>
+              {k.professionsIntro}
+            </p>
+          </div>
 
-          <div className="mt-6 space-y-8">
+          <div className="mt-8 space-y-8">
             {groups.map(({ dir, items }) => (
               <div key={dir.slug}>
+                {/* Each direction wears its own colour from the catalog, the
+                    same one its tile carries on the home page, so a reader
+                    recognizes the section before reading the word. */}
                 <h3
-                  className="text-[1.05rem] font-bold"
-                  style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+                  className="rounded-xl py-2.5 text-center text-[1.05rem] font-bold"
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    background: `var(--color-dir-${dir.color}-bg)`,
+                    color: `var(--color-dir-${dir.color}-ink)`,
+                  }}
                 >
                   {dir.name}
                 </h3>
