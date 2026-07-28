@@ -135,9 +135,9 @@ export const en: Dictionary = {
     ],
     audienceAllPrefix: "All",
     steps: [
-      { title: "Tell us about yourself", text: "Create a profile and show your work" },
-      { title: "Attract new clients", text: "Who value your experience, quality and unique result" },
-      { title: "Earn", text: "Growing your audience and opportunities" },
+      { title: "Tell us about yourself", text: "On a platform built for this" },
+      { title: "Reach the right clients", text: "For long-term working relationships" },
+      { title: "Earn more", text: "Thanks to a higher conversion rate" },
     ],
     heroAdvantagesTitle: "Our advantages",
     heroAdvantages: [
