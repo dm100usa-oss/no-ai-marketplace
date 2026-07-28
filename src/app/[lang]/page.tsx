@@ -279,7 +279,7 @@ export default async function HomePage({
       {/* ---------- Hero content ---------- */}
       {/* Tighter on top than a normal .section: this block belongs to the
           people band above it, not to the page below. */}
-      <section className="pt-3.5 pb-10 sm:pt-8 sm:pb-16">
+      <section className="pt-7 pb-10 sm:pt-8 sm:pb-16">
         <div className="container-page">
           {/* Advantages — the page opens on the numbers: they answer
               "why this platform" before anything else is asked of the reader.
