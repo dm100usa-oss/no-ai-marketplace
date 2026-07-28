@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { PlusIcon, MinusIcon } from "./icons";
 
 export interface FAQItem {
@@ -25,8 +25,17 @@ export function FAQ({ items }: { items: FAQItem[] }) {
   );
 }
 
+/**
+ * The answer is always present in the server HTML and is only collapsed
+ * with CSS (grid rows 0fr to 1fr, same trick as FindAccordion), so search
+ * crawlers and AI answer engines read the full question and answer pair
+ * without having to run the click. Nothing is removed from the DOM and
+ * nothing is hidden with display:none.
+ */
 function FAQRow({ item }: { item: FAQItem }) {
   const [open, setOpen] = useState(false);
+  const panelId = useId();
+
   return (
     <li
       className="rounded-xl border bg-white"
@@ -36,6 +45,7 @@ function FAQRow({ item }: { item: FAQItem }) {
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
+        aria-controls={panelId}
         className="flex w-full items-center justify-between gap-3 px-4 py-4 text-left"
       >
         <span
@@ -52,13 +62,19 @@ function FAQRow({ item }: { item: FAQItem }) {
           {open ? <MinusIcon size={18} /> : <PlusIcon size={18} />}
         </span>
       </button>
-      {open && (
-        <div className="px-4 pb-4 pt-0">
-          <p className="text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
-            {item.a}
-          </p>
+      <div
+        id={panelId}
+        className="grid transition-[grid-template-rows] duration-300 ease-out"
+        style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
+      >
+        <div className="overflow-hidden">
+          <div className="px-4 pb-4 pt-0">
+            <p className="text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
+              {item.a}
+            </p>
+          </div>
         </div>
-      )}
+      </div>
     </li>
   );
 }
