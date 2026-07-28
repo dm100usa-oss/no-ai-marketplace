@@ -52,6 +52,8 @@ export function footerNav(dict: Dictionary): NavGroup[] {
     {
       title: dict.footer.ourApproach,
       links: [
+        { label: dict.footer.knowledge, href: "/knowledge" },
+        { label: dict.footer.humanMadeStandards, href: "/human-made-standards" },
         { label: dict.footer.method, href: "/method" },
         { label: dict.footer.whyUs, href: "/why-us" },
         { label: dict.footer.faq, href: "/faq" },

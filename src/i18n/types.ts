@@ -39,6 +39,7 @@ export interface Dictionary {
   /** Footer group titles and any footer-only labels. */
   footer: {
     explore: string;
+    knowledge: string;
     forCreators: string;
     project: string;
     legal: string;
@@ -431,6 +432,27 @@ export interface Dictionary {
     professionSeeCatalog: string;
     professionBackToFaq: string;
     professionOnCategory: string;
+  };
+
+  /** Knowledge base: the hub that gathers every explanatory page on the
+   *  site. The catalog answers "who does this work"; this section answers
+   *  "what counts as work without AI, and how do I tell". Both are needed
+   *  before a search or answer engine treats the site as a source rather
+   *  than a listing. */
+  knowledge: {
+    metaTitle: string;
+    metaDescription: string;
+    title: string;
+    intro: string;
+    docsTitle: string;
+    docsIntro: string;
+    docs: { title: string; text: string; href: string }[];
+    professionsTitle: string;
+    professionsIntro: string;
+    ctaTitle: string;
+    ctaText: string;
+    ctaFind: string;
+    ctaJoin: string;
   };
 
   /** "Our method" — absorbs the former Human-Made standards and

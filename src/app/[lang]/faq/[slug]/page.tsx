@@ -108,7 +108,7 @@ export default async function FaqProfessionPage({
         lang={locale}
         items={[
           { label: dict.common.home, href: "/" },
-          { label: p.title, href: "/faq" },
+          { label: dict.knowledge.title, href: "/knowledge" },
           { label: prof.title },
         ]}
       />

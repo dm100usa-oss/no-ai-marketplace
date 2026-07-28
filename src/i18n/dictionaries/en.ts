@@ -26,6 +26,7 @@ export const en: Dictionary = {
 
   footer: {
     explore: "Explore",
+    knowledge: "Knowledge base",
     forCreators: "For creators",
     project: "Project",
     legal: "Legal",
@@ -751,6 +752,47 @@ export const en: Dictionary = {
     professionSeeCatalog: "See creators in the catalog",
     professionBackToFaq: "All questions and answers",
     professionOnCategory: "Common questions",
+  },
+
+  knowledge: {
+    metaTitle: "Knowledge base",
+    metaDescription:
+      "How to tell human work from generated work, what counts as using AI, and how to check a professional before you hire. Profession guides and platform standards.",
+    title: "Knowledge base",
+    intro:
+      "Everything we know about work made without generative AI, and about telling it apart from work that was generated. Guides for every profession, the standards this directory runs on, and how verification works. Looking to hire? Start with the guide for the profession you need: it answers the questions people actually ask before commissioning work.",
+    docsTitle: "Platform standards",
+    docsIntro: "Four documents explaining the rules everything here runs on.",
+    docs: [
+      {
+        title: "Human-Made standards",
+        text: "What counts as made by a person, what does not, and how work where AI helped with the small things is treated.",
+        href: "/human-made-standards",
+      },
+      {
+        title: "Our method",
+        text: "How the directory works, what we require before publishing a profile, and what happens when the rules are broken.",
+        href: "/method",
+      },
+      {
+        title: "Verification policy",
+        text: "What a person actually reviews when a creator submits material, and what the verified badge does and does not claim.",
+        href: "/verification-policy",
+      },
+      {
+        title: "Why without AI",
+        text: "What a client gains by hiring a real person, beyond the finished work itself.",
+        href: "/why-us",
+      },
+    ],
+    professionsTitle: "Profession guides",
+    professionsIntro:
+      "One guide per profession: how to check where a piece of work came from, what to ask before hiring, where the line runs on using AI, and where a creator can get listed.",
+    ctaTitle: "From questions to people",
+    ctaText:
+      "Once you know who you are looking for, open the catalog. Every contact is direct; we take no part in the conversation and no cut of the work.",
+    ctaFind: "Open the catalog",
+    ctaJoin: "Add your profile",
   },
 
   method: {

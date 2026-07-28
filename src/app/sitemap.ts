@@ -30,6 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/pricing", priority: 0.7 },
     { path: "/method", priority: 0.6 },
     { path: "/why-us", priority: 0.6 },
+    { path: "/knowledge", priority: 0.8 },
     { path: "/faq", priority: 0.6 },
     { path: "/about", priority: 0.6 },
     { path: "/contact", priority: 0.5 },
