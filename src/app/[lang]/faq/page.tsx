@@ -40,6 +40,10 @@ export default async function FaqPage({
   const professions = getFaqProfessions(locale);
 
   return (
+    // Tinted band behind the whole page: white question cards on white
+    // background gave the page no shape at all. The colour is the same
+    // one the catalog bands use, so nothing new is introduced.
+    <div className="section-brand">
     <div className="container-page section">
       <Breadcrumbs
         lang={locale}
@@ -99,6 +103,7 @@ export default async function FaqPage({
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }
