@@ -188,7 +188,7 @@ export const en: Dictionary = {
     popularCategoriesSub: "Go straight to the specialization you need",
     howItWorks: "How the platform works",
     howItWorksSub:
-      "We help you find talented creators, teams and companies that work without using AI. All arrangements and further collaboration happen directly between the parties, with no commissions and no middlemen.",
+      "We help clients find talented creators, teams and companies who work without artificial intelligence, so the result is predictable and one of a kind. And we help creators reach long-term clients who value their skill, experience and quality of work. You deal with each other directly, with no commissions and no middlemen.",
     howSteps: [
       {
         q: "1. Choose a direction",
