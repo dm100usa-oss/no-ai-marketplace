@@ -155,7 +155,7 @@ export default async function HomePage({
               {dict.site.tagline}
             </p>
             <p
-              className="mt-1.5 text-[1.05rem] font-normal leading-tight sm:text-[1.5rem] md:text-[1.7rem]"
+              className="mt-1.5 text-[1.15rem] font-normal leading-tight sm:text-[1.5rem] md:text-[1.7rem]"
               style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
             >
               {dict.site.taglineSub}
