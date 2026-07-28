@@ -20,7 +20,7 @@ import type { Locale } from "@/i18n/config";
 const ROUTE = "/knowledge";
 
 /** Tile colours for the platform documents, in the catalog's own order. */
-const DOC_TONES = ["services", "art", "writing", "craft"] as const;
+const DOC_TONES = ["services", "art", "writing", "craft", "design"] as const;
 
 /**
  * The knowledge base: one address that gathers every explanatory page on

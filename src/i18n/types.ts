@@ -32,6 +32,19 @@ export interface ParticipantPage {
   ctaJoin: string;
 }
 
+export interface GlossaryTerm {
+  /** The term itself, as people say it. */
+  term: string;
+  /** Short form, plural or English original, when there is one. */
+  aka?: string;
+  /** Two or three sentences. The first one is the definition, complete on
+   *  its own, because that is the sentence that gets quoted. */
+  definition: string;
+  /** Where the full explanation lives, when there is one. */
+  href?: string;
+  hrefLabel?: string;
+}
+
 export interface Dictionary {
   /** Brand-level strings. Name stays the same in every language. */
   site: {
@@ -58,6 +71,7 @@ export interface Dictionary {
   footer: {
     explore: string;
     knowledge: string;
+    glossary: string;
     creators: string;
     teams: string;
     companies: string;
@@ -463,6 +477,23 @@ export interface Dictionary {
     creators: ParticipantPage;
     teams: ParticipantPage;
     companies: ParticipantPage;
+  };
+
+  /** Glossary. People ask an answer engine what "human-made" means and
+   *  what counts as using AI long before they ask where to hire anyone.
+   *  Short definitions answer that better than an essay, and this is
+   *  where our own named scale belongs, so quoting the definition means
+   *  naming its source. */
+  glossary: {
+    metaTitle: string;
+    metaDescription: string;
+    title: string;
+    intro: string;
+    groups: { title: string; terms: GlossaryTerm[] }[];
+    ctaTitle: string;
+    ctaText: string;
+    ctaKnowledge: string;
+    ctaBrowse: string;
   };
 
   /** Knowledge base: the hub that gathers every explanatory page on the

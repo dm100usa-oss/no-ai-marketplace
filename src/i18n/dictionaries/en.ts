@@ -27,6 +27,7 @@ export const en: Dictionary = {
   footer: {
     explore: "Explore",
     knowledge: "Knowledge base",
+    glossary: "Glossary",
     creators: "Creators",
     teams: "Teams",
     companies: "Companies",
@@ -847,6 +848,135 @@ export const en: Dictionary = {
     },
   },
 
+  glossary: {
+    metaTitle: "Glossary: work without AI, human-made, verification",
+    metaDescription:
+      "What work without AI means, what counts as generative AI, what human-made and hybrid work are, and how the HTVS scale of proof works. Short definitions.",
+    title: "Glossary",
+    intro:
+      "The words used on this site and what stands behind them. The definitions are short and deliberately careful: in a subject where it is easy to promise too much, the precision of the wording is the whole point.",
+    groups: [
+      {
+        title: "Core terms",
+        terms: [
+          {
+            term: "Work without AI",
+            definition:
+              "Work whose substance was made by a person: the drawing, the text, the photograph, the structure, the object, the code. Assistive tools are allowed; generating the result is not. What decides the question is the substance, not the individual steps.",
+            href: "/human-made-standards",
+            hrefLabel: "Human-Made standards",
+          },
+          {
+            term: "Human-made",
+            definition:
+              "Work made by a person rather than generated. Unlike handmade, it is not about manual labour as such: an architect working in drafting software makes human-made work, because the decisions are theirs.",
+          },
+          {
+            term: "Generative AI",
+            definition:
+              "Software that produces new content from a description: an image, a text, music, video, code. These, and not AI in general, mark the line this site is about.",
+          },
+          {
+            term: "Assistive tools",
+            definition:
+              "Software that helps a person with individual steps: removing a background, transcribing a recording, checking spelling, correcting colour, finding reference. They speed up steps rather than produce the work, so they are allowed here. One condition: the creator says what they used.",
+          },
+          {
+            term: "Hybrid work",
+            definition:
+              "Work where AI played a part but did not produce the result. It belongs in the catalog as long as a person made the substance and the creator describes the AI's role openly in their profile. The standard is clarity, not silence.",
+          },
+          {
+            term: "Generated work",
+            definition:
+              "Work whose main result came from generative AI, even where it was reworked by hand afterwards. Listings like that are not accepted. What separates it from hybrid work is who made the substance, not how much editing followed.",
+          },
+        ],
+      },
+      {
+        title: "Verification and proof",
+        terms: [
+          {
+            term: "HTVS",
+            aka: "Human Talent Verification and Support",
+            definition:
+              "Our four-level scale of proof of human authorship: the creator's statement, working files, version history, and a C2PA signature. No single proof that a person made something exists, so the question is one of levels: the higher the level, the fewer questions are left. Reaching the top level is not required, and level two satisfies most clients.",
+            href: "/method",
+            hrefLabel: "How the method works",
+          },
+          {
+            term: "Level 1. Statement",
+            definition:
+              "The creator describes in their own words how they work. It proves their position and their willingness to stand behind it, and nothing beyond that. Everyone starts here, and it is honest in itself.",
+          },
+          {
+            term: "Level 2. Working files",
+            definition:
+              "Layered files, sketches, drafts, intermediate versions. They prove the work grew in stages rather than arriving finished. They do not prove that no part of it was generated.",
+          },
+          {
+            term: "Level 3. Version history",
+            definition:
+              "Autosaves, cloud file history, edit history. It proves a sequence of work over time, which is hard to assemble after the fact. It does not prove who was doing the saving.",
+          },
+          {
+            term: "Level 4. C2PA signature",
+            definition:
+              "A cryptographic record of a file's origin, written by some cameras and editors. It proves the file has not changed since signing and passed through the tools named. It does not prove that what was shot or drawn is what is claimed, and it is easily lost: most platforms strip metadata on upload.",
+          },
+          {
+            term: "Verified creator",
+            definition:
+              "A badge given after we have reviewed the material a creator sent us by hand and written in the profile what we actually looked at. It is a considered human review, not a legal guarantee that no AI was involved. Studios and companies carry a Verified studio badge instead.",
+            href: "/verification-policy",
+            hrefLabel: "Verification policy",
+          },
+          {
+            term: "AI usage statement",
+            definition:
+              "A short note in a profile saying how the creator uses AI, or does not. Every profile has one, written by the creator. Clients read it before getting in touch, which is why detail here works in the creator's favour.",
+          },
+        ],
+      },
+      {
+        title: "How the directory is built",
+        terms: [
+          {
+            term: "Creator",
+            definition:
+              "One person who does the work themselves and answers for it personally. They have their own profile here, linking to their own site, shop or portfolio.",
+            href: "/creators",
+            hrefLabel: "Creators",
+          },
+          {
+            term: "Team",
+            definition:
+              "Several creators working together on a project, with no legal entity or payroll behind them. The line-up is named, and each member is verified separately.",
+            href: "/teams",
+            hrefLabel: "Teams",
+          },
+          {
+            term: "Company",
+            definition:
+              "A studio, practice or company with a standing team, working under contract and answerable for the result as a legal entity. It is assessed on the same scale as a single creator.",
+            href: "/companies",
+            hrefLabel: "Companies",
+          },
+          {
+            term: "Working directly",
+            definition:
+              "An arrangement where client and creator agree terms between themselves. The catalog shows the creator and links to their own channels; it takes no part in the conversation, handles no payment, and takes no cut of the work.",
+          },
+        ],
+      },
+    ],
+    ctaTitle: "Where to next",
+    ctaText:
+      "The profession guides in the knowledge base get more specific: what to ask a photographer, how to check an illustrator, where the line runs in translation.",
+    ctaKnowledge: "Open the knowledge base",
+    ctaBrowse: "Open the catalog",
+  },
+
   knowledge: {
     metaTitle: "Knowledge base",
     metaDescription:
@@ -857,6 +987,11 @@ export const en: Dictionary = {
     docsTitle: "Platform standards",
     docsIntro: "Four documents explaining the rules everything here runs on.",
     docs: [
+      {
+        title: "Glossary",
+        text: "What work without AI, human-made and hybrid work mean, and how the HTVS scale of proof is built.",
+        href: "/glossary",
+      },
       {
         title: "Human-Made standards",
         text: "What counts as made by a person, what does not, and how work where AI helped with the small things is treated.",
