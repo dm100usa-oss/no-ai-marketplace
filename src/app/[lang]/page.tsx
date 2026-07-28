@@ -119,7 +119,7 @@ export default async function HomePage({
   };
 
   return (
-    <>
+    <div className="font-trial">
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
@@ -692,6 +692,6 @@ export default async function HomePage({
           </LocaleLink>
         </div>
       </section>
-    </>
+    </div>
   );
 }

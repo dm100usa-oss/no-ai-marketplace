@@ -54,6 +54,27 @@ const manrope = localFont({
   display: "swap",
 });
 
+// Golos Text, loaded for the home page trial only. It is a Cyrillic-first
+// face, so Russian text carries its own rhythm instead of borrowing a
+// Latin one. Applied through the .font-trial class on the home page; the
+// rest of the site stays on Inter and Manrope until we decide.
+const golos = localFont({
+  src: [
+    { path: "../fonts/golos-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/golos-cyrillic-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/golos-latin-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "../fonts/golos-cyrillic-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "../fonts/golos-latin-600-normal.woff2", weight: "600", style: "normal" },
+    { path: "../fonts/golos-cyrillic-600-normal.woff2", weight: "600", style: "normal" },
+    { path: "../fonts/golos-latin-700-normal.woff2", weight: "700", style: "normal" },
+    { path: "../fonts/golos-cyrillic-700-normal.woff2", weight: "700", style: "normal" },
+    { path: "../fonts/golos-latin-800-normal.woff2", weight: "800", style: "normal" },
+    { path: "../fonts/golos-cyrillic-800-normal.woff2", weight: "800", style: "normal" },
+  ],
+  variable: "--font-golos",
+  display: "swap",
+});
+
 /** Build one static shell per language. */
 export function generateStaticParams() {
   return LOCALES.map((lang) => ({ lang }));
@@ -134,7 +155,7 @@ export default async function LangLayout({
   };
 
   return (
-    <html lang={LOCALE_HTML_LANG[locale]} className={`${inter.variable} ${manrope.variable}`}>
+    <html lang={LOCALE_HTML_LANG[locale]} className={`${inter.variable} ${manrope.variable} ${golos.variable}`}>
       <body className="flex min-h-screen flex-col" style={{ fontFamily: "var(--font-inter), var(--font-body)" }}>
         <script
           type="application/ld+json"
