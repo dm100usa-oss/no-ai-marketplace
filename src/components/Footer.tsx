@@ -27,13 +27,13 @@ export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             <div className="inline-flex items-center gap-2">
               <span
                 aria-hidden
-                className="grid h-6 w-6 place-items-center rounded-md text-[13px] font-extrabold"
+                className="inline-flex h-6 items-center justify-center rounded-md px-1.5 text-[13px] font-extrabold"
                 style={{ background: "#fff", color: "var(--color-ink)", fontFamily: "var(--font-brand)" }}
               >
-                No
+                No AI
               </span>
               <span className="text-[1.1rem] font-extrabold text-white" style={{ fontFamily: "var(--font-brand)" }}>
-                AI Directory
+                Directory
               </span>
             </div>
             <p className="mt-3 text-[0.92rem] leading-relaxed text-white/70">

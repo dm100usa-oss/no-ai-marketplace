@@ -147,7 +147,7 @@ export default async function HomePage({
             className="mx-auto w-[98%] max-w-2xl rounded-2xl px-4 py-5 text-center sm:w-[80%] sm:px-10 sm:py-8"
             style={{ background: "rgba(219,233,255,0.61)", backdropFilter: "blur(2px)" }}
           >
-            <h1 className="text-balance text-[0.95rem] sm:text-[1.35rem] md:text-[1.7rem]" style={{ marginTop: "0" }}>{dict.site.name}</h1>
+            <h1 className="text-balance text-[0.95rem] sm:text-[1.35rem] md:text-[1.7rem]" style={{ marginTop: "0", fontFamily: "var(--font-brand)" }}>{dict.site.name}</h1>
             <p
               className="mt-3 text-[1.3125rem] font-bold leading-tight sm:text-[1.9rem] md:text-[2.15rem]"
               style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
