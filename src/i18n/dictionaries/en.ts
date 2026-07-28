@@ -159,7 +159,7 @@ export const en: Dictionary = {
       "Show finished work or simply describe your services and get listed fast",
       "Win more qualified work and build long-term client relationships",
       "Take projects on your own, join a team, or start your own company",
-      "Show your work is made without AI and earn more trust",
+      "Show your work is made without AI and earn more trust from clients",
       "Get ahead while everyone else stays on the general marketplaces",
     ],
     heroJoinButton: "Join the platform",
