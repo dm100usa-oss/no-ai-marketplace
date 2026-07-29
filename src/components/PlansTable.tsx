@@ -1,23 +1,26 @@
-"use client";
-
-import { useState } from "react";
 import { plans, PLAN_ORDER, freeTier, planCheckoutHref, site } from "@/lib/config";
-import type { PlanId, BillingPeriod } from "@/lib/config";
+import type { PlanId } from "@/lib/config";
+import { freeUntilLabel } from "@/lib/free-date";
 import { CheckoutButton } from "./CheckoutButton";
 import { CheckShield } from "./icons";
 import type { Dictionary } from "@/i18n/types";
 import type { Locale } from "@/i18n/config";
 
 /**
- * Plans, one per participant type, with a monthly/yearly switch.
+ * Plans, one per participant type.
  *
- * All three plans and both periods are always in the HTML — the switch
- * only swaps which price is shown, so search engines and AI answer
- * engines read the full price list without running the click.
+ * NO MONTHLY/YEARLY SWITCH
  *
- * While free places are left, every plan shows its real price struck
- * through next to "free right now": the visitor sees both what it costs
- * later and that today it costs nothing.
+ * There was one, and it earned nothing. While the free places last every
+ * plan costs zero, so both sides of the switch showed the same $0 and the
+ * visitor pressed twice to learn nothing. Both prices now stand in the
+ * card at once — "then $5.99 a month or $49 a year" — which is one line
+ * instead of a control, is read by search and answer engines without a
+ * click, and removes a decision from a page that already asks for one.
+ *
+ * The card shows $0 large with "free right now" under it, then the price
+ * that starts later, struck through: what it costs today and what it will
+ * cost, in that order.
  */
 
 /** Same tones the catalog cards and the join picker use per type. */
@@ -28,12 +31,7 @@ const TONES: Record<PlanId, { bg: string; ink: string }> = {
 };
 
 export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
-  const [period, setPeriod] = useState<BillingPeriod>("yearly");
-
-  const freeDate = new Date(site.freeUntil).toLocaleDateString(
-    lang === "ru" ? "ru-RU" : "en-GB",
-    { day: "numeric", month: "long", year: "numeric" },
-  );
+  const freeDate = freeUntilLabel(lang);
 
   return (
     <div>
@@ -60,41 +58,11 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           visitor what to do with them, in one place rather than three. */}
       <h2 className="mt-10">{dict.pricing.chooseTitle}</h2>
 
-      {/* Monthly / yearly switch */}
-      <div className="mt-6 flex justify-center">
-        <div
-          className="inline-flex rounded-xl border p-1"
-          style={{ borderColor: "var(--color-line)", background: "#fff" }}
-        >
-          {(["monthly", "yearly"] as BillingPeriod[]).map((p) => {
-            const active = period === p;
-            return (
-              <button
-                key={p}
-                type="button"
-                onClick={() => setPeriod(p)}
-                aria-pressed={active}
-                className="rounded-lg px-4 py-2 text-[0.9rem] font-semibold transition-colors"
-                style={{
-                  background: active ? "var(--color-ink)" : "transparent",
-                  color: active ? "#fff" : "var(--color-muted)",
-                  fontFamily: "var(--font-display)",
-                }}
-              >
-                {p === "monthly" ? dict.pricing.billedMonthly : dict.pricing.billedYearly}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
       {/* Plans */}
       <div className="mt-6 grid gap-4 md:grid-cols-3">
         {PLAN_ORDER.map((id) => {
           const plan = plans[id];
           const tone = TONES[id];
-          const price = plan[period].priceLabel;
-          const per = period === "monthly" ? dict.pricing.perMonth : dict.pricing.perYear;
 
           return (
             <div
@@ -109,22 +77,30 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 {dict.pricing.planNames[id]}
               </span>
 
-              <p className="mt-3 text-[0.9rem] leading-snug" style={{ color: "var(--color-muted)" }}>
-                {dict.pricing.planFor[id]}
-              </p>
+              {/* Who it is for, plus the selling line, held in one block of
+                  a fixed minimum height. Cards with a selling line and
+                  cards without one would otherwise start their prices at
+                  different heights, and a row of three where the middle
+                  price sits higher than its neighbours reads as broken
+                  rather than as a hierarchy. */}
+              <div className="mt-3 md:min-h-[5.5rem]">
+                <p className="text-[0.9rem] leading-snug" style={{ color: "var(--color-muted)" }}>
+                  {dict.pricing.planFor[id]}
+                </p>
 
               {/* The selling line: who this plan brings you, not what sits
                   inside it. Set for a plan and it reads as the card's own
                   promise, in ink rather than grey; left empty and the card
                   looks exactly as it did before. */}
-              {dict.pricing.planPitch[id] ? (
-                <p
-                  className="mt-1.5 text-[1rem] font-semibold leading-snug"
-                  style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
-                >
-                  {dict.pricing.planPitch[id]}
-                </p>
-              ) : null}
+                {dict.pricing.planPitch[id] ? (
+                  <p
+                    className="mt-1.5 text-[1rem] font-semibold leading-snug"
+                    style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+                  >
+                    {dict.pricing.planPitch[id]}
+                  </p>
+                ) : null}
+              </div>
 
               <div className="mt-4">
                 <p
@@ -136,20 +112,23 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 <p className="mt-1 text-[0.85rem] font-semibold" style={{ color: tone.ink }}>
                   {dict.pricing.freeNowLabel}
                 </p>
+                {/* Both prices at once. "потом" is what keeps a struck-out
+                    figure from reading as "was 49, now 0 forever": it is
+                    the price that starts later, not a discount already
+                    taken. */}
                 <p className="mt-2 text-[0.85rem]" style={{ color: "var(--color-muted-soft)" }}>
-                  {/* "потом $49 в год" rather than a bare struck-through
-                      price. On its own a crossed-out figure reads as "was
-                      49, now 0 forever"; the one word is what tells the
-                      visitor this is the price that starts later. The
-                      strike stays as the visual cue that it is not what
-                      they pay today. */}
                   {dict.pricing.laterPrefix}{" "}
-                  <span style={{ textDecoration: "line-through" }}>{price}</span> {per}
-                  {period === "yearly" && (
-                    <span className="ml-1.5 font-semibold" style={{ color: tone.ink }}>
-                      {dict.pricing.saveLabel.replace("{n}", plan.savingLabel)}
-                    </span>
-                  )}
+                  <span style={{ textDecoration: "line-through" }}>
+                    {plan.monthly.priceLabel}
+                  </span>{" "}
+                  {dict.pricing.perMonth} {dict.pricing.orWord}{" "}
+                  <span style={{ textDecoration: "line-through" }}>
+                    {plan.yearly.priceLabel}
+                  </span>{" "}
+                  {dict.pricing.perYear}{" "}
+                  <span className="font-semibold" style={{ color: tone.ink }}>
+                    {dict.pricing.saveLabel.replace("{n}", plan.savingLabel)}
+                  </span>
                 </p>
               </div>
 
@@ -165,10 +144,10 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               <div className="mt-auto pt-6">
                 <CheckoutButton
                   lang={lang}
-                  href={planCheckoutHref(id, period)}
+                  href={planCheckoutHref(id, "yearly")}
                   label={dict.pricing.claimFree}
                   plan={id}
-                  period={period}
+                  period="yearly"
                   className="btn btn-quiet btn-full"
                 />
               </div>

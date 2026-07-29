@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { LocaleLink } from "@/components/LocaleLink";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { site } from "@/lib/config";
+import { freeUntilLabel } from "@/lib/free-date";
 import { FAQ } from "@/components/FAQ";
 import { JoinPicker } from "@/components/JoinPicker";
 import { ArrowRight } from "@/components/icons";
@@ -34,10 +35,7 @@ export default async function JoinPage({
   const locale: Locale = isLocale(lang) ? lang : DEFAULT_LOCALE;
   const dict = getDictionary(locale);
 
-  const freeDate = new Date(site.freeUntil).toLocaleDateString(
-    locale === "ru" ? "ru-RU" : "en-GB",
-    { day: "numeric", month: "long", year: "numeric" },
-  );
+  const freeDate = freeUntilLabel(locale);
 
   // The thank-you intro is two sentences: the first reads as a heading,
   // the rest as a softer line under it.

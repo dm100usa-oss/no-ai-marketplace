@@ -254,6 +254,8 @@ export interface Dictionary {
     headline: string;
     /** Heading over the three plan cards. */
     chooseTitle: string;
+    /** "or" between the monthly and the yearly price in one line. */
+    orWord: string;
     planFor: { creator: string; team: string; company: string };
     /** One selling line under the plan name: what this plan gets you,
      *  rather than what it contains. Empty for a plan that has none. */

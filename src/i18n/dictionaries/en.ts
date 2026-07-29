@@ -303,6 +303,7 @@ export const en: Dictionary = {
     headline:
       "Win clients who come back, on a platform people visit to hire, not to browse.",
     chooseTitle: "Choose your plan",
+    orWord: "or",
     freeBannerTitle: "The first {n} profiles are free",
     freeBannerText:
       "Free until {date}, whichever type you are. The places are counted across everyone together. Once they run out, listing moves to the plans below.",
@@ -323,8 +324,7 @@ export const en: Dictionary = {
       company: "You are a registered business with your own staff.",
     },
     planPitch: {
-      creator:
-        "Get clients for one-on-one projects on a platform built for exactly this",
+      creator: "Get clients for one-on-one projects",
       team: "",
       company: "",
     },
