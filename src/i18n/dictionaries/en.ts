@@ -207,7 +207,7 @@ export const en: Dictionary = {
       },
       {
         q: "3. Look for the verification badge",
-        a: "Every member passes a basic check at registration. The badge marks profiles that have passed the platform's additional verification.",
+        a: "Every member passes a standard check at registration. The badge marks profiles that have passed the platform's additional verification.",
       },
       {
         q: "4. Get in touch directly",
@@ -381,8 +381,8 @@ export const en: Dictionary = {
         d: "The first 50 profiles are free until the end of 2026",
       },
       {
-        t: "Wait for the review result",
-        d: "Basic review for everyone, an optional deeper one for the trust badge",
+        t: "Wait for the review result and an email from us",
+        d: "Everyone goes through the standard review, and an optional one earns the trust badge. The email carries a link: click it and your profile goes live",
       },
       {
         t: "We publish your profile",
