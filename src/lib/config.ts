@@ -138,8 +138,8 @@ export const integrations = {
     ru: "yPrqG8",
   },
   tallyCompanyFormIds: {
-    en: "",
-    ru: "",
+    en: "xXElx9",
+    ru: "jaXJkY",
   },
 } as const;
 
