@@ -317,12 +317,12 @@ export const en: Dictionary = {
     planNames: {
       creator: "Creator",
       team: "Team",
-      company: "Company or studio",
+      company: "Company",
     },
     planFor: {
-      creator: "For independent professionals",
+      creator: "You work alone",
       team: "There are several of you and you take projects together.",
-      company: "You are a registered business with your own staff.",
+      company: "You have a business and staff",
     },
     planPitch: {
       creator: "",
@@ -413,7 +413,7 @@ export const en: Dictionary = {
     pickOptions: {
       creator: {
         title: "Creator",
-        text: "You work alone and answer for the result yourself.",
+        text: "You work alone",
         points: ["Personal profile", "Individual projects", "Direct communication with clients"],
       },
       team: {
@@ -427,8 +427,8 @@ export const en: Dictionary = {
         ],
       },
       company: {
-        title: "Company or studio",
-        text: "You are a registered business with your own staff.",
+        title: "Company",
+        text: "You have a business and staff",
         points: [
           "Large, long-term projects",
           "Brand promotion",

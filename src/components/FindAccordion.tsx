@@ -14,12 +14,12 @@ export interface FindAction {
 
 /**
  * One tone per entry point, taken from the same pastel family as the
- * direction tiles: sand for a single creator, mint for a team, blue for
+ * direction tiles: cream for a single creator, mint for a team, blue for
  * a company. Colour carries the difference between "team" and "company",
  * which read too much alike on text alone.
  */
 const ACTION_TONES = [
-  { bg: "#f7e2c0", ink: "#a3690f", sub: "#8a5a11", press: "#e2cead", icon: "creator" },
+  { bg: "#fbeedb", ink: "#a9691a", sub: "#8a5a11", press: "#e2d6c5", icon: "creator" },
   { bg: "#c9e9dc", ink: "#0f7a58", sub: "#0c6549", press: "#b5d4c8", icon: "team" },
   { bg: "#cfe0f8", ink: "#2f5cb0", sub: "#274a86", press: "#bccde4", icon: "company" },
 ];

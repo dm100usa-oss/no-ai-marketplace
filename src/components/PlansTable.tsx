@@ -28,9 +28,9 @@ import type { Locale } from "@/i18n/config";
  *  tone rather than computed, so the three beads can be adjusted by eye. */
 const TONES: Record<PlanId, { bg: string; ink: string; dot: string }> = {
   creator: {
-    bg: "#f7e2c0",
-    ink: "#a3690f",
-    dot: "radial-gradient(circle at 30% 30%, #c0995c, #a3690f 70%, #82540c)",
+    bg: "#fbeedb",
+    ink: "#a9691a",
+    dot: "radial-gradient(circle at 30% 30%, #c49963, #a9691a 70%, #875415)",
   },
   team: {
     bg: "#c9e9dc",
