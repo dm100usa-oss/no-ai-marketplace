@@ -28,6 +28,9 @@ export interface ProfileTranslation {
   tags?: string[];
   aiUsageStatement?: string;
   verificationDescription?: string;
+  /** Lines under the works, same order as the pictures in the English
+   *  record. Left out, the English captions show as they are. */
+  galleryCaptions?: string[];
 }
 
 export const profilesRu: Record<string, ProfileTranslation> = {

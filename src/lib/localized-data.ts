@@ -121,6 +121,7 @@ function localizeProfile(p: Profile, locale: Locale): Profile {
     services: pick(t.services, p.services),
     products: pick(t.products, p.products),
     tags: pick(t.tags, p.tags),
+    galleryCaptions: pick(t.galleryCaptions, p.galleryCaptions),
     aiUsageStatement: pick(t.aiUsageStatement, p.aiUsageStatement),
     verificationDescription: pick(
       t.verificationDescription,

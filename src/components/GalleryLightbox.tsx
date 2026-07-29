@@ -14,12 +14,17 @@ import { CloseIcon } from "./icons";
 export function GalleryLightbox({
   images,
   name,
+  captions,
   variant = "grid",
   heroAlt,
   workLabel = "Work",
 }: {
   images: string[];
   name: string;
+  /** Optional line the author wrote under each work, same order as images.
+   *  Missing or empty entries are simply not rendered, so a gallery with no
+   *  captions at all looks exactly as it did before. */
+  captions?: string[];
   variant?: "grid" | "hero";
   heroAlt?: string;
   /** The word "Work" in the current language, for image alt text like
@@ -77,26 +82,38 @@ export function GalleryLightbox({
           />
         </button>
       ) : (
-        <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {images.map((src, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => setOpen(i)}
-              className="group aspect-[4/3] cursor-zoom-in overflow-hidden rounded-2xl"
-              style={{ background: "var(--color-brand-soft)" }}
-              aria-label={`${workLabel} ${i + 1} — ${name}`}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={src}
-                alt={`${workLabel} ${i + 1} — ${name}`}
-                loading="lazy"
-                decoding="async"
-                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-            </button>
-          ))}
+        <div className="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {images.map((src, i) => {
+            const caption = captions?.[i]?.trim();
+            return (
+              <figure key={i} className="m-0">
+                <button
+                  type="button"
+                  onClick={() => setOpen(i)}
+                  className="group block aspect-[4/3] w-full cursor-zoom-in overflow-hidden rounded-2xl"
+                  style={{ background: "var(--color-brand-soft)" }}
+                  aria-label={`${workLabel} ${i + 1} — ${name}`}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={src}
+                    alt={caption ? `${caption} — ${name}` : `${workLabel} ${i + 1} — ${name}`}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </button>
+                {caption ? (
+                  <figcaption
+                    className="mt-2 whitespace-pre-line text-[0.95rem] leading-relaxed"
+                    style={{ color: "var(--color-muted)" }}
+                  >
+                    {caption}
+                  </figcaption>
+                ) : null}
+              </figure>
+            );
+          })}
         </div>
       )}
 
@@ -138,12 +155,22 @@ export function GalleryLightbox({
 
           {/* Image */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={images[open]}
-            alt={`${workLabel} ${open + 1} — ${name}`}
-            onClick={(e) => e.stopPropagation()}
-            className="max-h-[90vh] max-w-[92vw] rounded-lg object-contain"
-          />
+          <figure className="m-0 flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={images[open]}
+              alt={
+                captions?.[open]?.trim()
+                  ? `${captions[open].trim()} — ${name}`
+                  : `${workLabel} ${open + 1} — ${name}`
+              }
+              className="max-h-[78vh] max-w-[92vw] rounded-lg object-contain"
+            />
+            {captions?.[open]?.trim() ? (
+              <figcaption className="mt-3 max-w-[92vw] whitespace-pre-line text-center text-[0.95rem] leading-relaxed text-white/85 sm:max-w-[60ch]">
+                {captions[open].trim()}
+              </figcaption>
+            ) : null}
+          </figure>
 
           {/* Next */}
           {images.length > 1 && (

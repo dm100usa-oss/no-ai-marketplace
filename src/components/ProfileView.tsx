@@ -306,7 +306,12 @@ export function ProfileView({
               <p className="mt-1 text-[0.92rem]" style={{ color: "var(--color-muted-soft)" }}>
                 {dict.profile.portfolioHint}
               </p>
-              <GalleryLightbox images={p.gallery} name={p.name} workLabel={dict.states.slotTagWork ?? "Work"} />
+              <GalleryLightbox
+                images={p.gallery}
+                captions={p.galleryCaptions}
+                name={p.name}
+                workLabel={dict.states.slotTagWork ?? "Work"}
+              />
               <p className="mt-3 text-[0.95rem] leading-relaxed" style={{ color: "var(--color-muted)" }}>
                 {dict.profile.portfolioMore}
               </p>

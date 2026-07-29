@@ -58,10 +58,22 @@ function fieldText(value: unknown): string | undefined {
   return undefined;
 }
 
-/** Find the first field whose label contains any of the keywords. */
-function pick(fields: TallyField[], keywords: string[]): string | undefined {
+const CAPTION_WORDS = ["описание работ", "work description", "caption", "подпись"];
+
+/** Find the first field whose label contains any of the keywords.
+ *
+ *  `skip` exists because the caption questions sit next to the picture
+ *  questions and read alike: "Work 2" and "Work 2 caption" both contain
+ *  "work". Without the exclusion a caption could be read as an image link
+ *  or as the short description, depending on the order the form sends. */
+function pick(
+  fields: TallyField[],
+  keywords: string[],
+  skip: string[] = [],
+): string | undefined {
   for (const f of fields) {
     const label = (f.label ?? f.key ?? "").toLowerCase();
+    if (skip.some((k) => label.includes(k))) continue;
     if (keywords.some((k) => label.includes(k))) {
       const t = fieldText(f.value);
       if (t) return t;
@@ -70,9 +82,28 @@ function pick(fields: TallyField[], keywords: string[]): string | undefined {
   return undefined;
 }
 
+/** Collect every field whose label matches, in the order the form sends
+ *  them. The captions arrive as four separate questions, one per work, so
+ *  they cannot be read with pick, which stops at the first answer. */
+function pickEach(fields: TallyField[], keywords: string[]): string[] | undefined {
+  const out: string[] = [];
+  for (const f of fields) {
+    const label = (f.label ?? f.key ?? "").toLowerCase();
+    if (keywords.some((k) => label.includes(k))) {
+      out.push(fieldText(f.value)?.trim() ?? "");
+    }
+  }
+  while (out.length > 0 && out[out.length - 1] === "") out.pop();
+  return out.length > 0 ? out : undefined;
+}
+
 /** Split a picked value into a list on commas and newlines. */
-function pickList(fields: TallyField[], keywords: string[]): string[] | undefined {
-  const s = pick(fields, keywords);
+function pickList(
+  fields: TallyField[],
+  keywords: string[],
+  skip: string[] = [],
+): string[] | undefined {
+  const s = pick(fields, keywords, skip);
   if (!s) return undefined;
   const out = s
     .split(/[\n,]+/)
@@ -132,13 +163,14 @@ export async function POST(request: NextRequest) {
     profileType,
     mainCategory: pick(fields, ["category", "категория"]),
     additionalCategories: pickList(fields, ["additional", "дополнит"]),
-    shortDescription: pick(fields, ["short", "краткое", "about", "описание"]),
-    fullDescription: pick(fields, ["full", "подробн", "detail"]),
+    shortDescription: pick(fields, ["short", "краткое", "about", "описание"], CAPTION_WORDS),
+    fullDescription: pick(fields, ["full", "подробн", "detail"], CAPTION_WORDS),
     website: pick(fields, ["website", "сайт", "url"]),
     otherLinks: pick(fields, ["link", "ссылк", "social", "portfolio"]),
     avatar: pick(fields, ["avatar", "photo", "фото", "portrait"]),
-    mainImage: pick(fields, ["main image", "work", "работа", "image"]),
-    gallery: pickList(fields, ["gallery", "галерея", "works"]),
+    mainImage: pick(fields, ["main image", "work", "работа", "image"], CAPTION_WORDS),
+    gallery: pickList(fields, ["gallery", "галерея", "works"], CAPTION_WORDS),
+    galleryCaptions: pickEach(fields, CAPTION_WORDS),
     showOnHomepage:
       (pick(fields, ["homepage", "главн", "showcase"]) ?? "").toLowerCase().includes("yes") ||
       (pick(fields, ["homepage", "главн", "showcase"]) ?? "").toLowerCase().includes("да"),

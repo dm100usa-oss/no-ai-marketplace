@@ -293,6 +293,8 @@ export interface Submission {
   avatar?: string;
   mainImage?: string;
   gallery?: string[];
+  /** What the author wrote under each work, same order as the pictures. */
+  galleryCaptions?: string[];
 
   /** Consents */
   showOnHomepage?: boolean;

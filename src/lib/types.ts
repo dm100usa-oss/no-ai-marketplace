@@ -79,6 +79,10 @@ export interface Profile extends ReservedRating {
 
   mainImage?: string;
   gallery?: string[];
+  /** Optional one-line description under each work, in the same order as
+   *  gallery. The author may leave any of them empty: a work without a
+   *  caption simply shows as a picture, the way it always did. */
+  galleryCaptions?: string[];
   videoLinks?: string[];
   /** Author/company portrait shown in the card and profile header.
    *  Falls back to initials when absent. */
