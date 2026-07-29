@@ -260,7 +260,7 @@ export const en: Dictionary = {
       "Creators can submit process photos, video, sketches, drafts or published work. We review each submission by hand and describe on the profile what exactly was checked. Verification does not claim a legal guarantee. It is an honest, human review of the materials the creator provided.",
     seeVerified: "See verified profiles",
     standardsLink: "Our method",
-    faqTitle: "Frequently asked questions",
+    faqTitle: "Questions and answers",
     faq: [
       {
         q: "What is No AI Directory?",
@@ -432,7 +432,7 @@ export const en: Dictionary = {
       " before you submit. The standards describe what belongs in the catalog and what does not, and how hybrid work fits. Payments and listing rules are covered in the ",
     rulesLink2: "Listing Policy",
     rulesText3: ".",
-    faqTitle: "Frequently asked questions",
+    faqTitle: "Questions and answers",
     faq: [
       {
         q: "How much does a profile cost?",
@@ -440,11 +440,11 @@ export const en: Dictionary = {
       },
       {
         q: "What do I need to add a profile?",
-        a: "A short description of your work, main and additional categories, country, tags, and links to your own site, portfolio or shop. Verified creators additionally submit process materials.",
+        a: "Your name or company name, country and city, a category, a short description of yourself, a list of services, a logo or photo, a few works with a note under each, and a link to your own site or portfolio. Your email is for correspondence only and never appears on the profile. For the trust badge, you also send materials showing your process.",
       },
       {
         q: "How long until my profile goes live?",
-        a: "Profiles are reviewed by hand and typically appear in the catalog within a few working days. Verification, if requested, may take a little longer.",
+        a: "We read every application by hand, which usually takes a few working days. Once approved, you get an email with a link: click it and your profile goes live in the directory. The optional verification, if you asked for it, takes a little longer.",
       },
       {
         q: "Can I edit my profile later?",
