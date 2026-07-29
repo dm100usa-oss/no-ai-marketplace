@@ -307,7 +307,8 @@ export const en: Dictionary = {
     perYear: "per year",
     billedMonthly: "Monthly",
     billedYearly: "Yearly",
-    saveLabel: "Save {n}",
+    saveLabel: "a saving of about {n} compared with paying monthly",
+    laterPrefix: "then",
     planNames: {
       creator: "Creator",
       team: "Team",

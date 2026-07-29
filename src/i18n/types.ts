@@ -246,6 +246,8 @@ export interface Dictionary {
     billedMonthly: string;
     billedYearly: string;
     saveLabel: string; // "Save {n}"
+    /** Word in front of the price that starts once the free places end. */
+    laterPrefix: string;
     /** One block per participant type. */
     planNames: { creator: string; team: string; company: string };
     planFor: { creator: string; team: string; company: string };

@@ -52,19 +52,19 @@ export const plans = {
     id: "creator",
     monthly: { price: 5.99, priceLabel: "$5.99", stripeLink: "" },
     yearly: { price: 49, priceLabel: "$49", stripeLink: "" },
-    savingLabel: "~32%",
+    savingLabel: "32%",
   },
   team: {
     id: "team",
     monthly: { price: 14.99, priceLabel: "$14.99", stripeLink: "" },
     yearly: { price: 119, priceLabel: "$119", stripeLink: "" },
-    savingLabel: "~34%",
+    savingLabel: "34%",
   },
   company: {
     id: "company",
     monthly: { price: 29.99, priceLabel: "$29.99", stripeLink: "" },
     yearly: { price: 239, priceLabel: "$239", stripeLink: "" },
-    savingLabel: "~34%",
+    savingLabel: "34%",
   },
 } as const;
 

@@ -119,6 +119,13 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                   {dict.pricing.freeNowLabel}
                 </p>
                 <p className="mt-2 text-[0.85rem]" style={{ color: "var(--color-muted-soft)" }}>
+                  {/* "потом $49 в год" rather than a bare struck-through
+                      price. On its own a crossed-out figure reads as "was
+                      49, now 0 forever"; the one word is what tells the
+                      visitor this is the price that starts later. The
+                      strike stays as the visual cue that it is not what
+                      they pay today. */}
+                  {dict.pricing.laterPrefix}{" "}
                   <span style={{ textDecoration: "line-through" }}>{price}</span> {per}
                   {period === "yearly" && (
                     <span className="ml-1.5 font-semibold" style={{ color: tone.ink }}>
