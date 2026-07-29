@@ -300,6 +300,9 @@ export const en: Dictionary = {
     title: "Pricing",
     intro:
       "One plan per participant type. A creator pays for themselves, a team for the team, a company for the company. You pay to list a profile and nothing else: there is no commission on your work, and clients pay you directly.",
+    headline:
+      "Win clients who come back, on a platform people visit to hire, not to browse.",
+    chooseTitle: "Choose your plan",
     freeBannerTitle: "The first {n} profiles are free",
     freeBannerText:
       "Free until {date}, whichever type you are. The places are counted across everyone together. Once they run out, listing moves to the plans below.",
@@ -312,7 +315,7 @@ export const en: Dictionary = {
     planNames: {
       creator: "Creator",
       team: "Team",
-      company: "Company",
+      company: "Company or studio",
     },
     planFor: {
       creator: "For independent professionals",

@@ -43,6 +43,17 @@ export default async function PricingPage({
         <h1>{dict.pricing.title}</h1>
         <p className="lead mt-4">{dict.pricing.intro}</p>
 
+        {/* The one line the whole page rests on, standing between the
+            explanation of who pays for what and the offer itself. The
+            paragraph above is bookkeeping; this is the reason to be here
+            at all, so it reads as a heading rather than as more prose. */}
+        <p
+          className="mt-8 text-[1.35rem] font-bold leading-snug md:text-[1.6rem]"
+          style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+        >
+          {dict.pricing.headline}
+        </p>
+
         <div className="mt-10">
           <PlansTable lang={locale} dict={dict} />
         </div>

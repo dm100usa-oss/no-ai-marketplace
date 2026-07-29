@@ -250,6 +250,10 @@ export interface Dictionary {
     laterPrefix: string;
     /** One block per participant type. */
     planNames: { creator: string; team: string; company: string };
+    /** The line under the intro, the reason to be on this page at all. */
+    headline: string;
+    /** Heading over the three plan cards. */
+    chooseTitle: string;
     planFor: { creator: string; team: string; company: string };
     /** One selling line under the plan name: what this plan gets you,
      *  rather than what it contains. Empty for a plan that has none. */

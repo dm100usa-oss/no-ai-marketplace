@@ -55,8 +55,13 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         </p>
       </div>
 
+      {/* One heading over the row instead of the word "plan" repeated on
+          every card. It names what the three cards are and tells the
+          visitor what to do with them, in one place rather than three. */}
+      <h2 className="mt-10">{dict.pricing.chooseTitle}</h2>
+
       {/* Monthly / yearly switch */}
-      <div className="mt-8 flex justify-center">
+      <div className="mt-6 flex justify-center">
         <div
           className="inline-flex rounded-xl border p-1"
           style={{ borderColor: "var(--color-line)", background: "#fff" }}
