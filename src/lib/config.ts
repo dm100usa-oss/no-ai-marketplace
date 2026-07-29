@@ -134,7 +134,7 @@ export const integrations = {
    *  creator form as before, so nothing breaks while the new forms are
    *  being written. */
   tallyTeamFormIds: {
-    en: "",
+    en: "VLX17y",
     ru: "yPrqG8",
   },
   tallyCompanyFormIds: {
