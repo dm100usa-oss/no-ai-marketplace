@@ -108,6 +108,19 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 {dict.pricing.planFor[id]}
               </p>
 
+              {/* The selling line: who this plan brings you, not what sits
+                  inside it. Set for a plan and it reads as the card's own
+                  promise, in ink rather than grey; left empty and the card
+                  looks exactly as it did before. */}
+              {dict.pricing.planPitch[id] ? (
+                <p
+                  className="mt-1.5 text-[1rem] font-semibold leading-snug"
+                  style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+                >
+                  {dict.pricing.planPitch[id]}
+                </p>
+              ) : null}
+
               <div className="mt-4">
                 <p
                   className="text-[2rem] font-bold leading-none"

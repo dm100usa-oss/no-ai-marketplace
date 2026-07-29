@@ -315,16 +315,27 @@ export const en: Dictionary = {
       company: "Company",
     },
     planFor: {
-      creator: "You work alone and answer for the result yourself.",
+      creator: "For independent professionals",
       team: "There are several of you and you take projects together.",
       company: "You are a registered business with your own staff.",
     },
+    planPitch: {
+      creator:
+        "Get clients for one-on-one projects on a platform built for exactly this",
+      team: "",
+      company: "",
+    },
     planFeatures: {
       creator: [
-        "A personal profile in your own name",
-        "Portfolio and all external links",
-        "Several categories",
-        "Clients contact you directly",
+        "A professional portfolio",
+        "Listed in the directory under several categories",
+        "4 signature works, each with a full description",
+        "Shown in the New authors and New works strips",
+        "Direct links to your site, shop and social media",
+        "Work with clients directly, with no commission",
+        "The First in category badge for joining early",
+        "Free until the end of 2026",
+        "Cancel your subscription at any time",
       ],
       team: [
         "A team profile with the number of members",

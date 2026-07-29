@@ -251,6 +251,9 @@ export interface Dictionary {
     /** One block per participant type. */
     planNames: { creator: string; team: string; company: string };
     planFor: { creator: string; team: string; company: string };
+    /** One selling line under the plan name: what this plan gets you,
+     *  rather than what it contains. Empty for a plan that has none. */
+    planPitch: { creator: string; team: string; company: string };
     planFeatures: { creator: string[]; team: string[]; company: string[] };
     freeNowLabel: string; // shown in place of the price while free
     everythingTitle: string;
