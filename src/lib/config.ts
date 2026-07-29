@@ -117,17 +117,42 @@ export const freeTier = {
  * "form is being connected" notice in place of the embedded form.
  */
 export const integrations = {
-  /** One Tally form id per language, e.g. "wgABCD" from tally.so/r/wgABCD */
+  /** One Tally form id per language, e.g. "wgABCD" from tally.so/r/wgABCD.
+   *  This is the creator form and the fallback for every type. */
   tallyFormIds: {
     en: "ZjKKMa",
     ru: "VLAB8v",
   },
+
+  /** Separate forms for teams and companies, per language.
+   *
+   *  A team is asked different questions than one person: who is in it,
+   *  which profiles they hold in the catalog, who to write to, six works
+   *  instead of four. Bending one form around three cases makes every
+   *  applicant read questions meant for someone else, so each type gets
+   *  its own form. Leave a value empty and that type simply opens the
+   *  creator form as before, so nothing breaks while the new forms are
+   *  being written. */
+  tallyTeamFormIds: {
+    en: "",
+    ru: "yPrqG8",
+  },
+  tallyCompanyFormIds: {
+    en: "",
+    ru: "",
+  },
 } as const;
 
-/** The Tally form id for a given language, or "" when it isn't set yet. */
-export function tallyFormId(locale: string): string {
-  const ids = integrations.tallyFormIds as Record<string, string>;
-  return ids[locale] ?? "";
+/** The Tally form id for a language and participant type. Falls back to
+ *  the creator form whenever the type-specific one is not set yet. */
+export function tallyFormId(locale: string, type?: string): string {
+  const base = integrations.tallyFormIds as Record<string, string>;
+  const byType: Record<string, Record<string, string>> = {
+    team: integrations.tallyTeamFormIds as Record<string, string>,
+    company: integrations.tallyCompanyFormIds as Record<string, string>,
+  };
+  const special = type ? byType[type]?.[locale] : undefined;
+  return special || base[locale] || "";
 }
 
 /** Primary navigation (TZ Etap 1: Directory, Categories, Verified,

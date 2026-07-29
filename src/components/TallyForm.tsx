@@ -31,7 +31,7 @@ export function TallyForm({
   /** Participant type chosen before the form, passed through to Tally. */
   type?: ProfileType;
 }) {
-  const formId = tallyFormId(lang);
+  const formId = tallyFormId(lang, type);
 
   useEffect(() => {
     if (!formId) return;
