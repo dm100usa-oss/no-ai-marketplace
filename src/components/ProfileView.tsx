@@ -130,6 +130,23 @@ export function ProfileView({
       description: p.shortDescription,
       address: { "@type": "PostalAddress", addressCountry: p.country, addressLocality: p.city },
       url: `${site.url}${localizedPath(lang, `${basePath}/${p.slug}`)}`,
+      // Schema.org has a field for exactly this, and answer engines read it
+      // when someone asks for an established studio rather than any studio.
+      // Person has no foundingDate, so it is added for organizations only.
+      ...(p.profileType !== "creator" && p.foundedYear
+        ? { foundingDate: p.foundedYear }
+        : {}),
+      // The services list doubles as the machine-readable answer to "what
+      // do they actually do", which is the question an AI answer is built
+      // around. Written out as a plain list of offered services.
+      ...(p.services?.length
+        ? {
+            makesOffer: p.services.map((s) => ({
+              "@type": "Offer",
+              itemOffered: { "@type": "Service", name: s },
+            })),
+          }
+        : {}),
     },
   };
 
@@ -214,6 +231,13 @@ export function ProfileView({
                 {" · "}
                 {p.city ? `${p.city}, ` : ""}
                 {p.country}
+                {/* How long the company has been working. Sits in the same
+                    grey line as trade and place rather than in a badge of
+                    its own: it is context, not an award. Companies only —
+                    for one person the year of a first order says little. */}
+                {p.profileType === "company" && p.foundedYear
+                  ? ` · ${dict.profile.inBusinessSince} ${p.foundedYear}`
+                  : ""}
               </p>
               {/* Additional categories, shown as clickable tags. Follows the
                   common portfolio pattern (Behance, Dribbble): the main role

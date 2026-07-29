@@ -612,6 +612,8 @@ export interface Dictionary {
     membersTitle: string;
     membersHint: string;
     contactPerson: string;
+    /** Prefix before a company's starting year: "На рынке с 2014". */
+    inBusinessSince: string;
     /** Line on a member's own profile pointing back at the team. */
     memberOfTeam: string; // uses {team}
     kindStudio: string;

@@ -1233,6 +1233,7 @@ export const ru: Dictionary = {
     membersTitle: "Кто в команде",
     membersHint: "У каждого участника свой профиль в каталоге",
     contactPerson: "Контактное лицо",
+    inBusinessSince: "на рынке с",
     memberOfTeam: "Участник команды {team}",
     kindTeam: "командой",
     kindCreator: "автором",

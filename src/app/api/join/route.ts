@@ -58,7 +58,14 @@ function fieldText(value: unknown): string | undefined {
   return undefined;
 }
 
-const CAPTION_WORDS = ["описание работ", "work description", "caption", "подпись"];
+/** Labels of the caption questions.
+ *
+ *  "description" stands alone here on purpose: the English forms number
+ *  their captions "Work 1 description", so the number sits in the middle
+ *  and "work description" never matches as one piece. Every caption in
+ *  every form ends in this word, and no other question does, so matching
+ *  it alone is both safe and the only thing that works. */
+const CAPTION_WORDS = ["описание работ", "description", "caption", "подпись"];
 
 /** Find the first field whose label contains any of the keywords.
  *
@@ -95,6 +102,26 @@ function pickEach(fields: TallyField[], keywords: string[]): string[] | undefine
   }
   while (out.length > 0 && out[out.length - 1] === "") out.pop();
   return out.length > 0 ? out : undefined;
+}
+
+/** The numbered picture questions: "Работа 1 (главная)", "Work 2" and so
+ *  on, in the order the form sends them.
+ *
+ *  Matching the bare word was not enough. "Tell us about your company and
+ *  work" also contains it, and being the earlier question it was picked as
+ *  the main image, so a company's headline work became a paragraph of
+ *  text. The number is what makes a work question a work question, so the
+ *  number is what we match on, and the captions are excluded because they
+ *  are numbered too. */
+function pickWorks(fields: TallyField[]): string[] {
+  const out: string[] = [];
+  for (const f of fields) {
+    const label = (f.label ?? f.key ?? "").toLowerCase();
+    if (CAPTION_WORDS.some((k) => label.includes(k))) continue;
+    if (!/(работа|work)\s*\d/.test(label)) continue;
+    out.push(fieldText(f.value)?.trim() ?? "");
+  }
+  return out;
 }
 
 /** Split a picked value into a list on commas and newlines. */
@@ -154,6 +181,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: false, error: "name required" }, { status: 400 });
   }
 
+  const works = pickWorks(fields);
+
   const input: Omit<Submission, "id" | "createdAt" | "status"> = {
     name,
     lang,
@@ -163,13 +192,32 @@ export async function POST(request: NextRequest) {
     profileType,
     mainCategory: pick(fields, ["category", "категория"]),
     additionalCategories: pickList(fields, ["additional", "дополнит"]),
-    shortDescription: pick(fields, ["short", "краткое", "about", "описание"], CAPTION_WORDS),
+    // "Расскажите о компании и вашей работе" / "Tell us about the team and
+    // your work" is the one story field in every form, so it is matched by
+    // its opening words as well. Without them the whole self-description
+    // arrived empty and had to be copied over by hand.
+    shortDescription: pick(
+      fields,
+      ["short", "краткое", "about", "описание", "расскажите", "tell us"],
+      CAPTION_WORDS,
+    ),
+    /** Year the company started working. Company forms only. */
+    foundedYear: pick(fields, ["год начала", "in business since", "founded", "established"]),
+    /** What they offer, one per line. The profile introduction is assembled
+     *  from these, so an empty list makes a profile open thin. */
+    services: pickList(fields, ["услуг", "services"]),
     fullDescription: pick(fields, ["full", "подробн", "detail"], CAPTION_WORDS),
     website: pick(fields, ["website", "сайт", "url"]),
     otherLinks: pick(fields, ["link", "ссылк", "social", "portfolio"]),
-    avatar: pick(fields, ["avatar", "photo", "фото", "portrait"]),
-    mainImage: pick(fields, ["main image", "work", "работа", "image"], CAPTION_WORDS),
-    gallery: pickList(fields, ["gallery", "галерея", "works"], CAPTION_WORDS),
+    // "Логотип компании" and "Company Logo" carry neither the word photo
+    // nor avatar, so without these two the logo never arrived at all.
+    avatar: pick(fields, ["avatar", "photo", "фото", "portrait", "logo", "логотип"]),
+    // Work 1 is the headline picture, the rest form the gallery, in the
+    // order the author put them in.
+    mainImage: works[0] || undefined,
+    gallery: works.slice(1).filter((w) => w !== "").length
+      ? works.slice(1)
+      : undefined,
     galleryCaptions: pickEach(fields, CAPTION_WORDS),
     members: pickEach(fields, ["участник", "team member", "member "]),
     contactPerson: pick(fields, ["контактное лицо", "contact person"]),

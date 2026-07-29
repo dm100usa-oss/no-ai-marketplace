@@ -19,6 +19,9 @@ Three kinds of participant, each with its own profile type:
 - Team: several people who take projects together.
 - Company or studio: a registered business with its own staff.
 
+## What a profile contains
+Every profile carries the same facts, so profiles can be compared like for like: name, trade and any additional specialisations, country and city, a description written by the professional, the services offered, a portfolio of works with a short note under each one explaining what the job was and how it ended, links to the professional's own site and platforms, a statement about the use or non-use of generative AI, and the verification status. Company profiles also state the year the company started working and the contact person. Team profiles list the members, each linked to their own profile in the directory.
+
 ## Directions
 Art; Literature; Graphics & Design; Photo & Video; Writing & Translation; Music & Audio; Development & IT; Architecture & Interiors; Handmade & Craft. Each direction opens into professions, and each profession lists the people, teams and companies working in it.
 
@@ -68,6 +71,9 @@ No AI Directory это каталог, где компании и частные
 - Автор: работает один и отвечает за результат сам.
 - Команда: несколько человек, которые берутся за проекты вместе.
 - Компания или студия: юридическое лицо со своим составом.
+
+## Что есть в профиле
+У всех профилей один и тот же набор сведений, поэтому их можно сравнивать между собой: имя или название, профессия и дополнительные специализации, страна и город, рассказ о себе, список услуг, портфолио работ с короткой подписью под каждой о том, что за задача решалась и чем закончилась, ссылки на собственный сайт и площадки, заявление об использовании или неиспользовании генеративного ИИ и статус проверки. В профилях компаний дополнительно указан год начала работы и контактное лицо. В профилях команд перечислены участники, каждый со ссылкой на свой профиль в каталоге.
 
 ## Направления
 Искусство; Литература; Графика и дизайн; Фото и видео; Тексты и переводы; Музыка и звук; Разработка и IT; Архитектура и интерьер; Ручная работа. Каждое направление открывается в профессии, а каждая профессия показывает людей, команды и компании, которые в ней работают.

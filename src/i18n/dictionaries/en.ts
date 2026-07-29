@@ -1220,6 +1220,7 @@ export const en: Dictionary = {
     membersTitle: "Who is in the team",
     membersHint: "Every member has their own profile in the directory",
     contactPerson: "Contact",
+    inBusinessSince: "in business since",
     memberOfTeam: "Member of {team}",
     kindTeam: "the team",
     kindCreator: "the creator",

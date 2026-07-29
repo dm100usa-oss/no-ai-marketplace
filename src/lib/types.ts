@@ -112,6 +112,17 @@ export interface Profile extends ReservedRating {
    *  page. Set from the consent checkbox in the join form. */
   showOnHomepage?: boolean;
 
+  /** The year this company started working, as text ("2014").
+   *
+   *  Companies only. It answers the first silent question a client asks —
+   *  how long have you been around — and it is the one fact on the page
+   *  that cannot be dressed up. Deliberately the year work began, not the
+   *  year the business was registered: a studio can trade for a decade
+   *  before it incorporates, and the honest number is the useful one.
+   *  Kept as a string because forms send "2014", "с 2014" and "2014 г."
+   *  alike, and a number would quietly turn a typo into a wrong year. */
+  foundedYear?: string;
+
   /** How many people are in the team. Only meaningful for profileType
    *  "team"; the card falls back to a plain "Team" badge without it. */
   teamSize?: number;

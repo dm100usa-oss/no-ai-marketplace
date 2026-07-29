@@ -350,6 +350,17 @@ export function AdminClient() {
           </p>
         ) : null}
 
+        {(s.services?.length || s.foundedYear) && (
+          <p className="mt-1 text-[0.8rem]" style={{ color: "var(--color-muted-soft)" }}>
+            {[
+              s.foundedYear ? `since ${s.foundedYear}` : "",
+              s.services?.length ? s.services.join(" · ") : "",
+            ]
+              .filter(Boolean)
+              .join(" — ")}
+          </p>
+        )}
+
         {(s.shortDescription || s.fullDescription) && (
           <p
             className="mt-2 whitespace-pre-line text-[0.95rem] leading-relaxed"

@@ -284,6 +284,12 @@ export interface Submission {
   additionalCategories?: string[];
   shortDescription?: string;
   fullDescription?: string;
+  /** What they offer, one line per service, as written in the form. The
+   *  profile introduction is built from this list. */
+  services?: string[];
+  /** Company applications only: the year the company started working. Kept
+   *  as text, because forms send "2014", "с 2014" and "2014 г." alike. */
+  foundedYear?: string;
 
   /** Where to find them */
   website?: string;

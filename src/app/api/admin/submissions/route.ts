@@ -146,6 +146,8 @@ export async function POST(request: NextRequest) {
     additionalCategories: list(data.additionalCategories),
     shortDescription: str(data.shortDescription),
     fullDescription: str(data.fullDescription),
+    services: list(data.services),
+    foundedYear: str(data.foundedYear),
     website: str(data.website),
     otherLinks: str(data.otherLinks),
     avatar: str(data.avatar),
