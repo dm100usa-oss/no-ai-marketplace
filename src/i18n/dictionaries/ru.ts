@@ -87,6 +87,7 @@ export const ru: Dictionary = {
     leadersPickedByHand: "Лидеры, отобранные вручную",
     badgeTeam: "Команда",
     badgeTeamWithSize: "Команда · {n}",
+    cardTeamLine: "В команде {team}",
     peopleForms: ["человек", "человека", "человек"],
     badgeCompany: "Компания",
     badgeDemo: "Демо",
@@ -1229,6 +1230,10 @@ export const ru: Dictionary = {
     processStep4:
       "Оплата, доставка и правки происходят напрямую с {kind}, а не на No AI Directory.",
     kindStudio: "студией",
+    membersTitle: "Кто в команде",
+    membersHint: "У каждого участника свой профиль в каталоге",
+    contactPerson: "Контактное лицо",
+    memberOfTeam: "Участник команды {team}",
     kindTeam: "командой",
     kindCreator: "автором",
     linkWebsite: "Сайт",

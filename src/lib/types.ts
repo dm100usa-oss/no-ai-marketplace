@@ -16,6 +16,17 @@ export type VerificationStatus =
 
 export type ProfileType = "creator" | "team" | "company";
 
+/** One person inside a team profile. */
+export interface TeamMember {
+  /** Display name, as written on their own profile. */
+  name: string;
+  /** What this person does inside the team, in their own words. */
+  role?: string;
+  /** Slug of their creator profile in the catalog. Required by the
+   *  catalog rule: no profile, no membership. */
+  slug: string;
+}
+
 /** External platform links (TZ 4.1: Etsy, Behance, Dribbble, LinkedIn,
  *  Instagram, YouTube, Amazon and others). All optional. */
 export interface SocialLinks {
@@ -104,6 +115,20 @@ export interface Profile extends ReservedRating {
   /** How many people are in the team. Only meaningful for profileType
    *  "team"; the card falls back to a plain "Team" badge without it. */
   teamSize?: number;
+
+  /** Who is in the team.
+   *
+   *  A member is always someone with their own profile in the catalog:
+   *  that is the rule the whole section rests on. The slug points at that
+   *  profile, so the team page links to real, checkable people rather
+   *  than to a list of names, and the member page links back. Name is
+   *  kept here as well, so the row still reads if a profile is ever
+   *  removed. */
+  members?: TeamMember[];
+
+  /** The member the platform writes to about this profile. Not a rank:
+   *  the word on the page is "contact", not "lead". */
+  contactPerson?: string;
 
   /** A placeholder profile, not a real person or business. Marked in the
    *  UI so nobody mistakes it for someone they can actually hire, and

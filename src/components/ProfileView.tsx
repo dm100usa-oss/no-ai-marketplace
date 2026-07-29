@@ -18,6 +18,7 @@ import {
   getCategoryL,
   directionOfCategoryL,
   resolveVisitL,
+  getTeamOfCreatorL,
 } from "@/lib/localized-data";
 
 /**
@@ -38,6 +39,11 @@ export function ProfileView({
   profile: Profile;
 }) {
   const dir = directionOfCategoryL(p.mainCategory, lang);
+  // The team this person belongs to, if any. Stored once on the team and
+  // read back here, so the two pages point at each other without keeping
+  // the same list twice.
+  const team = p.profileType === "creator" ? getTeamOfCreatorL(p.slug, lang) : undefined;
+  const members = p.profileType === "team" ? (p.members ?? []) : [];
   const cat = getCategoryL(p.mainCategory, lang);
   const visit = resolveVisitL(p, {
     portfolio: dict.profile.visitPortfolio,
@@ -271,6 +277,75 @@ export function ProfileView({
                   {p.fullDescription}
                 </p>
               )}
+            </div>
+          )}
+
+          {/* Who is in the team. It sits high on the page on purpose: the
+              catalog sells checkable people, and a team is only as
+              convincing as the four profiles behind it. Every row leads to
+              that person's own profile, because a member without one is
+              not a member at all. */}
+          {members.length > 0 && (
+            <div className="mt-8">
+              <h2 className="!text-[1.35rem]">{dict.profile.membersTitle}</h2>
+              <p className="mt-1 text-[0.92rem]" style={{ color: "var(--color-muted-soft)" }}>
+                {dict.profile.membersHint}
+              </p>
+              <ul className="mt-3">
+                {members.map((m) => (
+                  <li
+                    key={m.slug}
+                    className="border-t"
+                    style={{ borderColor: "var(--color-line)" }}
+                  >
+                    <LocaleLink
+                      lang={lang}
+                      href={`/creators/${m.slug}`}
+                      className="flex items-center gap-3 py-3"
+                    >
+                      <span className="min-w-0 flex-1">
+                        <span
+                          className="block truncate font-semibold notranslate"
+                          translate="no"
+                          style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+                        >
+                          {m.name}
+                        </span>
+                        {m.role ? (
+                          <span className="block truncate text-[0.9rem]" style={{ color: "var(--color-muted)" }}>
+                            {m.role}
+                          </span>
+                        ) : null}
+                      </span>
+                      <ArrowRight size={16} />
+                    </LocaleLink>
+                  </li>
+                ))}
+              </ul>
+              {p.contactPerson ? (
+                <p
+                  className="border-t pt-3 text-[0.92rem]"
+                  style={{ borderColor: "var(--color-line)", color: "var(--color-muted)" }}
+                >
+                  {dict.profile.contactPerson}: {p.contactPerson}
+                </p>
+              ) : null}
+            </div>
+          )}
+
+          {/* The other direction: a creator's page says which team they are
+              part of and leads there. */}
+          {team && (
+            <div className="mt-6">
+              <LocaleLink
+                lang={lang}
+                href={`/teams/${team.slug}`}
+                className="inline-flex items-center gap-2 text-[0.95rem] font-semibold"
+                style={{ color: "var(--color-accent)" }}
+              >
+                {dict.profile.memberOfTeam.replace("{team}", team.name)}
+                <ArrowRight size={15} />
+              </LocaleLink>
             </div>
           )}
 

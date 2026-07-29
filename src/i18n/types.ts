@@ -137,6 +137,8 @@ export interface Dictionary {
     /** Card badge: participant type. {n} = number of people in the team. */
     badgeTeam: string;
     badgeTeamWithSize: string;
+    /** Line on a creator card telling which team they are part of. */
+    cardTeamLine: string; // uses {team}
     /** Plural forms for "N people": [one, few, many]. English uses the
      *  first two only; Russian needs all three (человек/человека/человек). */
     peopleForms: [string, string, string];
@@ -606,6 +608,12 @@ export interface Dictionary {
     processStep3Company: string;
     processStep3Creator: string;
     processStep4: string; // uses {kind}
+    /** Team roster block on a team profile. */
+    membersTitle: string;
+    membersHint: string;
+    contactPerson: string;
+    /** Line on a member's own profile pointing back at the team. */
+    memberOfTeam: string; // uses {team}
     kindStudio: string;
     kindTeam: string;
     kindCreator: string;

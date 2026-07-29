@@ -3,7 +3,7 @@ import type { Profile } from "@/lib/types";
 import { VerifiedBadge, FeaturedBadge } from "./Badges";
 import { ExternalLink } from "./icons";
 import { profileBasePath } from "@/lib/profile-path";
-import { directionOfCategoryL } from "@/lib/localized-data";
+import { directionOfCategoryL, getTeamOfCreatorL } from "@/lib/localized-data";
 import type { Dictionary } from "@/i18n/types";
 import type { Locale } from "@/i18n/config";
 
@@ -77,6 +77,8 @@ export function CreatorCard({
     (profile.socialLinks.portfolio ? dict.profile.visitPortfolio : dict.profile.visitWebsite);
 
   const badge = typeBadge(profile, dict);
+  const team =
+    profile.profileType === "creator" ? getTeamOfCreatorL(profile.slug, lang) : undefined;
   // What this participant actually does — the difference between two
   // people in the same profession. Products count too: an author sells
   // books, not services.
@@ -163,9 +165,23 @@ export function CreatorCard({
           </LocaleLink>
           <div className="flex shrink-0 flex-col items-end gap-1">
             <FeaturedBadge status={profile.status} dict={dict} />
-            <VerifiedBadge status={profile.verificationStatus} dict={dict} />
+            <VerifiedBadge status={profile.verificationStatus} dict={dict} profileType={profile.profileType} />
           </div>
         </div>
+
+        {/* Part of a team. A creator found in the open catalog carries the
+            team with them, the way an agency name travels with its people
+            on Upwork: one team advertises itself through four cards. */}
+        {team && (
+          <LocaleLink
+            lang={lang}
+            href={`/teams/${team.slug}`}
+            className="-mt-1 inline-flex items-center gap-1.5 text-[0.85rem] font-semibold"
+            style={{ color: "var(--color-accent)" }}
+          >
+            {dict.common.cardTeamLine.replace("{team}", team.name)}
+          </LocaleLink>
+        )}
 
         {/* Short description */}
         <p className="line-clamp-2 text-[0.92rem] leading-snug" style={{ color: "var(--color-muted)" }}>

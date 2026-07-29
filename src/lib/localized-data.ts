@@ -139,6 +139,26 @@ export function getProfileL(slug: string, locale: Locale): Profile | undefined {
   return p ? localizeProfile(p, locale) : undefined;
 }
 
+/**
+ * The team a creator belongs to, if any.
+ *
+ * The link is stored once, on the team, and read back from here, so a
+ * creator profile never has to repeat what the team already says. Upwork
+ * does the same with agencies: the roster lives on the agency and both
+ * pages point at each other. One source, two directions.
+ */
+export function getTeamOfCreatorL(
+  slug: string,
+  locale: Locale,
+): Profile | undefined {
+  const team = baseProfiles.find(
+    (p) =>
+      p.profileType === "team" &&
+      (p.members ?? []).some((m) => m.slug === slug),
+  );
+  return team ? localizeProfile(team, locale) : undefined;
+}
+
 export function getProfilesByCategoryL(
   categorySlug: string,
   locale: Locale,

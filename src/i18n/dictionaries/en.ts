@@ -86,6 +86,7 @@ export const en: Dictionary = {
     leadersPickedByHand: "Leaders picked by hand",
     badgeTeam: "Team",
     badgeTeamWithSize: "Team · {n}",
+    cardTeamLine: "Part of {team}",
     peopleForms: ["person", "people", "people"],
     badgeCompany: "Company",
     badgeDemo: "Demo",
@@ -1216,6 +1217,10 @@ export const en: Dictionary = {
     processStep4:
       "Payment, delivery and revisions happen directly with {kind}, not on No AI Directory.",
     kindStudio: "the studio",
+    membersTitle: "Who is in the team",
+    membersHint: "Every member has their own profile in the directory",
+    contactPerson: "Contact",
+    memberOfTeam: "Member of {team}",
     kindTeam: "the team",
     kindCreator: "the creator",
     linkWebsite: "Website",

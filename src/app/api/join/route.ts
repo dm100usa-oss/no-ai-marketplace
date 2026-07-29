@@ -171,6 +171,8 @@ export async function POST(request: NextRequest) {
     mainImage: pick(fields, ["main image", "work", "работа", "image"], CAPTION_WORDS),
     gallery: pickList(fields, ["gallery", "галерея", "works"], CAPTION_WORDS),
     galleryCaptions: pickEach(fields, CAPTION_WORDS),
+    members: pickEach(fields, ["участник", "team member", "member "]),
+    contactPerson: pick(fields, ["контактное лицо", "contact person"]),
     showOnHomepage:
       (pick(fields, ["homepage", "главн", "showcase"]) ?? "").toLowerCase().includes("yes") ||
       (pick(fields, ["homepage", "главн", "showcase"]) ?? "").toLowerCase().includes("да"),

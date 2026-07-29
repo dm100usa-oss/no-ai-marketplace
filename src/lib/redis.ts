@@ -296,6 +296,12 @@ export interface Submission {
   /** What the author wrote under each work, same order as the pictures. */
   galleryCaptions?: string[];
 
+  /** Team applications only: one line per member, as the contact person
+   *  wrote them, plus who to write to. Members are turned into linked
+   *  profiles by hand at publishing time. */
+  members?: string[];
+  contactPerson?: string;
+
   /** Consents */
   showOnHomepage?: boolean;
 

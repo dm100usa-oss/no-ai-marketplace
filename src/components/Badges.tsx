@@ -6,11 +6,17 @@ import type { Dictionary } from "@/i18n/types";
 export function VerifiedBadge({
   status,
   dict,
+  profileType,
 }: {
   status: VerificationStatus;
   dict: Dictionary;
+  /** Teams carry no verification badge yet: a team is only as verified as
+   *  the people in it, and that mark has still to be designed. Passing the
+   *  type here keeps the decision in one place. */
+  profileType?: "creator" | "team" | "company";
 }) {
   if (status === "none") return null;
+  if (profileType === "team") return null;
   const label =
     status === "verified-business"
       ? dict.badges.verifiedBusiness

@@ -359,6 +359,25 @@ export function AdminClient() {
           </p>
         )}
 
+        {(s.members?.length || s.contactPerson) && (
+          <div className="mt-2 text-[0.85rem]" style={{ color: "var(--color-muted)" }}>
+            {s.members?.length ? (
+              <ul className="list-inside list-disc">
+                {s.members.map((m, i) => (
+                  <li key={i} className="break-all">
+                    {m}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+            {s.contactPerson ? (
+              <p className="mt-1" style={{ color: "var(--color-muted-soft)" }}>
+                contact: {s.contactPerson}
+              </p>
+            ) : null}
+          </div>
+        )}
+
         {(s.email || s.website || s.otherLinks) && (
           <p
             className="mt-2 break-all text-[0.8rem]"
