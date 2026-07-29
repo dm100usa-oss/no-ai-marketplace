@@ -352,6 +352,42 @@ a { color: inherit; text-decoration: none; }
 
 .tile-title { font-family: var(--font-display); font-weight: 600; font-size: 1rem; }
 
+/* Plan button on the pricing page.
+
+   The tile's relief in a button shape: same inset highlight, same raise,
+   same lift on hover and press on click. Background and text colour are
+   set per plan on the element itself, so the button carries the colour of
+   the card it stands in and reads as part of it rather than as a generic
+   grey control at the bottom. */
+.tile-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.72rem 1rem;
+  border-radius: var(--radius-card);
+  border: 1px solid rgba(22, 35, 58, 0.06);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.1;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.6),
+    var(--shadow-raise);
+}
+.tile-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.6), var(--shadow-raise-hover);
+}
+.tile-btn:active {
+  transform: translateY(1px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 1px 3px rgba(22, 35, 58, 0.12);
+}
+
 /* ----------------------------------------------------------------
    Layout helpers
 ------------------------------------------------------------------ */

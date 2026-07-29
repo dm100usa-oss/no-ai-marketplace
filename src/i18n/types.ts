@@ -248,6 +248,7 @@ export interface Dictionary {
     saveLabel: string; // "Save {n}"
     /** Word in front of the price that starts once the free places end. */
     laterPrefix: string;
+    includedTitle: string;
     /** One block per participant type. */
     planNames: { creator: string; team: string; company: string };
     /** The line under the intro, the reason to be on this page at all. */

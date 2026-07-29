@@ -2,7 +2,6 @@ import { plans, PLAN_ORDER, freeTier, planCheckoutHref, site } from "@/lib/confi
 import type { PlanId } from "@/lib/config";
 import { freeUntilLabel } from "@/lib/free-date";
 import { CheckoutButton } from "./CheckoutButton";
-import { CheckShield } from "./icons";
 import type { Dictionary } from "@/i18n/types";
 import type { Locale } from "@/i18n/config";
 
@@ -24,10 +23,25 @@ import type { Locale } from "@/i18n/config";
  */
 
 /** Same tones the catalog cards and the join picker use per type. */
-const TONES: Record<PlanId, { bg: string; ink: string }> = {
-  creator: { bg: "#f7e2c0", ink: "#a3690f" },
-  team: { bg: "#c9e9dc", ink: "#0f7a58" },
-  company: { bg: "#cfe0f8", ink: "#2f5cb0" },
+/** `dot` is the homepage bullet built in the card's own ink: highlight at
+ *  30/30, the ink itself at 70%, a darker edge at the rim. Written out per
+ *  tone rather than computed, so the three beads can be adjusted by eye. */
+const TONES: Record<PlanId, { bg: string; ink: string; dot: string }> = {
+  creator: {
+    bg: "#f7e2c0",
+    ink: "#a3690f",
+    dot: "radial-gradient(circle at 30% 30%, #c0995c, #a3690f 70%, #82540c)",
+  },
+  team: {
+    bg: "#c9e9dc",
+    ink: "#0f7a58",
+    dot: "radial-gradient(circle at 30% 30%, #5ca58d, #0f7a58 70%, #0c6246)",
+  },
+  company: {
+    bg: "#cfe0f8",
+    ink: "#2f5cb0",
+    dot: "radial-gradient(circle at 30% 30%, #7290c9, #2f5cb0 70%, #264a8d)",
+  },
 };
 
 export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
@@ -56,7 +70,7 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
       {/* One heading over the row instead of the word "plan" repeated on
           every card. It names what the three cards are and tells the
           visitor what to do with them, in one place rather than three. */}
-      <h2 className="mt-10">{dict.pricing.chooseTitle}</h2>
+      <h2 className="mt-10 text-center">{dict.pricing.chooseTitle}</h2>
 
       {/* Plans */}
       <div className="mt-6 grid gap-4 md:grid-cols-3">
@@ -83,7 +97,7 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                   different heights, and a row of three where the middle
                   price sits higher than its neighbours reads as broken
                   rather than as a hierarchy. */}
-              <div className="mt-3 md:min-h-[5.5rem]">
+              <div className="mt-3 md:min-h-[3rem]">
                 <p className="text-[0.9rem] leading-snug" style={{ color: "var(--color-muted)" }}>
                   {dict.pricing.planFor[id]}
                 </p>
@@ -103,39 +117,62 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               </div>
 
               <div className="mt-4">
+                {/* Price and "Сейчас бесплатно" on one line, in the same
+                    green. The words are what the figure means, so they read
+                    as one statement rather than as a number with a caption
+                    under it. Baseline alignment keeps them sitting level
+                    despite the difference in size. */}
                 <p
-                  className="text-[2rem] font-bold leading-none"
-                  style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+                  className="flex items-baseline gap-2 leading-none"
+                  style={{ fontFamily: "var(--font-display)", color: "#0f7a58" }}
                 >
-                  {freeTier.priceLabel}
-                </p>
-                <p className="mt-1 text-[0.85rem] font-semibold" style={{ color: tone.ink }}>
-                  {dict.pricing.freeNowLabel}
-                </p>
-                {/* Both prices at once. "потом" is what keeps a struck-out
-                    figure from reading as "was 49, now 0 forever": it is
-                    the price that starts later, not a discount already
-                    taken. */}
-                <p className="mt-2 text-[0.85rem]" style={{ color: "var(--color-muted-soft)" }}>
-                  {dict.pricing.laterPrefix}{" "}
-                  <span style={{ textDecoration: "line-through" }}>
-                    {plan.monthly.priceLabel}
-                  </span>{" "}
-                  {dict.pricing.perMonth} {dict.pricing.orWord}{" "}
-                  <span style={{ textDecoration: "line-through" }}>
-                    {plan.yearly.priceLabel}
-                  </span>{" "}
-                  {dict.pricing.perYear}{" "}
-                  <span className="font-semibold" style={{ color: tone.ink }}>
-                    {dict.pricing.saveLabel.replace("{n}", plan.savingLabel)}
+                  <span className="text-[1rem] font-bold">{freeTier.priceLabel}</span>
+                  <span className="text-[0.85rem] font-semibold">
+                    {dict.pricing.freeNowLabel}
                   </span>
+                </p>
+                {/* What it costs once the free places are gone: the month on
+                    one line, the year under it. The prices are no longer
+                    struck through. "Далее" already says they start later, and
+                    a struck figure next to $0 reads as a discount already
+                    taken rather than as a price still to come. */}
+                <p
+                  className="mt-2 text-[0.85rem] leading-snug"
+                  style={{ color: "var(--color-muted-soft)" }}
+                >
+                  {dict.pricing.laterPrefix} {plan.monthly.priceLabel} {dict.pricing.perMonth}
+                  <br />
+                  {dict.pricing.orWord} {plan.yearly.priceLabel} {dict.pricing.perYear}
                 </p>
               </div>
 
-              <ul className="mt-5 space-y-2" style={{ color: "var(--color-muted)" }}>
+              {/* The list gets a heading of its own, in the card's own colour,
+                  so the reader knows the lines under it answer one question
+                  rather than continuing the price. */}
+              <p
+                className="mt-5 text-[0.95rem] font-bold"
+                style={{ fontFamily: "var(--font-display)", color: tone.ink }}
+              >
+                {dict.pricing.includedTitle}
+              </p>
+
+              <ul className="mt-3 space-y-2" style={{ color: "var(--color-muted)" }}>
                 {dict.pricing.planFeatures[id].map((line) => (
-                  <li key={line} className="flex gap-2 text-[0.9rem] leading-snug">
-                    <CheckShield size={15} className="mt-0.5 shrink-0" />
+                  <li key={line} className="flex items-start gap-2.5 text-[0.9rem] leading-snug">
+                    {/* The same glossy bead the homepage lists use, so the
+                        two pages read as one site. Here it takes the card's
+                        own colour instead of the site blue. */}
+                    <span
+                      aria-hidden="true"
+                      className="mt-[0.4rem] shrink-0 rounded-full"
+                      style={{
+                        width: "0.55rem",
+                        height: "0.55rem",
+                        background: tone.dot,
+                        boxShadow:
+                          "0 1px 2px rgba(30,50,90,0.4), inset 0 1px 1px rgba(255,255,255,0.45)",
+                      }}
+                    />
                     <span>{line}</span>
                   </li>
                 ))}
@@ -148,7 +185,8 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                   label={dict.pricing.claimFree}
                   plan={id}
                   period="yearly"
-                  className="btn btn-quiet btn-full"
+                  className="tile-btn"
+                  style={{ background: tone.bg, color: tone.ink }}
                 />
               </div>
             </div>

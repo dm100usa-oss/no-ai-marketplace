@@ -301,7 +301,7 @@ export const en: Dictionary = {
     intro:
       "One plan per participant type. A creator pays for themselves, a team for the team, a company for the company. You pay to list a profile and nothing else: there is no commission on your work, and clients pay you directly.",
     headline:
-      "Win clients who come back, on a platform people visit to hire, not to browse.",
+      "Win new clients for long-term work on No AI Directory, a platform people come to for hiring, not for browsing.",
     chooseTitle: "Choose your plan",
     orWord: "or",
     freeBannerTitle: "The first {n} profiles are free",
@@ -312,7 +312,8 @@ export const en: Dictionary = {
     billedMonthly: "Monthly",
     billedYearly: "Yearly",
     saveLabel: "a saving of about {n} compared with paying monthly",
-    laterPrefix: "then",
+    laterPrefix: "Then",
+    includedTitle: "What you get",
     planNames: {
       creator: "Creator",
       team: "Team",
@@ -324,7 +325,7 @@ export const en: Dictionary = {
       company: "You are a registered business with your own staff.",
     },
     planPitch: {
-      creator: "Get clients for one-on-one projects",
+      creator: "",
       team: "",
       company: "",
     },

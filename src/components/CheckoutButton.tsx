@@ -19,6 +19,7 @@ export function CheckoutButton({
   plan,
   period,
   className,
+  style,
 }: {
   lang: Locale;
   href: string;
@@ -26,6 +27,8 @@ export function CheckoutButton({
   plan: PlanId;
   period: BillingPeriod;
   className: string;
+  /** Set by the caller so the button can carry its plan's own colour. */
+  style?: React.CSSProperties;
 }) {
   const external = isExternalCheckout(href);
 
@@ -45,6 +48,7 @@ export function CheckoutButton({
         rel="noopener noreferrer"
         onClick={onClick}
         className={className}
+        style={style}
       >
         {label}
       </a>
@@ -52,7 +56,7 @@ export function CheckoutButton({
   }
 
   return (
-    <Link href={localizeHref(lang, href)} onClick={onClick} className={className}>
+    <Link href={localizeHref(lang, href)} onClick={onClick} className={className} style={style}>
       {label}
     </Link>
   );

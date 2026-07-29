@@ -40,19 +40,27 @@ export default async function PricingPage({
       />
 
       <div className="mx-auto max-w-3xl">
-        <h1>{dict.pricing.title}</h1>
-        <p className="lead mt-4">{dict.pricing.intro}</p>
-
-        {/* The one line the whole page rests on, standing between the
-            explanation of who pays for what and the offer itself. The
-            paragraph above is bookkeeping; this is the reason to be here
-            at all, so it reads as a heading rather than as more prose. */}
+        {/* The page title is set to the h2 size on purpose. At full h1 size
+            it towered over "Выберите свой тариф" further down and made the
+            word "Цены" the loudest thing on a page whose real subject is the
+            offer underneath. Same weight and family, one step quieter. */}
+        <h1 className="text-center" style={{ fontSize: "var(--text-h2)" }}>
+          {dict.pricing.title}
+        </h1>
+        {/* The subtitle, part of the title block rather than a paragraph of
+            its own: centred with the title, in the display face, one step
+            below it in size. It says why anyone should be on this page at
+            all, so it comes before the bookkeeping about who pays for what.
+            It used to stand lower, between that paragraph and the offer;
+            leaving a copy there would be the same sentence twice. */}
         <p
-          className="mt-8 text-[1.35rem] font-bold leading-snug md:text-[1.6rem]"
+          className="mx-auto mt-3 max-w-2xl text-center text-[1.15rem] font-semibold leading-snug md:text-[1.3rem]"
           style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
         >
           {dict.pricing.headline}
         </p>
+
+        <p className="lead mt-6">{dict.pricing.intro}</p>
 
         <div className="mt-10">
           <PlansTable lang={locale} dict={dict} />
