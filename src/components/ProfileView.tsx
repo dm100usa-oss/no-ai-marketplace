@@ -29,6 +29,58 @@ import {
  * category, and a report form. Same component powers both creator and
  * company pages — profileType only changes JSON-LD.
  */
+/** Where a member's photo will go.
+ *
+ *  Same silhouette as the empty catalog slot: it reads as "a face goes
+ *  here" without asking anyone to decode initials that belong to nobody.
+ *  The tint is picked from the slug, so each row keeps its own colour and
+ *  four people never end up in four identical grey squares. Once a member
+ *  has an avatar on their own profile, that photo takes this place. */
+const MEMBER_TINTS = [
+  { bg: "#e3ecfb", ink: "rgba(47,92,176,0.55)" },
+  { bg: "#dff1e9", ink: "rgba(15,122,88,0.55)" },
+  { bg: "#eae4fa", ink: "rgba(103,84,168,0.55)" },
+  { bg: "#fbeedb", ink: "rgba(169,105,26,0.55)" },
+  { bg: "#fbe4e9", ink: "rgba(180,72,104,0.5)" },
+  { bg: "#ddf0f2", ink: "rgba(30,140,150,0.55)" },
+];
+
+function memberTint(seed: string) {
+  let h = 0;
+  for (const c of seed) h = (h + c.charCodeAt(0)) % MEMBER_TINTS.length;
+  return MEMBER_TINTS[h];
+}
+
+function MemberAvatar({ src, seed, alt }: { src?: string; seed: string; alt: string }) {
+  const tint = memberTint(seed);
+  if (src) {
+    // eslint-disable-next-line @next/next/no-img-element
+    return (
+      <img
+        src={src}
+        alt={alt}
+        width={200}
+        height={200}
+        loading="lazy"
+        decoding="async"
+        className="h-11 w-11 shrink-0 rounded-[0.7rem] object-cover"
+      />
+    );
+  }
+  return (
+    <span
+      aria-hidden
+      className="grid h-11 w-11 shrink-0 place-items-center rounded-[0.7rem]"
+      style={{ background: tint.bg }}
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
+        <circle cx="12" cy="8" r="3.6" fill={tint.ink} />
+        <path d="M4.8 20c0-3.6 3.2-6 7.2-6s7.2 2.4 7.2 6" fill={tint.ink} />
+      </svg>
+    </span>
+  );
+}
+
 export function ProfileView({
   lang,
   dict,
@@ -44,6 +96,15 @@ export function ProfileView({
   // the same list twice.
   const team = p.profileType === "creator" ? getTeamOfCreatorL(p.slug, lang) : undefined;
   const members = p.profileType === "team" ? (p.members ?? []) : [];
+  // A member's own photo, when their profile already carries one. Looked
+  // up once here rather than per row.
+  const memberAvatars: Record<string, string | undefined> = {};
+  if (members.length > 0) {
+    const all = getAllProfilesL(lang);
+    for (const m of members) {
+      memberAvatars[m.slug] = all.find((x) => x.slug === m.slug)?.avatar;
+    }
+  }
   const cat = getCategoryL(p.mainCategory, lang);
   const visit = resolveVisitL(p, {
     portfolio: dict.profile.visitPortfolio,
@@ -303,6 +364,7 @@ export function ProfileView({
                       href={`/creators/${m.slug}`}
                       className="flex items-center gap-3 py-3"
                     >
+                      <MemberAvatar src={memberAvatars[m.slug]} seed={m.slug} alt={m.name} />
                       <span className="min-w-0 flex-1">
                         <span
                           className="block truncate font-semibold notranslate"
