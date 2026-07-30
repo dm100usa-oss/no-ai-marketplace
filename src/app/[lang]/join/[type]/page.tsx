@@ -26,9 +26,9 @@ const TYPES = ["creator", "team", "company"] as const;
 
 /** The rim of each plan's plate, reused as the frame around the form. */
 const EDGES: Record<ProfileType, string> = {
-  creator: "#f2d18d",
-  team: "#a3d8c3",
-  company: "#a8c6ee",
+  creator: "#ffb300",
+  team: "#12a06f",
+  company: "#3e6fcc",
 };
 
 
@@ -105,8 +105,12 @@ export default async function JoinTypePage({
 
       <div className="mx-auto max-w-3xl">
         <p
-          className="text-[1.5rem] font-bold md:text-[1.8rem]"
-          style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+          className="font-bold"
+          style={{
+            fontFamily: "var(--font-display)",
+            color: "var(--color-ink)",
+            fontSize: "var(--text-h2)",
+          }}
         >
           {dict.joinType.thanksLead}{" "}
           {/* The platform name in the brand face, as in the logo, the footer
@@ -114,8 +118,14 @@ export default async function JoinTypePage({
               phrase rather than as the name of the place. */}
           <span style={{ fontFamily: "var(--font-brand)" }}>No AI Directory</span>
         </p>
-        {wish ? <p className="lead mt-3">{wish}</p> : null}
-        <p className="mt-3" style={{ color: "var(--color-muted)" }}>{copy.thanksText}</p>
+        {wish ? (
+          <p className="lead mt-3 leading-snug" style={{ textAlign: "justify" }}>
+            {wish}
+          </p>
+        ) : null}
+        <p className="mt-3" style={{ color: "var(--color-muted)", textAlign: "justify" }}>
+          {copy.thanksText}
+        </p>
 
         {/* The four steps, titles only, and no heading over them: the line
             above has just said there are four, so "Как это работает" would be
@@ -145,7 +155,10 @@ export default async function JoinTypePage({
         {/* This type's form, and only this one. */}
         <div id="form" className="mt-10 scroll-mt-32">
           <h2>{copy.title}</h2>
-          <p className="mt-3 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
+          <p
+            className="mt-3 text-[0.95rem]"
+            style={{ color: "var(--color-muted)", textAlign: "justify" }}
+          >
             {dict.join.formIntro}
           </p>
           {/* The plan's colour reaches the form as a frame, not as a fill:
@@ -159,7 +172,7 @@ export default async function JoinTypePage({
         {/* Rules and standards, word for word as on /join: the same promises
             have to hold whichever door someone came through. */}
         <h2 className="mt-12">{dict.join.rulesTitle}</h2>
-        <p className="mt-3" style={{ color: "var(--color-muted)" }}>
+        <p className="mt-3" style={{ color: "var(--color-muted)", textAlign: "justify" }}>
           {dict.join.rulesText1}
           <LocaleLink
             lang={locale}
