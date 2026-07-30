@@ -39,23 +39,47 @@ interface TallyField {
   key?: string;
   type?: string;
   value?: unknown;
+  /** Dropdowns, multi-selects and checkboxes send the chosen option's id,
+   *  not its text, and carry the id-to-text table alongside. */
+  options?: { id?: string; text?: string }[];
 }
 
-/** A field's value as trimmed text, or undefined. Tally sends most values
- *  as strings; multi-selects arrive as arrays, which we join. */
-function fieldText(value: unknown): string | undefined {
-  if (typeof value === "string") {
-    const t = value.trim();
-    return t.length > 0 ? t : undefined;
-  }
+/** A field's value as trimmed text, or undefined.
+ *
+ *  Most answers arrive as plain strings. Dropdowns, multi-selects and
+ *  checkboxes are the exception: Tally sends the id of the chosen option,
+ *  a string like "9b357610-33fb-420c-bae0-9706cdc9b6f5", and puts the
+ *  readable text in the field's own options list. Without looking it up we
+ *  stored the id, and the moderation queue showed a row of them where the
+ *  category should have been.
+ *
+ *  An id with no match in the table falls back to the raw value: better a
+ *  strange string in the queue than a submission that loses its answer. */
+function fieldText(field: TallyField): string | undefined {
+  const options = field.options ?? [];
+
+  const one = (v: unknown): string => {
+    if (typeof v === "number") return String(v);
+    // An uploaded file arrives as a small parcel, not a string: the name,
+    // the size, the type and the address it was stored at. Only the address
+    // is of any use to us, and without this branch the whole parcel was
+    // dropped and the work never reached the moderation queue.
+    if (v !== null && typeof v === "object") {
+      const url = (v as { url?: unknown }).url;
+      return typeof url === "string" ? url.trim() : "";
+    }
+    if (typeof v !== "string") return "";
+    const hit = options.find((o) => o.id === v);
+    return (hit?.text ?? v).trim();
+  };
+
+  const value = field.value;
   if (Array.isArray(value)) {
-    const parts = value
-      .map((v) => (typeof v === "string" ? v.trim() : ""))
-      .filter((v) => v.length > 0);
+    const parts = value.map(one).filter((v) => v.length > 0);
     return parts.length > 0 ? parts.join(", ") : undefined;
   }
-  if (typeof value === "number") return String(value);
-  return undefined;
+  const t = one(value);
+  return t.length > 0 ? t : undefined;
 }
 
 /** Labels of the caption questions.
@@ -82,7 +106,7 @@ function pick(
     const label = (f.label ?? f.key ?? "").toLowerCase();
     if (skip.some((k) => label.includes(k))) continue;
     if (keywords.some((k) => label.includes(k))) {
-      const t = fieldText(f.value);
+      const t = fieldText(f);
       if (t) return t;
     }
   }
@@ -97,7 +121,7 @@ function pickEach(fields: TallyField[], keywords: string[]): string[] | undefine
   for (const f of fields) {
     const label = (f.label ?? f.key ?? "").toLowerCase();
     if (keywords.some((k) => label.includes(k))) {
-      out.push(fieldText(f.value)?.trim() ?? "");
+      out.push(fieldText(f)?.trim() ?? "");
     }
   }
   while (out.length > 0 && out[out.length - 1] === "") out.pop();
@@ -119,7 +143,7 @@ function pickWorks(fields: TallyField[]): string[] {
     const label = (f.label ?? f.key ?? "").toLowerCase();
     if (CAPTION_WORDS.some((k) => label.includes(k))) continue;
     if (!/(работа|work)\s*\d/.test(label)) continue;
-    out.push(fieldText(f.value)?.trim() ?? "");
+    out.push(fieldText(f)?.trim() ?? "");
   }
   return out;
 }

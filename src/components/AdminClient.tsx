@@ -398,18 +398,37 @@ export function AdminClient() {
           </p>
         )}
 
+        {/* The photo and the works, shown rather than linked.
+            A decision to publish is a decision about the pictures, and it
+            cannot be made from a row of words that each need a new tab.
+            Each thumbnail still opens the full size in one. */}
         {pics.length > 0 && (
-          <div className="mt-3 flex flex-wrap gap-2">
+          <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
             {pics.map((p) => (
               <a
                 key={p.url}
                 href={p.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full px-2.5 py-1 text-[0.78rem] underline"
-                style={{ background: "var(--color-brand-soft)", color: "var(--color-ink)" }}
+                className="block overflow-hidden rounded-xl border"
+                style={{ borderColor: "var(--color-line)" }}
+                title={p.label}
               >
-                {p.label}
+                <span
+                  className="block aspect-[4/3]"
+                  style={{
+                    backgroundColor: "var(--color-brand-soft)",
+                    backgroundImage: `url("${p.url}")`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                />
+                <span
+                  className="block px-2 py-1 text-[0.72rem]"
+                  style={{ color: "var(--color-muted)" }}
+                >
+                  {p.label}
+                </span>
               </a>
             ))}
           </div>
