@@ -220,7 +220,10 @@ export const socialLinks = [
  */
 export function planCheckoutHref(plan: PlanId, period: BillingPeriod): string {
   const link = plans[plan][period].stripeLink;
-  return link || "/join#form";
+  // No Stripe link yet: send them to the join page with this plan's own
+  // form already open, rather than to the "who are you" question they have
+  // just answered by pressing this button.
+  return link || `/join#${plan}`;
 }
 
 /** True when a href points to an external Stripe checkout (needs a real

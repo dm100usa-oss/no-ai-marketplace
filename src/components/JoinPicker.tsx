@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { TallyForm } from "./TallyForm";
 import { CheckShield, ChevronDown } from "./icons";
 import type { Dictionary } from "@/i18n/types";
@@ -55,6 +55,21 @@ export function JoinPicker({ lang, dict }: { lang: Locale; dict: Dictionary }) {
     anchor.current = null;
   }, [open]);
 
+  // Arriving from a plan card: /join#creator opens that form straight away.
+  //
+  // Someone who has already chosen "Автор" on the pricing page and pressed
+  // its button has answered the "who are you" question once; making them
+  // answer it again on arrival is asking twice. The browser scrolls to the
+  // row by itself because each row carries its type as an id; this only
+  // decides which one is open when they land.
+  //
+  // Read once, on mount. Later clicks are the visitor's own and must not be
+  // overridden by a hash still sitting in the address bar.
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    if (ORDER.includes(hash as ProfileType)) setOpen(hash as ProfileType);
+  }, []);
+
   const handleToggle = (type: ProfileType) => {
     const el = rowRefs.current[type];
     if (el) anchor.current = { type, top: el.getBoundingClientRect().top };
@@ -78,10 +93,11 @@ export function JoinPicker({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           return (
             <div
               key={type}
+              id={type}
               ref={(el) => {
                 rowRefs.current[type] = el;
               }}
-              className="overflow-hidden rounded-2xl border"
+              className="scroll-mt-28 overflow-hidden rounded-2xl border"
               style={{
                 borderColor: tone.solid,
                 borderWidth: active ? 2 : 1,
