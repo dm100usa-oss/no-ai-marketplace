@@ -1,0 +1,600 @@
+"use client";
+
+import { useState } from "react";
+import type { Review, Submission } from "@/lib/redis";
+
+/**
+ * The moderation screen.
+ *
+ * Interface text is hardcoded English on purpose: this page is for the
+ * owner, not for visitors, and putting forty admin strings into both
+ * dictionaries would mean maintaining translations nobody reads.
+ *
+ * The password is held in component state and sent as a header with each
+ * call. It is not written to localStorage: closing the tab logs out, which
+ * for a page opened a few times a month is the right trade.
+ */
+
+type Status = "approved" | "rejected" | "pending";
+
+function Stars({ n }: { n: number }) {
+  return (
+    <span className="inline-flex gap-0.5" aria-label={`${n} / 5`}>
+      {[1, 2, 3, 4, 5].map((i) => (
+        <svg key={i} width={14} height={14} viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M12 2.5l2.9 5.9 6.5.95-4.7 4.58 1.1 6.47L12 17.35l-5.8 3.05 1.1-6.47-4.7-4.58 6.5-.95z"
+            fill={i <= n ? "#e8a33d" : "transparent"}
+            stroke={i <= n ? "#c9832a" : "var(--color-line)"}
+            strokeWidth={1.2}
+            strokeLinejoin="round"
+          />
+        </svg>
+      ))}
+    </span>
+  );
+}
+
+const STATUS_COLOR: Record<Status, string> = {
+  pending: "#8a6d1f",
+  approved: "#2f6b45",
+  rejected: "#8a3a32",
+};
+
+export function AdminClient() {
+  const [password, setPassword] = useState("");
+  const [authed, setAuthed] = useState(false);
+  const [reviews, setReviews] = useState<Review[]>([]);
+  const [submissions, setSubmissions] = useState<Submission[]>([]);
+  const [tab, setTab] = useState<"profiles" | "reviews">("profiles");
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+
+  async function load(pw: string) {
+    setBusy(true);
+    setError("");
+    try {
+      const res = await fetch("/api/admin/reviews", {
+        headers: { "x-admin-password": pw },
+      });
+      if (res.status === 401) {
+        setError("Wrong password, or ADMIN_PASSWORD is not set in Vercel.");
+        setBusy(false);
+        return;
+      }
+      const data = await res.json();
+      setReviews(data.reviews ?? []);
+
+      // The join queue rides on the same password. A failure here must not
+      // lock the reviews screen: an empty list is better than no page.
+      try {
+        const sres = await fetch("/api/admin/submissions", {
+          headers: { "x-admin-password": pw },
+        });
+        if (sres.ok) {
+          const sdata = await sres.json();
+          setSubmissions(sdata.submissions ?? []);
+        }
+      } catch {
+        /* leave submissions as they were */
+      }
+
+      setAuthed(true);
+    } catch {
+      setError("Could not reach the server.");
+    }
+    setBusy(false);
+  }
+
+  /** Publish or reject one join request. */
+  async function decideSubmission(id: string, status: "published" | "rejected") {
+    setBusy(true);
+    try {
+      const res = await fetch("/api/admin/submissions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-password": password,
+        },
+        body: JSON.stringify({ id, status }),
+      });
+      if (res.ok) {
+        await load(password);
+        return;
+      }
+      setError("Could not save the decision.");
+    } catch {
+      setError("Could not reach the server.");
+    }
+    setBusy(false);
+  }
+
+  /** Grant a verification badge and notify the author. */
+  async function verifySubmission(
+    id: string,
+    verification: "verified-creator" | "verified-business",
+  ) {
+    setBusy(true);
+    try {
+      const res = await fetch("/api/admin/submissions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-password": password,
+        },
+        body: JSON.stringify({ id, verification }),
+      });
+      if (res.ok) {
+        await load(password);
+        return;
+      }
+      setError("Could not grant the badge.");
+    } catch {
+      setError("Could not reach the server.");
+    }
+    setBusy(false);
+  }
+
+  async function decide(id: string, status: "approved" | "rejected") {
+    setBusy(true);
+    try {
+      const res = await fetch("/api/admin/reviews", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-password": password,
+        },
+        body: JSON.stringify({ id, status }),
+      });
+      if (res.ok) {
+        // Reload rather than patch in place: the list is short and this
+        // guarantees the screen matches what is actually stored.
+        await load(password);
+        return;
+      }
+      setError("Could not save the decision.");
+    } catch {
+      setError("Could not reach the server.");
+    }
+    setBusy(false);
+  }
+
+  if (!authed) {
+    return (
+      <div className="section">
+        <div className="container-page max-w-sm">
+          <h1
+            className="text-[1.5rem] font-bold"
+            style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+          >
+            Moderation
+          </h1>
+          <div className="mt-5 space-y-3">
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") load(password);
+              }}
+              placeholder="Password"
+              className="w-full rounded-xl border px-4 py-3 text-[0.95rem]"
+              style={{ borderColor: "var(--color-line)", background: "#fff" }}
+            />
+            <button
+              type="button"
+              onClick={() => load(password)}
+              disabled={busy || password.length === 0}
+              className="btn btn-accent btn-full disabled:opacity-60"
+            >
+              {busy ? "Checking..." : "Sign in"}
+            </button>
+            {error && (
+              <p className="text-[0.9rem]" style={{ color: "#b4342a" }}>
+                {error}
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const pending = reviews.filter((r) => r.status === "pending");
+  const decided = reviews.filter((r) => r.status !== "pending");
+
+  const fmt = new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  function Card({ review, actions }: { review: Review; actions: boolean }) {
+    return (
+      <li
+        className="rounded-2xl border p-5"
+        style={{ borderColor: "var(--color-line)", background: "#fff" }}
+      >
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <span className="flex items-center gap-2.5">
+            <span className="font-semibold" style={{ color: "var(--color-ink)" }}>
+              {review.name}
+            </span>
+            <Stars n={review.rating} />
+            <span
+              className="rounded-full px-2 py-0.5 text-[0.7rem] font-semibold uppercase"
+              style={{
+                background: "var(--color-brand-soft)",
+                color: STATUS_COLOR[review.status],
+              }}
+            >
+              {review.status}
+            </span>
+          </span>
+          <span className="text-[0.75rem]" style={{ color: "var(--color-muted-soft)" }}>
+            {review.lang.toUpperCase()} · {fmt.format(new Date(review.createdAt))}
+          </span>
+        </div>
+
+        <p
+          className="mt-2 whitespace-pre-line text-[0.95rem] leading-relaxed"
+          style={{ color: "var(--color-muted)" }}
+        >
+          {review.text}
+        </p>
+
+        {actions && (
+          <div className="mt-4 flex gap-2">
+            <button
+              type="button"
+              onClick={() => decide(review.id, "approved")}
+              disabled={busy}
+              className="btn btn-accent disabled:opacity-60"
+            >
+              Approve
+            </button>
+            <button
+              type="button"
+              onClick={() => decide(review.id, "rejected")}
+              disabled={busy}
+              className="btn btn-quiet disabled:opacity-60"
+            >
+              Reject
+            </button>
+          </div>
+        )}
+      </li>
+    );
+  }
+
+  /** One join request, with everything the author filled in. */
+  function SubmissionCard({ s, actions }: { s: Submission; actions: boolean }) {
+    const pics = [
+      ...(s.avatar ? [{ label: "Photo", url: s.avatar }] : []),
+      ...(s.mainImage ? [{ label: "Work 1", url: s.mainImage }] : []),
+      ...(s.gallery ?? []).map((u, i) => ({ label: `Work ${i + 2}`, url: u })),
+    ];
+
+    return (
+      <li
+        className="rounded-2xl border p-5"
+        style={{ borderColor: "var(--color-line)", background: "#fff" }}
+      >
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <span className="flex flex-wrap items-center gap-2.5">
+            <span className="font-semibold" style={{ color: "var(--color-ink)" }}>
+              {s.name}
+            </span>
+            {s.profileType && s.profileType !== "creator" && (
+              <span
+                className="rounded-full px-2 py-0.5 text-[0.7rem] font-semibold uppercase"
+                style={{ background: "var(--color-brand-soft)", color: "var(--color-ink)" }}
+              >
+                {s.profileType}
+              </span>
+            )}
+            <span
+              className="rounded-full px-2 py-0.5 text-[0.7rem] font-semibold uppercase"
+              style={{
+                background: "var(--color-brand-soft)",
+                color:
+                  s.status === "published"
+                    ? "#2f6b45"
+                    : s.status === "rejected"
+                      ? "#b4342a"
+                      : "var(--color-muted)",
+              }}
+            >
+              {s.status}
+            </span>
+            {s.showOnHomepage && (
+              <span className="text-[0.75rem]" style={{ color: "#2f6b45" }}>
+                homepage ok
+              </span>
+            )}
+            {s.status === "published" && (
+              <span
+                className="text-[0.75rem]"
+                style={{ color: s.emailConfirmed ? "#2f6b45" : "#8a6d1f" }}
+              >
+                {s.emailConfirmed ? "email confirmed" : "email not confirmed"}
+              </span>
+            )}
+            {s.verification && s.verification !== "none" && (
+              <span
+                className="rounded-full px-2 py-0.5 text-[0.7rem] font-semibold uppercase"
+                style={{ background: "#dff1e9", color: "#157a58" }}
+              >
+                {s.verification === "verified-business"
+                  ? "verified business"
+                  : "verified creator"}
+              </span>
+            )}
+          </span>
+          <span className="text-[0.75rem]" style={{ color: "var(--color-muted-soft)" }}>
+            {fmt.format(new Date(s.createdAt))}
+          </span>
+        </div>
+
+        <p className="mt-2 text-[0.85rem]" style={{ color: "var(--color-muted-soft)" }}>
+          {[s.mainCategory, [s.city, s.country].filter(Boolean).join(", ")]
+            .filter(Boolean)
+            .join(" · ")}
+        </p>
+
+        {s.additionalCategories?.length ? (
+          <p className="mt-1 text-[0.8rem]" style={{ color: "var(--color-muted-soft)" }}>
+            also: {s.additionalCategories.join(", ")}
+          </p>
+        ) : null}
+
+        {(s.services?.length || s.foundedYear) && (
+          <p className="mt-1 text-[0.8rem]" style={{ color: "var(--color-muted-soft)" }}>
+            {[
+              s.foundedYear ? `since ${s.foundedYear}` : "",
+              s.services?.length ? s.services.join(" · ") : "",
+            ]
+              .filter(Boolean)
+              .join(" — ")}
+          </p>
+        )}
+
+        {(s.shortDescription || s.fullDescription) && (
+          <p
+            className="mt-2 whitespace-pre-line text-[0.95rem] leading-relaxed"
+            style={{ color: "var(--color-muted)" }}
+          >
+            {s.shortDescription ?? s.fullDescription}
+          </p>
+        )}
+
+        {(s.members?.length || s.contactPerson) && (
+          <div className="mt-2 text-[0.85rem]" style={{ color: "var(--color-muted)" }}>
+            {s.members?.length ? (
+              <ul className="list-inside list-disc">
+                {s.members.map((m, i) => (
+                  <li key={i} className="break-all">
+                    {m}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+            {s.contactPerson ? (
+              <p className="mt-1" style={{ color: "var(--color-muted-soft)" }}>
+                contact: {s.contactPerson}
+              </p>
+            ) : null}
+          </div>
+        )}
+
+        {(s.email || s.website || s.otherLinks) && (
+          <p
+            className="mt-2 break-all text-[0.8rem]"
+            style={{ color: "var(--color-muted-soft)" }}
+          >
+            {[s.email, s.website, s.otherLinks].filter(Boolean).join(" · ")}
+          </p>
+        )}
+
+        {/* The photo and the works, shown rather than linked.
+            A decision to publish is a decision about the pictures, and it
+            cannot be made from a row of words that each need a new tab.
+            Each thumbnail still opens the full size in one. */}
+        {pics.length > 0 && (
+          <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
+            {pics.map((p) => (
+              <a
+                key={p.url}
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block overflow-hidden rounded-xl border"
+                style={{ borderColor: "var(--color-line)" }}
+                title={p.label}
+              >
+                <span
+                  className="block aspect-[4/3]"
+                  style={{
+                    backgroundColor: "var(--color-brand-soft)",
+                    backgroundImage: `url("${p.url}")`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                />
+                <span
+                  className="block px-2 py-1 text-[0.72rem]"
+                  style={{ color: "var(--color-muted)" }}
+                >
+                  {p.label}
+                </span>
+              </a>
+            ))}
+          </div>
+        )}
+
+        {actions && (
+          <div className="mt-4 flex gap-2">
+            <button
+              type="button"
+              onClick={() => decideSubmission(s.id, "published")}
+              disabled={busy}
+              className="btn btn-accent disabled:opacity-60"
+            >
+              Publish
+            </button>
+            <button
+              type="button"
+              onClick={() => decideSubmission(s.id, "rejected")}
+              disabled={busy}
+              className="btn btn-quiet disabled:opacity-60"
+            >
+              Reject
+            </button>
+          </div>
+        )}
+
+        {/* Verification is granted after publishing, once the author has
+            sent extra materials. Shown on decided (published) profiles that
+            do not already carry a badge. */}
+        {!actions &&
+          s.status === "published" &&
+          (!s.verification || s.verification === "none") && (
+            <div className="mt-4 flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() => verifySubmission(s.id, "verified-creator")}
+                disabled={busy}
+                className="btn btn-quiet disabled:opacity-60"
+              >
+                Grant Verified creator
+              </button>
+              <button
+                type="button"
+                onClick={() => verifySubmission(s.id, "verified-business")}
+                disabled={busy}
+                className="btn btn-quiet disabled:opacity-60"
+              >
+                Grant Verified business
+              </button>
+            </div>
+          )}
+      </li>
+    );
+  }
+
+  const subPending = submissions.filter((s) => s.status === "pending");
+  const subDecided = submissions.filter((s) => s.status !== "pending");
+
+  return (
+    <div className="section">
+      <div className="container-page max-w-3xl">
+        <div className="flex items-center justify-between gap-3">
+          <h1
+            className="text-[1.5rem] font-bold"
+            style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+          >
+            Moderation
+          </h1>
+          <button
+            type="button"
+            onClick={() => load(password)}
+            disabled={busy}
+            className="btn btn-quiet disabled:opacity-60"
+          >
+            Refresh
+          </button>
+        </div>
+
+        {error && (
+          <p className="mt-3 text-[0.9rem]" style={{ color: "#b4342a" }}>
+            {error}
+          </p>
+        )}
+
+        {/* Two queues, one screen. Profiles first: a waiting author is
+            more urgent than a waiting review. */}
+        <div className="mt-5 flex gap-2">
+          {(["profiles", "reviews"] as const).map((t) => (
+            <button
+              key={t}
+              type="button"
+              onClick={() => setTab(t)}
+              className="rounded-full px-4 py-1.5 text-[0.85rem] font-semibold capitalize"
+              style={
+                tab === t
+                  ? { background: "var(--color-ink)", color: "#fff" }
+                  : { background: "var(--color-brand-soft)", color: "var(--color-ink)" }
+              }
+            >
+              {t} ({t === "profiles" ? subPending.length : pending.length})
+            </button>
+          ))}
+        </div>
+
+        {tab === "profiles" ? (
+          <>
+            <h2 className="mt-7 font-semibold" style={{ color: "var(--color-ink)" }}>
+              Waiting ({subPending.length})
+            </h2>
+            {subPending.length === 0 ? (
+              <p className="mt-2 text-[0.9rem]" style={{ color: "var(--color-muted-soft)" }}>
+                No new profiles.
+              </p>
+            ) : (
+              <ul className="mt-3 space-y-3">
+                {subPending.map((s) => (
+                  <SubmissionCard key={s.id} s={s} actions />
+                ))}
+              </ul>
+            )}
+
+            {subDecided.length > 0 && (
+              <>
+                <h2 className="mt-9 font-semibold" style={{ color: "var(--color-ink)" }}>
+                  Decided ({subDecided.length})
+                </h2>
+                <ul className="mt-3 space-y-3">
+                  {subDecided.map((s) => (
+                    <SubmissionCard key={s.id} s={s} actions={false} />
+                  ))}
+                </ul>
+              </>
+            )}
+          </>
+        ) : (
+          <>
+            <h2 className="mt-7 font-semibold" style={{ color: "var(--color-ink)" }}>
+              Waiting ({pending.length})
+            </h2>
+            {pending.length === 0 ? (
+              <p className="mt-2 text-[0.9rem]" style={{ color: "var(--color-muted-soft)" }}>
+                Nothing to review.
+              </p>
+            ) : (
+              <ul className="mt-3 space-y-3">
+                {pending.map((r) => (
+                  <Card key={r.id} review={r} actions />
+                ))}
+              </ul>
+            )}
+
+            {decided.length > 0 && (
+              <>
+                <h2 className="mt-9 font-semibold" style={{ color: "var(--color-ink)" }}>
+                  Decided ({decided.length})
+                </h2>
+                <ul className="mt-3 space-y-3">
+                  {decided.map((r) => (
+                    <Card key={r.id} review={r} actions={false} />
+                  ))}
+                </ul>
+              </>
+            )}
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
