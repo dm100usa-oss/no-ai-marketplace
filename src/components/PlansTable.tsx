@@ -187,16 +187,21 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
       </div>
 
       {/* Plans */}
-      <div className="mt-6 grid gap-4 md:grid-cols-3">
+      <div className="mt-6 grid gap-3 md:grid-cols-3 md:gap-4">
         {PLAN_ORDER.map((id) => {
           const plan = plans[id];
           const tone = TONES[id];
 
+          // On a phone, folded, the white card around the strip was a box
+          // inside a box: an empty frame with a coloured band sitting in it.
+          // So on a phone the strip is the card, edge to edge, and the white
+          // part appears under it only when the plan is opened. On a computer
+          // the white card holds the whole plan and stays as it was.
           return (
             <div
               key={id}
-              className="flex flex-col rounded-2xl border p-3"
-              style={{ borderColor: "var(--color-line)", background: "#fff" }}
+              className="flex flex-col rounded-2xl border-0 p-0 md:border md:bg-white md:p-3"
+              style={{ borderColor: "var(--color-line)" }}
             >
               {/* On a phone the whole card folds into this one strip and the
                   rest of it opens underneath. Three strips fit a quarter of
@@ -225,7 +230,7 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               />
               <label
                 htmlFor={`plan-${id}`}
-                className="relative flex cursor-pointer items-center justify-between gap-3 rounded-md px-2.5 text-[1.35rem] font-bold tracking-wide peer-checked:[&_.plan-plus]:rotate-45 md:cursor-default md:justify-center md:text-center"
+                className="relative flex cursor-pointer items-center justify-between gap-3 rounded-2xl px-3 md:rounded-md md:px-2.5 text-[1.35rem] font-bold tracking-wide peer-checked:[&_.plan-plus]:rotate-45 md:cursor-default md:justify-center md:text-center"
                 style={{
                   background: tone.bg,
                   border: `1px solid ${tone.edge}`,
