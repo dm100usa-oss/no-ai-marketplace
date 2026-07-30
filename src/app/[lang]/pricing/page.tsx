@@ -39,7 +39,7 @@ export default async function PricingPage({
         items={[{ label: dict.common.home, href: "/" }, { label: dict.pricing.title }]}
       />
 
-      <div className="mx-auto max-w-3xl">
+      <div>
         {/* The page title is set to the h2 size on purpose. At full h1 size
             it towered over "Выберите свой тариф" further down and made the
             word "Цены" the loudest thing on a page whose real subject is the
@@ -47,7 +47,7 @@ export default async function PricingPage({
         <h1 className="text-center" style={{ fontSize: "var(--text-h2)" }}>
           {dict.pricing.title}
         </h1>
-        <p className="lead mt-4">{dict.pricing.intro}</p>
+        <p className="lead mt-4 !text-[1.15rem]">{dict.pricing.intro}</p>
 
         <div className="mt-10">
           <PlansTable lang={locale} dict={dict} />
@@ -58,7 +58,7 @@ export default async function PricingPage({
             <h2 className="!text-[1.25rem]">{dict.pricing.everythingTitle}</h2>
             <ul className="mt-4 space-y-2" style={{ color: "var(--color-muted)" }}>
               {dict.pricing.everythingItems.map((line) => (
-                <li key={line} className="flex gap-2 text-[0.95rem]">
+                <li key={line} className="flex gap-2 text-[1.15rem]">
                   <CheckShield size={16} className="mt-0.5 shrink-0" />
                   <span>{line}</span>
                 </li>
@@ -68,10 +68,10 @@ export default async function PricingPage({
 
           <div>
             <h2 className="!text-[1.25rem]">{dict.pricing.howPaymentTitle}</h2>
-            <p className="mt-3 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
+            <p className="mt-3 text-[1.15rem]" style={{ color: "var(--color-muted)" }}>
               {dict.pricing.howPaymentText1}
             </p>
-            <p className="mt-3 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
+            <p className="mt-3 text-[1.15rem]" style={{ color: "var(--color-muted)" }}>
               {dict.pricing.howPaymentText2}
             </p>
           </div>
@@ -82,7 +82,7 @@ export default async function PricingPage({
           style={{ borderColor: "var(--color-brand)", background: "var(--color-brand-soft)" }}
         >
           <h2 className="!text-[1.25rem]">{dict.pricing.readyTitle}</h2>
-          <p className="mt-2 text-[0.98rem]" style={{ color: "var(--color-muted)" }}>
+          <p className="mt-2 text-[1.15rem]" style={{ color: "var(--color-muted)" }}>
             {dict.pricing.readyText}
           </p>
           {/* Both actions run the full width of the plate they stand on and

@@ -69,12 +69,12 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         style={{ borderColor: "var(--color-brand)", background: "var(--color-brand-soft)" }}
       >
         <p
-          className="text-[1.1rem] font-bold"
+          className="text-[1.15rem] font-bold"
           style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
         >
           {dict.pricing.freeBannerTitle.replace("{n}", String(site.freeSlots))}
         </p>
-        <p className="mt-2 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
+        <p className="mt-2 text-[1.15rem]" style={{ color: "var(--color-muted)" }}>
           {dict.pricing.freeBannerText
             .replace("{n}", String(site.freeSlots))
             .replace("{date}", freeDate)}
@@ -93,11 +93,19 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         className="mt-4 rounded-2xl border p-5 md:p-6"
         style={{ borderColor: "#f2c3ce", background: "#fbe4e9" }}
       >
-        <p
-          className="text-[1.1rem] font-medium leading-snug"
-          style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
-        >
-          {dict.pricing.headline}
+        <p className="text-[1.15rem] leading-snug" style={{ color: "var(--color-ink)" }}>
+          <span className="font-bold" style={{ fontFamily: "var(--font-display)" }}>
+            {dict.pricing.headlineLead}
+          </span>{" "}
+          {dict.pricing.headlineMid}{" "}
+          {/* The platform name is set in the brand face here exactly as it is
+              in the logo and the footer. Left in the body face it read as an
+              ordinary noun in the sentence rather than as the name of the
+              place the sentence is about. */}
+          <span className="font-semibold" style={{ fontFamily: "var(--font-brand)" }}>
+            No AI Directory
+          </span>
+          {dict.pricing.headlineTail}
         </p>
       </div>
 
@@ -125,7 +133,7 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                   secondary ink rather than full black, because on a pale
                   tinted band full black is heavier than the words deserve. */}
               <span
-                className="flex items-center justify-center rounded-md px-2.5 text-center text-[0.78rem] font-bold uppercase tracking-wide"
+                className="flex items-center justify-center rounded-md px-2.5 text-center text-[1.35rem] font-bold tracking-wide"
                 style={{
                   background: tone.bg,
                   border: `1px solid ${tone.edge}`,
@@ -144,7 +152,7 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                   price sits higher than its neighbours reads as broken
                   rather than as a hierarchy. */}
               <div className="mt-3 md:min-h-[3rem]">
-                <p className="text-[0.9rem] leading-snug" style={{ color: "var(--color-muted)" }}>
+                <p className="text-[1.15rem] leading-snug" style={{ color: "var(--color-muted)" }}>
                   {dict.pricing.planFor[id]}
                 </p>
 
@@ -173,7 +181,7 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                   style={{ fontFamily: "var(--font-display)", color: "#0f7a58" }}
                 >
                   <span className="text-[1.4rem] font-bold">{freeTier.priceLabel}</span>
-                  <span className="text-[0.85rem] font-semibold">
+                  <span className="text-[1.15rem] font-semibold">
                     {dict.pricing.freeNowLabel}
                   </span>
                 </p>
@@ -184,7 +192,7 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                     through: a struck figure next to $0 reads as a discount
                     already taken rather than as a price still to come. */}
                 <p
-                  className="mt-2 text-[0.85rem] leading-snug"
+                  className="mt-2 text-[1.15rem] leading-snug"
                   style={{ color: "var(--color-muted-soft)" }}
                 >
                   <span className="block">

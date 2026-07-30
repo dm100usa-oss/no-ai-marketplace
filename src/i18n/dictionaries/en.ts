@@ -300,8 +300,9 @@ export const en: Dictionary = {
     title: "Pricing",
     intro:
       "One plan per participant type. A creator pays for themselves, a team for the team, a company for the company. You pay to list a profile and nothing else: there is no commission on your work, and clients pay you directly.",
-    headline:
-      "Win new clients for long-term work on No AI Directory, a platform people come to for hiring, not for browsing.",
+    headlineLead: "Win new clients",
+    headlineMid: "for long-term work on",
+    headlineTail: ", a platform people come to for hiring, not for browsing.",
     chooseTitle: "Choose your plan",
     orWord: "or",
     freeBannerTitle: "The first {n} profiles are free",

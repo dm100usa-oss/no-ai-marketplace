@@ -252,7 +252,12 @@ export interface Dictionary {
     /** One block per participant type. */
     planNames: { creator: string; team: string; company: string };
     /** The line under the intro, the reason to be on this page at all. */
-    headline: string;
+    /** The pink plate is set in three pieces so the opening promise can be
+     *  bold and the platform name can be set in the brand face, the way it
+     *  is written everywhere else on the site. */
+    headlineLead: string;
+    headlineMid: string;
+    headlineTail: string;
     /** Heading over the three plan cards. */
     chooseTitle: string;
     /** "or" between the monthly and the yearly price in one line. */
