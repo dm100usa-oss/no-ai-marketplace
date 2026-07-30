@@ -22,25 +22,31 @@ import type { Locale } from "@/i18n/config";
  * cost, in that order.
  */
 
-/** Same tones the catalog cards and the join picker use per type. */
-/** `dot` is the homepage bullet built in the card's own ink: highlight at
- *  30/30, the ink itself at 70%, a darker edge at the rim. Written out per
- *  tone rather than computed, so the three beads can be adjusted by eye. */
+/** Same tones the catalog cards and the join picker use per type.
+ *
+ *  `bg` is the plate behind the plan name and the button. `ink` is the
+ *  button's own lettering. `dot` is the bead in the list.
+ *
+ *  The beads are deliberately NOT built from `ink`. Ink has to be dark
+ *  enough to read as text on a pale plate, and a bead in that colour sits
+ *  almost invisible against white. These are built from the brightest
+ *  member of each colour family instead — the same hues the direction
+ *  tiles use — so the bead is a spot of colour rather than a dark speck. */
 const TONES: Record<PlanId, { bg: string; ink: string; dot: string }> = {
   creator: {
     bg: "#fbeedb",
     ink: "#a9691a",
-    dot: "radial-gradient(circle at 30% 30%, #c49963, #a9691a 70%, #875415)",
+    dot: "radial-gradient(circle at 30% 30%, #dfaf69, #d08a22 70%, #a66e1b)",
   },
   team: {
     bg: "#c9e9dc",
     ink: "#0f7a58",
-    dot: "radial-gradient(circle at 30% 30%, #5ca58d, #0f7a58 70%, #0c6246)",
+    dot: "radial-gradient(circle at 30% 30%, #66bda1, #1e9e75 70%, #187e5e)",
   },
   company: {
     bg: "#cfe0f8",
     ink: "#2f5cb0",
-    dot: "radial-gradient(circle at 30% 30%, #7290c9, #2f5cb0 70%, #264a8d)",
+    dot: "radial-gradient(circle at 30% 30%, #7c9ddc, #3e6fcc 70%, #3259a3)",
   },
 };
 
@@ -86,7 +92,7 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             >
               <span
                 className="self-start rounded-md px-2.5 py-1 text-[0.78rem] font-bold uppercase tracking-wide"
-                style={{ background: tone.bg, color: tone.ink, fontFamily: "var(--font-display)" }}
+                style={{ background: tone.bg, color: "var(--color-ink)", fontFamily: "var(--font-display)" }}
               >
                 {dict.pricing.planNames[id]}
               </span>
@@ -146,12 +152,15 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 </p>
               </div>
 
-              {/* The list gets a heading of its own, in the card's own colour,
-                  so the reader knows the lines under it answer one question
-                  rather than continuing the price. */}
+              {/* The list gets a heading of its own, in the same ink as every
+                  other heading on the site, so the reader knows the lines
+                  under it answer one question rather than continuing the
+                  price. Colour on the card is carried by the plate above and
+                  the beads below; a coloured heading on top of both was one
+                  voice too many. */}
               <p
                 className="mt-5 text-[0.95rem] font-bold"
-                style={{ fontFamily: "var(--font-display)", color: tone.ink }}
+                style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
               >
                 {dict.pricing.includedTitle}
               </p>
@@ -166,8 +175,8 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                       aria-hidden="true"
                       className="mt-[0.4rem] shrink-0 rounded-full"
                       style={{
-                        width: "0.55rem",
-                        height: "0.55rem",
+                        width: "0.62rem",
+                        height: "0.62rem",
                         background: tone.dot,
                         boxShadow:
                           "0 1px 2px rgba(30,50,90,0.4), inset 0 1px 1px rgba(255,255,255,0.45)",

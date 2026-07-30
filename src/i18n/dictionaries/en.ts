@@ -320,8 +320,8 @@ export const en: Dictionary = {
       company: "Company",
     },
     planFor: {
-      creator: "You work alone",
-      team: "There are several of you and you take projects together.",
+      creator: "You work independently",
+      team: "There are several of you and you take projects together",
       company: "You have a business and staff",
     },
     planPitch: {
@@ -413,12 +413,12 @@ export const en: Dictionary = {
     pickOptions: {
       creator: {
         title: "Creator",
-        text: "You work alone",
+        text: "You work independently",
         points: ["Personal profile", "Individual projects", "Direct communication with clients"],
       },
       team: {
         title: "Team",
-        text: "There are several of you and you take projects together.",
+        text: "There are several of you and you take projects together",
         points: [
           "Larger projects",
           "Several specialists",
