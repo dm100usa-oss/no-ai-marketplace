@@ -104,69 +104,39 @@ export default async function JoinTypePage({
       />
 
       <div className="mx-auto max-w-3xl">
-        <p
-          className="font-bold"
-          style={{
-            fontFamily: "var(--font-display)",
-            color: "var(--color-ink)",
-            fontSize: "var(--text-h2)",
-          }}
-        >
-          {dict.joinType.thanksLead}{" "}
-          {/* The platform name in the brand face, as in the logo, the footer
-              and the pricing page. In the body face it reads as an ordinary
-              phrase rather than as the name of the place. */}
-          <span style={{ fontFamily: "var(--font-brand)" }}>No AI Directory</span>
-        </p>
+        {/* The page opens with the wish and nothing else.
+
+            The thank-you heading, the "four steps from here" line and the four
+            steps themselves all stood here and all said the same thing in
+            different words to someone who had already pressed a button on
+            their own plan and knew what they were doing. What is left is one
+            sentence of welcome and then the form. What happens after the form
+            is answered by the questions further down. */}
         {wish ? (
-          <p className="lead mt-3 leading-snug" style={{ textAlign: "justify" }}>
+          <p className="lead leading-snug" style={{ textAlign: "justify" }}>
             {wish}
           </p>
         ) : null}
-        <p className="mt-3" style={{ color: "var(--color-muted)", textAlign: "justify" }}>
-          {copy.thanksText}
-        </p>
-
-        {/* The four steps, titles only, and no heading over them: the line
-            above has just said there are four, so "Как это работает" would be
-            announcing what the reader is already looking at.
-
-            Small numbers, ordinary weight. At heading size and bold this read
-            as four demands; the page is meant to encourage someone who has
-            already decided, not to brief them. The third step keeps its full
-            wording, otherwise "wait for the letter" leaves them wondering
-            which letter. */}
-        <div className="mt-8 flex flex-col gap-2.5">
-          {dict.join.steps.map((s, i) => (
-            <div key={s.t} className="flex items-center gap-3">
-              <span
-                className="grid h-5 w-5 shrink-0 place-items-center rounded-full text-[0.72rem] font-bold text-white"
-                style={{ background: "var(--color-accent)", fontFamily: "var(--font-display)" }}
-              >
-                {i + 1}
-              </span>
-              <p className="text-[1.15rem] leading-snug" style={{ color: "var(--color-ink)" }}>
-                {s.t}
-              </p>
-            </div>
-          ))}
-        </div>
 
         {/* This type's form, and only this one. */}
-        <div id="form" className="mt-10 scroll-mt-32">
+        <div id="form" className="mt-8 scroll-mt-32">
           <h2>{copy.title}</h2>
-          <p
-            className="mt-3 text-[0.95rem]"
-            style={{ color: "var(--color-muted)", textAlign: "justify" }}
-          >
-            {dict.join.formIntro}
-          </p>
           {/* The plan's colour reaches the form as a frame, not as a fill:
               two pixels round the outside, the same rim the plan card has.
               Nothing inside the form moves, and no width is lost. */}
-          <div className="mt-5">
+          <div className="mt-4">
             <TallyForm lang={locale} dict={dict} type={type} edge={EDGES[type]} />
           </div>
+          {/* The price note sits under the form, not over it. Above, it was a
+              paragraph standing between the reader and the thing they came to
+              fill in; here it answers the question that arises once they have
+              seen what is being asked of them. */}
+          <p
+            className="mt-4 text-[0.95rem]"
+            style={{ color: "var(--color-muted)", textAlign: "justify" }}
+          >
+            {dict.joinType.afterForm}
+          </p>
         </div>
 
         {/* Rules and standards, word for word as on /join: the same promises

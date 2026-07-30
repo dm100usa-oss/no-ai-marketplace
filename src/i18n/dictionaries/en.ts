@@ -381,6 +381,8 @@ export const en: Dictionary = {
 
   joinType: {
     thanksLead: "Thank you for choosing",
+    afterForm:
+      "Listing is free for you right now. Once the free places run out, payment through Stripe switches on.",
     creator: {
       metaTitle: "Creator profile | No AI Directory",
       metaDescription:

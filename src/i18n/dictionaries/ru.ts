@@ -390,6 +390,8 @@ export const ru: Dictionary = {
 
   joinType: {
     thanksLead: "Спасибо, что выбрали",
+    afterForm:
+      "Сейчас размещение для вас бесплатное. После того как свободные места закончатся, подключится оплата через Stripe.",
     creator: {
       metaTitle: "Профиль автора | No AI Directory",
       metaDescription:

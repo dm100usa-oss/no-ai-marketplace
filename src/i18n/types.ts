@@ -290,6 +290,8 @@ export interface Dictionary {
    *  from the home page. */
   joinType: {
     thanksLead: string;
+    /** The one line under the form: what listing costs right now. */
+    afterForm: string;
     creator: { metaTitle: string; metaDescription: string; title: string; thanksText: string };
     team: { metaTitle: string; metaDescription: string; title: string; thanksText: string };
     company: { metaTitle: string; metaDescription: string; title: string; thanksText: string };
