@@ -890,8 +890,27 @@ a { color: inherit; text-decoration: none; }
   opacity: 0;
   transform: translateY(0.75rem) rotate(-7deg) scale(0.86);
 }
+/* Two animations, in this order.
+
+   The first deals the plate onto the line, once. The second is the loop:
+   every five seconds each plate lifts a little and settles again, one
+   after the other, so the count reads 1-2-3 over and over without
+   anything ever disappearing. Plates that vanish and come back would pull
+   the eye off the heading every five seconds; a plate that breathes does
+   not. Most of the cycle is rest, which is what keeps it quiet.
+
+   The loop is listed second so it owns the transform once it starts, and
+   its delay clears the dealing first. */
 .plan-number-live {
-  animation: plan-number-deal 0.58s cubic-bezier(0.2, 1.1, 0.32, 1) forwards;
+  animation:
+    plan-number-deal 0.58s cubic-bezier(0.2, 1.1, 0.32, 1) forwards,
+    plan-number-wave 5s ease-in-out 1.4s infinite;
+}
+@keyframes plan-number-wave {
+  0%   { transform: translateY(0) scale(1); }
+  4%   { transform: translateY(-0.28rem) scale(1.06); }
+  10%  { transform: translateY(0) scale(1); }
+  100% { transform: translateY(0) scale(1); }
 }
 /* Dealt, not faded in. Each plate comes up from below turned slightly to
    one side, overshoots a little, then squares itself off. The tilt is what

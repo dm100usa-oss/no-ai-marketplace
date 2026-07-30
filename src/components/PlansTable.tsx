@@ -214,21 +214,20 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                   minHeight: "var(--h-action-lg)",
                 }}
               >
-                {/* The same number the heading dealt out, on the card it
-                    belongs to. Set at the left edge and out of the flow, so
-                    the name itself stays centred on the plate rather than
-                    being nudged sideways by the digit. */}
-                <span
-                  aria-hidden
-                  className="absolute left-3 grid h-7 w-7 place-items-center rounded-md text-[1rem] font-bold"
-                  style={{
-                    background: "rgba(255,255,255,0.8)",
-                    border: `1px solid ${tone.edge}`,
-                    color: tone.ink,
-                  }}
-                >
-                  {PLAN_ORDER.indexOf(id) + 1}
-                </span>
+                {/* The drawing this participant type already has in the
+                    "Найти" block on the home page. Set at the left edge and
+                    out of the flow, so the name itself stays centred on the
+                    plate rather than being nudged sideways by the picture. */}
+                <img
+                  src={`/images/find/${id}-v2.webp`}
+                  alt=""
+                  aria-hidden="true"
+                  width={40}
+                  height={40}
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute left-3 block h-10 w-10 shrink-0"
+                />
                 {dict.pricing.planNames[id]}
               </span>
 

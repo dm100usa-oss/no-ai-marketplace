@@ -57,7 +57,11 @@ export function PlanNumbers() {
             background: p.bg,
             borderColor: p.edge,
             color: p.ink,
-            animationDelay: `${i * 0.18}s`,
+            /* Two delays for two animations: the deal, then the loop.
+               The loop's delay is measured from the same clock, so plate
+               three is always a beat behind plate two, cycle after
+               cycle. */
+            animationDelay: `${i * 0.18}s, ${1.4 + i * 0.35}s`,
           }}
         >
           {p.n}
