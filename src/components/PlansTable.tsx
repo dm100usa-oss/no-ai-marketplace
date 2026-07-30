@@ -92,7 +92,7 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           return (
             <div
               key={id}
-              className="flex flex-col rounded-2xl border p-6"
+              className="flex flex-col rounded-2xl border p-3"
               style={{ borderColor: "var(--color-line)", background: "#fff" }}
             >
               {/* The plate runs the full width of the card and the name sits
@@ -102,8 +102,13 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                   secondary ink rather than full black, because on a pale
                   tinted band full black is heavier than the words deserve. */}
               <span
-                className="block rounded-md px-2.5 py-1.5 text-center text-[0.78rem] font-bold uppercase tracking-wide"
-                style={{ background: tone.bg, color: "var(--color-muted)", fontFamily: "var(--font-display)" }}
+                className="flex items-center justify-center rounded-md px-2.5 text-center text-[0.78rem] font-bold uppercase tracking-wide"
+                style={{
+                  background: tone.bg,
+                  color: "var(--color-muted)",
+                  fontFamily: "var(--font-display)",
+                  minHeight: "var(--h-action)",
+                }}
               >
                 {dict.pricing.planNames[id]}
               </span>

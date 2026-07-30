@@ -98,12 +98,16 @@ export default async function PricingPage({
           <p className="mt-2 text-[0.98rem]" style={{ color: "var(--color-muted)" }}>
             {dict.pricing.readyText}
           </p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            <LocaleLink lang={locale} href="/join" className="btn btn-ink">
+          {/* Both actions run the full width of the plate they stand on and
+              sit one under the other. Side by side they were two short
+              buttons floating in a wide box with empty space to the right,
+              which read as a leftover rather than as a choice. */}
+          <div className="mt-4 flex flex-col gap-2">
+            <LocaleLink lang={locale} href="/join" className="btn btn-ink btn-full">
               {dict.pricing.addProfile}
               <ArrowRight size={16} />
             </LocaleLink>
-            <LocaleLink lang={locale} href="/method" className="btn btn-quiet">
+            <LocaleLink lang={locale} href="/method" className="btn btn-quiet btn-full">
               {dict.pricing.readStandards}
             </LocaleLink>
           </div>
