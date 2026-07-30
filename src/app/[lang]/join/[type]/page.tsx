@@ -24,6 +24,14 @@ import type { ProfileType } from "@/lib/types";
 
 const TYPES = ["creator", "team", "company"] as const;
 
+/** Same plate colours the plan cards use, so the page a visitor lands on
+ *  looks like the card they pressed. */
+const TONES: Record<ProfileType, { bg: string; edge: string }> = {
+  creator: { bg: "#ffeabd", edge: "#f2d18d" },
+  team: { bg: "#c9e9dc", edge: "#a3d8c3" },
+  company: { bg: "#cfe0f8", edge: "#a8c6ee" },
+};
+
 function isType(value: string): value is ProfileType {
   return (TYPES as readonly string[]).includes(value);
 }
@@ -61,6 +69,11 @@ export default async function JoinTypePage({
   const locale: Locale = isLocale(lang) ? lang : DEFAULT_LOCALE;
   const dict = getDictionary(locale);
   const copy = dict.joinType[type];
+  const tone = TONES[type];
+
+  // The welcome line from /join, minus its first sentence: that one thanks
+  // the reader, and the heading above has already done it.
+  const wish = dict.join.intro.split(/(?<=\.)\s+/).slice(1).join(" ");
 
   const faqItems = dict.join.faq;
   const faqJsonLd = {
@@ -96,31 +109,34 @@ export default async function JoinTypePage({
           className="text-[1.5rem] font-bold md:text-[1.8rem]"
           style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
         >
-          {dict.joinType.thanksLead}
+          {dict.joinType.thanksLead}{" "}
+          {/* The platform name in the brand face, as in the logo, the footer
+              and the pricing page. In the body face it reads as an ordinary
+              phrase rather than as the name of the place. */}
+          <span style={{ fontFamily: "var(--font-brand)" }}>No AI Directory</span>
         </p>
-        <p className="lead mt-3">{copy.thanksText}</p>
+        {wish ? <p className="lead mt-3">{wish}</p> : null}
+        <p className="mt-3" style={{ color: "var(--color-muted)" }}>{copy.thanksText}</p>
 
-        {/* The four steps, titles only. The explanations under them belong on
-            /join, where someone is still deciding; here they are a checklist
-            for someone who has already decided. The third one keeps its full
-            wording, otherwise "wait for the letter" leaves the reader
-            wondering which letter. */}
-        <div className="mt-10 pl-12">
-          <h2>{dict.join.howTitle}</h2>
-        </div>
-        <div className="mt-5 flex flex-col gap-3">
+        {/* The four steps, titles only, and no heading over them: the line
+            above has just said there are four, so "Как это работает" would be
+            announcing what the reader is already looking at.
+
+            Small numbers, ordinary weight. At heading size and bold this read
+            as four demands; the page is meant to encourage someone who has
+            already decided, not to brief them. The third step keeps its full
+            wording, otherwise "wait for the letter" leaves them wondering
+            which letter. */}
+        <div className="mt-8 flex flex-col gap-2.5">
           {dict.join.steps.map((s, i) => (
             <div key={s.t} className="flex items-center gap-3">
               <span
-                className="grid h-9 w-9 shrink-0 place-items-center rounded-full font-bold text-white"
+                className="grid h-5 w-5 shrink-0 place-items-center rounded-full text-[0.72rem] font-bold text-white"
                 style={{ background: "var(--color-accent)", fontFamily: "var(--font-display)" }}
               >
                 {i + 1}
               </span>
-              <p
-                className="text-[1.2rem] font-bold md:text-[1.35rem]"
-                style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
-              >
+              <p className="text-[1.15rem] leading-snug" style={{ color: "var(--color-ink)" }}>
                 {s.t}
               </p>
             </div>
@@ -133,7 +149,15 @@ export default async function JoinTypePage({
           <p className="mt-3 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
             {dict.join.formIntro}
           </p>
-          <div className="mt-5">
+          {/* The form sits on its own plan's colour rather than on white.
+              White fields on a white page read as a machine form; the tint
+              carries the colour of the card the visitor pressed, so the
+              filling-in feels like part of the same step. The embed itself is
+              transparent, so the tint shows through behind the fields. */}
+          <div
+            className="mt-5 rounded-2xl border p-4 md:p-5"
+            style={{ background: tone.bg, borderColor: tone.edge }}
+          >
             <TallyForm lang={locale} dict={dict} type={type} />
           </div>
         </div>

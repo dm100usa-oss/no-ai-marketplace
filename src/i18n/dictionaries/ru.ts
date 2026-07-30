@@ -389,7 +389,7 @@ export const ru: Dictionary = {
   },
 
   joinType: {
-    thanksLead: "Спасибо, что выбрали No AI Directory",
+    thanksLead: "Спасибо, что выбрали",
     creator: {
       metaTitle: "Профиль автора | No AI Directory",
       metaDescription:

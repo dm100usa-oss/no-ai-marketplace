@@ -380,7 +380,7 @@ export const en: Dictionary = {
   },
 
   joinType: {
-    thanksLead: "Thank you for choosing No AI Directory",
+    thanksLead: "Thank you for choosing",
     creator: {
       metaTitle: "Creator profile | No AI Directory",
       metaDescription:
