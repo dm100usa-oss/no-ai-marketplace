@@ -284,6 +284,16 @@ export interface Dictionary {
     getStarted: string;
   };
 
+  /** The three pages a plan button leads to: one per participant type, with
+   *  a thank-you, the four steps and that type's form and nothing else. The
+   *  general /join page keeps the "who are you" question for people arriving
+   *  from the home page. */
+  joinType: {
+    thanksLead: string;
+    creator: { metaTitle: string; metaDescription: string; title: string; thanksText: string };
+    team: { metaTitle: string; metaDescription: string; title: string; thanksText: string };
+    company: { metaTitle: string; metaDescription: string; title: string; thanksText: string };
+  };
   join: {
     metaTitle: string;
     metaDescription: string;

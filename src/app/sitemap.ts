@@ -32,6 +32,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/directions", priority: 0.8 },
     { path: "/verified", priority: 0.7 },
     { path: "/join", priority: 0.7 },
+    // One landing per participant type, reached from the plan buttons. They
+    // carry that type's form and answer "how do I list as a team" directly,
+    // which /join only answers after a click.
+    { path: "/join/creator", priority: 0.6 },
+    { path: "/join/team", priority: 0.6 },
+    { path: "/join/company", priority: 0.6 },
     { path: "/pricing", priority: 0.7 },
     { path: "/method", priority: 0.6 },
     { path: "/why-us", priority: 0.6 },

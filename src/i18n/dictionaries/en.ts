@@ -379,6 +379,30 @@ export const en: Dictionary = {
     getStarted: "Choose a plan",
   },
 
+  joinType: {
+    thanksLead: "Thank you for choosing No AI Directory",
+    creator: {
+      metaTitle: "Creator profile | No AI Directory",
+      metaDescription:
+        "Fill in the creator form and list your profile in the directory of people who work without generative AI.",
+      title: "Creator profile",
+      thanksText: "Four steps from here and your profile is in the directory.",
+    },
+    team: {
+      metaTitle: "Team profile | No AI Directory",
+      metaDescription:
+        "Fill in the team form and list your profile in the directory of people who work without generative AI.",
+      title: "Team profile",
+      thanksText: "Four steps from here and your team's profile is in the directory.",
+    },
+    company: {
+      metaTitle: "Company profile | No AI Directory",
+      metaDescription:
+        "Fill in the company form and list your profile in the directory of people who work without generative AI.",
+      title: "Company profile",
+      thanksText: "Four steps from here and your company's profile is in the directory.",
+    },
+  },
   join: {
     metaTitle: "Add your profile",
     metaDescription:
