@@ -293,20 +293,58 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 </p>
               </div>
 
-              {/* The list gets a heading of its own, in the same ink as every
-                  other heading on the site, so the reader knows the lines
-                  under it answer one question rather than continuing the
-                  price. Colour on the card is carried by the plate above and
-                  the beads below; a coloured heading on top of both was one
-                  voice too many. */}
-              <p
-                className="mt-5 text-[1.35rem] font-bold"
+              {/* "Что входит" folds on a phone and stays open on a computer.
+
+                  On a phone three open lists mean the visitor scrolls past
+                  the first two plans to reach the third; folded, all three
+                  names, prices and buttons fit one screen and the detail is
+                  one tap away. On a computer the three cards stand side by
+                  side and comparing them at a glance is the whole point of
+                  the page, so nothing is hidden there.
+
+                  Done with a checkbox rather than <details> so that the same
+                  markup can be shut on a phone and open on a computer: a
+                  <details> can only be forced open by script, which would
+                  mean the list collapsing in front of the reader a moment
+                  after the page appears. The list is in the HTML either way,
+                  so search engines and AI engines read it whether it is
+                  folded or not. */}
+              <input
+                type="checkbox"
+                id={`included-${id}`}
+                className="peer sr-only"
+                aria-hidden
+                tabIndex={-1}
+              />
+              <label
+                htmlFor={`included-${id}`}
+                className="mt-5 flex cursor-pointer items-center justify-between gap-3 text-[1.35rem] font-bold peer-checked:[&>span]:rotate-45 md:cursor-default"
                 style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
               >
                 {dict.pricing.includedTitle}
-              </p>
+                <span
+                  aria-hidden
+                  className="grid h-8 w-8 shrink-0 place-items-center rounded-full transition-transform md:hidden"
+                  style={{ background: tone.bg, border: `1px solid ${tone.edge}`, color: tone.ink }}
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  >
+                    <path d="M12 5v14M5 12h14" />
+                  </svg>
+                </span>
+              </label>
 
-              <ul className="mt-4 flex flex-col gap-4 text-[1.15rem]" style={{ color: "var(--color-ink)" }}>
+              <ul
+                className="mt-4 hidden flex-col gap-4 text-[1.15rem] peer-checked:flex md:flex"
+                style={{ color: "var(--color-ink)" }}
+              >
                 {dict.pricing.planFeatures[id].map((line) => (
                   <li key={line} className="flex items-start gap-3">
                     {/* The same glossy bead the homepage lists use, so the
