@@ -236,7 +236,6 @@ export interface Dictionary {
     metaTitle: string;
     metaDescription: string;
     title: string;
-    intro: string;
     /** Free-places banner. {n} = places, {date} = the shared end date. */
     freeBannerTitle: string;
     freeBannerText: string;
@@ -251,13 +250,15 @@ export interface Dictionary {
     includedTitle: string;
     /** One block per participant type. */
     planNames: { creator: string; team: string; company: string };
-    /** The line under the intro, the reason to be on this page at all. */
-    /** The pink plate is set in three pieces so the opening promise can be
-     *  bold and the platform name can be set in the brand face, the way it
-     *  is written everywhere else on the site. */
-    headlineLead: string;
-    headlineMid: string;
-    headlineTail: string;
+    /** Each of the three plates at the top of the pricing page is a title
+     *  the visitor sees folded and a body they open. The third plate's body
+     *  is split in two so the platform name between them can be set in the
+     *  brand face, the way it is written everywhere else on the site. */
+    introTitle: string;
+    introBody: string;
+    headlineTitle: string;
+    headlineBodyLead: string;
+    headlineBodyTail: string;
     /** Heading over the three plan cards. */
     chooseTitle: string;
     /** "or" between the monthly and the yearly price in one line. */

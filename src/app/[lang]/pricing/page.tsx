@@ -47,9 +47,7 @@ export default async function PricingPage({
         <h1 className="text-center" style={{ fontSize: "var(--text-h2)" }}>
           {dict.pricing.title}
         </h1>
-        <p className="lead mt-4 !text-[1.15rem]">{dict.pricing.intro}</p>
-
-        <div className="mt-10">
+        <div className="mt-6">
           <PlansTable lang={locale} dict={dict} />
         </div>
 

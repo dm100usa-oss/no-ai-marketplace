@@ -298,11 +298,12 @@ export const en: Dictionary = {
     metaDescription:
       "No AI Directory plans: creator, team, company. The first 50 profiles are free until the end of 2026.",
     title: "Pricing",
-    intro:
-      "One plan per participant type. A creator pays for themselves, a team for the team, a company for the company. You pay to list a profile and nothing else: there is no commission on your work, and clients pay you directly.",
-    headlineLead: "Win new clients",
-    headlineMid: "for long-term work on",
-    headlineTail: ", a platform people come to for hiring, not for browsing.",
+    introTitle: "One plan per participant type",
+    introBody:
+      "A creator pays for themselves, a team for the team, a company for the company. You pay to list a profile and nothing else: there is no commission on your work, and clients pay you directly.",
+    headlineTitle: "Win new clients for long-term work",
+    headlineBodyLead: "The people who come to",
+    headlineBodyTail: "are there to hire, not to browse.",
     chooseTitle: "Choose your plan",
     orWord: "or",
     freeBannerTitle: "The first {n} profiles are free",

@@ -57,56 +57,120 @@ const TONES: Record<PlanId, { bg: string; edge: string; ink: string; dot: string
   },
 };
 
+/**
+ * One folded plate: a coloured band with a title and a plus that turns into
+ * a cross when it opens.
+ *
+ * The title stays the same size and weight whether the plate is open or
+ * shut, so the three of them read as a stack of equal statements rather
+ * than as a list that grows a heading when you touch it.
+ */
+function PricingFold({
+  title,
+  bg,
+  edge,
+  plus,
+  children,
+}: {
+  title: string;
+  bg: string;
+  edge: string;
+  plus: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="rounded-2xl border" style={{ borderColor: edge, background: bg }}>
+      <details className="group">
+        <summary className="flex cursor-pointer list-none items-center justify-between gap-3 p-5 md:p-6 [&::-webkit-details-marker]:hidden">
+          <span
+            className="text-[1.15rem] font-bold leading-snug"
+            style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+          >
+            {title}
+          </span>
+          <span
+            aria-hidden
+            className="grid h-8 w-8 shrink-0 place-items-center rounded-full transition-transform group-open:rotate-45"
+            style={{ background: "rgba(255,255,255,0.75)", color: plus }}
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            >
+              <path d="M12 5v14M5 12h14" />
+            </svg>
+          </span>
+        </summary>
+        <p
+          className="px-5 pb-5 text-[1.15rem] leading-snug md:px-6 md:pb-6"
+          style={{ color: "var(--color-muted)" }}
+        >
+          {children}
+        </p>
+      </details>
+    </div>
+  );
+}
+
 export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const freeDate = freeUntilLabel(lang);
   const paidYear = String(paidFromYear());
 
   return (
     <div>
-      {/* Free places */}
-      <div
-        className="rounded-2xl border p-5 md:p-6"
-        style={{ borderColor: "var(--color-brand)", background: "var(--color-brand-soft)" }}
-      >
-        <p
-          className="text-[1.15rem] font-bold"
-          style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+      {/* The three plates at the top of the page, folded.
+
+          On a phone the opening of this page used to be three paragraphs of
+          prose before the visitor reached a single price. Folded, the whole
+          offer fits on one screen: three titles and the plans right under
+          them. Anyone who wants the detail opens it.
+
+          Built on native <details>, the same as the FAQ on the category
+          pages: the text is in the HTML whether the plate is open or shut,
+          so search engines and AI engines read all of it without running
+          any code. */}
+      <div className="flex flex-col gap-3">
+        <PricingFold
+          title={dict.pricing.introTitle}
+          bg="#eae4fa"
+          edge="#d6cbf3"
+          plus="#6b5cc4"
         >
-          {dict.pricing.freeBannerTitle.replace("{n}", String(site.freeSlots))}
-        </p>
-        <p className="mt-2 text-[1.15rem]" style={{ color: "var(--color-muted)" }}>
+          {dict.pricing.introBody}
+        </PricingFold>
+
+        <PricingFold
+          title={dict.pricing.freeBannerTitle.replace("{n}", String(site.freeSlots))}
+          bg="var(--color-brand-soft)"
+          edge="var(--color-brand)"
+          plus="var(--color-accent)"
+        >
           {dict.pricing.freeBannerText
             .replace("{n}", String(site.freeSlots))
             .replace("{date}", freeDate)}
-        </p>
-      </div>
+        </PricingFold>
 
-      {/* The line the page rests on, in a plate of its own directly under the
-          free places. It stands here rather than at the top because this is
-          the moment the visitor is about to choose: the banner has just told
-          them it costs nothing yet, and the plans are next.
-
-          Built like the banner above it, same shape and same size of type,
-          but not bold and in the pink of the "Музыканты" tile on the home
-          page, so the two plates read as a pair without competing. */}
-      <div
-        className="mt-4 rounded-2xl border p-5 md:p-6"
-        style={{ borderColor: "#f2c3ce", background: "#fbe4e9" }}
-      >
-        <p className="text-[1.15rem] leading-snug" style={{ color: "var(--color-ink)" }}>
-          <span className="font-bold" style={{ fontFamily: "var(--font-display)" }}>
-            {dict.pricing.headlineLead}
-          </span>{" "}
-          {dict.pricing.headlineMid}{" "}
+        <PricingFold
+          title={dict.pricing.headlineTitle}
+          bg="#fbe4e9"
+          edge="#f2c3ce"
+          plus="#c44a6e"
+        >
+          {dict.pricing.headlineBodyLead}{" "}
           {/* The platform name is set in the brand face here exactly as it is
               in the logo and the footer. Left in the body face it read as an
               ordinary noun in the sentence rather than as the name of the
               place the sentence is about. */}
           <span className="font-semibold" style={{ fontFamily: "var(--font-brand)" }}>
             No AI Directory
-          </span>
-          {dict.pricing.headlineTail}
-        </p>
+          </span>{" "}
+          {dict.pricing.headlineBodyTail}
+        </PricingFold>
       </div>
 
       {/* One heading over the row instead of the word "plan" repeated on
