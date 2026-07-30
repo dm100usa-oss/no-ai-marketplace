@@ -34,7 +34,7 @@ import type { Locale } from "@/i18n/config";
  *  tiles use — so the bead is a spot of colour rather than a dark speck. */
 const TONES: Record<PlanId, { bg: string; ink: string; dot: string }> = {
   creator: {
-    bg: "#ffeabd",
+    bg: "#ffc23d",
     /* Not a dark gold. Gold dark enough to read as small text is brown, and
        brown is the one thing this card must not have, so the lettering falls
        back to the site's own ink and the gold lives in the plate and the
@@ -43,12 +43,12 @@ const TONES: Record<PlanId, { bg: string; ink: string; dot: string }> = {
     dot: "radial-gradient(circle at 30% 30%, #ffcb5c, #ffab00 70%, #e09600)",
   },
   team: {
-    bg: "#c9e9dc",
+    bg: "#79d3b2",
     ink: "#0f7a58",
     dot: "radial-gradient(circle at 30% 30%, #66bda1, #1e9e75 70%, #187e5e)",
   },
   company: {
-    bg: "#cfe0f8",
+    bg: "#97bdf1",
     ink: "#2f5cb0",
     dot: "radial-gradient(circle at 30% 30%, #7c9ddc, #3e6fcc 70%, #3259a3)",
   },
