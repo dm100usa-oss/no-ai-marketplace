@@ -83,10 +83,13 @@ export function TallyForm({
     );
   }
 
+  // No transparentBackground here on purpose. That flag tells Tally to strip
+  // the form's own background, which meant any colour set in the Tally
+  // designer was thrown away on our side and the form always came out white.
+  // The form now paints itself, and the wrapper below stays out of its way.
   const params = new URLSearchParams({
     alignLeft: "1",
     hideTitle: "1",
-    transparentBackground: "1",
     dynamicHeight: "1",
   });
   // Hidden fields Tally reads straight from the embed URL.
@@ -97,7 +100,7 @@ export function TallyForm({
     <div
       key={`${lang}-${type ?? "any"}`}
       className="overflow-hidden rounded-2xl border"
-      style={{ borderColor: "var(--color-line)", background: "#fff" }}
+      style={{ borderColor: "var(--color-line)", background: "transparent" }}
     >
       <iframe
         data-tally-src={`https://tally.so/embed/${formId}?${params.toString()}`}

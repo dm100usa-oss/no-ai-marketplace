@@ -24,13 +24,6 @@ import type { ProfileType } from "@/lib/types";
 
 const TYPES = ["creator", "team", "company"] as const;
 
-/** Same plate colours the plan cards use, so the page a visitor lands on
- *  looks like the card they pressed. */
-const TONES: Record<ProfileType, { bg: string; edge: string }> = {
-  creator: { bg: "#ffeabd", edge: "#f2d18d" },
-  team: { bg: "#c9e9dc", edge: "#a3d8c3" },
-  company: { bg: "#cfe0f8", edge: "#a8c6ee" },
-};
 
 function isType(value: string): value is ProfileType {
   return (TYPES as readonly string[]).includes(value);
@@ -69,7 +62,6 @@ export default async function JoinTypePage({
   const locale: Locale = isLocale(lang) ? lang : DEFAULT_LOCALE;
   const dict = getDictionary(locale);
   const copy = dict.joinType[type];
-  const tone = TONES[type];
 
   // The welcome line from /join, minus its first sentence: that one thanks
   // the reader, and the heading above has already done it.
@@ -149,15 +141,11 @@ export default async function JoinTypePage({
           <p className="mt-3 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
             {dict.join.formIntro}
           </p>
-          {/* The form sits on its own plan's colour rather than on white.
-              White fields on a white page read as a machine form; the tint
-              carries the colour of the card the visitor pressed, so the
-              filling-in feels like part of the same step. The embed itself is
-              transparent, so the tint shows through behind the fields. */}
-          <div
-            className="mt-5 rounded-2xl border p-4 md:p-5"
-            style={{ background: tone.bg, borderColor: tone.edge }}
-          >
+          {/* No tinted wrapper around the form any more. The colour now comes
+              from the form itself, set in the Tally designer, so a plate
+              underneath would only show as stripes down the sides and eat
+              width the fields need on a phone. */}
+          <div className="mt-5">
             <TallyForm lang={locale} dict={dict} type={type} />
           </div>
         </div>
