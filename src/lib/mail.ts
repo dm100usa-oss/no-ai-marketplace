@@ -322,3 +322,79 @@ export async function sendVerifiedEmail(input: {
   if (!input.to) return true;
   return send(input.to, verifiedLetter(lang(input.locale), input.kind));
 }
+
+/* ------------------------------------------------------------------ */
+/* The owner's notice                                                  */
+/* ------------------------------------------------------------------ */
+
+/**
+ * The one letter that does not go to an applicant. It goes to whoever
+ * runs the directory, the moment a form is submitted, so a new
+ * submission does not sit unseen in the queue until someone thinks to
+ * look. Always in Russian: it is read by the owner, not by the public.
+ *
+ * Sent to ADMIN_EMAIL. With that unset, nothing is sent and nothing
+ * breaks — the submission is stored either way.
+ */
+function newSubmissionLetter(input: {
+  name: string;
+  profileType: "creator" | "team" | "company";
+  category?: string;
+  country?: string;
+  city?: string;
+}): Letter {
+  const typeWord =
+    input.profileType === "team"
+      ? "команда"
+      : input.profileType === "company"
+        ? "компания"
+        : "автор";
+
+  const where = [input.city, input.country].filter(Boolean).join(", ");
+  const adminUrl = `${baseUrl()}/admin`;
+
+  const rows: [string, string][] = [
+    ["Имя", input.name],
+    ["Тип", typeWord],
+    ["Категория", input.category || "не указана"],
+    ["Откуда", where || "не указано"],
+  ];
+
+  const text = [
+    "Пришла новая заявка в каталог.",
+    "",
+    ...rows.map(([k, v]) => `${k}: ${v}`),
+    "",
+    `Посмотреть и решить: ${adminUrl}`,
+  ].join("\n");
+
+  const html = `<div style="max-width:520px;margin:0 auto;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:1.5;color:#1a1a1a;">
+<p>Пришла новая заявка в каталог.</p>
+<table style="border-collapse:collapse;margin:16px 0;">${rows
+    .map(
+      ([k, v]) =>
+        `<tr><td style="padding:4px 16px 4px 0;color:#666;">${k}</td><td style="padding:4px 0;">${v}</td></tr>`,
+    )
+    .join("")}</table>
+<p><a href="${adminUrl}" style="display:inline-block;padding:10px 18px;background:#1a1a1a;color:#fff;text-decoration:none;border-radius:6px;">Посмотреть и решить</a></p>
+</div>`;
+
+  return {
+    subject: `Новая заявка: ${input.name}, ${typeWord}`,
+    text,
+    html,
+  };
+}
+
+/** A form was just submitted: tell the owner. */
+export async function sendNewSubmissionNotice(input: {
+  name: string;
+  profileType: "creator" | "team" | "company";
+  category?: string;
+  country?: string;
+  city?: string;
+}): Promise<boolean> {
+  const to = process.env.ADMIN_EMAIL;
+  if (!to) return true;
+  return send(to, newSubmissionLetter(input));
+}

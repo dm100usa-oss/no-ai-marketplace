@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { addSubmission, type Submission } from "@/lib/redis";
+import { sendNewSubmissionNotice } from "@/lib/mail";
 
 /**
  * Where a finished Tally form lands.
@@ -251,5 +252,19 @@ export async function POST(request: NextRequest) {
   };
 
   const done = await addSubmission(input);
+
+  // The owner's notice. Sent after the submission is safely stored and
+  // never allowed to affect the answer Tally gets: a mail that fails to
+  // leave must not make the form think the submission was lost.
+  if (done.ok) {
+    await sendNewSubmissionNotice({
+      name,
+      profileType,
+      category: input.mainCategory,
+      country: input.country,
+      city: input.city,
+    });
+  }
+
   return NextResponse.json({ ok: done.ok }, { status: done.ok ? 200 : 500 });
 }
