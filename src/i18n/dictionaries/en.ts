@@ -315,7 +315,7 @@ export const en: Dictionary = {
     billedYearly: "Yearly",
     saveLabel: "a saving of about {n} compared with paying monthly",
     laterPrefix: "From {year}",
-    includedTitle: "What you get",
+    includedTitle: "What's included?",
     nowWord: "Now",
     planNames: {
       creator: "Creator",

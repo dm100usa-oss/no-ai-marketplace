@@ -33,10 +33,11 @@ import type { Locale } from "@/i18n/config";
  *  almost invisible against white. These are built from the brightest
  *  member of each colour family instead — the same hues the direction
  *  tiles use — so the bead is a spot of colour rather than a dark speck. */
-const TONES: Record<PlanId, { bg: string; edge: string; ink: string; dot: string }> = {
+const TONES: Record<PlanId, { bg: string; edge: string; press: string; ink: string; dot: string }> = {
   creator: {
     bg: "#ffeabd",
     edge: "#f2d18d",
+    press: "#ebd8ae",
     /* Not a dark gold. Gold dark enough to read as small text is brown, and
        brown is the one thing this card must not have, so the lettering falls
        back to the site's own ink and the gold lives in the plate and the
@@ -47,12 +48,14 @@ const TONES: Record<PlanId, { bg: string; edge: string; ink: string; dot: string
   team: {
     bg: "#c9e9dc",
     edge: "#a3d8c3",
+    press: "#b5d4c8",
     ink: "#0f7a58",
     dot: "radial-gradient(circle at 30% 30%, #66bda1, #1e9e75 70%, #187e5e)",
   },
   company: {
     bg: "#cfe0f8",
     edge: "#a8c6ee",
+    press: "#bccde4",
     ink: "#2f5cb0",
     dot: "radial-gradient(circle at 30% 30%, #7c9ddc, #3e6fcc 70%, #3259a3)",
   },
@@ -109,7 +112,7 @@ function PricingFold({
         </summary>
         <p
           className="px-5 pb-5 text-[1.15rem] leading-snug md:px-6 md:pb-6"
-          style={{ color: "var(--color-muted)" }}
+          style={{ color: "var(--color-muted)", textAlign: "justify" }}
         >
           {children}
         </p>
@@ -230,13 +233,16 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               />
               <label
                 htmlFor={`plan-${id}`}
-                className="relative flex cursor-pointer items-center justify-between gap-3 rounded-2xl px-3 md:rounded-md md:px-2.5 text-[1.35rem] font-bold tracking-wide peer-checked:[&_.plan-plus]:rotate-45 md:cursor-default md:justify-center md:text-center"
+                className="press-btn relative flex cursor-pointer items-center justify-between gap-3 rounded-2xl px-3 md:rounded-md md:px-2.5 text-[1.35rem] font-bold tracking-wide peer-checked:[&_.plan-plus]:rotate-45 md:cursor-default md:justify-center md:text-center"
                 style={{
                   background: tone.bg,
-                  border: `1px solid ${tone.edge}`,
+                  borderColor: tone.edge,
                   color: "var(--color-muted)",
                   fontFamily: "var(--font-display)",
                   minHeight: "var(--h-action-lg)",
+                  /* Pressed, the strip darkens into its own colour rather
+                     than going grey. Read by .press-btn:active. */
+                  ["--press-bg" as string]: tone.press,
                 }}
               >
                 {/* The drawing this participant type already has in the
@@ -362,7 +368,7 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
 
               <ul
                 className="mt-4 flex flex-col gap-4 text-[1.15rem]"
-                style={{ color: "var(--color-ink)" }}
+                style={{ color: "var(--color-ink)", textAlign: "justify" }}
               >
                 {dict.pricing.planFeatures[id].map((line) => (
                   <li key={line} className="flex items-start gap-3">
