@@ -335,7 +335,7 @@ export const en: Dictionary = {
     planFeatures: {
       creator: [
         "A professional portfolio",
-        "Listed in the directory under several categories",
+        "Up to three categories in the directory",
         "4 signature works, each with a full description",
         "Shown in the New authors and New works strips",
         "Direct links to your site, shop and social media",
@@ -347,13 +347,13 @@ export const en: Dictionary = {
       team: [
         "A team profile with the number of members",
         "Shared portfolio and roles",
-        "Several categories and directions",
+        "Up to four categories in the directory",
         "One contact for the whole team",
       ],
       company: [
         "A company or studio profile",
-        "Website, staff, registration",
-        "All categories and directions",
+        "Website, year founded and services",
+        "Up to five categories in the directory",
         "Verified as a business",
       ],
     },
