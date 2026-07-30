@@ -206,24 +206,24 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                   the beads below; a coloured heading on top of both was one
                   voice too many. */}
               <p
-                className="mt-5 text-[0.95rem] font-bold"
+                className="mt-5 text-[1.35rem] font-bold"
                 style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
               >
                 {dict.pricing.includedTitle}
               </p>
 
-              <ul className="mt-3 space-y-2" style={{ color: "var(--color-muted)" }}>
+              <ul className="mt-4 flex flex-col gap-4 text-[1.15rem]" style={{ color: "var(--color-ink)" }}>
                 {dict.pricing.planFeatures[id].map((line) => (
-                  <li key={line} className="flex items-start gap-2.5 text-[0.9rem] leading-snug">
+                  <li key={line} className="flex items-start gap-3">
                     {/* The same glossy bead the homepage lists use, so the
                         two pages read as one site. Here it takes the card's
                         own colour instead of the site blue. */}
                     <span
                       aria-hidden="true"
-                      className="mt-[0.4rem] shrink-0 rounded-full"
+                      className="mt-[0.45rem] shrink-0 rounded-full"
                       style={{
-                        width: "0.62rem",
-                        height: "0.62rem",
+                        width: "0.7rem",
+                        height: "0.7rem",
                         background: tone.dot,
                         boxShadow:
                           "0 1px 2px rgba(30,50,90,0.4), inset 0 1px 1px rgba(255,255,255,0.45)",
