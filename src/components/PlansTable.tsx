@@ -1,6 +1,6 @@
 import { plans, PLAN_ORDER, freeTier, planCheckoutHref, site } from "@/lib/config";
 import type { PlanId } from "@/lib/config";
-import { freeUntilLabel } from "@/lib/free-date";
+import { freeUntilLabel, paidFromYear } from "@/lib/free-date";
 import { CheckoutButton } from "./CheckoutButton";
 import type { Dictionary } from "@/i18n/types";
 import type { Locale } from "@/i18n/config";
@@ -36,7 +36,7 @@ const TONES: Record<PlanId, { bg: string; ink: string; dot: string }> = {
   creator: {
     bg: "#fbeedb",
     ink: "#a9691a",
-    dot: "radial-gradient(circle at 30% 30%, #dfaf69, #d08a22 70%, #a66e1b)",
+    dot: "radial-gradient(circle at 30% 30%, #f7d78f, #eab543 70%, #d29c2e)",
   },
   team: {
     bg: "#c9e9dc",
@@ -52,6 +52,7 @@ const TONES: Record<PlanId, { bg: string; ink: string; dot: string }> = {
 
 export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const freeDate = freeUntilLabel(lang);
+  const paidYear = String(paidFromYear());
 
   return (
     <div>
@@ -90,9 +91,15 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               className="flex flex-col rounded-2xl border p-6"
               style={{ borderColor: "var(--color-line)", background: "#fff" }}
             >
+              {/* The plate runs the full width of the card and the name sits
+                  in the middle of it: a short tag pinned to the left corner
+                  read as a label stuck on the card, while a full band reads
+                  as the card's own heading. The lettering is the softer
+                  secondary ink rather than full black, because on a pale
+                  tinted band full black is heavier than the words deserve. */}
               <span
-                className="self-start rounded-md px-2.5 py-1 text-[0.78rem] font-bold uppercase tracking-wide"
-                style={{ background: tone.bg, color: "var(--color-ink)", fontFamily: "var(--font-display)" }}
+                className="block rounded-md px-2.5 py-1.5 text-center text-[0.78rem] font-bold uppercase tracking-wide"
+                style={{ background: tone.bg, color: "var(--color-muted)", fontFamily: "var(--font-display)" }}
               >
                 {dict.pricing.planNames[id]}
               </span>
@@ -137,18 +144,25 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                     {dict.pricing.freeNowLabel}
                   </span>
                 </p>
-                {/* What it costs once the free places are gone: the month on
-                    one line, the year under it. The prices are no longer
-                    struck through. "Далее" already says they start later, and
-                    a struck figure next to $0 reads as a discount already
-                    taken rather than as a price still to come. */}
+                {/* What it costs once the free period ends, three lines: when
+                    it starts, the month, the year. The year is counted from
+                    the free-period date in config, so it cannot drift out of
+                    step with the banner above. The prices are not struck
+                    through: a struck figure next to $0 reads as a discount
+                    already taken rather than as a price still to come. */}
                 <p
                   className="mt-2 text-[0.85rem] leading-snug"
                   style={{ color: "var(--color-muted-soft)" }}
                 >
-                  {dict.pricing.laterPrefix} {plan.monthly.priceLabel} {dict.pricing.perMonth}
-                  <br />
-                  {dict.pricing.orWord} {plan.yearly.priceLabel} {dict.pricing.perYear}
+                  <span className="block">
+                    {dict.pricing.laterPrefix.replace("{year}", paidYear)}
+                  </span>
+                  <span className="block">
+                    {plan.monthly.priceLabel} {dict.pricing.perMonth}
+                  </span>
+                  <span className="block">
+                    {dict.pricing.orWord} {plan.yearly.priceLabel} {dict.pricing.perYear}
+                  </span>
                 </p>
               </div>
 

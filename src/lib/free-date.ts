@@ -21,3 +21,14 @@ export function freeUntilLabel(locale: Locale): string {
     { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" },
   );
 }
+
+/**
+ * The year paid listing begins: the one after the free period ends.
+ *
+ * Counted from the same config date as the label above rather than written
+ * out as "2027", so extending the free period moves this year with it and
+ * the cards cannot end up promising a year that has already passed.
+ */
+export function paidFromYear(): number {
+  return new Date(site.freeUntil).getUTCFullYear() + 1;
+}
