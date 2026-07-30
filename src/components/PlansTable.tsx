@@ -32,9 +32,10 @@ import type { Locale } from "@/i18n/config";
  *  almost invisible against white. These are built from the brightest
  *  member of each colour family instead — the same hues the direction
  *  tiles use — so the bead is a spot of colour rather than a dark speck. */
-const TONES: Record<PlanId, { bg: string; ink: string; dot: string }> = {
+const TONES: Record<PlanId, { bg: string; edge: string; ink: string; dot: string }> = {
   creator: {
     bg: "#ffeabd",
+    edge: "#f2d18d",
     /* Not a dark gold. Gold dark enough to read as small text is brown, and
        brown is the one thing this card must not have, so the lettering falls
        back to the site's own ink and the gold lives in the plate and the
@@ -44,11 +45,13 @@ const TONES: Record<PlanId, { bg: string; ink: string; dot: string }> = {
   },
   team: {
     bg: "#c9e9dc",
+    edge: "#a3d8c3",
     ink: "#0f7a58",
     dot: "radial-gradient(circle at 30% 30%, #66bda1, #1e9e75 70%, #187e5e)",
   },
   company: {
     bg: "#cfe0f8",
+    edge: "#a8c6ee",
     ink: "#2f5cb0",
     dot: "radial-gradient(circle at 30% 30%, #7c9ddc, #3e6fcc 70%, #3259a3)",
   },
@@ -105,9 +108,10 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 className="flex items-center justify-center rounded-md px-2.5 text-center text-[0.78rem] font-bold uppercase tracking-wide"
                 style={{
                   background: tone.bg,
+                  border: `1px solid ${tone.edge}`,
                   color: "var(--color-muted)",
                   fontFamily: "var(--font-display)",
-                  minHeight: "var(--h-action)",
+                  minHeight: "var(--h-action-lg)",
                 }}
               >
                 {dict.pricing.planNames[id]}
@@ -148,7 +152,7 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                   className="flex items-baseline gap-2 leading-none"
                   style={{ fontFamily: "var(--font-display)", color: "#0f7a58" }}
                 >
-                  <span className="text-[1rem] font-bold">{freeTier.priceLabel}</span>
+                  <span className="text-[1.4rem] font-bold">{freeTier.priceLabel}</span>
                   <span className="text-[0.85rem] font-semibold">
                     {dict.pricing.freeNowLabel}
                   </span>
@@ -218,7 +222,7 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                   plan={id}
                   period="yearly"
                   className="tile-btn"
-                  style={{ background: tone.bg, color: tone.ink }}
+                  style={{ background: tone.bg, borderColor: tone.edge, color: tone.ink }}
                 />
               </div>
             </div>

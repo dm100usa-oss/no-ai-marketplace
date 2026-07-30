@@ -86,6 +86,12 @@ img {
      top and bottom, 1px of border on each side. Anything that has to stand
      the same height as a button reads this instead of guessing. */
   --h-action: calc(1rem + 1.75rem + 2px);
+
+  /* The pricing page runs its plates and buttons 40% taller than a standard
+     button. At button height three narrow bands stacked in one card read as
+     a form; taller ones read as objects you press. Derived from --h-action
+     so the two never drift apart. */
+  --h-action-lg: calc((1rem + 1.75rem + 2px) * 1.4);
   --radius-pill: 999px;
 
   /* Shadows for raised objects — framed-painting feel:
@@ -371,7 +377,7 @@ a { color: inherit; text-decoration: none; }
   justify-content: center;
   gap: 0.5rem;
   width: 100%;
-  min-height: var(--h-action);
+  min-height: var(--h-action-lg);
   padding: 0.5rem 1rem;
   border-radius: var(--radius-card);
   border: 1px solid rgba(22, 35, 58, 0.06);

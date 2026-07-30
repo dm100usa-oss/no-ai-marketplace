@@ -103,11 +103,21 @@ export default async function PricingPage({
               buttons floating in a wide box with empty space to the right,
               which read as a leftover rather than as a choice. */}
           <div className="mt-4 flex flex-col gap-2">
-            <LocaleLink lang={locale} href="/join" className="btn btn-ink btn-full">
+            <LocaleLink
+              lang={locale}
+              href="/join"
+              className="btn btn-ink btn-full"
+              style={{ minHeight: "var(--h-action-lg)" }}
+            >
               {dict.pricing.addProfile}
               <ArrowRight size={16} />
             </LocaleLink>
-            <LocaleLink lang={locale} href="/method" className="btn btn-quiet btn-full">
+            <LocaleLink
+              lang={locale}
+              href="/method"
+              className="btn btn-quiet btn-full"
+              style={{ minHeight: "var(--h-action-lg)" }}
+            >
               {dict.pricing.readStandards}
             </LocaleLink>
           </div>
