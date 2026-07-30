@@ -205,7 +205,7 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                   secondary ink rather than full black, because on a pale
                   tinted band full black is heavier than the words deserve. */}
               <span
-                className="flex items-center justify-center rounded-md px-2.5 text-center text-[1.35rem] font-bold tracking-wide"
+                className="relative flex items-center justify-center rounded-md px-2.5 text-center text-[1.35rem] font-bold tracking-wide"
                 style={{
                   background: tone.bg,
                   border: `1px solid ${tone.edge}`,
@@ -214,6 +214,21 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                   minHeight: "var(--h-action-lg)",
                 }}
               >
+                {/* The same number the heading dealt out, on the card it
+                    belongs to. Set at the left edge and out of the flow, so
+                    the name itself stays centred on the plate rather than
+                    being nudged sideways by the digit. */}
+                <span
+                  aria-hidden
+                  className="absolute left-3 grid h-7 w-7 place-items-center rounded-md text-[1rem] font-bold"
+                  style={{
+                    background: "rgba(255,255,255,0.8)",
+                    border: `1px solid ${tone.edge}`,
+                    color: tone.ink,
+                  }}
+                >
+                  {PLAN_ORDER.indexOf(id) + 1}
+                </span>
                 {dict.pricing.planNames[id]}
               </span>
 

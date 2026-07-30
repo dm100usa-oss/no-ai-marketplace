@@ -6,9 +6,9 @@ import { useEffect, useRef, useState } from "react";
  *  heading they answer the first question a visitor has about the row
  *  below: how many choices am I being given. */
 const PLATES = [
-  { n: "1", bg: "#ffeabd", edge: "#f2d18d" },
-  { n: "2", bg: "#c9e9dc", edge: "#a3d8c3" },
-  { n: "3", bg: "#cfe0f8", edge: "#a8c6ee" },
+  { n: "1", bg: "#ffeabd", edge: "#f2d18d", ink: "var(--color-ink)" },
+  { n: "2", bg: "#c9e9dc", edge: "#a3d8c3", ink: "#0f7a58" },
+  { n: "3", bg: "#cfe0f8", edge: "#a8c6ee", ink: "#2f5cb0" },
 ];
 
 /**
@@ -56,7 +56,8 @@ export function PlanNumbers() {
           style={{
             background: p.bg,
             borderColor: p.edge,
-            animationDelay: `${i * 0.16}s`,
+            color: p.ink,
+            animationDelay: `${i * 0.18}s`,
           }}
         >
           {p.n}
