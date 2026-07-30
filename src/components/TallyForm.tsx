@@ -25,11 +25,18 @@ export function TallyForm({
   lang,
   dict,
   type,
+  edge,
 }: {
   lang: Locale;
   dict: Dictionary;
   /** Participant type chosen before the form, passed through to Tally. */
   type?: ProfileType;
+  /** Border colour, set by pages that belong to one participant type. The
+   *  frame is the one place the plan's colour can reach the form without
+   *  touching what is inside it: Tally paints its own white, and a tinted
+   *  plate underneath would only show as stripes down the sides and take
+   *  width the fields need on a phone. */
+  edge?: string;
 }) {
   const formId = tallyFormId(lang, type);
 
@@ -100,7 +107,11 @@ export function TallyForm({
     <div
       key={`${lang}-${type ?? "any"}`}
       className="overflow-hidden rounded-2xl border"
-      style={{ borderColor: "var(--color-line)", background: "transparent" }}
+      style={{
+        borderColor: edge ?? "var(--color-line)",
+        borderWidth: edge ? 2 : 1,
+        background: "transparent",
+      }}
     >
       <iframe
         data-tally-src={`https://tally.so/embed/${formId}?${params.toString()}`}

@@ -24,6 +24,13 @@ import type { ProfileType } from "@/lib/types";
 
 const TYPES = ["creator", "team", "company"] as const;
 
+/** The rim of each plan's plate, reused as the frame around the form. */
+const EDGES: Record<ProfileType, string> = {
+  creator: "#f2d18d",
+  team: "#a3d8c3",
+  company: "#a8c6ee",
+};
+
 
 function isType(value: string): value is ProfileType {
   return (TYPES as readonly string[]).includes(value);
@@ -141,12 +148,11 @@ export default async function JoinTypePage({
           <p className="mt-3 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
             {dict.join.formIntro}
           </p>
-          {/* No tinted wrapper around the form any more. The colour now comes
-              from the form itself, set in the Tally designer, so a plate
-              underneath would only show as stripes down the sides and eat
-              width the fields need on a phone. */}
+          {/* The plan's colour reaches the form as a frame, not as a fill:
+              two pixels round the outside, the same rim the plan card has.
+              Nothing inside the form moves, and no width is lost. */}
           <div className="mt-5">
-            <TallyForm lang={locale} dict={dict} type={type} />
+            <TallyForm lang={locale} dict={dict} type={type} edge={EDGES[type]} />
           </div>
         </div>
 
