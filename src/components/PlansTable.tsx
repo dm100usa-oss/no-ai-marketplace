@@ -81,6 +81,26 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         </p>
       </div>
 
+      {/* The line the page rests on, in a plate of its own directly under the
+          free places. It stands here rather than at the top because this is
+          the moment the visitor is about to choose: the banner has just told
+          them it costs nothing yet, and the plans are next.
+
+          Built like the banner above it, same shape and same size of type,
+          but not bold and in the pink of the "Музыканты" tile on the home
+          page, so the two plates read as a pair without competing. */}
+      <div
+        className="mt-4 rounded-2xl border p-5 md:p-6"
+        style={{ borderColor: "#f2c3ce", background: "#fbe4e9" }}
+      >
+        <p
+          className="text-[1.1rem] font-medium leading-snug"
+          style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+        >
+          {dict.pricing.headline}
+        </p>
+      </div>
+
       {/* One heading over the row instead of the word "plan" repeated on
           every card. It names what the three cards are and tells the
           visitor what to do with them, in one place rather than three. */}
