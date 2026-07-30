@@ -863,3 +863,45 @@ a { color: inherit; text-decoration: none; }
     animation: none;
   }
 }
+
+/* ----------------------------------------------------------------
+   Numbered plates beside "Выберите свой тариф"
+   ---------------------------------------------------------------- */
+
+/* Taller than they are wide, so they read as cards standing on edge
+   rather than as buttons. Each carries its own plan's colour, which is
+   what ties them to the row underneath.
+
+   Before they are dealt they are invisible and slightly low; the class
+   that starts the animation is added by the component once the heading
+   is on screen. Only opacity and transform move, so nothing around them
+   is relaid out as they arrive. */
+.plan-number {
+  display: inline-grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 2.2rem;
+  border-radius: 7px;
+  border: 1px solid;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-ink);
+  opacity: 0;
+  transform: translateY(0.4rem);
+}
+.plan-number-live {
+  animation: plan-number-deal 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes plan-number-deal {
+  0%   { opacity: 0; transform: translateY(0.4rem) scale(0.9); }
+  60%  { opacity: 1; transform: translateY(-0.12rem) scale(1.04); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Asked for less movement: the plates are simply there, no dealing. */
+@media (prefers-reduced-motion: reduce) {
+  .plan-number { opacity: 1; transform: none; }
+  .plan-number-live { animation: none; }
+}

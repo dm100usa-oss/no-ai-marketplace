@@ -2,6 +2,7 @@ import { plans, PLAN_ORDER, freeTier, planCheckoutHref, site } from "@/lib/confi
 import type { PlanId } from "@/lib/config";
 import { freeUntilLabel, paidFromYear } from "@/lib/free-date";
 import { CheckoutButton } from "./CheckoutButton";
+import { PlanNumbers } from "./PlanNumbers";
 import type { Dictionary } from "@/i18n/types";
 import type { Locale } from "@/i18n/config";
 
@@ -176,7 +177,14 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
       {/* One heading over the row instead of the word "plan" repeated on
           every card. It names what the three cards are and tells the
           visitor what to do with them, in one place rather than three. */}
-      <h2 className="mt-10 text-center">{dict.pricing.chooseTitle}</h2>
+      {/* The heading and the three plates sit on one line, centred together.
+          The plates are dealt out as the heading comes into view and say in
+          one glance what the row below holds: three choices, in the three
+          colours the cards themselves use. */}
+      <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+        <h2 className="!m-0">{dict.pricing.chooseTitle}</h2>
+        <PlanNumbers />
+      </div>
 
       {/* Plans */}
       <div className="mt-6 grid gap-4 md:grid-cols-3">
