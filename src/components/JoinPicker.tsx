@@ -22,7 +22,7 @@ const ORDER: ProfileType[] = ["creator", "team", "company"];
 
 /** Same tones the catalog cards use for each participant type. */
 const TONES: Record<ProfileType, { bg: string; ink: string; solid: string }> = {
-  creator: { bg: "#fbeedb", ink: "#a9691a", solid: "#a9691a" },
+  creator: { bg: "#ffeabd", ink: "var(--color-ink)", solid: "#e09600" },
   team: { bg: "#c9e9dc", ink: "#0f7a58", solid: "#0f7a58" },
   company: { bg: "#cfe0f8", ink: "#2f5cb0", solid: "#2f5cb0" },
 };

@@ -34,9 +34,13 @@ import type { Locale } from "@/i18n/config";
  *  tiles use — so the bead is a spot of colour rather than a dark speck. */
 const TONES: Record<PlanId, { bg: string; ink: string; dot: string }> = {
   creator: {
-    bg: "#fbeedb",
-    ink: "#a9691a",
-    dot: "radial-gradient(circle at 30% 30%, #f7d78f, #eab543 70%, #d29c2e)",
+    bg: "#ffeabd",
+    /* Not a dark gold. Gold dark enough to read as small text is brown, and
+       brown is the one thing this card must not have, so the lettering falls
+       back to the site's own ink and the gold lives in the plate and the
+       beads, where it can stay fully saturated. */
+    ink: "var(--color-ink)",
+    dot: "radial-gradient(circle at 30% 30%, #ffcb5c, #ffab00 70%, #e09600)",
   },
   team: {
     bg: "#c9e9dc",
