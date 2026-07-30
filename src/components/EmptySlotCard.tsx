@@ -93,9 +93,9 @@ export function EmptySlotCard({
             <span
               aria-hidden
               className="grid h-[2.7rem] w-[2.7rem] shrink-0 place-items-center rounded-full"
-              style={{ background: "#fbeedb" }}
+              style={{ background: "#fff7e0" }}
             >
-              <PersonSilhouette color="#a9691a" />
+              <PersonSilhouette color="#f0a500" />
             </span>
             <span className="min-w-0">
               <span

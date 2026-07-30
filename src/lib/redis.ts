@@ -477,3 +477,28 @@ export async function getConfirmedSubmissions(): Promise<Submission[]> {
   const all = await getAllSubmissions();
   return all.filter((s) => s.status === "published" && s.emailConfirmed === true);
 }
+
+/**
+ * Remove one submission for good. Used from the moderation screen to clear
+ * test entries and spam, which otherwise pile up in the queue with no way
+ * to get rid of them. The whole list is rewritten, same as an edit.
+ *
+ * Returns true when a submission with that id was found and removed.
+ */
+export async function deleteSubmission(id: string): Promise<boolean> {
+  if (!redis) return false;
+  try {
+    const all = await getAllSubmissions();
+    const left = all.filter((s) => s.id !== id);
+    if (left.length === all.length) return false;
+
+    const pipe = redis.pipeline();
+    pipe.del(SUBMISSIONS_KEY);
+    for (const s of [...left].reverse()) pipe.lpush(SUBMISSIONS_KEY, JSON.stringify(s));
+    await pipe.exec();
+
+    return true;
+  } catch {
+    return false;
+  }
+}

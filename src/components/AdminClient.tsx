@@ -48,6 +48,9 @@ export function AdminClient() {
   const [submissions, setSubmissions] = useState<Submission[]>([]);
   const [tab, setTab] = useState<"profiles" | "reviews">("profiles");
   const [busy, setBusy] = useState(false);
+  /** The submission whose delete button is waiting for a second click.
+   *  Deletion is final, so one stray tap must not wipe an application. */
+  const [confirmDelete, setConfirmDelete] = useState<string | null>(null);
   const [error, setError] = useState("");
 
   async function load(pw: string) {
@@ -81,7 +84,7 @@ export function AdminClient() {
 
       setAuthed(true);
     } catch {
-      setError("Could not reach the server.");
+      setError("Не удалось связаться с сервером.");
     }
     setBusy(false);
   }
@@ -102,9 +105,33 @@ export function AdminClient() {
         await load(password);
         return;
       }
-      setError("Could not save the decision.");
+      setError("Не удалось сохранить решение.");
     } catch {
-      setError("Could not reach the server.");
+      setError("Не удалось связаться с сервером.");
+    }
+    setBusy(false);
+  }
+
+  /** Remove a submission for good. No letter is sent. */
+  async function removeSubmission(id: string) {
+    setBusy(true);
+    try {
+      const res = await fetch("/api/admin/submissions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-password": password,
+        },
+        body: JSON.stringify({ id, action: "delete" }),
+      });
+      if (res.ok) {
+        setConfirmDelete(null);
+        await load(password);
+        return;
+      }
+      setError("Не удалось удалить заявку.");
+    } catch {
+      setError("Не удалось связаться с сервером.");
     }
     setBusy(false);
   }
@@ -128,9 +155,9 @@ export function AdminClient() {
         await load(password);
         return;
       }
-      setError("Could not grant the badge.");
+      setError("Не удалось выдать знак.");
     } catch {
-      setError("Could not reach the server.");
+      setError("Не удалось связаться с сервером.");
     }
     setBusy(false);
   }
@@ -152,9 +179,9 @@ export function AdminClient() {
         await load(password);
         return;
       }
-      setError("Could not save the decision.");
+      setError("Не удалось сохранить решение.");
     } catch {
-      setError("Could not reach the server.");
+      setError("Не удалось связаться с сервером.");
     }
     setBusy(false);
   }
@@ -167,7 +194,7 @@ export function AdminClient() {
             className="text-[1.5rem] font-bold"
             style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
           >
-            Moderation
+            Модерация
           </h1>
           <div className="mt-5 space-y-3">
             <input
@@ -177,7 +204,7 @@ export function AdminClient() {
               onKeyDown={(e) => {
                 if (e.key === "Enter") load(password);
               }}
-              placeholder="Password"
+              placeholder="Пароль"
               className="w-full rounded-xl border px-4 py-3 text-[0.95rem]"
               style={{ borderColor: "var(--color-line)", background: "#fff" }}
             />
@@ -187,7 +214,7 @@ export function AdminClient() {
               disabled={busy || password.length === 0}
               className="btn btn-accent btn-full disabled:opacity-60"
             >
-              {busy ? "Checking..." : "Sign in"}
+              {busy ? "Проверяю..." : "Войти"}
             </button>
             {error && (
               <p className="text-[0.9rem]" style={{ color: "#b4342a" }}>
@@ -203,7 +230,7 @@ export function AdminClient() {
   const pending = reviews.filter((r) => r.status === "pending");
   const decided = reviews.filter((r) => r.status !== "pending");
 
-  const fmt = new Intl.DateTimeFormat("en-US", {
+  const fmt = new Intl.DateTimeFormat("ru-RU", {
     year: "numeric",
     month: "short",
     day: "numeric",
@@ -253,7 +280,7 @@ export function AdminClient() {
               disabled={busy}
               className="btn btn-accent disabled:opacity-60"
             >
-              Approve
+              Одобрить
             </button>
             <button
               type="button"
@@ -261,7 +288,7 @@ export function AdminClient() {
               disabled={busy}
               className="btn btn-quiet disabled:opacity-60"
             >
-              Reject
+              Отклонить
             </button>
           </div>
         )}
@@ -270,9 +297,28 @@ export function AdminClient() {
   }
 
   /** One join request, with everything the author filled in. */
+  /** Two taps to delete: the first arms the button, the second removes the
+   *  submission. A single misplaced tap should never lose an application,
+   *  and a browser confirm box on a phone is easy to dismiss by accident. */
+  function DeleteButton({ id }: { id: string }) {
+    const armed = confirmDelete === id;
+    return (
+      <button
+        type="button"
+        onClick={() => (armed ? removeSubmission(id) : setConfirmDelete(id))}
+        onBlur={() => armed && setConfirmDelete(null)}
+        disabled={busy}
+        className="btn btn-quiet disabled:opacity-60"
+        style={armed ? { color: "#b4342a", borderColor: "#b4342a" } : undefined}
+      >
+        {armed ? "Точно удалить?" : "Удалить"}
+      </button>
+    );
+  }
+
   function SubmissionCard({ s, actions }: { s: Submission; actions: boolean }) {
     const pics = [
-      ...(s.avatar ? [{ label: "Photo", url: s.avatar }] : []),
+      ...(s.avatar ? [{ label: "Фото", url: s.avatar }] : []),
       ...(s.mainImage ? [{ label: "Work 1", url: s.mainImage }] : []),
       ...(s.gallery ?? []).map((u, i) => ({ label: `Work ${i + 2}`, url: u })),
     ];
@@ -292,7 +338,7 @@ export function AdminClient() {
                 className="rounded-full px-2 py-0.5 text-[0.7rem] font-semibold uppercase"
                 style={{ background: "var(--color-brand-soft)", color: "var(--color-ink)" }}
               >
-                {s.profileType}
+                {s.profileType === "team" ? "команда" : "компания"}
               </span>
             )}
             <span
@@ -307,11 +353,11 @@ export function AdminClient() {
                       : "var(--color-muted)",
               }}
             >
-              {s.status}
+              {s.status === "published" ? "опубликован" : s.status === "rejected" ? "отклонен" : "ожидает"}
             </span>
             {s.showOnHomepage && (
               <span className="text-[0.75rem]" style={{ color: "#2f6b45" }}>
-                homepage ok
+                можно на главную
               </span>
             )}
             {s.status === "published" && (
@@ -319,7 +365,7 @@ export function AdminClient() {
                 className="text-[0.75rem]"
                 style={{ color: s.emailConfirmed ? "#2f6b45" : "#8a6d1f" }}
               >
-                {s.emailConfirmed ? "email confirmed" : "email not confirmed"}
+                {s.emailConfirmed ? "почта подтверждена" : "почта не подтверждена"}
               </span>
             )}
             {s.verification && s.verification !== "none" && (
@@ -328,8 +374,8 @@ export function AdminClient() {
                 style={{ background: "#dff1e9", color: "#157a58" }}
               >
                 {s.verification === "verified-business"
-                  ? "verified business"
-                  : "verified creator"}
+                  ? "проверенный бизнес"
+                  : "проверенный автор"}
               </span>
             )}
           </span>
@@ -353,7 +399,7 @@ export function AdminClient() {
         {(s.services?.length || s.foundedYear) && (
           <p className="mt-1 text-[0.8rem]" style={{ color: "var(--color-muted-soft)" }}>
             {[
-              s.foundedYear ? `since ${s.foundedYear}` : "",
+              s.foundedYear ? `с ${s.foundedYear} года` : "",
               s.services?.length ? s.services.join(" · ") : "",
             ]
               .filter(Boolean)
@@ -383,7 +429,7 @@ export function AdminClient() {
             ) : null}
             {s.contactPerson ? (
               <p className="mt-1" style={{ color: "var(--color-muted-soft)" }}>
-                contact: {s.contactPerson}
+                Контактное лицо: {s.contactPerson}
               </p>
             ) : null}
           </div>
@@ -442,7 +488,7 @@ export function AdminClient() {
               disabled={busy}
               className="btn btn-accent disabled:opacity-60"
             >
-              Publish
+              Опубликовать
             </button>
             <button
               type="button"
@@ -450,8 +496,9 @@ export function AdminClient() {
               disabled={busy}
               className="btn btn-quiet disabled:opacity-60"
             >
-              Reject
+              Отклонить
             </button>
+            <DeleteButton id={s.id} />
           </div>
         )}
 
@@ -468,7 +515,7 @@ export function AdminClient() {
                 disabled={busy}
                 className="btn btn-quiet disabled:opacity-60"
               >
-                Grant Verified creator
+                Выдать знак «Проверенный автор»
               </button>
               <button
                 type="button"
@@ -476,8 +523,16 @@ export function AdminClient() {
                 disabled={busy}
                 className="btn btn-quiet disabled:opacity-60"
               >
-                Grant Verified business
+                Выдать знак «Проверенный бизнес»
               </button>
+              <DeleteButton id={s.id} />
+            </div>
+          )}
+        {!actions &&
+          (s.status !== "published" ||
+            (s.verification && s.verification !== "none")) && (
+            <div className="mt-4 flex gap-2">
+              <DeleteButton id={s.id} />
             </div>
           )}
       </li>
@@ -495,7 +550,7 @@ export function AdminClient() {
             className="text-[1.5rem] font-bold"
             style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
           >
-            Moderation
+            Модерация
           </h1>
           <button
             type="button"
@@ -503,7 +558,7 @@ export function AdminClient() {
             disabled={busy}
             className="btn btn-quiet disabled:opacity-60"
           >
-            Refresh
+            Обновить
           </button>
         </div>
 
@@ -528,7 +583,7 @@ export function AdminClient() {
                   : { background: "var(--color-brand-soft)", color: "var(--color-ink)" }
               }
             >
-              {t} ({t === "profiles" ? subPending.length : pending.length})
+              {t === "profiles" ? "Профили" : "Отзывы"} ({t === "profiles" ? subPending.length : pending.length})
             </button>
           ))}
         </div>
@@ -536,11 +591,11 @@ export function AdminClient() {
         {tab === "profiles" ? (
           <>
             <h2 className="mt-7 font-semibold" style={{ color: "var(--color-ink)" }}>
-              Waiting ({subPending.length})
+              Ожидают ({subPending.length})
             </h2>
             {subPending.length === 0 ? (
               <p className="mt-2 text-[0.9rem]" style={{ color: "var(--color-muted-soft)" }}>
-                No new profiles.
+                Новых профилей нет.
               </p>
             ) : (
               <ul className="mt-3 space-y-3">
@@ -553,7 +608,7 @@ export function AdminClient() {
             {subDecided.length > 0 && (
               <>
                 <h2 className="mt-9 font-semibold" style={{ color: "var(--color-ink)" }}>
-                  Decided ({subDecided.length})
+                  Рассмотрены ({subDecided.length})
                 </h2>
                 <ul className="mt-3 space-y-3">
                   {subDecided.map((s) => (
@@ -566,11 +621,11 @@ export function AdminClient() {
         ) : (
           <>
             <h2 className="mt-7 font-semibold" style={{ color: "var(--color-ink)" }}>
-              Waiting ({pending.length})
+              Ожидают ({pending.length})
             </h2>
             {pending.length === 0 ? (
               <p className="mt-2 text-[0.9rem]" style={{ color: "var(--color-muted-soft)" }}>
-                Nothing to review.
+                Новых отзывов нет.
               </p>
             ) : (
               <ul className="mt-3 space-y-3">
@@ -583,7 +638,7 @@ export function AdminClient() {
             {decided.length > 0 && (
               <>
                 <h2 className="mt-9 font-semibold" style={{ color: "var(--color-ink)" }}>
-                  Decided ({decided.length})
+                  Рассмотрены ({decided.length})
                 </h2>
                 <ul className="mt-3 space-y-3">
                   {decided.map((r) => (

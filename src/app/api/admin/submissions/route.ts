@@ -5,6 +5,7 @@ import {
   getAllSubmissions,
   setSubmissionStatus,
   setSubmissionVerification,
+  deleteSubmission,
   type Submission,
 } from "@/lib/redis";
 import {
@@ -85,6 +86,14 @@ export async function POST(request: NextRequest) {
 
   // ---- Decision on an existing submission ----
   if (typeof data.id === "string") {
+    // Remove for good. No letter goes out: a deleted submission is one the
+    // owner never wants to hear about again — a test entry or spam — and a
+    // note about it would only confuse whoever sent it.
+    if (data.action === "delete") {
+      const gone = await deleteSubmission(data.id);
+      return NextResponse.json({ ok: gone }, { status: gone ? 200 : 500 });
+    }
+
     // Grant a verification badge, then tell the author it is on.
     if (data.verification === "verified-creator" || data.verification === "verified-business") {
       const updated = await setSubmissionVerification(data.id, data.verification);
