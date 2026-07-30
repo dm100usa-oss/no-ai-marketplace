@@ -325,6 +325,7 @@ export const ru: Dictionary = {
     saveLabel: "выгода около {n} по сравнению с помесячной оплатой",
     laterPrefix: "Далее с {year} года",
     includedTitle: "Что входит",
+    nowWord: "Сейчас",
     planNames: {
       creator: "Автор",
       team: "Команда",

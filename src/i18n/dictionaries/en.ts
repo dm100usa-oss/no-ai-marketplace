@@ -316,6 +316,7 @@ export const en: Dictionary = {
     saveLabel: "a saving of about {n} compared with paying monthly",
     laterPrefix: "From {year}",
     includedTitle: "What you get",
+    nowWord: "Now",
     planNames: {
       creator: "Creator",
       team: "Team",

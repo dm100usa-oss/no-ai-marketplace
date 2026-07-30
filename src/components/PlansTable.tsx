@@ -198,14 +198,34 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               className="flex flex-col rounded-2xl border p-3"
               style={{ borderColor: "var(--color-line)", background: "#fff" }}
             >
-              {/* The plate runs the full width of the card and the name sits
-                  in the middle of it: a short tag pinned to the left corner
-                  read as a label stuck on the card, while a full band reads
-                  as the card's own heading. The lettering is the softer
-                  secondary ink rather than full black, because on a pale
-                  tinted band full black is heavier than the words deserve. */}
-              <span
-                className="relative flex items-center justify-center rounded-md px-2.5 text-center text-[1.35rem] font-bold tracking-wide"
+              {/* On a phone the whole card folds into this one strip and the
+                  rest of it opens underneath. Three strips fit a quarter of
+                  the screen, so a visitor sees all three plans at once
+                  instead of scrolling past two to reach the third.
+
+                  The price stays on the strip. People come to a pricing page
+                  for the price, and ours is currently zero, which is the best
+                  thing the page has to say. "Сейчас" is what keeps the figure
+                  honest: it is a real price with an end date, and it is the
+                  word that makes a reader want to know which date.
+
+                  The whole strip is the button, not just the plus: a thumb
+                  hits a strip and misses a small icon.
+
+                  On a computer none of this applies. The strip goes back to
+                  being the card's heading, the price and the plus disappear,
+                  and everything below is open, because three cards side by
+                  side is how the page is meant to be read there. */}
+              <input
+                type="checkbox"
+                id={`plan-${id}`}
+                className="peer sr-only"
+                aria-hidden
+                tabIndex={-1}
+              />
+              <label
+                htmlFor={`plan-${id}`}
+                className="relative flex cursor-pointer items-center justify-between gap-3 rounded-md px-2.5 text-[1.35rem] font-bold tracking-wide peer-checked:[&_.plan-plus]:rotate-45 md:cursor-default md:justify-center md:text-center"
                 style={{
                   background: tone.bg,
                   border: `1px solid ${tone.edge}`,
@@ -215,9 +235,9 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 }}
               >
                 {/* The drawing this participant type already has in the
-                    "Найти" block on the home page. Set at the left edge and
-                    out of the flow, so the name itself stays centred on the
-                    plate rather than being nudged sideways by the picture. */}
+                    "Найти" block on the home page. On a computer it is taken
+                    out of the flow at the left edge so the name stays centred
+                    on the plate rather than being nudged sideways. */}
                 <img
                   src={`/images/find/${id}-v2.webp`}
                   alt=""
@@ -226,10 +246,41 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                   height={40}
                   loading="lazy"
                   decoding="async"
-                  className="absolute left-3 block h-10 w-10 shrink-0"
+                  className="block h-10 w-10 shrink-0 md:absolute md:left-3"
                 />
-                {dict.pricing.planNames[id]}
-              </span>
+                <span className="min-w-0 flex-1 text-left md:flex-none md:text-center">
+                  {dict.pricing.planNames[id]}
+                </span>
+                <span
+                  className="shrink-0 whitespace-nowrap text-[1.15rem] font-semibold md:hidden"
+                  style={{ color: "#0f7a58" }}
+                >
+                  {dict.pricing.nowWord} {freeTier.priceLabel}
+                </span>
+                <span
+                  aria-hidden
+                  className="plan-plus grid h-8 w-8 shrink-0 place-items-center rounded-full transition-transform md:hidden"
+                  style={{ background: "rgba(255,255,255,0.75)", color: tone.ink }}
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  >
+                    <path d="M12 5v14M5 12h14" />
+                  </svg>
+                </span>
+              </label>
+
+              {/* Everything below the strip: shut on a phone until the strip
+                  is tapped, always open on a computer. It is in the HTML
+                  either way, so search engines and AI engines read the whole
+                  card whether it is folded or not. */}
+              <div className="hidden peer-checked:block md:block">
 
               {/* Who it is for, plus the selling line, held in one block of
                   a fixed minimum height. Cards with a selling line and
@@ -293,56 +344,19 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 </p>
               </div>
 
-              {/* "Что входит" folds on a phone and stays open on a computer.
-
-                  On a phone three open lists mean the visitor scrolls past
-                  the first two plans to reach the third; folded, all three
-                  names, prices and buttons fit one screen and the detail is
-                  one tap away. On a computer the three cards stand side by
-                  side and comparing them at a glance is the whole point of
-                  the page, so nothing is hidden there.
-
-                  Done with a checkbox rather than <details> so that the same
-                  markup can be shut on a phone and open on a computer: a
-                  <details> can only be forced open by script, which would
-                  mean the list collapsing in front of the reader a moment
-                  after the page appears. The list is in the HTML either way,
-                  so search engines and AI engines read it whether it is
-                  folded or not. */}
-              <input
-                type="checkbox"
-                id={`included-${id}`}
-                className="peer sr-only"
-                aria-hidden
-                tabIndex={-1}
-              />
-              <label
-                htmlFor={`included-${id}`}
-                className="mt-5 flex cursor-pointer items-center justify-between gap-3 text-[1.35rem] font-bold peer-checked:[&>span]:rotate-45 md:cursor-default"
+              {/* The list gets a heading of its own, in the same ink as every
+                  other heading on the site, so the reader knows the lines
+                  under it answer one question rather than continuing the
+                  price. */}
+              <p
+                className="mt-5 text-[1.35rem] font-bold"
                 style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
               >
                 {dict.pricing.includedTitle}
-                <span
-                  aria-hidden
-                  className="grid h-8 w-8 shrink-0 place-items-center rounded-full transition-transform md:hidden"
-                  style={{ background: tone.bg, border: `1px solid ${tone.edge}`, color: tone.ink }}
-                >
-                  <svg
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  >
-                    <path d="M12 5v14M5 12h14" />
-                  </svg>
-                </span>
-              </label>
+              </p>
 
               <ul
-                className="mt-4 hidden flex-col gap-4 text-[1.15rem] peer-checked:flex md:flex"
+                className="mt-4 flex flex-col gap-4 text-[1.15rem]"
                 style={{ color: "var(--color-ink)" }}
               >
                 {dict.pricing.planFeatures[id].map((line) => (
@@ -376,6 +390,7 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                   className="tile-btn"
                   style={{ background: tone.bg, borderColor: tone.edge, color: tone.ink }}
                 />
+              </div>
               </div>
             </div>
           );

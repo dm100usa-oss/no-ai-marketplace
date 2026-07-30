@@ -248,6 +248,8 @@ export interface Dictionary {
     /** Word in front of the price that starts once the free places end. */
     laterPrefix: string;
     includedTitle: string;
+    /** Word in front of the price on the folded strip: "Сейчас $0". */
+    nowWord: string;
     /** One block per participant type. */
     planNames: { creator: string; team: string; company: string };
     /** Each of the three plates at the top of the pricing page is a title
