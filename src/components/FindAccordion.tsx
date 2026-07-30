@@ -19,9 +19,9 @@ export interface FindAction {
  * which read too much alike on text alone.
  */
 const ACTION_TONES = [
-  { bg: "#ffc23d", ink: "var(--color-ink)", sub: "var(--color-muted-soft)", press: "#ebb338", icon: "creator" },
-  { bg: "#79d3b2", ink: "#0f7a58", sub: "#0c6549", press: "#6fc2a4", icon: "team" },
-  { bg: "#97bdf1", ink: "#2f5cb0", sub: "#274a86", press: "#8baede", icon: "company" },
+  { bg: "#ffeabd", ink: "var(--color-ink)", sub: "var(--color-muted-soft)", press: "#ebd8ae", icon: "creator" },
+  { bg: "#c9e9dc", ink: "#0f7a58", sub: "#0c6549", press: "#b5d4c8", icon: "team" },
+  { bg: "#cfe0f8", ink: "#2f5cb0", sub: "#274a86", press: "#bccde4", icon: "company" },
 ];
 
 /**
