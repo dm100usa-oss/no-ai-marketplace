@@ -383,6 +383,14 @@ export const en: Dictionary = {
     thanksLead: "Thank you for choosing",
     afterForm:
       "Listing is free for you right now. Once the free places run out, payment through Stripe switches on.",
+    submitted: {
+      creator:
+        "Thank you for trusting us with your work. Your profile form is with us, and a person will read it, not a machine. This usually takes no more than three working days. You will get an email, and once you confirm it your profile goes live.",
+      team:
+        "Thank you for bringing your team here. Your team profile form is with us, and a person will read it, not a machine. This usually takes no more than three working days. A reminder: only someone with their own profile in the directory can be listed as a team member. You will get an email, and once you confirm it the team profile goes live.",
+      company:
+        "Thank you for choosing us for your company. Your company profile form is with us, and a person will read it, not a machine. This usually takes no more than three working days. The email goes to the contact person you named, and once they confirm it the company profile goes live.",
+    },
     creator: {
       metaTitle: "Creator profile | No AI Directory",
       metaDescription:
@@ -489,7 +497,7 @@ export const en: Dictionary = {
       },
       {
         q: "How long until my profile goes live?",
-        a: "We read every application by hand, which usually takes a few working days. Once approved, you get an email with a link: click it and your profile goes live in the directory. The optional verification, if you asked for it, takes a little longer.",
+        a: "We read every application by hand, which usually takes no more than three working days. Once approved, you get an email with a link: click it and your profile goes live in the directory. The optional verification, if you asked for it, takes a little longer.",
       },
       {
         q: "Can I edit my profile later?",
@@ -1442,7 +1450,7 @@ export const en: Dictionary = {
     profileSubmitted: {
       title: "Profile submitted",
       description:
-        "We got your submission and are reviewing it by hand. Most profiles go live within a few working days. If you asked for verification, we may take a little longer to look at the materials.",
+        "We got your submission and are reviewing it by hand. This usually takes no more than three working days. If you asked for verification, we may take a little longer to look at the materials.",
       primary: "Back to home",
       secondary: "Browse the catalog",
     },

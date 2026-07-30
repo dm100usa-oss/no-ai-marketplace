@@ -292,6 +292,9 @@ export interface Dictionary {
     thanksLead: string;
     /** The one line under the form: what listing costs right now. */
     afterForm: string;
+    /** Shown on /profile-submitted, chosen by the ?type= in the address the
+     *  Tally form redirects to. Falls back to the general text. */
+    submitted: { creator: string; team: string; company: string };
     creator: { metaTitle: string; metaDescription: string; title: string; thanksText: string };
     team: { metaTitle: string; metaDescription: string; title: string; thanksText: string };
     company: { metaTitle: string; metaDescription: string; title: string; thanksText: string };
