@@ -37,7 +37,10 @@ export async function POST(request: NextRequest) {
   if (!Number.isInteger(numRating) || numRating < 1 || numRating > 5) {
     return NextResponse.json({ ok: false, error: "rating" }, { status: 400 });
   }
-  if (cleanText.length < 10 || cleanText.length > 1500) {
+  // A rating on its own is a review. Someone who taps five stars and
+  // has nothing to add has still said something, and asking them to
+  // write a sentence they do not have only loses the rating.
+  if (cleanText.length > 1500) {
     return NextResponse.json({ ok: false, error: "text" }, { status: 400 });
   }
 

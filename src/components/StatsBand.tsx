@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 
 /**
  * Band under the work strip: visits for the week on the left, rating on
@@ -139,8 +140,14 @@ export function StatsBand({
             </div>
           )}
 
+          {/* The rating is a link, not a figure. Someone who sees a score
+              wants to know who gave it; without a way through, the number
+              reads as something the site awarded itself. */}
           {rating !== null && (
-            <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
+            <Link
+              href={`/${locale}/reviews`}
+              className="flex shrink-0 items-center gap-1.5 no-underline sm:gap-2"
+            >
               {/* One flat colour, no gradient and no stroke. At this size a
                   three-stop gradient with a darker outline muddies into a
                   smudge; a single clean fill reads as a star. */}
@@ -167,7 +174,7 @@ export function StatsBand({
               >
                 {r.initial}
               </span>
-            </div>
+            </Link>
           )}
         </div>
       </div>

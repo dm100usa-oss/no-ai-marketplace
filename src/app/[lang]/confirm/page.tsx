@@ -56,7 +56,7 @@ export default async function Page({
       kind={confirmed ? "success" : "warn"}
       title={s.title}
       description={s.description}
-      primary={{ href: "/", label: s.primary }}
+      primary={{ href: confirmed ? "/reviews" : "/", label: s.primary }}
       secondary={{
         href: confirmed ? "/directory" : "/contact",
         label: s.secondary,

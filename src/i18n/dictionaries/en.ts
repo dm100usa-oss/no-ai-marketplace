@@ -7,9 +7,8 @@ import type { Dictionary } from "@/i18n/types";
 export const en: Dictionary = {
   site: {
     name: "No AI Directory",
-    tagline: "An international platform",
-    taglineSub:
-      "For professionals creating without AI\nand businesses seeking reliable results",
+    tagline: "An international platform for talented professionals",
+    taglineSub: "who create work without using artificial intelligence",
     slogan: "",
     description:
       "An international directory of professionals who create professional work and services without the use of generative AI.",
@@ -159,15 +158,15 @@ export const en: Dictionary = {
       "Get predictable quality and original work",
       "Work with individual, verified professionals",
       "Build your own team for a specific project",
-      "Or choose an established team or company for large projects",
+      "Or choose an established team or company",
     ],
     heroCreatorsTitle: "For creators",
     heroCreators: [
       "List on a platform that brings you clients, not random traffic",
-      "Show finished work or simply describe your services",
-      "Win more qualified work and build long-term relationships",
-      "Take projects on your own or join a team",
-      "Show your work is made without AI and earn more trust",
+      "Show finished work or simply describe your services and get listed fast",
+      "Win more qualified work and build long-term client relationships",
+      "Take projects on your own, join a team, or start your own company",
+      "Show your work is made without AI and earn more trust from clients",
       "Get ahead while everyone else stays on the general marketplaces",
     ],
     heroJoinButton: "Join the platform",
@@ -1364,7 +1363,7 @@ export const en: Dictionary = {
     namePlaceholder: "What should we call you",
     ratingLabel: "Rating",
     textLabel: "Review",
-    textPlaceholder: "Tell us how it went",
+    textPlaceholder: "",
     submit: "Send review",
     sending: "Sending...",
     moderationNote:
@@ -1373,7 +1372,7 @@ export const en: Dictionary = {
     thanksText: "It will appear on the page once it has been read, usually within a day or two.",
     errName: "Please add a name, at least two characters.",
     errRating: "Please pick a rating from one to five stars.",
-    errText: "Please write a few words, at least ten characters.",
+    errText: "That review is a little too long.",
     errRate: "There is already a review from this address today. Try again tomorrow.",
     errServer: "Could not send it. Please try again in a moment.",
   },
@@ -1479,8 +1478,8 @@ export const en: Dictionary = {
     confirmOk: {
       title: "Your address is confirmed",
       description:
-        "Your profile is now published in the directory. Thank you for being with us.",
-      primary: "Back to home",
+        "Your profile is now published in the directory. Thank you for trusting us with your work. If you have a minute, leave a review of the platform. It means a lot to us and helps the platform grow.",
+      primary: "Leave a review",
       secondary: "Browse the catalog",
     },
     confirmFail: {
