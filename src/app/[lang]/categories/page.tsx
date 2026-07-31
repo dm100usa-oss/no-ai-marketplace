@@ -3,7 +3,7 @@ import { LocaleLink } from "@/components/LocaleLink";
 import {
   getActiveDirectionsL,
   getCategoriesByDirectionL,
-  getProfilesByCategoryL,
+  getAllProfilesL,
 } from "@/lib/localized-data";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { getDictionary } from "@/i18n";
@@ -36,6 +36,17 @@ export default async function CategoriesPage({
   const dict = getDictionary(locale);
   const dirs = getActiveDirectionsL(locale);
 
+  // Counts are read once here rather than per card: the catalog now comes
+  // from the store, and asking for it inside the loop would mean one trip
+  // per category.
+  const all = await getAllProfilesL(locale);
+  const countIn = (categorySlug: string) =>
+    all.filter(
+      (p) =>
+        p.mainCategory === categorySlug ||
+        (p.additionalCategories ?? []).includes(categorySlug),
+    ).length;
+
   return (
     <div style={{ background: "var(--color-brand-soft)" }}>
       <div className="container-page section">
@@ -66,7 +77,7 @@ export default async function CategoriesPage({
               </div>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {cats.map((c) => {
-                  const n = getProfilesByCategoryL(c.slug, locale).length;
+                  const n = countIn(c.slug);
                   return (
                     <LocaleLink key={c.slug} lang={locale} href={`/categories/${c.slug}`} className="card card-hover p-4">
                       <span className="block font-semibold" style={{ fontFamily: "var(--font-display)" }}>

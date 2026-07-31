@@ -4,7 +4,7 @@ import { LocaleLink } from "@/components/LocaleLink";
 import {
   getDirectionL,
   getCategoriesByDirectionL,
-  getProfilesByCategoryL,
+  getAllProfilesL,
 } from "@/lib/localized-data";
 import { directions as baseDirections } from "@/data/directions";
 import { site } from "@/lib/config";
@@ -68,6 +68,16 @@ export default async function DirectionPage({
 
   const cats = getCategoriesByDirectionL(dir.slug, locale);
 
+  // Read once, not once per card: the catalog is a store lookup now.
+  const all = await getAllProfilesL(locale);
+  const countIn = (categorySlug: string) =>
+    all.filter(
+      (p) =>
+        (p.mainCategory === categorySlug ||
+          (p.additionalCategories ?? []).includes(categorySlug)) &&
+        ofType(p),
+    ).length;
+
   return (
     <div className="container-page section">
       <Breadcrumbs
@@ -90,7 +100,7 @@ export default async function DirectionPage({
         <SectionHeading lang={locale} title={dict.directionDetail.categories} />
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {cats.map((c) => {
-            const n = getProfilesByCategoryL(c.slug, locale).filter(ofType).length;
+            const n = countIn(c.slug);
             return (
               <LocaleLink
                 key={c.slug}

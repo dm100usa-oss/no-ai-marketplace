@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import { getLiveProfiles } from "@/lib/live-profiles";
 import { notFound } from "next/navigation";
 import { getProfileL } from "@/lib/localized-data";
-import { profiles as baseProfiles } from "@/data/profiles";
 import { site } from "@/lib/config";
 import { ProfileView } from "@/components/ProfileView";
 import { getDictionary } from "@/i18n";
@@ -9,8 +9,14 @@ import { DEFAULT_LOCALE, isLocale, localizedPath, LOCALES, altLanguages } from "
 import type { Locale } from "@/i18n/config";
 
 /** Static pages for companies only, per language. */
-export function generateStaticParams() {
-  const companies = baseProfiles.filter((p) => p.profileType === "company");
+/**
+ * Addresses built up front. Reads the live catalog, so a profile
+ * approved since the last deploy gets its page here too; anything that
+ * arrives later is rendered on first visit and then kept.
+ */
+export async function generateStaticParams() {
+  const all = await getLiveProfiles();
+  const companies = all.filter((p) => p.profileType === "company");
   return LOCALES.flatMap((lang) => companies.map((p) => ({ lang, slug: p.slug })));
 }
 
@@ -21,7 +27,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang, slug } = await params;
   const locale: Locale = isLocale(lang) ? lang : DEFAULT_LOCALE;
-  const p = getProfileL(slug, locale);
+  const p = await getProfileL(slug, locale);
   if (!p) return {};
   const title = p.seoTitle ?? p.name;
   const description = p.seoDescription ?? p.shortDescription;
@@ -44,7 +50,7 @@ export default async function CompanyPage({
   const { lang, slug } = await params;
   const locale: Locale = isLocale(lang) ? lang : DEFAULT_LOCALE;
   const dict = getDictionary(locale);
-  const p = getProfileL(slug, locale);
+  const p = await getProfileL(slug, locale);
   if (!p || p.profileType !== "company") notFound();
   return <ProfileView lang={locale} dict={dict} profile={p} />;
 }

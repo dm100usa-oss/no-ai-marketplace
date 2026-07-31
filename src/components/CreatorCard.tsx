@@ -42,7 +42,7 @@ function typeBadge(
   return null;
 }
 
-export function CreatorCard({
+export async function CreatorCard({
   lang,
   dict,
   profile,
@@ -78,7 +78,9 @@ export function CreatorCard({
 
   const badge = typeBadge(profile, dict);
   const team =
-    profile.profileType === "creator" ? getTeamOfCreatorL(profile.slug, lang) : undefined;
+    profile.profileType === "creator"
+      ? await getTeamOfCreatorL(profile.slug, lang)
+      : undefined;
   // What this participant actually does — the difference between two
   // people in the same profession. Products count too: an author sells
   // books, not services.

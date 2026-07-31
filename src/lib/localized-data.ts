@@ -17,7 +17,7 @@ import {
   directions as baseDirections,
 } from "@/data/directions";
 import { categories as baseCategories } from "@/data/categories";
-import { profiles as baseProfiles } from "@/data/profiles";
+import { getLiveProfiles } from "@/lib/live-profiles";
 import { directionsRu } from "@/i18n/data/directions.ru";
 import { categoriesRu } from "@/i18n/data/categories.ru";
 import { profilesRu } from "@/i18n/data/profiles.ru";
@@ -130,12 +130,28 @@ function localizeProfile(p: Profile, locale: Locale): Profile {
   };
 }
 
-export function getAllProfilesL(locale: Locale): Profile[] {
-  return baseProfiles.map((p) => localizeProfile(p, locale));
+/**
+ * Everything below reads the live catalog, so it has to be awaited.
+ *
+ * Profiles used to come straight from a file in the repository, which made
+ * these plain functions. They now come from the repository *and* from the
+ * approved applications in the store, and the store is a trip over the
+ * network. The alternative — a background copy the pages read without
+ * waiting — would have shown a stale catalog on the first request after
+ * every deploy, which is exactly the moment a new author looks.
+ */
+
+export async function getAllProfilesL(locale: Locale): Promise<Profile[]> {
+  const all = await getLiveProfiles();
+  return all.map((p) => localizeProfile(p, locale));
 }
 
-export function getProfileL(slug: string, locale: Locale): Profile | undefined {
-  const p = baseProfiles.find((x) => x.slug === slug);
+export async function getProfileL(
+  slug: string,
+  locale: Locale,
+): Promise<Profile | undefined> {
+  const all = await getLiveProfiles();
+  const p = all.find((x) => x.slug === slug);
   return p ? localizeProfile(p, locale) : undefined;
 }
 
@@ -147,11 +163,12 @@ export function getProfileL(slug: string, locale: Locale): Profile | undefined {
  * does the same with agencies: the roster lives on the agency and both
  * pages point at each other. One source, two directions.
  */
-export function getTeamOfCreatorL(
+export async function getTeamOfCreatorL(
   slug: string,
   locale: Locale,
-): Profile | undefined {
-  const team = baseProfiles.find(
+): Promise<Profile | undefined> {
+  const all = await getLiveProfiles();
+  const team = all.find(
     (p) =>
       p.profileType === "team" &&
       (p.members ?? []).some((m) => m.slug === slug),
@@ -159,11 +176,12 @@ export function getTeamOfCreatorL(
   return team ? localizeProfile(team, locale) : undefined;
 }
 
-export function getProfilesByCategoryL(
+export async function getProfilesByCategoryL(
   categorySlug: string,
   locale: Locale,
-): Profile[] {
-  return baseProfiles
+): Promise<Profile[]> {
+  const all = await getLiveProfiles();
+  return all
     .filter(
       (p) =>
         p.mainCategory === categorySlug ||
@@ -172,29 +190,36 @@ export function getProfilesByCategoryL(
     .map((p) => localizeProfile(p, locale));
 }
 
-export function getProfilesByDirectionL(
+export async function getProfilesByDirectionL(
   directionSlug: string,
   locale: Locale,
-): Profile[] {
-  return baseProfiles
+): Promise<Profile[]> {
+  const all = await getLiveProfiles();
+  return all
     .filter((p) => p.direction === directionSlug)
     .map((p) => localizeProfile(p, locale));
 }
 
-export function getFeaturedProfilesL(locale: Locale): Profile[] {
-  return baseProfiles
+export async function getFeaturedProfilesL(locale: Locale): Promise<Profile[]> {
+  const all = await getLiveProfiles();
+  return all
     .filter((p) => p.status === "featured" || p.featured)
     .map((p) => localizeProfile(p, locale));
 }
 
-export function getVerifiedProfilesL(locale: Locale): Profile[] {
-  return baseProfiles
+export async function getVerifiedProfilesL(locale: Locale): Promise<Profile[]> {
+  const all = await getLiveProfiles();
+  return all
     .filter((p) => p.verificationStatus !== "none")
     .map((p) => localizeProfile(p, locale));
 }
 
-export function getNewestProfilesL(locale: Locale, limit?: number): Profile[] {
-  const sorted = [...baseProfiles].sort(
+export async function getNewestProfilesL(
+  locale: Locale,
+  limit?: number,
+): Promise<Profile[]> {
+  const all = await getLiveProfiles();
+  const sorted = [...all].sort(
     (a, b) =>
       new Date(b.dateCreated).getTime() - new Date(a.dateCreated).getTime(),
   );
@@ -203,8 +228,9 @@ export function getNewestProfilesL(locale: Locale, limit?: number): Profile[] {
 }
 
 /** Distinct localized country names present in the catalog, for filters. */
-export function getCountriesL(locale: Locale): string[] {
-  const all = getAllProfilesL(locale).map((p) => p.country);
+export async function getCountriesL(locale: Locale): Promise<string[]> {
+  const profiles = await getAllProfilesL(locale);
+  const all = profiles.map((p) => p.country).filter(Boolean);
   return Array.from(new Set(all)).sort((a, b) => a.localeCompare(b));
 }
 

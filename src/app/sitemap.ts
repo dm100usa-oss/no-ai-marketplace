@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
 import { profileBasePath } from "@/lib/profile-path";
 import { site } from "@/lib/config";
-import { getAllDirections, getAllCategories, getAllProfiles } from "@/lib/data";
+import { getAllDirections, getAllCategories } from "@/lib/data";
+import { getLiveProfiles } from "@/lib/live-profiles";
 import { FAQ_PROFESSION_SLUGS } from "@/i18n/data/faqProfessions";
 import { LOCALES, DEFAULT_LOCALE, localizedPath } from "@/i18n/config";
 
@@ -15,7 +16,7 @@ import { LOCALES, DEFAULT_LOCALE, localizedPath } from "@/i18n/config";
  * Payment / status pages are left out (they are noindex) and so is the raw
  * /directory search view beyond its landing page.
  */
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = site.url.replace(/\/$/, "");
   const now = new Date();
 
@@ -40,7 +41,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/join/company", priority: 0.6 },
     { path: "/pricing", priority: 0.7 },
     { path: "/method", priority: 0.6 },
-    { path: "/work-stages", priority: 0.8 },
     { path: "/why-us", priority: 0.6 },
     { path: "/knowledge", priority: 0.8 },
     { path: "/glossary", priority: 0.8 },
@@ -78,7 +78,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Demo profiles are placeholders, not real people — they carry noindex
   // and stay out of the sitemap so they never compete with real entries.
-  const profileEntries = getAllProfiles()
+  const profileEntries = (await getLiveProfiles())
     .filter((p) => !p.demo)
     .map((p) => {
       const seg = profileBasePath(p.profileType).slice(1);

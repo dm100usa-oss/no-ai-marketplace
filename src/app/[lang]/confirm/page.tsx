@@ -4,6 +4,7 @@ import { getDictionary } from "@/i18n";
 import { DEFAULT_LOCALE, isLocale, localizedPath } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
 import { confirmSubmissionEmail } from "@/lib/redis";
+import { refreshCatalog } from "@/lib/refresh-catalog";
 
 /**
  * The page the welcome-email link opens.
@@ -48,6 +49,12 @@ export default async function Page({
   const dict = getDictionary(locale);
 
   const confirmed = token ? await confirmSubmissionEmail(token) : null;
+
+  // The click that just happened is what puts an approved profile into the
+  // catalog, so the pages are rebuilt before the visitor is told they are
+  // listed. Otherwise the first thing they would do — go and look — would
+  // show them nothing.
+  if (confirmed) refreshCatalog();
   const s = confirmed ? dict.status.confirmOk : dict.status.confirmFail;
 
   return (
@@ -56,7 +63,7 @@ export default async function Page({
       kind={confirmed ? "success" : "warn"}
       title={s.title}
       description={s.description}
-      primary={{ href: confirmed ? "/reviews" : "/", label: s.primary }}
+      primary={{ href: "/", label: s.primary }}
       secondary={{
         href: confirmed ? "/directory" : "/contact",
         label: s.secondary,

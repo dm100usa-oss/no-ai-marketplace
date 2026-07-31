@@ -46,6 +46,11 @@ export function AdminClient() {
   const [authed, setAuthed] = useState(false);
   const [reviews, setReviews] = useState<Review[]>([]);
   const [submissions, setSubmissions] = useState<Submission[]>([]);
+  /** What the converter said about each submission, keyed by id. Filled by
+   *  the server so the screen can warn before a decision, not after. */
+  const [readiness, setReadiness] = useState<
+    Record<string, { problem?: string; missingMembers?: string[] }>
+  >({});
   const [tab, setTab] = useState<"profiles" | "reviews">("profiles");
   const [busy, setBusy] = useState(false);
   /** The submission whose delete button is waiting for a second click.
@@ -77,6 +82,7 @@ export function AdminClient() {
         if (sres.ok) {
           const sdata = await sres.json();
           setSubmissions(sdata.submissions ?? []);
+          setReadiness(sdata.readiness ?? {});
         }
       } catch {
         /* leave submissions as they were */
@@ -316,20 +322,35 @@ export function AdminClient() {
     );
   }
 
+  /**
+   * A plain-Russian warning for a submission that will not turn into a
+   * profile as it stands. Silence means it is fine.
+   */
+  function readinessNote(s: Submission): string | null {
+    const r = readiness[s.id];
+    if (!r) return null;
+
+    if (r.problem === "unknown-category") {
+      return `Категория «${s.mainCategory ?? ""}» не найдена в каталоге. Профиль не создастся, пока категория не будет исправлена.`;
+    }
+    if (r.problem === "team-too-small") {
+      const who = r.missingMembers?.length
+        ? ` Нет профилей у: ${r.missingMembers.join(", ")}.`
+        : "";
+      return `В команде пока только контактное лицо. Команда появится в каталоге, когда хотя бы у одного участника будет свой профиль.${who}`;
+    }
+    if (r.missingMembers?.length) {
+      return `Участники без профиля: ${r.missingMembers.join(", ")}. В списке команды они будут показаны без ссылки и не попадут в счет участников.`;
+    }
+    return null;
+  }
+
   function SubmissionCard({ s, actions }: { s: Submission; actions: boolean }) {
+    const note = readinessNote(s);
     const pics = [
       ...(s.avatar ? [{ label: "Фото", url: s.avatar }] : []),
-      ...(s.mainImage ? [{ label: "Работа 1", url: s.mainImage }] : []),
-      ...(s.gallery ?? []).map((u, i) => ({ label: `Работа ${i + 2}`, url: u })),
-      // The stages come last and say so in the label: they are what the
-      // badge decision is made on, and the owner should not have to guess
-      // which of these pictures is the finished piece and which is proof.
-      ...(s.stages ?? [])
-        .filter(Boolean)
-        .map((u, i) => ({
-          label: `Этап ${i + 1}${s.stageCaptions?.[i] ? `: ${s.stageCaptions[i]}` : ""}`,
-          url: u,
-        })),
+      ...(s.mainImage ? [{ label: "Work 1", url: s.mainImage }] : []),
+      ...(s.gallery ?? []).map((u, i) => ({ label: `Work ${i + 2}`, url: u })),
     ];
 
     return (
@@ -392,6 +413,19 @@ export function AdminClient() {
             {fmt.format(new Date(s.createdAt))}
           </span>
         </div>
+
+        {note && (
+          <p
+            className="mt-3 rounded-xl border px-3 py-2 text-[0.82rem]"
+            style={{
+              borderColor: "var(--color-line)",
+              background: "var(--color-surface-soft, #fff8e6)",
+              color: "var(--color-ink)",
+            }}
+          >
+            {note}
+          </p>
+        )}
 
         <p className="mt-2 text-[0.85rem]" style={{ color: "var(--color-muted-soft)" }}>
           {[s.mainCategory, [s.city, s.country].filter(Boolean).join(", ")]

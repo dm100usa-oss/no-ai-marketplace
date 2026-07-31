@@ -1,4 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
+import { refreshCatalog } from "@/lib/refresh-catalog";
+import { getLiveProfiles } from "@/lib/live-profiles";
+import { submissionToProfile } from "@/lib/submission-to-profile";
 import { timingSafeEqual } from "crypto";
 import {
   addSubmission,
@@ -45,7 +48,21 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ ok: false }, { status: 401 });
   }
   const submissions = await getAllSubmissions();
-  return NextResponse.json({ ok: true, submissions });
+
+  // Every submission is run through the converter before it is shown, and
+  // the result travels with it. The moderation screen can then say, before
+  // anything is approved, that a category will not be recognised or that a
+  // team has nobody to link to. Finding that out afterwards, from a
+  // profile that quietly never appeared, is how a listing gets paid for
+  // and stays invisible.
+  const catalog = await getLiveProfiles();
+  const readiness: Record<string, { problem?: string; missingMembers?: string[] }> = {};
+  for (const s of submissions) {
+    const { problem, missingMembers } = submissionToProfile(s, catalog);
+    if (problem || missingMembers) readiness[s.id] = { problem, missingMembers };
+  }
+
+  return NextResponse.json({ ok: true, submissions, readiness });
 }
 
 /** Trim a value to a string, or undefined when there is nothing there. */
@@ -113,6 +130,12 @@ export async function POST(request: NextRequest) {
 
     const updated = await setSubmissionStatus(data.id, status);
     if (!updated) return NextResponse.json({ ok: false }, { status: 500 });
+
+    // Approval is one of the two doors into the catalog, so the pages are
+    // rebuilt here. The profile only appears once the address is confirmed
+    // as well; refreshing now costs nothing and covers the case where it
+    // already was.
+    refreshCatalog();
 
     // The letter follows the decision. A mail that does not go out (no key
     // yet, or a hiccup at Resend) must not undo a decision already stored,

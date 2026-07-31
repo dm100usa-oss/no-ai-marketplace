@@ -81,7 +81,7 @@ function MemberAvatar({ src, seed, alt }: { src?: string; seed: string; alt: str
   );
 }
 
-export function ProfileView({
+export async function ProfileView({
   lang,
   dict,
   profile: p,
@@ -94,13 +94,14 @@ export function ProfileView({
   // The team this person belongs to, if any. Stored once on the team and
   // read back here, so the two pages point at each other without keeping
   // the same list twice.
-  const team = p.profileType === "creator" ? getTeamOfCreatorL(p.slug, lang) : undefined;
+  const team =
+    p.profileType === "creator" ? await getTeamOfCreatorL(p.slug, lang) : undefined;
   const members = p.profileType === "team" ? (p.members ?? []) : [];
   // A member's own photo, when their profile already carries one. Looked
   // up once here rather than per row.
   const memberAvatars: Record<string, string | undefined> = {};
   if (members.length > 0) {
-    const all = getAllProfilesL(lang);
+    const all = await getAllProfilesL(lang);
     for (const m of members) {
       memberAvatars[m.slug] = all.find((x) => x.slug === m.slug)?.avatar;
     }
@@ -151,7 +152,7 @@ export function ProfileView({
   };
 
   const externalLinks = collectLinks(p, dict);
-  const relatedProfiles = getRelatedProfiles(p, 3, lang);
+  const relatedProfiles = await getRelatedProfiles(p, 3, lang);
   const workingProcess = deriveWorkingProcess(p, dict);
   const kindWord = kindWordFor(p.profileType, dict);
   const intro = buildIntroduction(p, dict, lang);
@@ -479,46 +480,6 @@ export function ProfileView({
             </div>
           ) : null}
 
-          {/* Work stages — the proof, right under the portfolio and at a
-              smaller size than the works themselves. Placement matters:
-              a visitor deciding on this author is looking at the work, and
-              the stages answer the question that decision hangs on without
-              making them go anywhere. */}
-          {p.stages?.filter(Boolean).length ? (
-            <div className="mt-10">
-              <h2 className="!text-[1.35rem]">{dict.profile.stagesTitle}</h2>
-              <p className="mt-1 text-[0.92rem]" style={{ color: "var(--color-muted-soft)" }}>
-                {dict.profile.stagesHint}
-              </p>
-              <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
-                {p.stages.filter(Boolean).map((src, i) => (
-                  <li key={src}>
-                    <div
-                      className="overflow-hidden rounded-xl border"
-                      style={{ borderColor: "var(--color-line)" }}
-                    >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={src}
-                        alt={`${p.name} — ${dict.profile.stagesTitle} ${i + 1}`}
-                        loading="lazy"
-                        className="block aspect-[4/3] w-full object-cover"
-                      />
-                    </div>
-                    <p
-                      className="mt-1.5 text-[0.85rem] leading-snug"
-                      style={{ color: "var(--color-muted)" }}
-                    >
-                      {p.stageCaptions?.[i]?.trim()
-                        ? p.stageCaptions[i]
-                        : `${dict.profile.stagesTitle} ${i + 1}`}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : null}
-
           {/* Video links */}
           {p.videoLinks?.length ? (
             <div className="mt-10">
@@ -748,8 +709,12 @@ function collectLinks(p: Profile, dict: Dictionary): { label: string; href: stri
 }
 
 /** Same-category profiles excluding the current one, capped to `limit`. */
-function getRelatedProfiles(p: Profile, limit: number, lang: Locale): Profile[] {
-  return getAllProfilesL(lang)
+async function getRelatedProfiles(
+  p: Profile,
+  limit: number,
+  lang: Locale,
+): Promise<Profile[]> {
+  return (await getAllProfilesL(lang))
     .filter(
       (x) =>
         x.slug !== p.slug &&

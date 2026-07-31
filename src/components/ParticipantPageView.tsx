@@ -26,7 +26,7 @@ import type { ProfileType } from "@/lib/types";
  * them lives in the words, not in the furniture, so a reader comparing
  * them compares the arguments rather than the layout.
  */
-export function ParticipantPageView({
+export async function ParticipantPageView({
   lang,
   dict,
   page,
@@ -42,7 +42,9 @@ export function ParticipantPageView({
   /** Where the "browse" button goes: the catalog, pre-filtered. */
   browseHref: string;
 }) {
-  const profiles = getAllProfilesL(lang).filter((p) => p.profileType === type);
+  const profiles = (await getAllProfilesL(lang)).filter(
+    (p) => p.profileType === type,
+  );
 
   const jsonLd = {
     "@context": "https://schema.org",

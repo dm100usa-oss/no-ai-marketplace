@@ -30,7 +30,7 @@ export default async function VerifiedPage({
   const { lang } = await params;
   const locale: Locale = isLocale(lang) ? lang : DEFAULT_LOCALE;
   const dict = getDictionary(locale);
-  const list = getVerifiedProfilesL(locale);
+  const list = await getVerifiedProfilesL(locale);
 
   return (
     <div className="container-page section">

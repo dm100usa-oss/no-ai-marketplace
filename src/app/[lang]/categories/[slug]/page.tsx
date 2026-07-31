@@ -72,7 +72,7 @@ export default async function CategoryPage({
   const faqBlocks = getFaqForCategory(locale, cat.slug);
 
   const dir = directionOfCategoryL(cat.slug, locale);
-  const list = getProfilesByCategoryL(cat.slug, locale).filter(
+  const list = (await getProfilesByCategoryL(cat.slug, locale)).filter(
     (p) => !type || p.profileType === type,
   );
 

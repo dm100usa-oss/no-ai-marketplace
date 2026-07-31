@@ -56,7 +56,7 @@ export default async function HomePage({
   // authors always win; the demo profile fills the strip only while there
   // are no real works yet, and drops out on its own the moment the first
   // real author with a work is published — no manual step either way.
-  const shown = getNewestProfilesL(locale).filter(
+  const shown = (await getNewestProfilesL(locale)).filter(
     (p) => p.mainImage && p.showOnHomepage,
   );
   const realWorks = shown.filter((p) => !p.demo);
@@ -68,7 +68,7 @@ export default async function HomePage({
   // its own once the first real author is published. Each becomes a card
   // with photo and name; empty slots after them stay as invitations, so a
   // near-empty catalog still shows a full, living strip.
-  const membersShown = getNewestProfilesL(locale).filter(
+  const membersShown = (await getNewestProfilesL(locale)).filter(
     (p) => p.avatar && p.showOnHomepage,
   );
   const realMembers = membersShown.filter((p) => !p.demo);

@@ -47,10 +47,10 @@ export default async function DirectoryPage({
   }
   const initial = filtersFromParams(flat);
 
-  const profiles = getAllProfilesL(locale);
+  const profiles = await getAllProfilesL(locale);
   const categories = getAllCategoriesL(locale);
   const directions = getActiveDirectionsL(locale);
-  const countries = getCountriesL(locale);
+  const countries = await getCountriesL(locale);
   const docs = buildSearchDocs(profiles, categories, directions);
 
   const jsonLd = {
