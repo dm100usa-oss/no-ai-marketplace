@@ -74,9 +74,13 @@ export async function generateMetadata({
 
   const languages = altLanguages("/");
 
+  // The sub-headline carries a hard line break for the hero. Page titles and
+  // social cards need it on one line, so flatten it here.
+  const taglineSub = dict.site.taglineSub.replace(/\s*\n\s*/g, " ");
+
   return {
     title: {
-      default: `${dict.site.name}. ${dict.site.tagline}, ${dict.site.taglineSub}. ${dict.site.slogan}`,
+      default: `${dict.site.name}. ${dict.site.tagline}. ${taglineSub}. ${dict.site.slogan}`,
       template: `%s. ${dict.site.name}`,
     },
     description: dict.site.description,
@@ -88,14 +92,14 @@ export async function generateMetadata({
     openGraph: {
       type: "website",
       siteName: dict.site.name,
-      title: `${dict.site.name}. ${dict.site.tagline}, ${dict.site.taglineSub}`,
+      title: `${dict.site.name}. ${dict.site.tagline}. ${taglineSub}`,
       description: dict.site.description,
       url: `${site.url}${localizedPath(locale, "/")}`,
       locale: locale === "ru" ? "ru_RU" : "en_US",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${dict.site.name}. ${dict.site.tagline}, ${dict.site.taglineSub}`,
+      title: `${dict.site.name}. ${dict.site.tagline}. ${taglineSub}`,
       description: dict.site.description,
     },
   };
