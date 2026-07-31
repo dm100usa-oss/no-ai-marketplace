@@ -46,8 +46,26 @@ export function categoryName(slug: string): string {
 
 // ---------------- Profiles ----------------
 
+/**
+ * Companies first, then teams, then individual creators.
+ *
+ * This is a paid difference, stated plainly on the pricing page: a company
+ * pays more than a team, a team more than one person, and in return they
+ * open every list. Nothing else about the order changes, so within each
+ * group profiles keep the order they already had.
+ */
+const TYPE_ORDER: Record<string, number> = { company: 0, team: 1, creator: 2 };
+
+function byType(list: Profile[]): Profile[] {
+  return [...list].sort(
+    (a, b) =>
+      (TYPE_ORDER[a.profileType ?? "creator"] ?? 2) -
+      (TYPE_ORDER[b.profileType ?? "creator"] ?? 2),
+  );
+}
+
 export function getAllProfiles(): Profile[] {
-  return profiles;
+  return byType(profiles);
 }
 
 export function getProfile(slug: string): Profile | undefined {
@@ -56,7 +74,7 @@ export function getProfile(slug: string): Profile | undefined {
 
 /** Profiles whose main or additional category matches. */
 export function getProfilesByCategory(categorySlug: string): Profile[] {
-  return profiles.filter(
+  return byType(profiles).filter(
     (p) =>
       p.mainCategory === categorySlug ||
       (p.additionalCategories ?? []).includes(categorySlug)
@@ -64,7 +82,7 @@ export function getProfilesByCategory(categorySlug: string): Profile[] {
 }
 
 export function getProfilesByDirection(directionSlug: string): Profile[] {
-  return profiles.filter((p) => p.direction === directionSlug);
+  return byType(profiles).filter((p) => p.direction === directionSlug);
 }
 
 export function getFeaturedProfiles(): Profile[] {
@@ -72,7 +90,7 @@ export function getFeaturedProfiles(): Profile[] {
 }
 
 export function getVerifiedProfiles(): Profile[] {
-  return profiles.filter((p) => p.verificationStatus !== "none");
+  return byType(profiles).filter((p) => p.verificationStatus !== "none");
 }
 
 /** Newest first, by dateCreated. */
