@@ -308,6 +308,21 @@ export interface Submission {
   members?: string[];
   contactPerson?: string;
 
+  /**
+   * Work stages: up to four pictures showing how one piece was made, from
+   * the first sketch to the finished thing.
+   *
+   * This is the only real proof the directory has. A finished picture says
+   * nothing — a machine turns those out in seconds — but a sequence does,
+   * because a machine has no process to show. They are always kept, and
+   * `stagesPublic` decides whether visitors see them or only the owner
+   * does at review time: some work sits under an agreement the author
+   * cannot show, and that must not cost them the badge.
+   */
+  stages?: string[];
+  stageCaptions?: string[];
+  stagesPublic?: boolean;
+
   /** Consents */
   showOnHomepage?: boolean;
 

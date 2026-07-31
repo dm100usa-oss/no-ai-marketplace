@@ -35,11 +35,15 @@ To connect professionals who create work and services without generative AI with
 ## Listing and pricing
 The first 50 profiles are free until the end of 2026, counted across all participant types together. After that, listing is paid and depends on the type: creator $5.99/month or $49/year; team $14.99/month or $119/year; company $29.99/month or $239/year. There is no commission on the work itself: buyers pay the professional directly on the professional's own platform.
 
+## How verification works
+A finished picture proves nothing: a machine produces one in seconds. What proves something is the process. Authors who want the verified badge send four images of one piece, from the first sketch to the finished thing: sketches, working files, photos of the desk, pages of edits. A person reviews them. The author decides whether visitors also see them; some work sits under a client agreement. The images are optional, but the verified badge goes only to those who send them. Full method: /work-stages
+
 ## Main sections
 - Directory of professionals: /directory
 - Directions: /directions
 - Categories: /categories
 - Verified profiles: /verified
+- How we check a piece was made by a person, not generated: /work-stages
 - Add your profile: /join
 - Pricing: /pricing
 - Human-made standards: /human-made-standards

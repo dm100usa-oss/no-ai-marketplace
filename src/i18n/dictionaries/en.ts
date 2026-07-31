@@ -44,6 +44,7 @@ export const en: Dictionary = {
     humanMadeStandards: "Human-Made standards",
     verification: "Verification",
     method: "Our method",
+    workStages: "Work stages",
     principles: "Our principles",
     faq: "Questions and answers",
     whyUs: "Why us",
@@ -1087,6 +1088,55 @@ export const en: Dictionary = {
     ctaJoin: "Add your profile",
   },
 
+  workStages: {
+    metaTitle: "How we check that a piece was made by a person, not generated",
+    metaDescription:
+      "The No AI Directory method: an author shows four stages of one piece, from the first sketch to the finished thing. A finished result proves nothing. A sequence does.",
+    title: "How we check that a piece was made by a person, not generated",
+    intro:
+      "A finished picture proves nothing today: a machine turns out the same in ten seconds. What proves something is the path to it. We ask authors to show how a piece came to be, and it is the one check that cannot be passed by pressing a button.",
+    sections: [
+      {
+        heading: "Why the result proves nothing",
+        paragraphs: [
+          "A finished piece used to be evidence of skill in itself: making one took years. That is no longer true. From a single image, text or melody you can no longer tell whether a person stood behind it.",
+          "So the thing to check is not the result but what a machine does not have. A machine has no process. It does not start with a bad sketch, redo the middle, walk away and come back a week later. It hands over the finished thing at once.",
+        ],
+      },
+      {
+        heading: "What we ask to see",
+        paragraphs: [
+          "Four images of one piece, from the first sketch to the finished thing. What is in them is up to the author: a pencil sketch, the layers in a working file, a photo of the desk or the workshop, a page of edits, tracks on a screen, a marked-up manuscript.",
+          "A line can be added under each image saying what moment it is. It can also be left out: the sequence reads on its own.",
+        ],
+        bullets: [
+          "A person looks at these images, not a program. We go through them ourselves when deciding whether a profile gets the verified badge.",
+          "The author decides whether visitors see them. Some work sits under a client agreement, and that must not cost the author the check.",
+          "The images are optional. A profile can be listed without them, but the verified badge goes only to those who sent them in.",
+        ],
+      },
+      {
+        heading: "Why it works",
+        paragraphs: [
+          "Four process images can be faked. We know that and promise no absolute guarantee. But faking them is markedly harder than generating one picture, and anyone set on deceiving a directory will find it easier to go somewhere that asks for nothing at all.",
+          "We are not talking about a guarantee but about a check. The difference is an honest one: we have seen how this piece was made, and we are willing to put our badge behind it.",
+        ],
+      },
+      {
+        heading: "What it gives the client",
+        paragraphs: [
+          "The result shows what came out. The process shows how a person thinks: whether they are careful, whether they finish what they start, what their decisions are built on. The second often convinces more than the first, because a client is not choosing a picture but the person they will hand their task to.",
+          "That is why the stages sit in the profile itself, under the work, rather than hidden in a review folder. Someone choosing who to hire sees them at the moment they decide.",
+        ],
+      },
+    ],
+    ctaTitle: "See how it looks",
+    ctaText:
+      "Open the directory and find profiles with the verified badge: many of them show the stages under their work. If you are an author, send yours in with your application.",
+    ctaFind: "Open the directory",
+    ctaJoin: "List your profile",
+  },
+
   method: {
     metaTitle: "Our method",
     metaDescription:
@@ -1254,6 +1304,9 @@ export const en: Dictionary = {
     portfolio: "Portfolio",
     portfolioHint: "A selection of recent work. Tap any piece to view it full screen.",
     portfolioMore: "Only a small part is shown here. There is much more, and every piece is its own.",
+    stagesTitle: "How this work was made",
+    stagesHint:
+      "Stages of one piece, from the first sketch to the finished thing. We look at them when we verify a profile.",
     video: "Video",
     watchExternal: "Watch on external platform",
     workingProcess: "Working process",

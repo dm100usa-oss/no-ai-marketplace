@@ -319,8 +319,17 @@ export function AdminClient() {
   function SubmissionCard({ s, actions }: { s: Submission; actions: boolean }) {
     const pics = [
       ...(s.avatar ? [{ label: "Фото", url: s.avatar }] : []),
-      ...(s.mainImage ? [{ label: "Work 1", url: s.mainImage }] : []),
-      ...(s.gallery ?? []).map((u, i) => ({ label: `Work ${i + 2}`, url: u })),
+      ...(s.mainImage ? [{ label: "Работа 1", url: s.mainImage }] : []),
+      ...(s.gallery ?? []).map((u, i) => ({ label: `Работа ${i + 2}`, url: u })),
+      // The stages come last and say so in the label: they are what the
+      // badge decision is made on, and the owner should not have to guess
+      // which of these pictures is the finished piece and which is proof.
+      ...(s.stages ?? [])
+        .filter(Boolean)
+        .map((u, i) => ({
+          label: `Этап ${i + 1}${s.stageCaptions?.[i] ? `: ${s.stageCaptions[i]}` : ""}`,
+          url: u,
+        })),
     ];
 
     return (

@@ -92,6 +92,11 @@ function fieldText(field: TallyField): string | undefined {
  *  it alone is both safe and the only thing that works. */
 const CAPTION_WORDS = ["описание работ", "description", "caption", "подпись"];
 
+/** The stage questions come in pairs, "Этап 2" and "Описание этапа 2", so
+ *  the caption words have to be excluded when collecting the pictures the
+ *  same way they are for works. */
+const STAGE_CAPTION_WORDS = ["описание этапа", "stage 1 description", "stage 2 description", "stage 3 description", "stage 4 description"];
+
 /** Find the first field whose label contains any of the keywords.
  *
  *  `skip` exists because the caption questions sit next to the picture
@@ -138,6 +143,20 @@ function pickEach(fields: TallyField[], keywords: string[]): string[] | undefine
  *  text. The number is what makes a work question a work question, so the
  *  number is what we match on, and the captions are excluded because they
  *  are numbered too. */
+/** The four "Этап N" / "Stage N" pictures, in form order. Captions are
+ *  excluded the same way they are for works: they are numbered too. */
+function pickStages(fields: TallyField[]): string[] | undefined {
+  const out: string[] = [];
+  for (const f of fields) {
+    const label = (f.label ?? f.key ?? "").toLowerCase();
+    if (STAGE_CAPTION_WORDS.some((k) => label.includes(k))) continue;
+    if (!/^(этап|stage)\s*\d/.test(label.trim())) continue;
+    out.push(fieldText(f)?.trim() ?? "");
+  }
+  while (out.length > 0 && out[out.length - 1] === "") out.pop();
+  return out.length > 0 ? out : undefined;
+}
+
 function pickWorks(fields: TallyField[]): string[] {
   const out: string[] = [];
   for (const f of fields) {
@@ -245,6 +264,14 @@ export async function POST(request: NextRequest) {
       : undefined,
     galleryCaptions: pickEach(fields, CAPTION_WORDS),
     members: pickEach(fields, ["участник", "team member", "member "]),
+    // The proof block. Kept whatever the answer to the last question is:
+    // the owner needs to see the stages at review time either way, and
+    // stagesPublic alone decides whether visitors ever do.
+    stages: pickStages(fields),
+    stageCaptions: pickEach(fields, STAGE_CAPTION_WORDS),
+    stagesPublic: /(^|\s)(да|yes)(\s|$)/i.test(
+      pick(fields, ["прикрепить этапы", "show these work stages"]) ?? "",
+    ),
     contactPerson: pick(fields, ["контактное лицо", "contact person"]),
     showOnHomepage:
       (pick(fields, ["homepage", "главн", "showcase"]) ?? "").toLowerCase().includes("yes") ||

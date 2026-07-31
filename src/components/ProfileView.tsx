@@ -479,6 +479,46 @@ export function ProfileView({
             </div>
           ) : null}
 
+          {/* Work stages — the proof, right under the portfolio and at a
+              smaller size than the works themselves. Placement matters:
+              a visitor deciding on this author is looking at the work, and
+              the stages answer the question that decision hangs on without
+              making them go anywhere. */}
+          {p.stages?.filter(Boolean).length ? (
+            <div className="mt-10">
+              <h2 className="!text-[1.35rem]">{dict.profile.stagesTitle}</h2>
+              <p className="mt-1 text-[0.92rem]" style={{ color: "var(--color-muted-soft)" }}>
+                {dict.profile.stagesHint}
+              </p>
+              <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                {p.stages.filter(Boolean).map((src, i) => (
+                  <li key={src}>
+                    <div
+                      className="overflow-hidden rounded-xl border"
+                      style={{ borderColor: "var(--color-line)" }}
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={src}
+                        alt={`${p.name} — ${dict.profile.stagesTitle} ${i + 1}`}
+                        loading="lazy"
+                        className="block aspect-[4/3] w-full object-cover"
+                      />
+                    </div>
+                    <p
+                      className="mt-1.5 text-[0.85rem] leading-snug"
+                      style={{ color: "var(--color-muted)" }}
+                    >
+                      {p.stageCaptions?.[i]?.trim()
+                        ? p.stageCaptions[i]
+                        : `${dict.profile.stagesTitle} ${i + 1}`}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+
           {/* Video links */}
           {p.videoLinks?.length ? (
             <div className="mt-10">

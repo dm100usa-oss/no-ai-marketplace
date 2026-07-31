@@ -94,6 +94,14 @@ export interface Profile extends ReservedRating {
    *  gallery. The author may leave any of them empty: a work without a
    *  caption simply shows as a picture, the way it always did. */
   galleryCaptions?: string[];
+  /**
+   * Work stages: up to four pictures of one piece being made, shown under
+   * the portfolio at a smaller size than the works themselves. Present
+   * only when the author allowed it; the ones who did not are simply
+   * missing the block, which is why nothing here is required.
+   */
+  stages?: string[];
+  stageCaptions?: string[];
   videoLinks?: string[];
   /** Author/company portrait shown in the card and profile header.
    *  Falls back to initials when absent. */

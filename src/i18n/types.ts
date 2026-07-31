@@ -89,6 +89,7 @@ export interface Dictionary {
     humanMadeStandards: string;
     verification: string;
     method: string;
+    workStages: string;
     principles: string;
     faq: string;
     whyUs: string;
@@ -557,6 +558,18 @@ export interface Dictionary {
 
   /** "Our method" — absorbs the former Human-Made standards and
    *  Verification explanation into one authoritative page. */
+  workStages: {
+    metaTitle: string;
+    metaDescription: string;
+    title: string;
+    intro: string;
+    sections: { heading: string; paragraphs: string[]; bullets?: string[] }[];
+    ctaTitle: string;
+    ctaText: string;
+    ctaFind: string;
+    ctaJoin: string;
+  };
+
   method: {
     metaTitle: string;
     metaDescription: string;
@@ -620,6 +633,8 @@ export interface Dictionary {
     portfolio: string;
     portfolioHint: string;
     portfolioMore: string;
+    stagesTitle: string;
+    stagesHint: string;
     video: string;
     watchExternal: string;
     workingProcess: string;
