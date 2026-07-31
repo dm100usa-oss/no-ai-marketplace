@@ -9,7 +9,7 @@ export const en: Dictionary = {
     name: "No AI Directory",
     tagline: "An international platform",
     taglineSub:
-      "For talented professionals creating without AI,\nand businesses seeking reliable results",
+      "For talented professionals creating without AI\nand businesses seeking reliable results",
     slogan: "",
     description:
       "An international directory of professionals who create professional work and services without the use of generative AI.",
