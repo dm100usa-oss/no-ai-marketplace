@@ -355,6 +355,8 @@ export const en: Dictionary = {
         "Listed above individual creators in the directory",
         "Set up to take on larger, multi-skill projects",
         "Team review and the verified profile badge",
+        "Free until the end of 2026",
+        "Cancel your subscription at any time",
       ],
       company: [
         "A professional company page with your services",
@@ -365,6 +367,8 @@ export const en: Dictionary = {
         "Priority placement in the directory",
         "A company page built for search engines and AI",
         "Company review and the verified profile badge",
+        "Free until the end of 2026",
+        "Cancel your subscription at any time",
       ],
     },
     freeNowLabel: "Free right now",
