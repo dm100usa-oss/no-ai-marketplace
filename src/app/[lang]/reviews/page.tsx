@@ -123,12 +123,14 @@ export default async function ReviewsPage({
                   </span>
                   <Stars n={review.rating} />
                 </div>
-                <p
-                  className="mt-2 whitespace-pre-line text-[0.95rem] leading-relaxed"
-                  style={{ color: "var(--color-muted)" }}
-                >
-                  {review.text}
-                </p>
+                {review.text ? (
+                  <p
+                    className="mt-2 whitespace-pre-line text-[0.95rem] leading-relaxed"
+                    style={{ color: "var(--color-muted)" }}
+                  >
+                    {review.text}
+                  </p>
+                ) : null}
                 <p className="mt-3 text-[0.8rem]" style={{ color: "var(--color-muted-soft)" }}>
                   {dateFmt.format(new Date(review.createdAt))}
                 </p>

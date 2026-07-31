@@ -50,6 +50,13 @@ export function ReviewForm({ dict, lang }: { dict: Dictionary; lang: string }) {
 
     if (name.trim().length < 2) return setError(r.errName);
     if (rating < 1) return setError(r.errRating);
+    // The text is optional on purpose. A rating on its own is a complete
+    // review: most people will tap five stars and leave, and demanding a
+    // sentence from them buys a few paragraphs at the cost of most of the
+    // ratings. Anyone with something to say still has the box.
+    if (text.trim().length > 0 && text.trim().length < 10) {
+      return setError(r.errText);
+    }
 
     setState("sending");
 
@@ -168,13 +175,9 @@ export function ReviewForm({ dict, lang }: { dict: Dictionary; lang: string }) {
         </p>
       )}
 
-      {/* Live off the two fields that matter. A rating with no name is not
-          a review anyone can read, and a name with no rating says nothing:
-          until both are there the button stays quiet, which explains the
-          form better than any hint under the box would. */}
       <button
         type="submit"
-        disabled={state === "sending" || rating === 0 || name.trim().length < 2}
+        disabled={state === "sending"}
         className="btn btn-accent btn-full disabled:opacity-60"
       >
         {state === "sending" ? r.sending : r.submit}

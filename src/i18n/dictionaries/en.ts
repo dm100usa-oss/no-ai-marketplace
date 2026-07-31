@@ -7,8 +7,9 @@ import type { Dictionary } from "@/i18n/types";
 export const en: Dictionary = {
   site: {
     name: "No AI Directory",
-    tagline: "An international platform for talented professionals",
-    taglineSub: "who create work without using artificial intelligence",
+    tagline: "An international platform",
+    taglineSub:
+      "For professionals creating without AI\nand businesses seeking reliable results",
     slogan: "",
     description:
       "An international directory of professionals who create professional work and services without the use of generative AI.",
@@ -44,7 +45,6 @@ export const en: Dictionary = {
     humanMadeStandards: "Human-Made standards",
     verification: "Verification",
     method: "Our method",
-    workStages: "Work stages",
     principles: "Our principles",
     faq: "Questions and answers",
     whyUs: "Why us",
@@ -159,15 +159,15 @@ export const en: Dictionary = {
       "Get predictable quality and original work",
       "Work with individual, verified professionals",
       "Build your own team for a specific project",
-      "Or choose an established team or company",
+      "Or choose an established team or company for large projects",
     ],
     heroCreatorsTitle: "For creators",
     heroCreators: [
       "List on a platform that brings you clients, not random traffic",
-      "Show finished work or simply describe your services and get listed fast",
-      "Win more qualified work and build long-term client relationships",
-      "Take projects on your own, join a team, or start your own company",
-      "Show your work is made without AI and earn more trust from clients",
+      "Show finished work or simply describe your services",
+      "Win more qualified work and build long-term relationships",
+      "Take projects on your own or join a team",
+      "Show your work is made without AI and earn more trust",
       "Get ahead while everyone else stays on the general marketplaces",
     ],
     heroJoinButton: "Join the platform",
@@ -346,30 +346,16 @@ export const en: Dictionary = {
         "Cancel your subscription at any time",
       ],
       team: [
-        "A professional team portfolio",
-        "6 key projects with full descriptions",
-        "Up to 4 categories in the directory",
-        "Featured in New teams and New work",
-        "Direct links to your site and social profiles",
-        "One point of contact for the whole team",
-        "Up to 4 members with their roles",
-        "Listed above individual creators in the directory",
-        "Set up to take on larger, multi-skill projects",
-        "Team review and the verified profile badge",
-        "Free until the end of 2026",
-        "Cancel your subscription at any time",
+        "A team profile with the number of members",
+        "Shared portfolio and roles",
+        "Up to four categories in the directory",
+        "One contact for the whole team",
       ],
       company: [
-        "A professional company page with your services",
-        "10 key projects with full descriptions",
-        "Up to 5 categories in the directory",
-        "Featured in New companies and New work",
-        "Logo, website, year founded and regions served",
-        "Priority placement in the directory",
-        "A company page built for search engines and AI",
-        "Company review and the verified profile badge",
-        "Free until the end of 2026",
-        "Cancel your subscription at any time",
+        "A company or studio profile",
+        "Website, year founded and services",
+        "Up to five categories in the directory",
+        "Verified as a business",
       ],
     },
     freeNowLabel: "Free right now",
@@ -1088,55 +1074,6 @@ export const en: Dictionary = {
     ctaJoin: "Add your profile",
   },
 
-  workStages: {
-    metaTitle: "How we check that a piece was made by a person, not generated",
-    metaDescription:
-      "The No AI Directory method: an author shows four stages of one piece, from the first sketch to the finished thing. A finished result proves nothing. A sequence does.",
-    title: "How we check that a piece was made by a person, not generated",
-    intro:
-      "A finished picture proves nothing today: a machine turns out the same in ten seconds. What proves something is the path to it. We ask authors to show how a piece came to be, and it is the one check that cannot be passed by pressing a button.",
-    sections: [
-      {
-        heading: "Why the result proves nothing",
-        paragraphs: [
-          "A finished piece used to be evidence of skill in itself: making one took years. That is no longer true. From a single image, text or melody you can no longer tell whether a person stood behind it.",
-          "So the thing to check is not the result but what a machine does not have. A machine has no process. It does not start with a bad sketch, redo the middle, walk away and come back a week later. It hands over the finished thing at once.",
-        ],
-      },
-      {
-        heading: "What we ask to see",
-        paragraphs: [
-          "Four images of one piece, from the first sketch to the finished thing. What is in them is up to the author: a pencil sketch, the layers in a working file, a photo of the desk or the workshop, a page of edits, tracks on a screen, a marked-up manuscript.",
-          "A line can be added under each image saying what moment it is. It can also be left out: the sequence reads on its own.",
-        ],
-        bullets: [
-          "A person looks at these images, not a program. We go through them ourselves when deciding whether a profile gets the verified badge.",
-          "The author decides whether visitors see them. Some work sits under a client agreement, and that must not cost the author the check.",
-          "The images are optional. A profile can be listed without them, but the verified badge goes only to those who sent them in.",
-        ],
-      },
-      {
-        heading: "Why it works",
-        paragraphs: [
-          "Four process images can be faked. We know that and promise no absolute guarantee. But faking them is markedly harder than generating one picture, and anyone set on deceiving a directory will find it easier to go somewhere that asks for nothing at all.",
-          "We are not talking about a guarantee but about a check. The difference is an honest one: we have seen how this piece was made, and we are willing to put our badge behind it.",
-        ],
-      },
-      {
-        heading: "What it gives the client",
-        paragraphs: [
-          "The result shows what came out. The process shows how a person thinks: whether they are careful, whether they finish what they start, what their decisions are built on. The second often convinces more than the first, because a client is not choosing a picture but the person they will hand their task to.",
-          "That is why the stages sit in the profile itself, under the work, rather than hidden in a review folder. Someone choosing who to hire sees them at the moment they decide.",
-        ],
-      },
-    ],
-    ctaTitle: "See how it looks",
-    ctaText:
-      "Open the directory and find profiles with the verified badge: many of them show the stages under their work. If you are an author, send yours in with your application.",
-    ctaFind: "Open the directory",
-    ctaJoin: "List your profile",
-  },
-
   method: {
     metaTitle: "Our method",
     metaDescription:
@@ -1304,9 +1241,6 @@ export const en: Dictionary = {
     portfolio: "Portfolio",
     portfolioHint: "A selection of recent work. Tap any piece to view it full screen.",
     portfolioMore: "Only a small part is shown here. There is much more, and every piece is its own.",
-    stagesTitle: "How this work was made",
-    stagesHint:
-      "Stages of one piece, from the first sketch to the finished thing. We look at them when we verify a profile.",
     video: "Video",
     watchExternal: "Watch on external platform",
     workingProcess: "Working process",
@@ -1429,8 +1363,8 @@ export const en: Dictionary = {
     nameLabel: "Name",
     namePlaceholder: "What should we call you",
     ratingLabel: "Rating",
-    textLabel: "Review",
-    textPlaceholder: "",
+    textLabel: "Review (optional)",
+    textPlaceholder: "What did you like about the platform?",
     submit: "Send review",
     sending: "Sending...",
     moderationNote:
@@ -1439,7 +1373,7 @@ export const en: Dictionary = {
     thanksText: "It will appear on the page once it has been read, usually within a day or two.",
     errName: "Please add a name, at least two characters.",
     errRating: "Please pick a rating from one to five stars.",
-    errText: "That review is a little too long.",
+    errText: "Please write a few words, at least ten characters.",
     errRate: "There is already a review from this address today. Try again tomorrow.",
     errServer: "Could not send it. Please try again in a moment.",
   },
@@ -1545,8 +1479,8 @@ export const en: Dictionary = {
     confirmOk: {
       title: "Your address is confirmed",
       description:
-        "Your profile is now published in the directory. Thank you for trusting us with your work. If you have a minute, leave a review of the platform. It means a lot to us and helps the platform grow.",
-      primary: "Leave a review",
+        "Your profile is now published in the directory. Thank you for being with us.",
+      primary: "Back to home",
       secondary: "Browse the catalog",
     },
     confirmFail: {
