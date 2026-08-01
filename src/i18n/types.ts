@@ -556,14 +556,22 @@ export interface Dictionary {
     ctaJoin: string;
   };
 
-  /** "Our method" — absorbs the former Human-Made standards and
-   *  Verification explanation into one authoritative page. */
+  /** "Work stages" — the proof page. Written as an instruction rather than
+   *  an explanation: what to attach, what counts, what to do when the work
+   *  is under an agreement, answered question by question.
+   *
+   *  Paragraphs and answers may carry [[key]] tokens, replaced by links at
+   *  render time (see LINKS in the page). Keeping the destinations out of
+   *  the text means one place to change when a route moves. */
   workStages: {
     metaTitle: string;
     metaDescription: string;
     title: string;
+    subtitle: string;
     intro: string;
     sections: { heading: string; paragraphs: string[]; bullets?: string[] }[];
+    faqTitle: string;
+    faq: { q: string; a: string }[];
     ctaTitle: string;
     ctaText: string;
     ctaFind: string;

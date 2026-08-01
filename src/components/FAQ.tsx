@@ -1,11 +1,14 @@
 "use client";
 
 import { useId, useState } from "react";
+import type { ReactNode } from "react";
 import { PlusIcon, MinusIcon } from "./icons";
 
 export interface FAQItem {
   q: string;
-  a: string;
+  /** Plain text on most pages. Pages that link out of an answer pass the
+   *  already-rendered line instead, which is why this is not a string. */
+  a: ReactNode;
 }
 
 /**

@@ -45,6 +45,7 @@ export const en: Dictionary = {
     humanMadeStandards: "Human-Made standards",
     verification: "Verification",
     method: "Our method",
+    workStages: "Work stages",
     principles: "Our principles",
     faq: "Questions and answers",
     whyUs: "Why us",
@@ -1074,6 +1075,131 @@ export const en: Dictionary = {
     ctaJoin: "Add your profile",
   },
 
+  workStages: {
+    metaTitle: "Work stages",
+    metaDescription:
+      "How to show the process behind a piece: up to four stages of one work, which materials count, what to do under an NDA, and how stages relate to the verified badge.",
+    title: "Work stages",
+    subtitle: "How to show that a piece was really made by a person",
+    intro:
+      "A finished piece no longer settles the question of how it was made. Generative systems reproduce almost any style, so the result alone rarely tells you where it came from. That is why No AI Directory adds a second kind of evidence: work stages. You show not only the finished piece but a few steps along the way, so anyone can see the work grow from an idea into a result.",
+    sections: [
+      {
+        heading: "Why we ask to see the process",
+        paragraphs: [
+          "A portfolio only ever shows the outcome. The process shows how you think, how you decide, how you fix what went wrong and how you arrive at the result.",
+          "For a client that is real information to judge experience by before writing to you. For you it is a chance to show not just what you made, but how you work.",
+        ],
+      },
+      {
+        heading: "What to attach",
+        paragraphs: [
+          "For one piece you can attach up to four images showing the main stages of how it was made.",
+          "They should be consecutive stages of the same piece rather than several different projects: one idea developing is what makes the process visible. Pick the piece where the process shows best, usually the one you reworked the most.",
+        ],
+      },
+      {
+        heading: "What counts as a stage",
+        paragraphs: [
+          "Almost anything that survived while you worked. For example:",
+        ],
+        bullets: [
+          "the first sketch or rough",
+          "an intermediate version of the piece",
+          "a photo of the work in the studio or on your desk",
+          "a screenshot of the layered file",
+          "the edit history of a document",
+          "a video editing timeline",
+          "a draft, a diagram, a storyboard",
+          "a frame from the shoot",
+          "a photo of the piece before it was finished",
+        ],
+      },
+      {
+        heading: "No professional photography needed",
+        paragraphs: [
+          "Ordinary phone photos taken while you worked are often more telling than images prepared for the occasion. What is in the frame matters more here than how well it was shot.",
+        ],
+      },
+      {
+        heading: "Captions",
+        paragraphs: [
+          "Each stage can carry a short line: what was happening at this point, what changed, how long it took.",
+          "Captions are optional. Without them visitors simply see the sequence of images, which reads well on its own.",
+        ],
+      },
+      {
+        heading: "If the work is under an agreement",
+        paragraphs: [
+          "Some projects cannot be published because of a client contract or an NDA. This is common, and it is accounted for.",
+          "The form lets you keep the stages from visitors. The materials are then used only when your profile is reviewed and never appear in the catalog, and this does not affect your chances of getting the verified badge. If your agreement does not let you show the materials even to us, use another piece, personal or from your studies: every piece has a process.",
+        ],
+      },
+      {
+        heading: "How stages relate to the verified badge",
+        paragraphs: [
+          "When you register you state yourself that your work is made without generative AI. Work stages are the next step: they show the piece grew gradually rather than arriving finished.",
+          "In our HTVS method this is the second of four levels of evidence, with version history and file signatures above it. How the levels work and how review is done is set out on the [[method]] page. Profiles that have been through review are gathered under [[verified]].",
+          "Unless you keep them private, the stages appear in your profile next to the piece, open to every visitor.",
+        ],
+      },
+      {
+        heading: "Where to add them",
+        paragraphs: [
+          "There is nothing to send separately. The upload fields for stages sit inside the application form itself, along with the captions and the permission to publish them.",
+          "You fill all of it in once, when you create your profile. The form opens from the [[join]] page.",
+        ],
+      },
+      {
+        heading: "Why we built this",
+        paragraphs: [
+          "Most platforms show finished work and nothing else. We decided to show the path to it as well.",
+          "It helps clients decide with more to go on, and it lets professionals demonstrate their experience instead of asserting it. No AI Directory is not just a list of names: it is a way to establish authorship where the result alone no longer establishes it.",
+        ],
+      },
+    ],
+    faqTitle: "Common questions",
+    faq: [
+      {
+        q: "Why only one piece?",
+        a: "Because what proves the point is the sequence, not the count. Four different pieces are four more finished results; four steps of one piece show the path. The rest of your work stays in your portfolio either way.",
+      },
+      {
+        q: "Why are four stages enough?",
+        a: "Four sits between too few to tell anything and too many to hold attention. It usually covers the idea, the start, the middle and the result. If you have more, keep the ones where the piece changes most between them.",
+      },
+      {
+        q: "Can I add video?",
+        a: "Not yet, stages are images for now. If your process is on video, pull a few frames from it and use those, they work just as well. We will look at video again once it is clear that enough people need it.",
+      },
+      {
+        q: "What if the work is under an NDA?",
+        a: "The form asks whether the stages may be published: answer no and visitors will not see them. The materials stay private and are used only when your profile is reviewed, which does not affect the badge. If the agreement does not let you show them even to us, use another piece, personal or from your studies.",
+      },
+      {
+        q: "Can I replace the stages later?",
+        a: "Yes. Write to us through the [[contact]] page and we will update them in your profile. A personal dashboard for editing your own profile is still ahead. Replacing stages makes sense when you finish a piece whose process shows better.",
+      },
+      {
+        q: "Do you check that the materials are genuine?",
+        a: "We look at them by hand and match them against the profile: whether the tools, materials, manner and timing add up. It is careful human review rather than a legal guarantee, and we would rather not promise more than we can stand behind. The review process is described on the [[method]] page.",
+      },
+      {
+        q: "Could someone fake their stages?",
+        a: "Any kind of evidence can be faked in principle. Faking a process, though, usually costs more than doing the work: you have to invent the failed versions, their order, the timing, the traces of reworking, and all of it has to line up with the profile and the rest of the portfolio. In the HTVS method stages are the second level of four, with version history and file signatures above them. Nobody has complete protection today, but each level raises the price of the lie.",
+      },
+      {
+        q: "Why do stages build client trust?",
+        a: "They answer the client's first question before the client has to ask it: they see not only the result but how you got there. They also help you be found, since a profile that shows a process gives search engines and AI answers far more to work with than a page of pictures. And they give you a way to say something about yourself that a portfolio has no room for.",
+      },
+    ],
+    ctaTitle: "Show how you work",
+    ctaText:
+      "See how work stages look in real profiles, or add your own profile and attach the stages behind one of your pieces.",
+    ctaFind: "Open the catalog",
+    ctaJoin: "Add your profile",
+  },
+
   method: {
     metaTitle: "Our method",
     metaDescription:
@@ -1241,6 +1367,9 @@ export const en: Dictionary = {
     portfolio: "Portfolio",
     portfolioHint: "A selection of recent work. Tap any piece to view it full screen.",
     portfolioMore: "Only a small part is shown here. There is much more, and every piece is its own.",
+    stagesTitle: "Work stages",
+    stagesHint:
+      "One piece from the first rough to the result, so you can see it grew step by step rather than arriving finished.",
     video: "Video",
     watchExternal: "Watch on external platform",
     workingProcess: "Working process",
