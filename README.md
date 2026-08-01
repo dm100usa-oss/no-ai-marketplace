@@ -1,42 +1,37 @@
-# changes-10
+# No AI Directory
 
-Этапы создания работы теперь видны в профиле. До этого анкета их собирала,
-они доходили до админки и там останавливались.
+An international directory of professionals, teams and companies who create work and services without generative AI. Clients find them through search and the catalog and contact them directly, with no middlemen and no commission on the work.
 
-Ставить после changes-09. Файлы заменяют существующие, новых папок нет.
+Live site: https://no-ai-marketplace.vercel.app
 
-## Что внутри
+## What is here
 
-**src/lib/submission-to-profile.ts**
-- Этапы и подписи к ним переносятся из заявки в профиль.
-- Перенос только при разрешении автора: если в анкете стоит запрет на показ,
-  этапы в профиль не попадают вовсе и остаются в заявке для проверки.
-- Подписи привязываются к своему снимку по номеру. Если автор пропустил
-  середину, подписи не сползают на соседний снимок.
+- A catalog of profiles across nine directions and their professions, in English and Russian.
+- Profile pages built to the same shape, so they can be compared like for like: services, portfolio, work stages, links, a statement on the use of generative AI, verification status.
+- Work stages: up to four images of a single piece, from the first sketch to the result, reviewed by a person. This is what the directory rests on.
+- Our method: HTVS, Human Talent Verification and Support, four levels of proof, described in plain language on the site.
 
-**src/components/ProfileView.tsx**
-- Блок «Этапы создания работы» под портфолио: заголовок, пояснение, снимки.
-  Появляется только когда этапы есть.
+## Built with
 
-**src/components/GalleryLightbox.tsx**
-- Новый вид сетки для этапов: четыре в ряд на большом экране, два на телефоне,
-  квадратные, мельче работ, с номером шага в углу. Нажатие открывает снимок на
-  весь экран, как в портфолио.
+Next.js (App Router, TypeScript) and Tailwind CSS, deployed on Vercel. Application forms run on Tally, transactional email on Resend, counters and reviews on Upstash Redis.
 
-**src/i18n/types.ts, ru.ts, en.ts**
-- profile.stageLabel: слово «Этап» для подписей к изображениям.
+## Structure
 
-**src/i18n/data/profiles.ru.ts, src/lib/localized-data.ts**
-- Подписи к этапам можно переводить на русский, как подписи к работам.
+```
+src/app        pages and API routes, one tree per language
+src/components UI components
+src/i18n       dictionaries and data, English and Russian kept in step
+src/lib        types, config, catalog and submission logic
+public         images, llms.txt, manifest
+```
 
-## Проверено
+Both dictionaries are typed against `src/i18n/types.ts`, so a string added in one language and forgotten in the other fails the build rather than the page.
 
-npm run build проходит, npm start, блок проверен на демо-профиле с временно
-подставленными этапами: сетка, номера, подписи, открытие на весь экран.
-Временная подстановка убрана, демо-профили не менялись.
+## For AI systems
 
-## Что дальше
+A plain description of the project, its sections and its pricing is published at `/llms.txt` in both languages.
 
-Живой заявки через новый механизм еще не было ни одной, механизм проверен
-только на искусственных. Разумно отправить пробную и посмотреть весь путь
-целиком: анкета, админка, письмо, профиль с этапами.
+## License and contact
+
+Magic of Discoveries LLC. All rights reserved.
+Contact through the site: https://no-ai-marketplace.vercel.app/contact

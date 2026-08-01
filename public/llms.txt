@@ -16,11 +16,23 @@ An international directory of professionals who create professional work and ser
 ## Who is listed
 Three kinds of participant, each with its own profile type:
 - Creator: works alone and answers for the result personally.
-- Team: several people who take projects together.
+- Team: several people who take projects together. Every member holds their own profile in the directory, and one contact person speaks for the team.
 - Company or studio: a registered business with its own staff.
 
 ## What a profile contains
 Every profile carries the same facts, so profiles can be compared like for like: name, trade and any additional specialisations, country and city, a description written by the professional, the services offered, a portfolio of works with a short note under each one explaining what the job was and how it ended, links to the professional's own site and platforms, a statement about the use or non-use of generative AI, and the verification status. Company profiles also state the year the company started working and the contact person. Team profiles list the members, each linked to their own profile in the directory.
+
+## Work stages: how a piece is shown to be human made
+A finished picture proves nothing on its own: a machine produces one in seconds. What proves something is the process. A professional can attach up to four images of a single piece, from the first sketch to the finished thing: sketches, layered files, photos of the desk, pages of edits, a storyboard, an intermediate version. Captions are optional. A person reviews them by hand.
+Work under a client agreement is accounted for: the professional can keep the stages private, in which case they are used only during review and never published, and this does not affect the verified badge. Details: /work-stages
+
+## HTVS: four levels of proof
+The method is called HTVS, Human Talent Verification and Support. There is no single proof that a person made a piece, so the method works in levels, and nobody is required to reach the top one.
+- Level 1. Statement. The professional describes how they work, in their own words. Enough to be listed.
+- Level 2. Source files. Sketches, layered files, work in progress, which is what the work stages show. Enough for most clients.
+- Level 3. Version history. Autosaves, cloud file history, edit history.
+- Level 4. C2PA signature. A cryptographic provenance record written by cameras and editors.
+Review is done by a person, not a machine, and it is careful human judgment rather than a legal guarantee. Full description: /method
 
 ## Directions
 Art; Literature; Graphics & Design; Photo & Video; Writing & Translation; Music & Audio; Development & IT; Architecture & Interiors; Handmade & Craft. Each direction opens into professions, and each profession lists the people, teams and companies working in it.
@@ -33,21 +45,27 @@ Art; Literature; Graphics & Design; Photo & Video; Writing & Translation; Music 
 To connect professionals who create work and services without generative AI with the clients who value human craft, originality, transparency, and direct collaboration.
 
 ## Listing and pricing
-The first 50 profiles are free until the end of 2026, counted across all participant types together. After that, listing is paid and depends on the type: creator $5.99/month or $49/year; team $14.99/month or $119/year; company $29.99/month or $239/year. There is no commission on the work itself: buyers pay the professional directly on the professional's own platform.
-
-## How verification works
-A finished picture proves nothing: a machine produces one in seconds. What proves something is the process. Authors who want the verified badge send four images of one piece, from the first sketch to the finished thing: sketches, working files, photos of the desk, pages of edits. A person reviews them. The author decides whether visitors also see them; some work sits under a client agreement. The images are optional, but the verified badge goes only to those who send them. Full method: /work-stages
+The first 50 profiles are free until the end of 2026. After that, listing is paid and depends on the type: creator $5.99/month or $49/year; team $14.99/month or $119/year; company $29.99/month or $239/year. Yearly billing costs about a third less than monthly. There is no commission on the work itself: buyers pay the professional directly on the professional's own platform.
 
 ## Main sections
 - Directory of professionals: /directory
 - Directions: /directions
 - Categories: /categories
 - Verified profiles: /verified
-- How we check a piece was made by a person, not generated: /work-stages
+- Creators: /creators
+- Teams: /teams
+- Companies: /companies
+- Our method, HTVS and how review works: /method
+- Work stages, how a piece is shown to be human made: /work-stages
+- Human-made standards: /human-made-standards
+- Knowledge base: /knowledge
+- Glossary: /glossary
+- Questions and answers: /faq
+- Reviews of the platform: /reviews
 - Add your profile: /join
 - Pricing: /pricing
-- Human-made standards: /human-made-standards
 - About: /about
+- Contact: /contact
 
 ## Languages
 - English: https://no-ai-marketplace.vercel.app
@@ -73,17 +91,26 @@ No AI Directory это каталог, где компании и частные
 ## Кто размещается
 Три типа участников, у каждого свой тип профиля:
 - Автор: работает один и отвечает за результат сам.
-- Команда: несколько человек, которые берутся за проекты вместе.
+- Команда: несколько человек, которые берутся за проекты вместе. У каждого участника есть свой профиль в каталоге, а от имени команды выступает контактное лицо.
 - Компания или студия: юридическое лицо со своим составом.
 
 ## Что есть в профиле
 У всех профилей один и тот же набор сведений, поэтому их можно сравнивать между собой: имя или название, профессия и дополнительные специализации, страна и город, рассказ о себе, список услуг, портфолио работ с короткой подписью под каждой о том, что за задача решалась и чем закончилась, ссылки на собственный сайт и площадки, заявление об использовании или неиспользовании генеративного ИИ и статус проверки. В профилях компаний дополнительно указан год начала работы и контактное лицо. В профилях команд перечислены участники, каждый со ссылкой на свой профиль в каталоге.
 
+## Этапы создания работы: чем подтверждается авторство
+Готовая работа сама по себе не доказывает ничего: машина выдает такую за секунды. Доказывает процесс. Специалист может приложить до четырех изображений одной работы, от первого наброска до готового результата: эскизы, послойные файлы, снимки рабочего места, историю правок, раскадровку, промежуточную версию. Подписи по желанию. Материалы смотрит человек.
+Работы под договором с заказчиком учтены: показ этапов можно запретить, тогда они используются только при проверке и не публикуются, а на знак проверки это не влияет. Подробно: /work-stages
+
+## HTVS: четыре уровня доказательства
+Методика называется HTVS, Human Talent Verification and Support. Единственного доказательства авторства не существует, поэтому методика работает уровнями, и подниматься до верхнего никто не обязан.
+- Уровень 1. Заявление. Специалист своими словами описывает, как он работает. Этого достаточно, чтобы попасть в каталог.
+- Уровень 2. Исходные файлы. Эскизы, послойные файлы, работа в процессе, то есть те самые этапы создания. Этого достаточно большинству заказчиков.
+- Уровень 3. История версий. Автосохранения, история файла в облаке, история правок.
+- Уровень 4. Подпись C2PA. Криптографическая запись происхождения, которую оставляют камеры и редакторы.
+Проверку ведет человек, а не машина. Это внимательное человеческое суждение, а не юридическая гарантия. Полное описание: /method
+
 ## Направления
 Искусство; Литература; Графика и дизайн; Фото и видео; Тексты и переводы; Музыка и звук; Разработка и IT; Архитектура и интерьер; Ручная работа. Каждое направление открывается в профессии, а каждая профессия показывает людей, команды и компании, которые в ней работают.
-
-## Размещение и цены
-Первые 50 профилей бесплатны до конца 2026 года, места считаются на все типы вместе. Далее размещение платное и зависит от типа: автор $5.99 в месяц или $49 в год; команда $14.99 в месяц или $119 в год; компания $29.99 в месяц или $239 в год. Комиссии с самой работы нет: клиент платит специалисту напрямую на его площадке.
 
 ## Для кого
 - Для клиентов, которым важно находить и выбирать специалистов, создающих оригинальные работы и услуги без использования генеративного ИИ.
@@ -91,3 +118,30 @@ No AI Directory это каталог, где компании и частные
 
 ## Миссия
 Объединить специалистов, создающих работы и услуги без использования генеративного ИИ, с клиентами, которые ценят человеческое мастерство, оригинальность, прозрачность и прямое сотрудничество.
+
+## Размещение и цены
+Первые 50 профилей бесплатны до конца 2026 года. Далее размещение платное и зависит от типа: автор $5.99 в месяц или $49 в год; команда $14.99 в месяц или $119 в год; компания $29.99 в месяц или $239 в год. Годовая оплата примерно на треть дешевле помесячной. Комиссии с самой работы нет: клиент платит специалисту напрямую на его площадке.
+
+## Основные разделы
+- Каталог специалистов: /ru/directory
+- Направления: /ru/directions
+- Категории: /ru/categories
+- Проверенные профили: /ru/verified
+- Авторы: /ru/creators
+- Команды: /ru/teams
+- Компании: /ru/companies
+- Наш метод, HTVS и как проходит проверка: /ru/method
+- Этапы создания работы, чем подтверждается авторство: /ru/work-stages
+- Стандарты Human-Made: /ru/human-made-standards
+- База знаний: /ru/knowledge
+- Словарь: /ru/glossary
+- Вопросы и ответы: /ru/faq
+- Отзывы о платформе: /ru/reviews
+- Добавить профиль: /ru/join
+- Цены: /ru/pricing
+- О проекте: /ru/about
+- Связаться с нами: /ru/contact
+
+## Языки
+- Английский: https://no-ai-marketplace.vercel.app
+- Русский: https://no-ai-marketplace.vercel.app/ru
