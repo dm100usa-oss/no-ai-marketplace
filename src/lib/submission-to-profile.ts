@@ -32,6 +32,14 @@ function lines(value: string[] | string | undefined): string[] {
   return raw.map((s) => s.trim()).filter(Boolean);
 }
 
+/** The same split, with the blanks left in place. Used where position
+ *  carries meaning: stage three with no caption has to stay stage three. */
+function slots(value: string[] | string | undefined): string[] {
+  if (!value) return [];
+  const raw = Array.isArray(value) ? value : value.split(/[\n\r]+/);
+  return raw.map((s) => s.trim());
+}
+
 /** Sort a pile of links into named platforms. People paste them in any
  *  order and any format, so matching is by what the address contains,
  *  not by position. Anything unrecognised is kept under "other" rather
@@ -196,6 +204,25 @@ export function submissionToProfile(
   const gallery = lines(s.gallery);
   const captions = lines(s.galleryCaptions);
 
+  // Work stages. Two rules decide what travels here.
+  //
+  // First, permission: the pictures are kept in the application whatever
+  // the answer was, because the owner has to see them at review time, but
+  // only `stagesPublic` lets them onto the page. An author under an
+  // agreement must be able to prove their process without publishing it.
+  //
+  // Second, order: a stage caption belongs to the stage above it, so the
+  // two lists are paired by position before the empty slots are dropped.
+  // Filtering each list on its own would slide caption three under stage
+  // two the moment somebody left a picture out of the middle.
+  const stagePairs = s.stagesPublic
+    ? slots(s.stages)
+        .map((src, i) => ({ src: src.trim(), caption: slots(s.stageCaptions)[i]?.trim() ?? "" }))
+        .filter((pair) => pair.src)
+    : [];
+  const stages = stagePairs.map((pair) => pair.src);
+  const stageCaptions = stagePairs.map((pair) => pair.caption);
+
   const profile: Profile = {
     id: s.id,
     slug,
@@ -225,6 +252,9 @@ export function submissionToProfile(
     mainImage: s.mainImage ?? gallery[0],
     gallery: gallery.length ? gallery : undefined,
     galleryCaptions: captions.length ? captions : undefined,
+
+    stages: stages.length ? stages : undefined,
+    stageCaptions: stages.length && stageCaptions.some(Boolean) ? stageCaptions : undefined,
 
     showOnHomepage: s.showOnHomepage,
     foundedYear: profileType === "company" ? s.foundedYear : undefined,

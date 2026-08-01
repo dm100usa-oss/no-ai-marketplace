@@ -480,6 +480,27 @@ export async function ProfileView({
             </div>
           ) : null}
 
+          {/* Work stages — the proof block, under the portfolio because it
+              is read after the work, not instead of it. Present only when
+              the author sent stages and allowed them to be shown; the
+              permission is decided upstream, so an empty field here means
+              exactly one thing: nothing to show. */}
+          {p.stages?.length ? (
+            <div className="mt-10">
+              <h2 className="!text-[1.35rem]">{dict.profile.stagesTitle}</h2>
+              <p className="mt-1 text-[0.92rem]" style={{ color: "var(--color-muted-soft)" }}>
+                {dict.profile.stagesHint}
+              </p>
+              <GalleryLightbox
+                images={p.stages}
+                captions={p.stageCaptions}
+                name={p.name}
+                variant="stages"
+                workLabel={dict.profile.stageLabel}
+              />
+            </div>
+          ) : null}
+
           {/* Video links */}
           {p.videoLinks?.length ? (
             <div className="mt-10">

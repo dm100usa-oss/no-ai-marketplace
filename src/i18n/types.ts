@@ -643,6 +643,8 @@ export interface Dictionary {
     portfolioMore: string;
     stagesTitle: string;
     stagesHint: string;
+    /** The word "Stage", for numbering pictures in alt text. */
+    stageLabel: string;
     video: string;
     watchExternal: string;
     workingProcess: string;

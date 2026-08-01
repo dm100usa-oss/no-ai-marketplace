@@ -1370,6 +1370,7 @@ export const en: Dictionary = {
     stagesTitle: "Work stages",
     stagesHint:
       "One piece from the first rough to the result, so you can see it grew step by step rather than arriving finished.",
+    stageLabel: "Stage",
     video: "Video",
     watchExternal: "Watch on external platform",
     workingProcess: "Working process",

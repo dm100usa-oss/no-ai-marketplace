@@ -25,7 +25,11 @@ export function GalleryLightbox({
    *  Missing or empty entries are simply not rendered, so a gallery with no
    *  captions at all looks exactly as it did before. */
   captions?: string[];
-  variant?: "grid" | "hero";
+  /** "grid" is the portfolio: two across, large. "stages" is the proof
+   *  strip: four across, smaller, numbered, because what matters there is
+   *  the order rather than the size of any single picture. "hero" is the
+   *  single opening image. */
+  variant?: "grid" | "hero" | "stages";
   heroAlt?: string;
   /** The word "Work" in the current language, for image alt text like
    *  "Work 1 by David Kort". Falls back to English when not supplied. */
@@ -81,6 +85,49 @@ export function GalleryLightbox({
             className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
           />
         </button>
+      ) : variant === "stages" ? (
+        <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-4">
+          {images.map((src, i) => {
+            const caption = captions?.[i]?.trim();
+            return (
+              <figure key={i} className="m-0">
+                <button
+                  type="button"
+                  onClick={() => setOpen(i)}
+                  className="group relative block aspect-square w-full cursor-zoom-in overflow-hidden rounded-xl"
+                  style={{ background: "var(--color-brand-soft)" }}
+                  aria-label={`${workLabel} ${i + 1} — ${name}`}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={src}
+                    alt={caption ? `${caption} — ${name}` : `${workLabel} ${i + 1} — ${name}`}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  {/* The number is the point of this strip: it says these
+                      pictures are one piece in order, not four pieces. */}
+                  <span
+                    className="absolute left-2 top-2 grid h-6 w-6 place-items-center rounded-full text-[0.78rem] font-bold text-white"
+                    style={{ background: "rgba(10,16,28,0.66)" }}
+                    aria-hidden
+                  >
+                    {i + 1}
+                  </span>
+                </button>
+                {caption ? (
+                  <figcaption
+                    className="mt-2 whitespace-pre-line text-[0.85rem] leading-snug"
+                    style={{ color: "var(--color-muted)" }}
+                  >
+                    {caption}
+                  </figcaption>
+                ) : null}
+              </figure>
+            );
+          })}
+        </div>
       ) : (
         <div className="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2">
           {images.map((src, i) => {
