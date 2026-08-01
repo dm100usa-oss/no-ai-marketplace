@@ -41,6 +41,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: "/join/company", priority: 0.6 },
     { path: "/pricing", priority: 0.7 },
     { path: "/method", priority: 0.6 },
+    // The proof pages. They stand on their own in search: people look for
+    // how to show a process and what counts as human made long before they
+    // look for a directory.
+    { path: "/work-stages", priority: 0.6 },
+    { path: "/human-made-standards", priority: 0.6 },
+    { path: "/reviews", priority: 0.4 },
     { path: "/why-us", priority: 0.6 },
     { path: "/knowledge", priority: 0.8 },
     { path: "/glossary", priority: 0.8 },

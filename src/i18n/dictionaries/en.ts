@@ -310,7 +310,7 @@ export const en: Dictionary = {
     orWord: "or",
     freeBannerTitle: "The first {n} profiles are free",
     freeBannerText:
-      "Free until {date}, whichever type you are. The places are counted across everyone together. Once they run out, listing moves to the plans below.",
+      "Free until {date}, whichever type you are. Once the free places run out, listing moves to the plans below.",
     perMonth: "per month",
     perYear: "per year",
     billedMonthly: "Monthly",
@@ -442,25 +442,25 @@ export const en: Dictionary = {
     howTitle: "How it works",
     steps: [
       {
+        t: "Say who you are",
+        d: "A creator, a team or a company. It decides which form you get",
+      },
+      {
         t: "Fill in the form",
-        d: "Your name, category and links to your own platforms",
+        d: "Your name, category, links to your own platforms, your work and the stages behind it",
       },
       {
-        t: "Pick a plan",
-        d: "The first 50 profiles are free until the end of 2026",
+        t: "We read your application",
+        d: "A person reads it, not a machine, usually within three working days. Everyone goes through the standard review; the optional one earns the trust badge",
       },
       {
-        t: "Wait for the review result and an email from us",
-        d: "Everyone goes through the standard review, and an optional one earns the trust badge. The email carries a link: click it and your profile goes live",
-      },
-      {
-        t: "We publish your profile",
-        d: "And it starts sending traffic your way",
+        t: "Confirm your email and your profile is in the catalog",
+        d: "The email carries a link. Click it and the profile publishes itself, with nothing left to wait for",
       },
     ],
     formTitle: "The form",
     formIntro:
-      "Fill in the form below. While free places last, listing costs nothing. Once they run out, the form moves to payment through Stripe.",
+      "Fill in the form below. While free places last, listing costs nothing. Once they run out, listing moves to the plans.",
     pickTitle: "Choose how you work",
     pickIntro: "",
     pickOptions: {
@@ -1464,7 +1464,7 @@ export const en: Dictionary = {
 
   tally: {
     notice1:
-      "The submission form is powered by Tally and includes a built-in limit of 50 free places. Once that limit is reached, the form automatically switches to the paid step and takes payment through Stripe.",
+      "The first 50 profiles are listed free until the end of 2026. Once the free places run out, listing moves to the plans.",
     notice2a: "The form is being connected. In the meantime, please ",
     getInTouch: "get in touch",
     notice2b: " to be added.",
