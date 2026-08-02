@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getVerifiedProfilesL } from "@/lib/localized-data";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { RelatedLinks } from "@/components/RelatedLinks";
 import { ProfileGrid } from "@/components/ProfileGrid";
 import { getDictionary } from "@/i18n";
 import { DEFAULT_LOCALE, isLocale, localizedPath, altLanguages } from "@/i18n/config";
@@ -78,6 +79,15 @@ export default async function VerifiedPage({
           emptyMessage={dict.verified.emptyMessage}
         />
       </div>
+
+      {/* A badge with no way through to what it means is a claim. These
+          two links are the difference between a mark and a checkable
+          statement, and they are the first thing a reader asks for. */}
+      <RelatedLinks
+        lang={locale}
+        dict={dict}
+        links={["/method", "/human-made-standards", "/work-stages"]}
+      />
     </div>
   );
 }

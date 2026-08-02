@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
+import { localizeHref } from "@/components/LocaleLink";
 
 /**
  * Band under the work strip: visits for the week on the left, rating on
@@ -145,7 +146,7 @@ export function StatsBand({
               reads as something the site awarded itself. */}
           {rating !== null && (
             <Link
-              href={`/${locale}/reviews`}
+              href={localizeHref(locale === "ru" ? "ru" : "en", "/reviews")}
               className="flex shrink-0 items-center gap-1.5 no-underline sm:gap-2"
             >
               {/* One flat colour, no gradient and no stroke. At this size a

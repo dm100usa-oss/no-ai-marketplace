@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { RelatedLinks } from "@/components/RelatedLinks";
 import { DirectoryClient } from "@/components/DirectoryClient";
 import {
   getAllCategoriesL,
@@ -87,6 +88,16 @@ export default async function DirectoryPage({
         categories={categories}
         countries={countries}
         initial={initial}
+      />
+
+      {/* The catalog is a filter view; these are the three standing lists
+          it filters into, plus the pages that explain what the entries
+          mean. Without them the catalog is a leaf: everything arrives
+          here and nothing leads on. */}
+      <RelatedLinks
+        lang={locale}
+        dict={dict}
+        links={["/creators", "/teams", "/companies", "/verified", "/method"]}
       />
     </div>
   );

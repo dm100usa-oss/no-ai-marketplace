@@ -9,6 +9,7 @@ import {
 import { directions as baseDirections } from "@/data/directions";
 import { site } from "@/lib/config";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { RelatedLinks } from "@/components/RelatedLinks";
 import { SectionHeading } from "@/components/States";
 import { ArrowRight } from "@/components/icons";
 import { getDictionary } from "@/i18n";
@@ -127,6 +128,12 @@ export default async function DirectionPage({
           })}
         </div>
       </div>
+
+      <RelatedLinks
+        lang={locale}
+        dict={dict}
+        links={["/method", "/human-made-standards", "/work-stages", "/verified"]}
+      />
     </div>
   );
 }

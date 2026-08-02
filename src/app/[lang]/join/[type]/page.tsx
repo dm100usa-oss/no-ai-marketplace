@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { LocaleLink } from "@/components/LocaleLink";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { RelatedLinks } from "@/components/RelatedLinks";
 import { FAQ } from "@/components/FAQ";
 import { TallyForm } from "@/components/TallyForm";
 import { getDictionary } from "@/i18n";
@@ -168,6 +169,15 @@ export default async function JoinTypePage({
         <div className="mt-4">
           <FAQ items={faqItems} />
         </div>
+
+        {/* Somebody on this page has chosen what they are joining as and
+            has not yet been told what it costs or what will be checked.
+            Both answers live one click away and neither was linked. */}
+        <RelatedLinks
+          lang={locale}
+          dict={dict}
+          links={["/pricing", "/method", "/work-stages", "/human-made-standards"]}
+        />
       </div>
     </div>
   );

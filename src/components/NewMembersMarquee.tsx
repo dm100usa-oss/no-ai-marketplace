@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { localizeHref } from "@/components/LocaleLink";
 import type { Locale } from "@/i18n/config";
 
 /**
@@ -58,7 +59,11 @@ function MemberCard({
 }) {
   // A real member links to their profile and shows their photo; an empty
   // slot is a soft gradient invitation that links to /join.
-  const href = member ? `/${lang}${member.href}` : `/${lang}/new-member`;
+  // Built through localizeHref, not by gluing the language onto the front.
+  // Glued by hand it produced /en/... on the English site, where the
+  // default language has no prefix at all, so every card on the home page
+  // led to a 404. Russian worked, which is why it went unseen.
+  const href = localizeHref(lang, member ? member.href : "/new-member");
   return (
     <Link
       href={href}

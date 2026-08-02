@@ -135,6 +135,9 @@ export interface Dictionary {
     /** Plural forms for "N categories": [one, few, many]. English uses the
      *  first two only; Russian needs all three (категория/категории/категорий). */
     categoryForms: [string, string, string];
+    /** Heading of the cross-link block at the foot of listing and
+     *  profession pages. */
+    relatedTitle: string;
     /** Label before the review date on explanatory pages. */
     updatedLabel: string;
     reviewedByHand: string;

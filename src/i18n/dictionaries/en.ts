@@ -86,6 +86,7 @@ export const en: Dictionary = {
     category: "category",
     categories: "categories",
     categoryForms: ["category", "categories", "categories"],
+    relatedTitle: "How this works",
     updatedLabel: "Updated",
     reviewedByHand: "Reviewed by hand",
     leadersPickedByHand: "Leaders picked by hand",
@@ -1261,6 +1262,7 @@ export const en: Dictionary = {
           "A file can be anything that shows the work: a draft, a working file, a process shot, a photo, a screenshot, a scan, a PDF. Under each one the professional writes a line saying what it shows. Nothing has to be staged for this. Real work leaves these traces on its own.",
           "Why the order matters. A single draft says little on its own, since it can be made after the finished piece. Four steps that follow one another and arrive at the exact result sitting in the portfolio are far harder to assemble after the fact. We are not looking at how good the files are, we are looking at whether the chain holds together.",
           "The professional decides whether to show these files on the profile or keep them for the review only. When they are shown, a client sees not just the result but how it was made, and that is usually what settles the question of trust, more than any description of services.",
+          "What to attach, which materials count, and what to do when a piece is covered by an agreement, are set out separately: [[workStages]].",
         ],
       },
       {

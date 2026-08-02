@@ -8,6 +8,7 @@ import {
 import { categories as baseCategories } from "@/data/categories";
 import { site } from "@/lib/config";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { RelatedLinks } from "@/components/RelatedLinks";
 import { ProfileGrid } from "@/components/ProfileGrid";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { LocaleLink } from "@/components/LocaleLink";
@@ -180,6 +181,12 @@ export default async function CategoryPage({
           )}
         </section>
       ))}
+
+      <RelatedLinks
+        lang={locale}
+        dict={dict}
+        links={["/method", "/human-made-standards", "/work-stages", "/verified"]}
+      />
     </div>
   );
 }
