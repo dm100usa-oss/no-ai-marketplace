@@ -27,6 +27,7 @@ import type { Locale } from "@/i18n/config";
  */
 const groupUpdated: { prefix: string; date: string }[] = [
   { prefix: "/faq/", date: "2026-08-02" },
+  { prefix: "/origin-check/", date: "2026-08-02" },
   { prefix: "/categories/", date: "2026-08-02" },
   { prefix: "/directions/", date: "2026-08-02" },
 ];

@@ -4,6 +4,7 @@ import { site } from "@/lib/config";
 import { getAllDirections, getAllCategories } from "@/lib/data";
 import { getLiveProfiles } from "@/lib/live-profiles";
 import { FAQ_PROFESSION_SLUGS } from "@/i18n/data/faqProfessions";
+import { ORIGIN_CHECK_SLUGS } from "@/i18n/data/originCheck";
 import { LOCALES, DEFAULT_LOCALE, localizedPath } from "@/i18n/config";
 
 /**
@@ -50,6 +51,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // the page that is useful without the catalog behind it, so it ranks
     // with the catalog rather than below it.
     { path: "/how-to-verify", priority: 0.8 },
+    // Origin Check. The trade pages are added from the written guides, so
+    // the sitemap grows with the copy and never lists a page that does not
+    // exist yet.
+    { path: "/origin-check", priority: 0.8 },
     { path: "/human-made-standards", priority: 0.6 },
     { path: "/reviews", priority: 0.4 },
     { path: "/why-us", priority: 0.6 },
@@ -82,6 +87,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // One page per profession, answering that profession's questions in
   // full. Ranked with the category pages rather than below them: these
   // are the pages an answer engine quotes.
+  const originCheckPaths = ORIGIN_CHECK_SLUGS.map((slug) => ({
+    path: `/origin-check/${slug}`,
+    priority: 0.8,
+  }));
+
   const faqProfessionPaths = FAQ_PROFESSION_SLUGS.map((slug) => ({
     path: `/faq/${slug}`,
     priority: 0.8,
@@ -132,6 +142,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...staticPaths.flatMap((s) => expand(s.path, s.priority, "weekly", now)),
     ...directionPaths.flatMap((s) => expand(s.path, s.priority, "weekly", now)),
     ...categoryPaths.flatMap((s) => expand(s.path, s.priority, "weekly", now)),
+    ...originCheckPaths.flatMap((s) => expand(s.path, s.priority, "monthly", now)),
     ...faqProfessionPaths.flatMap((s) => expand(s.path, s.priority, "monthly", now)),
     ...profileEntries.flatMap((s) => expand(s.path, s.priority, s.changeFrequency, s.lastModified)),
   ];

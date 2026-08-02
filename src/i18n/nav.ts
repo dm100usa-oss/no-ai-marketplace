@@ -58,6 +58,7 @@ export function footerNav(dict: Dictionary): NavGroup[] {
       links: [
         { label: dict.footer.knowledge, href: "/knowledge" },
         { label: dict.footer.howToVerify, href: "/how-to-verify" },
+        { label: dict.footer.originCheck, href: "/origin-check" },
         { label: dict.footer.glossary, href: "/glossary" },
         { label: dict.footer.method, href: "/method" },
         { label: dict.footer.humanMadeStandards, href: "/human-made-standards" },

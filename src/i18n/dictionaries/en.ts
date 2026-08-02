@@ -47,6 +47,7 @@ export const en: Dictionary = {
     humanMadeStandards: "Human-Made standards",
     verification: "Verification",
     method: "Our method",
+    originCheck: "Origin Check",
     howToVerify: "How to check a freelancer",
     workStages: "Work stages",
     principles: "Our principles",
@@ -1153,6 +1154,11 @@ export const en: Dictionary = {
     docsTitle: "Platform standards",
     docsIntro: "Four documents explaining the rules everything here runs on.",
     docs: [
+      {
+        title: "Origin Check",
+        text: "The tool: how to check where a piece of work came from in a specific trade. What a real piece leaves behind, what to ask for, and which answers should give you pause.",
+        href: "/origin-check",
+      },
       {
         title: "How to check a freelancer",
         text: "Eight questions worth asking before you hire, and the answers that should give you pause. Works just as well for people not listed here.",

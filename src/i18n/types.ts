@@ -94,6 +94,7 @@ export interface Dictionary {
     method: string;
     workStages: string;
     howToVerify: string;
+    originCheck: string;
     principles: string;
     faq: string;
     whyUs: string;

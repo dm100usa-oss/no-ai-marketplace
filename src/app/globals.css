@@ -928,3 +928,37 @@ a { color: inherit; text-decoration: none; }
   .plan-number { opacity: 1; transform: none; }
   .plan-number-live { animation: none; }
 }
+
+/* Printing a trade guide.
+   Someone printing this page wants the checklist to take on a call, not
+   the site around it. Navigation, the footer and the buttons themselves
+   come off; the text goes to plain black on white so it survives a cheap
+   printer. Nothing here affects the screen. */
+@media print {
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  main {
+    padding: 0 !important;
+  }
+  .section,
+  .container-page {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+  }
+  a[href]::after {
+    content: "";
+  }
+  /* Keep a question and its two notes on the same sheet. */
+  li,
+  section {
+    break-inside: avoid;
+  }
+}
