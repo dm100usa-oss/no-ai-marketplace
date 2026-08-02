@@ -8,7 +8,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { VisitBeacon } from "@/components/VisitBeacon";
 import { ImageGuard } from "@/components/ImageGuard";
-import { site } from "@/lib/config";
+import { site, owner } from "@/lib/config";
 import { getDictionary } from "@/i18n";
 import { LOCALES, DEFAULT_LOCALE, isLocale, localizedPath, altLanguages, LOCALE_HTML_LANG } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
@@ -126,6 +126,9 @@ export default async function LangLayout({
         url: `${site.url}${localizedPath(locale, "/")}`,
         description: dict.site.description,
         inLanguage: locale,
+        // Ties the two nodes together: without this they are read as two
+        // unrelated things that happen to share an address.
+        publisher: { "@id": `${site.url}#organization` },
         potentialAction: {
           "@type": "SearchAction",
           target: `${site.url}${localizedPath(locale, "/directory")}?q={search_term_string}`,
@@ -134,9 +137,39 @@ export default async function LangLayout({
       },
       {
         "@type": "Organization",
+        "@id": `${site.url}#organization`,
         name: dict.site.name,
+        legalName: owner.legalName,
         url: site.url,
         description: dict.site.description,
+        foundingDate: owner.foundingYear,
+        logo: {
+          "@type": "ImageObject",
+          url: `${site.url}${owner.logoPath}`,
+        },
+        address: {
+          "@type": "PostalAddress",
+          addressCountry: owner.country,
+        },
+        knowsAbout: owner.knowsAbout,
+        // The three policy fields below are how an organisation that
+        // publishes without bylines states its authority: not who wrote
+        // this, but under what rules it was published, reviewed and
+        // corrected. Answer engines read them as editorial process.
+        publishingPrinciples: `${site.url}${localizedPath(locale, "/listing-policy")}`,
+        // Named on purpose: the review procedure is the whole product.
+        actionableFeedbackPolicy: `${site.url}${localizedPath(locale, "/verification-policy")}`,
+        correctionsPolicy: `${site.url}${localizedPath(locale, "/content-removal")}`,
+        ...(owner.contactEmail
+          ? {
+              contactPoint: {
+                "@type": "ContactPoint",
+                contactType: "customer support",
+                email: owner.contactEmail,
+                availableLanguage: ["en", "ru"],
+              },
+            }
+          : {}),
       },
     ],
   };

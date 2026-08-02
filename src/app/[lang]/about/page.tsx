@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { LocaleLink } from "@/components/LocaleLink";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { UpdatedStamp } from "@/components/UpdatedStamp";
 import { ArrowRight } from "@/components/icons";
 import { getDictionary } from "@/i18n";
 import { DEFAULT_LOCALE, isLocale, localizedPath, altLanguages } from "@/i18n/config";
@@ -40,6 +41,7 @@ export default async function AboutPage({
 
       <div className="mx-auto max-w-3xl">
         <h1>{dict.about.title}</h1>
+        <UpdatedStamp route={"/about"} lang={locale} dict={dict} className="mt-3" />
         <p className="lead mt-4">{dict.about.intro}</p>
 
         <h2 className="section-title mt-10">{dict.about.whatTitle}</h2>

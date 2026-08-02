@@ -2,11 +2,15 @@ import type { Metadata } from "next";
 import { LocaleLink } from "@/components/LocaleLink";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FAQ } from "@/components/FAQ";
+import { UpdatedStamp } from "@/components/UpdatedStamp";
+import { faqSchema } from "@/lib/schema";
 import { ArrowRight } from "@/components/icons";
 import { getDictionary } from "@/i18n";
 import { getFaqProfessions } from "@/i18n/data/faqProfessions";
 import { DEFAULT_LOCALE, isLocale, localizedPath, altLanguages } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
+
+const ROUTE = "/faq";
 
 export async function generateMetadata({
   params,
@@ -16,11 +20,11 @@ export async function generateMetadata({
   const { lang } = await params;
   const locale: Locale = isLocale(lang) ? lang : DEFAULT_LOCALE;
   const dict = getDictionary(locale);
-  const languages = altLanguages("/faq");
+  const languages = altLanguages(ROUTE);
   return {
     title: dict.faqPage.metaTitle,
     description: dict.faqPage.metaDescription,
-    alternates: { canonical: localizedPath(locale, "/faq"), languages },
+    alternates: { canonical: localizedPath(locale, ROUTE), languages },
   };
 }
 
@@ -34,10 +38,18 @@ export default async function FaqPage({
   const dict = getDictionary(locale);
   const p = dict.faqPage;
 
-  // No FAQPage schema here on purpose. Each category page carries the
-  // schema for its own profession FAQ, and a second copy on the hub would
-  // compete with them for the same questions.
   const professions = getFaqProfessions(locale);
+
+  // The hub declares its own questions and only its own. These are the
+  // general ones about the catalog itself, asked by both sides; the
+  // profession pages hold an entirely separate set and declare those.
+  // Nothing is offered to an engine twice.
+  const faqJsonLd = faqSchema({
+    route: ROUTE,
+    title: p.title,
+    locale,
+    items: p.groups.flatMap((g) => g.items),
+  });
 
   return (
     // Tinted band behind the whole page: white question cards on white
@@ -45,6 +57,11 @@ export default async function FaqPage({
     // one the catalog bands use, so nothing new is introduced.
     <div className="section-brand">
     <div className="container-page section">
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <Breadcrumbs
         lang={locale}
         items={[{ label: dict.common.home, href: "/" }, { label: p.title }]}
@@ -52,6 +69,7 @@ export default async function FaqPage({
 
       <div className="mx-auto max-w-3xl">
         <h1>{p.title}</h1>
+        <UpdatedStamp route={ROUTE} lang={locale} dict={dict} className="mt-3" />
         <p className="lead mt-4">{p.intro}</p>
 
         <div className="mt-10 space-y-10">

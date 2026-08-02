@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { LocaleLink } from "@/components/LocaleLink";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { UpdatedStamp } from "@/components/UpdatedStamp";
 import { ArrowRight } from "@/components/icons";
 import { getDictionary } from "@/i18n";
 import { site } from "@/lib/config";
@@ -106,6 +107,7 @@ export default async function GlossaryPage({
 
       <div className="mx-auto max-w-3xl">
         <h1>{g.title}</h1>
+        <UpdatedStamp route={"/glossary"} lang={locale} dict={dict} className="mt-3" />
         <p className="lead mt-4">{g.intro}</p>
 
         <div className="mt-12 space-y-12">

@@ -2,9 +2,25 @@ import type { Metadata } from "next";
 import { LocaleLink } from "@/components/LocaleLink";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CheckShield } from "@/components/icons";
+import { UpdatedStamp } from "@/components/UpdatedStamp";
+import { documentSchema } from "@/lib/schema";
 import { getDictionary } from "@/i18n";
 import { DEFAULT_LOCALE, isLocale, localizedPath, altLanguages } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
+
+const ROUTE = "/human-made-standards";
+
+/**
+ * Human-Made standards: the definition, on an address of its own.
+ *
+ * It was folded into "Our method" for a while and has been separated
+ * again on purpose. The two pages answer different questions. Method
+ * answers how this catalog works; this one answers what counts as made
+ * without generative AI, which is a definition, and a definition is the
+ * kind of thing that gets cited by name. Method now carries a short
+ * version and a link here rather than the whole account, so the two never
+ * compete for the same question.
+ */
 
 export async function generateMetadata({
   params,
@@ -14,11 +30,11 @@ export async function generateMetadata({
   const { lang } = await params;
   const locale: Locale = isLocale(lang) ? lang : DEFAULT_LOCALE;
   const dict = getDictionary(locale);
-  const languages = altLanguages("/human-made-standards");
+  const languages = altLanguages(ROUTE);
   return {
     title: dict.standards.metaTitle,
     description: dict.standards.metaDescription,
-    alternates: { canonical: localizedPath(locale, "/human-made-standards"), languages },
+    alternates: { canonical: localizedPath(locale, ROUTE), languages },
   };
 }
 
@@ -32,8 +48,20 @@ export default async function StandardsPage({
   const dict = getDictionary(locale);
   const s = dict.standards;
 
+  const jsonLd = documentSchema({
+    route: ROUTE,
+    title: s.title,
+    description: s.metaDescription,
+    locale,
+  });
+
   return (
     <div className="container-page section">
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Breadcrumbs
         lang={locale}
         items={[{ label: dict.common.home, href: "/" }, { label: s.title }]}
@@ -41,6 +69,7 @@ export default async function StandardsPage({
 
       <div className="mx-auto max-w-3xl">
         <h1>{s.title}</h1>
+        <UpdatedStamp route={ROUTE} lang={locale} dict={dict} className="mt-3" />
         <p className="lead mt-4">{s.intro}</p>
 
         <h2 className="section-title mt-10">{s.oneLineTitle}</h2>
@@ -69,6 +98,12 @@ export default async function StandardsPage({
           ))}
         </ul>
 
+        {/* Two lines instead of the two sections that used to sit here.
+            This page is a definition; it stopped being one as soon as it
+            re-explained verification and reporting, both of which belong
+            to pages of their own. Repeating them here also meant an answer
+            engine met the same answer at two addresses and trusted
+            neither. */}
         <div
           className="mt-10 flex gap-4 rounded-2xl border p-6"
           style={{ borderColor: "var(--color-line)", background: "var(--color-brand-soft)" }}
@@ -80,25 +115,23 @@ export default async function StandardsPage({
             <CheckShield size={20} />
           </span>
           <div>
-            <h3 className="text-[1.05rem]">{s.verificationBoxTitle}</h3>
-            <p className="mt-1 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
-              {s.verificationBoxText1}
-              <LocaleLink lang={locale} href="/verified" className="font-semibold" style={{ color: "var(--color-accent)" }}>
-                {s.verificationLink}
+            <h2 className="!text-[1.05rem]">{s.nextTitle}</h2>
+            <p className="mt-2 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
+              {s.nextMethodText}
+              <LocaleLink lang={locale} href="/method" className="font-semibold" style={{ color: "var(--color-accent)" }}>
+                {s.nextMethodLink}
               </LocaleLink>
-              {s.verificationBoxText2}
+              .
+            </p>
+            <p className="mt-2 text-[0.95rem]" style={{ color: "var(--color-muted)" }}>
+              {s.nextReportText}
+              <LocaleLink lang={locale} href="/listing-policy" className="font-semibold" style={{ color: "var(--color-accent)" }}>
+                {s.nextReportLink}
+              </LocaleLink>
+              .
             </p>
           </div>
         </div>
-
-        <h2 className="section-title mt-10">{s.ifWrongTitle}</h2>
-        <p className="mt-3" style={{ color: "var(--color-muted)" }}>
-          {s.ifWrongText1}
-          <LocaleLink lang={locale} href="/listing-policy" className="font-semibold" style={{ color: "var(--color-accent)" }}>
-            {s.listingPolicyLink}
-          </LocaleLink>
-          {s.ifWrongText2}
-        </p>
       </div>
     </div>
   );

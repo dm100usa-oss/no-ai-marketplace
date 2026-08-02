@@ -1,8 +1,60 @@
 import { LocaleLink } from "@/components/LocaleLink";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { UpdatedStamp } from "@/components/UpdatedStamp";
 import { ArrowRight } from "@/components/icons";
+import { documentSchema } from "@/lib/schema";
+import type { ReactNode } from "react";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/types";
+
+/**
+ * [[token]] in a dictionary line becomes an internal link.
+ *
+ * Written as a token rather than as a route so a moved page is one edit
+ * here instead of a search through prose, and so the dictionary stays
+ * plain text a non-programmer can read and change.
+ */
+const TOKEN = /\[\[(\w+)\]\]/g;
+
+function linkTargets(dict: Dictionary): Record<string, { href: string; label: string }> {
+  return {
+    standards: { href: "/human-made-standards", label: dict.footer.humanMadeStandards },
+    workStages: { href: "/work-stages", label: dict.footer.workStages },
+    method: { href: "/method", label: dict.footer.method },
+    verified: { href: "/verified", label: dict.footer.verifiedProfiles },
+    directory: { href: "/directory", label: dict.footer.directory },
+  };
+}
+
+function withLinks(text: string, lang: Locale, dict: Dictionary): ReactNode[] {
+  const targets = linkTargets(dict);
+  const out: ReactNode[] = [];
+  let last = 0;
+  let m: RegExpExecArray | null;
+  TOKEN.lastIndex = 0;
+  while ((m = TOKEN.exec(text)) !== null) {
+    if (m.index > last) out.push(text.slice(last, m.index));
+    const target = targets[m[1]];
+    if (target) {
+      out.push(
+        <LocaleLink
+          key={`${m[1]}-${m.index}`}
+          lang={lang}
+          href={target.href}
+          className="font-semibold"
+          style={{ color: "var(--color-accent)" }}
+        >
+          {target.label}
+        </LocaleLink>,
+      );
+    } else {
+      out.push(m[0]);
+    }
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) out.push(text.slice(last));
+  return out;
+}
 
 interface Section {
   heading: string;
@@ -30,13 +82,35 @@ export function ContentPage({
   lang,
   dict,
   data,
+  route,
+  metaDescription,
 }: {
   lang: Locale;
   dict: Dictionary;
   data: ContentPageData;
+  /** Canonical path. Given one, the page also declares itself as a dated
+   *  document and shows the date. Omitted, nothing changes. */
+  route?: string;
+  metaDescription?: string;
 }) {
+  const jsonLd = route
+    ? documentSchema({
+        route,
+        title: data.title,
+        description: metaDescription ?? data.intro,
+        locale: lang,
+      })
+    : null;
+
   return (
     <div className="container-page section">
+      {jsonLd && (
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      )}
       <Breadcrumbs
         lang={lang}
         items={[{ label: dict.common.home, href: "/" }, { label: data.title }]}
@@ -44,6 +118,7 @@ export function ContentPage({
 
       <div className="mx-auto max-w-3xl">
         <h1>{data.title}</h1>
+        {route && <UpdatedStamp route={route} lang={lang} dict={dict} className="mt-3" />}
         <p className="lead mt-4">{data.intro}</p>
 
         <div className="mt-10 space-y-10">
@@ -52,7 +127,7 @@ export function ContentPage({
               <h2 className="section-title !text-[1.35rem]">{s.heading}</h2>
               {s.paragraphs.map((para, i) => (
                 <p key={i} className="mt-3" style={{ color: "var(--color-muted)" }}>
-                  {para}
+                  {withLinks(para, lang, dict)}
                 </p>
               ))}
               {s.bullets && s.bullets.length > 0 && (

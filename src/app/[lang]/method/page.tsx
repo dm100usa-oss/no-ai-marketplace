@@ -31,5 +31,13 @@ export default async function Page({
   const { lang } = await params;
   const locale: Locale = isLocale(lang) ? lang : DEFAULT_LOCALE;
   const dict = getDictionary(locale);
-  return <ContentPage lang={locale} dict={dict} data={dict[KEY]} />;
+  return (
+    <ContentPage
+      lang={locale}
+      dict={dict}
+      data={dict[KEY]}
+      route={ROUTE}
+      metaDescription={dict[KEY].metaDescription}
+    />
+  );
 }

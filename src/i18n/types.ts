@@ -55,6 +55,9 @@ export interface Dictionary {
     description: string;
     /** Footer copyright line suffix, after "© YEAR Name." */
     footerNote: string;
+    /** Fine print under the copyright: the legal entity behind the brand
+     *  and who does the reviewing. Small on purpose; the brand leads. */
+    ownerNote: string;
   };
 
   /** Primary navigation labels, keyed by canonical path. */
@@ -132,6 +135,8 @@ export interface Dictionary {
     /** Plural forms for "N categories": [one, few, many]. English uses the
      *  first two only; Russian needs all three (категория/категории/категорий). */
     categoryForms: [string, string, string];
+    /** Label before the review date on explanatory pages. */
+    updatedLabel: string;
     reviewedByHand: string;
     leadersPickedByHand: string;
     humanMadeWork: string;
@@ -474,14 +479,15 @@ export interface Dictionary {
     hybridText2: string;
     notBelongTitle: string;
     notBelongItems: string[];
-    verificationBoxTitle: string;
-    verificationBoxText1: string;
-    verificationLink: string;
-    verificationBoxText2: string;
-    ifWrongTitle: string;
-    ifWrongText1: string;
-    listingPolicyLink: string;
-    ifWrongText2: string;
+    /** Closing block. The page is a definition and stops being one the
+     *  moment it starts re-explaining verification, so what used to be two
+     *  full sections here is now two lines pointing at the pages that own
+     *  those subjects. */
+    nextTitle: string;
+    nextMethodText: string;
+    nextMethodLink: string;
+    nextReportText: string;
+    nextReportLink: string;
   };
 
   /** Standalone Questions & Answers page. Each entry is a real search

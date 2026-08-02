@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { LocaleLink } from "@/components/LocaleLink";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { FAQ } from "@/components/FAQ";
+import { UpdatedStamp } from "@/components/UpdatedStamp";
 import { ArrowRight } from "@/components/icons";
 import { getDictionary } from "@/i18n";
 import { DEFAULT_LOCALE, isLocale, localizedPath, altLanguages } from "@/i18n/config";
@@ -146,6 +147,7 @@ export default async function Page({
 
       <div className="mx-auto max-w-3xl">
         <h1>{copy.title}</h1>
+        <UpdatedStamp route={ROUTE} lang={locale} dict={dict} className="mt-3" />
         <p
           className="mt-2 text-[1.05rem] font-semibold"
           style={{ fontFamily: "var(--font-display)", color: "var(--color-accent)" }}

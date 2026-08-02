@@ -3,9 +3,13 @@ import { LocaleLink } from "@/components/LocaleLink";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { PlansTable } from "@/components/PlansTable";
 import { CheckShield, ArrowRight } from "@/components/icons";
+import { UpdatedStamp } from "@/components/UpdatedStamp";
+import { site, plans, PLAN_ORDER } from "@/lib/config";
 import { getDictionary } from "@/i18n";
 import { DEFAULT_LOCALE, isLocale, localizedPath, altLanguages } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
+
+const ROUTE = "/pricing";
 
 export async function generateMetadata({
   params,
@@ -15,11 +19,11 @@ export async function generateMetadata({
   const { lang } = await params;
   const locale: Locale = isLocale(lang) ? lang : DEFAULT_LOCALE;
   const dict = getDictionary(locale);
-  const languages = altLanguages("/pricing");
+  const languages = altLanguages(ROUTE);
   return {
     title: dict.pricing.metaTitle,
     description: dict.pricing.metaDescription,
-    alternates: { canonical: localizedPath(locale, "/pricing"), languages },
+    alternates: { canonical: localizedPath(locale, ROUTE), languages },
   };
 }
 
@@ -32,8 +36,71 @@ export default async function PricingPage({
   const locale: Locale = isLocale(lang) ? lang : DEFAULT_LOCALE;
   const dict = getDictionary(locale);
 
+  // Prices stated in the page are also stated in machine-readable form.
+  // "How much does it cost" is one of the few questions an answer engine
+  // will not guess at: given a figure only inside a sentence it tends to
+  // say the price is on the site, which sends nobody anywhere. Given an
+  // offer it says the number.
+  //
+  // Both periods are listed per plan, and the free places are an offer of
+  // their own with the end date attached, so the free window cannot be
+  // quoted back after it has closed.
+  const offersJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: dict.site.name,
+    description: dict.pricing.metaDescription,
+    url: `${site.url}${localizedPath(locale, ROUTE)}`,
+    provider: { "@id": `${site.url}#organization` },
+    offers: [
+      {
+        "@type": "Offer",
+        name: dict.pricing.freeNowLabel,
+        price: 0,
+        priceCurrency: "USD",
+        availabilityEnds: "2026-12-31",
+        description: dict.pricing.introBody,
+      },
+      ...PLAN_ORDER.flatMap((id) => [
+        {
+          "@type": "Offer",
+          name: dict.pricing.planNames[id],
+          price: plans[id].monthly.price,
+          priceCurrency: "USD",
+          priceSpecification: {
+            "@type": "UnitPriceSpecification",
+            price: plans[id].monthly.price,
+            priceCurrency: "USD",
+            billingDuration: 1,
+            billingIncrement: 1,
+            unitCode: "MON",
+          },
+        },
+        {
+          "@type": "Offer",
+          name: dict.pricing.planNames[id],
+          price: plans[id].yearly.price,
+          priceCurrency: "USD",
+          priceSpecification: {
+            "@type": "UnitPriceSpecification",
+            price: plans[id].yearly.price,
+            priceCurrency: "USD",
+            billingDuration: 1,
+            billingIncrement: 1,
+            unitCode: "ANN",
+          },
+        },
+      ]),
+    ],
+  };
+
   return (
     <div className="container-page section">
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(offersJsonLd) }}
+      />
       <Breadcrumbs
         lang={locale}
         items={[{ label: dict.common.home, href: "/" }, { label: dict.pricing.title }]}
@@ -47,6 +114,7 @@ export default async function PricingPage({
         <h1 className="text-center" style={{ fontSize: "var(--text-h2)" }}>
           {dict.pricing.title}
         </h1>
+        <UpdatedStamp route={ROUTE} lang={locale} dict={dict} className="mt-3 text-center" />
         <div className="mt-6">
           <PlansTable lang={locale} dict={dict} />
         </div>

@@ -14,6 +14,8 @@ export const en: Dictionary = {
     description:
       "An international directory of professionals who create professional work and services without the use of generative AI.",
     footerNote: "Human-made creations.",
+    ownerNote:
+      "A Magic of Discoveries LLC project, United States. Applications are reviewed by hand by people working in design, analysis and development.",
   },
 
   nav: {
@@ -84,6 +86,7 @@ export const en: Dictionary = {
     category: "category",
     categories: "categories",
     categoryForms: ["category", "categories", "categories"],
+    updatedLabel: "Updated",
     reviewedByHand: "Reviewed by hand",
     leadersPickedByHand: "Leaders picked by hand",
     badgeTeam: "Team",
@@ -735,16 +738,13 @@ export const en: Dictionary = {
       "Portfolios that pass off AI-generated pieces as hand work.",
       "Deceptive claims of authorship or process.",
     ],
-    verificationBoxTitle: "Verification is optional and honest",
-    verificationBoxText1:
-      "Creators may submit materials for a verified badge. We review by hand and describe on the profile what we looked at. We do not claim a legal guarantee of no-AI-anywhere. See ",
-    verificationLink: "Verification",
-    verificationBoxText2: ".",
-    ifWrongTitle: "If we get it wrong",
-    ifWrongText1:
-      "Every profile page has a Report a problem link. If a listing looks like it breaks these standards, tell us. we review reports by hand. See also ",
-    listingPolicyLink: "Listing Policy",
-    ifWrongText2: ".",
+    nextTitle: "What next",
+    nextMethodText:
+      "How these standards are checked in practice, step by step, including what the check does not prove: ",
+    nextMethodLink: "Our method",
+    nextReportText:
+      "If a listing looks like it breaks these standards, tell us: every profile page carries a Report a problem link. How reports are handled is set out here: ",
+    nextReportLink: "Listing policy",
   },
 
   faqPage: {
@@ -1231,17 +1231,8 @@ export const en: Dictionary = {
       {
         heading: "Where we draw the line",
         paragraphs: [
-          "We judge by substance. The core of the work, the drawing, the writing, the photograph, the design decision, the code, the object made by hand, is done by a person. Ordinary tools may assist along the way, but the human contribution is the substance of the finished work, and the professional says so clearly.",
-        ],
-        bullets: [
-          "Belongs here: hand-drawn and hand-painted art, including work made on a graphics tablet by a person; photography and video shot by the person behind the camera; writing and editing shaped by a human; design and branding where the concept and typography are the designer's; handmade objects and craft; and professional services built on human judgment, such as consulting, teaching, architecture, or engineering.",
-          "Does not belong here: listings whose main output is AI-generated imagery, text, music, or code with only a light human touch on top; storefronts that resell AI-generated goods as human-made; and any claim of authorship or process that is not honest.",
-        ],
-      },
-      {
-        heading: "Where everyday tools fit",
-        paragraphs: [
-          "AI touches many workflows now, from background clean-up and transcription to spell check and color balancing. That is fine, as long as the human contribution is the substance of the finished work and the professional is open about how AI was used. Every profile carries a short statement on this. Clarity is the standard, not silence.",
+          "We judge by substance. The core of the work, the drawing, the writing, the photograph, the design decision, the code, the object made by hand, is done by a person. Ordinary tools may assist along the way, including the ones with AI inside them: background clean-up, transcription, spell check, color balancing. That is fine, as long as the human contribution is the substance of the finished work and the professional is open about how AI was used. Clarity is the standard here, not silence.",
+          "The full account of what belongs here, what does not, and how work with a light touch of AI is treated is set out in a document of its own: [[standards]].",
         ],
       },
       {

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getActiveDirectionsL, getCategoriesByDirectionL } from "@/lib/localized-data";
 import { DirectionTile } from "@/components/DirectionTile";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { site } from "@/lib/config";
 import { getDictionary } from "@/i18n";
 import { categoryCount } from "@/lib/plural";
 import { DEFAULT_LOCALE, isLocale, localizedPath, altLanguages } from "@/i18n/config";
@@ -43,8 +44,44 @@ export default async function DirectionsPage({
   const suffix = type ? `?type=${type}` : "";
   const heading = type ? dict.directionsPage.byType[type] : dict.directionsPage.title;
 
+  // The nine fields as a declared list rather than nine tiles an engine has
+  // to infer from markup. Asked what a directory covers, a list it can read
+  // is the difference between naming the fields and saying "various".
+  //
+  // Only the unfiltered view declares it. A filtered view is the same nine
+  // fields seen through one participant type, and declaring it again would
+  // offer the same list twice under two addresses.
+  const listJsonLd = type
+    ? null
+    : {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        name: dict.directionsPage.title,
+        description: dict.directionsPage.metaDescription,
+        url: `${site.url}${localizedPath(locale, "/directions")}`,
+        inLanguage: locale,
+        isPartOf: { "@id": `${site.url}#organization` },
+        mainEntity: {
+          "@type": "ItemList",
+          numberOfItems: dirs.length,
+          itemListElement: dirs.map((d, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            name: d.name,
+            url: `${site.url}${localizedPath(locale, `/directions/${d.slug}`)}`,
+          })),
+        },
+      };
+
   return (
     <div className="container-page section">
+      {listJsonLd && (
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(listJsonLd) }}
+        />
+      )}
       <Breadcrumbs
         lang={locale}
         items={[{ label: dict.common.home, href: "/" }, { label: heading }]}

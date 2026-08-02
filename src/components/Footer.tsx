@@ -76,6 +76,9 @@ export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-[0.85rem] text-white/55">
             © {year} {dict.site.name}. {dict.site.footerNote}
+            <span className="mt-1 block text-[0.78rem] text-white/40">
+              {dict.site.ownerNote}
+            </span>
           </p>
           <ul className="flex gap-4">
             {socialLinks.map((s) => (

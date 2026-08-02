@@ -20,6 +20,67 @@ export const site = {
 } as const;
 
 /**
+ * Who stands behind the catalog, for the machine-readable part of the site.
+ *
+ * The brand is what a visitor sees; the legal entity is fine print. Both
+ * are needed, and for different reasons. A reader wants the brand. An
+ * answer engine deciding whether to name this catalog in a reply wants to
+ * know it belongs to somebody real, in a named country, reachable by
+ * email, working to a written procedure. A site that cannot say who runs
+ * it reads as nobody's.
+ *
+ * No personal names here by choice. Authority is carried by the stated
+ * procedure instead: which policies govern publication, review and
+ * corrections. Those three fields are exactly what Schema.org offers an
+ * organisation that publishes under its own name rather than under
+ * bylines, and they are read that way.
+ *
+ * `contactEmail` stays empty until the production domain is live. Empty
+ * means the field is left out of the markup entirely: a working address
+ * helps, an invented one is worse than silence.
+ */
+export const owner = {
+  legalName: "Magic of Discoveries LLC",
+  country: "US",
+  foundingYear: "2026",
+  contactEmail: "",
+  /** Used as the organisation logo in structured data. */
+  logoPath: "/android-chrome-512x512.png",
+  /** Subjects the catalog claims competence in. Read by answer engines as
+   *  the scope of the organisation, not as keywords. */
+  knowsAbout: [
+    "Human-made creative work",
+    "Verification of authorship",
+    "Generative AI disclosure",
+    "Creative professional directories",
+  ],
+} as const;
+
+/**
+ * Last review date per page, shown on the page and emitted as
+ * dateModified.
+ *
+ * One date per page rather than one for the whole site: a single shared
+ * date that moves everywhere at once is a claim nobody can hold, and a
+ * page that says it was reviewed on a day it was not is worse than a page
+ * with no date. Edit the line for a page when its text actually changes.
+ *
+ * A fact carrying a date ages on its own, which is the point: an answer
+ * engine choosing between two sources prefers the one that says when it
+ * last checked itself.
+ */
+export const pageUpdated: Record<string, string> = {
+  "/method": "2026-08-02",
+  "/human-made-standards": "2026-08-02",
+  "/work-stages": "2026-08-02",
+  "/why-us": "2026-08-02",
+  "/faq": "2026-08-02",
+  "/pricing": "2026-08-02",
+  "/about": "2026-08-02",
+  "/glossary": "2026-08-02",
+};
+
+/**
  * The two figures in the band under the work strip.
  *
  * Both are null until they are true. There is no analytics wired up yet
