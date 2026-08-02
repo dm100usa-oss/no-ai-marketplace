@@ -139,6 +139,10 @@ export interface Dictionary {
     /** Heading of the cross-link block at the foot of listing and
      *  profession pages. */
     relatedTitle: string;
+    /** Byline shown next to the review date. Names the editorial team
+     *  rather than a person: the authority here is the stated procedure,
+     *  not a biography. */
+    editorialBy: string;
     /** Label before the review date on explanatory pages. */
     updatedLabel: string;
     reviewedByHand: string;

@@ -9,6 +9,7 @@ import {
 import { directions as baseDirections } from "@/data/directions";
 import { site } from "@/lib/config";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { UpdatedStamp } from "@/components/UpdatedStamp";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { SectionHeading } from "@/components/States";
 import { ArrowRight } from "@/components/icons";
@@ -94,6 +95,7 @@ export default async function DirectionPage({
       />
 
       <h1>{dir.name}</h1>
+      <UpdatedStamp route={`/directions/${dir.slug}`} lang={locale} dict={dict} className="mt-3" />
       {dir.seoText && <p className="lead mt-3 max-w-3xl">{dir.seoText}</p>}
 
       {/* Categories in this direction */}

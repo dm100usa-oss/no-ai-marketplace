@@ -16,9 +16,26 @@ import type { Locale } from "@/i18n/config";
  * then the whole file is discounted.
  */
 
+/**
+ * Whole families of pages share one review date: the 41 profession
+ * guides, the trade pages, the direction pages. They were written and are
+ * revised as one set, so listing each address separately would be forty
+ * lines saying the same thing and forty chances to forget one.
+ *
+ * The exact-match table wins where it exists, so a single page can carry
+ * its own date without leaving the group.
+ */
+const groupUpdated: { prefix: string; date: string }[] = [
+  { prefix: "/faq/", date: "2026-08-02" },
+  { prefix: "/categories/", date: "2026-08-02" },
+  { prefix: "/directions/", date: "2026-08-02" },
+];
+
 /** The review date for a page, or undefined if none is recorded. */
 export function updatedFor(route: string): string | undefined {
-  return pageUpdated[route];
+  const exact = pageUpdated[route];
+  if (exact) return exact;
+  return groupUpdated.find((g) => route.startsWith(g.prefix))?.date;
 }
 
 /**

@@ -89,6 +89,7 @@ export const ru: Dictionary = {
     categories: "категорий",
     categoryForms: ["категория", "категории", "категорий"],
     relatedTitle: "Как это устроено",
+    editorialBy: "Редакция No AI Directory",
     updatedLabel: "Обновлено",
     reviewedByHand: "Проверено вручную",
     leadersPickedByHand: "Лидеры, отобранные вручную",

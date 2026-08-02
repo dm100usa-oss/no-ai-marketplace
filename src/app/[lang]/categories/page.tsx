@@ -6,6 +6,7 @@ import {
   getAllProfilesL,
 } from "@/lib/localized-data";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { UpdatedStamp } from "@/components/UpdatedStamp";
 import { getDictionary } from "@/i18n";
 import { DEFAULT_LOCALE, isLocale, localizedPath, altLanguages } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
@@ -56,6 +57,7 @@ export default async function CategoriesPage({
       />
 
       <h1>{dict.categoriesPage.title}</h1>
+      <UpdatedStamp route={"/categories"} lang={locale} dict={dict} className="mt-3" />
       <p className="lead mt-3 max-w-2xl">{dict.categoriesPage.intro}</p>
 
       <div className="mt-10 space-y-12">

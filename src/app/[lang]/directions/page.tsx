@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getActiveDirectionsL, getCategoriesByDirectionL } from "@/lib/localized-data";
 import { DirectionTile } from "@/components/DirectionTile";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { UpdatedStamp } from "@/components/UpdatedStamp";
 import { site } from "@/lib/config";
 import { getDictionary } from "@/i18n";
 import { categoryCount } from "@/lib/plural";
@@ -88,6 +89,7 @@ export default async function DirectionsPage({
       />
 
       <h1>{heading}</h1>
+      <UpdatedStamp route={"/directions"} lang={locale} dict={dict} className="mt-3" />
       <p className="lead mt-3 max-w-2xl">
         {type ? dict.directionsPage.byTypeIntro[type] : dict.directionsPage.intro}
       </p>

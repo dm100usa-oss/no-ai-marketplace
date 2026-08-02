@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getVerifiedProfilesL } from "@/lib/localized-data";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { UpdatedStamp } from "@/components/UpdatedStamp";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { ProfileGrid } from "@/components/ProfileGrid";
 import { getDictionary } from "@/i18n";
@@ -41,6 +42,7 @@ export default async function VerifiedPage({
       />
 
       <h1>{dict.verified.title}</h1>
+      <UpdatedStamp route={"/verified"} lang={locale} dict={dict} className="mt-3" />
       <p className="lead mt-3 max-w-3xl">{dict.verified.intro}</p>
 
       <div

@@ -3,7 +3,12 @@ import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/types";
 
 /**
- * "Reviewed on <date>" under the heading of an explanatory page.
+ * Who stands behind the page and when it was last looked at.
+
+ * Named as a team rather than a person on purpose: the authority here
+ * rests on a stated procedure that anybody can read, not on a biography.
+ * Unsigned text reads as nobody's; a named editorial line reads as
+ * somebody answerable, which is the whole difference.
  *
  * The date is shown as well as declared, and on purpose. A reader deciding
  * whether to trust a standard wants to know when it was last looked at,
@@ -38,7 +43,8 @@ export function UpdatedStamp({
       className={`text-[0.85rem] ${className}`}
       style={{ color: "var(--color-muted-soft)" }}
     >
-      {dict.common.updatedLabel}: <time dateTime={updated}>{formatted}</time>
+      {dict.common.editorialBy} · {dict.common.updatedLabel}:{" "}
+      <time dateTime={updated}>{formatted}</time>
     </p>
   );
 }

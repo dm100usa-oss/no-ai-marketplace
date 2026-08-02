@@ -88,6 +88,7 @@ export const en: Dictionary = {
     categories: "categories",
     categoryForms: ["category", "categories", "categories"],
     relatedTitle: "How this works",
+    editorialBy: "The No AI Directory editorial team",
     updatedLabel: "Updated",
     reviewedByHand: "Reviewed by hand",
     leadersPickedByHand: "Leaders picked by hand",

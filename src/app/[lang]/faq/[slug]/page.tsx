@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { LocaleLink } from "@/components/LocaleLink";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { UpdatedStamp } from "@/components/UpdatedStamp";
+import { updatedFor } from "@/lib/schema";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { ArrowRight } from "@/components/icons";
 import { getDictionary } from "@/i18n";
@@ -90,6 +92,11 @@ export default async function FaqProfessionPage({
     inLanguage: locale,
     name: prof.title,
     url: `${site.url}${localizedPath(locale, `/faq/${prof.slug}`)}`,
+    ...(updatedFor(`/faq/${prof.slug}`)
+      ? { dateModified: updatedFor(`/faq/${prof.slug}`) }
+      : {}),
+    publisher: { "@id": `${site.url}#organization` },
+    author: { "@id": `${site.url}#organization` },
     mainEntity: prof.items.map((it) => ({
       "@type": "Question",
       name: it.q,
@@ -115,6 +122,7 @@ export default async function FaqProfessionPage({
 
       <div className="mx-auto max-w-3xl">
         <h1>{prof.title}</h1>
+      <UpdatedStamp route={`/faq/${prof.slug}`} lang={locale} dict={dict} className="mt-3" />
         <p className="lead mt-4">{prof.intro}</p>
 
         <div className="mt-8">

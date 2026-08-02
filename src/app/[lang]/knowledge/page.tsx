@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { LocaleLink } from "@/components/LocaleLink";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { UpdatedStamp } from "@/components/UpdatedStamp";
 import { ArrowRight } from "@/components/icons";
 import { getDictionary } from "@/i18n";
 import { getFaqProfessions } from "@/i18n/data/faqProfessions";
@@ -121,6 +122,7 @@ export default async function KnowledgePage({
 
       <div className="mx-auto max-w-3xl">
         <h1>{k.title}</h1>
+      <UpdatedStamp route={"/knowledge"} lang={locale} dict={dict} className="mt-3" />
         <p className="lead mt-4">{k.intro}</p>
 
         {/* Platform documents first: they set the terms every guide below

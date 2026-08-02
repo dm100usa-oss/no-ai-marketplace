@@ -79,6 +79,10 @@ export const pageUpdated: Record<string, string> = {
   "/pricing": "2026-08-02",
   "/about": "2026-08-02",
   "/glossary": "2026-08-02",
+  "/knowledge": "2026-08-02",
+  "/verified": "2026-08-02",
+  "/categories": "2026-08-02",
+  "/directions": "2026-08-02",
 };
 
 /**

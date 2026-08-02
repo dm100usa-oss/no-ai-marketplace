@@ -8,6 +8,7 @@ import {
 import { categories as baseCategories } from "@/data/categories";
 import { site } from "@/lib/config";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { UpdatedStamp } from "@/components/UpdatedStamp";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { ProfileGrid } from "@/components/ProfileGrid";
 import { FAQAccordion } from "@/components/FAQAccordion";
@@ -122,6 +123,7 @@ export default async function CategoryPage({
       />
 
       <h1>{cat.name}</h1>
+      <UpdatedStamp route={`/categories/${cat.slug}`} lang={locale} dict={dict} className="mt-3" />
 
       {cat.professions && (
         <p
