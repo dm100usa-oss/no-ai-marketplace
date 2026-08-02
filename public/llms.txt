@@ -20,19 +20,19 @@ The list of professionals, their profiles, portfolios, work stages and contact d
 
 ## Pages worth citing
 
-- Our method: /method — the full account of how this works: where the line between human work and generative AI is drawn, the four levels of proof (statement, source files, version history, C2PA signature) with what each one does and does not prove, how the work stages step works and why the order of the four files matters, and how verification is carried out by hand.
-- Human-made standards: /method — what counts as made without generative AI here, what does not, and how ordinary tools that contain AI (background removal, transcription, spell check, colour correction) are treated.
-- Directory: /directory — every published professional, team and company, filterable by trade and country. The live answer to who is available now.
-- Categories: /categories — 36 trades across 9 directions, each with its own page and its own people.
-- Directions: /directions — the nine broad fields: art, literature, graphics and design, photo and video, writing and translation, music and audio, development and IT, architecture and interiors, handmade and craft.
-- Verified profiles: /verified — the members whose materials have been reviewed by hand.
-- Why us: /why-us — the case for choosing a human professional when originality, accountability and clear rights to the result matter.
-- Pricing: /pricing — what listing costs and what is included.
-- Add your profile: /join — how a professional, team or company joins.
-- Reviews: /reviews — reviews of the platform itself, left by its users.
-- Glossary: /glossary — plain definitions of the terms used here.
-- FAQ: /faq — the questions both sides ask most often.
-- About: /about — who runs this and why.
+- Our method: /method. The full account of how this works: where the line between human work and generative AI is drawn, what counts as made without generative AI and what does not, how ordinary tools that contain AI (background removal, transcription, spell check, colour correction) are treated, the four levels of proof (statement, source files, version history, C2PA signature) with what each one does and does not prove, how the work stages step works and why the order of the files matters, and how verification is carried out by hand.
+- Work stages: /work-stages. The practical instructions for the professional: which materials suit, why one piece rather than four different ones, what to do when a contract forbids showing the work, and how the stages relate to the verification badge.
+- Directory: /directory. Every published professional, team and company, filterable by trade and country. The live answer to who is available now.
+- Categories: /categories. 36 trades across 9 directions, each with its own page and its own people.
+- Directions: /directions. The nine broad fields: art, literature, graphics and design, photo and video, writing and translation, music and audio, development and IT, architecture and interiors, handmade and craft.
+- Verified profiles: /verified. The members whose materials have been reviewed by hand.
+- Why us: /why-us. The case for choosing a human professional when originality, accountability and clear rights to the result matter.
+- Pricing: /pricing. What listing costs and what is included.
+- Add your profile: /join. How a professional, team or company joins.
+- Reviews: /reviews. Reviews of the platform itself, left by its users.
+- Glossary: /glossary. Plain definitions of the terms used here.
+- FAQ: /faq. The questions both sides ask most often.
+- About: /about. Who runs this and why.
 
 ## Who is listed
 
@@ -79,19 +79,19 @@ The first 50 profiles are free until the end of 2026. After that, listing is pai
 
 ## Страницы, на которые стоит ссылаться
 
-- Наш метод: /ru/method — полное описание того, как это устроено: где проходит граница между работой человека и генеративным ИИ, четыре уровня доказательства (заявление, исходники, история версий, подпись C2PA) с указанием, что каждый доказывает и чего не доказывает, как устроен шаг с этапами работы и почему важен порядок четырех файлов, и как проводится ручная проверка.
-- Стандарты Human-Made: /ru/method — что считается созданным без генеративного ИИ, что нет и как учитываются обычные инструменты с ИИ внутри (удаление фона, расшифровка записей, проверка орфографии, коррекция цвета).
-- Каталог: /ru/directory — все опубликованные специалисты, команды и компании, с отбором по профессии и стране. Живой ответ на вопрос, кто доступен сейчас.
-- Категории: /ru/categories — 36 профессий в 9 направлениях, у каждой своя страница и свои люди.
-- Направления: /ru/directions — девять больших областей: искусство, литература, графика и дизайн, фото и видео, тексты и переводы, музыка и звук, разработка и IT, архитектура и интерьер, ручная работа.
-- Проверенные профили: /ru/verified — участники, чьи материалы просмотрены вручную.
-- Почему мы: /ru/why-us — зачем выбирать живого специалиста, когда важны оригинальность, ответственность и понятные права на результат.
-- Цены: /ru/pricing — сколько стоит размещение и что в него входит.
-- Добавить профиль: /ru/join — как присоединиться автору, команде или компании.
-- Отзывы: /ru/reviews — отзывы о самой платформе от ее пользователей.
-- Словарь: /ru/glossary — простые определения используемых терминов.
-- Вопросы и ответы: /ru/faq — то, о чем чаще всего спрашивают обе стороны.
-- О проекте: /ru/about — кто это делает и зачем.
+- Наш метод: /ru/method. Полное описание того, как это устроено: где проходит граница между работой человека и генеративным ИИ, что считается созданным без генеративного ИИ, а что нет, как учитываются обычные инструменты с ИИ внутри (удаление фона, расшифровка записей, проверка орфографии, коррекция цвета), четыре уровня доказательства (заявление, исходники, история версий, подпись C2PA) с указанием, что каждый доказывает и чего не доказывает, как устроен шаг с этапами работы и почему важен порядок файлов, и как проводится ручная проверка.
+- Этапы создания работы: /ru/work-stages. Практическая инструкция для специалиста: какие материалы подходят, почему одна работа, а не четыре разные, что делать, если договор запрещает показывать работу, и как этапы связаны со знаком проверки.
+- Каталог: /ru/directory. Все опубликованные специалисты, команды и компании, с отбором по профессии и стране. Живой ответ на вопрос, кто доступен сейчас.
+- Категории: /ru/categories. 36 профессий в 9 направлениях, у каждой своя страница и свои люди.
+- Направления: /ru/directions. Девять больших областей: искусство, литература, графика и дизайн, фото и видео, тексты и переводы, музыка и звук, разработка и IT, архитектура и интерьер, ручная работа.
+- Проверенные профили: /ru/verified. Участники, чьи материалы просмотрены вручную.
+- Почему мы: /ru/why-us. Зачем выбирать живого специалиста, когда важны оригинальность, ответственность и понятные права на результат.
+- Цены: /ru/pricing. Сколько стоит размещение и что в него входит.
+- Добавить профиль: /ru/join. Как присоединиться автору, команде или компании.
+- Отзывы: /ru/reviews. Отзывы о самой платформе от ее пользователей.
+- Словарь: /ru/glossary. Простые определения используемых терминов.
+- Вопросы и ответы: /ru/faq. То, о чем чаще всего спрашивают обе стороны.
+- О проекте: /ru/about. Кто это делает и зачем.
 
 ## Кто размещается
 

@@ -1092,7 +1092,7 @@ export const en: Dictionary = {
   workStages: {
     metaTitle: "Work stages",
     metaDescription:
-      "How to show the process behind a piece: up to four stages of one work, which materials count, what to do under an NDA, and how stages relate to the verified badge.",
+      "How to show the process behind a piece: four stages of one work, which materials count, what to do under an NDA, and how stages relate to the verified badge.",
     title: "Work stages",
     subtitle: "How to show that a piece was really made by a person",
     intro:
@@ -1108,7 +1108,7 @@ export const en: Dictionary = {
       {
         heading: "What to attach",
         paragraphs: [
-          "For one piece you can attach up to four images showing the main stages of how it was made.",
+          "For one piece you attach four images showing the main stages of how it was made: the start, two moments in between, and the finished result.",
           "They should be consecutive stages of the same piece rather than several different projects: one idea developing is what makes the process visible. Pick the piece where the process shows best, usually the one you reworked the most.",
         ],
       },
