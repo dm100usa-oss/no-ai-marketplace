@@ -112,6 +112,14 @@ export async function ProfileView({
     website: dict.profile.visitWebsite,
     visit: dict.profile.visit,
   });
+
+  // The main button goes through the site as well, so the destination is
+  // not printed in the page. Which of the professional's addresses it
+  // leads to is already decided by resolveVisitL; this only converts that
+  // choice into the matching key.
+  const visitKey =
+    visit.href && visit.href === p.socialLinks.portfolio ? "portfolio" : "website";
+  const visitHref = `/api/go/${p.slug}/${visitKey}`;
   const basePath = profileBasePath(p.profileType);
 
   const initials = p.name
@@ -644,7 +652,7 @@ export async function ProfileView({
               </LocaleLink>
             ) : (
               <a
-                href={visit.href}
+                href={visitHref}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
                 className="btn btn-accent btn-full"
@@ -713,19 +721,28 @@ export async function ProfileView({
 
 /* ------------------------- helpers ------------------------- */
 
+/**
+ * The professional's own addresses, as links to go through this site.
+ *
+ * `href` points at /api/go/... rather than at the destination. The real
+ * address is resolved when somebody clicks; see that route for why. A
+ * visitor sees no difference — one click, same place.
+ */
 function collectLinks(p: Profile, dict: Dictionary): { label: string; href: string }[] {
   const s = p.socialLinks;
   const out: { label: string; href: string }[] = [];
-  if (s.website) out.push({ label: dict.profile.linkWebsite, href: s.website });
-  if (s.portfolio) out.push({ label: dict.profile.linkPortfolio, href: s.portfolio });
-  if (s.etsy) out.push({ label: dict.profile.linkEtsy, href: s.etsy });
-  if (s.amazon) out.push({ label: dict.profile.linkAmazon, href: s.amazon });
-  if (s.behance) out.push({ label: dict.profile.linkBehance, href: s.behance });
-  if (s.dribbble) out.push({ label: dict.profile.linkDribbble, href: s.dribbble });
-  if (s.linkedin) out.push({ label: dict.profile.linkLinkedin, href: s.linkedin });
-  if (s.instagram) out.push({ label: dict.profile.linkInstagram, href: s.instagram });
-  if (s.youtube) out.push({ label: dict.profile.linkYoutube, href: s.youtube });
-  (s.other ?? []).forEach((o) => out.push({ label: o.label, href: o.url }));
+  const go = (key: string) => `/api/go/${p.slug}/${key}`;
+
+  if (s.website) out.push({ label: dict.profile.linkWebsite, href: go("website") });
+  if (s.portfolio) out.push({ label: dict.profile.linkPortfolio, href: go("portfolio") });
+  if (s.etsy) out.push({ label: dict.profile.linkEtsy, href: go("etsy") });
+  if (s.amazon) out.push({ label: dict.profile.linkAmazon, href: go("amazon") });
+  if (s.behance) out.push({ label: dict.profile.linkBehance, href: go("behance") });
+  if (s.dribbble) out.push({ label: dict.profile.linkDribbble, href: go("dribbble") });
+  if (s.linkedin) out.push({ label: dict.profile.linkLinkedin, href: go("linkedin") });
+  if (s.instagram) out.push({ label: dict.profile.linkInstagram, href: go("instagram") });
+  if (s.youtube) out.push({ label: dict.profile.linkYoutube, href: go("youtube") });
+  (s.other ?? []).forEach((o, i) => out.push({ label: o.label, href: go(`other-${i}`) }));
   return out;
 }
 

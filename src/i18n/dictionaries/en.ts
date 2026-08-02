@@ -1264,9 +1264,18 @@ export const en: Dictionary = {
         ],
       },
       {
+        heading: "Work stages",
+        paragraphs: [
+          "We turned the second level into one clear step that anyone can take. A professional picks a single piece of their work and shows four files: the start, two moments along the way, and the finished result, in that order.",
+          "A file can be anything that shows the work: a draft, a working file, a process shot, a photo, a screenshot, a scan, a PDF. Under each one the professional writes a line saying what it shows. Nothing has to be staged for this. Real work leaves these traces on its own.",
+          "Why the order matters. A single draft says little on its own, since it can be made after the finished piece. Four steps that follow one another and arrive at the exact result sitting in the portfolio are far harder to assemble after the fact. We are not looking at how good the files are, we are looking at whether the chain holds together.",
+          "The professional decides whether to show these files on the profile or keep them for the review only. When they are shown, a client sees not just the result but how it was made, and that is usually what settles the question of trust, more than any description of services.",
+        ],
+      },
+      {
         heading: "How verification works",
         paragraphs: [
-          "Verification is optional and honest. A professional may submit materials, such as process photos or video, sketches, drafts, or published work, that show how the work is made. We review them by hand, check that they line up with the profile, and, if the review supports it, add a verified badge with a short description of what we actually looked at.",
+          "Verification is optional. Beyond the work stages, a professional may submit other materials, such as process photos or video, sketches, drafts, or published work. We review all of it by hand, check that it lines up with the profile, and, if the review supports it, add a verified badge with a short description of what we actually looked at.",
           "We are careful about what this means. It is a considered human review of the materials shown to us, not a legal guarantee that no AI was ever involved anywhere. Two badges are used: Verified Human Creator for individuals, and Verified Human-Made Business for studios and companies.",
         ],
       },

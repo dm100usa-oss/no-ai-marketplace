@@ -22,8 +22,18 @@ export default function robots(): MetadataRoute.Robots {
     "/admin",
   ];
 
+  // Outbound links go through /api/go/... so the professionals' own
+  // addresses are not printed into the pages. Disallowing the path keeps
+  // well-behaved crawlers from simply following each one to collect what
+  // the page no longer states.
+  const disallowAlways = ["/api/"];
+
   // Disallow both the English (clean) and Russian (/ru) variants.
-  const disallow = [...noindexPaths, ...noindexPaths.map((p) => `/ru${p}`)];
+  const disallow = [
+    ...noindexPaths,
+    ...noindexPaths.map((p) => `/ru${p}`),
+    ...disallowAlways,
+  ];
 
   // Major AI answer engines and their crawlers (TZ 1.5: ChatGPT, Claude,
   // Perplexity, Gemini) plus classic search bots.

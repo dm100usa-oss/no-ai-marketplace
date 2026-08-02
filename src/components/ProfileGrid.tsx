@@ -68,6 +68,12 @@ export function ProfileGrid({
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {profiles.map((p) => {
         const visit = resolveVisitL(p, visitLabels);
+        // Through the site, like on the profile page: the destination is
+        // resolved on click instead of being printed into the card.
+        const visitKey =
+          visit.href && visit.href === p.socialLinks.portfolio
+            ? "portfolio"
+            : "website";
         return (
           <CreatorCard
             key={p.id}
@@ -76,7 +82,7 @@ export function ProfileGrid({
             profile={p}
             categoryName={categoryNameL(p.mainCategory, lang)}
             visitLabel={visit.label}
-            visitHref={visit.href}
+            visitHref={`/api/go/${p.slug}/${visitKey}`}
           />
         );
       })}

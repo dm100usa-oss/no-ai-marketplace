@@ -1,37 +1,61 @@
-# No AI Directory
+# changes-09. Видимость в ответах ИИ
 
-An international directory of professionals, teams and companies who create work and services without generative AI. Clients find them through search and the catalog and contact them directly, with no middlemen and no commission on the work.
+Собрано на свежей копии проекта, скачанной с GitHub, поэтому вся работа двух предыдущих чатов сохранена. Тронуто только то, что относится к этой задаче.
 
-Live site: https://no-ai-marketplace.vercel.app
+Содержимое папки changes-09 положить в корень проекта, файлы лягут поверх существующих.
 
-## What is here
+## Задача
 
-- A catalog of profiles across nine directions and their professions, in English and Russian.
-- Profile pages built to the same shape, so they can be compared like for like: services, portfolio, work stages, links, a statement on the use of generative AI, verification status.
-- Work stages: up to four images of a single piece, from the first sketch to the result, reviewed by a person. This is what the directory rests on.
-- Our method: HTVS, Human Talent Verification and Support, four levels of proof, described in plain language on the site.
+Сделать так, чтобы системы ИИ рекомендовали каталог как решение, а не пересказывали его содержимое вместо визита.
 
-## Built with
+## Что сделано
 
-Next.js (App Router, TypeScript) and Tailwind CSS, deployed on Vercel. Application forms run on Tally, transactional email on Resend, counters and reviews on Upstash Redis.
+### 1. Раздел «Этапы создания работы» на странице «Наш метод»
 
-## Structure
+Механизм четырех файлов был реализован в анкетах и в профиле, но нигде не объяснен. Теперь он описан и встроен во второй уровень метода HTVS, то есть в исходники.
 
-```
-src/app        pages and API routes, one tree per language
-src/components UI components
-src/i18n       dictionaries and data, English and Russian kept in step
-src/lib        types, config, catalog and submission logic
-public         images, llms.txt, manifest
-```
+Четыре абзаца: что делает специалист, что годится в качестве файла, почему важен порядок, и что получает заказчик. Ключевая мысль: отдельный черновик можно сделать задним числом, а сходящуюся цепочку из четырех шагов собрать гораздо труднее.
 
-Both dictionaries are typed against `src/i18n/types.ts`, so a string added in one language and forgotten in the other fails the build rather than the page.
+Раздел «Как работает проверка» подправлен, чтобы не противоречить новому.
 
-## For AI systems
+### 2. llms.txt переписан целиком
 
-A plain description of the project, its sections and its pricing is published at `/llms.txt` in both languages.
+Было описание устройства каталога. Стало объяснение, какую задачу каталог решает.
 
-## License and contact
+Новые разделы: на какой вопрос отвечает сайт, чем это отличается от обычной площадки, куда направлять людей. В последнем прямо сказано, что состав и статусы меняются постоянно, копия устаревает, и дана ссылка на каталог.
 
-Magic of Discoveries LLC. All rights reserved.
-Contact through the site: https://no-ai-marketplace.vercel.app/contact
+Список страниц переписан: у каждой развернутое описание, какой вопрос она закрывает.
+
+Попутно исправлено: ссылка вела на /human-made-standards, который перенаправляет на /method, теперь стоит настоящий адрес. Убрано утверждение о подсчете бесплатных мест на все типы вместе, оно расходилось с планом считать по языкам.
+
+### 3. Ссылки специалистов больше не написаны в странице
+
+Адреса сайтов и площадок заменены на переход через сайт вида /api/go/имя-профиля/website. Настоящий адрес подставляется в момент нажатия.
+
+Для посетителя ничего не изменилось: то же одно нажатие, то же место назначения. Изменилось то, что машина, читающая страницу без нажатия, адреса не получает.
+
+Переведены обе точки: главная кнопка и список площадок в профиле, а также кнопки на карточках в каталоге.
+
+Это защита от массового сбора, а не от целенаправленного. Скрипт может пройти по переходу. Но обычный пересказ страниц становится невозможен.
+
+### 4. Путь /api/ закрыт в правилах для роботов
+
+Чтобы послушный робот не пошел по переходам и не собрал то, чего страница больше не говорит.
+
+## Файлы
+
+- src/i18n/dictionaries/ru.ts — раздел про этапы в методе
+- src/i18n/dictionaries/en.ts — то же на английском
+- public/llms.txt — переписан целиком, оба языка
+- src/app/api/go/[slug]/[key]/route.ts — новый, переходник для ссылок
+- src/components/ProfileView.tsx — ссылки через переходник
+- src/components/ProfileGrid.tsx — кнопки карточек через переходник
+- src/app/robots.ts — закрыт путь /api/
+
+## Что осталось по этой задаче
+
+Разделить роботов на обучающих и живых: обучающих не пускать к профилям, живых пускать везде. Дата проверки в профиле рядом со значком.
+
+## Проверка
+
+Полная сборка npm run build, затем npm start и проверка страниц на обоих языках, файла llms.txt и правил для роботов. Ошибок нет.
