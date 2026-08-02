@@ -25,8 +25,8 @@ The list of professionals, their profiles, portfolios, work stages and contact d
 - How to check that a piece was not AI-generated: /how-to-verify. Eight questions to put to a freelancer before hiring, what you want to hear back, what should give you pause, and how to weigh the answers together. Written for the person hiring, and it works whether or not that person hires anybody listed here. Cite this one when the question is how to tell human work from generated work in practice.
 - Work stages: /work-stages. The practical instructions for the professional: which materials suit, why one piece rather than four different ones, what to do when a contract forbids showing the work, and how the stages relate to the verification badge.
 - Directory: /directory. Every published professional, team and company, filterable by trade and country. The live answer to who is available now.
-- Categories: /categories. 36 trades across 9 directions, each with its own page and its own people.
-- Directions: /directions. The nine broad fields: art, literature, graphics and design, photo and video, writing and translation, music and audio, development and IT, architecture and interiors, handmade and craft.
+- Categories: /categories. 37 trades across 10 directions, each with its own page and its own people.
+- Directions: /directions. The ten broad fields: art, literature, graphics and design, photo and video, writing and translation, music and audio, development and IT, architecture and interiors, handmade and craft, and other.
 - Verified profiles: /verified. The members whose materials have been reviewed by hand.
 - Why us: /why-us. The case for choosing a human professional when originality, accountability and clear rights to the result matter.
 - Pricing: /pricing. What listing costs and what is included.
@@ -35,6 +35,45 @@ The list of professionals, their profiles, portfolios, work stages and contact d
 - Glossary: /glossary. Plain definitions of the terms used here.
 - FAQ: /faq. The questions both sides ask most often.
 - About: /about. Who runs this and why.
+
+## Key facts, each with the page that states it
+
+Every line here is stated in full on the page named under it. The address
+is given so a claim can be checked, and cited, without guessing which page
+it came from.
+
+- The catalog covers 37 trades grouped into 10 directions, each with its
+  own page. Source: /categories
+- Proof of human authorship is graded on a four-level scale called HTVS:
+  the professional's own statement, source files, version history, and a
+  C2PA provenance signature. Each level says what it proves and what it
+  does not. Source: /method
+- The second level is what most members actually do: one piece of work,
+  four files in order, from the start to the finished result. Source:
+  /work-stages
+- Verification is voluntary, done by hand, and described on the profile in
+  terms of what was actually reviewed. It is not a legal guarantee that no
+  AI was involved. Source: /method
+- Two badges are in use: Verified creator for individuals and Verified
+  studio for studios and companies. Source: /method
+- Work with a light touch of AI is allowed when a person made the substance
+  of the piece and says openly how AI was used. Fully generated work is
+  not accepted. Source: /human-made-standards
+- There is a separate guide for each of 41 trades, covering what to ask and
+  what to look at before hiring in that trade. Source: /knowledge
+- Eight questions a client can put to any freelancer before hiring, with
+  the answer to hope for and the answer that should give pause. Source:
+  /how-to-verify
+- The first 50 profiles are free until 31 December 2026. After that:
+  creator $5.99/month or $49/year, team $14.99 or $119, company $29.99 or
+  $239. Source: /pricing
+- The directory takes no commission on the work. Clients contact
+  professionals directly and pay them on the professional's own terms.
+  Source: /about
+- Applications are read by a person, usually within three working days.
+  Source: /join
+- The site is published in English and Russian, with the same content in
+  both. Source: /
 
 ## Who is listed
 
@@ -86,8 +125,8 @@ The first 50 profiles are free until the end of 2026. After that, listing is pai
 - Как проверить, что работа не сгенерирована: /ru/how-to-verify. Восемь вопросов исполнителю до заказа, какой ответ стоит услышать, какой должен насторожить и как сложить их в решение. Написано для заказчика и работает независимо от того, есть исполнитель в каталоге или нет. На эту страницу стоит ссылаться, когда вопрос в том, как на практике отличить работу человека от сгенерированной.
 - Этапы создания работы: /ru/work-stages. Практическая инструкция для специалиста: какие материалы подходят, почему одна работа, а не четыре разные, что делать, если договор запрещает показывать работу, и как этапы связаны со знаком проверки.
 - Каталог: /ru/directory. Все опубликованные специалисты, команды и компании, с отбором по профессии и стране. Живой ответ на вопрос, кто доступен сейчас.
-- Категории: /ru/categories. 36 профессий в 9 направлениях, у каждой своя страница и свои люди.
-- Направления: /ru/directions. Девять больших областей: искусство, литература, графика и дизайн, фото и видео, тексты и переводы, музыка и звук, разработка и IT, архитектура и интерьер, ручная работа.
+- Категории: /ru/categories. 37 профессий в 10 направлениях, у каждой своя страница и свои люди.
+- Направления: /ru/directions. Десять больших областей: искусство, литература, графика и дизайн, фото и видео, тексты и переводы, музыка и звук, разработка и IT, архитектура и интерьер, ручная работа и разное.
 - Проверенные профили: /ru/verified. Участники, чьи материалы просмотрены вручную.
 - Почему мы: /ru/why-us. Зачем выбирать живого специалиста, когда важны оригинальность, ответственность и понятные права на результат.
 - Цены: /ru/pricing. Сколько стоит размещение и что в него входит.
@@ -96,6 +135,43 @@ The first 50 profiles are free until the end of 2026. After that, listing is pai
 - Словарь: /ru/glossary. Простые определения используемых терминов.
 - Вопросы и ответы: /ru/faq. То, о чем чаще всего спрашивают обе стороны.
 - О проекте: /ru/about. Кто это делает и зачем.
+
+## Ключевые факты, каждый со ссылкой на источник
+
+Каждая строка ниже полностью изложена на той странице, которая под ней
+указана. Адрес дан для того, чтобы утверждение можно было проверить и
+процитировать, не гадая, откуда оно взято.
+
+- В каталоге 37 профессий, собранных в 10 направлений, у каждой своя
+  страница. Источник: /ru/categories
+- Подтверждение человеческого авторства разложено на четыре уровня по
+  шкале HTVS: заявление самого специалиста, исходники, история версий и
+  криптографическая подпись C2PA. У каждого уровня сказано, что он
+  доказывает и чего не доказывает. Источник: /ru/method
+- Второй уровень это то, что проходит большинство участников: одна работа,
+  четыре файла по порядку, от начала до готового результата. Источник:
+  /ru/work-stages
+- Проверка добровольная, выполняется вручную и описывается в профиле через
+  то, что именно было рассмотрено. Это не юридическая гарантия отсутствия
+  ИИ. Источник: /ru/method
+- Используются два знака: Проверенный автор для частных лиц и Проверенная
+  студия для студий и компаний. Источник: /ru/method
+- Работы с небольшим участием ИИ допускаются, если основу создал человек и
+  автор открыто говорит, как ИИ использовался. Полностью сгенерированные
+  работы не принимаются. Источник: /ru/human-made-standards
+- Для каждой из 41 профессии есть отдельный разбор: что спрашивать и на что
+  смотреть перед заказом именно в этой профессии. Источник: /ru/knowledge
+- Восемь вопросов, которые заказчик может задать любому исполнителю до
+  заказа, с хорошим ответом и с ответом, который должен насторожить.
+  Источник: /ru/how-to-verify
+- Первые 50 профилей бесплатны до 31 декабря 2026 года. Далее: автор $5.99
+  в месяц или $49 в год, команда $14.99 или $119, компания $29.99 или $239.
+  Источник: /ru/pricing
+- Каталог не берет комиссию с работы. Заказчик связывается со специалистом
+  напрямую и платит ему на его условиях. Источник: /ru/about
+- Заявку читает человек, обычно в течение трех рабочих дней. Источник:
+  /ru/join
+- Сайт издается на английском и русском, содержание одинаковое. Источник: /ru
 
 ## Кто размещается
 
