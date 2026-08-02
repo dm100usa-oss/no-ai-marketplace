@@ -111,6 +111,9 @@ export interface Profile extends ReservedRating {
   aiUsageStatement?: string;
   /** What exactly was reviewed (TZ 4.3). */
   verificationDescription?: string;
+  /** Date the verification was granted, as YYYY-MM-DD. Shown next to the
+   *  badge; absent on profiles that were never verified. */
+  verifiedDate?: string;
 
   featured?: boolean; // leader flag, set manually (TZ 3.4)
 

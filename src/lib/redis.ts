@@ -267,6 +267,9 @@ export interface Submission {
    * verified, and verifying it does not change whether it is published.
    */
   verification?: "none" | "verified-creator" | "verified-business";
+  /** When the badge was granted, in milliseconds. Set by the moderation
+   *  screen, never typed in: a date somebody could edit is not evidence. */
+  verifiedAt?: number;
 
   /** Which language the author filled the form in, so letters go out in
    *  the right one. Defaults to en when the form did not say. */
@@ -484,6 +487,11 @@ export async function setSubmissionVerification(
 ): Promise<Submission | null> {
   return updateSubmission(id, (s) => {
     s.verification = verification;
+    // Stamped at the moment of the decision. The profile shows this date so
+    // a reader knows how recent the check is, and so does anything else
+    // reading the page: a fact with a date on it goes stale on its own,
+    // which is the point.
+    s.verifiedAt = Date.now();
   });
 }
 

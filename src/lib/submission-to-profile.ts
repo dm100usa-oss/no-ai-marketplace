@@ -233,6 +233,9 @@ export function submissionToProfile(
     // matter and is set separately; publishing must never imply payment.
     status: "free",
     verificationStatus: s.verification ?? "none",
+    verifiedDate: s.verifiedAt
+      ? new Date(s.verifiedAt).toISOString().slice(0, 10)
+      : undefined,
 
     mainCategory,
     additionalCategories: categorySlugsFromNames(s.additionalCategories, mainCategory),

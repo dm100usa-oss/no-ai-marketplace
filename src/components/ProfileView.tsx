@@ -578,7 +578,12 @@ export async function ProfileView({
               <div className="mb-2 flex items-center gap-2">
                 <VerifiedBadge status={p.verificationStatus} dict={dict} />
                 <span className="text-[0.85rem]" style={{ color: "var(--color-muted-soft)" }}>
-                  {dict.profile.reviewedByHand}
+                  {p.verifiedDate
+                    ? `${dict.profile.reviewedByHand}, ${new Intl.DateTimeFormat(
+                        lang === "ru" ? "ru-RU" : "en-US",
+                        { day: "numeric", month: "long", year: "numeric" },
+                      ).format(new Date(p.verifiedDate))}`
+                    : dict.profile.reviewedByHand}
                 </span>
               </div>
               {p.verificationDescription && (
