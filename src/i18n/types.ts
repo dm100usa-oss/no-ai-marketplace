@@ -93,6 +93,7 @@ export interface Dictionary {
     verification: string;
     method: string;
     workStages: string;
+    howToVerify: string;
     principles: string;
     faq: string;
     whyUs: string;
@@ -549,6 +550,32 @@ export interface Dictionary {
    *  "what counts as work without AI, and how do I tell". Both are needed
    *  before a search or answer engine treats the site as a source rather
    *  than a listing. */
+  /** Standalone checklist page: how a client checks that a piece was not
+   *  generated. The one page here written for somebody who is not a
+   *  member and may never become one, which is exactly why it travels. */
+  howToVerify: {
+    metaTitle: string;
+    metaDescription: string;
+    title: string;
+    subtitle: string;
+    whyTitle: string;
+    whyParagraphs: string[];
+    caveatTitle: string;
+    caveatText: string;
+    questionsTitle: string;
+    questionsIntro: string[];
+    goodLabel: string;
+    badLabel: string;
+    levelLabel: string;
+    questions: { q: string; good: string; bad: string; level: string }[];
+    decisionTitle: string;
+    decisionParagraphs: string[];
+    tracesTitle: string;
+    tracesParagraphs: string[];
+    professionsTitle: string;
+    professionsIntro: string;
+  };
+
   knowledge: {
     metaTitle: string;
     metaDescription: string;

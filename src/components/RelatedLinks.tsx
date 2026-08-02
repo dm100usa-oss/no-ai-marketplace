@@ -33,6 +33,8 @@ function labelFor(path: string, dict: Dictionary): string | undefined {
       return dict.footer.humanMadeStandards;
     case "/work-stages":
       return dict.footer.workStages;
+    case "/how-to-verify":
+      return dict.footer.howToVerify;
     case "/verified":
       return dict.footer.verifiedProfiles;
     case "/directory":

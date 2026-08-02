@@ -73,6 +73,7 @@ export const pageUpdated: Record<string, string> = {
   "/method": "2026-08-02",
   "/human-made-standards": "2026-08-02",
   "/work-stages": "2026-08-02",
+  "/how-to-verify": "2026-08-02",
   "/why-us": "2026-08-02",
   "/faq": "2026-08-02",
   "/pricing": "2026-08-02",

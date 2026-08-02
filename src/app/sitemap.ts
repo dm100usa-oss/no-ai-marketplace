@@ -46,6 +46,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // before they look for a directory. Each answers one question in full,
     // which is what gets a page quoted rather than skimmed.
     { path: "/work-stages", priority: 0.6 },
+    // Written for somebody who has not joined and may never join. It is
+    // the page that is useful without the catalog behind it, so it ranks
+    // with the catalog rather than below it.
+    { path: "/how-to-verify", priority: 0.8 },
     { path: "/human-made-standards", priority: 0.6 },
     { path: "/reviews", priority: 0.4 },
     { path: "/why-us", priority: 0.6 },

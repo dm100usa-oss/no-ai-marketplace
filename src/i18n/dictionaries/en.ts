@@ -47,6 +47,7 @@ export const en: Dictionary = {
     humanMadeStandards: "Human-Made standards",
     verification: "Verification",
     method: "Our method",
+    howToVerify: "How to check a freelancer",
     workStages: "Work stages",
     principles: "Our principles",
     faq: "Questions and answers",
@@ -1049,6 +1050,94 @@ export const en: Dictionary = {
     ctaBrowse: "Open the catalog",
   },
 
+  howToVerify: {
+    metaTitle: "How to check that a piece was not AI-generated",
+    metaDescription:
+      "Eight questions to ask a freelancer before you hire, the answers that should give you pause, and how to weigh them together. Mapped to the HTVS levels of proof.",
+    title: "How to check that a piece was not AI-generated",
+    subtitle:
+      "What to ask before you hire, and which answers should give you pause",
+    whyTitle: "Why this matters",
+    whyParagraphs: [
+      "A finished piece tells you very little about how it was made. Generative models reproduce style convincingly, and their output keeps getting better. Looking at the final file alone, it is hard to tell whether a person made it or a model did. That holds for writing, images, code and plenty of other work.",
+      "What a person leaves behind, though, is a trail around the work: rough drafts, versions along the way, edit history, the options they dropped, the files they worked in. That trail is what you can actually check.",
+    ],
+    caveatTitle: "One thing first",
+    caveatText:
+      "Do not lean on AI detectors. They get it wrong in both directions, and a percentage on a screen looks far more definitive than it is. A conversation with the person will tell you more.",
+    questionsTitle: "Eight questions",
+    questionsIntro: [
+      "Here are eight questions worth asking before you hire, with a piece from their portfolio in front of you. They follow our HTVS scale: each level is harder to put together after the fact than the one before it.",
+      "You rarely need all eight. The first three usually settle it. The rest are there for when the cost of getting it wrong is high.",
+    ],
+    goodLabel: "What you want to hear",
+    badLabel: "What should give you pause",
+    levelLabel: "Level",
+    questions: [
+      {
+        q: "Can you show me the working files for this piece?",
+        good: "Here is where it started, here are the versions in between, here is the final.",
+        bad: "Nothing was kept. There is only the finished piece.",
+        level: "Source files, level two",
+      },
+      {
+        q: "Walk me through how this one came together.",
+        good: "An unhurried account with details you cannot see in the finished work.",
+        bad: "A description of the result instead of an account of the process.",
+        level: "Source files, level two",
+      },
+      {
+        q: "What did you end up reworking here, and why?",
+        good: "They point to a specific version they dropped and explain what was wrong with it.",
+        bad: "Nothing was reworked. It came out right the first time.",
+        level: "Statement and source files together",
+      },
+      {
+        q: "Why did you make this particular call?",
+        good: "A clear answer on the spot, no warm-up needed.",
+        bad: "Generalities about style, composition or mood with nothing tied to the actual brief.",
+        level: "Statement, level one",
+      },
+      {
+        q: "What tools did you use, and where does AI come into it?",
+        good: "A straight list, and a clear line between what helped along the way and what was not used at all.",
+        bad: "Something evasive along the lines of \"I do everything myself\" with no specifics.",
+        level: "Statement, level one",
+      },
+      {
+        q: "Do you still have the version history or autosaves?",
+        good: "Yes, here is the file history with dates.",
+        bad: "Every version appeared at once, shortly before delivery.",
+        level: "Version history, level three",
+      },
+      {
+        q: "Could you make a small change to it right now?",
+        good: "Sure, one moment.",
+        bad: "They will only do it later and cannot say why.",
+        level: "A practical check that backs up levels two and three",
+      },
+      {
+        q: "Does the file carry a C2PA provenance signature?",
+        good: "Yes, here it is.",
+        bad: "Not the absence of a signature, but a confident claim that there is one with no file to show for it.",
+        level: "Signature, level four",
+      },
+    ],
+    decisionTitle: "Putting the answers together",
+    decisionParagraphs: [
+      "One weak answer on its own proves nothing. Files get lost, memories blur, and a contract with a previous client may forbid showing the working materials at all.",
+      "What you are reading is the whole picture, not any single answer.",
+      "One draft is easy enough to produce after the fact. A whole chain is another matter: it has to run in order, belong to this specific piece, and match what the person tells you out loud. More often than not, faking that costs more than doing the work. That is what the check rests on.",
+    ],
+    tracesTitle: "Every trade leaves a different trail",
+    tracesParagraphs: [
+      "For a photographer it is the camera originals. For a translator, the working drafts and the glossary. For a developer, the commit history. For a maker, photos of the work in progress.",
+      "So the questions shift a little from one trade to the next. We have put together a separate guide for each of 41 of them.",
+    ],
+    professionsTitle: "Guides by trade",
+    professionsIntro: "What to ask, and what to look at, in your case.",
+  },
+
   knowledge: {
     metaTitle: "Knowledge base",
     metaDescription:
@@ -1059,6 +1148,11 @@ export const en: Dictionary = {
     docsTitle: "Platform standards",
     docsIntro: "Four documents explaining the rules everything here runs on.",
     docs: [
+      {
+        title: "How to check a freelancer",
+        text: "Eight questions worth asking before you hire, and the answers that should give you pause. Works just as well for people not listed here.",
+        href: "/how-to-verify",
+      },
       {
         title: "Glossary",
         text: "What work without AI, human-made and hybrid work mean, and how the HTVS scale of proof is built.",
