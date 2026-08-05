@@ -209,9 +209,28 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               // takes the plan's own colour and the card lifts off the page
               // slightly, so each plan is visibly a separate thing and the
               // colour says which one before the name is read.
-              className="flex flex-col rounded-2xl border-0 p-0 md:border md:bg-white md:p-4 md:shadow-[0_1px_16px_rgba(16,35,58,0.07)]"
+              className="relative flex flex-col rounded-2xl border-0 p-0 md:border md:bg-white md:p-4 md:shadow-[0_1px_16px_rgba(16,35,58,0.07)]"
               style={{ borderColor: tone.edge }}
             >
+              {/* One plan carries a mark, and it is the middle one. Three
+                  plans with nothing to choose between them leave the reader
+                  to rank them alone, and most rank by price and take the
+                  cheapest. The mark says which one we would pick, which is
+                  a recommendation rather than a claim about other buyers:
+                  the directory is new and nobody has bought anything yet. */}
+              {id === "team" ? (
+                <span
+                  className="absolute -top-3 left-1/2 hidden -translate-x-1/2 rounded-full px-3 py-1 text-[0.78rem] font-bold md:block"
+                  style={{
+                    background: tone.bg,
+                    border: `1px solid ${tone.edge}`,
+                    color: tone.ink,
+                    fontFamily: "var(--font-display)",
+                  }}
+                >
+                  {dict.pricing.recommendedBadge}
+                </span>
+              ) : null}
               {/* On a phone the whole card folds into this one strip and the
                   rest of it opens underneath. Three strips fit a quarter of
                   the screen, so a visitor sees all three plans at once
@@ -392,15 +411,18 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 </div>
               </div>
 
-              {/* The list gets a heading of its own, in the same ink as every
-                  other heading on the site, so the reader knows the lines
-                  under it answer one question rather than continuing the
-                  price. */}
+              {/* The base plan lists what a profile is; the two above it
+                  inherit it by name and list only what they add. Written out
+                  in full on all three, the same six lines would appear three
+                  times and the reader would have to diff them by eye to see
+                  what the extra money buys. */}
               <p
-                className="mt-5 text-[1.35rem] font-bold"
+                className="mt-5 text-[1.2rem] font-bold"
                 style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
               >
-                {dict.pricing.includedTitle}
+                {id === "creator"
+                  ? dict.pricing.includedTitle
+                  : dict.pricing.plusTitle.replace("{plan}", dict.pricing.planNames.creator)}
               </p>
 
               {/* Justified text was pulling single phrases apart: a line
