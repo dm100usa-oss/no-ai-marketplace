@@ -372,21 +372,27 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 {dict.pricing.includedTitle}
               </p>
 
+              {/* Justified text was pulling single phrases apart: a line
+                  ending in a long word left rivers of white between the
+                  short ones, and a reader stopped to work out whether the
+                  gap meant something. Ragged right reads faster here, the
+                  lines sit closer, and the type is one step down, so a list
+                  of ten short facts looks like a list rather than a page. */}
               <ul
-                className="mt-4 flex flex-col gap-4 text-[1.15rem]"
-                style={{ color: "var(--color-ink)", textAlign: "justify" }}
+                className="mt-4 flex flex-col gap-2.5 text-[1rem] leading-snug"
+                style={{ color: "var(--color-ink)" }}
               >
                 {dict.pricing.planFeatures[id].map((line) => (
-                  <li key={line} className="flex items-start gap-3">
+                  <li key={line} className="flex items-start gap-2.5">
                     {/* The same glossy bead the homepage lists use, so the
                         two pages read as one site. Here it takes the card's
                         own colour instead of the site blue. */}
                     <span
                       aria-hidden="true"
-                      className="mt-[0.45rem] shrink-0 rounded-full"
+                      className="mt-[0.32rem] shrink-0 rounded-full"
                       style={{
-                        width: "0.7rem",
-                        height: "0.7rem",
+                        width: "0.6rem",
+                        height: "0.6rem",
                         background: tone.dot,
                         boxShadow:
                           "0 1px 2px rgba(30,50,90,0.4), inset 0 1px 1px rgba(255,255,255,0.45)",
