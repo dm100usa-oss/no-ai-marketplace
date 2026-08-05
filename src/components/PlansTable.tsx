@@ -325,40 +325,71 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               </div>
 
               <div className="mt-4">
-                {/* Price and "Сейчас бесплатно" on one line, in the same
-                    green. The words are what the figure means, so they read
-                    as one statement rather than as a number with a caption
-                    under it. Baseline alignment keeps them sitting level
-                    despite the difference in size. */}
+                {/* One figure carries this page and it is the zero. Baymard's
+                    product-page testing found price is the first thing read
+                    and the thing most often missed when set small, so it runs
+                    at heading size while everything paid is deliberately
+                    quiet: the paid part describes 2027, not today.
+
+                    The dollar sign is set small and centred against the zero.
+                    At the same size it competes with the digit for weight,
+                    and the digit is what the reader came for. */}
                 <p
-                  className="flex items-baseline gap-2 leading-none"
+                  className="flex items-center gap-1 leading-none"
                   style={{ fontFamily: "var(--font-display)", color: "#0f7a58" }}
                 >
-                  <span className="text-[1.4rem] font-bold">{freeTier.priceLabel}</span>
-                  <span className="text-[1.15rem] font-semibold">
+                  <span className="text-[1.2rem] font-semibold">
+                    {freeTier.priceLabel.replace(/[\d.,]/g, "")}
+                  </span>
+                  <span className="text-[3.2rem] font-bold tracking-tight">
+                    {freeTier.priceLabel.replace(/[^\d.,]/g, "")}
+                  </span>
+                  <span className="ml-2 text-[1.05rem] font-semibold">
                     {dict.pricing.freeNowLabel}
                   </span>
                 </p>
-                {/* What it costs once the free period ends, three lines: when
-                    it starts, the month, the year. The year is counted from
-                    the free-period date in config, so it cannot drift out of
-                    step with the banner above. The prices are not struck
-                    through: a struck figure next to $0 reads as a discount
-                    already taken rather than as a price still to come. */}
-                <p
-                  className="mt-2 text-[1.15rem] leading-snug"
-                  style={{ color: "var(--color-muted-soft)" }}
+
+                {/* The rule separates now from later. Without it the paid
+                    lines read as a condition attached to the zero. */}
+                <div
+                  className="mt-4 border-t pt-3"
+                  style={{ borderColor: "var(--color-line)" }}
                 >
-                  <span className="block">
+                  <p className="text-[0.82rem]" style={{ color: "var(--color-muted-soft)" }}>
                     {dict.pricing.laterPrefix.replace("{year}", paidYear)}
-                  </span>
-                  <span className="block">
+                  </p>
+                  <p className="mt-1.5 text-[1rem]" style={{ color: "var(--color-muted)" }}>
                     {plan.monthly.priceLabel} {dict.pricing.perMonth}
-                  </span>
-                  <span className="block">
-                    {dict.pricing.orWord} {plan.yearly.priceLabel} {dict.pricing.perYear}
-                  </span>
-                </p>
+                  </p>
+                  {/* Percent or dollars, whichever is the larger number. The
+                      rule is Jonah Berger's "rule of 100", cited in Baymard's
+                      work on discount display: below $100 the percentage
+                      reads bigger, above it the amount does. Computed from
+                      the plan, so a price change cannot leave a stale claim
+                      on the page. */}
+                  <p className="mt-1 flex flex-wrap items-baseline gap-2">
+                    <span className="text-[1rem]" style={{ color: "var(--color-muted)" }}>
+                      {plan.yearly.priceLabel} {dict.pricing.perYear}
+                    </span>
+                    {(() => {
+                      const full = plan.monthly.price * 12;
+                      const saved = full - plan.yearly.price;
+                      if (saved <= 0) return null;
+                      const label =
+                        saved >= 100
+                          ? dict.pricing.saveAmount.replace("{value}", `$${Math.floor(saved)}`)
+                          : dict.pricing.savePercent.replace(
+                              "{value}",
+                              String(Math.round((saved / full) * 100)),
+                            );
+                      return (
+                        <span className="text-[0.9rem] font-semibold" style={{ color: "#0f7a58" }}>
+                          {label}
+                        </span>
+                      );
+                    })()}
+                  </p>
+                </div>
               </div>
 
               {/* The list gets a heading of its own, in the same ink as every

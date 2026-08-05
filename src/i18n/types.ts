@@ -55,9 +55,6 @@ export interface Dictionary {
     description: string;
     /** Footer copyright line suffix, after "© YEAR Name." */
     footerNote: string;
-    /** Fine print under the copyright: the legal entity behind the brand
-     *  and who does the reviewing. Small on purpose; the brand leads. */
-    ownerNote: string;
   };
 
   /** Primary navigation labels, keyed by canonical path. */
@@ -93,8 +90,6 @@ export interface Dictionary {
     verification: string;
     method: string;
     workStages: string;
-    howToVerify: string;
-    originCheck: string;
     principles: string;
     faq: string;
     whyUs: string;
@@ -137,15 +132,6 @@ export interface Dictionary {
     /** Plural forms for "N categories": [one, few, many]. English uses the
      *  first two only; Russian needs all three (категория/категории/категорий). */
     categoryForms: [string, string, string];
-    /** Heading of the cross-link block at the foot of listing and
-     *  profession pages. */
-    relatedTitle: string;
-    /** Byline shown next to the review date. Names the editorial team
-     *  rather than a person: the authority here is the stated procedure,
-     *  not a biography. */
-    editorialBy: string;
-    /** Label before the review date on explanatory pages. */
-    updatedLabel: string;
     reviewedByHand: string;
     leadersPickedByHand: string;
     humanMadeWork: string;
@@ -285,7 +271,11 @@ export interface Dictionary {
      *  rather than what it contains. Empty for a plan that has none. */
     planPitch: { creator: string; team: string; company: string };
     planFeatures: { creator: string[]; team: string[]; company: string[] };
-    freeNowLabel: string; // shown in place of the price while free
+    freeNowLabel: string;
+    /** "экономия 32%" and "экономия $120". Which of the two a card shows is
+     *  decided by the size of the saving, not by the plan. */
+    savePercent: string;
+    saveAmount: string; // shown in place of the price while free
     everythingTitle: string;
     everythingItems: string[];
     howPaymentTitle: string;
@@ -488,15 +478,14 @@ export interface Dictionary {
     hybridText2: string;
     notBelongTitle: string;
     notBelongItems: string[];
-    /** Closing block. The page is a definition and stops being one the
-     *  moment it starts re-explaining verification, so what used to be two
-     *  full sections here is now two lines pointing at the pages that own
-     *  those subjects. */
-    nextTitle: string;
-    nextMethodText: string;
-    nextMethodLink: string;
-    nextReportText: string;
-    nextReportLink: string;
+    verificationBoxTitle: string;
+    verificationBoxText1: string;
+    verificationLink: string;
+    verificationBoxText2: string;
+    ifWrongTitle: string;
+    ifWrongText1: string;
+    listingPolicyLink: string;
+    ifWrongText2: string;
   };
 
   /** Standalone Questions & Answers page. Each entry is a real search
@@ -555,32 +544,6 @@ export interface Dictionary {
    *  "what counts as work without AI, and how do I tell". Both are needed
    *  before a search or answer engine treats the site as a source rather
    *  than a listing. */
-  /** Standalone checklist page: how a client checks that a piece was not
-   *  generated. The one page here written for somebody who is not a
-   *  member and may never become one, which is exactly why it travels. */
-  howToVerify: {
-    metaTitle: string;
-    metaDescription: string;
-    title: string;
-    subtitle: string;
-    whyTitle: string;
-    whyParagraphs: string[];
-    caveatTitle: string;
-    caveatText: string;
-    questionsTitle: string;
-    questionsIntro: string[];
-    goodLabel: string;
-    badLabel: string;
-    levelLabel: string;
-    questions: { q: string; good: string; bad: string; level: string }[];
-    decisionTitle: string;
-    decisionParagraphs: string[];
-    tracesTitle: string;
-    tracesParagraphs: string[];
-    professionsTitle: string;
-    professionsIntro: string;
-  };
-
   knowledge: {
     metaTitle: string;
     metaDescription: string;

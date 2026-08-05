@@ -14,8 +14,6 @@ export const en: Dictionary = {
     description:
       "An international directory of professionals who create professional work and services without the use of generative AI.",
     footerNote: "Human-made creations.",
-    ownerNote:
-      "A Magic of Discoveries LLC project, United States. Applications are reviewed by hand by people working in design, analysis and development.",
   },
 
   nav: {
@@ -47,8 +45,6 @@ export const en: Dictionary = {
     humanMadeStandards: "Human-Made standards",
     verification: "Verification",
     method: "Our method",
-    originCheck: "Origin Check",
-    howToVerify: "How to check a freelancer",
     workStages: "Work stages",
     principles: "Our principles",
     faq: "Questions and answers",
@@ -88,9 +84,6 @@ export const en: Dictionary = {
     category: "category",
     categories: "categories",
     categoryForms: ["category", "categories", "categories"],
-    relatedTitle: "How this works",
-    editorialBy: "The No AI Directory editorial team",
-    updatedLabel: "Updated",
     reviewedByHand: "Reviewed by hand",
     leadersPickedByHand: "Leaders picked by hand",
     badgeTeam: "Team",
@@ -324,7 +317,7 @@ export const en: Dictionary = {
     billedYearly: "Yearly",
     saveLabel: "a saving of about {n} compared with paying monthly",
     laterPrefix: "From {year}",
-    includedTitle: "What's included?",
+    includedTitle: "What sets it apart",
     nowWord: "Now",
     planNames: {
       creator: "Creator",
@@ -343,48 +336,35 @@ export const en: Dictionary = {
     },
     planFeatures: {
       creator: [
-        "A professional portfolio",
-        "Up to three categories in the directory",
-        "4 signature works, each with a full description",
-        "Shown in the New members and New works strips",
-        "Direct links to your site, shop and social media",
-        "Work with clients directly, with no commission",
-        "The First in category badge for joining early",
-        "Free until the end of 2026",
-        "Cancel your subscription at any time",
+        "Four signature works, each with the story of how it was made",
+        "Found under three different categories in the directory",
+        "The First in category mark, while the category is still open",
       ],
       team: [
-        "A professional team portfolio",
-        "6 signature projects, each with a full description",
-        "Listed in up to four categories in the directory",
-        "Shown in the New members and New works strips",
-        "Direct links to your site and social media",
-        "One contact for the whole team",
-        "Up to 4 members, each with their role",
-        "Listed above individual authors in the directory",
-        "Open to larger projects that need a whole team",
-        "Team review and the verified profile badge",
-        "Free until the end of 2026",
-        "Cancel your subscription at any time",
+        "Teams sit above individual creators in the directory",
+        "Six joint projects showing what each member contributed",
+        "Up to four members with their roles, each with a page of their own",
+        "One payment covers the team; members pay nothing separately",
+        "One contact: a client writes once instead of four times",
+        "Four categories, so the team is found across everything it covers",
       ],
       company: [
-        "A professional company page with your services",
-        "10 signature projects, each with a full description",
-        "Listed in up to five categories in the directory",
-        "Shown in the New members and New works strips",
-        "Logo, website, the year you started and your city",
-        "Top placement in the directory",
-        "A company page of its own for search engines and AI",
-        "Company review and the verified profile badge",
-        "Free until the end of 2026",
-        "Cancel your subscription at any time",
+        "Top of the directory, above teams and individual creators",
+        "Ten projects: a portfolio the size of a studio website",
+        "Five categories, so you are found across every service you offer",
+        "Logo and the year you started: clients see the years behind you",
+        "Reviewed as a company rather than as a private individual",
       ],
     },
     freeNowLabel: "Free right now",
+    savePercent: "save {value}%",
+    saveAmount: "save {value}",
     everythingTitle: "In every plan",
     everythingItems: [
       "A profile page search engines and AI can read",
       "Direct links to your own platforms, no commission",
+      "Shown in the New members and New works strips",
+      "Work stages next to your portfolio",
       "A verification request and the verified mark",
       "Cancel any time",
     ],
@@ -398,7 +378,7 @@ export const en: Dictionary = {
       "While the free places last, listing costs nothing. Fill in the form and we will come back to you.",
     addProfile: "Add profile",
     readStandards: "Our standards",
-    claimFree: "Claim a free place",
+    claimFree: "Add your profile free",
     getStarted: "Choose a plan",
   },
 
@@ -719,19 +699,15 @@ export const en: Dictionary = {
       "A short, honest description of what we mean by human-made, so creators know what belongs here and buyers know what to expect.",
     oneLineTitle: "The one-line rule",
     oneLineText:
-      "A person makes the substance of the work, and if AI helped somewhere along the way, they say so plainly.",
+      "The substance of the work, meaning the drawing, the writing, the photograph, the design decision, the code, the object made by hand, is done by a human. If AI touched it, the human contribution is still the substance, and the creator says so clearly.",
     belongsTitle: "What clearly belongs here",
     belongsItems: [
-      "Art: illustration, painting, sculpture, concept art. Drawn or shaped by a person, a graphics tablet included.",
-      "Literature: fiction, non-fiction, children's books, poetry. The idea, the story and the sentences are the author's.",
-      "Graphics and design: branding, interfaces, 3D. The concept, the layout and the typography come from the designer.",
-      "Photo and video: shooting, editing, color, motion. A person behind the camera and at the timeline.",
-      "Writing and translation: copywriting, editing, proofreading, translation, scripts. Written and shaped by a person.",
-      "Music and audio: composing, playing, recording, mixing and mastering, and voice work performed live.",
-      "Development and IT: code a person wrote and can walk you through, including review and audit of somebody else's code.",
-      "Architecture and interiors: buildings, interiors and grounds, where a designer answers for every decision on the page.",
-      "Handmade and craft: objects, accessories, clothing, jewellery, restoration, calligraphy, small-batch production.",
-      "Other work where the result comes out of human experience and judgment rather than a prompt.",
+      "Hand-drawn or hand-painted illustration and art, including work done in a graphics tablet by a person.",
+      "Photography and video where the person behind the camera made the frames.",
+      "Writing, editing and copy where a human wrote and shaped the text.",
+      "Design and branding work where the concept, layout and typography are the designer's.",
+      "Handmade objects, craft and small-batch production.",
+      "Professional services that trade on human judgment: consulting, teaching, coaching, architecture, engineering, legal, medical adjacent work.",
     ],
     hybridTitle: "Where hybrid work fits",
     hybridText1:
@@ -746,13 +722,16 @@ export const en: Dictionary = {
       "Portfolios that pass off AI-generated pieces as hand work.",
       "Deceptive claims of authorship or process.",
     ],
-    nextTitle: "What next",
-    nextMethodText:
-      "How these standards are checked in practice, step by step, including what the check does not prove: ",
-    nextMethodLink: "Our method",
-    nextReportText:
-      "If a listing looks like it breaks these standards, tell us: every profile page carries a Report a problem link. How reports are handled is set out here: ",
-    nextReportLink: "Listing policy",
+    verificationBoxTitle: "Verification is optional and honest",
+    verificationBoxText1:
+      "Creators may submit materials for a verified badge. We review by hand and describe on the profile what we looked at. We do not claim a legal guarantee of no-AI-anywhere. See ",
+    verificationLink: "Verification",
+    verificationBoxText2: ".",
+    ifWrongTitle: "If we get it wrong",
+    ifWrongText1:
+      "Every profile page has a Report a problem link. If a listing looks like it breaks these standards, tell us. we review reports by hand. See also ",
+    listingPolicyLink: "Listing Policy",
+    ifWrongText2: ".",
   },
 
   faqPage: {
@@ -1056,94 +1035,6 @@ export const en: Dictionary = {
     ctaBrowse: "Open the catalog",
   },
 
-  howToVerify: {
-    metaTitle: "How to check that a piece was not AI-generated",
-    metaDescription:
-      "Eight questions to ask a freelancer before you hire, the answers that should give you pause, and how to weigh them together. Mapped to the HTVS levels of proof.",
-    title: "How to check that a piece was not AI-generated",
-    subtitle:
-      "What to ask before you hire, and which answers should give you pause",
-    whyTitle: "Why this matters",
-    whyParagraphs: [
-      "A finished piece tells you very little about how it was made. Generative models reproduce style convincingly, and their output keeps getting better. Looking at the final file alone, it is hard to tell whether a person made it or a model did. That holds for writing, images, code and plenty of other work.",
-      "What a person leaves behind, though, is a trail around the work: rough drafts, versions along the way, edit history, the options they dropped, the files they worked in. That trail is what you can actually check.",
-    ],
-    caveatTitle: "One thing first",
-    caveatText:
-      "Do not lean on AI detectors. They get it wrong in both directions, and a percentage on a screen looks far more definitive than it is. A conversation with the person will tell you more.",
-    questionsTitle: "Eight questions",
-    questionsIntro: [
-      "Here are eight questions worth asking before you hire, with a piece from their portfolio in front of you. They follow our HTVS scale: each level is harder to put together after the fact than the one before it.",
-      "You rarely need all eight. The first three usually settle it. The rest are there for when the cost of getting it wrong is high.",
-    ],
-    goodLabel: "What you want to hear",
-    badLabel: "What should give you pause",
-    levelLabel: "Level",
-    questions: [
-      {
-        q: "Can you show me the working files for this piece?",
-        good: "Here is where it started, here are the versions in between, here is the final.",
-        bad: "Nothing was kept. There is only the finished piece.",
-        level: "Source files, level two",
-      },
-      {
-        q: "Walk me through how this one came together.",
-        good: "An unhurried account with details you cannot see in the finished work.",
-        bad: "A description of the result instead of an account of the process.",
-        level: "Source files, level two",
-      },
-      {
-        q: "What did you end up reworking here, and why?",
-        good: "They point to a specific version they dropped and explain what was wrong with it.",
-        bad: "Nothing was reworked. It came out right the first time.",
-        level: "Statement and source files together",
-      },
-      {
-        q: "Why did you make this particular call?",
-        good: "A clear answer on the spot, no warm-up needed.",
-        bad: "Generalities about style, composition or mood with nothing tied to the actual brief.",
-        level: "Statement, level one",
-      },
-      {
-        q: "What tools did you use, and where does AI come into it?",
-        good: "A straight list, and a clear line between what helped along the way and what was not used at all.",
-        bad: "Something evasive along the lines of \"I do everything myself\" with no specifics.",
-        level: "Statement, level one",
-      },
-      {
-        q: "Do you still have the version history or autosaves?",
-        good: "Yes, here is the file history with dates.",
-        bad: "Every version appeared at once, shortly before delivery.",
-        level: "Version history, level three",
-      },
-      {
-        q: "Could you make a small change to it right now?",
-        good: "Sure, one moment.",
-        bad: "They will only do it later and cannot say why.",
-        level: "A practical check that backs up levels two and three",
-      },
-      {
-        q: "Does the file carry a C2PA provenance signature?",
-        good: "Yes, here it is.",
-        bad: "Not the absence of a signature, but a confident claim that there is one with no file to show for it.",
-        level: "Signature, level four",
-      },
-    ],
-    decisionTitle: "Putting the answers together",
-    decisionParagraphs: [
-      "One weak answer on its own proves nothing. Files get lost, memories blur, and a contract with a previous client may forbid showing the working materials at all.",
-      "What you are reading is the whole picture, not any single answer.",
-      "One draft is easy enough to produce after the fact. A whole chain is another matter: it has to run in order, belong to this specific piece, and match what the person tells you out loud. More often than not, faking that costs more than doing the work. That is what the check rests on.",
-    ],
-    tracesTitle: "Every trade leaves a different trail",
-    tracesParagraphs: [
-      "For a photographer it is the camera originals. For a translator, the working drafts and the glossary. For a developer, the commit history. For a maker, photos of the work in progress.",
-      "So the questions shift a little from one trade to the next. We have put together a separate guide for each of 41 of them.",
-    ],
-    professionsTitle: "Guides by trade",
-    professionsIntro: "What to ask, and what to look at, in your case.",
-  },
-
   knowledge: {
     metaTitle: "Knowledge base",
     metaDescription:
@@ -1154,16 +1045,6 @@ export const en: Dictionary = {
     docsTitle: "Platform standards",
     docsIntro: "Four documents explaining the rules everything here runs on.",
     docs: [
-      {
-        title: "Origin Check",
-        text: "The tool: how to check where a piece of work came from in a specific trade. What a real piece leaves behind, what to ask for, and which answers should give you pause.",
-        href: "/origin-check",
-      },
-      {
-        title: "How to check a freelancer",
-        text: "Eight questions worth asking before you hire, and the answers that should give you pause. Works just as well for people not listed here.",
-        href: "/how-to-verify",
-      },
       {
         title: "Glossary",
         text: "What work without AI, human-made and hybrid work mean, and how the HTVS scale of proof is built.",
@@ -1198,7 +1079,7 @@ export const en: Dictionary = {
   workStages: {
     metaTitle: "Work stages",
     metaDescription:
-      "How to show the process behind a piece: four stages of one work, which materials count, what to do under an NDA, and how stages relate to the verified badge.",
+      "How to show the process behind a piece: up to four stages of one work, which materials count, what to do under an NDA, and how stages relate to the verified badge.",
     title: "Work stages",
     subtitle: "How to show that a piece was really made by a person",
     intro:
@@ -1214,7 +1095,7 @@ export const en: Dictionary = {
       {
         heading: "What to attach",
         paragraphs: [
-          "For one piece you attach four images showing the main stages of how it was made: the start, two moments in between, and the finished result.",
+          "For one piece you can attach up to four images showing the main stages of how it was made.",
           "They should be consecutive stages of the same piece rather than several different projects: one idea developing is what makes the process visible. Pick the piece where the process shows best, usually the one you reworked the most.",
         ],
       },
@@ -1337,8 +1218,17 @@ export const en: Dictionary = {
       {
         heading: "Where we draw the line",
         paragraphs: [
-          "We judge by substance. The core of the work, the drawing, the writing, the photograph, the design decision, the code, the object made by hand, is done by a person. Ordinary tools may assist along the way, including the ones with AI inside them: background clean-up, transcription, spell check, color balancing. That is fine, as long as the human contribution is the substance of the finished work and the professional is open about how AI was used. Clarity is the standard here, not silence.",
-          "The full account of what belongs here, what does not, and how work with a light touch of AI is treated is set out in a document of its own: [[standards]].",
+          "We judge by substance. The core of the work, the drawing, the writing, the photograph, the design decision, the code, the object made by hand, is done by a person. Ordinary tools may assist along the way, but the human contribution is the substance of the finished work, and the professional says so clearly.",
+        ],
+        bullets: [
+          "Belongs here: hand-drawn and hand-painted art, including work made on a graphics tablet by a person; photography and video shot by the person behind the camera; writing and editing shaped by a human; design and branding where the concept and typography are the designer's; handmade objects and craft; and professional services built on human judgment, such as consulting, teaching, architecture, or engineering.",
+          "Does not belong here: listings whose main output is AI-generated imagery, text, music, or code with only a light human touch on top; storefronts that resell AI-generated goods as human-made; and any claim of authorship or process that is not honest.",
+        ],
+      },
+      {
+        heading: "Where everyday tools fit",
+        paragraphs: [
+          "AI touches many workflows now, from background clean-up and transcription to spell check and color balancing. That is fine, as long as the human contribution is the substance of the finished work and the professional is open about how AI was used. Every profile carries a short statement on this. Clarity is the standard, not silence.",
         ],
       },
       {
@@ -1361,19 +1251,9 @@ export const en: Dictionary = {
         ],
       },
       {
-        heading: "Work stages",
-        paragraphs: [
-          "We turned the second level into one clear step that anyone can take. A professional picks a single piece of their work and shows four files: the start, two moments along the way, and the finished result, in that order.",
-          "A file can be anything that shows the work: a draft, a working file, a process shot, a photo, a screenshot, a scan, a PDF. Under each one the professional writes a line saying what it shows. Nothing has to be staged for this. Real work leaves these traces on its own.",
-          "Why the order matters. A single draft says little on its own, since it can be made after the finished piece. Four steps that follow one another and arrive at the exact result sitting in the portfolio are far harder to assemble after the fact. We are not looking at how good the files are, we are looking at whether the chain holds together.",
-          "The professional decides whether to show these files on the profile or keep them for the review only. When they are shown, a client sees not just the result but how it was made, and that is usually what settles the question of trust, more than any description of services.",
-          "What to attach, which materials count, and what to do when a piece is covered by an agreement, are set out separately: [[workStages]].",
-        ],
-      },
-      {
         heading: "How verification works",
         paragraphs: [
-          "Verification is optional. Beyond the work stages, a professional may submit other materials, such as process photos or video, sketches, drafts, or published work. We review all of it by hand, check that it lines up with the profile, and, if the review supports it, add a verified badge with a short description of what we actually looked at.",
+          "Verification is optional and honest. A professional may submit materials, such as process photos or video, sketches, drafts, or published work, that show how the work is made. We review them by hand, check that they line up with the profile, and, if the review supports it, add a verified badge with a short description of what we actually looked at.",
           "We are careful about what this means. It is a considered human review of the materials shown to us, not a legal guarantee that no AI was ever involved anywhere. Two badges are used: Verified Human Creator for individuals, and Verified Human-Made Business for studios and companies.",
         ],
       },
