@@ -85,7 +85,7 @@ function PricingFold({
   return (
     <div className="rounded-xl border" style={{ borderColor: edge, background: bg }}>
       <details className="group">
-        <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 [&::-webkit-details-marker]:hidden">
+        <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-1.5 [&::-webkit-details-marker]:hidden">
           <span
             className="text-[0.95rem] font-semibold leading-snug"
             style={{ fontFamily: "var(--font-display)", color: "var(--color-muted)" }}
@@ -111,7 +111,7 @@ function PricingFold({
           </span>
         </summary>
         <p
-          className="px-4 pb-4 text-[0.95rem] leading-snug"
+          className="px-4 pb-3 text-[0.95rem] leading-snug"
           style={{ color: "var(--color-muted)" }}
         >
           {children}
@@ -357,10 +357,10 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                   className="flex items-center gap-1 leading-none"
                   style={{ fontFamily: "var(--font-display)", color: "#0f7a58" }}
                 >
-                  <span className="text-[1.2rem] font-semibold">
+                  <span className="text-[1rem] font-semibold">
                     {freeTier.priceLabel.replace(/[\d.,]/g, "")}
                   </span>
-                  <span className="text-[3.2rem] font-bold tracking-tight">
+                  <span className="text-[2.4rem] font-bold tracking-tight">
                     {freeTier.priceLabel.replace(/[^\d.,]/g, "")}
                   </span>
                   <span className="ml-2 text-[1.05rem] font-semibold">

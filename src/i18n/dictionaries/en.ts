@@ -353,7 +353,7 @@ export const en: Dictionary = {
       ],
       team: [
         "Twice the visibility of a single creator",
-        "A shared team profile alongside each member's own",
+        "A separate team profile",
         "Up to 4 members",
         "6 selected projects",
         "Listed in 4 categories of the directory",
@@ -389,7 +389,7 @@ export const en: Dictionary = {
       "You can cancel any time. Your profile stays in the catalog until the end of the period you paid for.",
     readyTitle: "Ready to list your profile",
     readyText:
-      "While the free places last, listing costs nothing. Fill in the form and we will come back to you.",
+      "While the free places last, listing costs nothing. Fill in the form and we take it from there.",
     addProfile: "Add profile",
     readStandards: "Our standards",
     claimFree: "Create your free profile",
