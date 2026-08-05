@@ -83,23 +83,23 @@ function PricingFold({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-2xl border" style={{ borderColor: edge, background: bg }}>
+    <div className="rounded-xl border" style={{ borderColor: edge, background: bg }}>
       <details className="group">
-        <summary className="flex cursor-pointer list-none items-center justify-between gap-3 p-5 md:p-6 [&::-webkit-details-marker]:hidden">
+        <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 [&::-webkit-details-marker]:hidden">
           <span
-            className="text-[1.15rem] font-bold leading-snug"
-            style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
+            className="text-[0.95rem] font-semibold leading-snug"
+            style={{ fontFamily: "var(--font-display)", color: "var(--color-muted)" }}
           >
             {title}
           </span>
           <span
             aria-hidden
-            className="grid h-8 w-8 shrink-0 place-items-center rounded-full transition-transform group-open:rotate-45"
+            className="grid h-6 w-6 shrink-0 place-items-center rounded-full transition-transform group-open:rotate-45"
             style={{ background: "rgba(255,255,255,0.75)", color: plus }}
           >
             <svg
-              width="18"
-              height="18"
+              width="14"
+              height="14"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -111,8 +111,8 @@ function PricingFold({
           </span>
         </summary>
         <p
-          className="px-5 pb-5 text-[1.15rem] leading-snug md:px-6 md:pb-6"
-          style={{ color: "var(--color-muted)", textAlign: "justify" }}
+          className="px-4 pb-4 text-[0.95rem] leading-snug"
+          style={{ color: "var(--color-muted)" }}
         >
           {children}
         </p>
@@ -138,7 +138,7 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           pages: the text is in the HTML whether the plate is open or shut,
           so search engines and AI engines read all of it without running
           any code. */}
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-2">
         <PricingFold
           title={dict.pricing.introTitle}
           bg="#eae4fa"
@@ -324,7 +324,7 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                   different heights, and a row of three where the middle
                   price sits higher than its neighbours reads as broken
                   rather than as a hierarchy. */}
-              <div className="mt-3 md:min-h-[3rem]">
+              <div className="mt-3 md:min-h-[4.6rem]">
                 <p className="text-[1.15rem] leading-snug" style={{ color: "var(--color-muted)" }}>
                   {dict.pricing.planFor[id]}
                 </p>

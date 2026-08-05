@@ -392,7 +392,7 @@ export const en: Dictionary = {
       "While the free places last, listing costs nothing. Fill in the form and we will come back to you.",
     addProfile: "Add profile",
     readStandards: "Our standards",
-    claimFree: "Add your profile free",
+    claimFree: "Create your free profile",
     getStarted: "Choose a plan",
   },
 

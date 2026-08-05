@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { LocaleLink } from "@/components/LocaleLink";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { PlansTable } from "@/components/PlansTable";
-import { CheckShield, ArrowRight } from "@/components/icons";
+import { ArrowRight } from "@/components/icons";
 import { UpdatedStamp } from "@/components/UpdatedStamp";
 import { site, plans, PLAN_ORDER } from "@/lib/config";
 import { getDictionary } from "@/i18n";
@@ -114,24 +114,15 @@ export default async function PricingPage({
         <h1 className="text-center" style={{ fontSize: "var(--text-h2)" }}>
           {dict.pricing.title}
         </h1>
-        <UpdatedStamp route={ROUTE} lang={locale} dict={dict} className="mt-3 text-center" />
         <div className="mt-6">
           <PlansTable lang={locale} dict={dict} />
         </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
-          <div>
-            <h2 className="!text-[1.25rem]">{dict.pricing.everythingTitle}</h2>
-            <ul className="mt-4 space-y-2" style={{ color: "var(--color-muted)" }}>
-              {dict.pricing.everythingItems.map((line) => (
-                <li key={line} className="flex gap-2 text-[1.15rem]">
-                  <CheckShield size={16} className="mt-0.5 shrink-0" />
-                  <span>{line}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
+        {/* "Included in every plan" used to sit beside this. Every line in it
+            was either already on a card or too small to earn a heading, and a
+            second list under three lists made the page look like a contract.
+            Payment stands alone now. */}
+        <div className="mt-10 max-w-2xl">
           <div>
             <h2 className="!text-[1.25rem]">{dict.pricing.howPaymentTitle}</h2>
             <p className="mt-3 text-[1.15rem]" style={{ color: "var(--color-muted)" }}>
@@ -165,16 +156,15 @@ export default async function PricingPage({
               {dict.pricing.addProfile}
               <ArrowRight size={16} />
             </LocaleLink>
-            <LocaleLink
-              lang={locale}
-              href="/method"
-              className="btn btn-quiet btn-full"
-              style={{ minHeight: "var(--h-action-lg)" }}
-            >
-              {dict.pricing.readStandards}
-            </LocaleLink>
           </div>
         </div>
+
+        {/* Byline and date sit at the foot of the page rather than under the
+            title. At the top they were the first thing read on a page whose
+            subject is the price, and a reader who came for a figure does not
+            start by asking who wrote it. Down here the same line reads as a
+            signature. Search engines and answer engines take it either way. */}
+        <UpdatedStamp route={ROUTE} lang={locale} dict={dict} className="mt-10 text-center" />
       </div>
     </div>
   );

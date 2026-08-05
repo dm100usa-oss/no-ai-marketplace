@@ -383,8 +383,8 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid rgba(22, 35, 58, 0.06);
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 1.35rem;
-  line-height: 1.1;
+  font-size: 1.1rem;
+  line-height: 1.15;
   text-align: center;
   cursor: pointer;
   transition: transform 0.12s ease, box-shadow 0.12s ease;
