@@ -190,7 +190,7 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
       </div>
 
       {/* Plans */}
-      <div className="mt-6 grid gap-3 md:grid-cols-3 md:gap-4">
+      <div className="mt-6 grid gap-3 md:grid-cols-3 md:gap-6">
         {PLAN_ORDER.map((id) => {
           const plan = plans[id];
           const tone = TONES[id];
@@ -203,8 +203,14 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           return (
             <div
               key={id}
-              className="flex flex-col rounded-2xl border-0 p-0 md:border md:bg-white md:p-3"
-              style={{ borderColor: "var(--color-line)" }}
+              // On a computer the three cards sat on a white page inside a
+              // grey hairline, which put no distance between them: the eye
+              // read one long list rather than three offers. The edge now
+              // takes the plan's own colour and the card lifts off the page
+              // slightly, so each plan is visibly a separate thing and the
+              // colour says which one before the name is read.
+              className="flex flex-col rounded-2xl border-0 p-0 md:border md:bg-white md:p-4 md:shadow-[0_1px_16px_rgba(16,35,58,0.07)]"
+              style={{ borderColor: tone.edge }}
             >
               {/* On a phone the whole card folds into this one strip and the
                   rest of it opens underneath. Three strips fit a quarter of
