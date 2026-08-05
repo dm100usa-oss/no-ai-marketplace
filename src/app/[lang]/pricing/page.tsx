@@ -122,13 +122,18 @@ export default async function PricingPage({
             was either already on a card or too small to earn a heading, and a
             second list under three lists made the page look like a contract.
             Payment stands alone now. */}
-        <div className="mt-10 max-w-2xl">
-          <div>
-            <h2 className="!text-[1.25rem]">{dict.pricing.howPaymentTitle}</h2>
-            <p className="mt-3 text-[1.15rem]" style={{ color: "var(--color-muted)" }}>
+        {/* Payment now stands alone where two columns used to be, so it takes
+            the full width: the heading centred over the row, the two
+            paragraphs side by side. Left in a narrow column the first line
+            broke after two or three words with half the page empty beside
+            it. */}
+        <div className="mt-10">
+          <h2 className="!text-[1.25rem] text-center">{dict.pricing.howPaymentTitle}</h2>
+          <div className="mt-4 grid gap-x-10 gap-y-3 md:grid-cols-2">
+            <p className="text-[1.05rem] leading-relaxed" style={{ color: "var(--color-muted)" }}>
               {dict.pricing.howPaymentText1}
             </p>
-            <p className="mt-3 text-[1.15rem]" style={{ color: "var(--color-muted)" }}>
+            <p className="text-[1.05rem] leading-relaxed" style={{ color: "var(--color-muted)" }}>
               {dict.pricing.howPaymentText2}
             </p>
           </div>

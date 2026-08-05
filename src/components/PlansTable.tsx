@@ -316,7 +316,11 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                   is tapped, always open on a computer. It is in the HTML
                   either way, so search engines and AI engines read the whole
                   card whether it is folded or not. */}
-              <div className="hidden peer-checked:block md:block">
+              {/* On a computer this wrapper has to be a column that grows,
+                  or the button's mt-auto pushes against the wrapper instead
+                  of the card and the three buttons end up at three different
+                  heights, following the length of the list above them. */}
+              <div className="hidden peer-checked:block md:flex md:flex-1 md:flex-col">
 
               {/* Who it is for, plus the selling line, held in one block of
                   a fixed minimum height. Cards with a selling line and
