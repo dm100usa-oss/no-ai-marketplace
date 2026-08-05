@@ -411,18 +411,15 @@ export function PlansTable({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 </div>
               </div>
 
-              {/* The base plan lists what a profile is; the two above it
-                  inherit it by name and list only what they add. Written out
-                  in full on all three, the same six lines would appear three
-                  times and the reader would have to diff them by eye to see
-                  what the extra money buys. */}
+              {/* Each plan carries its own full list. Inheritance ("everything
+                  in Creator, plus") was tried and dropped: the counts differ
+                  between plans, so the inherited line and the numbers under it
+                  contradicted each other on the same card. */}
               <p
                 className="mt-5 text-[1.2rem] font-bold"
                 style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
               >
-                {id === "creator"
-                  ? dict.pricing.includedTitle
-                  : dict.pricing.plusTitle.replace("{plan}", dict.pricing.planNames.creator)}
+                {dict.pricing.includedTitle}
               </p>
 
               {/* Justified text was pulling single phrases apart: a line

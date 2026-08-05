@@ -290,9 +290,6 @@ export interface Dictionary {
      *  decided by the size of the saving, not by the plan. */
     savePercent: string;
     saveAmount: string;
-    /** Heading over the feature list on the two upper plans: they inherit
-     *  the base plan rather than repeat it. */
-    plusTitle: string;
     /** Small mark on the plan we point people at. */
     recommendedBadge: string; // shown in place of the price while free
     everythingTitle: string;
