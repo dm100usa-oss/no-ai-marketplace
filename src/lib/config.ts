@@ -10,7 +10,7 @@ export const site = {
   slogan: "Real People. No AI.",
   description:
     "An international directory of professionals who create professional work and services without the use of generative AI.",
-  url: "https://no-ai-marketplace.vercel.app",
+  url: "https://www.noaidirectory.com",
   locale: "en",
   /** Free places at launch, across all participant types together. */
   freeSlots: 50,
