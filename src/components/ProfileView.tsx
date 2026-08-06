@@ -7,7 +7,15 @@ import { VerifiedBadge, FeaturedBadge } from "@/components/Badges";
 import { CreatorCard } from "@/components/CreatorCard";
 import { GalleryLightbox } from "@/components/GalleryLightbox";
 import { ReportForm } from "@/components/ReportForm";
-import { ExternalLink, ArrowRight, CheckShield } from "@/components/icons";
+import {
+  ExternalLink,
+  ArrowRight,
+  GlobeIcon,
+  ShopIcon,
+  FolioIcon,
+  PhotoIcon,
+  PlayIcon,
+} from "@/components/icons";
 import { buildIntroduction } from "@/lib/introduction";
 import { countryCode } from "@/lib/country-name";
 import { localizedPath } from "@/i18n/config";
@@ -661,11 +669,14 @@ export async function ProfileView({
                     href={l.href}
                     target="_blank"
                     rel="noopener noreferrer nofollow"
-                    className="flex items-center justify-between text-[0.92rem]"
+                    className="flex items-center justify-between gap-2 text-[0.92rem]"
                     style={{ color: "var(--color-muted)" }}
                   >
-                    {l.label}
-                    <ExternalLink size={15} />
+                    <span className="flex min-w-0 items-center gap-2">
+                      <LinkMark kind={l.kind} />
+                      <span className="truncate">{l.label}</span>
+                    </span>
+                    <ExternalLink size={15} className="shrink-0" />
                   </a>
                 ))}
               </div>
@@ -683,21 +694,25 @@ export async function ProfileView({
             ) : null}
 
             <div className="mt-4 border-t pt-4" style={{ borderColor: "var(--color-line)" }}>
+              {/* Where and what, as plates. The country stood here alone,
+                  which told a client the least useful half of the answer:
+                  a city is what decides whether somebody can meet, and the
+                  trade is what they came looking for. */}
               <div className="flex flex-wrap gap-1.5">
+                {p.city && <span className="pill">{p.city}</span>}
                 <span className="pill">{p.country}</span>
+                <span className="pill">{cat ? cat.name : categoryNameL(p.mainCategory, lang)}</span>
                 {(p.tags ?? []).map((t) => (
                   <span key={t} className="pill">{t}</span>
                 ))}
               </div>
             </div>
 
-            <p
-              className="mt-4 flex gap-2 border-t pt-4 text-[0.82rem]"
-              style={{ color: "var(--color-muted-soft)", borderColor: "var(--color-line)" }}
-            >
-              <CheckShield size={14} className="mt-0.5 shrink-0" />
-              {dict.profile.purchaseNote}
-            </p>
+            {/* The line that used to sit here — purchases happen on the
+                author's own platform, not on this site — is gone. It said
+                the same thing as the last step of "How the work is done"
+                just below, in smaller grey type, and a panel whose job is
+                to send somebody onward should not end on a disclaimer. */}
           </div>
 
           {/* How the work is done, tucked under the contact card.
@@ -812,36 +827,36 @@ function collectLinks(
   p: Profile,
   dict: Dictionary,
   skipKey?: string,
-): { label: string; href: string }[] {
+): { label: string; href: string; kind: LinkKind }[] {
   const s = p.socialLinks;
   const go = (key: string) => `/api/go/${p.slug}/${key}`;
 
   /** group: what platform this address belongs to, so the list can keep
    *  them side by side and number them. */
-  const items: { label: string; href: string; group: string }[] = [];
-  const add = (key: string, label: string, url?: string) => {
+  const items: { label: string; href: string; group: string; kind: LinkKind }[] = [];
+  const add = (key: string, label: string, url: string | undefined, kind: LinkKind) => {
     if (!url || key === skipKey) return;
-    items.push({ label, href: go(key), group: label });
+    items.push({ label, href: go(key), group: label, kind });
   };
 
-  add("website", dict.profile.linkWebsite, s.website);
-  add("portfolio", dict.profile.linkPortfolio, s.portfolio);
-  add("etsy", dict.profile.linkEtsy, s.etsy);
-  add("amazon", dict.profile.linkAmazon, s.amazon);
-  add("behance", dict.profile.linkBehance, s.behance);
-  add("dribbble", dict.profile.linkDribbble, s.dribbble);
-  add("linkedin", dict.profile.linkLinkedin, s.linkedin);
-  add("instagram", dict.profile.linkInstagram, s.instagram);
-  add("youtube", dict.profile.linkYoutube, s.youtube);
+  add("website", dict.profile.linkWebsite, s.website, "site");
+  add("portfolio", dict.profile.linkPortfolio, s.portfolio, "folio");
+  add("etsy", dict.profile.linkEtsy, s.etsy, "shop");
+  add("amazon", dict.profile.linkAmazon, s.amazon, "shop");
+  add("behance", dict.profile.linkBehance, s.behance, "folio");
+  add("dribbble", dict.profile.linkDribbble, s.dribbble, "folio");
+  add("linkedin", dict.profile.linkLinkedin, s.linkedin, "folio");
+  add("instagram", dict.profile.linkInstagram, s.instagram, "photo");
+  add("youtube", dict.profile.linkYoutube, s.youtube, "video");
   (s.other ?? []).forEach((o, i) =>
-    items.push({ label: o.label, href: go(`other-${i}`), group: o.label }),
+    items.push({ label: o.label, href: go(`other-${i}`), group: o.label, kind: kindOfLink(o.label) }),
   );
 
   // Regroup, keeping the order each platform first appeared in.
   const groups: string[] = [];
   for (const it of items) if (!groups.includes(it.group)) groups.push(it.group);
 
-  const out: { label: string; href: string }[] = [];
+  const out: { label: string; href: string; kind: LinkKind }[] = [];
   for (const g of groups) {
     const inGroup = items.filter((it) => it.group === g);
     inGroup.forEach((it, i) =>
@@ -850,10 +865,35 @@ function collectLinks(
         // Amazon link is "Amazon", not "Amazon 1".
         label: inGroup.length > 1 ? `${it.label} ${i + 1}` : it.label,
         href: it.href,
+        kind: it.kind,
       }),
     );
   }
   return out;
+}
+
+/** What kind of place a link leads to. Used to pick its mark. */
+type LinkKind = "site" | "shop" | "folio" | "photo" | "video";
+
+/** For addresses on platforms we do not name, the host is all we have to
+ *  go on. A guess here costs nothing: the wrong mark on a link still
+ *  leads to the right place, and the label says where. */
+function kindOfLink(label: string): LinkKind {
+  const l = label.toLowerCase();
+  if (/(amazon|etsy|shop|store|gumroad|ozon|wildberries)/.test(l)) return "shop";
+  if (/(youtube|youtu|vimeo|rutube|tiktok)/.test(l)) return "video";
+  if (/(instagram|pinterest|flickr|500px|vk)/.test(l)) return "photo";
+  if (/(behance|dribbble|linkedin|artstation|deviantart)/.test(l)) return "folio";
+  return "site";
+}
+
+/** The mark for a kind of place. */
+function LinkMark({ kind }: { kind: LinkKind }) {
+  if (kind === "shop") return <ShopIcon size={16} className="shrink-0" />;
+  if (kind === "folio") return <FolioIcon size={16} className="shrink-0" />;
+  if (kind === "photo") return <PhotoIcon size={16} className="shrink-0" />;
+  if (kind === "video") return <PlayIcon size={16} className="shrink-0" />;
+  return <GlobeIcon size={16} className="shrink-0" />;
 }
 
 /** Same-category profiles excluding the current one, capped to `limit`. */

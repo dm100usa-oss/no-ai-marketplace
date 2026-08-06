@@ -129,3 +129,60 @@ export const TeamIcon = ({ size = 27, className = "" }: { size?: number; classNa
     <path d="M8.4 20c0-3.7 3-6.6 6.6-6.6s6.6 2.9 6.6 6.6z" />
   </svg>
 );
+
+/* ---------------------------------------------------------------------
+   Marks for the kinds of place a professional's link leads to.
+
+   Deliberately our own drawings, not the platforms' logos. A logo is a
+   trademark, and reproducing one to decorate a list is a permission we do
+   not have and do not need: the word next to the mark already says which
+   platform it is, and the mark only has to say what kind of place waits
+   on the other side — a shop, a portfolio, a video, a photo feed.
+
+   Same stroke weight and size as the rest of the icons, so the list reads
+   as one thing rather than a row of borrowed badges.
+   ------------------------------------------------------------------ */
+
+/** Own site. */
+export const GlobeIcon = ({ size = 16, className = "", strokeWidth = 1.8 }: P) => (
+  <svg {...base(size)} className={className}>
+    <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth={strokeWidth} />
+    <path d="M3 12h18M12 3c2.5 2.6 2.5 15.4 0 18M12 3c-2.5 2.6-2.5 15.4 0 18"
+      stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" />
+  </svg>
+);
+
+/** A shop: Amazon, Etsy, anywhere work is sold. */
+export const ShopIcon = ({ size = 16, className = "", strokeWidth = 1.8 }: P) => (
+  <svg {...base(size)} className={className}>
+    <path d="M4 8h16l-1.2 11.2a1 1 0 0 1-1 .8H6.2a1 1 0 0 1-1-.8L4 8z"
+      stroke="currentColor" strokeWidth={strokeWidth} strokeLinejoin="round" />
+    <path d="M9 8V6.5a3 3 0 0 1 6 0V8" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" />
+  </svg>
+);
+
+/** A portfolio or professional page: Behance, Dribbble, LinkedIn. */
+export const FolioIcon = ({ size = 16, className = "", strokeWidth = 1.8 }: P) => (
+  <svg {...base(size)} className={className}>
+    <rect x="3" y="7" width="18" height="13" rx="2" stroke="currentColor" strokeWidth={strokeWidth} />
+    <path d="M9 7V5.5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5.5V7"
+      stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" />
+  </svg>
+);
+
+/** A photo feed: Instagram, Pinterest and the like. */
+export const PhotoIcon = ({ size = 16, className = "", strokeWidth = 1.8 }: P) => (
+  <svg {...base(size)} className={className}>
+    <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" stroke="currentColor" strokeWidth={strokeWidth} />
+    <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth={strokeWidth} />
+    <circle cx="17" cy="7" r="1" fill="currentColor" />
+  </svg>
+);
+
+/** Video: YouTube, Vimeo. */
+export const PlayIcon = ({ size = 16, className = "", strokeWidth = 1.8 }: P) => (
+  <svg {...base(size)} className={className}>
+    <rect x="2.5" y="5" width="19" height="14" rx="4" stroke="currentColor" strokeWidth={strokeWidth} />
+    <path d="M10.5 9.2l4.6 2.8-4.6 2.8V9.2z" fill="currentColor" />
+  </svg>
+);
