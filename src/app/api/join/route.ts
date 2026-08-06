@@ -173,6 +173,32 @@ function pickWorks(fields: TallyField[]): string[] {
   return out;
 }
 
+/** The one stage question that is not a picture and not a caption: the
+ *  yes or no that decides whether visitors ever see the stages at all.
+ *
+ *  It used to be found by its exact opening words, one phrase per
+ *  language. That holds only until somebody rewords the question in
+ *  Tally, and then the answer quietly reads as no: the stages are
+ *  collected, the owner sees them at review time, and the profile shows
+ *  nothing — the project's whole point, missing, with no error anywhere.
+ *
+ *  The stage questions already have a shape: the pictures are numbered,
+ *  the captions carry a caption word. Whatever else mentions a stage is
+ *  this question, in any wording and either language. */
+function stagesConsentText(fields: TallyField[]): string {
+  for (const f of fields) {
+    const label = (f.label ?? f.key ?? "").toLowerCase().trim();
+    if (!label.includes("этап") && !label.includes("stage")) continue;
+    if (/^(этап|stage)\s*\d/.test(label)) continue;
+    if (STAGE_CAPTION_WORDS.some((k) => label.includes(k))) continue;
+    if (/(описание|description|caption|подпись)/.test(label)) continue;
+    const t = fieldText(f);
+    if (t) return t;
+  }
+  return "";
+}
+
+
 /** Split a picked value into a list on commas and newlines. */
 function pickList(
   fields: TallyField[],
@@ -239,7 +265,12 @@ export async function POST(request: NextRequest) {
     country: pick(fields, ["country", "страна"]),
     city: pick(fields, ["city", "город"]),
     profileType,
-    mainCategory: pick(fields, ["category", "категория"]),
+    // "Ваша категория" today, but a form question gets reworded, and
+    // "Выберите категорию" would no longer match the full word. The stem
+    // matches any of them; the additional-categories question, which
+    // carries the same stem, is excluded by name so the two cannot be
+    // confused whatever order they end up in.
+    mainCategory: pick(fields, ["category", "категори"], ["дополнит", "additional"]),
     additionalCategories: pickList(fields, ["additional", "дополнит"]),
     // "Расскажите о компании и вашей работе" / "Tell us about the team and
     // your work" is the one story field in every form, so it is matched by
@@ -257,7 +288,19 @@ export async function POST(request: NextRequest) {
     services: pickList(fields, ["услуг", "services"]),
     fullDescription: pick(fields, ["full", "подробн", "detail"], CAPTION_WORDS),
     website: pick(fields, ["website", "сайт", "url"]),
-    otherLinks: pick(fields, ["link", "ссылк", "social", "portfolio"]),
+    otherLinks: pick(
+      fields,
+      ["другие ссылк", "other link", "ссылк", "link", "social", "portfolio"],
+      // The website question comes first and reads alike: "Ссылка на ваш
+      // сайт, портфолио или магазин" carries the same word as "Другие
+      // ссылки", so the search stopped there and copied the website
+      // address into this field instead. Every Etsy, Behance, Instagram
+      // and YouTube address a member entered was dropped without a trace,
+      // on the one field whose whole purpose is to prove they are real.
+      // The website question is the one that names a site, so naming a
+      // site is what excludes it here.
+      ["сайт", "website", "работа ", "work "],
+    ),
     // "Логотип компании" and "Company Logo" carry neither the word photo
     // nor avatar, so without these two the logo never arrived at all.
     avatar: pick(fields, ["avatar", "photo", "фото", "portrait", "logo", "логотип"]),
@@ -274,9 +317,7 @@ export async function POST(request: NextRequest) {
     // stagesPublic alone decides whether visitors ever do.
     stages: pickStages(fields),
     stageCaptions: pickEach(fields, STAGE_CAPTION_WORDS),
-    stagesPublic: /(^|\s)(да|yes)(\s|$)/i.test(
-      pick(fields, ["прикрепить этапы", "show these work stages"]) ?? "",
-    ),
+    stagesPublic: /(^|\s)(да|yes)(\s|$)/i.test(stagesConsentText(fields)),
     contactPerson: pick(fields, ["контактное лицо", "contact person"]),
     // The consent to appear on the home page used to be looked up by the
     // stem "главн", which also sits inside the picture question "Работа 1
