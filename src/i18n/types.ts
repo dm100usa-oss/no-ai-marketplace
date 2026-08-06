@@ -708,6 +708,12 @@ export interface Dictionary {
     visitWebsite: string;
     whereToFind: string; // "Where to find {name}"
     whereToFindThem: string;
+    /** Heading over the participant's own addresses. One per kind of
+     *  participant, because the name cannot go in: Russian would have to
+     *  decline it, and no single wording fits every name. */
+    ownPagesCreator: string;
+    ownPagesTeam: string;
+    ownPagesStudio: string;
     languages: string;
     /** Shown under the author's own words when those words were machine
      *  translated at publishing time. Names the language the author

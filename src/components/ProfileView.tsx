@@ -637,6 +637,94 @@ export async function ProfileView({
 
         </div>
 
+        {/* ------------------------- Sidebar ------------------------- */}
+        <aside className="lg:col-start-2 lg:row-start-1 lg:sticky lg:top-32 lg:self-start">
+          <div className="card p-5">
+            {p.demo ? (
+              // On the demo profile the Visit button has nowhere real to go,
+              // so it leads to the join page instead: someone who liked the
+              // example can step straight into making their own.
+              <LocaleLink
+                lang={lang}
+                href="/join"
+                className="btn btn-accent btn-full"
+              >
+                {visit.label}
+                <ArrowRight size={16} />
+              </LocaleLink>
+            ) : (
+              <a
+                href={visitHref}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="btn btn-accent btn-full"
+              >
+                {visit.label}
+                <ExternalLink size={16} />
+              </a>
+            )}
+
+            {externalLinks.length > 1 ? (
+              <div className="mt-4 space-y-2 border-t pt-4" style={{ borderColor: "var(--color-line)" }}>
+                {/* No name here. The heading used to read "Где найти
+                    Дмитрий", which is wrong Russian — the name would have
+                    to change its ending — and no wording works for every
+                    name in every language a directory this size will
+                    collect. The kind of participant says the same thing
+                    and never has to be declined. */}
+                <p className="mb-1 text-[0.78rem] font-semibold uppercase tracking-wide" style={{ color: "var(--color-muted-soft)" }}>
+                  {p.profileType === "company"
+                    ? dict.profile.ownPagesStudio
+                    : p.profileType === "team"
+                      ? dict.profile.ownPagesTeam
+                      : dict.profile.ownPagesCreator}
+                </p>
+                {externalLinks.map((l) => (
+                  <a
+                    key={l.label}
+                    href={l.href}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                    className="flex items-center justify-between text-[0.92rem]"
+                    style={{ color: "var(--color-muted)" }}
+                  >
+                    {l.label}
+                    <ExternalLink size={15} />
+                  </a>
+                ))}
+              </div>
+            ) : null}
+
+            {p.languages?.length ? (
+              <div className="mt-4 border-t pt-4" style={{ borderColor: "var(--color-line)" }}>
+                <p className="mb-1 text-[0.78rem] font-semibold uppercase tracking-wide" style={{ color: "var(--color-muted-soft)" }}>
+                  {dict.profile.languages}
+                </p>
+                <p className="text-[0.92rem]" style={{ color: "var(--color-muted)" }}>
+                  {p.languages.join(", ")}
+                </p>
+              </div>
+            ) : null}
+
+            <div className="mt-4 border-t pt-4" style={{ borderColor: "var(--color-line)" }}>
+              <div className="flex flex-wrap gap-1.5">
+                <span className="pill">{p.country}</span>
+                {(p.tags ?? []).map((t) => (
+                  <span key={t} className="pill">{t}</span>
+                ))}
+              </div>
+            </div>
+
+            <p
+              className="mt-4 flex gap-2 border-t pt-4 text-[0.82rem]"
+              style={{ color: "var(--color-muted-soft)", borderColor: "var(--color-line)" }}
+            >
+              <CheckShield size={14} className="mt-0.5 shrink-0" />
+              {dict.profile.purchaseNote}
+            </p>
+          </div>
+        </aside>
+
         {/* --------------------- Below the fold ---------------------
             Related profiles and the report form used to sit at the end of
             the main column, which put them above the contact panel on a
@@ -686,86 +774,6 @@ export async function ProfileView({
             <ReportForm dict={dict} profileName={p.name} profileSlug={`${basePath}/${p.slug}`} />
           </div>
         </div>
-
-        {/* ------------------------- Sidebar ------------------------- */}
-        <aside className="lg:col-start-2 lg:row-start-1 lg:sticky lg:top-32 lg:self-start">
-          <div className="card p-5">
-            {p.demo ? (
-              // On the demo profile the Visit button has nowhere real to go,
-              // so it leads to the join page instead: someone who liked the
-              // example can step straight into making their own.
-              <LocaleLink
-                lang={lang}
-                href="/join"
-                className="btn btn-accent btn-full"
-              >
-                {visit.label}
-                <ArrowRight size={16} />
-              </LocaleLink>
-            ) : (
-              <a
-                href={visitHref}
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-                className="btn btn-accent btn-full"
-              >
-                {visit.label}
-                <ExternalLink size={16} />
-              </a>
-            )}
-
-            {externalLinks.length > 1 ? (
-              <div className="mt-4 space-y-2 border-t pt-4" style={{ borderColor: "var(--color-line)" }}>
-                <p className="mb-1 text-[0.78rem] font-semibold uppercase tracking-wide" style={{ color: "var(--color-muted-soft)" }}>
-                  {p.profileType === "creator"
-                    ? `${dict.profile.whereToFind} ${p.name.split(" ")[0]}`
-                    : dict.profile.whereToFindThem}
-                </p>
-                {externalLinks.map((l) => (
-                  <a
-                    key={l.label}
-                    href={l.href}
-                    target="_blank"
-                    rel="noopener noreferrer nofollow"
-                    className="flex items-center justify-between text-[0.92rem]"
-                    style={{ color: "var(--color-muted)" }}
-                  >
-                    {l.label}
-                    <ExternalLink size={15} />
-                  </a>
-                ))}
-              </div>
-            ) : null}
-
-            {p.languages?.length ? (
-              <div className="mt-4 border-t pt-4" style={{ borderColor: "var(--color-line)" }}>
-                <p className="mb-1 text-[0.78rem] font-semibold uppercase tracking-wide" style={{ color: "var(--color-muted-soft)" }}>
-                  {dict.profile.languages}
-                </p>
-                <p className="text-[0.92rem]" style={{ color: "var(--color-muted)" }}>
-                  {p.languages.join(", ")}
-                </p>
-              </div>
-            ) : null}
-
-            <div className="mt-4 border-t pt-4" style={{ borderColor: "var(--color-line)" }}>
-              <div className="flex flex-wrap gap-1.5">
-                <span className="pill">{p.country}</span>
-                {(p.tags ?? []).map((t) => (
-                  <span key={t} className="pill">{t}</span>
-                ))}
-              </div>
-            </div>
-
-            <p
-              className="mt-4 flex gap-2 border-t pt-4 text-[0.82rem]"
-              style={{ color: "var(--color-muted-soft)", borderColor: "var(--color-line)" }}
-            >
-              <CheckShield size={14} className="mt-0.5 shrink-0" />
-              {dict.profile.purchaseNote}
-            </p>
-          </div>
-        </aside>
       </div>
     </div>
   );

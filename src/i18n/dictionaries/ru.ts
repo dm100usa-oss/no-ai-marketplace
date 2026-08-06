@@ -1516,6 +1516,9 @@ export const ru: Dictionary = {
     visitWebsite: "Открыть сайт",
     whereToFind: "Где найти",
     whereToFindThem: "Где их найти",
+    ownPagesCreator: "Страницы автора",
+    ownPagesTeam: "Страницы команды",
+    ownPagesStudio: "Страницы студии",
     languages: "Языки",
     autoTranslated:
       "Перевод автоматический. Оригинал написан автором на {lang} языке.",

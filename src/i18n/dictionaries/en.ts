@@ -1502,6 +1502,9 @@ export const en: Dictionary = {
     visitWebsite: "Visit website",
     whereToFind: "Where to find",
     whereToFindThem: "Where to find them",
+    ownPagesCreator: "Creator's own pages",
+    ownPagesTeam: "Team's own pages",
+    ownPagesStudio: "Studio's own pages",
     languages: "Languages",
     autoTranslated:
       "Machine translated. The author wrote the original in {lang}.",
