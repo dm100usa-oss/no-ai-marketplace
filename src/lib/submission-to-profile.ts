@@ -55,11 +55,45 @@ function slots(value: string[] | string | undefined): string[] {
  *  is left exactly as it is, including mailto: and other non-web
  *  addresses, which the outbound route still refuses on its own. */
 function tidyUrl(value: string): string {
-  const url = value.trim().replace(/[),.;]+$/, "");
+  let url = value.trim();
+  if (!url) return url;
+
+  // People label their links the way they would in a message: "Амазон
+  // https://...", "мой Etsy: https://...". Taken whole, the label became
+  // part of the address and the link led nowhere — and it failed silently,
+  // because a broken address still looks like a link on the page. So the
+  // address is lifted out of the line: everything from the scheme up to
+  // the first space.
+  const scheme = url.search(/https?:\/\//i);
+  if (scheme > 0) url = url.slice(scheme);
+  if (scheme < 0) {
+    // No scheme anywhere: the address may still be sitting after a label,
+    // so the first word that looks like a domain wins.
+    const word = url
+      .split(/\s+/)
+      .find((w) => /^[a-z0-9-]+(\.[a-z0-9-]+)+([/?#].*)?$/i.test(w));
+    if (word) url = word;
+  }
+  url = url.split(/\s+/)[0];
+
+  url = url.replace(/[),.;]+$/, "");
   if (!url) return url;
   if (/^[a-z][a-z0-9+.-]*:/i.test(url)) return url;
   return `https://${url.replace(/^\/+/, "")}`;
 }
+
+/** Platform names as their owners write them. Used to label a second or
+ *  third address on the same platform: "amazon.com" under an author's two
+ *  books reads like a machine's note, "Amazon" reads like a link. */
+const SLOT_NAMES: Partial<Record<keyof SocialLinks, string>> = {
+  etsy: "Etsy",
+  amazon: "Amazon",
+  behance: "Behance",
+  dribbble: "Dribbble",
+  linkedin: "LinkedIn",
+  instagram: "Instagram",
+  youtube: "YouTube",
+};
 
 /** Sort a pile of links into named platforms. People paste them in any
  *  order and any format, so matching is by what the address contains,
@@ -72,23 +106,52 @@ function buildSocialLinks(s: Submission): SocialLinks {
   const all = [s.website, ...lines(s.otherLinks)]
     .filter(Boolean)
     .map((v) => tidyUrl(v as string))
-    .filter((v) => v.length > 0);
+    // A line with no address in it at all — "напишите мне в телеграм" —
+    // used to end up as a link to a one-word host, printed on the page as
+    // if it led somewhere. Anything without a dot in the host is not an
+    // address and is dropped rather than shown.
+    .filter((v) => {
+      if (!v) return false;
+      try {
+        return new URL(v).hostname.includes(".");
+      } catch {
+        return false;
+      }
+    });
 
-  for (const url of all) {
-    const u = url.toLowerCase();
-    if (u.includes("etsy.")) out.etsy ??= url;
+  // Which named slot a link belongs to, or nothing when the platform is
+  // one we do not name.
+  const slotOf = (u: string): keyof SocialLinks | undefined => {
+    if (u.includes("etsy.")) return "etsy";
     // Amazon's own short links carry the shop's name nowhere in the
     // address, so without naming them a book link was labelled "Website"
     // and lost the one word that tells a visitor what waits on the other
     // side of it.
-    else if (u.includes("amazon.") || u.includes("amzn.to") || u.includes("//a.co/"))
-      out.amazon ??= url;
-    else if (u.includes("behance.")) out.behance ??= url;
-    else if (u.includes("dribbble.")) out.dribbble ??= url;
-    else if (u.includes("linkedin.")) out.linkedin ??= url;
-    else if (u.includes("instagram.")) out.instagram ??= url;
-    else if (u.includes("youtube.") || u.includes("youtu.be")) out.youtube ??= url;
-    else if (!out.website) out.website = url;
+    if (u.includes("amazon.") || u.includes("amzn.to") || u.includes("//a.co/"))
+      return "amazon";
+    if (u.includes("behance.")) return "behance";
+    if (u.includes("dribbble.")) return "dribbble";
+    if (u.includes("linkedin.")) return "linkedin";
+    if (u.includes("instagram.")) return "instagram";
+    if (u.includes("youtube.") || u.includes("youtu.be")) return "youtube";
+    return undefined;
+  };
+
+  for (const url of all) {
+    const u = url.toLowerCase();
+    const slot = slotOf(u);
+
+    if (slot) {
+      // A named slot holds one address, and an author with two books on
+      // Amazon used to lose the second one without a word. The extras go
+      // to the general list instead, so every address the author gave is
+      // on the page — which is the whole point of the block.
+      if (!out[slot]) (out[slot] as string) = url;
+      else other.push({ label: SLOT_NAMES[slot] ?? hostOf(url), url });
+      continue;
+    }
+
+    if (!out.website) out.website = url;
     else if (!out.portfolio) out.portfolio = url;
     else other.push({ label: hostOf(url), url });
   }

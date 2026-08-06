@@ -68,12 +68,25 @@ export async function GET(
 
   const profiles = await getLiveProfiles();
   const profile = profiles.find((p) => p.slug === slug);
-  const target = profile ? linkFor(profile, key) : undefined;
-
   // No profile, no such link, or a link that is not a web address: send the
   // visitor to the catalog rather than showing them an error. They were on
   // their way to somebody's work; the catalog is the nearest useful place.
-  if (!target || !/^https?:\/\//i.test(target)) {
+  //
+  // "Looks like an address" is not enough. A line typed as "Amazon
+  // https://..." once produced something that began with https and was
+  // still not an address any browser could open, so the destination is
+  // parsed here before anybody is sent to it.
+  let target: string | undefined;
+  const raw = profile ? linkFor(profile, key) : undefined;
+  if (raw && /^https?:\/\//i.test(raw)) {
+    try {
+      target = new URL(raw).toString();
+    } catch {
+      target = undefined;
+    }
+  }
+
+  if (!target) {
     return NextResponse.redirect(new URL("/directory", _req.url), 302);
   }
 

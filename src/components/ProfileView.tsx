@@ -210,7 +210,7 @@ export async function ProfileView({
 
       <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
         {/* ------------------------- Main column ------------------------- */}
-        <div>
+        <div className="lg:col-start-1 lg:row-start-1">
           {/* Header */}
           <div className="flex items-start gap-5">
             {p.avatar ? (
@@ -626,9 +626,23 @@ export async function ProfileView({
             </div>
           )}
 
+        </div>
+
+        {/* --------------------- Below the fold ---------------------
+            Related profiles and the report form used to sit at the end of
+            the main column, which put them above the contact panel on a
+            phone: the panel is a side column only while there is a side,
+            and on a narrow screen it simply falls to the bottom. So a
+            visitor scrolled past somebody's profile, met six other
+            people, and only then found the link they came for.
+
+            They are their own block now, placed on the second row of the
+            grid. On a wide screen nothing moves; on a phone the contacts
+            come first and these follow. */}
+        <div className="lg:col-start-1 lg:row-start-2">
           {/* Related profiles in the same category */}
           {relatedProfiles.length > 0 && (
-            <div className="mt-12">
+            <div className="mt-4 lg:mt-12">
               <div className="mb-4 flex items-baseline justify-between gap-3">
                 <h2 className="!text-[1.35rem]">
                   {dict.profile.moreInPrefix} {cat ? cat.name.toLowerCase() : dict.profile.moreInFallback}
@@ -665,7 +679,7 @@ export async function ProfileView({
         </div>
 
         {/* ------------------------- Sidebar ------------------------- */}
-        <aside className="lg:sticky lg:top-32 lg:self-start">
+        <aside className="lg:col-start-2 lg:row-start-1 lg:sticky lg:top-32 lg:self-start">
           <div className="card p-5">
             {p.demo ? (
               // On the demo profile the Visit button has nowhere real to go,
