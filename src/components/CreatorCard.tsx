@@ -129,7 +129,7 @@ export async function CreatorCard({
 
       <div className="flex flex-1 flex-col gap-3 p-4">
         {/* Author row */}
-        <div className="flex items-start justify-between gap-2">
+        <div className="flex items-start gap-2.5">
           <LocaleLink lang={lang} href={profileHref} className="flex min-w-0 items-center gap-2.5">
             {profile.avatar ? (
               // eslint-disable-next-line @next/next/no-img-element
@@ -165,11 +165,28 @@ export async function CreatorCard({
               </span>
             </span>
           </LocaleLink>
-          <div className="flex shrink-0 flex-col items-end gap-1">
-            <FeaturedBadge status={profile.status} dict={dict} />
-            <VerifiedBadge status={profile.verificationStatus} dict={dict} profileType={profile.profileType} />
-          </div>
         </div>
+
+        {/* Badges on a line of their own.
+            They used to sit beside the name, and a card has only so much
+            width: the badge took its share and the trade underneath was
+            cut to "Детские писате…". Two badges — first in category and
+            verified — made a card unreadable at exactly the moment it had
+            most to say about somebody.
+
+            Below the name they cost a line and nothing else. They wrap
+            when there are two and no name is ever shortened for them. */}
+        {(profile.status === "featured" ||
+          profile.verificationStatus !== "none") && (
+          <div className="-mt-1 flex flex-wrap items-center gap-1.5">
+            <FeaturedBadge status={profile.status} dict={dict} />
+            <VerifiedBadge
+              status={profile.verificationStatus}
+              dict={dict}
+              profileType={profile.profileType}
+            />
+          </div>
+        )}
 
         {/* Part of a team. A creator found in the open catalog carries the
             team with them, the way an agency name travels with its people
