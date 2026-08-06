@@ -40,6 +40,27 @@ function slots(value: string[] | string | undefined): string[] {
   return raw.map((s) => s.trim());
 }
 
+/** An address as typed, made usable.
+ *
+ *  People write their own address the way they say it out loud:
+ *  "www.amazon.com/stores/...", "amazon.com/...", occasionally with a
+ *  stray space or a comma stuck to the end. A browser forgives all of
+ *  that; our outbound link does not. It insists on a full address and
+ *  sends anything else to the catalog instead, so a link that looked
+ *  perfectly fine in the profile quietly went nowhere and the author's
+ *  own page — the whole point of the listing — was unreachable.
+ *
+ *  So the missing beginning is added here, once, at the moment the
+ *  application becomes a profile. Anything that already carries a scheme
+ *  is left exactly as it is, including mailto: and other non-web
+ *  addresses, which the outbound route still refuses on its own. */
+function tidyUrl(value: string): string {
+  const url = value.trim().replace(/[),.;]+$/, "");
+  if (!url) return url;
+  if (/^[a-z][a-z0-9+.-]*:/i.test(url)) return url;
+  return `https://${url.replace(/^\/+/, "")}`;
+}
+
 /** Sort a pile of links into named platforms. People paste them in any
  *  order and any format, so matching is by what the address contains,
  *  not by position. Anything unrecognised is kept under "other" rather
@@ -48,12 +69,20 @@ function buildSocialLinks(s: Submission): SocialLinks {
   const out: SocialLinks = {};
   const other: { label: string; url: string }[] = [];
 
-  const all = [s.website, ...lines(s.otherLinks)].filter(Boolean) as string[];
+  const all = [s.website, ...lines(s.otherLinks)]
+    .filter(Boolean)
+    .map((v) => tidyUrl(v as string))
+    .filter((v) => v.length > 0);
 
   for (const url of all) {
     const u = url.toLowerCase();
     if (u.includes("etsy.")) out.etsy ??= url;
-    else if (u.includes("amazon.")) out.amazon ??= url;
+    // Amazon's own short links carry the shop's name nowhere in the
+    // address, so without naming them a book link was labelled "Website"
+    // and lost the one word that tells a visitor what waits on the other
+    // side of it.
+    else if (u.includes("amazon.") || u.includes("amzn.to") || u.includes("//a.co/"))
+      out.amazon ??= url;
     else if (u.includes("behance.")) out.behance ??= url;
     else if (u.includes("dribbble.")) out.dribbble ??= url;
     else if (u.includes("linkedin.")) out.linkedin ??= url;
