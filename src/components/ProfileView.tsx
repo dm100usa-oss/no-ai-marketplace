@@ -176,7 +176,10 @@ export async function ProfileView({
     },
   };
 
-  const externalLinks = collectLinks(p, dict);
+  // The address the big button leads to is left out of the list below:
+  // "Открыть сайт" followed by a line saying "Сайт" is the same address
+  // written twice.
+  const externalLinks = collectLinks(p, dict, visitKey);
   const relatedProfiles = await getRelatedProfiles(p, 3, lang);
   const workingProcess = deriveWorkingProcess(p, dict);
   const kindWord = kindWordFor(p.profileType, dict);
@@ -565,33 +568,6 @@ export async function ProfileView({
             </div>
           ) : null}
 
-          {/* Working process */}
-          {workingProcess.length > 0 && (
-            <div className="mt-10">
-              <h2 className="!text-[1.35rem]">{dict.profile.workingProcess}</h2>
-              <p className="mt-1 text-[0.92rem]" style={{ color: "var(--color-muted-soft)" }}>
-                {p.profileType === "creator"
-                  ? dict.profile.workingProcessHintCreator
-                  : dict.profile.workingProcessHintStudio}
-              </p>
-              <ol className="mt-4 space-y-3">
-                {workingProcess.map((step, i) => (
-                  <li key={i} className="flex gap-3">
-                    <span
-                      className="grid h-8 w-8 shrink-0 place-items-center rounded-full text-[0.85rem] font-bold text-white"
-                      style={{ background: "var(--color-accent)", fontFamily: "var(--font-display)" }}
-                    >
-                      {i + 1}
-                    </span>
-                    <p className="pt-1 text-[0.98rem]" style={{ color: "var(--color-muted)" }}>
-                      {step}
-                    </p>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          )}
-
           {/* AI statement */}
           {p.aiUsageStatement && (
             <div
@@ -664,7 +640,7 @@ export async function ProfileView({
               </a>
             )}
 
-            {externalLinks.length > 1 ? (
+            {externalLinks.length > 0 ? (
               <div className="mt-4 space-y-2 border-t pt-4" style={{ borderColor: "var(--color-line)" }}>
                 {/* No name here. The heading used to read "Где найти
                     Дмитрий", which is wrong Russian — the name would have
@@ -723,6 +699,40 @@ export async function ProfileView({
               {dict.profile.purchaseNote}
             </p>
           </div>
+
+          {/* How the work is done, tucked under the contact card.
+
+              It belongs next to the links, not in the middle of the
+              story: it answers the question a visitor asks right after
+              deciding they like somebody — what happens if I write to
+              them. In the main column it sat between the work and the
+              rest of the catalog, where nobody was asking it yet. */}
+          {/* Working process */}
+          {workingProcess.length > 0 && (
+            <div className="card mt-4 p-5">
+              <h2 className="!text-[1.05rem]">{dict.profile.workingProcess}</h2>
+              <p className="mt-1 text-[0.92rem]" style={{ color: "var(--color-muted-soft)" }}>
+                {p.profileType === "creator"
+                  ? dict.profile.workingProcessHintCreator
+                  : dict.profile.workingProcessHintStudio}
+              </p>
+              <ol className="mt-4 space-y-3">
+                {workingProcess.map((step, i) => (
+                  <li key={i} className="flex gap-3">
+                    <span
+                      className="grid h-7 w-7 shrink-0 place-items-center rounded-full text-[0.78rem] font-bold text-white"
+                      style={{ background: "var(--color-accent)", fontFamily: "var(--font-display)" }}
+                    >
+                      {i + 1}
+                    </span>
+                    <p className="pt-1 text-[0.92rem]" style={{ color: "var(--color-muted)" }}>
+                      {step}
+                    </p>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
         </aside>
 
         {/* --------------------- Below the fold ---------------------
@@ -787,22 +797,62 @@ export async function ProfileView({
  * `href` points at /api/go/... rather than at the destination. The real
  * address is resolved when somebody clicks; see that route for why. A
  * visitor sees no difference — one click, same place.
+ *
+ * `skipKey` is the address the big button above already leads to. Without
+ * it the panel said "Открыть сайт" and then listed "Сайт" underneath: the
+ * same address twice, one line apart, which reads like a mistake because
+ * it is one.
+ *
+ * Two addresses on the same platform are kept together and numbered. An
+ * author with two books on Amazon used to see them split by whatever
+ * platform happened to sort between them, and both labelled "Amazon", so
+ * the list looked broken and neither label said which book it led to.
  */
-function collectLinks(p: Profile, dict: Dictionary): { label: string; href: string }[] {
+function collectLinks(
+  p: Profile,
+  dict: Dictionary,
+  skipKey?: string,
+): { label: string; href: string }[] {
   const s = p.socialLinks;
-  const out: { label: string; href: string }[] = [];
   const go = (key: string) => `/api/go/${p.slug}/${key}`;
 
-  if (s.website) out.push({ label: dict.profile.linkWebsite, href: go("website") });
-  if (s.portfolio) out.push({ label: dict.profile.linkPortfolio, href: go("portfolio") });
-  if (s.etsy) out.push({ label: dict.profile.linkEtsy, href: go("etsy") });
-  if (s.amazon) out.push({ label: dict.profile.linkAmazon, href: go("amazon") });
-  if (s.behance) out.push({ label: dict.profile.linkBehance, href: go("behance") });
-  if (s.dribbble) out.push({ label: dict.profile.linkDribbble, href: go("dribbble") });
-  if (s.linkedin) out.push({ label: dict.profile.linkLinkedin, href: go("linkedin") });
-  if (s.instagram) out.push({ label: dict.profile.linkInstagram, href: go("instagram") });
-  if (s.youtube) out.push({ label: dict.profile.linkYoutube, href: go("youtube") });
-  (s.other ?? []).forEach((o, i) => out.push({ label: o.label, href: go(`other-${i}`) }));
+  /** group: what platform this address belongs to, so the list can keep
+   *  them side by side and number them. */
+  const items: { label: string; href: string; group: string }[] = [];
+  const add = (key: string, label: string, url?: string) => {
+    if (!url || key === skipKey) return;
+    items.push({ label, href: go(key), group: label });
+  };
+
+  add("website", dict.profile.linkWebsite, s.website);
+  add("portfolio", dict.profile.linkPortfolio, s.portfolio);
+  add("etsy", dict.profile.linkEtsy, s.etsy);
+  add("amazon", dict.profile.linkAmazon, s.amazon);
+  add("behance", dict.profile.linkBehance, s.behance);
+  add("dribbble", dict.profile.linkDribbble, s.dribbble);
+  add("linkedin", dict.profile.linkLinkedin, s.linkedin);
+  add("instagram", dict.profile.linkInstagram, s.instagram);
+  add("youtube", dict.profile.linkYoutube, s.youtube);
+  (s.other ?? []).forEach((o, i) =>
+    items.push({ label: o.label, href: go(`other-${i}`), group: o.label }),
+  );
+
+  // Regroup, keeping the order each platform first appeared in.
+  const groups: string[] = [];
+  for (const it of items) if (!groups.includes(it.group)) groups.push(it.group);
+
+  const out: { label: string; href: string }[] = [];
+  for (const g of groups) {
+    const inGroup = items.filter((it) => it.group === g);
+    inGroup.forEach((it, i) =>
+      out.push({
+        // Numbered only when there is something to tell apart. A lone
+        // Amazon link is "Amazon", not "Amazon 1".
+        label: inGroup.length > 1 ? `${it.label} ${i + 1}` : it.label,
+        href: it.href,
+      }),
+    );
+  }
   return out;
 }
 
