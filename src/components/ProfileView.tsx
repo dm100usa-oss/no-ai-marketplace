@@ -122,6 +122,14 @@ export async function ProfileView({
   const visitHref = `/api/go/${p.slug}/${visitKey}`;
   const basePath = profileBasePath(p.profileType);
 
+  // Whether the words on this page are the author's own or a machine's.
+  // True only when a translation actually exists and is being shown: an
+  // author writing in the language of the page needs no notice, and one
+  // whose translation failed is reading their own original, not a
+  // translation, so the notice would be a lie in the other direction.
+  const showsTranslation =
+    !!p.textLang && p.textLang !== lang && !!p.textTranslations?.[lang];
+
   const initials = p.name
     .split(" ")
     .map((w) => w[0])
@@ -369,6 +377,22 @@ export async function ProfileView({
               {p.fullDescription && (
                 <p className="mt-3 text-[0.98rem]" style={{ color: "var(--color-muted)" }}>
                   {p.fullDescription}
+                </p>
+              )}
+              {/* Said plainly, once, under the words it applies to. A
+                  machine translation passed off as the author's own would
+                  be the one dishonest thing on a page whose entire subject
+                  is honesty about how work gets made. Naming the original
+                  language also tells a reader who speaks it where to go. */}
+              {showsTranslation && (
+                <p
+                  className="mt-3 text-[0.82rem]"
+                  style={{ color: "var(--color-muted-soft)" }}
+                >
+                  {dict.profile.autoTranslated.replace(
+                    "{lang}",
+                    dict.profile.autoTranslatedFrom[p.textLang as "en" | "ru"],
+                  )}
                 </p>
               )}
             </div>

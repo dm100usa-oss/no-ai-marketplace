@@ -117,6 +117,35 @@ export interface Profile extends ReservedRating {
 
   featured?: boolean; // leader flag, set manually (TZ 3.4)
 
+  /**
+   * Which language the author actually wrote in, and their words in the
+   * other one.
+   *
+   * A profile carries two kinds of text. The platform's own — headings,
+   * the introduction, the working-process list — exists in every language
+   * the site speaks. The author's own arrives in exactly one, whichever
+   * form they filled in, and without these two fields it was printed as
+   * it came: a Russian paragraph in the middle of an English page.
+   *
+   * `textLang` says which language the fields on this profile are in.
+   * `textTranslations` holds the same fields in the others, made once at
+   * approval. Both absent on the repository profiles, which are written
+   * by hand in every language and translated the old way.
+   */
+  textLang?: "en" | "ru";
+  textTranslations?: Partial<
+    Record<
+      "en" | "ru",
+      {
+        shortDescription?: string;
+        fullDescription?: string;
+        services?: string[];
+        galleryCaptions?: string[];
+        stageCaptions?: string[];
+      }
+    >
+  >;
+
   /** The author allowed their photo and work to appear in the homepage
    *  showcase (new works / new members strips). Off by default: without
    *  consent the profile still lists in the catalog but never on the home

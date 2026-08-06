@@ -276,6 +276,13 @@ export function submissionToProfile(
     shortDescription: s.shortDescription ?? "",
     fullDescription: s.fullDescription,
 
+    // Which language these fields are in, and the same fields in the
+    // other one. Carried through untouched: choosing between them is the
+    // page's job, at the moment it knows which language it is being read
+    // in, and this file has no idea.
+    textLang: s.lang === "ru" ? "ru" : "en",
+    textTranslations: s.translations,
+
     services: lines(s.services),
 
     socialLinks: buildSocialLinks(s),

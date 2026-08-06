@@ -7,10 +7,12 @@ import {
   addSubmission,
   getAllSubmissions,
   setSubmissionStatus,
+  setSubmissionTranslation,
   setSubmissionVerification,
   deleteSubmission,
   type Submission,
 } from "@/lib/redis";
+import { translateAuthorText } from "@/lib/translate";
 import {
   sendWelcomeEmail,
   sendRejectionEmail,
@@ -141,6 +143,42 @@ export async function POST(request: NextRequest) {
     // yet, or a hiccup at Resend) must not undo a decision already stored,
     // so its result is not folded into the response.
     if (status === "published") {
+      // The author's words in the other language, made here and kept with
+      // the submission. This is the one moment it can be done: the owner
+      // has just read the application and decided it belongs in the
+      // catalog, and nothing after this point knows the text is new.
+      //
+      // Deliberately not allowed to affect the answer. A translator that
+      // is slow, busy or gone leaves the profile in its original language
+      // on both sites — the same as before this existed — while an
+      // approval that failed over it would leave an author waiting on a
+      // decision that had already been made.
+      const from = updated.lang === "ru" ? "ru" : "en";
+      const to = from === "ru" ? "en" : "ru";
+      try {
+        const done = await translateAuthorText(
+          {
+            shortDescription: updated.shortDescription,
+            fullDescription: updated.fullDescription,
+            services: updated.services,
+            galleryCaptions: updated.galleryCaptions,
+            stageCaptions: updated.stageCaptions,
+          },
+          from,
+          to,
+        );
+        if (done) {
+          await setSubmissionTranslation(updated.id, to, done);
+          // The catalog was refreshed a moment ago, before the text
+          // existed. Refresh again so the translated page is the first
+          // one anybody sees.
+          refreshCatalog();
+        }
+      } catch {
+        // Nothing to do and nothing to report: the profile publishes in
+        // one language, which is a smaller loss than a failed approval.
+      }
+
       await sendWelcomeEmail({
         to: updated.email,
         locale: updated.lang,

@@ -1517,6 +1517,9 @@ export const ru: Dictionary = {
     whereToFind: "Где найти",
     whereToFindThem: "Где их найти",
     languages: "Языки",
+    autoTranslated:
+      "Перевод автоматический. Оригинал написан автором на {lang} языке.",
+    autoTranslatedFrom: { en: "английском", ru: "русском" },
     purchaseNote:
       "Покупки и запросы происходят на собственной площадке автора, а не здесь.",
     processStep1:

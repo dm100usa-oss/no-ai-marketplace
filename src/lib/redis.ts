@@ -1,5 +1,6 @@
 import { Redis } from "@upstash/redis";
 import { createHash } from "crypto";
+import type { TranslatableText } from "@/lib/translate";
 
 /**
  * The one place that talks to the database.
@@ -329,6 +330,18 @@ export interface Submission {
   /** Consents */
   showOnHomepage?: boolean;
 
+  /**
+   * The author's own words in the other language, made once at approval
+   * and kept here.
+   *
+   * Keyed by the language of the translation, so `translations.en` on a
+   * Russian application is the English a visitor to the English site
+   * reads. Absent when the translator could not be reached, which is not
+   * an error: the profile then shows the original in both places, exactly
+   * as it did before any of this existed.
+   */
+  translations?: Partial<Record<"en" | "ru", TranslatableText>>;
+
   /** Anything the form sends that this file does not know about yet. */
   extra?: Record<string, unknown>;
 }
@@ -448,6 +461,24 @@ export async function setSubmissionStatus(
       if (s.emailConfirmed === undefined) s.emailConfirmed = false;
     }
   });
+}
+
+/**
+ * Store the author's words in another language.
+ *
+ * Written once, when a submission is approved. Kept apart from the status
+ * change on purpose: a translator that fails must never make an approval
+ * fail with it, so this is its own call and its own false.
+ */
+export async function setSubmissionTranslation(
+  id: string,
+  locale: "en" | "ru",
+  text: TranslatableText,
+): Promise<boolean> {
+  const updated = await updateSubmission(id, (s) => {
+    s.translations = { ...(s.translations ?? {}), [locale]: text };
+  });
+  return updated !== null;
 }
 
 /**

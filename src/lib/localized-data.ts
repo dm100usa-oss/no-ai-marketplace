@@ -67,6 +67,12 @@ function localizeCategory(c: Category, locale: Locale): Category {
   return {
     ...c,
     name: pick(t.name, c.name),
+    // The singular form, the one the profile introduction speaks with.
+    // Every category has a Russian singular written for it, but this line
+    // was missing, so the translation was never read and the sentence
+    // borrowed the English word instead: "внимательный children's author
+    // из Майами", on every Russian profile in the catalog.
+    nameSingular: pick(t.nameSingular, c.nameSingular),
     shortDescription: pick(t.shortDescription, c.shortDescription),
     professions: pick(t.professions, c.professions),
     seoText: pick(t.seoText, c.seoText),
@@ -107,26 +113,63 @@ export function directionOfCategoryL(
 
 // ---------------- Profiles ----------------
 
-function localizeProfile(p: Profile, locale: Locale): Profile {
-  if (locale === DEFAULT_LOCALE) return p;
-  const t = profilesRu[p.slug];
+/**
+ * The author's own words, in the language of the page.
+ *
+ * Two kinds of profile pass through here and they are translated in
+ * opposite directions. The ones kept in the repository are written by
+ * hand and their Russian sits in a file keyed by slug. The ones that came
+ * through the join form are written once, in whichever language the
+ * author filled in, and their other language was made at approval and
+ * travels with the profile.
+ *
+ * The second kind is why this cannot simply return early on English:
+ * English is the site's base language, but it is not necessarily the
+ * author's, and an English page has exactly as much right to a
+ * translation as a Russian one.
+ */
+function applyAuthorText(p: Profile, locale: Locale): Profile {
+  const original = p.textLang;
+  if (!original || original === locale) return p;
+
+  const t = p.textTranslations?.[locale as "en" | "ru"];
+  // No translation: the original stays. A page in one language with a
+  // paragraph in another reads badly, but an empty profile reads worse,
+  // and the author paid for a listing that says something.
   if (!t) return p;
+
   return {
     ...p,
-    country: pick(t.country, p.country),
-    city: pick(t.city, p.city),
-    introduction: pick(t.introduction, p.introduction),
-    shortDescription: pick(t.shortDescription, p.shortDescription),
+    shortDescription: pick(t.shortDescription, p.shortDescription) ?? "",
     fullDescription: pick(t.fullDescription, p.fullDescription),
     services: pick(t.services, p.services),
-    products: pick(t.products, p.products),
-    tags: pick(t.tags, p.tags),
     galleryCaptions: pick(t.galleryCaptions, p.galleryCaptions),
     stageCaptions: pick(t.stageCaptions, p.stageCaptions),
-    aiUsageStatement: pick(t.aiUsageStatement, p.aiUsageStatement),
+  };
+}
+
+function localizeProfile(p: Profile, locale: Locale): Profile {
+  const withAuthorText = applyAuthorText(p, locale);
+  if (locale === DEFAULT_LOCALE) return withAuthorText;
+  const t = profilesRu[p.slug];
+  if (!t) return withAuthorText;
+  const base = withAuthorText;
+  return {
+    ...base,
+    country: pick(t.country, base.country),
+    city: pick(t.city, base.city),
+    introduction: pick(t.introduction, base.introduction),
+    shortDescription: pick(t.shortDescription, base.shortDescription),
+    fullDescription: pick(t.fullDescription, base.fullDescription),
+    services: pick(t.services, base.services),
+    products: pick(t.products, base.products),
+    tags: pick(t.tags, base.tags),
+    galleryCaptions: pick(t.galleryCaptions, base.galleryCaptions),
+    stageCaptions: pick(t.stageCaptions, base.stageCaptions),
+    aiUsageStatement: pick(t.aiUsageStatement, base.aiUsageStatement),
     verificationDescription: pick(
       t.verificationDescription,
-      p.verificationDescription,
+      base.verificationDescription,
     ),
   };
 }

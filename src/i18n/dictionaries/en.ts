@@ -1503,6 +1503,9 @@ export const en: Dictionary = {
     whereToFind: "Where to find",
     whereToFindThem: "Where to find them",
     languages: "Languages",
+    autoTranslated:
+      "Machine translated. The author wrote the original in {lang}.",
+    autoTranslatedFrom: { en: "English", ru: "Russian" },
     purchaseNote:
       "Purchases and enquiries happen on the creator's own platform, not here.",
     processStep1:

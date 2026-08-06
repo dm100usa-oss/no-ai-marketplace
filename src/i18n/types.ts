@@ -709,6 +709,12 @@ export interface Dictionary {
     whereToFind: string; // "Where to find {name}"
     whereToFindThem: string;
     languages: string;
+    /** Shown under the author's own words when those words were machine
+     *  translated at publishing time. Names the language the author
+     *  actually wrote in, so the reader knows what they are looking at
+     *  and where the original is. */
+    autoTranslated: string;
+    autoTranslatedFrom: { en: string; ru: string };
     purchaseNote: string;
     processStep1: string; // uses {kind}
     processStep2: string;
