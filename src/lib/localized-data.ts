@@ -21,6 +21,7 @@ import { getLiveProfiles } from "@/lib/live-profiles";
 import { directionsRu } from "@/i18n/data/directions.ru";
 import { categoriesRu } from "@/i18n/data/categories.ru";
 import { profilesRu } from "@/i18n/data/profiles.ru";
+import { countryNameL } from "@/lib/country-name";
 
 /** Pick a translated value if present and non-empty, else the base value. */
 function pick<T>(translated: T | undefined, base: T): T {
@@ -150,10 +151,17 @@ function applyAuthorText(p: Profile, locale: Locale): Profile {
 
 function localizeProfile(p: Profile, locale: Locale): Profile {
   const withAuthorText = applyAuthorText(p, locale);
-  if (locale === DEFAULT_LOCALE) return withAuthorText;
+  // The country is chosen from a list, not typed, so it is the one field
+  // that can honestly be shown in either language. Applied to every
+  // profile, whichever way it entered the catalog.
+  const withCountry: Profile = {
+    ...withAuthorText,
+    country: countryNameL(withAuthorText.country, locale) ?? withAuthorText.country,
+  };
+  if (locale === DEFAULT_LOCALE) return withCountry;
   const t = profilesRu[p.slug];
-  if (!t) return withAuthorText;
-  const base = withAuthorText;
+  if (!t) return withCountry;
+  const base = withCountry;
   return {
     ...base,
     country: pick(t.country, base.country),

@@ -9,6 +9,7 @@ import { GalleryLightbox } from "@/components/GalleryLightbox";
 import { ReportForm } from "@/components/ReportForm";
 import { ExternalLink, ArrowRight, CheckShield } from "@/components/icons";
 import { buildIntroduction } from "@/lib/introduction";
+import { countryCode } from "@/lib/country-name";
 import { localizedPath } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/types";
@@ -145,7 +146,15 @@ export async function ProfileView({
       "@type": p.profileType === "creator" ? "Person" : "Organization",
       name: p.name,
       description: p.shortDescription,
-      address: { "@type": "PostalAddress", addressCountry: p.country, addressLocality: p.city },
+      // The two-letter country code rather than its name. Schema.org asks
+      // for it, and a code is the same fact in every language: a search
+      // engine reading the Russian page and one reading the English page
+      // should not conclude they are looking at two different countries.
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: countryCode(p.country) ?? p.country,
+        addressLocality: p.city,
+      },
       url: `${site.url}${localizedPath(lang, `${basePath}/${p.slug}`)}`,
       // Schema.org has a field for exactly this, and answer engines read it
       // when someone asks for an established studio rather than any studio.
