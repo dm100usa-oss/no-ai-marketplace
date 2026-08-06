@@ -97,6 +97,11 @@ const CAPTION_WORDS = ["описание работ", "description", "caption", 
  *  same way they are for works. */
 const STAGE_CAPTION_WORDS = ["описание этапа", "stage 1 description", "stage 2 description", "stage 3 description", "stage 4 description"];
 
+/** What a yes looks like in either form. Both wordings are longer than a
+ *  bare yes ("Да, разрешаю", "Yes, I allow"), so the answer is searched
+ *  for the affirmative rather than compared to it. */
+const HOMEPAGE_CONSENT_WORDS = ["yes", "да"];
+
 /** Find the first field whose label contains any of the keywords.
  *
  *  `skip` exists because the caption questions sit next to the picture
@@ -273,9 +278,21 @@ export async function POST(request: NextRequest) {
       pick(fields, ["прикрепить этапы", "show these work stages"]) ?? "",
     ),
     contactPerson: pick(fields, ["контактное лицо", "contact person"]),
-    showOnHomepage:
-      (pick(fields, ["homepage", "главн", "showcase"]) ?? "").toLowerCase().includes("yes") ||
-      (pick(fields, ["homepage", "главн", "showcase"]) ?? "").toLowerCase().includes("да"),
+    // The consent to appear on the home page used to be looked up by the
+    // stem "главн", which also sits inside the picture question "Работа 1
+    // (главная)". That question comes first, so the search stopped there
+    // and read an image address where it expected a yes. Every applicant
+    // was silently recorded as having refused, and no real author ever
+    // reached the home page strips. The phrase is narrowed to the one that
+    // only the consent carries, and the picture questions are skipped
+    // outright, so a future wording of either cannot collide again.
+    showOnHomepage: HOMEPAGE_CONSENT_WORDS.some((w) =>
+      (
+        pick(fields, ["homepage", "главной странице", "showcase"], ["работа ", "work "]) ?? ""
+      )
+        .toLowerCase()
+        .includes(w),
+    ),
   };
 
   const done = await addSubmission(input);
