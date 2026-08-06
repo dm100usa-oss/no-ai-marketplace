@@ -62,5 +62,49 @@ export const getLiveProfiles = cache(async (): Promise<Profile[]> => {
     if (profile) out.push(profile);
   }
 
-  return out;
+  return markFirstInCategory(out);
 });
+
+/**
+ * The promise made in the welcome letter: whoever arrives first in a
+ * category carries the "First in category" badge.
+ *
+ * It was written into the letter and into the pricing page, and the badge
+ * itself was drawn, but nobody was ever given it — every published profile
+ * came out on the plain free listing. An unkept promise on the one page a
+ * new member reads first is worse than never making it.
+ *
+ * Worked out here rather than stored on the profile, for two reasons. The
+ * badge is a fact about the catalog, not about the person: it depends on
+ * who else is in that category, which is not knowable at the moment
+ * somebody is approved. And a stored flag would need repairing by hand
+ * every time a profile is removed, which is exactly the sort of quiet
+ * inconsistency nobody notices for months.
+ *
+ * The demo profiles are skipped: a fictional architect must not hold a
+ * place a real one has earned.
+ */
+function markFirstInCategory(profiles: Profile[]): Profile[] {
+  const firstOf = new Map<string, string>();
+
+  // Oldest first, so the earliest real arrival in each category wins.
+  // Ties on the same day fall back to the order they were published in,
+  // which is the order this list was built in.
+  const byAge = profiles
+    .filter((p) => !p.demo)
+    .slice()
+    .sort((a, b) => (a.dateCreated ?? "").localeCompare(b.dateCreated ?? ""));
+
+  for (const p of byAge) {
+    if (!p.mainCategory) continue;
+    if (!firstOf.has(p.mainCategory)) firstOf.set(p.mainCategory, p.slug);
+  }
+
+  return profiles.map((p) =>
+    // A paid standing is a paid standing and is left alone; the badge
+    // only ever replaces the plain free listing.
+    p.status === "free" && firstOf.get(p.mainCategory) === p.slug
+      ? { ...p, status: "featured" as const }
+      : p,
+  );
+}
