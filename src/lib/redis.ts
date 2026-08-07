@@ -287,6 +287,11 @@ export interface Submission {
   nameAlt?: string;
   cityAlt?: string;
 
+  /** The pale field colour worked out from the first work, as #rrggbb.
+   *  Absent when the picture could not be read; the card then uses the
+   *  site's neutral field. */
+  coverColor?: string;
+
   /** What they do */
   profileType?: "creator" | "team" | "company";
   mainCategory?: string;
@@ -482,6 +487,19 @@ export async function setSubmissionTranslation(
 ): Promise<boolean> {
   const updated = await updateSubmission(id, (s) => {
     s.translations = { ...(s.translations ?? {}), [locale]: text };
+  });
+  return updated !== null;
+}
+
+/** Keep the field colour worked out from the first work. Its own call,
+ *  for the same reason the translation has one: a picture that will not
+ *  download must never undo an approval. */
+export async function setSubmissionCoverColor(
+  id: string,
+  color: string,
+): Promise<boolean> {
+  const updated = await updateSubmission(id, (s) => {
+    s.coverColor = color;
   });
   return updated !== null;
 }

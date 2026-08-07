@@ -402,6 +402,7 @@ export function submissionToProfile(
     // because only the page knows which language it is being read in.
     nameAlt: s.nameAlt,
     cityAlt: s.cityAlt,
+    coverColor: s.coverColor,
 
     shortDescription: s.shortDescription ?? "",
     fullDescription: s.fullDescription,

@@ -67,6 +67,10 @@ export async function CreatorCard({
     .toUpperCase();
 
   const badge = typeBadge(profile, dict);
+  // The field the work sits in, and the strip of card under it. One
+  // colour for both, so the card is a single object rather than a
+  // picture with a label stuck on.
+  const field = profile.coverColor ?? "var(--color-brand-soft)";
   // A single creator reads as a person (round avatar); a team or company
   // reads as a group (rounded square).
   const isGroup = profile.profileType !== "creator";
@@ -84,17 +88,19 @@ export async function CreatorCard({
           up, so there the work is fitted inside one frame and the leftover
           space is filled with the soft brand colour. Nothing is cropped
           either way. */}
-      {/* The work, in one frame for every card.
-          Cropped, deliberately. A catalog is a row of things being
-          compared, and rows only compare when they line up; a frame that
-          fits every shape leaves half the cards floating in empty space,
-          which is exactly what made the page look twenty years old. The
-          crop is taken from the middle, and the work is shown whole on
-          the profile, one tap away. */}
-      <LocaleLink lang={lang} href={profileHref} className="relative block aspect-[4/3] overflow-hidden" style={{ background: "var(--color-brand-soft)" }}>
+      {/* The work, whole, in one frame for every card.
+          The frame is the same on every card so the rows line up, and
+          the work is fitted inside it rather than cut to fill it. What
+          is left over is not empty: it is painted in the work's own pale
+          colour, worked out once at approval, and the name underneath
+          sits on that same colour. A blue cover gets a blue field, a red
+          one a red field, and the card reads as one object.
+          A profile with no colour of its own falls back to the site's
+          neutral field, which is what every card had before. */}
+      <LocaleLink lang={lang} href={profileHref} className="relative flex aspect-[4/3] items-center justify-center overflow-hidden" style={{ background: field }}>
         {profile.mainImage ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={profile.mainImage} alt={`${dict.common.humanMadeWork}: ${profile.name}`} className="h-full w-full object-cover" loading="lazy" decoding="async" />
+          <img src={profile.mainImage} alt={`${dict.common.humanMadeWork}: ${profile.name}`} className="h-full w-full object-contain" loading="lazy" decoding="async" />
         ) : (
           <PlaceholderArt seed={profile.slug} label={dict.common.humanMadeWork} />
         )}
@@ -129,7 +135,7 @@ export async function CreatorCard({
           got the rest.
           Now the picture leads and three lines follow. Everything else
           lives on the profile, one tap away. */}
-      <div className="flex flex-col gap-2 p-4">
+      <div className="flex flex-col gap-2 p-4" style={{ background: field }}>
         <div className="flex items-center gap-2.5">
           {profile.avatar ? (
             // eslint-disable-next-line @next/next/no-img-element

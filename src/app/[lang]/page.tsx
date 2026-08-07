@@ -520,7 +520,7 @@ export default async function HomePage({
                     lang={locale}
                     href={href}
                     className="press-btn flex flex-col overflow-hidden rounded-2xl"
-                    style={{ background: "#ffffff" }}
+                    style={{ background: p.coverColor ?? "var(--color-brand-soft)" }}
                   >
                     {/* The work, whole.
                         The name used to lie across the picture on a dark
@@ -541,16 +541,13 @@ export default async function HomePage({
                         cropped from the middle. The strip is a row, and a
                         row that does not line up looks broken. The work is
                         whole on the profile. */}
-                    <span
-                      className="block aspect-[4/3] overflow-hidden"
-                      style={{ background: "var(--color-brand-soft)" }}
-                    >
+                    <span className="flex aspect-[4/3] items-center justify-center overflow-hidden">
                       <img
                         src={p.mainImage}
                         alt={p.name}
                         loading="lazy"
                         decoding="async"
-                        className="h-full w-full object-cover"
+                        className="h-full w-full object-contain"
                       />
                     </span>
                     {/* What the work is, then whose it is.

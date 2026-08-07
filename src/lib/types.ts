@@ -85,6 +85,18 @@ export interface Profile extends ReservedRating {
    */
   nameAlt?: string;
   cityAlt?: string;
+
+  /**
+   * The colour of the field the work sits in, as `#rrggbb`.
+   *
+   * A pale version of the work's own average colour, worked out once at
+   * approval. Cards use one frame for every profile so that rows line up;
+   * this is what fills the frame around a work that does not fit it, and
+   * it is also the colour behind the name underneath. Absent on profiles
+   * whose picture could not be read, and on the ones written by hand:
+   * those fall back to the site's neutral field.
+   */
+  coverColor?: string;
   languages?: string[];
 
   shortDescription: string;
