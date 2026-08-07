@@ -6,6 +6,7 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { FindAccordion } from "@/components/FindAccordion";
 import { PeopleMarquee } from "@/components/PeopleMarquee";
 import { NewMembersMarquee } from "@/components/NewMembersMarquee";
+import { WorksMasonry } from "@/components/WorksMasonry";
 import { StatsBand } from "@/components/StatsBand";
 import { PulseIcon } from "@/components/PulseIcon";
 import {
@@ -61,18 +62,11 @@ export default async function HomePage({
     (p) => p.mainImage && p.showOnHomepage,
   );
   const realWorks = shown.filter((p) => !p.demo);
-  // Companies first, then teams, then individual authors, and inside each
-  // of the three the newest first. The same order the catalog uses, and
-  // for the same reason: a place at the top is something participants pay
-  // for. The columns below fill by height rather than by row, so the order
-  // reads down the page rather than across it, and the three groups can
-  // look slightly mixed. What holds either way is that a company's work is
-  // never below an author's in its own column.
-  const typeRank = { company: 0, team: 1, creator: 2 } as const;
-  const newWorks = (realWorks.length > 0 ? realWorks : shown)
-    .slice()
-    .sort((a, b) => typeRank[a.profileType] - typeRank[b.profileType])
-    .slice(0, 6);
+  // Newest first, and nothing else. Sorting companies above authors was
+  // tried here and taken out: the promise about order belongs to the
+  // catalog, where it is what participants pay for. This strip is new
+  // work, and new work is new work whoever made it.
+  const newWorks = (realWorks.length > 0 ? realWorks : shown).slice(0, 6);
 
   // New members strip: the same idea as new works, but keyed on the avatar
   // rather than the work image. Real authors first; the demo profile fills
@@ -510,49 +504,27 @@ export default async function HomePage({
           >
             {dict.home.newWorksTitle}
           </p>
-          {/* Works laid out in columns rather than a grid.
-              Every work keeps its own shape and its own height, and the
-              cards stack into whatever gap is nearest, so nothing is
-              cropped and no card floats in an empty field. Column order
-              means the reading order runs down rather than across; on a
-              strip of new work nobody was promised a position, so that
-              costs nothing here. The catalog, where order is sold, keeps
-              its even rows. */}
-          <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
-            {(() => {
-              const slotGradients = [
-                "linear-gradient(135deg, rgba(255,154,108,0.75) 0%, rgba(255,106,136,0.75) 55%, rgba(255,153,172,0.75) 100%)",
-                "linear-gradient(135deg, rgba(79,172,254,0.75) 0%, rgba(47,128,237,0.75) 55%, rgba(86,204,242,0.75) 100%)",
-                "linear-gradient(135deg, rgba(161,140,209,0.75) 0%, rgba(123,108,217,0.75) 55%, rgba(251,194,235,0.75) 100%)",
-                "linear-gradient(135deg, rgba(67,233,123,0.75) 0%, rgba(18,185,138,0.75) 55%, rgba(56,249,215,0.75) 100%)",
-                "linear-gradient(135deg, rgba(251,198,135,0.75) 0%, rgba(247,121,125,0.75) 55%, rgba(251,215,134,0.75) 100%)",
-                "linear-gradient(135deg, rgba(91,107,214,0.75) 0%, rgba(106,63,181,0.75) 55%, rgba(176,106,179,0.75) 100%)",
-              ];
-              const cards = [];
+          {/* Works laid out in columns, each keeping its own shape.
+              The arrangement is worked out in WorksMasonry: one card per
+              column across, then each next card into whichever column is
+              shortest. */}
+          {(() => {
+            const items = [];
 
-              // Real works first: picture of the work, linking to the author.
-              for (const p of newWorks) {
-                const href = `${profileBasePath(p.profileType)}/${p.slug}`;
-                cards.push(
+            for (const p of newWorks) {
+              const href = `${profileBasePath(p.profileType)}/${p.slug}`;
+              const caption = p.galleryCaptions?.[0]?.trim();
+              items.push({
+                key: `work-${p.slug}`,
+                src: p.mainImage,
+                lines: caption ? 3 : 1,
+                node: (
                   <LocaleLink
-                    key={`work-${p.slug}`}
                     lang={locale}
                     href={href}
-                    className="press-btn mb-4 flex break-inside-avoid flex-col overflow-hidden rounded-2xl"
+                    className="press-btn flex flex-col overflow-hidden rounded-2xl"
                     style={{ background: "var(--color-brand-soft)" }}
                   >
-                    {/* The work, and under it a strip with its caption.
-                        On a phone the strip is a single column, so the
-                        work is shown at its own size: full width, its own
-                        height, with the caption pressed right against the
-                        bottom edge. No frame, no fields, nothing cropped.
-                        A cap on the height was tried and removed: a tall
-                        cover hit the cap, shrank, and stopped reaching
-                        the sides, which put the fields back on the left
-                        and right — the exact thing this is here to avoid.
-                        From tablet width up the cards stand side by side
-                        and have to line up, so there they share one frame
-                        and the work is fitted inside it. */}
                     <span className="block overflow-hidden">
                       <img
                         src={p.mainImage}
@@ -563,56 +535,64 @@ export default async function HomePage({
                       />
                     </span>
                     <span className="block px-3 py-2.5">
-                      {p.galleryCaptions?.[0]?.trim() ? (
+                      {caption ? (
                         <span
                           className="block text-[0.95rem] font-semibold leading-snug [display:-webkit-box] [overflow:hidden] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]"
                           style={{ color: "var(--color-ink)" }}
                         >
-                          {p.galleryCaptions[0].trim()}
+                          {caption}
                         </span>
                       ) : null}
                       <span
-                        className={`block text-[0.82rem] ${p.galleryCaptions?.[0]?.trim() ? "mt-1" : "text-[0.95rem] font-semibold"}`}
+                        className={`block text-[0.82rem] ${caption ? "mt-1" : "text-[0.95rem] font-semibold"}`}
                         style={{
-                          color: p.galleryCaptions?.[0]?.trim()
-                            ? "var(--color-muted-soft)"
-                            : "var(--color-ink)",
+                          color: caption ? "var(--color-muted-soft)" : "var(--color-ink)",
                         }}
                       >
                         {p.name}
                       </span>
                     </span>
-                  </LocaleLink>,
-                );
-              }
+                  </LocaleLink>
+                ),
+              });
+            }
 
-              // Fill remaining slots up to six with invitation cards.
-              for (let i = newWorks.length; i < 6; i++) {
-                cards.push(
+            // Invitations, and only as many as it takes to close the row.
+            // Six of them beside two real works made the invitation the
+            // loudest thing on the page, which is backwards: the strip is
+            // there to show work, not to advertise the empty seats.
+            const perRow = 3;
+            const total = Math.max(perRow, Math.ceil(items.length / perRow) * perRow);
+            for (let i = items.length; i < total; i++) {
+              items.push({
+                key: `slot-${i}`,
+                lines: 0,
+                node: (
                   <LocaleLink
-                    key={`slot-${i}`}
                     lang={locale}
                     href="/join"
-                    className="press-btn relative mb-4 flex aspect-[4/3] break-inside-avoid items-center justify-center overflow-hidden rounded-2xl"
-                    style={{ background: slotGradients[i % slotGradients.length] }}
+                    className="press-btn relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-2xl border border-dashed"
+                    style={{
+                      background: "var(--color-brand-soft)",
+                      borderColor: "var(--color-line)",
+                    }}
                   >
                     <span
-                      className="text-[1.15rem] font-bold"
+                      className="text-[1.05rem] font-semibold"
                       style={{
                         fontFamily: "var(--font-display)",
-                        color: "#ffffff",
-                        textShadow: "0 1px 3px rgba(0,0,0,0.25)",
+                        color: "var(--color-muted-soft)",
                       }}
                     >
                       {dict.states.slotYourWork}
                     </span>
-                  </LocaleLink>,
-                );
-              }
+                  </LocaleLink>
+                ),
+              });
+            }
 
-              return cards;
-            })()}
-          </div>
+            return <WorksMasonry items={items} />;
+          })()}
         </div>
       </section>
 
