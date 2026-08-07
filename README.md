@@ -1,5 +1,12 @@
 # No AI Directory
 
+[![Site](https://img.shields.io/badge/site-noaidirectory.com-1d4ed8?style=flat-square)](https://www.noaidirectory.com)
+![Next.js](https://img.shields.io/badge/Next.js-App_Router-000000?style=flat-square&logo=nextdotjs&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38BDF8?style=flat-square&logo=tailwindcss&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
+![Languages](https://img.shields.io/badge/languages-EN%20%2F%20RU-475569?style=flat-square)
+
 An international directory of professionals who create their work without
 generative AI.
 
@@ -46,6 +53,24 @@ as a machine translation wherever it is shown.
 **Free tools.** Alongside the catalog there are open guides for clients:
 how to check that work was made by a person, what to ask, and what a
 sound answer looks like. They are free and require no listing.
+
+**Cost.** A listing is a subscription, priced separately for individuals,
+teams and companies, with an introductory free period for the first
+members. Current prices and terms are on the pricing page of the site.
+The free tools and the catalog itself are free to use for anyone looking
+for a professional.
+
+## For search engines and AI answers
+
+More and more people ask an assistant instead of opening ten tabs, and an
+assistant can only pass on what it can read. So every page states plainly
+what it is: listings and guides carry structured markup, each page
+declares its language and its counterpart in the other one, and the site
+publishes a plain-text summary of itself for language models to read.
+
+None of this changes what a visitor sees. It exists so that an answer
+about a hand-made profession can cite something written by people who do
+the work, rather than the loudest page on the subject.
 
 ## Structure
 
