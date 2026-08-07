@@ -517,22 +517,35 @@ export default async function HomePage({
                     key={`work-${p.slug}`}
                     lang={locale}
                     href={href}
-                    className="press-btn relative flex items-end overflow-hidden rounded-2xl sm:aspect-[4/3]"
-                    style={{ background: "var(--color-brand-soft)" }}
+                    className="press-btn flex flex-col overflow-hidden rounded-2xl"
+                    style={{ background: "#ffffff" }}
                   >
-                    <img
-                      src={p.mainImage}
-                      alt={p.name}
-                      loading="lazy"
-                      decoding="async"
-                      className="block h-auto w-full object-contain sm:absolute sm:inset-0 sm:h-full"
-                    />
+                    {/* The work, whole.
+                        The name used to lie across the picture on a dark
+                        wash. That was fine while the picture was cropped to
+                        a wide strip and its bottom edge was scenery; now
+                        that the work is shown whole, the wash sat on the
+                        author's own artwork and covered the title of a book
+                        cover. So the name has its own clean line underneath,
+                        the way the new-members strip already does it.
+                        The height is capped as well: on a phone one tall
+                        cover filled the entire screen and buried whatever
+                        came next. */}
                     <span
-                      className="absolute bottom-0 left-0 w-full px-3 py-2 text-[0.95rem] font-semibold"
-                      style={{
-                        color: "#ffffff",
-                        background: "linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0))",
-                      }}
+                      className="flex items-center justify-center overflow-hidden sm:aspect-[4/3]"
+                      style={{ background: "var(--color-brand-soft)" }}
+                    >
+                      <img
+                        src={p.mainImage}
+                        alt={p.name}
+                        loading="lazy"
+                        decoding="async"
+                        className="block max-h-[22rem] w-full object-contain sm:h-full sm:max-h-none"
+                      />
+                    </span>
+                    <span
+                      className="block px-3 py-2.5 text-[0.95rem] font-semibold"
+                      style={{ color: "var(--color-ink)" }}
                     >
                       {p.name}
                     </span>

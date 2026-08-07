@@ -108,10 +108,10 @@ export async function CreatorCard({
           up, so there the work is fitted inside one frame and the leftover
           space is filled with the soft brand colour. Nothing is cropped
           either way. */}
-      <LocaleLink lang={lang} href={profileHref} className={`relative block overflow-hidden ${profile.mainImage ? "sm:aspect-[4/3]" : "aspect-[4/3]"}`} style={{ background: "var(--color-brand-soft)" }}>
+      <LocaleLink lang={lang} href={profileHref} className={`relative flex items-center justify-center overflow-hidden ${profile.mainImage ? "sm:aspect-[4/3]" : "aspect-[4/3]"}`} style={{ background: "var(--color-brand-soft)" }}>
         {profile.mainImage ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={profile.mainImage} alt={`${dict.common.humanMadeWork}: ${profile.name}`} className="block h-auto w-full object-contain sm:h-full" loading="lazy" decoding="async" />
+          <img src={profile.mainImage} alt={`${dict.common.humanMadeWork}: ${profile.name}`} className="block max-h-[22rem] w-full object-contain sm:h-full sm:max-h-none" loading="lazy" decoding="async" />
         ) : (
           <PlaceholderArt seed={profile.slug} label={dict.common.humanMadeWork} />
         )}
