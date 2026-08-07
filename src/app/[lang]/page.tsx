@@ -523,26 +523,24 @@ export default async function HomePage({
                     style={{ background: "var(--color-brand-soft)" }}
                   >
                     {/* The work, and under it a strip with its caption.
-                        Two behaviours, and both are deliberate.
-                        On a phone the strip is a single column, so a card
-                        can be any height: the work is shown at its own
-                        shape, full width, with the caption pressed right
-                        up against it. Nothing is cropped and there is no
-                        empty field anywhere, which is what an author
-                        should see of their own work.
+                        On a phone the strip is a single column, so the
+                        work is shown at its own size: full width, its own
+                        height, with the caption pressed right against the
+                        bottom edge. No frame, no fields, nothing cropped.
+                        A cap on the height was tried and removed: a tall
+                        cover hit the cap, shrank, and stopped reaching
+                        the sides, which put the fields back on the left
+                        and right — the exact thing this is here to avoid.
                         From tablet width up the cards stand side by side
                         and have to line up, so there they share one frame
-                        and the work is fitted inside it.
-                        The height is capped either way: on a phone one
-                        tall cover filled the whole screen and buried
-                        whatever came next. */}
+                        and the work is fitted inside it. */}
                     <span className="flex items-center justify-center overflow-hidden sm:aspect-[4/3]">
                       <img
                         src={p.mainImage}
                         alt={p.name}
                         loading="lazy"
                         decoding="async"
-                        className="block max-h-[24rem] w-full object-contain sm:h-full sm:max-h-none"
+                        className="block h-auto w-full object-contain sm:h-full"
                       />
                     </span>
                     <span className="block px-3 py-2.5">
