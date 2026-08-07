@@ -86,7 +86,7 @@ export function GalleryLightbox({
           />
         </button>
       ) : variant === "stages" ? (
-        <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        <div className="mt-4 grid grid-cols-2 items-start gap-4 sm:grid-cols-4">
           {images.map((src, i) => {
             const caption = captions?.[i]?.trim();
             return (
@@ -94,17 +94,21 @@ export function GalleryLightbox({
                 <button
                   type="button"
                   onClick={() => setOpen(i)}
-                  className="group relative block aspect-square w-full cursor-zoom-in overflow-hidden rounded-xl"
+                  className="group relative block w-full cursor-zoom-in overflow-hidden rounded-xl leading-none"
                   style={{ background: "var(--color-brand-soft)" }}
                   aria-label={`${workLabel} ${i + 1} — ${name}`}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
+                  {/* Same rule as the works below: a stage is evidence, and
+                      evidence with its edges cut off proves less. A sheet of
+                      character sketches is wide, a finished figure is tall,
+                      and a square frame was wrong for both. */}
                   <img
                     src={src}
                     alt={caption ? `${caption} — ${name}` : `${workLabel} ${i + 1} — ${name}`}
                     loading="lazy"
                     decoding="async"
-                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="block max-h-[18rem] w-full object-contain transition-transform duration-300 group-hover:scale-[1.03]"
                   />
                   {/* The number is the point of this strip: it says these
                       pictures are one piece in order, not four pieces. */}
@@ -129,7 +133,7 @@ export function GalleryLightbox({
           })}
         </div>
       ) : (
-        <div className="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div className="mt-4 grid grid-cols-1 items-start gap-6 sm:grid-cols-2">
           {images.map((src, i) => {
             const caption = captions?.[i]?.trim();
             return (
@@ -137,17 +141,26 @@ export function GalleryLightbox({
                 <button
                   type="button"
                   onClick={() => setOpen(i)}
-                  className="group block aspect-[4/3] w-full cursor-zoom-in overflow-hidden rounded-2xl"
+                  className="group block w-full cursor-zoom-in overflow-hidden rounded-2xl leading-none"
                   style={{ background: "var(--color-brand-soft)" }}
                   aria-label={`${workLabel} ${i + 1} — ${name}`}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
+                  {/* No fixed frame here on purpose.
+                      The works used to sit in a 4:3 box and were filled into
+                      it, which cut the sides off a long piece and the top and
+                      bottom off a tall one. On a directory whose whole promise
+                      is that a person made this, showing two thirds of their
+                      work and saying nothing is the one thing we cannot do.
+                      So the picture keeps its own shape, and only its height
+                      is capped, so that one very tall piece does not push
+                      everything else off the screen. */}
                   <img
                     src={src}
                     alt={caption ? `${caption} — ${name}` : `${workLabel} ${i + 1} — ${name}`}
                     loading="lazy"
                     decoding="async"
-                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="block max-h-[34rem] w-full object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                   />
                 </button>
                 {caption ? (
