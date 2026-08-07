@@ -61,7 +61,18 @@ export default async function HomePage({
     (p) => p.mainImage && p.showOnHomepage,
   );
   const realWorks = shown.filter((p) => !p.demo);
-  const newWorks = (realWorks.length > 0 ? realWorks : shown).slice(0, 6);
+  // Companies first, then teams, then individual authors, and inside each
+  // of the three the newest first. The same order the catalog uses, and
+  // for the same reason: a place at the top is something participants pay
+  // for. The columns below fill by height rather than by row, so the order
+  // reads down the page rather than across it, and the three groups can
+  // look slightly mixed. What holds either way is that a company's work is
+  // never below an author's in its own column.
+  const typeRank = { company: 0, team: 1, creator: 2 } as const;
+  const newWorks = (realWorks.length > 0 ? realWorks : shown)
+    .slice()
+    .sort((a, b) => typeRank[a.profileType] - typeRank[b.profileType])
+    .slice(0, 6);
 
   // New members strip: the same idea as new works, but keyed on the avatar
   // rather than the work image. Real authors first; the demo profile fills
@@ -499,7 +510,15 @@ export default async function HomePage({
           >
             {dict.home.newWorksTitle}
           </p>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Works laid out in columns rather than a grid.
+              Every work keeps its own shape and its own height, and the
+              cards stack into whatever gap is nearest, so nothing is
+              cropped and no card floats in an empty field. Column order
+              means the reading order runs down rather than across; on a
+              strip of new work nobody was promised a position, so that
+              costs nothing here. The catalog, where order is sold, keeps
+              its even rows. */}
+          <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
             {(() => {
               const slotGradients = [
                 "linear-gradient(135deg, rgba(255,154,108,0.75) 0%, rgba(255,106,136,0.75) 55%, rgba(255,153,172,0.75) 100%)",
@@ -519,7 +538,7 @@ export default async function HomePage({
                     key={`work-${p.slug}`}
                     lang={locale}
                     href={href}
-                    className="press-btn flex flex-col overflow-hidden rounded-2xl"
+                    className="press-btn mb-4 flex break-inside-avoid flex-col overflow-hidden rounded-2xl"
                     style={{ background: "var(--color-brand-soft)" }}
                   >
                     {/* The work, and under it a strip with its caption.
@@ -534,13 +553,13 @@ export default async function HomePage({
                         From tablet width up the cards stand side by side
                         and have to line up, so there they share one frame
                         and the work is fitted inside it. */}
-                    <span className="flex items-center justify-center overflow-hidden sm:aspect-[4/3]">
+                    <span className="block overflow-hidden">
                       <img
                         src={p.mainImage}
                         alt={p.name}
                         loading="lazy"
                         decoding="async"
-                        className="block h-auto w-full object-contain sm:h-full"
+                        className="block h-auto w-full"
                       />
                     </span>
                     <span className="block px-3 py-2.5">
@@ -574,7 +593,7 @@ export default async function HomePage({
                     key={`slot-${i}`}
                     lang={locale}
                     href="/join"
-                    className="press-btn relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-2xl"
+                    className="press-btn relative mb-4 flex aspect-[4/3] break-inside-avoid items-center justify-center overflow-hidden rounded-2xl"
                     style={{ background: slotGradients[i % slotGradients.length] }}
                   >
                     <span
