@@ -518,7 +518,7 @@ export default async function HomePage({
                     lang={locale}
                     href={href}
                     className="press-btn flex flex-col overflow-hidden rounded-2xl"
-                    style={{ background: "#ffffff" }}
+                    style={{ background: "var(--color-brand-soft)" }}
                   >
                     {/* The work, whole.
                         The name used to lie across the picture on a dark
@@ -531,10 +531,11 @@ export default async function HomePage({
                         The height is capped as well: on a phone one tall
                         cover filled the entire screen and buried whatever
                         came next. */}
-                    <span
-                      className="flex items-center justify-center overflow-hidden sm:aspect-[4/3]"
-                      style={{ background: "var(--color-brand-soft)" }}
-                    >
+                    {/* The frame around the work and the line with the name
+                        share one colour, so the card reads as a single
+                        object with the work resting inside it, rather than
+                        a picture with a white label stuck underneath. */}
+                    <span className="flex items-center justify-center overflow-hidden sm:aspect-[4/3]">
                       <img
                         src={p.mainImage}
                         alt={p.name}
