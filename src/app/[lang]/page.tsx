@@ -517,17 +517,18 @@ export default async function HomePage({
                     key={`work-${p.slug}`}
                     lang={locale}
                     href={href}
-                    className="press-btn relative flex aspect-[4/3] items-end overflow-hidden rounded-2xl"
+                    className="press-btn relative flex items-end overflow-hidden rounded-2xl sm:aspect-[4/3]"
+                    style={{ background: "var(--color-brand-soft)" }}
                   >
                     <img
                       src={p.mainImage}
                       alt={p.name}
                       loading="lazy"
                       decoding="async"
-                      className="absolute inset-0 h-full w-full object-cover"
+                      className="block h-auto w-full object-contain sm:absolute sm:inset-0 sm:h-full"
                     />
                     <span
-                      className="relative w-full px-3 py-2 text-[0.95rem] font-semibold"
+                      className="absolute bottom-0 left-0 w-full px-3 py-2 text-[0.95rem] font-semibold"
                       style={{
                         color: "#ffffff",
                         background: "linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0))",

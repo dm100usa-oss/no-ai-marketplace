@@ -97,11 +97,21 @@ export async function CreatorCard({
 
   return (
     <article className="card card-hover flex flex-col">
-      {/* Work image */}
-      <LocaleLink lang={lang} href={profileHref} className="relative block aspect-[4/3] overflow-hidden" style={{ background: "var(--color-brand-soft)" }}>
+      {/* Work image.
+          Two behaviours on purpose.
+          On a phone the catalog is a single column, so the cards can be any
+          height without anything getting out of order: the work is shown
+          whole, in its own shape, exactly as its author made it. Cutting a
+          book cover down to a strip of its middle is the last thing a
+          directory built on trusting people should do.
+          From tablet width up the cards stand side by side and have to line
+          up, so there the work is fitted inside one frame and the leftover
+          space is filled with the soft brand colour. Nothing is cropped
+          either way. */}
+      <LocaleLink lang={lang} href={profileHref} className={`relative block overflow-hidden ${profile.mainImage ? "sm:aspect-[4/3]" : "aspect-[4/3]"}`} style={{ background: "var(--color-brand-soft)" }}>
         {profile.mainImage ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={profile.mainImage} alt={`${dict.common.humanMadeWork}: ${profile.name}`} className="h-full w-full object-cover" loading="lazy" decoding="async" />
+          <img src={profile.mainImage} alt={`${dict.common.humanMadeWork}: ${profile.name}`} className="block h-auto w-full object-contain sm:h-full" loading="lazy" decoding="async" />
         ) : (
           <PlaceholderArt seed={profile.slug} label={dict.common.humanMadeWork} />
         )}
