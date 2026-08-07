@@ -226,6 +226,45 @@ export function matchTeamMembers(
   });
 }
 
+/**
+ * The captions exactly as the profile will print them.
+ *
+ * A caption belongs to a picture, and a picture the author did not upload
+ * takes its caption with it. The profile drops both together; the
+ * translator, working from the raw application, did not, and came back
+ * with one caption more than there were pictures. Every English caption
+ * then sat one work too early, while the Russian page, built from the
+ * same application, was right — the kind of difference nobody spots
+ * without opening both pages side by side.
+ *
+ * So the two now read from one place. Whatever is translated is what the
+ * page shows, in the same order and the same number.
+ */
+export function submissionDisplayCaptions(s: Submission): {
+  galleryCaptions?: string[];
+  stageCaptions?: string[];
+} {
+  const rawWorks =
+    s.mainImage && !(s.gallery ?? []).includes(s.mainImage)
+      ? [s.mainImage, ...slots(s.gallery)]
+      : slots(s.gallery);
+
+  const galleryCaptions = rawWorks
+    .map((src, i) => ({ src: src.trim(), caption: slots(s.galleryCaptions)[i]?.trim() ?? "" }))
+    .filter((pair) => pair.src)
+    .map((pair) => pair.caption);
+
+  const stageCaptions = slots(s.stages)
+    .map((src, i) => ({ src: src.trim(), caption: slots(s.stageCaptions)[i]?.trim() ?? "" }))
+    .filter((pair) => pair.src)
+    .map((pair) => pair.caption);
+
+  return {
+    galleryCaptions: galleryCaptions.length ? galleryCaptions : undefined,
+    stageCaptions: stageCaptions.length ? stageCaptions : undefined,
+  };
+}
+
 /** How many members actually count: only those with a profile. */
 export function linkedMemberCount(members: TeamMember[]): number {
   return members.filter((m) => m.slug).length;
@@ -316,11 +355,8 @@ export function submissionToProfile(
       ? [s.mainImage, ...slots(s.gallery)]
       : slots(s.gallery);
 
-  const workPairs = rawWorks
-    .map((src, i) => ({ src: src.trim(), caption: slots(s.galleryCaptions)[i]?.trim() ?? "" }))
-    .filter((pair) => pair.src);
-  const gallery = workPairs.map((pair) => pair.src);
-  const captions = workPairs.map((pair) => pair.caption);
+  const gallery = rawWorks.map((src) => src.trim()).filter(Boolean);
+  const captions = submissionDisplayCaptions(s).galleryCaptions ?? [];
 
   // Work stages. Two rules decide what travels here.
   //

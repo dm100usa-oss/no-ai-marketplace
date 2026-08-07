@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { refreshCatalog } from "@/lib/refresh-catalog";
 import { getLiveProfiles } from "@/lib/live-profiles";
-import { submissionToProfile } from "@/lib/submission-to-profile";
+import { submissionToProfile, submissionDisplayCaptions } from "@/lib/submission-to-profile";
 import { timingSafeEqual } from "crypto";
 import {
   addSubmission,
@@ -37,13 +37,18 @@ async function translateSubmission(s: Submission): Promise<boolean> {
   const from = s.lang === "ru" ? "ru" : "en";
   const to = from === "ru" ? "en" : "ru";
   try {
+    // The captions as the page will print them, not as the form sent
+    // them: a work the author never uploaded takes its caption with it,
+    // and translating the caption anyway put every English one under the
+    // wrong picture.
+    const shown = submissionDisplayCaptions(s);
     const done = await translateAuthorText(
       {
         shortDescription: s.shortDescription,
         fullDescription: s.fullDescription,
         services: s.services,
-        galleryCaptions: s.galleryCaptions,
-        stageCaptions: s.stageCaptions,
+        galleryCaptions: shown.galleryCaptions,
+        stageCaptions: shown.stageCaptions,
       },
       from,
       to,

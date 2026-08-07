@@ -53,6 +53,27 @@ export function AdminClient() {
   >({});
   const [tab, setTab] = useState<"profiles" | "reviews">("profiles");
   const [busy, setBusy] = useState(false);
+  /**
+   * Which single button is working right now, as "id:action".
+   *
+   * Everything used to hang on one flag, so one slow call — the
+   * translator can take ten seconds — greyed out every button on the
+   * screen at once, with nothing to say why. The owner read that as the
+   * page having frozen, and pressed other buttons that could not respond.
+   */
+  const [running, setRunning] = useState<string | null>(null);
+  /** The result of the last action, shown on the card it belongs to.
+   *  The message used to appear at the top of the page, out of sight of
+   *  whoever had just pressed a button halfway down it. */
+  const [cardNote, setCardNote] = useState<{ id: string; text: string; ok: boolean } | null>(
+    null,
+  );
+  /** Show the author's own words, or their translation.
+   *
+   *  A card shows the language the form was filled in, which is the one
+   *  language the owner does not need to check: the question at review
+   *  time is always whether the other one reads properly. */
+  const [showTranslated, setShowTranslated] = useState(false);
   /** The submission whose delete button is waiting for a second click.
    *  Deletion is final, so one stray tap must not wipe an application. */
   const [confirmDelete, setConfirmDelete] = useState<string | null>(null);
@@ -97,7 +118,8 @@ export function AdminClient() {
 
   /** Publish or reject one join request. */
   async function decideSubmission(id: string, status: "published" | "rejected") {
-    setBusy(true);
+    setRunning(`${id}:${status}`);
+    setCardNote(null);
     try {
       const res = await fetch("/api/admin/submissions", {
         method: "POST",
@@ -109,18 +131,24 @@ export function AdminClient() {
       });
       if (res.ok) {
         await load(password);
-        return;
+        setCardNote({
+          id,
+          ok: true,
+          text: status === "published" ? "Заявка одобрена, письмо отправлено." : "Заявка отклонена.",
+        });
+      } else {
+        setCardNote({ id, ok: false, text: "Не удалось сохранить решение." });
       }
-      setError("Не удалось сохранить решение.");
     } catch {
-      setError("Не удалось связаться с сервером.");
+      setCardNote({ id, ok: false, text: "Не удалось связаться с сервером." });
     }
-    setBusy(false);
+    setRunning(null);
   }
 
   /** Remove a submission for good. No letter is sent. */
   async function removeSubmission(id: string) {
-    setBusy(true);
+    setRunning(`${id}:delete`);
+    setCardNote(null);
     try {
       const res = await fetch("/api/admin/submissions", {
         method: "POST",
@@ -133,13 +161,13 @@ export function AdminClient() {
       if (res.ok) {
         setConfirmDelete(null);
         await load(password);
-        return;
+      } else {
+        setCardNote({ id, ok: false, text: "Не удалось удалить заявку." });
       }
-      setError("Не удалось удалить заявку.");
     } catch {
-      setError("Не удалось связаться с сервером.");
+      setCardNote({ id, ok: false, text: "Не удалось связаться с сервером." });
     }
-    setBusy(false);
+    setRunning(null);
   }
 
   /** Grant a verification badge and notify the author. */
@@ -147,7 +175,8 @@ export function AdminClient() {
     id: string,
     verification: "verified-creator" | "verified-business",
   ) {
-    setBusy(true);
+    setRunning(`${id}:${verification}`);
+    setCardNote(null);
     try {
       const res = await fetch("/api/admin/submissions", {
         method: "POST",
@@ -159,13 +188,14 @@ export function AdminClient() {
       });
       if (res.ok) {
         await load(password);
-        return;
+        setCardNote({ id, ok: true, text: "Знак выдан, письмо автору отправлено." });
+      } else {
+        setCardNote({ id, ok: false, text: "Не удалось выдать знак." });
       }
-      setError("Не удалось выдать знак.");
     } catch {
-      setError("Не удалось связаться с сервером.");
+      setCardNote({ id, ok: false, text: "Не удалось связаться с сервером." });
     }
-    setBusy(false);
+    setRunning(null);
   }
 
   /** Translate the author's words again.
@@ -176,7 +206,8 @@ export function AdminClient() {
    *  sites. This is the way back. Says plainly whether it worked, because
    *  the alternative is opening the other language's page and guessing. */
   async function retranslate(id: string) {
-    setBusy(true);
+    setRunning(`${id}:translate`);
+    setCardNote(null);
     try {
       const res = await fetch("/api/admin/submissions", {
         method: "POST",
@@ -189,13 +220,18 @@ export function AdminClient() {
       const out = (await res.json().catch(() => null)) as { ok?: boolean } | null;
       if (res.ok && out?.ok) {
         await load(password);
-        return;
+        setCardNote({ id, ok: true, text: "Перевод готов." });
+      } else {
+        setCardNote({
+          id,
+          ok: false,
+          text: "Переводчик не ответил. Попробуйте через несколько минут.",
+        });
       }
-      setError("Переводчик не ответил. Попробуйте позже.");
     } catch {
-      setError("Не удалось связаться с сервером.");
+      setCardNote({ id, ok: false, text: "Не удалось связаться с сервером." });
     }
-    setBusy(false);
+    setRunning(null);
   }
 
   async function decide(id: string, status: "approved" | "rejected") {
@@ -338,16 +374,16 @@ export function AdminClient() {
    *  and a browser confirm box on a phone is easy to dismiss by accident. */
   function DeleteButton({ id }: { id: string }) {
     const armed = confirmDelete === id;
+    const working = running === `${id}:delete`;
     return (
       <button
         type="button"
         onClick={() => (armed ? removeSubmission(id) : setConfirmDelete(id))}
-        onBlur={() => armed && setConfirmDelete(null)}
-        disabled={busy}
+        disabled={working}
         className="btn btn-quiet disabled:opacity-60"
-        style={armed ? { color: "#b4342a", borderColor: "#b4342a" } : undefined}
+        style={armed && !working ? { color: "#b4342a", borderColor: "#b4342a" } : undefined}
       >
-        {armed ? "Точно удалить?" : "Удалить"}
+        {working ? "Удаляю..." : armed ? "Точно удалить?" : "Удалить"}
       </button>
     );
   }
@@ -377,6 +413,18 @@ export function AdminClient() {
 
   function SubmissionCard({ s, actions }: { s: Submission; actions: boolean }) {
     const note = readinessNote(s);
+    // Which language this card is showing. The translation exists only on
+    // published submissions and only when the translator answered, so the
+    // switch quietly falls back to the original rather than emptying the
+    // card.
+    const other = s.lang === "ru" ? "en" : "ru";
+    const t = showTranslated ? s.translations?.[other] : undefined;
+    const shown = {
+      shortDescription: t?.shortDescription ?? s.shortDescription,
+      fullDescription: t?.fullDescription ?? s.fullDescription,
+      services: t?.services ?? s.services,
+    };
+    const missingTranslation = showTranslated && !s.translations?.[other];
     // Work 1 now stays inside the gallery rather than being lifted out of
     // it, so listing it separately as well would show it twice and put
     // every following number one off the form the author filled in.
@@ -492,23 +540,29 @@ export function AdminClient() {
           </p>
         ) : null}
 
-        {(s.services?.length || s.foundedYear) && (
+        {(shown.services?.length || s.foundedYear) && (
           <p className="mt-1 text-[0.8rem]" style={{ color: "var(--color-muted-soft)" }}>
             {[
               s.foundedYear ? `с ${s.foundedYear} года` : "",
-              s.services?.length ? s.services.join(" · ") : "",
+              shown.services?.length ? shown.services.join(" · ") : "",
             ]
               .filter(Boolean)
               .join(" — ")}
           </p>
         )}
 
-        {(s.shortDescription || s.fullDescription) && (
+        {(shown.shortDescription || shown.fullDescription) && (
           <p
             className="mt-2 whitespace-pre-line text-[0.95rem] leading-relaxed"
             style={{ color: "var(--color-muted)" }}
           >
-            {s.shortDescription ?? s.fullDescription}
+            {shown.shortDescription ?? shown.fullDescription}
+          </p>
+        )}
+
+        {missingTranslation && (
+          <p className="mt-2 text-[0.8rem]" style={{ color: "#8a6d1f" }}>
+            Перевода нет, показан текст автора.
           </p>
         )}
 
@@ -581,18 +635,18 @@ export function AdminClient() {
             <button
               type="button"
               onClick={() => decideSubmission(s.id, "published")}
-              disabled={busy}
+              disabled={running === `${s.id}:published`}
               className="btn btn-accent disabled:opacity-60"
             >
-              Опубликовать
+              {running === `${s.id}:published` ? "Публикую..." : "Опубликовать"}
             </button>
             <button
               type="button"
               onClick={() => decideSubmission(s.id, "rejected")}
-              disabled={busy}
+              disabled={running === `${s.id}:rejected`}
               className="btn btn-quiet disabled:opacity-60"
             >
-              Отклонить
+              {running === `${s.id}:rejected` ? "Отклоняю..." : "Отклонить"}
             </button>
             <DeleteButton id={s.id} />
           </div>
@@ -616,18 +670,22 @@ export function AdminClient() {
                   <button
                     type="button"
                     onClick={() => verifySubmission(s.id, "verified-creator")}
-                    disabled={busy}
+                    disabled={running === `${s.id}:verified-creator`}
                     className="btn btn-quiet disabled:opacity-60"
                   >
-                    Выдать знак «Проверенный автор»
+                    {running === `${s.id}:verified-creator`
+                      ? "Выдаю знак..."
+                      : "Выдать знак «Проверенный автор»"}
                   </button>
                   <button
                     type="button"
                     onClick={() => verifySubmission(s.id, "verified-business")}
-                    disabled={busy}
+                    disabled={running === `${s.id}:verified-business`}
                     className="btn btn-quiet disabled:opacity-60"
                   >
-                    Выдать знак «Проверенный бизнес»
+                    {running === `${s.id}:verified-business`
+                      ? "Выдаю знак..."
+                      : "Выдать знак «Проверенный бизнес»"}
                   </button>
                 </>
               )}
@@ -635,14 +693,23 @@ export function AdminClient() {
               <button
                 type="button"
                 onClick={() => retranslate(s.id)}
-                disabled={busy}
+                disabled={running === `${s.id}:translate`}
                 className="btn btn-quiet disabled:opacity-60"
               >
-                Перевести заново
+                {running === `${s.id}:translate` ? "Перевожу..." : "Перевести заново"}
               </button>
             )}
             <DeleteButton id={s.id} />
           </div>
+        )}
+
+        {cardNote?.id === s.id && (
+          <p
+            className="mt-3 text-[0.85rem]"
+            style={{ color: cardNote.ok ? "#2f6b45" : "#b4342a" }}
+          >
+            {cardNote.text}
+          </p>
         )}
       </li>
     );
@@ -699,6 +766,33 @@ export function AdminClient() {
 
         {tab === "profiles" ? (
           <>
+            {/* Which language the cards are read in. The form's own
+                language is the one the owner already trusts; the question
+                at review time is whether the other one reads properly. */}
+            <div className="mt-6 flex flex-wrap items-center gap-2">
+              <span className="text-[0.85rem]" style={{ color: "var(--color-muted-soft)" }}>
+                Показывать тексты:
+              </span>
+              {([false, true] as const).map((v) => (
+                <button
+                  key={String(v)}
+                  type="button"
+                  onClick={() => setShowTranslated(v)}
+                  className="rounded-full px-3 py-1 text-[0.8rem] font-semibold"
+                  style={
+                    showTranslated === v
+                      ? { background: "var(--color-ink)", color: "#fff" }
+                      : {
+                          background: "var(--color-brand-soft)",
+                          color: "var(--color-ink)",
+                        }
+                  }
+                >
+                  {v ? "перевод" : "как заполнено"}
+                </button>
+              ))}
+            </div>
+
             <h2 className="mt-7 font-semibold" style={{ color: "var(--color-ink)" }}>
               Ожидают ({subPending.length})
             </h2>
