@@ -523,7 +523,7 @@ export default async function HomePage({
                     lang={locale}
                     href={href}
                     className="press-btn flex flex-col overflow-hidden rounded-2xl"
-                    style={{ background: "var(--color-brand-soft)" }}
+                    style={{ background: "var(--color-card-field)" }}
                   >
                     <span className="block overflow-hidden">
                       <img
@@ -573,7 +573,7 @@ export default async function HomePage({
                     href="/join"
                     className="press-btn relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-2xl border border-dashed"
                     style={{
-                      background: "var(--color-brand-soft)",
+                      background: "var(--color-card-field)",
                       borderColor: "var(--color-line)",
                     }}
                   >

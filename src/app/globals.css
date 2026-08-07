@@ -23,6 +23,11 @@ img {
   /* Brand ash-blue */
   --color-brand: #c7dbf7;
   --color-brand-soft: #eaf1ff;
+  /* The card colour in the new-works strip: the field the work sits in
+     and the line with its caption underneath, one colour for both. A
+     touch deeper than the general soft tint, so the strip reads as part
+     of the site's blue rather than as an absence of colour. */
+  --color-card-field: #e0e9fb;
 
   /* Page */
   --color-page: #ffffff;
