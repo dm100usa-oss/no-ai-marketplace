@@ -22,12 +22,7 @@ img {
 @theme {
   /* Brand ash-blue */
   --color-brand: #c7dbf7;
-  /* The field behind a work, and the fill of every pill.
-     It used to be a distinctly blue tint, which put a second colour next
-     to work that already has its own and gave the whole page the look of
-     a corporate site from the twenty-tens. Near-neutral with a trace of
-     the brand left in it: quiet beside anybody's colours. */
-  --color-brand-soft: #f0f2f7;
+  --color-brand-soft: #eaf1ff;
 
   /* Page */
   --color-page: #ffffff;
@@ -303,22 +298,17 @@ a { color: inherit; text-decoration: none; }
 /* ----------------------------------------------------------------
    Cards
 ------------------------------------------------------------------ */
-/* A hairline and nothing else at rest.
-   A card used to carry a border and a fairly heavy shadow at the same
-   time. Two ways of saying "this is a card" at once is what a page from
-   the early two-thousands looks like; today one is plenty, and the depth
-   arrives only when the pointer does. */
 .card {
   background: #fff;
   border: 1px solid var(--color-line);
   border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
   overflow: hidden;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 .card-hover:hover {
   transform: translateY(-2px);
-  border-color: transparent;
-  box-shadow: var(--shadow-card);
+  box-shadow: var(--shadow-raise-hover);
 }
 
 /* ----------------------------------------------------------------
