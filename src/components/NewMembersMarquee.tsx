@@ -42,6 +42,10 @@ export interface MarqueeMember {
   name: string;
   avatar: string;
   href: string;
+  /** What this person does, in two words: "Иллюстраторы". A name alone
+   *  tells a stranger nothing, and the strip says "new members", not "new
+   *  names. */
+  trade?: string;
 }
 
 function MemberCard({
@@ -89,6 +93,9 @@ function MemberCard({
       <div className="members-marquee__name">
         {member ? member.name : name || namePlaceholder}
       </div>
+      {member?.trade ? (
+        <div className="members-marquee__trade">{member.trade}</div>
+      ) : null}
     </Link>
   );
 }

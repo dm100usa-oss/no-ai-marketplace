@@ -24,6 +24,7 @@ import {
   getCategoriesByDirectionL,
   getNewestProfilesL,
   directionOfCategoryL,
+  categoryNameL,
 } from "@/lib/localized-data";
 
 /** Drawings for "How the platform works", one per card, in card order.
@@ -78,6 +79,7 @@ export default async function HomePage({
       name: p.name,
       avatar: p.avatar as string,
       href: `${profileBasePath(p.profileType)}/${p.slug}`,
+      trade: categoryNameL(p.mainCategory, locale),
     }));
 
   // Named, not sliced. Taking the first eight of the list gave whatever
@@ -518,7 +520,7 @@ export default async function HomePage({
                     lang={locale}
                     href={href}
                     className="press-btn flex flex-col overflow-hidden rounded-2xl"
-                    style={{ background: "var(--color-brand-soft)" }}
+                    style={{ background: "#ffffff" }}
                   >
                     {/* The work, whole.
                         The name used to lie across the picture on a dark
@@ -535,7 +537,10 @@ export default async function HomePage({
                         share one colour, so the card reads as a single
                         object with the work resting inside it, rather than
                         a picture with a white label stuck underneath. */}
-                    <span className="flex items-center justify-center overflow-hidden sm:aspect-[4/3]">
+                    <span
+                      className="flex items-center justify-center overflow-hidden sm:aspect-[4/3]"
+                      style={{ background: "var(--color-brand-soft)" }}
+                    >
                       <img
                         src={p.mainImage}
                         alt={p.name}
@@ -544,11 +549,35 @@ export default async function HomePage({
                         className="block max-h-[22rem] w-full object-contain sm:h-full sm:max-h-none"
                       />
                     </span>
-                    <span
-                      className="block px-3 py-2.5 text-[0.95rem] font-semibold"
-                      style={{ color: "var(--color-ink)" }}
-                    >
-                      {p.name}
+                    {/* What the work is, then whose it is.
+                        The strip is called "new works", so the picture is
+                        the subject and the first line answers the question
+                        a visitor actually has: what am I looking at. The
+                        author's own caption answers it in their words, and
+                        the catalog already has it. Captions are written
+                        loosely, so the line is capped at two and cut with
+                        an ellipsis rather than pushing the card taller than
+                        its neighbours. A work with no caption simply shows
+                        the name on its own, as before. */}
+                    <span className="block px-3 py-2.5">
+                      {p.galleryCaptions?.[0]?.trim() ? (
+                        <span
+                          className="block text-[0.95rem] font-semibold leading-snug [display:-webkit-box] [overflow:hidden] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]"
+                          style={{ color: "var(--color-ink)" }}
+                        >
+                          {p.galleryCaptions[0].trim()}
+                        </span>
+                      ) : null}
+                      <span
+                        className={`block text-[0.82rem] ${p.galleryCaptions?.[0]?.trim() ? "mt-1" : "text-[0.95rem] font-semibold"}`}
+                        style={{
+                          color: p.galleryCaptions?.[0]?.trim()
+                            ? "var(--color-muted-soft)"
+                            : "var(--color-ink)",
+                        }}
+                      >
+                        {p.name}
+                      </span>
                     </span>
                   </LocaleLink>,
                 );
