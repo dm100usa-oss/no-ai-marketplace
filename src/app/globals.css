@@ -24,10 +24,13 @@ img {
   --color-brand: #c7dbf7;
   --color-brand-soft: #eaf1ff;
   /* The card colour in the new-works strip: the field the work sits in
-     and the line with its caption underneath, one colour for both. A
-     touch deeper than the general soft tint, so the strip reads as part
-     of the site's blue rather than as an absence of colour. */
-  --color-card-field: #e0e9fb;
+     and the line with its caption underneath, one colour for both.
+     A clean pale sky rather than a tinted grey. The first attempt sat
+     between the two and read as dirty: the blue was there but so was
+     enough grey to kill it. This one is barely off white and clearly
+     blue, which is what a field behind somebody else's colours should
+     be. */
+  --color-card-field: #f5faff;
 
   /* Page */
   --color-page: #ffffff;
