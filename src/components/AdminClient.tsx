@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import type { Review, Submission } from "@/lib/redis";
+import { categories } from "@/data/categories";
+import { categoriesRu } from "@/i18n/data/categories.ru";
+import { categorySlugFromName } from "@/lib/category-lookup";
+import { countryNameL } from "@/lib/country-name";
 
 /**
  * The moderation screen.
@@ -419,10 +423,41 @@ export function AdminClient() {
     // card.
     const other = s.lang === "ru" ? "en" : "ru";
     const t = showTranslated ? s.translations?.[other] : undefined;
+
+    /**
+     * A category as it is written in the language being shown.
+     *
+     * The form sends the category as a word, in the applicant's own
+     * language. The catalog knows both spellings already, so the card can
+     * simply look the other one up: showing "Children's Writers" next to
+     * an English description instead of leaving a Russian word stranded
+     * in the middle of an otherwise translated card.
+     */
+    const categoryIn = (name: string | undefined, lang: "en" | "ru") => {
+      if (!name) return name;
+      const slug = categorySlugFromName(name);
+      if (!slug) return name;
+      const hit =
+        lang === "ru"
+          ? categoriesRu[slug]?.name
+          : categories.find((c) => c.slug === slug)?.name;
+      return hit ?? name;
+    };
+
+    const lang = showTranslated ? other : s.lang === "ru" ? "ru" : "en";
     const shown = {
       shortDescription: t?.shortDescription ?? s.shortDescription,
       fullDescription: t?.fullDescription ?? s.fullDescription,
       services: t?.services ?? s.services,
+      // These three are not translated by a machine and do not depend on
+      // the translation existing: the category is looked up, the country
+      // is a code underneath, and the town is whatever the author typed
+      // into the second-language field.
+      mainCategory: categoryIn(s.mainCategory, lang),
+      additionalCategories: s.additionalCategories?.map((c) => categoryIn(c, lang) ?? c),
+      city: showTranslated ? s.cityAlt || s.city : s.city,
+      country: countryNameL(s.country, lang) ?? s.country,
+      name: showTranslated ? s.nameAlt || s.name : s.name,
     };
     const missingTranslation = showTranslated && !s.translations?.[other];
     // Work 1 now stays inside the gallery rather than being lifted out of
@@ -446,7 +481,7 @@ export function AdminClient() {
         <div className="flex flex-wrap items-center justify-between gap-2">
           <span className="flex flex-wrap items-center gap-2.5">
             <span className="font-semibold" style={{ color: "var(--color-ink)" }}>
-              {s.name}
+              {shown.name}
             </span>
             {s.profileType && s.profileType !== "creator" && (
               <span
@@ -529,14 +564,14 @@ export function AdminClient() {
         )}
 
         <p className="mt-2 text-[0.85rem]" style={{ color: "var(--color-muted-soft)" }}>
-          {[s.mainCategory, [s.city, s.country].filter(Boolean).join(", ")]
+          {[shown.mainCategory, [shown.city, shown.country].filter(Boolean).join(", ")]
             .filter(Boolean)
             .join(" · ")}
         </p>
 
-        {s.additionalCategories?.length ? (
+        {shown.additionalCategories?.length ? (
           <p className="mt-1 text-[0.8rem]" style={{ color: "var(--color-muted-soft)" }}>
-            also: {s.additionalCategories.join(", ")}
+            {showTranslated && other === "en" ? "also" : "также"}: {shown.additionalCategories.join(", ")}
           </p>
         ) : null}
 

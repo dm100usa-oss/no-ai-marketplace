@@ -99,6 +99,13 @@ function LanguageSwitcher({
 }) {
   const pathname = usePathname() || "/";
 
+  // Not on the moderation screen. Switching language there reloads the
+  // page in the other locale, which drops the session and asks for the
+  // password again, and the screen is in Russian either way: the owner
+  // reads it, nobody else does. The language a card is read in is chosen
+  // inside the screen instead.
+  if (stripLocale(pathname).startsWith("/admin")) return null;
+
   // Strip the current locale prefix to get the canonical path, then
   // re-localize into each target language.
   const canonical = stripLocale(pathname);
