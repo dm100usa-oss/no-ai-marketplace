@@ -1,118 +1,83 @@
-# changes-18
+# No AI Directory
 
-**Архив сводный: включает changes-11 по 17 и новый инструмент.** Если
-предыдущие не поставлены, ставьте только этот. 42 файла.
+An international directory of professionals who create their work without
+generative AI.
 
----
+**Live site:** [noaidirectory.com](https://www.noaidirectory.com)
 
-## НОВОЕ: No AI Directory Origin Check
+## What this is
 
-Адреса /origin-check и /ru/origin-check, плюс отдельная страница на каждую
-профессию.
+Finding a person who actually made the thing has become hard. A finished
+image, a finished text and a finished piece of music now look the same
+whether a person spent three weeks on them or a machine spent nine
+seconds. Clients who care about the difference have no reliable way to
+tell, and the professionals who do the work by hand have no way to say so
+that means anything.
 
-**Определение, которое стоит на странице:** инструмент, который помогает
-заказчику проверить происхождение работы. Он показывает, на какие признаки
-обратить внимание, что попросить у исполнителя и какие ответы должны
-насторожить, чтобы вывод был обоснованным.
+No AI Directory is a place where those professionals list themselves and
+show their work. Every listing is reviewed by a person before it appears.
 
-### Почему имя такое
+The directory does not sell anyone's work and takes no part in any
+transaction: clients contact professionals directly, on the
+professionals' own sites and shops.
 
-Проверил три варианта по открытым источникам, прежде чем остановиться.
+## How it works
 
-Human-Made Check отпал: Human Made это крупный японский бренд одежды, а
-Human Made Check Shirt это буквально их клетчатая рубашка.
+**Listings.** Creators, teams and companies apply through a form, choose
+their field and category, and show up to a few pieces of their work.
+Nothing reaches the catalog automatically: every application is reviewed
+by hand, and the applicant confirms their email address before their page
+goes live.
 
-Все, что содержит AI Check, отпало: там Grammarly, GPTZero, QuillBot,
-Sapling, Undetectable и десятки других детекторов. Мы бы не пробились, и
-имя обещало бы ровно то, чего мы не делаем.
+**Work stages.** The part that matters most. A finished picture proves
+nothing on its own, so a listing can show one piece from the first rough
+to the result. A process is the one thing a generator has never had.
 
-Голое Origin Check тоже занято: originchecker.com это детектор ИИ плюс
-проверка на плагиат, а origin check еще и технический термин в
-веб-разработке. Поэтому имя связано с брендом: No AI Directory Origin
-Check. Именно бренд в связке делает строку нашей.
+**Verification.** Two badges, granted by hand after a review of materials
+the applicant sends in: Verified Human Creator and Verified Human-Made
+Business. A listing can exist without either; a badge is never automatic
+and never bought.
 
-### Как устроено
+**Two languages.** The site is written in English and Russian. Both
+versions are written, not translated from one another. What an applicant
+writes in their own language is translated once, at approval, and marked
+as a machine translation wherever it is shown.
 
-**Вход первый, из поиска.** Человек ищет «как проверить архитектора» и
-попадает сразу на страницу профессии. Ради этого у каждой профессии свой
-настоящий адрес, а не панель, которая подменяет текст по нажатию: панель
-существует только для людей, а страница делалась для того, чтобы на нее
-ссылались снаружи.
+**Free tools.** Alongside the catalog there are open guides for clients:
+how to check that work was made by a person, what to ask, and what a
+sound answer looks like. They are free and require no listing.
 
-**Вход второй, с сайта.** Открывает /origin-check, читает определение,
-выбирает профессию, попадает на ту же страницу.
+## Structure
 
-**На странице профессии:** что остается вокруг настоящей работы в этой
-профессии, на что смотреть, что спросить у исполнителя с хорошим и
-настораживающим ответом на каждый вопрос, что должно насторожить, и как
-сложить это в вывод. Внизу ходы в разбор профессии, в каталог и в документы
-метода.
+- `src/app/[lang]`: pages, in both locales
+- `src/components`: shared interface pieces
+- `src/data`, `src/i18n`: categories, directions, dictionaries, guides
+- `src/lib`: data model, storage, mail, search, translation
 
-**Сохранение.** Кнопка «Сохранить или распечатать» и кнопка «Скопировать
-текстом». Печать идет через браузер, отдельного файла PDF нет намеренно:
-файл по своему адресу это вторая копия той же страницы, поисковики
-индексируют обе, и они начинают перебивать друг друга. Страница остается
-единственным адресом, а распечатка это удобство для того, кто уже пришел.
-В globals.css добавлены правила печати: шапка, подвал и кнопки со страницы
-уходят, текст становится черным по белому, вопрос не разрывается между
-листами.
+## Built with
 
-**Разметка.** Страница объявлена документом с датой и издателем плюс
-пронумерованный список вопросов. Как вопросы и ответы не размечено: это
-вопросы к другому человеку, а не наши ответы.
+Next.js (App Router) and TypeScript, styled with Tailwind, deployed on
+Vercel. Listings and reviews are kept in Redis. Transactional mail goes
+through Resend, forms through Tally.
 
-### Содержание
+## Running locally
 
-Наполнено одно направление, архитектура и интерьер: архитекторы, дизайнеры
-интерьера, ландшафтные дизайнеры. Оба языка, английский написан заново, а
-не переведен.
+```bash
+npm install
+npm run dev
+```
 
-Страница профессии существует ровно тогда, когда для нее написан разбор.
-Пустых страниц с обещанием «скоро будет» не появляется: тонкая страница
-вредит сильнее, чем ее отсутствие. Карта сайта собирается из готовых
-разборов, поэтому растет вместе с текстами.
+The catalog, the moderation queue and outgoing mail need environment
+variables to be set; without them the site still builds and runs, and
+those parts stay quiet rather than failing.
 
-Чтобы добавить профессию, нужно дописать блок в двух файлах:
-src/i18n/data/originCheck.ru.ts и originCheck.en.ts. Страница, адрес,
-разметка и место в карте сайта появятся сами.
+## License and content
 
-### Подключено
-
-Подвал, база знаний первым документом, llms.txt на обоих языках, блок
-связанных ссылок, даты и подпись редакции.
+The code in this repository is not open source. Work shown in listings
+belongs to the people who made it and is published here with their
+permission. Requests about a listing, including removal, go through the
+contact page on the site.
 
 ---
 
-## ИЗ ПРЕДЫДУЩИХ АРХИВОВ
-
-**17.** Подпись «Редакция No AI Directory» и даты на всех содержательных
-страницах, включая 41 разбор по профессиям, категории и направления.
-
-**16.** Стандарты Human-Made: правило в одну строку, список уместного
-приведен в соответствие с каталогом.
-
-**15.** Раздел из двенадцати фактов со ссылками на источники в llms.txt.
-Исправлены числа: 37 профессий и 10 направлений.
-
-**14.** Страница /how-to-verify: восемь вопросов исполнителю.
-
-**13.** Починены битые ссылки на главной, добавлен блок взаимных ссылок.
-
-**12.** Полная разметка организации, мелкая строка о компании, разметка
-метода, стандартов, цен и направлений.
-
-**11.** Убраны длинные тире из llms.txt, из карты сайта убран адрес с
-переадресацией.
-
----
-
-## Проверено
-
-Типы чисты, сборка проходит. Все адреса карты сайта отдают 200. Несуществующая
-профессия отдает 404, а не пустую страницу. Обе языковые версии работают.
-Длинных тире и буквы ё нет.
-
-## Осталось
-
-Разборы для остальных девяти направлений. Тексты правил проверки и правил
-размещения, которые до сих пор заглушки. Почта в src/lib/config.ts.
+Made by Magic of Discoveries LLC, South Florida.
