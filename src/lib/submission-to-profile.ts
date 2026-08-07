@@ -303,7 +303,20 @@ export function submissionToProfile(
   // under the wrong picture, confidently and without any sign that
   // anything was missing. The stages were fixed this way already; the
   // works were left with the same fault.
-  const workPairs = slots(s.gallery)
+  //
+  // The first line puts work one back where it belongs. Older
+  // applications were stored with it lifted out of the list, from the
+  // days when the profile printed a large picture above the rest; that
+  // heading is gone, so on those the author's first work was missing from
+  // their own page and every caption sat one work too early. New
+  // applications already arrive whole, which is why this only acts when
+  // the picture is genuinely absent from the list.
+  const rawWorks =
+    s.mainImage && !(s.gallery ?? []).includes(s.mainImage)
+      ? [s.mainImage, ...slots(s.gallery)]
+      : slots(s.gallery);
+
+  const workPairs = rawWorks
     .map((src, i) => ({ src: src.trim(), caption: slots(s.galleryCaptions)[i]?.trim() ?? "" }))
     .filter((pair) => pair.src);
   const gallery = workPairs.map((pair) => pair.src);
