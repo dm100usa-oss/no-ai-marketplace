@@ -133,14 +133,28 @@ function applyAuthorText(p: Profile, locale: Locale): Profile {
   const original = p.textLang;
   if (!original || original === locale) return p;
 
+  // The name and the town first, and separately from everything below.
+  //
+  // These two were typed by the author into their own form, not made by a
+  // machine, so they do not depend on a translation existing: a profile
+  // whose translation failed should still read "Dmitry, Miami" on the
+  // English page rather than dropping a Russian word into the middle of
+  // an English sentence. Left empty, the original spelling stays, which
+  // is what happened before these fields existed.
+  const named: Profile = {
+    ...p,
+    name: p.nameAlt?.trim() || p.name,
+    city: p.cityAlt?.trim() || p.city,
+  };
+
   const t = p.textTranslations?.[locale as "en" | "ru"];
   // No translation: the original stays. A page in one language with a
   // paragraph in another reads badly, but an empty profile reads worse,
   // and the author paid for a listing that says something.
-  if (!t) return p;
+  if (!t) return named;
 
   return {
-    ...p,
+    ...named,
     shortDescription: pick(t.shortDescription, p.shortDescription) ?? "",
     fullDescription: pick(t.fullDescription, p.fullDescription),
     services: pick(t.services, p.services),

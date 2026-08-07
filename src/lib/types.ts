@@ -64,6 +64,27 @@ export interface Profile extends ReservedRating {
 
   country: string;
   city?: string;
+  /**
+   * The name and the city as the author spells them in English.
+   *
+   * A machine must never touch either. A transliterated name is a
+   * different name, and the one person entitled to decide how theirs is
+   * spelled abroad is the person who owns it, which is why these are
+   * typed into the form and left exactly as typed.
+   *
+   * Asked only in the forms that are not in English: somebody filling in
+   * the English form has already written their name the way they want it
+   * read there. Both optional, and both used on any page whose language
+   * is not the author's own, so a Russian author reads as "Dmitry" on the
+   * English page and on the Spanish one alike. Left empty, the original
+   * spelling stays, which is never wrong, only foreign.
+   *
+   * The address of the page is built from the original name and does not
+   * follow these: a listing that changed its own link would lose every
+   * visitor who had already bookmarked it.
+   */
+  nameAlt?: string;
+  cityAlt?: string;
   languages?: string[];
 
   shortDescription: string;

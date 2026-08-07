@@ -97,6 +97,28 @@ const CAPTION_WORDS = ["описание работ", "description", "caption", 
  *  same way they are for works. */
 const STAGE_CAPTION_WORDS = ["описание этапа", "stage 1 description", "stage 2 description", "stage 3 description", "stage 4 description"];
 
+/** What marks a question as asking for the English spelling.
+ *
+ *  Only the forms that are not in English carry these two questions, one
+ *  for the name and one for the town, and each sits directly under the
+ *  ordinary question it mirrors: "Ваше имя" is followed by "Ваше имя
+ *  по-английски". They therefore have to be kept away from the ordinary
+ *  questions in both directions, or the English spelling would be stored
+ *  as the name itself.
+ *
+ *  Spanish is listed already, so the day that form appears it needs no
+ *  change here. Both the hyphenated and the loose spelling are kept,
+ *  because a question gets reworded and a missing hyphen must not quietly
+ *  empty the field. */
+const ALT_LANG_WORDS = [
+  "на английском",
+  "по-английски",
+  "по английски",
+  "en inglés",
+  "en ingles",
+  "in english",
+];
+
 /** What a yes looks like in either form. Both wordings are longer than a
  *  bare yes ("Да, разрешаю", "Yes, I allow"), so the answer is searched
  *  for the affirmative rather than compared to it. */
@@ -120,6 +142,29 @@ function pick(
       const t = fieldText(f);
       if (t) return t;
     }
+  }
+  return undefined;
+}
+
+/** Find the first field whose label matches both lists at once.
+ *
+ *  The second-language questions need this: "Ваше имя по-английски" is
+ *  only that question when it carries a name word and a language word
+ *  together, and either word on its own belongs to something else. A
+ *  single list joined with or would have matched the plain name question,
+ *  and adding the whole phrase as one keyword would break the moment the
+ *  wording changed by a letter. */
+function pickBoth(
+  fields: TallyField[],
+  keywords: string[],
+  also: string[],
+): string | undefined {
+  for (const f of fields) {
+    const label = (f.label ?? f.key ?? "").toLowerCase();
+    if (!keywords.some((k) => label.includes(k))) continue;
+    if (!also.some((k) => label.includes(k))) continue;
+    const t = fieldText(f);
+    if (t) return t;
   }
   return undefined;
 }
@@ -251,7 +296,7 @@ export async function POST(request: NextRequest) {
   const langRaw = pick(fields, ["lang", "язык", "language"]);
   const lang = langRaw === "ru" ? "ru" : "en";
 
-  const name = pick(fields, ["name", "имя", "название"]);
+  const name = pick(fields, ["name", "имя", "название"], ALT_LANG_WORDS);
   if (!name) {
     return NextResponse.json({ ok: false, error: "name required" }, { status: 400 });
   }
@@ -263,7 +308,12 @@ export async function POST(request: NextRequest) {
     lang,
     email: pick(fields, ["email", "почта", "e-mail"]),
     country: pick(fields, ["country", "страна"]),
-    city: pick(fields, ["city", "город"]),
+    city: pick(fields, ["city", "город"], ALT_LANG_WORDS),
+    // How the author spells their own name and town in English. Asked
+    // only in the forms that are not in English, and stored exactly as
+    // typed.
+    nameAlt: pickBoth(fields, ["name", "имя", "название", "nombre"], ALT_LANG_WORDS),
+    cityAlt: pickBoth(fields, ["city", "город", "ciudad"], ALT_LANG_WORDS),
     profileType,
     // "Ваша категория" today, but a form question gets reworded, and
     // "Выберите категорию" would no longer match the full word. The stem
@@ -304,12 +354,19 @@ export async function POST(request: NextRequest) {
     // "Логотип компании" and "Company Logo" carry neither the word photo
     // nor avatar, so without these two the logo never arrived at all.
     avatar: pick(fields, ["avatar", "photo", "фото", "portrait", "logo", "логотип"]),
-    // Work 1 is the headline picture, the rest form the gallery, in the
-    // order the author put them in.
+    // Work 1 is the picture the catalog card shows, and it also stays in
+    // the portfolio with the others.
+    //
+    // It used to be lifted out of the gallery, from the days when the
+    // profile printed a large hero image above the rest. That heading is
+    // long gone: the profile shows the gallery and nothing else, so the
+    // author's first and usually best work was simply missing from their
+    // own page. Worse, the captions are numbered from one and were never
+    // lifted out with it, so every caption printed one work too early —
+    // the wrong title under the wrong picture, on every profile with a
+    // caption, with nothing on the page to suggest anything was off.
     mainImage: works[0] || undefined,
-    gallery: works.slice(1).filter((w) => w !== "").length
-      ? works.slice(1)
-      : undefined,
+    gallery: works.filter((w) => w !== "").length ? works : undefined,
     galleryCaptions: pickEach(fields, CAPTION_WORDS),
     members: pickEach(fields, ["участник", "team member", "member "]),
     // The proof block. Kept whatever the answer to the last question is:

@@ -281,6 +281,11 @@ export interface Submission {
   email?: string;
   country?: string;
   city?: string;
+  /** Name and city as the author spells them in English. Two optional
+   *  questions, asked only in the forms that are not in English; never
+   *  generated. */
+  nameAlt?: string;
+  cityAlt?: string;
 
   /** What they do */
   profileType?: "creator" | "team" | "company";

@@ -293,8 +293,21 @@ export function submissionToProfile(
     teamSize = linkedMemberCount(members);
   }
 
-  const gallery = lines(s.gallery);
-  const captions = lines(s.galleryCaptions);
+  // Works and their captions, paired by position before the blanks are
+  // dropped.
+  //
+  // Each work is its own question in the form and so is each caption, and
+  // an author who skips one picture in the middle still answers the
+  // captions after it. Filtering the two lists separately then slid every
+  // remaining caption up by one, and the page printed the wrong title
+  // under the wrong picture, confidently and without any sign that
+  // anything was missing. The stages were fixed this way already; the
+  // works were left with the same fault.
+  const workPairs = slots(s.gallery)
+    .map((src, i) => ({ src: src.trim(), caption: slots(s.galleryCaptions)[i]?.trim() ?? "" }))
+    .filter((pair) => pair.src);
+  const gallery = workPairs.map((pair) => pair.src);
+  const captions = workPairs.map((pair) => pair.caption);
 
   // Work stages. Two rules decide what travels here.
   //
@@ -336,6 +349,11 @@ export function submissionToProfile(
     country: s.country ?? "",
     city: s.city,
 
+    // Carried through as typed. The page decides whether to use them,
+    // because only the page knows which language it is being read in.
+    nameAlt: s.nameAlt,
+    cityAlt: s.cityAlt,
+
     shortDescription: s.shortDescription ?? "",
     fullDescription: s.fullDescription,
 
@@ -353,7 +371,8 @@ export function submissionToProfile(
     avatar: s.avatar,
     mainImage: s.mainImage ?? gallery[0],
     gallery: gallery.length ? gallery : undefined,
-    galleryCaptions: captions.length ? captions : undefined,
+    galleryCaptions:
+      gallery.length && captions.some(Boolean) ? captions : undefined,
 
     stages: stages.length ? stages : undefined,
     stageCaptions: stages.length && stageCaptions.some(Boolean) ? stageCaptions : undefined,

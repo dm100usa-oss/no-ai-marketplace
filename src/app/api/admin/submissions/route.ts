@@ -20,6 +20,44 @@ import {
 } from "@/lib/mail";
 
 /**
+ * Make the author's words in the other language and keep them.
+ *
+ * Called at approval, which is the natural moment, and again by hand from
+ * the moderation screen. The second way exists because the first happens
+ * exactly once and can quietly fail: the free translator has a daily
+ * ceiling and an occasional bad minute, and a profile approved during one
+ * of those stays in its original language for ever, with no way to try
+ * again short of rejecting and re-approving it.
+ *
+ * Never allowed to throw. A translation that did not happen leaves the
+ * profile exactly as it was, which is a smaller loss than an approval
+ * that failed over it.
+ */
+async function translateSubmission(s: Submission): Promise<boolean> {
+  const from = s.lang === "ru" ? "ru" : "en";
+  const to = from === "ru" ? "en" : "ru";
+  try {
+    const done = await translateAuthorText(
+      {
+        shortDescription: s.shortDescription,
+        fullDescription: s.fullDescription,
+        services: s.services,
+        galleryCaptions: s.galleryCaptions,
+        stageCaptions: s.stageCaptions,
+      },
+      from,
+      to,
+    );
+    if (!done) return false;
+    await setSubmissionTranslation(s.id, to, done);
+    refreshCatalog();
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/**
  * The join queue, behind the same password as review moderation.
  *
  * GET returns every submission, POST either publishes/rejects one or adds
@@ -113,6 +151,17 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ ok: gone }, { status: gone ? 200 : 500 });
     }
 
+    // Translate again, by hand, from the moderation screen. Answers with
+    // whether it worked, so the screen can say so plainly instead of
+    // leaving the owner to go and look at the page.
+    if (data.action === "translate") {
+      const all = await getAllSubmissions();
+      const found = all.find((s) => s.id === data.id);
+      if (!found) return NextResponse.json({ ok: false }, { status: 404 });
+      const done = await translateSubmission(found);
+      return NextResponse.json({ ok: done });
+    }
+
     // Grant a verification badge, then tell the author it is on.
     if (data.verification === "verified-creator" || data.verification === "verified-business") {
       const updated = await setSubmissionVerification(data.id, data.verification);
@@ -153,31 +202,10 @@ export async function POST(request: NextRequest) {
       // on both sites — the same as before this existed — while an
       // approval that failed over it would leave an author waiting on a
       // decision that had already been made.
-      const from = updated.lang === "ru" ? "ru" : "en";
-      const to = from === "ru" ? "en" : "ru";
-      try {
-        const done = await translateAuthorText(
-          {
-            shortDescription: updated.shortDescription,
-            fullDescription: updated.fullDescription,
-            services: updated.services,
-            galleryCaptions: updated.galleryCaptions,
-            stageCaptions: updated.stageCaptions,
-          },
-          from,
-          to,
-        );
-        if (done) {
-          await setSubmissionTranslation(updated.id, to, done);
-          // The catalog was refreshed a moment ago, before the text
-          // existed. Refresh again so the translated page is the first
-          // one anybody sees.
-          refreshCatalog();
-        }
-      } catch {
-        // Nothing to do and nothing to report: the profile publishes in
-        // one language, which is a smaller loss than a failed approval.
-      }
+      // The catalog was refreshed a moment ago, before the text existed.
+      // translateSubmission refreshes again, so the translated page is
+      // the first one anybody sees.
+      await translateSubmission(updated);
 
       await sendWelcomeEmail({
         to: updated.email,
@@ -211,6 +239,8 @@ export async function POST(request: NextRequest) {
     email: str(data.email),
     country: str(data.country),
     city: str(data.city),
+    nameAlt: str(data.nameAlt),
+    cityAlt: str(data.cityAlt),
     profileType,
     mainCategory: str(data.mainCategory),
     additionalCategories: list(data.additionalCategories),

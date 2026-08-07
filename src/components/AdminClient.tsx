@@ -168,6 +168,36 @@ export function AdminClient() {
     setBusy(false);
   }
 
+  /** Translate the author's words again.
+   *
+   *  The translation is normally made once, at approval, and that one
+   *  attempt can fail without anybody noticing: the free service has a
+   *  daily ceiling and the profile then sits in one language on both
+   *  sites. This is the way back. Says plainly whether it worked, because
+   *  the alternative is opening the other language's page and guessing. */
+  async function retranslate(id: string) {
+    setBusy(true);
+    try {
+      const res = await fetch("/api/admin/submissions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-password": password,
+        },
+        body: JSON.stringify({ id, action: "translate" }),
+      });
+      const out = (await res.json().catch(() => null)) as { ok?: boolean } | null;
+      if (res.ok && out?.ok) {
+        await load(password);
+        return;
+      }
+      setError("Переводчик не ответил. Попробуйте позже.");
+    } catch {
+      setError("Не удалось связаться с сервером.");
+    }
+    setBusy(false);
+  }
+
   async function decide(id: string, status: "approved" | "rejected") {
     setBusy(true);
     try {
@@ -347,10 +377,17 @@ export function AdminClient() {
 
   function SubmissionCard({ s, actions }: { s: Submission; actions: boolean }) {
     const note = readinessNote(s);
+    // Work 1 now stays inside the gallery rather than being lifted out of
+    // it, so listing it separately as well would show it twice and put
+    // every following number one off the form the author filled in.
+    const works = s.gallery?.length
+      ? s.gallery
+      : s.mainImage
+        ? [s.mainImage]
+        : [];
     const pics = [
       ...(s.avatar ? [{ label: "Фото", url: s.avatar }] : []),
-      ...(s.mainImage ? [{ label: "Work 1", url: s.mainImage }] : []),
-      ...(s.gallery ?? []).map((u, i) => ({ label: `Work ${i + 2}`, url: u })),
+      ...works.map((u, i) => ({ label: `Работа ${i + 1}`, url: u })),
     ];
 
     return (
@@ -398,6 +435,22 @@ export function AdminClient() {
                 {s.emailConfirmed ? "почта подтверждена" : "почта не подтверждена"}
               </span>
             )}
+            {/* Whether the author's own words exist in the other
+                language. Only meaningful once published, since that is
+                when the translation is made. */}
+            {s.status === "published" &&
+              (() => {
+                const to = s.lang === "ru" ? "en" : "ru";
+                const has = !!s.translations?.[to];
+                return (
+                  <span
+                    className="text-[0.75rem]"
+                    style={{ color: has ? "#2f6b45" : "#8a6d1f" }}
+                  >
+                    {has ? "перевод есть" : "перевода нет"}
+                  </span>
+                );
+              })()}
             {s.verification && s.verification !== "none" && (
               <span
                 className="rounded-full px-2 py-0.5 text-[0.7rem] font-semibold uppercase"
@@ -548,36 +601,49 @@ export function AdminClient() {
         {/* Verification is granted after publishing, once the author has
             sent extra materials. Shown on decided (published) profiles that
             do not already carry a badge. */}
-        {!actions &&
-          s.status === "published" &&
-          (!s.verification || s.verification === "none") && (
-            <div className="mt-4 flex flex-wrap gap-2">
+        {/* Everything that can be done to a submission already decided.
+            Verification is granted after publishing, once the author has
+            sent extra materials, so those two are offered only on a
+            published profile without a badge. Translating again is
+            offered on any published profile, whether or not one exists:
+            a bad translation is as much a reason to run it as a missing
+            one. */}
+        {!actions && (
+          <div className="mt-4 flex flex-wrap gap-2">
+            {s.status === "published" &&
+              (!s.verification || s.verification === "none") && (
+                <>
+                  <button
+                    type="button"
+                    onClick={() => verifySubmission(s.id, "verified-creator")}
+                    disabled={busy}
+                    className="btn btn-quiet disabled:opacity-60"
+                  >
+                    Выдать знак «Проверенный автор»
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => verifySubmission(s.id, "verified-business")}
+                    disabled={busy}
+                    className="btn btn-quiet disabled:opacity-60"
+                  >
+                    Выдать знак «Проверенный бизнес»
+                  </button>
+                </>
+              )}
+            {s.status === "published" && (
               <button
                 type="button"
-                onClick={() => verifySubmission(s.id, "verified-creator")}
+                onClick={() => retranslate(s.id)}
                 disabled={busy}
                 className="btn btn-quiet disabled:opacity-60"
               >
-                Выдать знак «Проверенный автор»
+                Перевести заново
               </button>
-              <button
-                type="button"
-                onClick={() => verifySubmission(s.id, "verified-business")}
-                disabled={busy}
-                className="btn btn-quiet disabled:opacity-60"
-              >
-                Выдать знак «Проверенный бизнес»
-              </button>
-              <DeleteButton id={s.id} />
-            </div>
-          )}
-        {!actions &&
-          (s.status !== "published" ||
-            (s.verification && s.verification !== "none")) && (
-            <div className="mt-4 flex gap-2">
-              <DeleteButton id={s.id} />
-            </div>
-          )}
+            )}
+            <DeleteButton id={s.id} />
+          </div>
+        )}
       </li>
     );
   }
