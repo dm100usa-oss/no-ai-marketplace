@@ -520,46 +520,31 @@ export default async function HomePage({
                     lang={locale}
                     href={href}
                     className="press-btn flex flex-col overflow-hidden rounded-2xl"
-                    style={{ background: p.coverColor ?? "var(--color-brand-soft)" }}
+                    style={{ background: "var(--color-brand-soft)" }}
                   >
-                    {/* The work, whole.
-                        The name used to lie across the picture on a dark
-                        wash. That was fine while the picture was cropped to
-                        a wide strip and its bottom edge was scenery; now
-                        that the work is shown whole, the wash sat on the
-                        author's own artwork and covered the title of a book
-                        cover. So the name has its own clean line underneath,
-                        the way the new-members strip already does it.
-                        The height is capped as well: on a phone one tall
-                        cover filled the entire screen and buried whatever
-                        came next. */}
-                    {/* The frame around the work and the line with the name
-                        share one colour, so the card reads as a single
-                        object with the work resting inside it, rather than
-                        a picture with a white label stuck underneath. */}
-                    {/* Same rule as the catalog: one frame for every card,
-                        cropped from the middle. The strip is a row, and a
-                        row that does not line up looks broken. The work is
-                        whole on the profile. */}
-                    <span className="flex aspect-[4/3] items-center justify-center overflow-hidden">
+                    {/* The work, and under it a strip with its caption.
+                        Two behaviours, and both are deliberate.
+                        On a phone the strip is a single column, so a card
+                        can be any height: the work is shown at its own
+                        shape, full width, with the caption pressed right
+                        up against it. Nothing is cropped and there is no
+                        empty field anywhere, which is what an author
+                        should see of their own work.
+                        From tablet width up the cards stand side by side
+                        and have to line up, so there they share one frame
+                        and the work is fitted inside it.
+                        The height is capped either way: on a phone one
+                        tall cover filled the whole screen and buried
+                        whatever came next. */}
+                    <span className="flex items-center justify-center overflow-hidden sm:aspect-[4/3]">
                       <img
                         src={p.mainImage}
                         alt={p.name}
                         loading="lazy"
                         decoding="async"
-                        className="h-full w-full object-contain"
+                        className="block max-h-[24rem] w-full object-contain sm:h-full sm:max-h-none"
                       />
                     </span>
-                    {/* What the work is, then whose it is.
-                        The strip is called "new works", so the picture is
-                        the subject and the first line answers the question
-                        a visitor actually has: what am I looking at. The
-                        author's own caption answers it in their words, and
-                        the catalog already has it. Captions are written
-                        loosely, so the line is capped at two and cut with
-                        an ellipsis rather than pushing the card taller than
-                        its neighbours. A work with no caption simply shows
-                        the name on its own, as before. */}
                     <span className="block px-3 py-2.5">
                       {p.galleryCaptions?.[0]?.trim() ? (
                         <span

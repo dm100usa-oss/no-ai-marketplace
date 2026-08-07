@@ -8,13 +8,11 @@ import {
   getAllSubmissions,
   setSubmissionStatus,
   setSubmissionTranslation,
-  setSubmissionCoverColor,
   setSubmissionVerification,
   deleteSubmission,
   type Submission,
 } from "@/lib/redis";
 import { translateAuthorText } from "@/lib/translate";
-import { coverColor } from "@/lib/cover-color";
 import {
   sendWelcomeEmail,
   sendRejectionEmail,
@@ -62,22 +60,6 @@ async function translateSubmission(s: Submission): Promise<boolean> {
   } catch {
     return false;
   }
-}
-
-/**
- * Work out the field colour for a submission and keep it.
- *
- * The first work is the one the card shows, so it is the one the field
- * is painted from. Never throws and never blocks anything: a picture
- * that will not download leaves the profile on the neutral field.
- */
-async function storeCoverColor(s: Submission): Promise<boolean> {
-  const first = s.gallery?.find((u) => u && u.trim()) ?? s.mainImage;
-  const color = await coverColor(first);
-  if (!color) return false;
-  await setSubmissionCoverColor(s.id, color);
-  refreshCatalog();
-  return true;
 }
 
 /**
@@ -174,17 +156,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ ok: gone }, { status: gone ? 200 : 500 });
     }
 
-    // Work out the field colour again. Needed for profiles approved
-    // before the colour existed, and for the day an author sends in a
-    // better picture.
-    if (data.action === "cover") {
-      const all = await getAllSubmissions();
-      const found = all.find((s) => s.id === data.id);
-      if (!found) return NextResponse.json({ ok: false }, { status: 404 });
-      const done = await storeCoverColor(found);
-      return NextResponse.json({ ok: done });
-    }
-
     // Translate again, by hand, from the moderation screen. Answers with
     // whether it worked, so the screen can say so plainly instead of
     // leaving the owner to go and look at the page.
@@ -240,7 +211,6 @@ export async function POST(request: NextRequest) {
       // translateSubmission refreshes again, so the translated page is
       // the first one anybody sees.
       await translateSubmission(updated);
-      await storeCoverColor(updated);
 
       await sendWelcomeEmail({
         to: updated.email,

@@ -70,7 +70,12 @@ export async function CreatorCard({
   // The field the work sits in, and the strip of card under it. One
   // colour for both, so the card is a single object rather than a
   // picture with a label stuck on.
-  const field = profile.coverColor ?? "var(--color-brand-soft)";
+  //
+  // One colour for every card on purpose. Painting it from the work's own
+  // average was tried and dropped: a blue field under a blue piece read
+  // worse than the neutral one, and a catalog of other people's colours
+  // needs a quiet neighbour, not a second colour per card.
+  const field = "var(--color-brand-soft)";
   // A single creator reads as a person (round avatar); a team or company
   // reads as a group (rounded square).
   const isGroup = profile.profileType !== "creator";

@@ -238,32 +238,6 @@ export function AdminClient() {
     setRunning(null);
   }
 
-  /** Work out the field colour again for one profile. */
-  async function recolor(id: string) {
-    setRunning(`${id}:cover`);
-    setCardNote(null);
-    try {
-      const res = await fetch("/api/admin/submissions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-admin-password": password,
-        },
-        body: JSON.stringify({ id, action: "cover" }),
-      });
-      const out = (await res.json().catch(() => null)) as { ok?: boolean } | null;
-      if (res.ok && out?.ok) {
-        await load(password);
-        setCardNote({ id, ok: true, text: "Цвет фона обновлен." });
-      } else {
-        setCardNote({ id, ok: false, text: "Не удалось прочитать картинку." });
-      }
-    } catch {
-      setCardNote({ id, ok: false, text: "Не удалось связаться с сервером." });
-    }
-    setRunning(null);
-  }
-
   async function decide(id: string, status: "approved" | "rejected") {
     setBusy(true);
     try {
@@ -750,16 +724,6 @@ export function AdminClient() {
                   </button>
                 </>
               )}
-            {s.status === "published" && (
-              <button
-                type="button"
-                onClick={() => recolor(s.id)}
-                disabled={running === `${s.id}:cover`}
-                className="btn btn-quiet disabled:opacity-60"
-              >
-                {running === `${s.id}:cover` ? "Считаю цвет..." : "Обновить цвет фона"}
-              </button>
-            )}
             {s.status === "published" && (
               <button
                 type="button"
