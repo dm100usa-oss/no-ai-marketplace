@@ -537,8 +537,12 @@ export default async function HomePage({
                         share one colour, so the card reads as a single
                         object with the work resting inside it, rather than
                         a picture with a white label stuck underneath. */}
+                    {/* Same rule as the catalog: one frame for every card,
+                        cropped from the middle. The strip is a row, and a
+                        row that does not line up looks broken. The work is
+                        whole on the profile. */}
                     <span
-                      className="flex items-center justify-center overflow-hidden sm:aspect-[4/3]"
+                      className="block aspect-[4/3] overflow-hidden"
                       style={{ background: "var(--color-brand-soft)" }}
                     >
                       <img
@@ -546,7 +550,7 @@ export default async function HomePage({
                         alt={p.name}
                         loading="lazy"
                         decoding="async"
-                        className="block max-h-[22rem] w-full object-contain sm:h-full sm:max-h-none"
+                        className="h-full w-full object-cover"
                       />
                     </span>
                     {/* What the work is, then whose it is.

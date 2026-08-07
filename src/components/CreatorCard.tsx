@@ -1,17 +1,16 @@
 import { LocaleLink } from "./LocaleLink";
 import type { Profile } from "@/lib/types";
 import { VerifiedBadge, FeaturedBadge } from "./Badges";
-import { ExternalLink } from "./icons";
 import { profileBasePath } from "@/lib/profile-path";
-import { directionOfCategoryL, getTeamOfCreatorL } from "@/lib/localized-data";
 import type { Dictionary } from "@/i18n/types";
 import type { Locale } from "@/i18n/config";
 
 /**
- * Creator card: work image on top, author row (avatar, name bold,
- * category regular, status badge right), one-two line description, tags
- * (country + a keyword or two), external "Visit" button — a jump to the
- * creator's own platform, not a purchase on the site.
+ * Creator card: the work, then three short lines under it.
+ *
+ * The picture is what a visitor stops on, so it gets the space; the name,
+ * the trade and the badges say who made it, and everything else belongs
+ * on the profile page rather than on a tile in a row of tiles.
  */
 /** "3 человека" / "3 people" — Russian needs one, few and many forms. */
 function peopleCount(n: number, dict: Dictionary): string {
@@ -67,30 +66,7 @@ export async function CreatorCard({
     .join("")
     .toUpperCase();
 
-  const href =
-    visitHref ??
-    profile.socialLinks.portfolio ??
-    profile.socialLinks.website ??
-    "#";
-  const label =
-    visitLabel ??
-    (profile.socialLinks.portfolio ? dict.profile.visitPortfolio : dict.profile.visitWebsite);
-
   const badge = typeBadge(profile, dict);
-  const team =
-    profile.profileType === "creator"
-      ? await getTeamOfCreatorL(profile.slug, lang)
-      : undefined;
-  // What this participant actually does — the difference between two
-  // people in the same profession. Products count too: an author sells
-  // books, not services.
-  const does = [...(profile.services ?? []), ...(profile.products ?? [])].slice(0, 3);
-  // The verb before that line fits the trade, not a flat "Does:" — trade
-  // first, direction second, "Makes" if neither is known.
-  const dir = directionOfCategoryL(profile.mainCategory, lang);
-  const verb =
-    dict.common.cardVerbTrade[profile.mainCategory] ??
-    (dir ? (dict.common.cardVerb[dir.slug] ?? dict.common.cardVerb.other) : dict.common.cardVerb.other);
   // A single creator reads as a person (round avatar); a team or company
   // reads as a group (rounded square).
   const isGroup = profile.profileType !== "creator";
@@ -108,10 +84,17 @@ export async function CreatorCard({
           up, so there the work is fitted inside one frame and the leftover
           space is filled with the soft brand colour. Nothing is cropped
           either way. */}
-      <LocaleLink lang={lang} href={profileHref} className={`relative flex items-center justify-center overflow-hidden ${profile.mainImage ? "sm:aspect-[4/3]" : "aspect-[4/3]"}`} style={{ background: "var(--color-brand-soft)" }}>
+      {/* The work, in one frame for every card.
+          Cropped, deliberately. A catalog is a row of things being
+          compared, and rows only compare when they line up; a frame that
+          fits every shape leaves half the cards floating in empty space,
+          which is exactly what made the page look twenty years old. The
+          crop is taken from the middle, and the work is shown whole on
+          the profile, one tap away. */}
+      <LocaleLink lang={lang} href={profileHref} className="relative block aspect-[4/3] overflow-hidden" style={{ background: "var(--color-brand-soft)" }}>
         {profile.mainImage ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={profile.mainImage} alt={`${dict.common.humanMadeWork}: ${profile.name}`} className="block max-h-[22rem] w-full object-contain sm:h-full sm:max-h-none" loading="lazy" decoding="async" />
+          <img src={profile.mainImage} alt={`${dict.common.humanMadeWork}: ${profile.name}`} className="h-full w-full object-cover" loading="lazy" decoding="async" />
         ) : (
           <PlaceholderArt seed={profile.slug} label={dict.common.humanMadeWork} />
         )}
@@ -137,58 +120,55 @@ export async function CreatorCard({
         )}
       </LocaleLink>
 
-      <div className="flex flex-1 flex-col gap-3 p-4">
-        {/* Author row */}
-        <div className="flex items-start gap-2.5">
-          <LocaleLink lang={lang} href={profileHref} className="flex min-w-0 items-center gap-2.5">
-            {profile.avatar ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={profile.avatar}
-                alt={profile.name}
-                width={600}
-                height={600}
-                loading="lazy"
-                decoding="async"
-                className={`h-9 w-9 shrink-0 object-cover ${isGroup ? "rounded-[0.6rem]" : "rounded-full"}`}
-              />
-            ) : (
-              <span
-                aria-hidden
-                className={`grid h-9 w-9 shrink-0 place-items-center text-[0.8rem] font-bold text-white ${
-                  isGroup ? "rounded-[0.6rem]" : "rounded-full"
-                }`}
-                style={{
-                  background: badge?.bg ?? "var(--color-ink)",
-                  fontFamily: "var(--font-display)",
-                }}
-              >
-                {initials}
-              </span>
-            )}
-            <span className="min-w-0">
-              <span className="block truncate font-semibold leading-tight notranslate" translate="no" style={{ fontFamily: "var(--font-display)" }}>
-                {profile.name}
-              </span>
-              <span className="block truncate text-[0.85rem]" style={{ color: "var(--color-muted-soft)" }}>
-                {categoryName}
-              </span>
+      {/* Everything under the picture, kept short on purpose.
+          The card used to carry nine things: avatar, name, trade, badges,
+          a team line, a description, a "makes" line, country tags and a
+          button. That is a profile page squeezed into a tile, and it read
+          like a directory from twenty years ago: the work, which is the
+          only reason anyone stops, got a third of the card and the text
+          got the rest.
+          Now the picture leads and three lines follow. Everything else
+          lives on the profile, one tap away. */}
+      <div className="flex flex-col gap-2 p-4">
+        <div className="flex items-center gap-2.5">
+          {profile.avatar ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={profile.avatar}
+              alt=""
+              width={600}
+              height={600}
+              loading="lazy"
+              decoding="async"
+              className={`h-9 w-9 shrink-0 object-cover ${isGroup ? "rounded-[0.6rem]" : "rounded-full"}`}
+            />
+          ) : (
+            <span
+              aria-hidden
+              className={`grid h-9 w-9 shrink-0 place-items-center text-[0.8rem] font-bold text-white ${
+                isGroup ? "rounded-[0.6rem]" : "rounded-full"
+              }`}
+              style={{
+                background: badge?.bg ?? "var(--color-ink)",
+                fontFamily: "var(--font-display)",
+              }}
+            >
+              {initials}
             </span>
-          </LocaleLink>
+          )}
+          <span className="min-w-0">
+            <span className="block truncate font-semibold leading-tight notranslate" translate="no" style={{ fontFamily: "var(--font-display)" }}>
+              {profile.name}
+            </span>
+            <span className="block truncate text-[0.85rem]" style={{ color: "var(--color-muted-soft)" }}>
+              {[categoryName, profile.city].filter(Boolean).join(" \u00b7 ")}
+            </span>
+          </span>
         </div>
 
-        {/* Badges on a line of their own.
-            They used to sit beside the name, and a card has only so much
-            width: the badge took its share and the trade underneath was
-            cut to "Детские писате…". Two badges — first in category and
-            verified — made a card unreadable at exactly the moment it had
-            most to say about somebody.
-
-            Below the name they cost a line and nothing else. They wrap
-            when there are two and no name is ever shortened for them. */}
         {(profile.status === "featured" ||
           profile.verificationStatus !== "none") && (
-          <div className="-mt-1 flex flex-wrap items-center gap-1.5">
+          <div className="flex flex-wrap items-center gap-1.5">
             <FeaturedBadge status={profile.status} dict={dict} />
             <VerifiedBadge
               status={profile.verificationStatus}
@@ -197,54 +177,6 @@ export async function CreatorCard({
             />
           </div>
         )}
-
-        {/* Part of a team. A creator found in the open catalog carries the
-            team with them, the way an agency name travels with its people
-            on Upwork: one team advertises itself through four cards. */}
-        {team && (
-          <LocaleLink
-            lang={lang}
-            href={`/teams/${team.slug}`}
-            className="-mt-1 inline-flex items-center gap-1.5 text-[0.85rem] font-semibold"
-            style={{ color: "var(--color-accent)" }}
-          >
-            {dict.common.cardTeamLine.replace("{team}", team.name)}
-          </LocaleLink>
-        )}
-
-        {/* Short description */}
-        <p className="line-clamp-2 text-[0.92rem] leading-snug" style={{ color: "var(--color-muted)" }}>
-          {profile.shortDescription}
-        </p>
-
-        {/* What they actually do — separates two people in one profession */}
-        {does.length > 0 && (
-          <p className="line-clamp-2 text-[0.85rem] leading-snug" style={{ color: "var(--color-muted)" }}>
-            <span style={{ color: "var(--color-muted-soft)" }}>{verb}: </span>
-            {does.join(" · ")}
-          </p>
-        )}
-
-        {/* Tags: country + a keyword or two */}
-        <div className="flex flex-wrap gap-1.5">
-          <span className="pill">{profile.country}</span>
-          {(profile.tags ?? []).slice(0, 2).map((t) => (
-            <span key={t} className="pill">{t}</span>
-          ))}
-        </div>
-
-        {/* Visit button */}
-        <div className="mt-auto pt-1">
-          <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer nofollow"
-            className="btn btn-quiet btn-full !py-2.5 text-[0.92rem]"
-          >
-            {label}
-            <ExternalLink size={16} />
-          </a>
-        </div>
       </div>
     </article>
   );
